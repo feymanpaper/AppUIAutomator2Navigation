@@ -8,7 +8,7 @@ from utils import *
 def dfs_click(cur_ele:str, node:Node):
     #--------------------------------------
     # 点击前检测策略
-    
+
     # 检查描述信息
     # if(cur_ele.get("content-desc") == "返回"):
     #     return 
@@ -53,11 +53,16 @@ def dfs_click(cur_ele:str, node:Node):
     if cur_node.total_cnt == -1:
         #将clickable_element放到class，优化
         #todo
-        now_clickable_elements = get_clickable_elements(d, umap)
-        cur_node.total_cnt = len(now_clickable_elements)
+        if activity_clickable_map.get(cur_activity, None) is None:
+            res = get_clickable_elements(d, umap)
+            activity_clickable_map[cur_activity] = res
+            cur_node.total_cnt = len(res)
+        else:
+            res = activity_clickable_map[cur_activity]
+            cur_node.total_cnt = len(res)
     cur_node.click_cnt +=1
-    d(resourceId = cur_ele.get("resource-id")).click()
-    # d.click(x,y)
+    # d(resourceId = cur_ele.get("resource-id")).click()
+    d.click(x,y)
     time.sleep(3)
 
     #--------------------------------------
@@ -96,7 +101,13 @@ def dfs_click(cur_ele:str, node:Node):
 
     #-----------------------------------
     #遍历页面(next_activity)所有可点击的组件
-    clickable_elements = get_clickable_elements(d, umap)
+    clickable_elements = None
+    if activity_clickable_map.get(next_activity, None) is None:
+        clickable_elements = get_clickable_elements(d, umap)
+        activity_clickable_map[next_activity] = clickable_elements
+    else:
+        clickable_elements = activity_clickable_map[next_activity]
+
     print("界面-" + next_activity + " 可点击个数为" + str(len(clickable_elements)))
     for next_ele in clickable_elements:
         dfs_click(next_ele, cur_node)
@@ -110,9 +121,12 @@ def dfs_click(cur_ele:str, node:Node):
 root = Node("root")
 # node_map : {key: cur_activity, value: cur_node}
 node_map = {}
-# umap; {key:uid, value:cnt}
+# umap: {key:uid, value:cnt}
 umap = {}
+# vis_map: {key:element, value:true/false}
 vis_map = {}
+# activity_clickable_map:{key:activity_name, value = clickable_elements}
+activity_clickable_map = {}
 
 
 
