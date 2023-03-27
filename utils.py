@@ -24,6 +24,7 @@ def get_clickable_elements(d, umap):
             if element.get("package") not in system_view:
                 cnt +=1
                 uid = get_unique_id(element, d)
+                # uid并不能唯一标识一个组件，因此如果uid相同，umap会被覆盖成最后一个
                 umap[uid] = cnt
                 clickable_elements.append(element)
     return clickable_elements
@@ -44,8 +45,16 @@ def get_unique_id(ele, d):
 def get_uuid(ele, d, umap):
     uid = get_unique_id(ele, d)
     cnt = umap.get(uid)
-    uuid = uid + "-" + str(cnt)
+    uuid = uid + "&&&" + str(cnt)
     return uuid
+
+def get_uuid_cnt(uuid):
+    print(uuid)
+    start = uuid.find("&&&")
+    res = ""
+    if start != -1:
+        res = uuid[start+3 : ]
+    return int(res)
 
 #获取页面的坐标
 def get_location(ele):

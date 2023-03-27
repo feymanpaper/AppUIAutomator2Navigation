@@ -37,8 +37,9 @@ def dfs_click(cur_ele:str, node:Node):
     if vis_map.get(uuid, False) == True:
         if cur_node.call_map.get(uuid, None) is not None:
             # 如果有部分没有完成
-            if not cur_node.is_all_childen_finish():
-                print("yes")
+            target_activity = cur_node.call_map.get(uuid)
+            if not cur_node.is_all_children_finish(target_activity):
+                print(uuid, "存在部分没完成")
             else:
                 return 
         else:
@@ -60,7 +61,7 @@ def dfs_click(cur_ele:str, node:Node):
         else:
             res = activity_clickable_map[cur_activity]
             cur_node.total_cnt = len(res)
-    cur_node.click_cnt +=1
+    cur_node.click_cnt = get_uuid_cnt(uuid)
     # d(resourceId = cur_ele.get("resource-id")).click()
     d.click(x,y)
     time.sleep(3)
@@ -132,8 +133,8 @@ activity_clickable_map = {}
 
 d = Device()
 # curr_pkg_name = get_current_window_package(d)
-curr_pkg_name = "com.example.myapplication"
-# curr_pkg_name = "com.alibaba.android.rimet"
+# curr_pkg_name = "com.example.myapplication"
+curr_pkg_name = "com.alibaba.android.rimet"
 d.app_start(curr_pkg_name)
 time.sleep(3)
 clickable_elements = get_clickable_elements(d, umap)
