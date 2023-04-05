@@ -55,8 +55,7 @@ def get_screen_info(d):
     return signature
 
 # 对screen_info进行sha256签名,生成消息摘要
-def get_signature(d):
-    screen_info = get_screen_info(d)
+def get_signature(screen_info):
     signature = hashlib.sha256(screen_info.encode()).hexdigest()
     return signature
 
