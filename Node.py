@@ -3,7 +3,7 @@ class Node:
         self.value = value
         self.parent = None
         self.children = []
-        # detect_cycle_map:{key:uuid, value: next_activity}
+        # call_map:{key:uuid, value: next_activity}
         self.call_map = {}
         self.total_cnt = -1
         self.click_cnt = 0

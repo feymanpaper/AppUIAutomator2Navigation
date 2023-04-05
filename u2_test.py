@@ -78,18 +78,20 @@ def dfs_click(cur_ele:str, node:Node):
     next_activity = get_current_activity(d)
     # 判断当前app是否变成了其他app，即跳出了测试的app
     if get_current_window_package(d) != curr_pkg_name:
-        print("回退界面-" + next_activity)
+        print("跳出了app回退界面-" + next_activity)
         d.press("back")
         time.sleep(3)
         return
     # 暂时忽略WebviewAcitivity
     if "WebView" in next_activity:
-        print("切换界面-" + next_activity + " 但是回退")
+        print("切换到Webview回退界面-" + next_activity)
         d.press("back")
         time.sleep(3)
         return 
     # 如果activity没有变化，则return，这个有问题，比如dialog和fragment有问题，后面需要改
     if cur_activity == next_activity:
+        # 开始编写activity内逻辑
+        # todo
         return 
     print("切换界面-" + next_activity)
 
@@ -114,7 +116,7 @@ def dfs_click(cur_ele:str, node:Node):
         dfs_click(next_ele, cur_node)
         # print(ET.tostring(element))
         # print("*"*100)
-    print("回退界面-" + get_current_activity(d))
+    print("正常结束for回退界面-" + get_current_activity(d))
     d.press("back")
     time.sleep(3)
 
