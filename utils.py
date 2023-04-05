@@ -51,15 +51,15 @@ def get_screen_info(d):
     pkg_name = current_screen['package']
     act_name = current_screen['activity']
     all_text = get_screen_all_text(d)
-    signature = pkg_name + '\n' + act_name + '\n' + all_text
-    return signature
+    all_info = pkg_name + '\n' + act_name + '\n' + all_text
+    return pkg_name, act_name, all_info
 
 # 对screen_info进行sha256签名,生成消息摘要
 def get_signature(screen_info):
     signature = hashlib.sha256(screen_info.encode()).hexdigest()
     return signature
 
-def get_clickable_elements(d, umap):
+def get_clickable_elements(d, umap, cur_activity):
     xml = d.dump_hierarchy()
     root = ET.fromstring(xml)
     clickable_elements = []
@@ -68,7 +68,7 @@ def get_clickable_elements(d, umap):
         if element.get('clickable') == 'true':
             if element.get("package") not in system_view:
                 cnt +=1
-                uid = get_unique_id(element, d)
+                uid = get_unique_id(element, d, cur_activity)
                 # uid并不能唯一标识一个组件，因此如果uid相同，umap会被覆盖成最后一个
                 umap[uid] = cnt
                 clickable_elements.append(element)
@@ -76,19 +76,19 @@ def get_clickable_elements(d, umap):
 
 # uid
 # activity + pkg + class + resourceId + text
-def get_unique_id(ele, d):
-    acitivity_name = get_current_activity(d)
+def get_unique_id(ele, d, cur_activity):
+    # acitivity_name = get_current_activity(d)
     class_name = ele.get("class")
     res_id = ele.get("resource-id")
     pkg_name = ele.get("package")
     text = ele.get("text")
-    res = acitivity_name + "-" +pkg_name + "-" + class_name + "-" +res_id + "-" + text  
+    res = cur_activity + "-" +pkg_name + "-" + class_name + "-" +res_id + "-" + text  
     return res
 
 # uuid
 # uid + cnt
-def get_uuid(ele, d, umap):
-    uid = get_unique_id(ele, d)
+def get_uuid(ele, d, umap, cur_activity):
+    uid = get_unique_id(ele, d, cur_activity)
     cnt = umap.get(uid)
     uuid = uid + "&&&" + str(cnt)
     return uuid

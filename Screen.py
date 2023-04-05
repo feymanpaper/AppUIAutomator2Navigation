@@ -3,15 +3,17 @@ class ScreenNode:
         # 包名 + activity + 可点击组件的内部文本
         self.info = ""
         self.sig = ""
+        self.all_text = ""
         # 当前screen的上一个screen
         self.parent = None
         # 当前screen的下一个screen
         self.children = []
         # 记录着当前screen的所有可点击组件
         self.clickable_elements = None
-        # self.pkg_name = ""
-        # self.class_name = ""
-        # self.activity_name = ""
+
+        self.pkg_name = ""
+        self.class_name = ""
+        self.activity_name = ""
 
 
         # call_map:{key:widget_uuid, value: next_screen}
