@@ -52,7 +52,7 @@ def get_screen_info(d):
     act_name = current_screen['activity']
     all_text = get_screen_all_text(d)
     all_info = pkg_name + '\n' + act_name + '\n' + all_text
-    return pkg_name, act_name, all_info
+    return pkg_name, act_name, all_text, all_info
 
 # 对screen_info进行sha256签名,生成消息摘要
 def get_signature(screen_info):
