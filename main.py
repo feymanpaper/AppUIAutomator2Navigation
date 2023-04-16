@@ -4,7 +4,7 @@
 # 否则当前没东西可点了，back ，不写成dfs
 from utils import *
 from Screen import *
-
+from ScreenCompareStrategy import *
 import time
 import signal
  
@@ -48,11 +48,8 @@ def testTimeOut():
 
 def dfs_screen(last_screen_sig, last_clickable_ele, last_activity):
     # 获取当前screen
-    fuck_1 = get_screen_all_text(d)
-    cur_screen_pkg_name, cur_activity, cur_screen_all_text, cur_screen_info = get_screen_info(d)
-    fuck_2 = get_screen_all_text(d)
-    _,_,fuck_3,_ = get_screen_info(d)
 
+    cur_screen_pkg_name, cur_activity, cur_screen_all_text, cur_screen_info = get_screen_info(d)
     cur_screen_sig = get_signature(cur_screen_info)
 
 
@@ -66,11 +63,11 @@ def dfs_screen(last_screen_sig, last_clickable_ele, last_activity):
     if last_clickable_ele is not None:
         # 用更加 general的方法来规避输入法输入框
         if("EditText" in last_clickable_ele.get("class")):
-            print("文本框回退")
+            # print("文本框回退")
             d.press("back")
             return
         elif (d(packageName = "com.google.android.inputmethod.latin").exists()):
-            print("文本框回退")
+            # print("文本框回退")
             d.press("back")
             cur_screen_pkg_name, cur_activity, cur_screen_all_text, cur_screen_info = get_screen_info(d)
             cur_screen_sig = get_signature(cur_screen_info)
@@ -85,8 +82,6 @@ def dfs_screen(last_screen_sig, last_clickable_ele, last_activity):
     # 建Screen跳转图
     cur_screen_node = None
     if screen_map.get(cur_screen_sig, False) == False:
-
-
         # 初始化cur_screen_node信息
         cur_screen_node = ScreenNode()
         cur_screen_node.info = cur_screen_info
@@ -103,7 +98,7 @@ def dfs_screen(last_screen_sig, last_clickable_ele, last_activity):
         last_screen_node.add_child(cur_screen_node)
     else:
         cur_screen_node = screen_map.get(cur_screen_sig)
-
+    print("*"*100)
     print(f"Screen--{cur_screen_node.all_text[0:20]}--{len(cur_screen_node.clickable_elements)}")
     print("*"*100)
     
@@ -130,10 +125,13 @@ def dfs_screen(last_screen_sig, last_clickable_ele, last_activity):
         #的所有组件是否访问完毕
 
         #判断当前界面是否真的为当前界面？
-        temp_screen_pkg, temp_activity, temp_text, temp_screen_info = get_screen_info(d)
+        temp_screen_pkg, temp_activity, temp_screen_all_text, temp_screen_info = get_screen_info(d)
         temp_screen_sig = get_signature(temp_screen_info)
-        if temp_screen_sig != cur_screen_sig:
-            print("不符合回退")
+        if (cur_screen_pkg_name != temp_screen_pkg) or (cur_activity != temp_activity):
+            print("循环过程中界面不一样导致回退-----------------------")
+            return
+        if not screen_compare_strategy.compare_screen(cur_screen_all_text, temp_screen_all_text):
+            print("循环过程中界面不一样导致回退-----------------------")
             return
 
         uuid = get_uuid(cur_clickable_ele, d, umap, cur_activity)
@@ -145,7 +143,7 @@ def dfs_screen(last_screen_sig, last_clickable_ele, last_activity):
             ele_vis_map[uuid] = True
             #点击该组件
             cur_screen_node.already_clicked_cnt = get_uuid_cnt(uuid)
-            print(f"点击组件: {uuid}")
+            print(f"点击组件: {uuid}-----------------------")
             total_eles_cnt +=1 #统计的组件点击次数+1
 
             d.click(loc_x, loc_y)
@@ -160,7 +158,7 @@ def dfs_screen(last_screen_sig, last_clickable_ele, last_activity):
                     loc_x, loc_y = get_location(cur_clickable_ele)
                     # 点击该组件
                     cur_screen_node.already_clicked_cnt = get_uuid_cnt(uuid)
-                    print(f"点击组件: {uuid}")
+                    print(f"点击组件: {uuid}-----------------------")
                     total_eles_cnt +=1 #统计的组件点击次数+1
                     d.click(loc_x, loc_y) 
                     time.sleep(5)
@@ -197,11 +195,12 @@ if __name__ == "__main__":
 
     # 启动app开始执行
     d = Device()
+    screen_compare_strategy = ScreenCompareStrategy(LCSComparator())
     # curr_pkg_name = "com.example.myapplication"
-    # target_pkg_name = "com.alibaba.android.rimet"
+    target_pkg_name = "com.alibaba.android.rimet"
     # target_pkg_name = "com.ss.android.lark"
     # target_pkg_name = "com.cloudy.component"
-    target_pkg_name = "com.jingyao.easybike"
+    # target_pkg_name = "com.jingyao.easybike"
     d.app_start(target_pkg_name)
     time.sleep(5)
     root_sig = "root"
@@ -214,8 +213,8 @@ if __name__ == "__main__":
     # except Exception as e:
     #     print(e)
 
-    print("-"*100)
-    print("-"*100)
+    print("@"*100)
+    print("@"*100)
     print(f"总共点击的activity个数 {len(stat_activity_set)}")
     print(f"总共点击的Screen个数: {len(stat_screen_set)}")
     print(f"总共点击的组件个数: {total_eles_cnt}")

@@ -18,5 +18,6 @@ temp_screen_sig = get_signature(temp_screen_info)
 print(f"{temp_screen_pkg}  {temp_activity}  {temp_all_text}  {temp_screen_sig}")
 
 
-# for ele in clickable_eles:
-#     print(ele.get('package'))
+# x, y = get_location(clickable_eles[8])
+# d.click(x, y)
+print(len(clickable_eles))
