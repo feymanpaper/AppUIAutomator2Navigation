@@ -13,9 +13,8 @@ temp_screen_pkg, temp_activity, temp_all_text, temp_screen_info = get_screen_inf
 
 clickable_eles = get_clickable_elements(d, umap, temp_activity)
 
-temp_screen_sig = get_signature(temp_screen_info)
 
-print(f"{temp_screen_pkg}  {temp_activity}  {temp_all_text}  {temp_screen_sig}")
+print(f"{temp_screen_pkg}  {temp_activity}  {temp_all_text}")
 
 
 # x, y = get_location(clickable_eles[8])

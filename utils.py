@@ -2,6 +2,7 @@ from uiautomator2 import Device
 import xml.etree.ElementTree as ET
 import time
 import hashlib
+import re
 
 system_view = [
     "com.android.systemui",
@@ -54,10 +55,31 @@ def get_screen_info(d):
     all_info = pkg_name + '\n' + act_name + '\n' + all_text
     return pkg_name, act_name, all_text, all_info
 
-# 对screen_info进行sha256签名,生成消息摘要
-def get_signature(screen_info):
-    signature = hashlib.sha256(screen_info.encode()).hexdigest()
-    return signature
+
+# 从screen_map里得到取出和screen_text满足相似度阈值且相似度最高的screen_node
+def get_screennode_from_screenmap(screen_map:dict, screen_text:str, screen_compare_strategy):
+    if screen_map.get(screen_text, False) is False:
+        # 如果没有,则遍历找满足相似度阈值的 
+        max_similarity = 0
+        for candidate_screen_text in screen_map.keys():
+            res_node = None
+            simi_flag, cur_similarity =  screen_compare_strategy.compare_screen(screen_text, candidate_screen_text)
+            if simi_flag is True:
+                if cur_similarity > max_similarity:
+                    max_similarity = cur_similarity
+                    res_node = screen_map.get(candidate_screen_text)
+        # 返回的要么是None, 要么是相似性最大的screen_node
+        return res_node
+
+    # 说明该节点之前存在screen_map
+    else:
+        return screen_map.get(screen_text)     
+
+
+# # 对screen_info进行sha256签名,生成消息摘要
+# def get_signature(screen_info):
+#     signature = hashlib.sha256(screen_info.encode()).hexdigest()
+#     return signature
 
 def get_clickable_elements(d, umap, cur_activity):
     xml = d.dump_hierarchy()
@@ -124,6 +146,21 @@ def get_current_window_package(d):
 def get_current_activity(d):
     current_app = d.current_app()
     return current_app["activity"]
+
+
+
+def get_top_activity(d):
+    output = d.shell("dumpsys window | grep mCurrentFocus").output
+    pattern = r"{(.*)}"
+    # Using re.search() to find the first occurrence of the pattern in the string
+    match = re.search(pattern, output)
+
+    # If a match is found, print the matched substring
+    if match:
+        return match.group(1)
+    else:
+        return None
+
 
 def print_current_window_detailed_elements(d):
     xml = d.dump_hierarchy()

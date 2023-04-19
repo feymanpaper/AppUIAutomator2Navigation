@@ -2,7 +2,7 @@ class ScreenNode:
     def __init__(self):
         # 包名 + activity + 可点击组件的内部文本
         self.info = ""
-        self.sig = ""
+        # self.sig = ""
         self.all_text = ""
         # 当前screen的上一个screen
         self.parent = None
@@ -28,22 +28,24 @@ class ScreenNode:
         child.parent = self
         self.children.append(child)
     
-    def find_ancestor(self, target_screen_sig):
+    # TODO
+    def find_ancestor(self, target_screen_all_text):
         cur = self
         par = cur.parent
         while par is not None:
-            if par.sig == target_screen_sig:
+            if par.all_text == target_screen_all_text:
                 return True
             cur = par
             par = cur.parent
         # print(cur.value)
         return False
     
-    def is_all_children_finish(self, target_screen_sig):
+    def is_all_children_finish(self, target_screen_all_text, screen_compare_strategy):
         if self is None:
             return True
         for child_node in self.children:
-            if child_node.sig == target_screen_sig:
+            if screen_compare_strategy.compare_screen(child_node.all_text, target_screen_all_text)[0] == True:
+            # if child_node.all_text == target_screen_all_text:
                 if child_node.already_clicked_cnt == len(child_node.clickable_elements):
                     return True
                 else:

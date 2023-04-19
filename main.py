@@ -14,8 +14,7 @@ class TimeoutError(Exception):
     def __init__(self, msg):
         super(TimeoutError, self).__init__()
         self.msg = msg
- 
- 
+
 def time_out(interval, callback):
     def decorator(func):
         def handler(signum, frame):
@@ -33,12 +32,9 @@ def time_out(interval, callback):
         return wrapper
     return decorator
  
- 
 def timeout_callback(e):
     print("超时回调函数")
  
-
-
 @time_out(3, timeout_callback)
 def testTimeOut():
     while(True):
@@ -46,13 +42,15 @@ def testTimeOut():
         time.sleep(1)
 
 
-def dfs_screen(last_screen_sig, last_clickable_ele, last_activity):
+def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
     # 获取当前screen
+    global first_activity
+    global total_eles_cnt
 
     cur_screen_pkg_name, cur_activity, cur_screen_all_text, cur_screen_info = get_screen_info(d)
-    cur_screen_sig = get_signature(cur_screen_info)
+    # cur_screen_sig = get_signature(cur_screen_info)
 
-
+    # 不是当前要测试的app, 返回
     if cur_screen_pkg_name != target_pkg_name:
         d.press("back")
         time.sleep(5)
@@ -70,49 +68,93 @@ def dfs_screen(last_screen_sig, last_clickable_ele, last_activity):
             # print("文本框回退")
             d.press("back")
             cur_screen_pkg_name, cur_activity, cur_screen_all_text, cur_screen_info = get_screen_info(d)
-            cur_screen_sig = get_signature(cur_screen_info)
+            # cur_screen_sig = get_signature(cur_screen_info)
     
     # screen没有变化说明该组件不会造成页面跳转
-    if cur_screen_sig == last_screen_sig:
+    if cur_screen_all_text == last_screen_all_text:
         return
     
     stat_activity_set.add(cur_activity) #统计结果用
-    stat_screen_set.add(cur_screen_sig) #统计结果用
+    stat_screen_set.add(cur_screen_all_text) #统计结果用
 
     # 建Screen跳转图
-    cur_screen_node = None
-    if screen_map.get(cur_screen_sig, False) == False:
+    cur_screen_node = get_screennode_from_screenmap(screen_map, cur_screen_all_text, screen_compare_strategy)
+    if cur_screen_node is None:
         # 初始化cur_screen_node信息
         cur_screen_node = ScreenNode()
         cur_screen_node.info = cur_screen_info
-        cur_screen_node.sig = cur_screen_sig
+        # cur_screen_node.sig = cur_screen_sig
         cur_screen_node.all_text = cur_screen_all_text
         cur_screen_node.pkg_name = cur_screen_pkg_name
         cur_screen_node.activity_name = cur_activity
         clickable_eles = get_clickable_elements(d, umap, cur_activity)
         cur_screen_node.clickable_elements = clickable_eles
         # 将cur_screen加入到全局记录的screen_map
-        screen_map[cur_screen_sig] = cur_screen_node
+        screen_map[cur_screen_all_text] = cur_screen_node
         # 将cur_screen加入到last_screen的子节点
-        last_screen_node = screen_map.get(last_screen_sig)
+        # last_screen_node = screen_map.get(last_screen_all_text)
+        last_screen_node = screen_map.get(last_screen_all_text)
         last_screen_node.add_child(cur_screen_node)
+        print("*"*100)
+        print(f"该screen为新: {cur_screen_node.all_text[0:-1]}--{len(cur_screen_node.clickable_elements)}")
+        print("*"*100)
     else:
-        cur_screen_node = screen_map.get(cur_screen_sig)
-    print("*"*100)
-    print(f"Screen--{cur_screen_node.all_text[0:20]}--{len(cur_screen_node.clickable_elements)}")
-    print("*"*100)
+        print("*"*100)
+        print(f"该screen已存在: {cur_screen_node.all_text[0:-1]}--{len(cur_screen_node.clickable_elements)}")
+        print("*"*100)
+
+    # if screen_map.get(cur_screen_all_text, False) == False:
+    #     # 如果当前的界面只是存在微小变化, 此时不能认为产生了新的界面, 就不加入到图中
+    #     is_visited_screen = False
+    #     for candidate_screen_text in screen_map.keys():
+    #         if screen_compare_strategy.compare_screen(cur_screen_all_text, candidate_screen_text)[0] == True:
+    #             cur_screen_node = screen_map.get(candidate_screen_text)
+    #             print("*"*100)
+    #             print(f"该screen存在但发生了微小变化: {cur_screen_node.all_text[0:-1]}--{len(cur_screen_node.clickable_elements)}")
+    #             print("*"*100)
+    #             is_visited_screen = True
+    #             break
+
+    #     # 如果当前界面是新的界面，则加入到图中 
+    #     if is_visited_screen == False:
+    #         # 初始化cur_screen_node信息
+    #         cur_screen_node = ScreenNode()
+    #         cur_screen_node.info = cur_screen_info
+    #         # cur_screen_node.sig = cur_screen_sig
+    #         cur_screen_node.all_text = cur_screen_all_text
+    #         cur_screen_node.pkg_name = cur_screen_pkg_name
+    #         cur_screen_node.activity_name = cur_activity
+    #         clickable_eles = get_clickable_elements(d, umap, cur_activity)
+    #         cur_screen_node.clickable_elements = clickable_eles
+    #         # 将cur_screen加入到全局记录的screen_map
+    #         screen_map[cur_screen_all_text] = cur_screen_node
+    #         # 将cur_screen加入到last_screen的子节点
+    #         last_screen_node = screen_map.get(last_screen_all_text)
+    #         last_screen_node.add_child(cur_screen_node)
+    #         print("*"*100)
+    #         print(f"该screen为新: {cur_screen_node.all_text[0:-1]}--{len(cur_screen_node.clickable_elements)}")
+    #         print("*"*100)
+    # else:
+    #     cur_screen_node = screen_map.get(cur_screen_all_text)
+    #     print("*"*100)
+    #     print(f"该screen已存在: {cur_screen_node.all_text[0:-1]}--{len(cur_screen_node.clickable_elements)}")
+    #     print("*"*100)
+
     
 
     #如果触发了新的界面，这个时候要判断是否存在回边，存在环就不加call_map
     #表示虽然该组件能触发新界面，但是会产生回边，因此不能将screen加入call_map
-    if last_screen_sig != "root":
-        last_screen_node = screen_map.get(last_screen_sig)
-        if last_screen_node.find_ancestor(cur_screen_sig):
+    if last_screen_all_text != "root":
+        # last_screen_node = screen_map.get(last_screen_all_text)
+        last_screen_node = get_screennode_from_screenmap(screen_map, last_screen_all_text, screen_compare_strategy)
+        if last_screen_node.find_ancestor(cur_screen_all_text):
             #产生了回边
             pass
         else:
             last_clickale_ele_uuid = get_uuid(last_clickable_ele, d, umap, last_activity)
-            last_screen_node.call_map[last_clickale_ele_uuid] = cur_screen_sig
+            last_screen_node.call_map[last_clickale_ele_uuid] = cur_screen_all_text
+    else:
+        first_activity = cur_activity
     
     # 遍历cur_screen的所有可点击组件
     cur_screen_node_clickable_eles = cur_screen_node.clickable_elements
@@ -126,48 +168,62 @@ def dfs_screen(last_screen_sig, last_clickable_ele, last_activity):
 
         #判断当前界面是否真的为当前界面？
         temp_screen_pkg, temp_activity, temp_screen_all_text, temp_screen_info = get_screen_info(d)
-        temp_screen_sig = get_signature(temp_screen_info)
         if (cur_screen_pkg_name != temp_screen_pkg) or (cur_activity != temp_activity):
             print("循环过程中界面不一样导致回退-----------------------")
             return
-        if not screen_compare_strategy.compare_screen(cur_screen_all_text, temp_screen_all_text):
+        if not screen_compare_strategy.compare_screen(cur_screen_all_text, temp_screen_all_text)[0]:
             print("循环过程中界面不一样导致回退-----------------------")
             return
 
         uuid = get_uuid(cur_clickable_ele, d, umap, cur_activity)
 
-        global total_eles_cnt
+    
         if ele_vis_map.get(uuid, False) == False:
             # 拿到该组件的坐标x, y
             loc_x, loc_y = get_location(cur_clickable_ele)
             ele_vis_map[uuid] = True
             #点击该组件
             cur_screen_node.already_clicked_cnt = get_uuid_cnt(uuid)
-            print(f"点击组件: {uuid}-----------------------")
+            print(f"正常点击组件: {uuid}")
             total_eles_cnt +=1 #统计的组件点击次数+1
 
             d.click(loc_x, loc_y)
             time.sleep(5)
-            dfs_screen(cur_screen_sig, cur_clickable_ele, cur_activity)
+            
+            dfs_screen(cur_screen_all_text, cur_clickable_ele, cur_activity)
 
         else:
             if cur_screen_node.call_map.get(uuid, None) is not None:
-                target_screen_sig = cur_screen_node.call_map.get(uuid)
-                if not cur_screen_node.is_all_children_finish(target_screen_sig):
+                target_screen_all_text = cur_screen_node.call_map.get(uuid)
+                if not cur_screen_node.is_all_children_finish(target_screen_all_text, screen_compare_strategy):
                     # click_map指示存在部分没完成
                     loc_x, loc_y = get_location(cur_clickable_ele)
                     # 点击该组件
                     cur_screen_node.already_clicked_cnt = get_uuid_cnt(uuid)
-                    print(f"点击组件: {uuid}-----------------------")
+                    print(f"clickmap点击组件: {uuid}")
                     total_eles_cnt +=1 #统计的组件点击次数+1
+                    
                     d.click(loc_x, loc_y) 
                     time.sleep(5)
-                    dfs_screen(cur_screen_sig, cur_clickable_ele, cur_activity)
+                    
+                    if cur_clickable_ele is None:
+                        raise Exception
+
+                    dfs_screen(cur_screen_all_text, cur_clickable_ele, cur_activity)
     # for循环遍历结束back返回上一层界面
 
-    print("正常回退")
-    d.press("back")
-    time.sleep(5)
+    # 如果当前的activity是first activity,就不让退出
+
+    if first_activity is None:
+        raise Exception
+    else:
+        top_activity = get_top_activity(d)
+        if top_activity is None:
+            raise Exception
+        if first_activity not in top_activity:
+            print("正常回退")
+            d.press("back")
+            time.sleep(5)
 
 if __name__ == "__main__":
 
@@ -201,15 +257,19 @@ if __name__ == "__main__":
     # target_pkg_name = "com.ss.android.lark"
     # target_pkg_name = "com.cloudy.component"
     # target_pkg_name = "com.jingyao.easybike"
+
+    # 第一个activity
+    first_activity = None
+
     d.app_start(target_pkg_name)
     time.sleep(5)
-    root_sig = "root"
+ 
     root = ScreenNode()
-    root.sig = root_sig
+    root.all_text = "root"
     screen_map["root"] = root
 
     # try:
-    dfs_screen(root_sig, None, None)
+    dfs_screen("root", None, None)
     # except Exception as e:
     #     print(e)
 
@@ -218,3 +278,4 @@ if __name__ == "__main__":
     print(f"总共点击的activity个数 {len(stat_activity_set)}")
     print(f"总共点击的Screen个数: {len(stat_screen_set)}")
     print(f"总共点击的组件个数: {total_eles_cnt}")
+

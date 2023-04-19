@@ -41,11 +41,11 @@ class EditDistanceComparator(BaseTextComparator):
 
     def compare_text(self, text1: str, text2: str) -> tuple:
         diff = self.get_minEditDistance(text1, text2)
-        ratio = 1 - diff/len(text1)
-        if ratio >= self.threshold:
-            return True, ratio
+        similarity = 1 - diff/len(text1)
+        if similarity >= self.threshold:
+            return True, similarity
         else:
-            return False, ratio
+            return False, similarity
 
 ## 最长公共子序列进行比较Screen文本
 class LCSComparator(BaseTextComparator):
@@ -63,12 +63,13 @@ class LCSComparator(BaseTextComparator):
         return dp[m][n]
 
     def compare_text(self, text1: str, text2: str) -> tuple:
+        
         lcs =  self.get_lcs(text1, text2)
-        ratio = lcs/len(text1)
-        if lcs >= self.threshold:
-            return True, ratio
+        similarity = lcs/len(text1)
+        if similarity >= self.threshold:
+            return True, similarity
         else:
-            return False, ratio
+            return False, similarity
 
 ## 具体的比较策略
 class ScreenCompareStrategy(object):
