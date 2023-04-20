@@ -104,6 +104,7 @@ def get_unique_id(ele, d, cur_activity):
     res_id = ele.get("resource-id")
     pkg_name = ele.get("package")
     text = ele.get("text")
+    
     res = cur_activity + "-" +pkg_name + "-" + class_name + "-" +res_id + "-" + text  
     return res
 

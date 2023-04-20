@@ -1,8 +1,8 @@
 ## 抽象文本比较策略类
 class BaseTextComparator(object):
 
-    def __init__(self, threshold = 0.8):
-        self.threshold = 0.8
+    def __init__(self, threshold = 0.9):
+        self.threshold = 0.9
 
     def compare_text(self, text1: str, text2: str) -> tuple:
         pass
@@ -63,9 +63,12 @@ class LCSComparator(BaseTextComparator):
         return dp[m][n]
 
     def compare_text(self, text1: str, text2: str) -> tuple:
-        
-        lcs =  self.get_lcs(text1, text2)
-        similarity = lcs/len(text1)
+        lcs = self.get_lcs(text1, text2)
+        if len(text1) < len(text2):
+            similarity = lcs/len(text2)
+        else:
+            similarity = lcs/len(text1)
+
         if similarity >= self.threshold:
             return True, similarity
         else:

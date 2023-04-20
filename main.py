@@ -46,7 +46,7 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
     # 获取当前screen
     global first_activity
     global total_eles_cnt
-
+    global first_screen_text
     cur_screen_pkg_name, cur_activity, cur_screen_all_text, cur_screen_info = get_screen_info(d)
     # cur_screen_sig = get_signature(cur_screen_info)
 
@@ -71,8 +71,10 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
             # cur_screen_sig = get_signature(cur_screen_info)
     
     # screen没有变化说明该组件不会造成页面跳转
-    if cur_screen_all_text == last_screen_all_text:
+    if screen_compare_strategy.compare_screen(cur_screen_all_text, last_screen_all_text)[0] == True:
         return
+    # if scur_screen_all_text == last_screen_all_text:
+    #     return
     
     stat_activity_set.add(cur_activity) #统计结果用
     stat_screen_set.add(cur_screen_all_text) #统计结果用
@@ -154,11 +156,19 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
             last_clickale_ele_uuid = get_uuid(last_clickable_ele, d, umap, last_activity)
             last_screen_node.call_map[last_clickale_ele_uuid] = cur_screen_all_text
     else:
+        first_screen_text = cur_screen_all_text
         first_activity = cur_activity
     
     # 遍历cur_screen的所有可点击组件
     cur_screen_node_clickable_eles = cur_screen_node.clickable_elements
-    for cur_clickable_ele in cur_screen_node_clickable_eles:
+    for clickable_ele_idx, cur_clickable_ele in enumerate(cur_screen_node_clickable_eles):
+
+        ## 简单地判断screen左上角的back按钮, 方便debug
+        if cur_clickable_ele.get("resource-id") == "com.alibaba.android.rimet:id/toolbar":
+            continue
+        if cur_clickable_ele.get("resource-id") == "com.alibaba.android.rimet:id/back_layout":
+            continue
+
         #--------------------------------------
         #判断当前组件是否需要访问
         #1.如果没访问过，即vis_map[uuid]=False，就直接访问
@@ -169,10 +179,10 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
         #判断当前界面是否真的为当前界面？
         temp_screen_pkg, temp_activity, temp_screen_all_text, temp_screen_info = get_screen_info(d)
         if (cur_screen_pkg_name != temp_screen_pkg) or (cur_activity != temp_activity):
-            print("循环过程中界面不一样导致回退-----------------------")
+            print("循环过程中界面不一样, return-----------------------")
             return
         if not screen_compare_strategy.compare_screen(cur_screen_all_text, temp_screen_all_text)[0]:
-            print("循环过程中界面不一样导致回退-----------------------")
+            print("循环过程中界面不一样, return-----------------------")
             return
 
         uuid = get_uuid(cur_clickable_ele, d, umap, cur_activity)
@@ -184,7 +194,7 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
             ele_vis_map[uuid] = True
             #点击该组件
             cur_screen_node.already_clicked_cnt = get_uuid_cnt(uuid)
-            print(f"正常点击组件: {uuid}")
+            print(f"正常点击组件-{clickable_ele_idx}: {uuid}")
             total_eles_cnt +=1 #统计的组件点击次数+1
 
             d.click(loc_x, loc_y)
@@ -200,7 +210,7 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
                     loc_x, loc_y = get_location(cur_clickable_ele)
                     # 点击该组件
                     cur_screen_node.already_clicked_cnt = get_uuid_cnt(uuid)
-                    print(f"clickmap点击组件: {uuid}")
+                    print(f"clickmap点击组件-{clickable_ele_idx}: {uuid}")
                     total_eles_cnt +=1 #统计的组件点击次数+1
                     
                     d.click(loc_x, loc_y) 
@@ -214,16 +224,35 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
 
     # 如果当前的activity是first activity,就不让退出
 
-    if first_activity is None:
+    # if first_activity is None:
+    #     raise Exception
+    # else:
+    #     top_activity = get_top_activity(d)
+    #     if top_activity is None:
+    #         raise Exception
+    #     if first_activity not in top_activity:
+    #         print("正常回退")
+    #         d.press("back")
+    #         time.sleep(5)
+
+    if first_screen_text == "" or first_screen_text is None:
         raise Exception
     else:
-        top_activity = get_top_activity(d)
-        if top_activity is None:
-            raise Exception
-        if first_activity not in top_activity:
+        temp_screen_pkg, temp_activity, temp_screen_all_text, temp_screen_info = get_screen_info(d)
+        if (cur_screen_pkg_name != temp_screen_pkg) or (cur_activity != temp_activity):
+            print("循环过程结束界面不一样, return-----------------------")
+            return
+        if not screen_compare_strategy.compare_screen(cur_screen_all_text, temp_screen_all_text)[0]:
+            print("循环过程结束不一样, return-----------------------")
+            return
+        
+        if screen_compare_strategy.compare_screen(first_screen_text, temp_screen_all_text)[0] == True:
+            print("最后一个界面不回退")
+        else:
             print("正常回退")
             d.press("back")
             time.sleep(5)
+
 
 if __name__ == "__main__":
 
@@ -260,7 +289,7 @@ if __name__ == "__main__":
 
     # 第一个activity
     first_activity = None
-
+    first_screen_text = ""
     d.app_start(target_pkg_name)
     time.sleep(5)
  
