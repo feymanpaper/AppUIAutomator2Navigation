@@ -89,7 +89,7 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
         cur_screen_node.all_text = cur_screen_all_text
         cur_screen_node.pkg_name = cur_screen_pkg_name
         cur_screen_node.activity_name = cur_activity
-        clickable_eles = get_clickable_elements(d, umap, cur_activity)
+        clickable_eles = get_clickable_elements(d, ele_uuid_map, cur_activity)
         cur_screen_node.clickable_elements = clickable_eles
         # 将cur_screen加入到全局记录的screen_map
         screen_map[cur_screen_all_text] = cur_screen_node
@@ -153,7 +153,8 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
             #产生了回边
             pass
         else:
-            last_clickale_ele_uuid = get_uuid(last_clickable_ele, d, umap, last_activity)
+            # last_clickale_ele_uuid = get_uuid(last_clickable_ele, d, umap, last_activity)
+            last_clickale_ele_uuid = get_unique_id(d, last_clickable_ele, last_activity)
             last_screen_node.call_map[last_clickale_ele_uuid] = cur_screen_all_text
     else:
         first_screen_text = cur_screen_all_text
@@ -162,12 +163,6 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
     # 遍历cur_screen的所有可点击组件
     cur_screen_node_clickable_eles = cur_screen_node.clickable_elements
     for clickable_ele_idx, cur_clickable_ele in enumerate(cur_screen_node_clickable_eles):
-
-        ## 简单地判断screen左上角的back按钮, 方便debug
-        if cur_clickable_ele.get("resource-id") == "com.alibaba.android.rimet:id/toolbar":
-            continue
-        if cur_clickable_ele.get("resource-id") == "com.alibaba.android.rimet:id/back_layout":
-            continue
 
         #--------------------------------------
         #判断当前组件是否需要访问
@@ -184,8 +179,21 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
         if not screen_compare_strategy.compare_screen(cur_screen_all_text, temp_screen_all_text)[0]:
             print("循环过程中界面不一样, return-----------------------")
             return
+        
 
-        uuid = get_uuid(cur_clickable_ele, d, umap, cur_activity)
+        # 表示该组件已经访问过
+        cur_screen_node.already_clicked_cnt = clickable_ele_idx
+        # uuid = get_uuid(cur_clickable_ele, d, umap, cur_activity)
+        uuid = get_unique_id(d, cur_clickable_ele, cur_activity)
+
+        ## 简单地判断screen左上角的back按钮, 方便debug
+        if cur_clickable_ele.get("resource-id") == "com.alibaba.android.rimet:id/toolbar":
+            ele_vis_map[uuid] = True
+            continue
+        if cur_clickable_ele.get("resource-id") == "com.alibaba.android.rimet:id/back_layout":
+            ele_vis_map[uuid] = True
+            continue
+
 
     
         if ele_vis_map.get(uuid, False) == False:
@@ -193,7 +201,8 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
             loc_x, loc_y = get_location(cur_clickable_ele)
             ele_vis_map[uuid] = True
             #点击该组件
-            cur_screen_node.already_clicked_cnt = get_uuid_cnt(uuid)
+            # cur_screen_node.already_clicked_cnt = get_uuid_cnt(uuid)
+   
             print(f"正常点击组件-{clickable_ele_idx}: {uuid}")
             total_eles_cnt +=1 #统计的组件点击次数+1
 
@@ -209,7 +218,8 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
                     # click_map指示存在部分没完成
                     loc_x, loc_y = get_location(cur_clickable_ele)
                     # 点击该组件
-                    cur_screen_node.already_clicked_cnt = get_uuid_cnt(uuid)
+                    # cur_screen_node.already_clicked_cnt = get_uuid_cnt(uuid)
+    
                     print(f"clickmap点击组件-{clickable_ele_idx}: {uuid}")
                     total_eles_cnt +=1 #统计的组件点击次数+1
                     
@@ -264,7 +274,7 @@ if __name__ == "__main__":
     # 存储着整个app所有screen(ScrennNode) {key:screen_sig, val:screen_node}
     screen_map = {}
     # umap: {key:uid, value:cnt}
-    umap = {}
+    # umap = {}
     # 全局记录每个组件的uuid {key:uuid, val:clickable_ele}
     ele_uuid_map = {}
     # 全局记录组件是否有被点击过 {key:uuid, val:true/false}

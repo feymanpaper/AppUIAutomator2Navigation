@@ -19,4 +19,7 @@ print(f"{temp_screen_pkg}  {temp_activity}  {temp_all_text}")
 
 # x, y = get_location(clickable_eles[8])
 # d.click(x, y)
-print(len(clickable_eles))
+
+for ele in clickable_eles:
+    uid = get_unique_id(d, ele, temp_activity)
+    print(uid) 

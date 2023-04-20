@@ -81,48 +81,47 @@ def get_screennode_from_screenmap(screen_map:dict, screen_text:str, screen_compa
 #     signature = hashlib.sha256(screen_info.encode()).hexdigest()
 #     return signature
 
-def get_clickable_elements(d, umap, cur_activity):
+def get_clickable_elements(d, ele_uuid_map, activity_name):
     xml = d.dump_hierarchy()
     root = ET.fromstring(xml)
     clickable_elements = []
-    cnt = 0
+    # cnt = 0
     for element in root.findall('.//node'):
         if element.get('clickable') == 'true':
             if element.get("package") not in system_view:
-                cnt +=1
-                uid = get_unique_id(element, d, cur_activity)
+                # cnt +=1
+                uid = get_unique_id(d, element, activity_name)
                 # uid并不能唯一标识一个组件，因此如果uid相同，umap会被覆盖成最后一个
-                umap[uid] = cnt
+                ele_uuid_map[uid] = element
                 clickable_elements.append(element)
     return clickable_elements
 
 # uid
 # activity + pkg + class + resourceId + text
-def get_unique_id(ele, d, cur_activity):
-    # acitivity_name = get_current_activity(d)
+def get_unique_id(d, ele, activity_name):
     class_name = ele.get("class")
     res_id = ele.get("resource-id")
     pkg_name = ele.get("package")
     text = ele.get("text")
-    
-    res = cur_activity + "-" +pkg_name + "-" + class_name + "-" +res_id + "-" + text  
-    return res
+    loc_x, loc_y = get_location(ele)
+    uid = activity_name + "-" +pkg_name + "-" + class_name + "-" +res_id + "-" + "(" + str(loc_x) + "," + str(loc_y) + ")" + "-" + text  
+    return uid
 
 # uuid
 # uid + cnt
-def get_uuid(ele, d, umap, cur_activity):
-    uid = get_unique_id(ele, d, cur_activity)
-    cnt = umap.get(uid)
-    uuid = uid + "&&&" + str(cnt)
-    return uuid
+# def get_uuid(ele, d, umap, cur_activity):
+#     uid = get_unique_id(ele, d, cur_activity)
+#     cnt = umap.get(uid)
+#     uuid = uid + "&&&" + str(cnt)
+#     return uuid
 
-def get_uuid_cnt(uuid):
-    # print(uuid)
-    start = uuid.find("&&&")
-    res = ""
-    if start != -1:
-        res = uuid[start+3 : ]
-    return int(res)
+# def get_uuid_cnt(uuid):
+#     # print(uuid)
+#     start = uuid.find("&&&")
+#     res = ""
+#     if start != -1:
+#         res = uuid[start+3 : ]
+#     return int(res)
 
 #获取页面的坐标
 def get_location(ele):
