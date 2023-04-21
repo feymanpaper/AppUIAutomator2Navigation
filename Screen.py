@@ -10,7 +10,7 @@ class ScreenNode:
         self.children = []
         # 记录着当前screen的所有可点击组件
         self.clickable_elements = None
-
+        self.merged_diff = -1
         self.pkg_name = ""
         self.class_name = ""
         self.activity_name = ""

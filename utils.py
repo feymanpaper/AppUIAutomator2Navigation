@@ -119,6 +119,7 @@ def merge_same_clickable_elements(k, clickable_eles:list) -> list:
         else:
             for i in range(cnt):
                 res.append(clickable_eles[l])
+                l+=1
         l = r
     return res
 
@@ -163,8 +164,7 @@ def get_unique_id(d, ele, activity_name):
     uid = activity_name + "-" +pkg_name + "-" + class_name + "-" +res_id + "-" + "(" + str(loc_x) + "," + str(loc_y) + ")" + "-" + text  
     return uid
 
-# uuid
-# uid + cnt
+# uuid = uid + cnt
 # def get_uuid(ele, d, umap, cur_activity):
 #     uid = get_unique_id(ele, d, cur_activity)
 #     cnt = umap.get(uid)

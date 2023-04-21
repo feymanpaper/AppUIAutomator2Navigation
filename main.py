@@ -72,6 +72,10 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
     
     # screen没有变化说明该组件不会造成页面跳转
     if screen_compare_strategy.compare_screen(cur_screen_all_text, last_screen_all_text)[0] == True:
+        #TODO
+        # 给一个容错机会,点过组件无效可能只是因为屏幕挡住了
+        last_clickable_ele_uuid = get_unique_id(d, last_clickable_ele, last_activity)
+        ele_vis_map[last_clickable_ele_uuid] = False
         return
     # if scur_screen_all_text == last_screen_all_text:
     #     return
@@ -81,6 +85,8 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
 
     # 建Screen跳转图
     cur_screen_node = get_screennode_from_screenmap(screen_map, cur_screen_all_text, screen_compare_strategy)
+    # 记录merged前后减少的组件个数
+  
     if cur_screen_node is None:
         # 初始化cur_screen_node信息
         cur_screen_node = ScreenNode()
@@ -89,7 +95,8 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
         cur_screen_node.all_text = cur_screen_all_text
         cur_screen_node.pkg_name = cur_screen_pkg_name
         cur_screen_node.activity_name = cur_activity
-        clickable_eles, diff = get_merged_clickable_elements(d, ele_uuid_map, cur_activity)
+        clickable_eles, res_merged_diff = get_merged_clickable_elements(d, ele_uuid_map, cur_activity)
+        cur_screen_node.merged_diff = res_merged_diff
         cur_screen_node.clickable_elements = clickable_eles
         # 将cur_screen加入到全局记录的screen_map
         screen_map[cur_screen_all_text] = cur_screen_node
@@ -99,13 +106,13 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
         last_screen_node.add_child(cur_screen_node)
         print()
         print("*"*100)
-        print(f"该screen为新: {cur_screen_node.all_text[0:-1]}--总共{len(cur_screen_node.clickable_elements)}, 减少{diff}")
+        print(f"该screen为新: {cur_screen_node.all_text[0:-1]}--总共{len(cur_screen_node.clickable_elements)}, 减少{cur_screen_node.merged_diff}")
         print("*"*100)
         print()
     else:
         print()
         print("*"*100)
-        print(f"该screen已存在: {cur_screen_node.all_text[0:-1]}--总共{len(cur_screen_node.clickable_elements)}, 减少{diff}")
+        print(f"该screen已存在: {cur_screen_node.all_text[0:-1]}--总共{len(cur_screen_node.clickable_elements)}, 减少{cur_screen_node.merged_diff}")
         print("*"*100)
         print()
 
@@ -186,16 +193,19 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
         
 
         # 表示该组件已经访问过
-        cur_screen_node.already_clicked_cnt = clickable_ele_idx
+        # +1是因为下标从0开始
+        cur_screen_node.already_clicked_cnt = clickable_ele_idx + 1
         # uuid = get_uuid(cur_clickable_ele, d, umap, cur_activity)
         uuid = get_unique_id(d, cur_clickable_ele, cur_activity)
 
         ## 简单地判断screen左上角的back按钮, 方便debug
         if cur_clickable_ele.get("resource-id") == "com.alibaba.android.rimet:id/toolbar":
             ele_vis_map[uuid] = True
+            print(f"省略组件&{clickable_ele_idx}: {uuid}")
             continue
         if cur_clickable_ele.get("resource-id") == "com.alibaba.android.rimet:id/back_layout":
             ele_vis_map[uuid] = True
+            print(f"省略组件&{clickable_ele_idx}: {uuid}")
             continue
 
 
@@ -218,13 +228,13 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
         else:
             if cur_screen_node.call_map.get(uuid, None) is not None:
                 target_screen_all_text = cur_screen_node.call_map.get(uuid)
-                if not cur_screen_node.is_all_children_finish(target_screen_all_text, screen_compare_strategy):
+                if cur_screen_node.is_all_children_finish(target_screen_all_text, screen_compare_strategy) == False:
                     # click_map指示存在部分没完成
                     loc_x, loc_y = get_location(cur_clickable_ele)
                     # 点击该组件
                     # cur_screen_node.already_clicked_cnt = get_uuid_cnt(uuid)
     
-                    print(f"clickmap点击组件&{clickable_ele_idx}: {uuid}")
+                    print(f"clickmap没完成点击组件&{clickable_ele_idx}: {uuid}")
                     total_eles_cnt +=1 #统计的组件点击次数+1
                     
                     d.click(loc_x, loc_y) 
@@ -234,6 +244,10 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
                         raise Exception
 
                     dfs_screen(cur_screen_all_text, cur_clickable_ele, cur_activity)
+                else:
+                    print(f"clickmap点击完成&{clickable_ele_idx}: {uuid}")
+            else:
+                print(f"clickmap不存在&{clickable_ele_idx}: {uuid}")
     # for循环遍历结束back返回上一层界面
 
     # 如果当前的activity是first activity,就不让退出
