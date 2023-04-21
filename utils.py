@@ -61,8 +61,8 @@ def get_screennode_from_screenmap(screen_map:dict, screen_text:str, screen_compa
     if screen_map.get(screen_text, False) is False:
         # 如果没有,则遍历找满足相似度阈值的 
         max_similarity = 0
+        res_node = None
         for candidate_screen_text in screen_map.keys():
-            res_node = None
             simi_flag, cur_similarity =  screen_compare_strategy.compare_screen(screen_text, candidate_screen_text)
             if simi_flag is True:
                 if cur_similarity > max_similarity:
@@ -81,6 +81,7 @@ def get_screennode_from_screenmap(screen_map:dict, screen_text:str, screen_compa
 #     signature = hashlib.sha256(screen_info.encode()).hexdigest()
 #     return signature
 
+# 获取当前界面所有可点击的组件
 def get_clickable_elements(d, ele_uuid_map, activity_name):
     xml = d.dump_hierarchy()
     root = ET.fromstring(xml)
@@ -94,7 +95,62 @@ def get_clickable_elements(d, ele_uuid_map, activity_name):
                 # uid并不能唯一标识一个组件，因此如果uid相同，umap会被覆盖成最后一个
                 ele_uuid_map[uid] = element
                 clickable_elements.append(element)
+    
     return clickable_elements
+
+
+# 优化: 若clickable_eles中存在连续k个相同的ele,合并为1个,不用每个都点击
+def merge_same_clickable_elements(k, clickable_eles:list) -> list:
+    l = 0
+    r = 0
+    cnt = 0
+    res = []
+    while l < len(clickable_eles):
+        cnt = 1
+        r = l + 1
+        while r < len(clickable_eles):
+            if is_same_two_clickable_eles(clickable_eles[l], clickable_eles[r]):
+                cnt +=1
+                r +=1
+            else:
+                break
+        if cnt > k:
+            res.append(clickable_eles[l])
+        else:
+            for i in range(cnt):
+                res.append(clickable_eles[l])
+        l = r
+    return res
+
+# 进行合并,对于选择国家和地区的场景,进行优化
+def get_merged_clickable_elements(d, ele_uuid_map, activity_name):
+    clickable_eles = get_clickable_elements(d, ele_uuid_map, activity_name)
+
+    pre_len = len(clickable_eles)
+    k = 6
+    merged_clickable_eles = merge_same_clickable_elements(k, clickable_eles)
+    after_len = len(merged_clickable_eles)
+
+    return merged_clickable_eles, pre_len - after_len
+
+
+def is_same_two_clickable_eles(ele1, ele2) -> bool:
+    if isinstance(ele1, int) and isinstance(ele2, int):
+        return ele1 == ele2
+    else:
+        class_name1 = ele1.get("class")
+        res_id1 = ele1.get("resource-id")
+        pkg_name1 = ele1.get("package")
+
+        class_name2 = ele2.get("class")
+        res_id2 = ele2.get("resource-id")
+        pkg_name2 = ele2.get("package")
+
+        if class_name1 == class_name2 and \
+            res_id1 == res_id2 and pkg_name1 == pkg_name2:
+            return True
+        else:
+            return False
 
 # uid
 # activity + pkg + class + resourceId + text

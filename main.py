@@ -89,7 +89,7 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
         cur_screen_node.all_text = cur_screen_all_text
         cur_screen_node.pkg_name = cur_screen_pkg_name
         cur_screen_node.activity_name = cur_activity
-        clickable_eles = get_clickable_elements(d, ele_uuid_map, cur_activity)
+        clickable_eles, diff = get_merged_clickable_elements(d, ele_uuid_map, cur_activity)
         cur_screen_node.clickable_elements = clickable_eles
         # 将cur_screen加入到全局记录的screen_map
         screen_map[cur_screen_all_text] = cur_screen_node
@@ -97,13 +97,17 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
         # last_screen_node = screen_map.get(last_screen_all_text)
         last_screen_node = screen_map.get(last_screen_all_text)
         last_screen_node.add_child(cur_screen_node)
+        print()
         print("*"*100)
-        print(f"该screen为新: {cur_screen_node.all_text[0:-1]}--{len(cur_screen_node.clickable_elements)}")
+        print(f"该screen为新: {cur_screen_node.all_text[0:-1]}--总共{len(cur_screen_node.clickable_elements)}, 减少{diff}")
         print("*"*100)
+        print()
     else:
+        print()
         print("*"*100)
-        print(f"该screen已存在: {cur_screen_node.all_text[0:-1]}--{len(cur_screen_node.clickable_elements)}")
+        print(f"该screen已存在: {cur_screen_node.all_text[0:-1]}--总共{len(cur_screen_node.clickable_elements)}, 减少{diff}")
         print("*"*100)
+        print()
 
     # if screen_map.get(cur_screen_all_text, False) == False:
     #     # 如果当前的界面只是存在微小变化, 此时不能认为产生了新的界面, 就不加入到图中
@@ -203,7 +207,7 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
             #点击该组件
             # cur_screen_node.already_clicked_cnt = get_uuid_cnt(uuid)
    
-            print(f"正常点击组件-{clickable_ele_idx}: {uuid}")
+            print(f"正常点击组件&{clickable_ele_idx}: {uuid}")
             total_eles_cnt +=1 #统计的组件点击次数+1
 
             d.click(loc_x, loc_y)
@@ -220,7 +224,7 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
                     # 点击该组件
                     # cur_screen_node.already_clicked_cnt = get_uuid_cnt(uuid)
     
-                    print(f"clickmap点击组件-{clickable_ele_idx}: {uuid}")
+                    print(f"clickmap点击组件&{clickable_ele_idx}: {uuid}")
                     total_eles_cnt +=1 #统计的组件点击次数+1
                     
                     d.click(loc_x, loc_y) 
