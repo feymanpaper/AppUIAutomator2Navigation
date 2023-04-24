@@ -22,7 +22,14 @@ class ScreenNode:
         # 记录当前screen已经被点击过的组件个数
         self.already_clicked_cnt = 0
     
-    
+    # 判断当前Screen是否点完了
+    def is_screen_clickable_finished(self):
+        if self.clickable_elements is None:
+            raise Exception
+        if self.already_clicked_cnt == len(self.clickable_elements):
+            return True
+        else:
+            return False
     
     def add_child(self, child):
         child.parent = self

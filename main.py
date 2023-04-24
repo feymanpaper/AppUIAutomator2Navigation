@@ -53,17 +53,21 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
     # 不是当前要测试的app, 返回
     if cur_screen_pkg_name != target_pkg_name:
         d.press("back")
-        time.sleep(5)
+        time.sleep(sleep_time_sec)
         return
+    
 
     #EditText点击之后或者其他情况会有输入框，此时无法点击其他组件
     #因此需要back消除输入框，然后return
     if last_clickable_ele is not None:
         # 用更加 general的方法来规避输入法输入框
         if("EditText" in last_clickable_ele.get("class")):
-            # print("文本框回退")
-            d.press("back")
-            return
+            ## 避免某些情况点了页面上肉眼不可见的EditText,这个时候不会有inputmethod.lation,如果back的话会出问题
+            if(d(packageName = "com.google.android.inputmethod.latin").exists()):
+                # print("文本框回退")
+                d.press("back")
+                return
+    
         elif (d(packageName = "com.google.android.inputmethod.latin").exists()):
             # print("文本框回退")
             d.press("back")
@@ -74,8 +78,11 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
     if screen_compare_strategy.compare_screen(cur_screen_all_text, last_screen_all_text)[0] == True:
         #TODO
         # 给一个容错机会,点过组件无效可能只是因为屏幕挡住了
-        last_clickable_ele_uuid = get_unique_id(d, last_clickable_ele, last_activity)
-        ele_vis_map[last_clickable_ele_uuid] = False
+        if last_clickable_ele.get("class") == "android.widget.CheckBox":
+            pass
+        else:
+            last_clickable_ele_uuid = get_unique_id(d, last_clickable_ele, last_activity)
+            ele_vis_map[last_clickable_ele_uuid] = False
         return
     # if scur_screen_all_text == last_screen_all_text:
     #     return
@@ -102,7 +109,7 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
         screen_map[cur_screen_all_text] = cur_screen_node
         # 将cur_screen加入到last_screen的子节点
         # last_screen_node = screen_map.get(last_screen_all_text)
-        last_screen_node = screen_map.get(last_screen_all_text)
+        last_screen_node = get_screennode_from_screenmap(screen_map, last_screen_all_text, screen_compare_strategy)
         last_screen_node.add_child(cur_screen_node)
         print()
         print("*"*100)
@@ -115,43 +122,15 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
         print(f"该screen已存在: {cur_screen_node.all_text[0:-1]}--总共{len(cur_screen_node.clickable_elements)}, 减少{cur_screen_node.merged_diff}")
         print("*"*100)
         print()
-
-    # if screen_map.get(cur_screen_all_text, False) == False:
-    #     # 如果当前的界面只是存在微小变化, 此时不能认为产生了新的界面, 就不加入到图中
-    #     is_visited_screen = False
-    #     for candidate_screen_text in screen_map.keys():
-    #         if screen_compare_strategy.compare_screen(cur_screen_all_text, candidate_screen_text)[0] == True:
-    #             cur_screen_node = screen_map.get(candidate_screen_text)
-    #             print("*"*100)
-    #             print(f"该screen存在但发生了微小变化: {cur_screen_node.all_text[0:-1]}--{len(cur_screen_node.clickable_elements)}")
-    #             print("*"*100)
-    #             is_visited_screen = True
-    #             break
-
-    #     # 如果当前界面是新的界面，则加入到图中 
-    #     if is_visited_screen == False:
-    #         # 初始化cur_screen_node信息
-    #         cur_screen_node = ScreenNode()
-    #         cur_screen_node.info = cur_screen_info
-    #         # cur_screen_node.sig = cur_screen_sig
-    #         cur_screen_node.all_text = cur_screen_all_text
-    #         cur_screen_node.pkg_name = cur_screen_pkg_name
-    #         cur_screen_node.activity_name = cur_activity
-    #         clickable_eles = get_clickable_elements(d, umap, cur_activity)
-    #         cur_screen_node.clickable_elements = clickable_eles
-    #         # 将cur_screen加入到全局记录的screen_map
-    #         screen_map[cur_screen_all_text] = cur_screen_node
-    #         # 将cur_screen加入到last_screen的子节点
-    #         last_screen_node = screen_map.get(last_screen_all_text)
-    #         last_screen_node.add_child(cur_screen_node)
-    #         print("*"*100)
-    #         print(f"该screen为新: {cur_screen_node.all_text[0:-1]}--{len(cur_screen_node.clickable_elements)}")
-    #         print("*"*100)
-    # else:
-    #     cur_screen_node = screen_map.get(cur_screen_all_text)
-    #     print("*"*100)
-    #     print(f"该screen已存在: {cur_screen_node.all_text[0:-1]}--{len(cur_screen_node.clickable_elements)}")
-    #     print("*"*100)
+        if cur_screen_node.is_screen_clickable_finished():
+            print("当前Screen已经点击完, 不需要再点")
+            if screen_compare_strategy.compare_screen(first_screen_text, cur_screen_all_text)[0] == True:
+                print("最后一个界面不回退")
+            else:
+                print("正常回退")
+                d.press("back")
+                time.sleep(sleep_time_sec)
+            return
 
     
 
@@ -173,7 +152,11 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
     
     # 遍历cur_screen的所有可点击组件
     cur_screen_node_clickable_eles = cur_screen_node.clickable_elements
-    for clickable_ele_idx, cur_clickable_ele in enumerate(cur_screen_node_clickable_eles):
+
+    clickable_ele_idx = 0
+    while clickable_ele_idx < len(cur_screen_node_clickable_eles):
+        cur_clickable_ele = cur_screen_node_clickable_eles[clickable_ele_idx]
+    # for clickable_ele_idx, cur_clickable_ele in enumerate(cur_screen_node_clickable_eles):
 
         #--------------------------------------
         #判断当前组件是否需要访问
@@ -202,10 +185,27 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
         if cur_clickable_ele.get("resource-id") == "com.alibaba.android.rimet:id/toolbar":
             ele_vis_map[uuid] = True
             print(f"省略组件&{clickable_ele_idx}: {uuid}")
+            clickable_ele_idx +=1
             continue
         if cur_clickable_ele.get("resource-id") == "com.alibaba.android.rimet:id/back_layout":
             ele_vis_map[uuid] = True
             print(f"省略组件&{clickable_ele_idx}: {uuid}")
+            clickable_ele_idx +=1
+            continue
+        if cur_clickable_ele.get("text") == "相机":
+            ele_vis_map[uuid] = True
+            print(f"省略组件&{clickable_ele_idx}: {uuid}")
+            clickable_ele_idx +=1
+            continue
+        if cur_clickable_ele.get("text") == "照片":
+            ele_vis_map[uuid] = True
+            print(f"省略组件&{clickable_ele_idx}: {uuid}")
+            clickable_ele_idx +=1
+            continue
+        if cur_clickable_ele.get("text") == "手机文件":
+            ele_vis_map[uuid] = True
+            print(f"省略组件&{clickable_ele_idx}: {uuid}")
+            clickable_ele_idx +=1
             continue
 
 
@@ -221,7 +221,7 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
             total_eles_cnt +=1 #统计的组件点击次数+1
 
             d.click(loc_x, loc_y)
-            time.sleep(5)
+            time.sleep(sleep_time_sec)
             
             dfs_screen(cur_screen_all_text, cur_clickable_ele, cur_activity)
 
@@ -238,17 +238,35 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
                     total_eles_cnt +=1 #统计的组件点击次数+1
                     
                     d.click(loc_x, loc_y) 
-                    time.sleep(5)
+                    time.sleep(sleep_time_sec)
                     
                     if cur_clickable_ele is None:
                         raise Exception
 
                     dfs_screen(cur_screen_all_text, cur_clickable_ele, cur_activity)
                 else:
-                    print(f"clickmap点击完成&{clickable_ele_idx}: {uuid}")
+                    print(f"clickmap--该界面点击完成&{clickable_ele_idx}: {uuid}----界面{cur_screen_node.all_text[0:-1]}")
             else:
                 print(f"clickmap不存在&{clickable_ele_idx}: {uuid}")
+        
+
+        clickable_ele_idx +=1
+
+        #TODO
+        #追加判断,如果循环结束发现该组件click_map对应的下一个Screen存在没点的组件,就让循环再执行
+        #防止的意外情况A->B->C, C->back->A,此时for循环结束后,即使B还没点完,也不会再继续点B
+        #具体案例:ScreenA->Dialog ScreenB -> ScreenC, ScreenC -> back -> ScreenA
+        if cur_screen_node.call_map.get(uuid, None) is not None:
+            target_screen_all_text = cur_screen_node.call_map.get(uuid)
+            if cur_screen_node.is_all_children_finish(target_screen_all_text, screen_compare_strategy) == False:
+                clickable_ele_idx -= 1
+                print("存在容错情况 i -= 1")
+
+        
+
     # for循环遍历结束back返回上一层界面
+
+
 
     # 如果当前的activity是first activity,就不让退出
 
@@ -261,7 +279,7 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
     #     if first_activity not in top_activity:
     #         print("正常回退")
     #         d.press("back")
-    #         time.sleep(5)
+    #         time.sleep(sleep_time_sec)
 
     if first_screen_text == "" or first_screen_text is None:
         raise Exception
@@ -279,7 +297,11 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
         else:
             print("正常回退")
             d.press("back")
-            time.sleep(5)
+            time.sleep(sleep_time_sec)
+
+
+
+
 
 
 if __name__ == "__main__":
@@ -298,6 +320,7 @@ if __name__ == "__main__":
     # 全局记录组件是否有被点击过 {key:uuid, val:true/false}
     ele_vis_map = {}
 
+    sleep_time_sec = 5
     # 统计结果用
     total_eles_cnt = 0
     stat_screen_set = set()
@@ -310,8 +333,8 @@ if __name__ == "__main__":
     d = Device()
     screen_compare_strategy = ScreenCompareStrategy(LCSComparator())
     # curr_pkg_name = "com.example.myapplication"
-    target_pkg_name = "com.alibaba.android.rimet"
-    # target_pkg_name = "com.ss.android.lark"
+    # target_pkg_name = "com.alibaba.android.rimet"
+    target_pkg_name = "com.ss.android.lark"
     # target_pkg_name = "com.cloudy.component"
     # target_pkg_name = "com.jingyao.easybike"
 
@@ -319,7 +342,7 @@ if __name__ == "__main__":
     first_activity = None
     first_screen_text = ""
     d.app_start(target_pkg_name)
-    time.sleep(5)
+    time.sleep(sleep_time_sec)
  
     root = ScreenNode()
     root.all_text = "root"
