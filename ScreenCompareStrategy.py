@@ -80,4 +80,7 @@ class ScreenCompareStrategy(object):
         self.screen_compare_strategy = strategy
     
     def compare_screen(self, text1: str, text2: str) -> tuple:
-        return self.screen_compare_strategy.compare_text(text1, text2)
+        if text1 == text2:
+            return True, 1
+        else:
+            return self.screen_compare_strategy.compare_text(text1, text2)

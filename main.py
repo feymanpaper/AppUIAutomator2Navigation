@@ -7,7 +7,7 @@ from Screen import *
 from ScreenCompareStrategy import *
 import time
 import signal
- 
+from core_functions import *
  
 # 自定义超时异常
 class TimeoutError(Exception):
@@ -139,7 +139,8 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
     if last_screen_all_text != "root":
         # last_screen_node = screen_map.get(last_screen_all_text)
         last_screen_node = get_screennode_from_screenmap(screen_map, last_screen_all_text, screen_compare_strategy)
-        if last_screen_node.find_ancestor(cur_screen_all_text):
+        # if last_screen_node.find_ancestor(cur_screen_all_text):
+        if check_cycle(cur_screen_node, last_screen_node, screen_compare_strategy) == True:
             #产生了回边
             pass
         else:
@@ -192,17 +193,22 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
             print(f"省略组件&{clickable_ele_idx}: {uuid}")
             clickable_ele_idx +=1
             continue
-        if cur_clickable_ele.get("text") == "相机":
+        if "相机" in cur_clickable_ele.get("text"):
             ele_vis_map[uuid] = True
             print(f"省略组件&{clickable_ele_idx}: {uuid}")
             clickable_ele_idx +=1
             continue
-        if cur_clickable_ele.get("text") == "照片":
+        if "照片" in cur_clickable_ele.get("text"):
             ele_vis_map[uuid] = True
             print(f"省略组件&{clickable_ele_idx}: {uuid}")
             clickable_ele_idx +=1
             continue
-        if cur_clickable_ele.get("text") == "手机文件":
+        if "拍照" in cur_clickable_ele.get("text"):
+            ele_vis_map[uuid] = True
+            print(f"省略组件&{clickable_ele_idx}: {uuid}")
+            clickable_ele_idx +=1
+            continue
+        if "手机文件" in cur_clickable_ele.get("text"):
             ele_vis_map[uuid] = True
             print(f"省略组件&{clickable_ele_idx}: {uuid}")
             clickable_ele_idx +=1
@@ -260,7 +266,7 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
             target_screen_all_text = cur_screen_node.call_map.get(uuid)
             if cur_screen_node.is_all_children_finish(target_screen_all_text, screen_compare_strategy) == False:
                 clickable_ele_idx -= 1
-                print("存在容错情况 i -= 1")
+                print("存在容错情况, 追加一次循环i--")
 
         
 
@@ -333,8 +339,8 @@ if __name__ == "__main__":
     d = Device()
     screen_compare_strategy = ScreenCompareStrategy(LCSComparator())
     # curr_pkg_name = "com.example.myapplication"
-    # target_pkg_name = "com.alibaba.android.rimet"
-    target_pkg_name = "com.ss.android.lark"
+    target_pkg_name = "com.alibaba.android.rimet"
+    # target_pkg_name = "com.ss.android.lark"
     # target_pkg_name = "com.cloudy.component"
     # target_pkg_name = "com.jingyao.easybike"
 

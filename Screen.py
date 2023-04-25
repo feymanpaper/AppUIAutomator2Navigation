@@ -4,8 +4,8 @@ class ScreenNode:
         self.info = ""
         # self.sig = ""
         self.all_text = ""
-        # 当前screen的上一个screen
-        self.parent = None
+        # # 当前screen的上一个screen
+        # self.parent = None
         # 当前screen的下一个screen
         self.children = []
         # 记录着当前screen的所有可点击组件
@@ -32,21 +32,24 @@ class ScreenNode:
             return False
     
     def add_child(self, child):
-        child.parent = self
+        # child.parent = self
         self.children.append(child)
+
     
-    # TODO
-    def find_ancestor(self, target_screen_all_text):
-        cur = self
-        par = cur.parent
-        while par is not None:
-            if par.all_text == target_screen_all_text:
-                return True
-            cur = par
-            par = cur.parent
-        # print(cur.value)
-        return False
+    # # TODO
+    # def find_ancestor(self, target_screen_all_text):
+    #     cur = self
+    #     par = cur.parent
+    #     while par is not None:
+    #         if par.all_text == target_screen_all_text:
+    #             return True
+    #         cur = par
+    #         par = cur.parent
+    #     # print(cur.value)
+    #     return False
+
     
+    # 只检测level1的children是否全部完成
     def is_all_children_finish(self, target_screen_all_text, screen_compare_strategy):
         if self is None:
             return True
