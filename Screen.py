@@ -36,7 +36,6 @@ class ScreenNode:
         self.children.append(child)
 
     
-    # # TODO
     # def find_ancestor(self, target_screen_all_text):
     #     cur = self
     #     par = cur.parent
