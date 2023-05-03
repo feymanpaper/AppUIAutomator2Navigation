@@ -270,3 +270,4 @@ if __name__ == "__main__":
         print(f"总共点击的activity个数 {len(stat_activity_set)}")
         print(f"总共点击的Screen个数: {len(stat_screen_set)}")
         print(f"总共点击的组件个数: {total_eles_cnt}")
+    print("end")
