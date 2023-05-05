@@ -1,33 +1,111 @@
 from Screen import *
 from ScreenCompareStrategy import *
+from utils import *
 
 # 只检测一层环
-def check_cycle(cur_node: ScreenNode, last_node:ScreenNode, screen_compare_strategy: ScreenCompareStrategy):
+def check_cycle(cur_node: ScreenNode, last_node: ScreenNode, screen_compare_strategy: ScreenCompareStrategy):
     if screen_compare_strategy.compare_screen(cur_node.all_text, last_node.all_text)[0] == True:
         return True
-    if cur_node.children is None or len(cur_node.children) == 0:
+    # if cur_node.children is None or len(cur_node.children) == 0:
+    #     return False
+    if cur_node.call_map is None or len(cur_node.call_map) == 0 or cur_node.call_map is {}:
         return False
-    for child in cur_node.children:
+    # for child in cur_node.children:
+    #     if screen_compare_strategy.compare_screen(child.all_text, last_node.all_text)[0] == True:
+    #         return True
+    #     else:
+    #         res = check_cycle(child, last_node, screen_compare_strategy)
+    #         if res == True:
+    #             return True
+    for child in cur_node.call_map.values():
         if screen_compare_strategy.compare_screen(child.all_text, last_node.all_text)[0] == True:
             return True
+        else:
+            res = check_cycle(child, last_node, screen_compare_strategy)
+            if res == True:
+                return True
     return False
-        # else:
-        #     res = check_cycle(child, last_node)
-        #     if res == True:
-        #         return True
 
-def is_non_necessary_click(cur_clickable_ele):
-    if cur_clickable_ele.get("resource-id") == "com.alibaba.android.rimet:id/toolbar":
+
+def is_non_necessary_click(cur_clickable_ele_dict):
+    if cur_clickable_ele_dict.get("resource-id") == "com.alibaba.android.rimet:id/toolbar":
         return True
-    if cur_clickable_ele.get("resource-id") == "com.alibaba.android.rimet:id/back_layout":
+    if cur_clickable_ele_dict.get("resource-id") == "com.alibaba.android.rimet:id/back_layout":
         return True
-    if "相机" in cur_clickable_ele.get("text"):
-        return True
-    if "照片" in cur_clickable_ele.get("text"):
-        return True
-    if "拍照" in cur_clickable_ele.get("text"):
-        return True
-    if "手机文件" in cur_clickable_ele.get("text"):
-        return True
-    
+
+    text = cur_clickable_ele_dict.get("text")
+    non_necessary_list = ["相机", "照片", "拍照", "手机文件", "相册", "拍摄",
+                          "image", 'Image', "photo", "Photo","视频", "语音"]
+    for non_necessary_str in non_necessary_list:
+        if non_necessary_str in text:
+            return True
+
     return False
+
+
+def print_screen_info(cur_screen_node, is_new):
+    print("*" * 100)
+    if is_new:
+        print(
+            f"该screen为新: {cur_screen_node.all_text[0:-1]}--总共{len(cur_screen_node.clickable_elements)}, 减少{cur_screen_node.merged_diff}")
+    else:
+        print(
+            f"该screen已存在: {cur_screen_node.all_text[0:-1]}--总共{len(cur_screen_node.clickable_elements)}, 减少{cur_screen_node.merged_diff}")
+    print("*" * 100)
+
+
+def print_state(state_map, state):
+    print(f"状态为{state} {state_map[state]}")
+
+
+# def get_two_clickable_eles_diff(d, cur_eles, cur_activity, last_eles, last_activity):
+#     if last_eles is None or cur_eles is None or len(last_eles) == 0 or len(cur_eles) == 0:
+#         return False, None
+#     if cur_activity != last_activity:
+#         return False, None
+#     if len(cur_eles) <= len(last_eles):
+#         return False, None
+#
+#     # union_eles = union(d, cur_eles, cur_activity, last_eles, last_activity)
+#     union_eles = list(set(cur_eles).union(set(last_eles)))
+#     is_overlap = False
+#     if len(union_eles) / len(last_eles) >= 0.90:
+#         diff_eles = []
+#         is_overlap = True
+#         diff_eles = list(set(cur_eles).difference(last_eles))
+#         print(f"出现了重叠,可能为框,差分之后数量为{len(diff_eles)}")
+#         return is_overlap, diff_eles
+#     else:
+#         return is_overlap, None
+
+def check_state_list(state_list):
+    if state_list is None:
+        return False
+    if len(state_list) >= 5:
+        if state_list[-1] == 1 and \
+            state_list[-2] == 1 and \
+            state_list[-3] == 1 and \
+            state_list[-4] == 1 and \
+            state_list[-5] == 1:
+            return True
+        if state_list[-1] == 6 and \
+            state_list[-2] == 6 and \
+            state_list[-3] == 6 and \
+            state_list[-4] == 6 and \
+            state_list[-5] == 6:
+            return True
+    else:
+        return False
+
+def check_screen_list(screen_list):
+    if screen_list is None:
+        return False
+    if len(screen_list) >= 5:
+        last_text = screen_list[-1]
+        if  screen_list[-2] == last_text and \
+            screen_list[-3] == last_text and \
+            screen_list[-4] == last_text and \
+            screen_list[-5] == last_text:
+            return True
+    else:
+        return False

@@ -33,6 +33,13 @@ def get_screen_all_text(d):
                     text += traverse_tree(element)
     return text
 
+def get_screen_all_text_from_dict(clickable_eles, ele_uid_map):
+    text = ""
+    for ele_uid in clickable_eles:
+        ele_dict = ele_uid_map[ele_uid]
+        text += ele_dict.get("text")
+    return text
+
 # 递归遍历节点的所有子节点
 def traverse_tree(node):
     text = ""
@@ -63,7 +70,7 @@ def get_screennode_from_screenmap(screen_map:dict, screen_text:str, screen_compa
         max_similarity = 0
         res_node = None
         for candidate_screen_text in screen_map.keys():
-            simi_flag, cur_similarity =  screen_compare_strategy.compare_screen(screen_text, candidate_screen_text)
+            simi_flag, cur_similarity = screen_compare_strategy.compare_screen(screen_text, candidate_screen_text)
             if simi_flag is True:
                 if cur_similarity > max_similarity:
                     max_similarity = cur_similarity
@@ -73,8 +80,14 @@ def get_screennode_from_screenmap(screen_map:dict, screen_text:str, screen_compa
 
     # 说明该节点之前存在screen_map
     else:
-        return screen_map.get(screen_text)     
+        return screen_map.get(screen_text)
 
+# def get_screennode_from_diffmap(diff_map: dict, screen_map, screen_compare_strategy):
+#     for screen_text in diff_map.keys():
+#         res = get_screennode_from_screenmap(screen_map, screen_text, screen_compare_strategy)
+#         if res is not None:
+#             return res
+#     return None
 
 # # 对screen_info进行sha256签名,生成消息摘要
 # def get_signature(screen_info):
@@ -82,7 +95,7 @@ def get_screennode_from_screenmap(screen_map:dict, screen_text:str, screen_compa
 #     return signature
 
 # 获取当前界面所有可点击的组件
-def get_clickable_elements(d, ele_uuid_map, activity_name):
+def get_clickable_elements(d, ele_uid_map, activity_name):
     xml = d.dump_hierarchy()
     root = ET.fromstring(xml)
     clickable_elements = []
@@ -91,16 +104,17 @@ def get_clickable_elements(d, ele_uuid_map, activity_name):
         if element.get('clickable') == 'true':
             if element.get("package") not in system_view:
                 # cnt +=1
-                uid = get_unique_id(d, element, activity_name)
-                # uid并不能唯一标识一个组件，因此如果uid相同，umap会被覆盖成最后一个
-                ele_uuid_map[uid] = element
-                clickable_elements.append(element)
-    
+                # uid = get_unique_id(d, element, activity_name)
+                # ele_uid_map[uid] = element
+                clickable_ele_dict = get_dict_clickable_ele(d, element, activity_name)
+                uid = get_unique_id(d, clickable_ele_dict, activity_name)
+                ele_uid_map[uid] = clickable_ele_dict
+                clickable_elements.append(uid)
     return clickable_elements
 
 
 # 优化: 若clickable_eles中存在连续k个相同的ele,合并为1个,不用每个都点击
-def merge_same_clickable_elements(k, clickable_eles:list) -> list:
+def merge_same_clickable_elements(k, clickable_eles:list, ele_uid_map) -> list:
     l = 0
     r = 0
     cnt = 0
@@ -109,7 +123,7 @@ def merge_same_clickable_elements(k, clickable_eles:list) -> list:
         cnt = 1
         r = l + 1
         while r < len(clickable_eles):
-            if is_same_two_clickable_eles(clickable_eles[l], clickable_eles[r]):
+            if is_same_two_clickable_eles(clickable_eles[l], clickable_eles[r], ele_uid_map):
                 cnt +=1
                 r +=1
             else:
@@ -124,28 +138,33 @@ def merge_same_clickable_elements(k, clickable_eles:list) -> list:
     return res
 
 # 进行合并,对于选择国家和地区的场景,进行优化
-def get_merged_clickable_elements(d, ele_uuid_map, activity_name):
-    clickable_eles = get_clickable_elements(d, ele_uuid_map, activity_name)
+def get_merged_clickable_elements(d, ele_uid_map, activity_name):
+    clickable_eles = get_clickable_elements(d, ele_uid_map, activity_name)
 
     pre_len = len(clickable_eles)
     k = 6
-    merged_clickable_eles = merge_same_clickable_elements(k, clickable_eles)
+    if len(clickable_eles) < 6:
+        return clickable_eles, 0
+    merged_clickable_eles = merge_same_clickable_elements(k, clickable_eles, ele_uid_map)
     after_len = len(merged_clickable_eles)
 
     return merged_clickable_eles, pre_len - after_len
 
 
-def is_same_two_clickable_eles(ele1, ele2) -> bool:
-    if isinstance(ele1, int) and isinstance(ele2, int):
-        return ele1 == ele2
+def is_same_two_clickable_eles(ele1_uid, ele2_uid, ele_uid_map) -> bool:
+    if isinstance(ele1_uid, int) and isinstance(ele2_uid, int):
+        return ele1_uid == ele2_uid
     else:
-        class_name1 = ele1.get("class")
-        res_id1 = ele1.get("resource-id")
-        pkg_name1 = ele1.get("package")
+        ele1_dict = ele_uid_map[ele1_uid]
+        ele2_dict = ele_uid_map[ele2_uid]
 
-        class_name2 = ele2.get("class")
-        res_id2 = ele2.get("resource-id")
-        pkg_name2 = ele2.get("package")
+        class_name1 = ele1_dict.get("class")
+        res_id1 = ele1_dict.get("resource-id")
+        pkg_name1 = ele1_dict.get("package")
+
+        class_name2 = ele2_dict.get("class")
+        res_id2 = ele2_dict.get("resource-id")
+        pkg_name2 = ele2_dict.get("package")
 
         if class_name1 == class_name2 and \
             res_id1 == res_id2 and pkg_name1 == pkg_name2:
@@ -155,37 +174,68 @@ def is_same_two_clickable_eles(ele1, ele2) -> bool:
 
 # uid
 # activity + pkg + class + resourceId + text
-def get_unique_id(d, ele, activity_name):
-    class_name = ele.get("class")
-    res_id = ele.get("resource-id")
-    pkg_name = ele.get("package")
-    text = ele.get("text")
-    loc_x, loc_y = get_location(ele)
-    uid = activity_name + "-" +pkg_name + "-" + class_name + "-" +res_id + "-" + "(" + str(loc_x) + "," + str(loc_y) + ")" + "-" + text  
+# get uid from element(object)
+# def get_unique_id(d, ele, activity_name):
+#     class_name = ele.get("class")
+#     res_id = ele.get("resource-id")
+#     pkg_name = ele.get("package")
+#     text = ""
+#     temp_text = ele.get("text")
+#     if temp_text:
+#         text = temp_text
+#     else:
+#         text = traverse_tree(ele)
+#
+#     loc_x, loc_y = get_location(ele)
+#     uid = activity_name + "-" +pkg_name + "-" + class_name + "-" +res_id + "-" + "(" + str(loc_x) + "," + str(loc_y) + ")" + "-" + text
+#     return uid
+
+# get uid from element(dict)
+def get_unique_id(d, ele_dict, activity_name):
+    class_name = ele_dict.get("class")
+    res_id = ele_dict.get("resource-id")
+    pkg_name = ele_dict.get("package")
+    text = ele_dict.get("text")
+    loc_x, loc_y = get_location(ele_dict)
+    uid = activity_name + "-" +pkg_name + "-" + class_name + "-" +res_id + "-" + "(" + str(loc_x) + "," + str(loc_y) + ")" + "-" + text
     return uid
 
-# uuid = uid + cnt
-# def get_uuid(ele, d, umap, cur_activity):
+def get_dict_clickable_ele(d, clickable_ele, activity_name):
+    clickable_ele_dict = {}
+    clickable_ele_dict["class"] = clickable_ele.get("class")
+    clickable_ele_dict["resource-id"] = clickable_ele.get("resource-id")
+    clickable_ele_dict["package"] = clickable_ele.get("package")
+
+    temp_text = clickable_ele.get("text")
+    if temp_text:
+        clickable_ele_dict["text"] = temp_text
+    else:
+        temp_text = traverse_tree(clickable_ele)
+        clickable_ele_dict["text"] = temp_text
+    clickable_ele_dict["bounds"] = clickable_ele.get('bounds')
+    return clickable_ele_dict
+
+# def get_uid(ele, d, umap, cur_activity):
 #     uid = get_unique_id(ele, d, cur_activity)
 #     cnt = umap.get(uid)
-#     uuid = uid + "&&&" + str(cnt)
-#     return uuid
+#     uid = uid + "&&&" + str(cnt)
+#     return uid
 
-# def get_uuid_cnt(uuid):
-#     # print(uuid)
-#     start = uuid.find("&&&")
+# def get_uid_cnt(uid):
+#     # print(uid)
+#     start = uid.find("&&&")
 #     res = ""
 #     if start != -1:
-#         res = uuid[start+3 : ]
+#         res = uid[start+3 : ]
 #     return int(res)
 
 #获取页面的坐标
-def get_location(ele):
-    bounds = ele.get('bounds')
+def get_location(ele_dict):
+    bounds = ele_dict.get('bounds')
     left, top, right, bottom = map(int, bounds[1:-1].split('][')[0].split(',') + bounds[1:-1].split('][')[1].split(','))
     x = (left + right) // 2
     y = (top + bottom) // 2
-    return x, y 
+    return x, y
 
 
 #不全，没有resoure-id
