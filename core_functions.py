@@ -78,34 +78,73 @@ def print_state(state_map, state):
 #     else:
 #         return is_overlap, None
 
-def check_state_list(state_list):
-    if state_list is None:
-        return False
-    if len(state_list) >= 5:
-        if state_list[-1] == 1 and \
-            state_list[-2] == 1 and \
-            state_list[-3] == 1 and \
-            state_list[-4] == 1 and \
-            state_list[-5] == 1:
-            return True
-        if state_list[-1] == 6 and \
-            state_list[-2] == 6 and \
-            state_list[-3] == 6 and \
-            state_list[-4] == 6 and \
-            state_list[-5] == 6:
-            return True
-    else:
-        return False
+# def check_screen_list(screen_list):
+#     if screen_list is None:
+#         return False
+#     if len(screen_list) >= 5:
+#         last_text = screen_list[-1]
+#         if  screen_list[-2] == last_text and \
+#             screen_list[-3] == last_text and \
+#             screen_list[-4] == last_text and \
+#             screen_list[-5] == last_text:
+#             return True
+#     else:
+#         return False
 
-def check_screen_list(screen_list):
-    if screen_list is None:
+
+def check_screen_list_reverse(k, screen_list) -> bool:
+    if k <= 1:
         return False
-    if len(screen_list) >= 5:
-        last_text = screen_list[-1]
-        if  screen_list[-2] == last_text and \
-            screen_list[-3] == last_text and \
-            screen_list[-4] == last_text and \
-            screen_list[-5] == last_text:
+    if screen_list is None or len(screen_list) == 0:
+        return False
+    if len(screen_list) < k:
+        return False
+    # step为1, 2, 3
+    for step in range(1, 4, 1):
+        res = check_screen_list_by_pattern_reverse(k, screen_list, step)
+        if res is True:
             return True
-    else:
+    return False
+
+def check_screen_list_by_pattern_reverse(k, screen_list, step) -> bool:
+    l = 0
+    for i in range(step):
+        l += 1
+    for cnt in range(0, k - 1, 1):
+        for i in range(step):
+            if l >= len(screen_list):
+                return False
+            elif screen_list[len(screen_list) -1 - l] != screen_list[len(screen_list) - 1 - i]:
+                return False
+            else:
+                l += 1
+    return True
+
+def check_screen_list_order(k, screen_list) -> bool:
+    if k <= 1:
+        raise Exception
+    if screen_list is None or len(screen_list) == 0:
+        raise Exception
+    if len(screen_list) < k:
         return False
+    # step为1, 2, 3
+    for step in range(1, 4, 1):
+        res = check_screen_list_by_pattern_order(k, screen_list, step)
+        if res is True:
+            return True
+    return False
+
+def check_screen_list_by_pattern_order(k, screen_list, step) -> bool:
+    l = 0
+    for i in range(step):
+        l += 1
+    for cnt in range(0, k - 1, 1):
+        for i in range(step):
+            if l >= len(screen_list):
+                return False
+            elif screen_list[l] != screen_list[i]:
+                return False
+            else:
+                l += 1
+    return True
+

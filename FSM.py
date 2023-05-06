@@ -9,43 +9,10 @@ import time
 import signal
 from core_functions import *
 import random
-
-def get_state():
-    #TODO
-    # if check_screen_list(screen_list):
-    #     return 6
-    cur_screen_pkg_name, cur_activity, cur_screen_all_text, cur_screen_info = get_screen_info(d)
-    if cur_screen_pkg_name != target_pkg_name:
-        if cur_screen_pkg_name == "com.google.android.apps.nexuslauncher":
-            return 5
-        else:
-            return 1
-    
-    if d(packageName = "com.google.android.inputmethod.latin").exists():
-        return 2
-    
-    cur_screen_node = get_screennode_from_screenmap(screen_map, cur_screen_all_text, screen_compare_strategy)
-
-    if cur_screen_node is not None:
-        return 3
-    else:
-        return 4
+import logging
 
 
 
-def do_transition(state):
-    if state == 1:
-        handle_exit_app()
-    elif state == 2:
-        handle_inputmethod()
-    elif state == 3:
-        handle_exist_screen()
-    elif state == 4:
-        handle_new_screen()
-    # elif state == 6:
-    #     handle_special_screen()
-    else:
-        raise Exception
 
 def handle_exit_app():
     press_back()
@@ -126,7 +93,7 @@ def random_click_one_ele(cur_screen_node):
     print("可能产生了不可去掉的框")
     cur_screen_node_clickable_eles = cur_screen_node.clickable_elements
     cur_screen_pkg_name, cur_activity, cur_screen_all_text, cur_screen_info = get_screen_info(d)
-    screen_list.append(cur_screen_all_text)
+    # screen_list.append(cur_screen_all_text)
 
     global last_activity
     global last_clickable_ele_uid
@@ -167,7 +134,7 @@ def click_one_ele(cur_screen_node):
     # 遍历cur_screen的所有可点击组件
     cur_screen_node_clickable_eles = cur_screen_node.clickable_elements
     cur_screen_pkg_name, cur_activity, cur_screen_all_text, cur_screen_info = get_screen_info(d)
-    screen_list.append(cur_screen_all_text)
+    # screen_list.append(cur_screen_all_text)
     global last_activity
     global last_clickable_ele_uid
     global last_screen_all_text
@@ -284,6 +251,49 @@ def press_back():
     time.sleep(sleep_time_sec)
     return
 
+
+def do_transition(state):
+    if state == 1:
+        handle_exit_app()
+    elif state == 2:
+        handle_inputmethod()
+    elif state == 3:
+        handle_exist_screen()
+    elif state == 4:
+        handle_new_screen()
+    elif state == 6:
+        handle_special_screen()
+    elif state == 7:
+        # TODO 重启机制
+        raise Exception("重启机制???")
+    else:
+        raise Exception("意外情况")
+
+def get_state():
+    cur_screen_pkg_name, cur_activity, cur_screen_all_text, cur_screen_info = get_screen_info(d)
+    if cur_screen_pkg_name != target_pkg_name:
+        if cur_screen_pkg_name == "com.google.android.apps.nexuslauncher":
+            return 5
+        else:
+            return 1
+
+    if d(packageName="com.google.android.inputmethod.latin").exists():
+        return 2
+
+    cur_screen_node = get_screennode_from_screenmap(screen_map, cur_screen_all_text, screen_compare_strategy)
+    screen_list.append(cur_screen_all_text)
+    if cur_screen_node is not None:
+        # TODO k为6,表示出现了连续6个以上的pattern,且所有组件已经点击完毕,避免一些情况:页面有很多组件点了没反应,这个时候应该继续点而不是随机点
+        if check_screen_list_reverse(30, screen_list) and cur_screen_node.is_screen_clickable_finished():
+            return 7
+        if check_screen_list_reverse(6, screen_list) and cur_screen_node.is_screen_clickable_finished():
+            return 6
+
+        return 3
+    else:
+        return 4
+
+
 def FSM():
     
     # state
@@ -374,6 +384,7 @@ if __name__ == "__main__":
         FSM()
     except Exception as e:
         print(e)
+        logging.exception(e)
         print("@"*100)
         print("@"*100)
         print(f"总共点击的activity个数 {len(stat_activity_set)}")
