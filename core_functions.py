@@ -2,6 +2,7 @@ from Screen import *
 from ScreenCompareStrategy import *
 from utils import *
 
+
 # 只检测一层环
 def check_cycle(cur_node: ScreenNode, last_node: ScreenNode, screen_compare_strategy: ScreenCompareStrategy):
     if screen_compare_strategy.compare_screen(cur_node.all_text, last_node.all_text)[0] == True:
@@ -34,8 +35,10 @@ def is_non_necessary_click(cur_clickable_ele_dict):
         return True
 
     text = cur_clickable_ele_dict.get("text")
-    non_necessary_list = ["相机", "照片", "拍照", "手机文件", "相册", "拍摄",
-                          "image", 'Image', "photo", "Photo","视频", "语音"]
+
+    # TODO 暂时忽略钉钉创建团队的场景
+    non_necessary_list = ["相机", "照片", "拍照", "手机文件", "相册", "拍摄", "关注", "粉丝", "进入小红市", "退出登陆", "退出登录", "退出当前账号",
+                          "image", 'Image', "photo", "Photo", "视频", "语音", "创建团队", "直播"]
     for non_necessary_str in non_necessary_list:
         if non_necessary_str in text:
             return True
@@ -43,7 +46,8 @@ def is_non_necessary_click(cur_clickable_ele_dict):
     return False
 
 
-def print_screen_info(cur_screen_node, is_new):
+def print_screen_info(content, is_new):
+    cur_screen_node = get_cur_screen_node_from_context(content)
     print("*" * 100)
     if is_new:
         print(
@@ -91,6 +95,13 @@ def print_state(state_map, state):
 #     else:
 #         return False
 
+def check_state_list_reverse(k, state_list, target) -> bool:
+    if k > len(state_list):
+        return False
+    for i in range(k):
+        if state_list[len(state_list) - 1 - i] != target:
+            return False
+    return True
 
 def check_screen_list_reverse(k, screen_list) -> bool:
     if k <= 1:
@@ -106,6 +117,7 @@ def check_screen_list_reverse(k, screen_list) -> bool:
             return True
     return False
 
+
 def check_screen_list_by_pattern_reverse(k, screen_list, step) -> bool:
     l = 0
     for i in range(step):
@@ -114,11 +126,12 @@ def check_screen_list_by_pattern_reverse(k, screen_list, step) -> bool:
         for i in range(step):
             if l >= len(screen_list):
                 return False
-            elif screen_list[len(screen_list) -1 - l] != screen_list[len(screen_list) - 1 - i]:
+            elif screen_list[len(screen_list) - 1 - l] != screen_list[len(screen_list) - 1 - i]:
                 return False
             else:
                 l += 1
     return True
+
 
 def check_screen_list_order(k, screen_list) -> bool:
     if k <= 1:
@@ -134,6 +147,7 @@ def check_screen_list_order(k, screen_list) -> bool:
             return True
     return False
 
+
 def check_screen_list_by_pattern_order(k, screen_list, step) -> bool:
     l = 0
     for i in range(step):
@@ -148,3 +162,16 @@ def check_screen_list_by_pattern_order(k, screen_list, step) -> bool:
                 l += 1
     return True
 
+
+def get_screen_info_from_context(content):
+    cur_screen_pkg_name = content["cur_screen_pkg_name"]
+    cur_activity = content["cur_activity"]
+    cur_screen_all_text = content["cur_screen_all_text"]
+    cur_screen_info = content["cur_screen_info"]
+
+    return cur_screen_pkg_name, cur_activity, cur_screen_all_text, cur_screen_info
+
+
+def get_cur_screen_node_from_context(content):
+    cur_screen_node = content["cur_screen_node"]
+    return cur_screen_node

@@ -54,7 +54,7 @@ def traverse_tree(node):
     return text
 
 # screen_info = package_name + activity_name + screen_all_text
-def get_screen_info(d):
+def get_screen_info(d) :
     current_screen = d.current_app()
     pkg_name = current_screen['package']
     act_name = current_screen['activity']
@@ -109,9 +109,26 @@ def get_clickable_elements(d, ele_uid_map, activity_name):
                 clickable_ele_dict = get_dict_clickable_ele(d, element, activity_name)
                 uid = get_unique_id(d, clickable_ele_dict, activity_name)
                 ele_uid_map[uid] = clickable_ele_dict
-                clickable_elements.append(uid)
+
+                # 把有隐私的组件增加到前面
+                if is_privacy_information_in_ele_dict(clickable_ele_dict):
+                    clickable_elements.insert(0, uid)
+                else:
+                    clickable_elements.append(uid)
     return clickable_elements
 
+def is_privacy_information_in_ele_dict(clickable_ele_dict):
+    text = clickable_ele_dict["text"]
+    single_word_privacy_information = ["我", "我的", "编辑资料"]
+    for sip_info in single_word_privacy_information:
+        if sip_info == text:
+            return True
+
+    privacy_information = ["设置", "账号", "个人"]
+    for p_info in privacy_information:
+        if p_info in text:
+            return True
+    return False
 
 # 优化: 若clickable_eles中存在连续k个相同的ele,合并为1个,不用每个都点击
 def merge_same_clickable_elements(k, clickable_eles:list, ele_uid_map) -> list:
