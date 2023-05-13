@@ -79,21 +79,22 @@ def add_new_screen_call_graph(content):
     cur_screen_node.pkg_name = cur_screen_pkg_name
     cur_screen_node.activity_name = cur_activity
     clickable_eles, res_merged_diff = get_merged_clickable_elements(d, ele_uid_map, cur_activity)
-    last_clickable_elements = last_screen_node.clickable_elements
+    last_clickable_elements = last_screen_node.get_exactly_clickable_eles()
     # TODO
     is_overlap, diff_list = get_two_clickable_eles_diff(clickable_eles, cur_activity, last_clickable_elements, last_activity)
     if is_overlap is True:
-        cur_screen_node.merged_diff = res_merged_diff
-        cur_screen_node.clickable_elements = diff_list
-        # diff_text = get_screen_all_text_from_dict(diff_list, ele_uid_map)
-        # cur_screen_all_text = diff_text
-        cur_screen_node.all_text = cur_screen_all_text
-        screen_map[cur_screen_all_text] = cur_screen_node
-    else:
-        cur_screen_node.merged_diff = res_merged_diff
-        cur_screen_node.clickable_elements = clickable_eles
-        cur_screen_node.all_text = cur_screen_all_text
-        screen_map[cur_screen_all_text] = cur_screen_node
+        cur_screen_node.diff_clickable_elements = diff_list
+    #     cur_screen_node.merged_diff = res_merged_diff
+    #     cur_screen_node.clickable_elements = clickable_eles
+    #     # diff_text = get_screen_all_text_from_dict(diff_list, ele_uid_map)
+    #     # cur_screen_all_text = diff_text
+    #     cur_screen_node.all_text = cur_screen_all_text
+    #     screen_map[cur_screen_all_text] = cur_screen_node
+    # else:
+    cur_screen_node.merged_diff = res_merged_diff
+    cur_screen_node.clickable_elements = clickable_eles
+    cur_screen_node.all_text = cur_screen_all_text
+    screen_map[cur_screen_all_text] = cur_screen_node
 
     # 将cur_screen加入到全局记录的screen_map
 
@@ -121,7 +122,8 @@ def random_click_one_ele(content):
     # TODO
     print("可能产生了不可去掉的框")
     cur_screen_node = get_cur_screen_node_from_context(content)
-    cur_screen_node_clickable_eles = cur_screen_node.clickable_elements
+
+    cur_screen_node_clickable_eles = cur_screen_node.get_diff_or_clickable_eles()
     # cur_screen_pkg_name, cur_activity, cur_screen_all_text, cur_screen_info = get_screen_info(d)
 
     cur_screen_pkg_name, cur_activity, cur_screen_all_text, cur_screen_info = get_screen_info_from_context(content)
@@ -167,7 +169,8 @@ def click_one_ele(content):
     # 遍历cur_screen的所有可点击组件
     cur_screen_node = get_cur_screen_node_from_context(content)
     cur_screen_pkg_name, cur_activity, cur_screen_all_text, cur_screen_info = get_screen_info_from_context(content)
-    cur_screen_node_clickable_eles = cur_screen_node.clickable_elements
+
+    cur_screen_node_clickable_eles = cur_screen_node.get_diff_or_clickable_eles()
 
     # screen_list.append(cur_screen_all_text)
     global last_activity
@@ -199,7 +202,7 @@ def click_one_ele(content):
     clickable_ele_idx = 0
     while clickable_ele_idx < len(cur_screen_node_clickable_eles):
         # TODO 仅调试使用
-        # if clickable_ele_idx <= 6:
+        # if clickable_ele_idx <= 1:
         #     clickable_ele_idx+=1
         #     continue
 
@@ -352,9 +355,9 @@ def get_state():
         # TODO k为6,表示出现了连续6个以上的pattern,且所有组件已经点击完毕,避免一些情况:页面有很多组件点了没反应,这个时候应该继续点而不是随机点
         if check_screen_list_reverse(30, screen_list) and cur_screen_node.is_screen_clickable_finished():
             return 7, content
-        if check_state_list_reverse(2, state_list, 4) and check_screen_list_reverse(8, screen_list) and cur_screen_node.is_screen_clickable_finished():
-            return 6, content
         if check_state_list_reverse(2, state_list, 4) and check_screen_list_reverse(4, screen_list) and cur_screen_node.is_screen_clickable_finished():
+            return 6, content
+        if check_state_list_reverse(2, state_list, 4) and check_screen_list_reverse(2, screen_list) and cur_screen_node.is_screen_clickable_finished():
             return 8, content
         # 4说明已经点完, press_back
         if cur_screen_node.is_screen_clickable_finished():

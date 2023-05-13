@@ -51,11 +51,15 @@ def print_screen_info(content, is_new):
     cur_screen_node = get_cur_screen_node_from_context(content)
     print("*" * 100)
     if is_new:
-        print(
-            f"该screen为新: {cur_screen_node.all_text[0:-1]}--总共{len(cur_screen_node.clickable_elements)}, 减少{cur_screen_node.merged_diff}")
+        print(f"该screen为新: {cur_screen_node.all_text[0:-1]}--总共{len(cur_screen_node.clickable_elements)}, 减少{cur_screen_node.merged_diff}")
+        if cur_screen_node.diff_clickable_elements is not None:
+            print(f"差分后的数量为 {len(cur_screen_node.diff_clickable_elements)}")
+
     else:
-        print(
-            f"该screen已存在: {cur_screen_node.all_text[0:-1]}--总共{len(cur_screen_node.clickable_elements)}, 减少{cur_screen_node.merged_diff}")
+        print(f"该screen已存在: {cur_screen_node.all_text[0:-1]}--总共{len(cur_screen_node.clickable_elements)}, 减少{cur_screen_node.merged_diff}")
+        if cur_screen_node.diff_clickable_elements is not None:
+            print(f"差分后的数量为 {len(cur_screen_node.diff_clickable_elements)}")
+
     print("*" * 100)
 
 

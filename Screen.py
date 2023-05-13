@@ -12,6 +12,7 @@ class ScreenNode:
         self.children = []
         # 记录着当前screen的所有可点击组件uid
         self.clickable_elements = None
+        self.diff_clickable_elements = None
         self.merged_diff = -1
         self.pkg_name = ""
         self.class_name = ""
@@ -27,15 +28,30 @@ class ScreenNode:
         self.ele_vis_map = {}
         # 记录当前screen已经被点击过的组件个数
         self.already_clicked_cnt = 0
-    
+
+    def get_diff_or_clickable_eles(self):
+        if self.diff_clickable_elements is None:
+            return self.clickable_elements
+        else:
+            return self.diff_clickable_elements
+
+    def get_exactly_clickable_eles(self):
+        return self.clickable_elements
+
     # 判断当前Screen是否点完了
     def is_screen_clickable_finished(self):
         if self.clickable_elements is None:
             raise Exception
-        if self.already_clicked_cnt == len(self.clickable_elements):
-            return True
+        if self.diff_clickable_elements is None:
+            if self.already_clicked_cnt == len(self.clickable_elements):
+                return True
+            else:
+                return False
         else:
-            return False
+            if self.already_clicked_cnt == len(self.diff_clickable_elements):
+                return True
+            else:
+                return False
     
     def add_child(self, child):
         # child.parent = self
@@ -76,7 +92,8 @@ class ScreenNode:
         for child_node in self.call_map.values():
             if screen_compare_strategy.compare_screen(child_node.all_text, target_screen_all_text)[0] == True:
             # if child_node.all_text == target_screen_all_text:
-                if child_node.already_clicked_cnt == len(child_node.clickable_elements):
+            #     if child_node.already_clicked_cnt == len(child_node.clickable_elements):
+                if child_node.is_screen_clickable_finished():
                     return True
                 else:
                     return False

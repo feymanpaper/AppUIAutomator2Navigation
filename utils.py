@@ -106,6 +106,9 @@ def get_clickable_elements(d, ele_uid_map, activity_name):
                 # cnt +=1
                 # uid = get_unique_id(d, element, activity_name)
                 # ele_uid_map[uid] = element
+                if is_child_clickable(element) == True:
+                    continue
+
                 clickable_ele_dict = get_dict_clickable_ele(d, element, activity_name)
                 uid = get_unique_id(d, clickable_ele_dict, activity_name)
                 ele_uid_map[uid] = clickable_ele_dict
@@ -116,6 +119,18 @@ def get_clickable_elements(d, ele_uid_map, activity_name):
                 else:
                     clickable_elements.append(uid)
     return clickable_elements
+
+
+# 只有可点的最细化节点可以当成clickable_ele
+def is_child_clickable(node) -> bool:
+    if node is None:
+        return False
+    for child in node:
+        if child.get('clickable') == 'true':
+            return True
+        if is_child_clickable(child) == True:
+            return True
+    return False
 
 def is_privacy_information_in_ele_dict(clickable_ele_dict):
     text = clickable_ele_dict["text"]
@@ -130,8 +145,24 @@ def is_privacy_information_in_ele_dict(clickable_ele_dict):
             return True
     return False
 
+
+# 进行合并,对于选择国家和地区的场景,进行优化
+def get_merged_clickable_elements(d, ele_uid_map, activity_name):
+    clickable_eles = get_clickable_elements(d, ele_uid_map, activity_name)
+
+    pre_len = len(clickable_eles)
+    k = 6
+    if len(clickable_eles) < 6:
+        return clickable_eles, 0
+    merged_clickable_eles = merge_same_clickable_elements_col(k, clickable_eles, ele_uid_map)
+    merged_clickable_eles = merge_same_clickable_elements_row(k, merged_clickable_eles, ele_uid_map)
+    after_len = len(merged_clickable_eles)
+
+    return merged_clickable_eles, pre_len - after_len
+
+
 # 优化: 若clickable_eles中存在连续k个相同的ele,合并为1个,不用每个都点击
-def merge_same_clickable_elements(k, clickable_eles:list, ele_uid_map) -> list:
+def merge_same_clickable_elements_col(k, clickable_eles:list, ele_uid_map) -> list:
     l = 0
     r = 0
     cnt = 0
@@ -140,7 +171,7 @@ def merge_same_clickable_elements(k, clickable_eles:list, ele_uid_map) -> list:
         cnt = 1
         r = l + 1
         while r < len(clickable_eles):
-            if is_same_two_clickable_eles(clickable_eles[l], clickable_eles[r], ele_uid_map):
+            if is_same_two_clickable_eles_col(clickable_eles[l], clickable_eles[r], ele_uid_map):
                 cnt +=1
                 r +=1
             else:
@@ -154,21 +185,30 @@ def merge_same_clickable_elements(k, clickable_eles:list, ele_uid_map) -> list:
         l = r
     return res
 
-# 进行合并,对于选择国家和地区的场景,进行优化
-def get_merged_clickable_elements(d, ele_uid_map, activity_name):
-    clickable_eles = get_clickable_elements(d, ele_uid_map, activity_name)
+def merge_same_clickable_elements_row(k, clickable_eles:list, ele_uid_map) -> list:
+    l = 0
+    r = 0
+    cnt = 0
+    res = []
+    while l < len(clickable_eles):
+        cnt = 1
+        r = l + 1
+        while r < len(clickable_eles):
+            if is_same_two_clickable_eles_row(clickable_eles[l], clickable_eles[r], ele_uid_map):
+                cnt +=1
+                r +=1
+            else:
+                break
+        if cnt > k:
+            res.append(clickable_eles[l])
+        else:
+            for i in range(cnt):
+                res.append(clickable_eles[l])
+                l+=1
+        l = r
+    return res
 
-    pre_len = len(clickable_eles)
-    k = 6
-    if len(clickable_eles) < 6:
-        return clickable_eles, 0
-    merged_clickable_eles = merge_same_clickable_elements(k, clickable_eles, ele_uid_map)
-    after_len = len(merged_clickable_eles)
-
-    return merged_clickable_eles, pre_len - after_len
-
-
-def is_same_two_clickable_eles(ele1_uid, ele2_uid, ele_uid_map) -> bool:
+def is_same_two_clickable_eles_row(ele1_uid, ele2_uid, ele_uid_map) -> bool:
     if isinstance(ele1_uid, int) and isinstance(ele2_uid, int):
         return ele1_uid == ele2_uid
     else:
@@ -178,13 +218,38 @@ def is_same_two_clickable_eles(ele1_uid, ele2_uid, ele_uid_map) -> bool:
         class_name1 = ele1_dict.get("class")
         res_id1 = ele1_dict.get("resource-id")
         pkg_name1 = ele1_dict.get("package")
+        loc_x1, loc_y1 = get_location(ele1_dict)
 
         class_name2 = ele2_dict.get("class")
         res_id2 = ele2_dict.get("resource-id")
         pkg_name2 = ele2_dict.get("package")
+        loc_x2, loc_y2 = get_location(ele2_dict)
 
         if class_name1 == class_name2 and \
-            res_id1 == res_id2 and pkg_name1 == pkg_name2:
+            res_id1 == res_id2 and pkg_name1 == pkg_name2 and loc_y1 == loc_y2:
+            return True
+        else:
+            return False
+
+def is_same_two_clickable_eles_col(ele1_uid, ele2_uid, ele_uid_map) -> bool:
+    if isinstance(ele1_uid, int) and isinstance(ele2_uid, int):
+        return ele1_uid == ele2_uid
+    else:
+        ele1_dict = ele_uid_map[ele1_uid]
+        ele2_dict = ele_uid_map[ele2_uid]
+
+        class_name1 = ele1_dict.get("class")
+        res_id1 = ele1_dict.get("resource-id")
+        pkg_name1 = ele1_dict.get("package")
+        loc_x1, loc_y1 = get_location(ele1_dict)
+
+        class_name2 = ele2_dict.get("class")
+        res_id2 = ele2_dict.get("resource-id")
+        pkg_name2 = ele2_dict.get("package")
+        loc_x2, loc_y2 = get_location(ele2_dict)
+
+        if class_name1 == class_name2 and \
+            res_id1 == res_id2 and pkg_name1 == pkg_name2 and loc_x1 == loc_x2:
             return True
         else:
             return False
