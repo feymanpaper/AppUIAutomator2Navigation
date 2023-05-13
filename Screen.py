@@ -21,6 +21,10 @@ class ScreenNode:
         # call_map:{key:widget_uuid, value: next_screen_node}
         # call_map主要记录哪些组件能到达下一个Screen
         self.call_map = {}
+        # 记录每个组件的uid的点击次数 {key:cur_clickable_ele_uid, val:cnt}
+        self.ele_uid_cnt_map = {}
+        # 记录组件是否有被点击过 {key:cur_clickable_ele_uid, val:true/false}
+        self.ele_vis_map = {}
         # 记录当前screen已经被点击过的组件个数
         self.already_clicked_cnt = 0
     

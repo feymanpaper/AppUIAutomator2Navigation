@@ -25,4 +25,5 @@ for idx, ele_id in enumerate(clickable_eles):
 #
 x, y = get_location(ele_uid_map[clickable_eles[1]])
 
-d.double_click(x, y, 0.1)
+d.press("back")
+# d.press("back")
