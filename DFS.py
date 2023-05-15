@@ -3,7 +3,7 @@
 #   click()
 # 否则当前没东西可点了，back ，不写成dfs
 from utils import *
-from Screen import *
+from ScreenNode import *
 from ScreenCompareStrategy import *
 import time
 import signal

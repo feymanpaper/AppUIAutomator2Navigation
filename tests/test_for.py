@@ -1,8 +1,5 @@
-
-# for 循环无法对i操作 
-i = 0
-while i < 5:
-    print(i)
-    if i == 4:
-        i = i-1
-    i+=1
+import random
+# for 循环无法对i操作
+ll = []
+choose = random.randint(0, len(ll) - 1)
+print(choose)

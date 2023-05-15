@@ -23,7 +23,7 @@ for idx, ele_id in enumerate(clickable_eles):
     print(f"{idx} - {text}")
 
 #
-x, y = get_location(ele_uid_map[clickable_eles[1]])
+# x, y = get_location(ele_uid_map[clickable_eles[1]])
 
 d.press("back")
 # d.press("back")

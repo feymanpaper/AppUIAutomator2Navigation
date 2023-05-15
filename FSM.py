@@ -2,14 +2,38 @@
 # for....所有能点击的组件:
 #   click()
 # 否则当前没东西可点了，back ，不写成dfs
+from uiautomator2 import Device
+
 from utils import *
-from Screen import *
+from ScreenNode import *
 from ScreenCompareStrategy import *
 import time
 import signal
 from core_functions import *
+from State_Checker import *
+from Device_Helper import *
 import random
 import logging
+import sys
+
+
+def suppress_keyboard_interrupt_message():
+    old_excepthook = sys.excepthook
+
+    def new_hook(exctype, value, traceback):
+        if exctype != KeyboardInterrupt:
+            old_excepthook(exctype, value, traceback)
+        else:
+            print('\nKeyboardInterrupt ...')
+            print('do something after Interrupt ...')
+            print("@" * 100)
+            print("@" * 100)
+            print(f"总共点击的activity个数 {len(stat_activity_set)}")
+            print(f"总共点击的Screen个数: {len(stat_screen_set)}")
+            print(f"总共点击的组件个数: {total_eles_cnt}")
+            end_time = time.time()
+            print(f"时间为 {end_time - start_time}")
+    sys.excepthook = new_hook
 
 
 def handle_exit_app(content):
@@ -53,9 +77,9 @@ def handle_exist_screen(content):
     click_one_ele(content)
 
 def get_permission_screen_node(content):
-    cur_screen_pkg_name, cur_activity, cur_screen_all_text, cur_screen_info = get_screen_info_from_context(content)
+    cur_screen_pkg_name, cur_activity, cur_screen_all_text = get_screen_info_from_context(content)
     cur_screen_node = ScreenNode()
-    cur_screen_node.info = cur_screen_info
+    # cur_screen_node.info = cur_screen_info
     cur_screen_node.pkg_name = cur_screen_pkg_name
     cur_screen_node.activity_name = cur_activity
     clickable_eles, res_merged_diff = get_merged_clickable_elements(d, ele_uid_map, cur_activity)
@@ -69,12 +93,13 @@ def get_permission_screen_node(content):
     return cur_screen_node
 
 def add_new_screen_call_graph(content):
-    cur_screen_pkg_name, cur_activity, cur_screen_all_text, cur_screen_info = get_screen_info_from_context(content)
-    last_screen_node = get_screennode_from_screenmap(screen_map, last_screen_all_text, screen_compare_strategy)
+    cur_screen_pkg_name, cur_activity, cur_screen_all_text = get_screen_info_from_context(content)
+    last_screen_node = get_screennode_from_screenmap_by_similarity(screen_map, last_screen_all_text, screen_compare_strategy)
+    # last_screen_node = get_screennode_from_screenmap(screen_map, last_screen_all_text)
 
     # 初始化cur_screen_node信息
     cur_screen_node = ScreenNode()
-    cur_screen_node.info = cur_screen_info
+    # cur_screen_node.info = cur_screen_info
     # cur_screen_node.sig = cur_screen_sig
     cur_screen_node.pkg_name = cur_screen_pkg_name
     cur_screen_node.activity_name = cur_activity
@@ -107,12 +132,13 @@ def add_new_screen_call_graph(content):
     return cur_screen_node
 def add_exist_screen_call_graph(content):
     # cur_screen_pkg_name, cur_activity, cur_screen_all_text, cur_screen_info = get_screen_info(d)
-    cur_screen_pkg_name, cur_activity, cur_screen_all_text, cur_screen_info = get_screen_info_from_context(content)
+    cur_screen_pkg_name, cur_activity, cur_screen_all_text = get_screen_info_from_context(content)
     # cur_screen_node = get_screennode_from_screenmap(screen_map, cur_screen_all_text, screen_compare_strategy)
     cur_screen_node = get_cur_screen_node_from_context(content)
     # 将cur_screen加入到last_screen的子节点
     # last_screen_node = screen_map.get(last_screen_all_text)
-    last_screen_node = get_screennode_from_screenmap(screen_map, last_screen_all_text, screen_compare_strategy)
+    last_screen_node = get_screennode_from_screenmap_by_similarity(screen_map, last_screen_all_text, screen_compare_strategy)
+    # last_screen_node = get_screennode_from_screenmap(screen_map, last_screen_all_text)
 
     last_screen_node.add_child(cur_screen_node)
     return cur_screen_node
@@ -126,7 +152,7 @@ def random_click_one_ele(content):
     cur_screen_node_clickable_eles = cur_screen_node.get_diff_or_clickable_eles()
     # cur_screen_pkg_name, cur_activity, cur_screen_all_text, cur_screen_info = get_screen_info(d)
 
-    cur_screen_pkg_name, cur_activity, cur_screen_all_text, cur_screen_info = get_screen_info_from_context(content)
+    cur_screen_pkg_name, cur_activity, cur_screen_all_text = get_screen_info_from_context(content)
 
     # screen_list.append(cur_screen_all_text)
 
@@ -168,7 +194,7 @@ def random_click_one_ele(content):
 def click_one_ele(content):
     # 遍历cur_screen的所有可点击组件
     cur_screen_node = get_cur_screen_node_from_context(content)
-    cur_screen_pkg_name, cur_activity, cur_screen_all_text, cur_screen_info = get_screen_info_from_context(content)
+    cur_screen_pkg_name, cur_activity, cur_screen_all_text = get_screen_info_from_context(content)
 
     cur_screen_node_clickable_eles = cur_screen_node.get_diff_or_clickable_eles()
 
@@ -181,7 +207,8 @@ def click_one_ele(content):
     global first_activity
     global first_screen_text
 
-    last_screen_node = get_screennode_from_screenmap(screen_map, last_screen_all_text, screen_compare_strategy)
+    last_screen_node = get_screennode_from_screenmap_by_similarity(screen_map, last_screen_all_text, screen_compare_strategy)
+    # last_screen_node = get_screennode_from_screenmap(screen_map, last_screen_all_text)
     if check_cycle(cur_screen_node, last_screen_node, screen_compare_strategy) == True:
         #产生了回边
         print("产生回边")
@@ -199,10 +226,11 @@ def click_one_ele(content):
 
     
 
-    clickable_ele_idx = 0
+    clickable_ele_idx = cur_screen_node.already_clicked_cnt
     while clickable_ele_idx < len(cur_screen_node_clickable_eles):
         # TODO 仅调试使用
-        # if clickable_ele_idx <= 1:
+        # if clickable_ele_idx <= 0:
+        #     cur_screen_node.already_clicked_cnt += 1
         #     clickable_ele_idx+=1
         #     continue
 
@@ -217,7 +245,7 @@ def click_one_ele(content):
 
         # 表示该组件已经访问过
         # +1是因为下标从0开始
-        cur_screen_node.already_clicked_cnt = clickable_ele_idx + 1
+        # cur_screen_node.already_clicked_cnt = clickable_ele_idx + 1
         # uid = get_uid(cur_clickable_ele, d, umap, cur_activity)
         cur_screen_ele_dict = ele_uid_map[cur_clickable_ele_uid]
         if is_non_necessary_click(cur_screen_ele_dict):
@@ -228,6 +256,7 @@ def click_one_ele(content):
                 cur_screen_node.ele_uid_cnt_map[cur_clickable_ele_uid] += 1
             print(f"省略组件&{clickable_ele_idx}: {cur_clickable_ele_uid}")
             clickable_ele_idx +=1
+            cur_screen_node.already_clicked_cnt += 1
             continue
 
         if cur_screen_node.ele_vis_map.get(cur_clickable_ele_uid, False) == False:
@@ -254,6 +283,9 @@ def click_one_ele(content):
         else:
             if cur_screen_node.ele_uid_cnt_map.get(cur_clickable_ele_uid) is not None and cur_screen_node.ele_uid_cnt_map.get(cur_clickable_ele_uid) > CLICK_MAX_CNT:
                 print(f"该组件点击次数过多不点了&{clickable_ele_idx}: {cur_clickable_ele_uid}")
+                cur_screen_node.already_clicked_cnt += 1
+                clickable_ele_idx += 1
+
             elif cur_screen_node.call_map.get(cur_clickable_ele_uid, None) is not None:
                 target_screen_node = cur_screen_node.call_map.get(cur_clickable_ele_uid, None)
                 target_screen_all_text = target_screen_node.all_text
@@ -279,10 +311,14 @@ def click_one_ele(content):
                 
                 else:
                     print(f"clickmap--该界面点击完成&{clickable_ele_idx}: {cur_clickable_ele_uid}")
+                    cur_screen_node.already_clicked_cnt += 1
+                    clickable_ele_idx += 1
             else:
                 print(f"已点击过&{clickable_ele_idx}: {cur_clickable_ele_uid}")
+                cur_screen_node.already_clicked_cnt += 1
+                clickable_ele_idx += 1
 
-        clickable_ele_idx +=1
+        # clickable_ele_idx +=1
         
 
 def press_back():
@@ -325,13 +361,12 @@ def do_transition(state, content):
         raise Exception("意外情况")
 
 def get_state():
-    cur_screen_pkg_name, cur_activity, cur_screen_all_text, cur_screen_info = get_screen_info(d)
+    cur_screen_pkg_name, cur_activity, cur_screen_all_text = get_screen_info(d)
 
     content = {}
     content["cur_screen_pkg_name"] = cur_screen_pkg_name
     content["cur_activity"] = cur_activity
     content["cur_screen_all_text"] = cur_screen_all_text
-    content["cur_screen_info"] = cur_screen_info
 
     if cur_screen_pkg_name != target_pkg_name:
         if check_is_in_home_screen(cur_screen_pkg_name):
@@ -347,7 +382,13 @@ def get_state():
     if check_is_inputmethod_in_cur_screen(d) == True:
         return 2, content
 
-    cur_screen_node = get_screennode_from_screenmap(screen_map, cur_screen_all_text, screen_compare_strategy)
+    # temp_screen_node = get_screennode_from_screenmap_by_similarity(screen_map, cur_screen_all_text, screen_compare_strategy)
+    # if temp_screen_node is not None and len(temp_screen_node.clickable_elements) == clickable_cnt:
+    #     cur_screen_node = temp_screen_node
+    # else:
+    #     cur_screen_node = None
+    cur_screen_node = get_screennode_from_screenmap_by_similarity(screen_map, cur_screen_all_text, screen_compare_strategy)
+
     content["cur_screen_node"] = cur_screen_node
     screen_list.append(cur_screen_all_text)
 
@@ -437,7 +478,7 @@ if __name__ == "__main__":
     screen_compare_strategy = ScreenCompareStrategy(LCSComparator())
     # curr_pkg_name = "com.example.myapplication"
     # target_pkg_name = "com.alibaba.android.rimet"
-    target_pkg_name = "net.csdn.csdnplus"
+    # target_pkg_name = "net.csdn.csdnplus"
     # target_pkg_name = "com.sina.weibo"
     # target_pkg_name = "com.youku.phone"
     # target_pkg_name = "cn.damai"
@@ -446,8 +487,9 @@ if __name__ == "__main__":
     # target_pkg_name = "com.jingyao.easybike"
     # target_pkg_name = "com.cainiao.wireless"
     # target_pkg_name = "com.xingin.xhs"
-    # target_pkg_name = "com.yipiao"
+    target_pkg_name = "com.yipiao"
     # target_pkg_name = "app.podcast.cosmos"
+    # target_pkg_name = "com.hunantv.imgo.activity"
     screen_list = []
     state_list = []
     # 第一个activity
@@ -465,6 +507,7 @@ if __name__ == "__main__":
     d.app_start(target_pkg_name)
     time.sleep(sleep_time_sec)
 
+    suppress_keyboard_interrupt_message()
     try:
         start_time = time.time()
         FSM()
