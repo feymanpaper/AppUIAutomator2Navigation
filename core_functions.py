@@ -1,8 +1,9 @@
 from ScreenNode import *
 from ScreenCompareStrategy import *
 from utils import *
+import time
 
-# 只检测一层环
+# 检测多层环
 def check_cycle(cur_node: ScreenNode, last_node: ScreenNode, screen_compare_strategy: ScreenCompareStrategy):
     if screen_compare_strategy.compare_screen(cur_node.all_text, last_node.all_text)[0] == True:
         return True
@@ -100,4 +101,13 @@ def get_cur_screen_node_from_context(content):
     cur_screen_node = content["cur_screen_node"]
     return cur_screen_node
 
+
+def print_result(stat_activity_set, stat_screen_set, total_eles_cnt, start_time):
+    print("@" * 100)
+    print("@" * 100)
+    print(f"总共点击的activity个数 {len(stat_activity_set)}")
+    print(f"总共点击的Screen个数: {len(stat_screen_set)}")
+    print(f"总共点击的组件个数: {total_eles_cnt}")
+    end_time = time.time()
+    print(f"时间为 {end_time - start_time}")
 

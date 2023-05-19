@@ -3,7 +3,7 @@ sys.path.append("..")
 from utils import *
 from uiautomator2 import Device
 import xml.etree.ElementTree as ET
-from Device_Helper import *
+from DeviceHelper import *
 
 
 

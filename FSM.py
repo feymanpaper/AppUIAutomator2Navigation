@@ -3,15 +3,16 @@
 #   click()
 # 否则当前没东西可点了，back ，不写成dfs
 from uiautomator2 import Device
-
 from utils import *
 from ScreenNode import *
 from ScreenCompareStrategy import *
 import time
 import signal
+from RestartException import RestartException
 from core_functions import *
-from State_Checker import *
-from Device_Helper import *
+from StateChecker import *
+from DeviceHelper import *
+from JsonHelper import *
 import random
 import logging
 import sys
@@ -26,13 +27,9 @@ def suppress_keyboard_interrupt_message():
         else:
             print('\nKeyboardInterrupt ...')
             print('do something after Interrupt ...')
-            print("@" * 100)
-            print("@" * 100)
-            print(f"总共点击的activity个数 {len(stat_activity_set)}")
-            print(f"总共点击的Screen个数: {len(stat_screen_set)}")
-            print(f"总共点击的组件个数: {total_eles_cnt}")
-            end_time = time.time()
-            print(f"时间为 {end_time - start_time}")
+            print_result(stat_activity_set, stat_screen_set, total_eles_cnt, start_time)
+            file_name = target_pkg_name + "_" + "interupt"
+            dump_screen_map_to_json(file_name, screen_map)
     sys.excepthook = new_hook
 
 
@@ -46,6 +43,11 @@ def handle_inputmethod(content):
 
 def handle_exit_screen(content):
     press_back()
+
+def handle_restart(content):
+    error_screen_list.append(content["cur_screen_all_text"])
+    error_clickable_ele_uid_list.append(last_clickable_ele_uid)
+    raise RestartException("重启机制")
 
 def handle_system_permission_screen(content):
     cur_screen_node = add_new_screen_call_graph(content)
@@ -289,6 +291,18 @@ def click_one_ele(content):
             elif cur_screen_node.call_map.get(cur_clickable_ele_uid, None) is not None:
                 target_screen_node = cur_screen_node.call_map.get(cur_clickable_ele_uid, None)
                 target_screen_all_text = target_screen_node.all_text
+
+                if check_is_error_clickable_ele(error_clickable_ele_uid_list, cur_clickable_ele_uid) == True:
+                    print(f"该组件会触发error screen因此跳过&{clickable_ele_idx}: {cur_clickable_ele_uid}")
+                    cur_screen_node.already_clicked_cnt += 1
+                    clickable_ele_idx += 1
+                    continue
+
+                if check_is_errorscreen(error_screen_list, target_screen_all_text, screen_compare_strategy) == True:
+                    print(f"该组件会触发error screen因此跳过&{clickable_ele_idx}: {cur_clickable_ele_uid}")
+                    cur_screen_node.already_clicked_cnt += 1
+                    clickable_ele_idx += 1
+                    continue
                 if cur_screen_node.is_cur_callmap_finish(target_screen_all_text, screen_compare_strategy) == False:
                     # click_map指示存在部分没完成
                     cur_clickable_ele_dict = ele_uid_map[cur_clickable_ele_uid]
@@ -350,7 +364,7 @@ def do_transition(state, content):
         handle_special_screen(content)
     elif state == 7:
         # TODO 重启机制
-        raise Exception("重启机制???")
+        handle_restart(content)
     elif state == 8:
         handle_double_press(content)
     elif state == 9:
@@ -393,12 +407,14 @@ def get_state():
     screen_list.append(cur_screen_all_text)
 
     if cur_screen_node is not None:
+        if check_is_errorscreen(error_screen_list, cur_screen_all_text, screen_compare_strategy):
+            return 4, content
         # TODO k为6,表示出现了连续6个以上的pattern,且所有组件已经点击完毕,避免一些情况:页面有很多组件点了没反应,这个时候应该继续点而不是随机点
-        if check_screen_list_reverse(30, screen_list) and cur_screen_node.is_screen_clickable_finished():
+        if check_state_list_reverse(1, state_list, 4) and check_screen_list_reverse(10, screen_list) and cur_screen_node.is_screen_clickable_finished():
             return 7, content
-        if check_state_list_reverse(2, state_list, 4) and check_screen_list_reverse(4, screen_list) and cur_screen_node.is_screen_clickable_finished():
+        if check_state_list_reverse(1, state_list, 4) and check_screen_list_reverse(3, screen_list) and cur_screen_node.is_screen_clickable_finished():
             return 6, content
-        if check_state_list_reverse(2, state_list, 4) and check_screen_list_reverse(2, screen_list) and cur_screen_node.is_screen_clickable_finished():
+        if check_state_list_reverse(1, state_list, 4) and check_screen_list_reverse(2, screen_list) and cur_screen_node.is_screen_clickable_finished():
             return 8, content
         # 4说明已经点完, press_back
         if cur_screen_node.is_screen_clickable_finished():
@@ -418,30 +434,12 @@ def FSM():
     # 3: 当前Screen已经存在
     # 4: 当前Screen不存在
 
-    state_map = {
-        1: "不是当前要测试的app,即app跳出了测试的app",
-        2: "发现当前界面有文本输入法框",
-        3: "当前Screen已经存在",
-        4: "当前Screen已经点完",
-        5: "当前Screen不存在,新建Screen",
-        6: "出现了不可回退的框, 启用随机点",
-        7: "出现了不可回退的框, 需要重启?",
-        8: "出现了不可回退的框, 启用double_press_back",
-        9: "出现了系统权限页面",
-        10: "出现了系统外不可回退的框"
-    }
-    state = -1
     stat_map = {}
+    state = -1
     while True:
         if len(stat_screen_set) % 10 == 0 and stat_map.get(len(stat_screen_set), False) is False:
             stat_map[len(stat_screen_set)] = True
-            print("@"*100)
-            print("@"*100)
-            print(f"总共点击的activity个数 {len(stat_activity_set)}")
-            print(f"总共点击的Screen个数: {len(stat_screen_set)}")
-            print(f"总共点击的组件个数: {total_eles_cnt}")
-            end_time = time.time()
-            print(f"时间为 {end_time - start_time}")
+            print_result(stat_activity_set, stat_screen_set, total_eles_cnt, start_time)
 
         state, content = get_state()
         state_list.append(state)
@@ -459,25 +457,13 @@ if __name__ == "__main__":
     #     testTimeOut()
     # except Exception as e:
     #     print(1)
-    # 存储着整个app所有screen(ScrennNode) {key:screen_sig, val:screen_node}
-    screen_map = {}
-
-    # 全局记录每个组件的uid {key:cur_clickable_ele_uid, val:clickable_ele}
-    ele_uid_map = {}
-
-    CLICK_MAX_CNT = 4
-    sleep_time_sec = 4
-    # 统计结果用
-    total_eles_cnt = 0
-    stat_screen_set = set()
-    # total_screen_cnt = 0
-    stat_activity_set = set()
-    # total_activity_cnt = 0
     # 启动app开始执行
     d = Device()
     screen_compare_strategy = ScreenCompareStrategy(LCSComparator())
-    # curr_pkg_name = "com.example.myapplication"
-    # target_pkg_name = "com.alibaba.android.rimet"
+    CLICK_MAX_CNT = 4
+    sleep_time_sec = 4
+    # target_pkg_name = "com.example.myapplication"
+    target_pkg_name = "com.alibaba.android.rimet"
     # target_pkg_name = "net.csdn.csdnplus"
     # target_pkg_name = "com.sina.weibo"
     # target_pkg_name = "com.youku.phone"
@@ -487,38 +473,73 @@ if __name__ == "__main__":
     # target_pkg_name = "com.jingyao.easybike"
     # target_pkg_name = "com.cainiao.wireless"
     # target_pkg_name = "com.xingin.xhs"
-    target_pkg_name = "com.yipiao"
+    # target_pkg_name = "com.yipiao"
     # target_pkg_name = "app.podcast.cosmos"
     # target_pkg_name = "com.hunantv.imgo.activity"
+    state_map = {
+        1: "不是当前要测试的app,即app跳出了测试的app",
+        2: "发现当前界面有文本输入法框",
+        3: "当前Screen已经存在",
+        4: "当前Screen已经点完",
+        5: "当前Screen不存在,新建Screen",
+        6: "出现了不可回退的框, 启用随机点",
+        7: "出现了不可回退的框, 需要重启?",
+        8: "出现了不可回退的框, 启用double_press_back",
+        9: "出现了系统权限页面",
+        10: "出现了系统外不可回退的框"
+    }
+    # 存储遍历过的screen
     screen_list = []
+    # 存储遍历过的state
     state_list = []
+
+    # 存储因为错误导致重启的screen
+    error_screen_list = []
+    error_clickable_ele_uid_list = []
+    # 存储着整个app所有screen(ScrennNode) {key:screen_sig, val:screen_node}
+    screen_map = {}
+    # 全局记录每个组件的uid {key:cur_clickable_ele_uid, val:clickable_ele}
+    ele_uid_map = {}
+    # 统计结果用
+    total_eles_cnt = 0
+    stat_screen_set = set()
+    stat_activity_set = set()
+
+
     # 第一个activity
     first_activity = None
     first_screen_text = None
-
     root = ScreenNode()
     root.all_text = "root"
     screen_map["root"] = root
-
     last_screen_all_text = root.all_text
     cur_clickable_ele_uid = None
     last_activity = None
-
-    d.app_start(target_pkg_name)
-    time.sleep(sleep_time_sec)
+    last_clickable_ele_uid = None
 
     suppress_keyboard_interrupt_message()
-    try:
-        start_time = time.time()
-        FSM()
-    except Exception as e:
-        print(e)
-        logging.exception(e)
-        print("@"*100)
-        print("@"*100)
-        print(f"总共点击的activity个数 {len(stat_activity_set)}")
-        print(f"总共点击的Screen个数: {len(stat_screen_set)}")
-        print(f"总共点击的组件个数: {total_eles_cnt}")
-        end_time = time.time()
-        print(f"时间为 {end_time - start_time}")
-    print("end")
+    start_time = time.time()
+
+    restart_cnt = 0
+    while True:
+        ## 启动app
+        d.app_start(target_pkg_name, use_monkey=True)
+        time.sleep(10)
+        try:
+            FSM()
+        except RestartException as e:
+            restart_cnt += 1
+            print("需要重启")
+            logging.exception(e)
+            print_result(stat_activity_set, stat_screen_set, total_eles_cnt, start_time)
+            file_name = target_pkg_name + "_" + str(restart_cnt)
+            dump_screen_map_to_json(file_name, screen_map)
+            state_list.clear()
+            screen_list.clear()
+            d.app_stop(target_pkg_name)
+            time.sleep(10)
+        except Exception as e:
+            break
+
+    print("程序结束")
+

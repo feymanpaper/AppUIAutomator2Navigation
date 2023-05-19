@@ -1,5 +1,17 @@
+from ScreenCompareStrategy import ScreenCompareStrategy
 
+def check_is_errorscreen(error_screen_list:list, screen_text:str, screen_compare_strategy: ScreenCompareStrategy) -> bool:
+    for err_screen_text in error_screen_list:
+        simi_flag, cur_similarity = screen_compare_strategy.compare_screen(screen_text, err_screen_text)
+        if simi_flag is True:
+            return True
+    return False
 
+def check_is_error_clickable_ele(error_clickable_ele_uid_list, clickable_ele_uid):
+    for err_ele_uid in error_clickable_ele_uid_list:
+        if err_ele_uid == clickable_ele_uid:
+            return True
+    return False
 
 def check_screen_list(screen_list):
     if screen_list is None:
