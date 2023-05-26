@@ -97,6 +97,7 @@ def get_permission_screen_node(content):
 def add_new_screen_call_graph(content):
     cur_screen_pkg_name, cur_activity, cur_screen_all_text = get_screen_info_from_context(content)
     last_screen_node = get_screennode_from_screenmap_by_similarity(screen_map, last_screen_all_text, screen_compare_strategy)
+    screen_map[last_screen_all_text] = last_screen_node
     # last_screen_node = get_screennode_from_screenmap(screen_map, last_screen_all_text)
 
     # 初始化cur_screen_node信息
@@ -107,9 +108,13 @@ def add_new_screen_call_graph(content):
     cur_screen_node.activity_name = cur_activity
     clickable_eles, res_merged_diff = get_merged_clickable_elements(d, ele_uid_map, cur_activity)
     last_clickable_elements = last_screen_node.get_exactly_clickable_eles()
+
+    sim = content["sim"]
+    most_similar_screen_node = content["most_similar_screen_node"]
+    if sim >= 0.70:
     # TODO
-    is_overlap, diff_list = get_two_clickable_eles_diff(clickable_eles, cur_activity, last_clickable_elements, last_activity)
-    if is_overlap is True:
+        most_sim_clickable_elements = most_similar_screen_node.get_exactly_clickable_eles()
+        diff_list = get_two_clickable_eles_diff(clickable_eles, most_sim_clickable_elements)
         cur_screen_node.diff_clickable_elements = diff_list
     #     cur_screen_node.merged_diff = res_merged_diff
     #     cur_screen_node.clickable_elements = clickable_eles
@@ -140,6 +145,7 @@ def add_exist_screen_call_graph(content):
     # 将cur_screen加入到last_screen的子节点
     # last_screen_node = screen_map.get(last_screen_all_text)
     last_screen_node = get_screennode_from_screenmap_by_similarity(screen_map, last_screen_all_text, screen_compare_strategy)
+    screen_map[last_screen_all_text] = last_screen_node
     # last_screen_node = get_screennode_from_screenmap(screen_map, last_screen_all_text)
 
     last_screen_node.add_child(cur_screen_node)
@@ -152,8 +158,6 @@ def random_click_one_ele(content):
     cur_screen_node = get_cur_screen_node_from_context(content)
 
     cur_screen_node_clickable_eles = cur_screen_node.get_diff_or_clickable_eles()
-    # cur_screen_pkg_name, cur_activity, cur_screen_all_text, cur_screen_info = get_screen_info(d)
-
     cur_screen_pkg_name, cur_activity, cur_screen_all_text = get_screen_info_from_context(content)
 
     # screen_list.append(cur_screen_all_text)
@@ -177,9 +181,20 @@ def random_click_one_ele(content):
     #     else:
     #         first_activity = cur_activity
     #         first_screen_text = cur_screen_all_text
+    #TODO
+    candidate = None
+    if cur_screen_node.candidate_random_clickable_eles is None or len(cur_screen_node.candidate_random_clickable_eles) == 0:
+        candidate = cur_screen_node.build_candidate_random_clickable_eles()
+    else:
+        candidate = cur_screen_node.candidate_random_clickable_eles
 
-    choose = random.randint(0, len(cur_screen_node_clickable_eles) - 1)
-    cur_clickable_ele_uid = cur_screen_node_clickable_eles[choose]
+    if candidate is None or len(candidate) == 0:
+        return
+
+    # choose = random.randint(0, len(cur_screen_node_clickable_eles) - 1)
+    # cur_clickable_ele_uid = cur_screen_node_clickable_eles[choose]
+    choose = random.randint(0, len(cur_screen_node.candidate_random_clickable_eles) - 1)
+    cur_clickable_ele_uid = cur_screen_node.candidate_random_clickable_eles[choose]
 
     cur_clickable_ele_dict = ele_uid_map[cur_clickable_ele_uid]
     loc_x, loc_y = get_location(cur_clickable_ele_dict)
@@ -210,9 +225,14 @@ def click_one_ele(content):
     global first_screen_text
 
     last_screen_node = get_screennode_from_screenmap_by_similarity(screen_map, last_screen_all_text, screen_compare_strategy)
+    screen_map[last_screen_all_text] = last_screen_node
     # last_screen_node = get_screennode_from_screenmap(screen_map, last_screen_all_text)
-    if check_cycle(cur_screen_node, last_screen_node, screen_compare_strategy) == True:
+    if last_screen_node.all_text == cur_screen_node.all_text:
+        print("回到自己")
+        pass
+    elif check_cycle(cur_screen_node, last_screen_node, screen_compare_strategy) == True:
         #产生了回边
+        last_screen_node.cycle_set.add(last_clickable_ele_uid)
         print("产生回边")
         pass
     else:
@@ -230,13 +250,20 @@ def click_one_ele(content):
 
     clickable_ele_idx = cur_screen_node.already_clicked_cnt
     while clickable_ele_idx < len(cur_screen_node_clickable_eles):
+        cur_clickable_ele_uid = cur_screen_node_clickable_eles[clickable_ele_idx]
+
         # TODO 仅调试使用
         # if clickable_ele_idx <= 0:
         #     cur_screen_node.already_clicked_cnt += 1
         #     clickable_ele_idx+=1
         #     continue
+        cur_clickable_ele_dict = ele_uid_map[cur_clickable_ele_uid]
+        loc_x, loc_y = get_location(cur_clickable_ele_dict)
+        if loc_x >=60 and loc_x <= 70 and loc_y == 162:
+            cur_screen_node.already_clicked_cnt += 1
+            clickable_ele_idx+=1
+            continue
 
-        cur_clickable_ele_uid = cur_screen_node_clickable_eles[clickable_ele_idx]
     # for clickable_ele_idx, cur_clickable_ele_uid in enumerate(cur_screen_node_clickable_eles):
         #--------------------------------------
         #判断当前组件是否需要访问
@@ -283,12 +310,11 @@ def click_one_ele(content):
             return 
 
         else:
-            if cur_screen_node.ele_uid_cnt_map.get(cur_clickable_ele_uid) is not None and cur_screen_node.ele_uid_cnt_map.get(cur_clickable_ele_uid) > CLICK_MAX_CNT:
-                print(f"该组件点击次数过多不点了&{clickable_ele_idx}: {cur_clickable_ele_uid}")
-                cur_screen_node.already_clicked_cnt += 1
-                clickable_ele_idx += 1
-
-            elif cur_screen_node.call_map.get(cur_clickable_ele_uid, None) is not None:
+            # if cur_screen_node.ele_uid_cnt_map.get(cur_clickable_ele_uid) is not None and cur_screen_node.ele_uid_cnt_map.get(cur_clickable_ele_uid) > CLICK_MAX_CNT:
+            #     print(f"该组件点击次数过多不点了&{clickable_ele_idx}: {cur_clickable_ele_uid}")
+            #     cur_screen_node.already_clicked_cnt += 1
+            #     clickable_ele_idx += 1
+            if cur_screen_node.call_map.get(cur_clickable_ele_uid, None) is not None:
                 target_screen_node = cur_screen_node.call_map.get(cur_clickable_ele_uid, None)
                 target_screen_all_text = target_screen_node.all_text
 
@@ -388,7 +414,7 @@ def get_state():
         elif cur_screen_pkg_name == "com.google.android.packageinstaller":
             return 9, content
         else:
-            if check_state_list_reverse(3, state_list, 1):
+            if check_pattern_state(3, state_list, [1]):
                 return 10, content
             else:
                 return 1, content
@@ -401,20 +427,26 @@ def get_state():
     #     cur_screen_node = temp_screen_node
     # else:
     #     cur_screen_node = None
-    cur_screen_node = get_screennode_from_screenmap_by_similarity(screen_map, cur_screen_all_text, screen_compare_strategy)
-
-    content["cur_screen_node"] = cur_screen_node
+    sim, most_similar_screen_node = get_max_similarity_screen_node(screen_map, cur_screen_all_text, default_screen_compare_strategy)
+    content["cur_screen_node"] = most_similar_screen_node
+    content["most_similar_screen_node"] = most_similar_screen_node
+    content["sim"] = sim
     screen_list.append(cur_screen_all_text)
 
-    if cur_screen_node is not None:
+    # if cur_screen_node is not None:
+    if sim >= 0.90:
+        cur_screen_node = most_similar_screen_node
+        screen_map[cur_screen_all_text] = cur_screen_node
         if check_is_errorscreen(error_screen_list, cur_screen_all_text, screen_compare_strategy):
             return 4, content
         # TODO k为6,表示出现了连续6个以上的pattern,且所有组件已经点击完毕,避免一些情况:页面有很多组件点了没反应,这个时候应该继续点而不是随机点
-        if check_state_list_reverse(1, state_list, 4) and check_screen_list_reverse(10, screen_list) and cur_screen_node.is_screen_clickable_finished():
+        # if check_state_list_reverse(1, state_list, 4) and check_screen_list_reverse(10, screen_list) and cur_screen_node.is_screen_clickable_finished():
+        #     return 7, content
+        if cur_screen_node.is_screen_clickable_finished() and check_pattern_state(10, state_list, [4, 6, 8]):
             return 7, content
-        if check_state_list_reverse(1, state_list, 4) and check_screen_list_reverse(3, screen_list) and cur_screen_node.is_screen_clickable_finished():
+        if cur_screen_node.is_screen_clickable_finished() and check_pattern_state(1, state_list, [6, 8]) and check_screen_list_reverse(3, screen_list):
             return 6, content
-        if check_state_list_reverse(1, state_list, 4) and check_screen_list_reverse(2, screen_list) and cur_screen_node.is_screen_clickable_finished():
+        if cur_screen_node.is_screen_clickable_finished() and check_pattern_state(1, state_list, [4]) and check_screen_list_reverse(2, screen_list):
             return 8, content
         # 4说明已经点完, press_back
         if cur_screen_node.is_screen_clickable_finished():
@@ -423,6 +455,8 @@ def get_state():
         else:
             return 3, content
     else:
+        # 放到后面建立完成之后在添加
+        # screen_map[cur_screen_all_text] = cur_screen_node
         return 5, content
 
 
@@ -460,10 +494,11 @@ if __name__ == "__main__":
     # 启动app开始执行
     d = Device()
     screen_compare_strategy = ScreenCompareStrategy(LCSComparator())
+    default_screen_compare_strategy = ScreenCompareStrategy(LCSComparator(0.5))
     CLICK_MAX_CNT = 4
-    sleep_time_sec = 4
+    sleep_time_sec = 2
     # target_pkg_name = "com.example.myapplication"
-    target_pkg_name = "com.alibaba.android.rimet"
+    # target_pkg_name = "com.alibaba.android.rimet"
     # target_pkg_name = "net.csdn.csdnplus"
     # target_pkg_name = "com.sina.weibo"
     # target_pkg_name = "com.youku.phone"
@@ -473,7 +508,7 @@ if __name__ == "__main__":
     # target_pkg_name = "com.jingyao.easybike"
     # target_pkg_name = "com.cainiao.wireless"
     # target_pkg_name = "com.xingin.xhs"
-    # target_pkg_name = "com.yipiao"
+    target_pkg_name = "com.yipiao"
     # target_pkg_name = "app.podcast.cosmos"
     # target_pkg_name = "com.hunantv.imgo.activity"
     state_map = {

@@ -35,6 +35,21 @@ def check_state_list_reverse(k, state_list, target) -> bool:
             return False
     return True
 
+def check_pattern_state(k, state_list, exception_states) -> bool:
+    if k > len(state_list):
+        return True
+    for i in range(k):
+        is_ex = False
+        for ex in exception_states:
+            if state_list[len(state_list) - 1 - i] == ex:
+                is_ex = True
+                break
+        if is_ex == False:
+            return False
+    return True
+
+
+
 
 def check_screen_list_reverse(k, screen_list) -> bool:
     if k <= 1:

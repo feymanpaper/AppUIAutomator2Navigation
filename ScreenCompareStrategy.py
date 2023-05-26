@@ -2,7 +2,7 @@
 class BaseTextComparator(object):
 
     def __init__(self, threshold = 0.9):
-        self.threshold = 0.9
+        self.threshold = threshold
 
     def compare_text(self, text1: str, text2: str) -> tuple:
         pass
@@ -49,6 +49,8 @@ class EditDistanceComparator(BaseTextComparator):
 
 ## 最长公共子序列进行比较Screen文本
 class LCSComparator(BaseTextComparator):
+    def __init__(self, threshold = 0.9):
+        self.threshold = threshold
     def get_lcs(self, text1: str, text2: str) -> int:
         m, n = len(text1), len(text2)
         dp = [[0] * (n + 1) for _ in range(m + 1)]

@@ -38,7 +38,7 @@ def is_non_necessary_click(cur_clickable_ele_dict):
 
     # TODO 暂时忽略钉钉创建团队的场景
     non_necessary_list = ["相机", "照片", "拍照", "手机文件", "相册", "拍摄", "关注", "粉丝", "进入小红市", "退出登陆", "注销",
-                          "退出登录", "退出当前账号", "下载", "分享", "浏览器",
+                          "退出登录", "退出当前账号", "下载", "分享", "浏览器", "安装",
                           "image", 'Image', "photo", "Photo", "视频", "语音", "创建团队", "直播"]
     for non_necessary_str in non_necessary_list:
         if non_necessary_str in text:
@@ -67,25 +67,39 @@ def print_state(state_map, state):
     print(f"状态为{state} {state_map[state]}")
 
 
-def get_two_clickable_eles_diff(cur_eles, cur_activity, last_eles, last_activity):
+# def get_two_clickable_eles_diff(cur_eles, cur_activity, last_eles, last_activity):
+#     if last_eles is None or cur_eles is None or len(last_eles) == 0 or len(cur_eles) == 0:
+#         return False, None
+#     if cur_activity != last_activity:
+#         return False, None
+#     if len(cur_eles) <= len(last_eles):
+#         return False, None
+#
+#     # union_eles = union(d, cur_eles, cur_activity, last_eles, last_activity)
+#     intersection_eles = list(set(cur_eles).intersection(set(last_eles)))
+#     is_overlap = False
+#     if len(intersection_eles) / len(last_eles) >= 0.80:
+#         diff_eles = []
+#         is_overlap = True
+#         diff_eles = list(set(cur_eles).difference(last_eles))
+#         print(f"出现了重叠,可能为框,差分之后数量为{len(diff_eles)}")
+#         return is_overlap, diff_eles
+#     else:
+#         return is_overlap, None
+
+def get_two_clickable_eles_diff(cur_eles, last_eles):
     if last_eles is None or cur_eles is None or len(last_eles) == 0 or len(cur_eles) == 0:
-        return False, None
-    if cur_activity != last_activity:
-        return False, None
-    if len(cur_eles) <= len(last_eles):
-        return False, None
+        return None
+    # if cur_activity != last_activity:
+    #     return None
+    # if len(cur_eles) <= len(last_eles):
+    #     return False, None
 
     # union_eles = union(d, cur_eles, cur_activity, last_eles, last_activity)
-    intersection_eles = list(set(cur_eles).intersection(set(last_eles)))
-    is_overlap = False
-    if len(intersection_eles) / len(last_eles) >= 0.80:
-        diff_eles = []
-        is_overlap = True
-        diff_eles = list(set(cur_eles).difference(last_eles))
-        print(f"出现了重叠,可能为框,差分之后数量为{len(diff_eles)}")
-        return is_overlap, diff_eles
-    else:
-        return is_overlap, None
+    diff_eles = list(set(cur_eles).difference(last_eles))
+    print(f"出现了重叠,可能为框,差分之后数量为{len(diff_eles)}")
+    return diff_eles
+
 
 
 

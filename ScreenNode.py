@@ -1,5 +1,3 @@
-from utils import *
-
 class ScreenNode:
     def __init__(self):
         # 包名 + activity + 可点击组件的内部文本
@@ -22,12 +20,24 @@ class ScreenNode:
         # call_map:{key:widget_uuid, value: next_screen_node}
         # call_map主要记录哪些组件能到达下一个Screen
         self.call_map = {}
+        # cycle_set记录了哪些组件产生回边
+        self.cycle_set = set()
+        # 记录哪些候选的随机点击组件
+        self.candidate_random_clickable_eles = []
         # 记录每个组件的uid的点击次数 {key:cur_clickable_ele_uid, val:cnt}
         self.ele_uid_cnt_map = {}
         # 记录组件是否有被点击过 {key:cur_clickable_ele_uid, val:true/false}
         self.ele_vis_map = {}
         # 记录当前screen已经被点击过的组件个数
         self.already_clicked_cnt = 0
+
+    def build_candidate_random_clickable_eles(self):
+        for key, val in self.call_map.items():
+            self.candidate_random_clickable_eles.append(key)
+        for item in self.cycle_set:
+            self.candidate_random_clickable_eles.append(item)
+        return self.candidate_random_clickable_eles
+
 
     def get_diff_or_clickable_eles(self):
         if self.diff_clickable_elements is None:
