@@ -1,5 +1,4 @@
-from ScreenNode import ScreenNode
-
+from RuntimeContent import *
 def get_screen_all_text_from_dict(clickable_eles, ele_uid_map):
     text = ""
     for ele_uid in clickable_eles:
@@ -16,7 +15,8 @@ def get_screennode_from_screenmap(screen_map: dict, screen_text: str):
 
 
 # 从screen_map里得到取出和screen_text满足相似度阈值且相似度最高的screen_node
-def get_screennode_from_screenmap_by_similarity(screen_map: dict, screen_text: str, screen_compare_strategy) -> ScreenNode:
+def get_screennode_from_screenmap_by_similarity(screen_text: str, screen_compare_strategy) -> ScreenNode:
+    screen_map = RuntimeContent.get_instance().get_screen_map()
     if screen_map.get(screen_text, False) is False:
         # 如果没有,则遍历找满足相似度阈值的 
         max_similarity = 0
@@ -34,7 +34,8 @@ def get_screennode_from_screenmap_by_similarity(screen_map: dict, screen_text: s
     else:
         return screen_map.get(screen_text)
 
-def get_max_similarity_screen_node(screen_map: dict, screen_text: str, screen_compare_strategy) -> tuple[float | ScreenNode]:
+def get_max_similarity_screen_node(screen_text: str, screen_compare_strategy) -> tuple[float | ScreenNode]:
+    screen_map = RuntimeContent.get_instance().get_screen_map()
     if screen_map.get(screen_text, False) is False:
         # 如果没有,则遍历找满足相似度阈值的
         max_similarity = 0

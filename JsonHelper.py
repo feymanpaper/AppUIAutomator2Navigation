@@ -1,12 +1,14 @@
-from ScreenNode import *
 import json
+from RuntimeContent import *
 
-def dump_screen_map_to_json(file_name, screen_map:dict[str, ScreenNode]):
+def dump_screen_map_to_json(file_name):
+    screen_map = RuntimeContent.get_instance().get_screen_map()
     res_list = get_res_list_from_screenmap(screen_map)
     dump_to_json(file_name, res_list)
 
 def dump_to_json(file_name:str, res_list:list):
-    file_name = file_name + ".json"
+    file_name = "./dumpjson/"  + file_name + ".json"
+    # file_name = file_name + ".json"
     fw = open(file_name, 'w', encoding='utf-8')
     json.dump(res_list, fw, ensure_ascii = False)
     fw.close()

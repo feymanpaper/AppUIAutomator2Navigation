@@ -63,10 +63,6 @@ def print_screen_info(content, is_new):
     print("*" * 100)
 
 
-def print_state(state_map, state):
-    print(f"状态为{state} {state_map[state]}")
-
-
 # def get_two_clickable_eles_diff(cur_eles, cur_activity, last_eles, last_activity):
 #     if last_eles is None or cur_eles is None or len(last_eles) == 0 or len(cur_eles) == 0:
 #         return False, None
@@ -116,12 +112,4 @@ def get_cur_screen_node_from_context(content):
     return cur_screen_node
 
 
-def print_result(stat_activity_set, stat_screen_set, total_eles_cnt, start_time):
-    print("@" * 100)
-    print("@" * 100)
-    print(f"总共点击的activity个数 {len(stat_activity_set)}")
-    print(f"总共点击的Screen个数: {len(stat_screen_set)}")
-    print(f"总共点击的组件个数: {total_eles_cnt}")
-    end_time = time.time()
-    print(f"时间为 {end_time - start_time}")
 

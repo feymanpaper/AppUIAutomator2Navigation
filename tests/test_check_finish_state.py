@@ -6,13 +6,13 @@ class TestCheckFinishState(unittest.TestCase):
         k = 10
         exception_states = [4, 6, 8]
         state_list = [4, 6, 8, 4, 6, 8, 4, 6, 8, 4, 6, 8]
-        self.assertTrue(check_pattern_state(k, state_list, exception_states))
+        self.assertTrue(check_pattern_state(k, exception_states))
 
         state_list = [4, 6, 8, 4, 6, 8, 4, 6, 8, 1, 4, 6, 8]
-        self.assertFalse(check_pattern_state(k, state_list, exception_states))
+        self.assertFalse(check_pattern_state(k, exception_states))
 
         state_list = [4, 6, 8, 4, 6, 8, 4, 4, 4, 4, 4, 4, 4, 8]
-        self.assertTrue(check_pattern_state(k, state_list, exception_states))
+        self.assertTrue(check_pattern_state(k, exception_states))
 
 
 if __name__ == "__main__":

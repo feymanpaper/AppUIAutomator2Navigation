@@ -1,13 +1,15 @@
 from ScreenCompareStrategy import ScreenCompareStrategy
-
-def check_is_errorscreen(error_screen_list:list, screen_text:str, screen_compare_strategy: ScreenCompareStrategy) -> bool:
+from RuntimeContent import *
+def check_is_errorscreen(screen_text: str, screen_compare_strategy: ScreenCompareStrategy) -> bool:
+    error_screen_list = RuntimeContent.get_instance().get_error_screen_list()
     for err_screen_text in error_screen_list:
         simi_flag, cur_similarity = screen_compare_strategy.compare_screen(screen_text, err_screen_text)
         if simi_flag is True:
             return True
     return False
 
-def check_is_error_clickable_ele(error_clickable_ele_uid_list, clickable_ele_uid):
+def check_is_error_clickable_ele(clickable_ele_uid):
+    error_clickable_ele_uid_list = RuntimeContent.get_instance().get_error_clickable_ele_uid_list()
     for err_ele_uid in error_clickable_ele_uid_list:
         if err_ele_uid == clickable_ele_uid:
             return True
@@ -35,9 +37,10 @@ def check_state_list_reverse(k, state_list, target) -> bool:
             return False
     return True
 
-def check_pattern_state(k, state_list, exception_states) -> bool:
+def check_pattern_state(k, exception_states) -> bool:
+    state_list = RuntimeContent.get_instance().get_state_list()
     if k > len(state_list):
-        return True
+        return False
     for i in range(k):
         is_ex = False
         for ex in exception_states:
@@ -51,7 +54,8 @@ def check_pattern_state(k, state_list, exception_states) -> bool:
 
 
 
-def check_screen_list_reverse(k, screen_list) -> bool:
+def check_screen_list_reverse(k) -> bool:
+    screen_list = RuntimeContent.get_instance().get_screen_list()
     if k <= 1:
         return False
     if screen_list is None or len(screen_list) == 0:
