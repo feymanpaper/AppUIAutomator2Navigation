@@ -22,6 +22,6 @@ for idx, ele_id in enumerate(clickable_eles):
     # print(f"{idx} - {text}")
     print(f"{idx}--{ele_id}")
 # print(len(clickable_eles))
-# x, y = get_location(ele_uid_map[clickable_eles[11]])
-# d.click(x, y)
+x, y = get_location(ele_uid_map[clickable_eles[2]])
+d.click(x, y)
 # print("fck")

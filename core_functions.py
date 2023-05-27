@@ -38,7 +38,7 @@ def is_non_necessary_click(cur_clickable_ele_dict):
 
     # TODO 暂时忽略钉钉创建团队的场景
     non_necessary_list = ["相机", "照片", "拍照", "手机文件", "相册", "拍摄", "关注", "粉丝", "进入小红市", "退出登陆", "注销",
-                          "退出登录", "退出当前账号", "下载", "分享", "浏览器", "安装",
+                          "退出登录", "退出当前账号", "下载", "分享", "浏览器", "安装", "浮窗",
                           "image", 'Image', "photo", "Photo", "视频", "语音", "创建团队", "直播"]
     for non_necessary_str in non_necessary_list:
         if non_necessary_str in text:

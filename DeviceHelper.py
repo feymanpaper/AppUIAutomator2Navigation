@@ -64,8 +64,11 @@ def get_screen_all_clickable_text_and_loc(d):
                 #     continue
                 temp_text = element.get("text")
                 if temp_text:
+                    # 只取前10个字符，节省LCS算法计算的时间
+                    if len(temp_text) > 10:
+                        temp_text = temp_text[0:10]
                     loc_x, loc_y = get_location_from_xmlele(element)
-                    text += "--" + temp_text + " " + str(loc_x) + " " + str(loc_y)
+                    text += "&" + temp_text + " " + str(loc_x) + " " + str(loc_y)
                     # print(temp_text)
                 else:
                     text += traverse_tree_text_and_loc(element)
@@ -95,9 +98,12 @@ def traverse_tree_text_and_loc(node):
     text = ""
     if node is None:
         return text
-    if node.get("text"):
+    temp_text = node.get("text")
+    if temp_text:
+        if len(temp_text) > 10:
+            temp_text = temp_text[0:10]
         loc_x, loc_y = get_location_from_xmlele(node)
-        text += "--" + node.get("text") + " " + str(loc_x) + " " + str(loc_y)
+        text += "--" + temp_text + " " + str(loc_x) + " " + str(loc_y)
         return text
     for child in node:
         text += traverse_tree_text_and_loc(child)

@@ -31,6 +31,14 @@ class ScreenNode:
         # 记录当前screen已经被点击过的组件个数
         self.already_clicked_cnt = 0
 
+    def update_callmap_item(self, ele_uid:str) -> bool:
+        if ele_uid in self.call_map:
+            del self.call_map[ele_uid]
+            return True
+        else:
+            return False
+
+
     def build_candidate_random_clickable_eles(self):
         for key, val in self.call_map.items():
             self.candidate_random_clickable_eles.append(key)

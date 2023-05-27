@@ -132,3 +132,9 @@ def check_is_in_home_screen(cur_screen_pkg_name):
     if cur_screen_pkg_name == "com.google.android.apps.nexuslauncher":
         return True
     return False
+
+def check_is_in_webview(cur_activity:str) -> bool:
+    if "WebView" in cur_activity:
+        return True
+    else:
+        return False

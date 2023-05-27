@@ -41,6 +41,9 @@ def handle_double_press(content):
 def handle_inputmethod(content):
     press_back()
 
+def handle_WebView_screen(content):
+    press_back()
+
 def handle_exit_screen(content):
     press_back()
 
@@ -88,10 +91,6 @@ def get_permission_screen_node(content):
     cur_screen_node.merged_diff = res_merged_diff
     cur_screen_node.clickable_elements = clickable_eles
     cur_screen_node.all_text = cur_screen_all_text
-
-
-    stat_activity_set.add(cur_activity)  # 统计结果用
-    stat_screen_set.add(cur_screen_all_text)  # 统计结果用
     return cur_screen_node
 
 def add_new_screen_call_graph(content):
@@ -134,8 +133,6 @@ def add_new_screen_call_graph(content):
     # last_screen_node = screen_map.get(last_screen_all_text)
 
     last_screen_node.add_child(cur_screen_node)
-    stat_activity_set.add(cur_activity) #统计结果用
-    stat_screen_set.add(cur_screen_all_text) #统计结果用
     return cur_screen_node
 def add_exist_screen_call_graph(content):
     # cur_screen_pkg_name, cur_activity, cur_screen_all_text, cur_screen_info = get_screen_info(d)
@@ -229,11 +226,13 @@ def click_one_ele(content):
     # last_screen_node = get_screennode_from_screenmap(screen_map, last_screen_all_text)
     if last_screen_node.all_text == cur_screen_node.all_text:
         print("回到自己")
+        last_screen_node.update_callmap_item(last_clickable_ele_uid)
         pass
     elif check_cycle(cur_screen_node, last_screen_node, screen_compare_strategy) == True:
         #产生了回边
         last_screen_node.cycle_set.add(last_clickable_ele_uid)
         print("产生回边")
+        last_screen_node.update_callmap_item(last_clickable_ele_uid)
         pass
     else:
         if last_screen_all_text != "root":
@@ -262,6 +261,10 @@ def click_one_ele(content):
         if loc_x >=60 and loc_x <= 70 and loc_y == 162:
             cur_screen_node.already_clicked_cnt += 1
             clickable_ele_idx+=1
+            continue
+        if loc_x >= 998 and loc_x <= 1010 and loc_y >= 155 and loc_y <= 165:
+            cur_screen_node.already_clicked_cnt += 1
+            clickable_ele_idx += 1
             continue
 
     # for clickable_ele_idx, cur_clickable_ele_uid in enumerate(cur_screen_node_clickable_eles):
@@ -397,11 +400,15 @@ def do_transition(state, content):
         handle_system_permission_screen(content)
     elif state == 10:
         handle_outsystem_special_screen(content)
+    elif state == 11:
+        handle_WebView_screen(content)
     else:
         raise Exception("意外情况")
 
 def get_state():
     cur_screen_pkg_name, cur_activity, cur_screen_all_text = get_screen_info(d)
+    stat_activity_set.add(cur_activity)  # 统计结果用
+    stat_screen_set.add(cur_screen_all_text)  # 统计结果用
 
     content = {}
     content["cur_screen_pkg_name"] = cur_screen_pkg_name
@@ -422,6 +429,12 @@ def get_state():
     if check_is_inputmethod_in_cur_screen(d) == True:
         return 2, content
 
+    if check_is_in_webview(cur_activity) and check_pattern_state(5, state_list, [8, 11]):
+        return 7, content
+    if check_is_in_webview(cur_activity) and check_pattern_state(1, state_list, [11]):
+        return 8, content
+    if check_is_in_webview(cur_activity):
+        return 11, content
     # temp_screen_node = get_screennode_from_screenmap_by_similarity(screen_map, cur_screen_all_text, screen_compare_strategy)
     # if temp_screen_node is not None and len(temp_screen_node.clickable_elements) == clickable_cnt:
     #     cur_screen_node = temp_screen_node
@@ -498,7 +511,7 @@ if __name__ == "__main__":
     CLICK_MAX_CNT = 4
     sleep_time_sec = 2
     # target_pkg_name = "com.example.myapplication"
-    # target_pkg_name = "com.alibaba.android.rimet"
+    target_pkg_name = "com.alibaba.android.rimet"
     # target_pkg_name = "net.csdn.csdnplus"
     # target_pkg_name = "com.sina.weibo"
     # target_pkg_name = "com.youku.phone"
@@ -508,7 +521,7 @@ if __name__ == "__main__":
     # target_pkg_name = "com.jingyao.easybike"
     # target_pkg_name = "com.cainiao.wireless"
     # target_pkg_name = "com.xingin.xhs"
-    target_pkg_name = "com.yipiao"
+    # target_pkg_name = "com.yipiao"
     # target_pkg_name = "app.podcast.cosmos"
     # target_pkg_name = "com.hunantv.imgo.activity"
     state_map = {
@@ -521,7 +534,8 @@ if __name__ == "__main__":
         7: "出现了不可回退的框, 需要重启?",
         8: "出现了不可回退的框, 启用double_press_back",
         9: "出现了系统权限页面",
-        10: "出现了系统外不可回退的框"
+        10: "出现了系统外不可回退的框",
+        11: "当前Screen为WebView",
     }
     # 存储遍历过的screen
     screen_list = []
