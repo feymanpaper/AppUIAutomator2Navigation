@@ -1,7 +1,6 @@
 class ScreenNode:
     def __init__(self):
         # 包名 + activity + 可点击组件的内部文本
-        # self.info = ""
         # self.sig = ""
         self.all_text = ""
         # # 当前screen的上一个screen

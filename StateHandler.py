@@ -11,6 +11,7 @@ class StateHandler(object):
         9: "出现了系统权限页面",
         10: "出现了系统外不可回退的框",
         11: "当前Screen为WebView",
+        12: "当前Screen为error不该点",
     }
 
     @classmethod

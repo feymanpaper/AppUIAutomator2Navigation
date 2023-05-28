@@ -14,6 +14,9 @@ class RuntimeContent(object):
         # 全局记录每个组件的uid {key:cur_clickable_ele_uid, val:clickable_ele}
         self.ele_uid_map = {}
 
+        self.last_clickable_ele_uid = None
+        self.last_screen_node = None
+
 
 
     def __new__(cls, *args, **kwargs):
@@ -26,6 +29,18 @@ class RuntimeContent(object):
         if not hasattr(RuntimeContent, '_instance'):
             RuntimeContent._instance = RuntimeContent(*args, **kwargs)
         return RuntimeContent._instance
+
+    def get_last_clickable_ele_uid(self):
+        return self.last_clickable_ele_uid
+
+    def get_last_screen_node(self):
+        return self.last_screen_node
+
+    def set_last_screen_node(self, target):
+        self.last_screen_node = target
+
+    def set_last_clickable_ele_uid(self, ele_uid):
+        self.last_clickable_ele_uid = ele_uid
 
     def append_screen_list(self, screen_text):
         self.screen_list.append(screen_text)
