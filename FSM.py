@@ -1,5 +1,5 @@
 from uiautomator2 import Device
-from utils import *
+from core_functions import *
 from ScreenNode import *
 from ScreenCompareStrategy import *
 import signal
@@ -45,6 +45,9 @@ def handle_WebView_screen(content):
     press_back()
 
 def handle_exit_screen(content):
+    press_back()
+
+def handle_error_screen(Content):
     press_back()
 
 def handle_restart(content):
@@ -352,6 +355,8 @@ def do_transition(state, content):
         handle_outsystem_special_screen(content)
     elif state == 11:
         handle_WebView_screen(content)
+    elif state == 12:
+        handle_error_screen(content)
     else:
         raise Exception("意外情况")
 
@@ -378,7 +383,7 @@ def get_state():
     if check_is_inputmethod_in_cur_screen(d) == True:
         return 2, content
 
-    if check_is_in_webview(cur_activity) and check_pattern_state(5, [8, 11]):
+    if check_is_in_webview(cur_activity) and check_pattern_state(4, [8, 11]):
         return 7, content
     if check_is_in_webview(cur_activity) and check_pattern_state(1, [11]):
         return 8, content
@@ -399,8 +404,14 @@ def get_state():
     if sim >= 0.90:
         cur_screen_node = most_similar_screen_node
         RuntimeContent.get_instance().put_screen_map(cur_screen_all_text, cur_screen_node)
+
+        if check_is_errorscreen(cur_screen_all_text, screen_compare_strategy) and check_pattern_state(4, [12, 8]):
+            return 7, content
+        if check_is_errorscreen(cur_screen_all_text, screen_compare_strategy) and check_pattern_state(1, [12]) and check_screen_list_reverse(2):
+            return 8, content
         if check_is_errorscreen(cur_screen_all_text, screen_compare_strategy):
-            return 4, content
+            return 12, content
+
         # TODO k为6,表示出现了连续6个以上的pattern,且所有组件已经点击完毕,避免一些情况:页面有很多组件点了没反应,这个时候应该继续点而不是随机点
         # if check_state_list_reverse(1, state_list, 4) and check_screen_list_reverse(10, screen_list) and cur_screen_node.is_screen_clickable_finished():
         #     return 7, content

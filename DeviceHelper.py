@@ -1,6 +1,7 @@
 import xml.etree.ElementTree as ET
 import re
 from RuntimeContent import *
+from UITree import *
 
 system_view = [
     "com.android.systemui",
@@ -12,6 +13,78 @@ system_view = [
     "com.google.android.inputmethod.latin",
     "com.android.chrome"
 ]
+
+
+def get_xml_root(d):
+    text = ""
+    xml = d.dump_hierarchy()
+    root = ET.fromstring(xml)
+    return root
+
+
+def get_clickable_eles_tree(node, text, res: list, text_list: list):
+    if node is None:
+        return
+    if text:
+        text += "&"
+    if node.get("class"):
+        text += node.get("class")
+    if node.get("resource-id"):
+        text += node.get("resource-id")
+
+    if node.get('clickable') == 'true' and node.get("package") not in system_view and is_child_clickable(node) == False:
+        res.append(node)
+        temp_text = node.get("text")
+        if not temp_text:
+            temp_text = traverse_tree(node)
+        text += "@" + temp_text
+        text_list.append(text)
+        return
+    for child in node:
+        get_clickable_eles_tree(child, text, res, text_list)
+
+
+def build_hierarchy(text_list) -> UITreeNode:
+    root = UITreeNode("root")
+    root.isDir = True
+    tmp = ""
+    for text in text_list:
+        cur = root
+        for i in range(len(text) + 1):
+            if i < len(text) and text[i] == "&":
+                flag = False
+                for child in cur.childs:
+                    if child.name == tmp and child.isDir:
+                        cur = child
+                        flag = True
+                        break
+                if not flag:
+                    newChild = UITreeNode(tmp)
+                    newChild.isDir = True
+                    cur.childs.append(newChild)
+                    cur = newChild
+                tmp = ""
+            elif i == len(text):
+                if tmp != "":
+                    newChild = UITreeNode(tmp)
+                    newChild.isDir = False
+                    cur.childs.append(newChild)
+                tmp = ""
+            else:
+                tmp += text[i]
+    return root
+
+
+def print_ui_root(root: UITreeNode, level=1):
+    if root is None:
+        return
+    for i in range(level - 1):
+        print("  ", end="")
+    print("--", end="")
+    print(root.name)
+    root.childs = sorted(root.childs)
+    for child in root.childs:
+        print_ui_root(child, level + 1)
 
 
 # screen_info = package_name + activity_name + screen_all_text
@@ -54,6 +127,7 @@ def traverse_tree(node):
         text += traverse_tree(child)
     return text
 
+
 def get_screen_all_clickable_text_and_loc(d):
     text = ""
     xml = d.dump_hierarchy()
@@ -75,6 +149,7 @@ def get_screen_all_clickable_text_and_loc(d):
                     text += traverse_tree_text_and_loc(element)
     return text
 
+
 def get_screen_all_clickable_elements_text_loc_cnt(d):
     xml = d.dump_hierarchy()
     root = ET.fromstring(xml)
@@ -89,8 +164,9 @@ def get_screen_all_clickable_elements_text_loc_cnt(d):
                 temp_text = element.get("text")
                 loc_x, loc_y = get_location_from_xmlele(element)
                 text += "--" + temp_text + " " + str(loc_x) + " " + str(loc_y)
-                cnt +=1
+                cnt += 1
     return text, cnt
+
 
 def traverse_tree_text_and_loc(node):
     text = ""
@@ -132,8 +208,6 @@ def get_clickable_elements(d, activity_name):
     return clickable_elements
 
 
-
-
 # 只有可点的最细化节点可以当成clickable_ele
 def is_child_clickable(node) -> bool:
     if node is None:
@@ -161,7 +235,6 @@ def get_merged_clickable_elements(d, activity_name):
     return merged_clickable_eles, pre_len - after_len
 
 
-
 def is_privacy_information_in_ele_dict(clickable_ele_dict):
     text = clickable_ele_dict["text"]
     single_word_privacy_information = ["我", "我的", "编辑资料", "编辑材料"]
@@ -174,8 +247,6 @@ def is_privacy_information_in_ele_dict(clickable_ele_dict):
         if p_info in text:
             return True
     return False
-
-
 
 
 # 优化: 若clickable_eles中存在连续k个相同的ele,合并为1个,不用每个都点击
@@ -225,8 +296,6 @@ def merge_same_clickable_elements_row(k, clickable_eles: list) -> list:
                 l += 1
         l = r
     return res
-
-
 
 
 def is_same_two_clickable_eles_row(ele1_uid, ele2_uid) -> bool:
@@ -411,7 +480,6 @@ def get_all_eles(d):
             text = element.get("text")
             click = element.get("clickable")
             print(f"{resource_id}-{text}-{click}")
-
 
 # # 对screen_info进行sha256签名,生成消息摘要
 # def get_signature(screen_info):

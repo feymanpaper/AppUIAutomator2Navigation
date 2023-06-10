@@ -1,9 +1,9 @@
 import sys
 sys.path.append("..")
-from utils import *
 from uiautomator2 import Device
 import xml.etree.ElementTree as ET
 from FSM import *
+from core_functions import *
 
 
 def press_back():

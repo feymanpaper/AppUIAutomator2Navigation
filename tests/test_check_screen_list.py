@@ -1,9 +1,7 @@
 import random
-
-from core_functions import *
-from utils import *
 from ScreenCompareStrategy import *
 import unittest
+from core_functions import *
 
 
 class TestCheckScreenList(unittest.TestCase):

@@ -1,5 +1,4 @@
 from core_functions import *
-from utils import *
 from ScreenCompareStrategy import *
 import unittest
 

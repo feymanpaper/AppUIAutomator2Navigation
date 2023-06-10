@@ -1,6 +1,6 @@
 import sys 
 sys.path.append("..")
-from utils import *
+from core_functions import *
 from uiautomator2 import Device
 
 # k = 6
@@ -25,7 +25,7 @@ all_text = []
 d = Device()
 umap = {}
 
-temp_screen_pkg, temp_activity, temp_all_text, temp_screen_info = get_screen_info(d)
+temp_screen_pkg, temp_activity, temp_all_text, temp_screen_info = self.target_pkg_name(d)
 
 clickable_eles = get_clickable_elements(d, umap, temp_activity)
 # print(f"{temp_screen_pkg}  {temp_activity}  {temp_all_text}")
