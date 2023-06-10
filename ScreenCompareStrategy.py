@@ -1,4 +1,4 @@
-from Memory import Memory
+from RuntimeContent import *
 
 ## 抽象文本比较策略类
 class BaseTextComparator(object):
@@ -87,11 +87,11 @@ class ScreenCompareStrategy(object):
         if text1 == text2:
             return True, 1
         else:
-            query_res = Memory.get_instance().query_simi_mem((text1, text2))
+            query_res = RuntimeContent.get_instance().query_simi_mem((text1, text2))
             if query_res is None:
                 flag, similarity = self.screen_compare_strategy.compare_text(text1, text2)
-                Memory.get_instance().update_simi_mem((text1, text2), (flag, similarity))
-                Memory.get_instance().update_simi_mem((text2, text1), (flag, similarity))
+                RuntimeContent.get_instance().update_simi_mem((text1, text2), (flag, similarity))
+                RuntimeContent.get_instance().update_simi_mem((text2, text1), (flag, similarity))
                 return flag, similarity
             else:
                 return query_res

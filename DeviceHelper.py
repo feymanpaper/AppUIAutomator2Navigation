@@ -1,7 +1,7 @@
 import xml.etree.ElementTree as ET
 import re
 from RuntimeContent import *
-from UITree import *
+from UITreeNode import *
 
 system_view = [
     "com.android.systemui",
@@ -15,14 +15,22 @@ system_view = [
 ]
 
 
-def get_xml_root(d):
-    text = ""
+def get_ck_eles_hierarchy() -> list:
+    xml_root = get_dump_hierarchy()
+    text_list = []
+    get_clickable_eles_tree(xml_root, "", text_list)
+    ui_root = build_hierarchy(text_list)
+    res = to_string_hierarchy(ui_root, 1)
+    return res
+
+def get_dump_hierarchy():
+    d = RuntimeContent.get_instance().get_device()
     xml = d.dump_hierarchy()
     root = ET.fromstring(xml)
     return root
 
 
-def get_clickable_eles_tree(node, text, res: list, text_list: list):
+def get_clickable_eles_tree(node, text, text_list: list):
     if node is None:
         return
     if text:
@@ -33,7 +41,6 @@ def get_clickable_eles_tree(node, text, res: list, text_list: list):
         text += node.get("resource-id")
 
     if node.get('clickable') == 'true' and node.get("package") not in system_view and is_child_clickable(node) == False:
-        res.append(node)
         temp_text = node.get("text")
         if not temp_text:
             temp_text = traverse_tree(node)
@@ -41,7 +48,7 @@ def get_clickable_eles_tree(node, text, res: list, text_list: list):
         text_list.append(text)
         return
     for child in node:
-        get_clickable_eles_tree(child, text, res, text_list)
+        get_clickable_eles_tree(child, text, text_list)
 
 
 def build_hierarchy(text_list) -> UITreeNode:
@@ -74,6 +81,18 @@ def build_hierarchy(text_list) -> UITreeNode:
                 tmp += text[i]
     return root
 
+def to_string_hierarchy(root: UITreeNode, level = 1) -> str:
+    if root is None:
+        return ""
+    str = ""
+    for i in range(level - 1):
+        str += "  "
+    str += "--"
+    str += root.name + "\n"
+    root.childs = sorted(root.childs)
+    for child in root.childs:
+        str += to_string_hierarchy(child, level + 1)
+    return str
 
 def print_ui_root(root: UITreeNode, level=1):
     if root is None:
@@ -205,8 +224,11 @@ def get_clickable_elements(d, activity_name):
                     clickable_elements.insert(0, uid)
                 else:
                     clickable_elements.append(uid)
+
     return clickable_elements
 
+def remove_dup(old_list) -> list:
+    return  list(dict.fromkeys(old_list))
 
 # 只有可点的最细化节点可以当成clickable_ele
 def is_child_clickable(node) -> bool:
@@ -221,7 +243,8 @@ def is_child_clickable(node) -> bool:
 
 
 # 进行合并,对于选择国家和地区的场景,进行优化
-def get_merged_clickable_elements(d, activity_name):
+def get_merged_clickable_elements(activity_name):
+    d = RuntimeContent.get_instance().get_device()
     clickable_eles = get_clickable_elements(d, activity_name)
 
     pre_len = len(clickable_eles)

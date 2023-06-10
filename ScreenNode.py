@@ -16,6 +16,7 @@ class ScreenNode:
         self.activity_name = ""
 
 
+
         # call_map:{key:widget_uuid, value: next_screen_node}
         # call_map主要记录哪些组件能到达下一个Screen
         self.call_map = {}

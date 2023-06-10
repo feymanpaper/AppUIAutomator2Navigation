@@ -1,22 +1,10 @@
 from uiautomator2 import Device
-from core_functions import *
-from ScreenNode import *
-from ScreenCompareStrategy import *
-import signal
-import time
-from RestartException import RestartException
-from StatRecorder import *
-from core_functions import *
-from StateChecker import *
-from DeviceHelper import *
 from JsonHelper import *
-from Config import *
 from StateHandler import *
 from RuntimeContent import *
-import random
+from DeviceHelper import *
 import logging
 import sys
-
 
 def suppress_keyboard_interrupt_message():
     old_excepthook = sys.excepthook
@@ -33,330 +21,33 @@ def suppress_keyboard_interrupt_message():
     sys.excepthook = new_hook
 
 
-def handle_exit_app(content):
-    press_back()
-
-def handle_double_press(content):
-    double_press_back()
-def handle_inputmethod(content):
-    press_back()
-
-def handle_WebView_screen(content):
-    press_back()
-
-def handle_exit_screen(content):
-    press_back()
-
-def handle_error_screen(Content):
-    press_back()
-
-def handle_restart(content):
-    RuntimeContent.get_instance().append_error_screen_list(content["cur_screen_all_text"])
-    RuntimeContent.get_instance().append_error_clickable_ele_uid_list(RuntimeContent.get_instance().get_last_clickable_ele_uid())
-    raise RestartException("重启机制")
-
-def handle_system_permission_screen(content):
-    cur_screen_node = add_new_screen_call_graph(content)
-    content["cur_screen_node"] = cur_screen_node
-    RuntimeContent.get_instance().append_screen_list(content["cur_screen_all_text"])
-    print_screen_info(content, False)
-    random_click_one_ele(content)
-
-def handle_special_screen(content):
-    cur_screen_node = add_exist_screen_call_graph(content)
-    print_screen_info(content, False)
-    random_click_one_ele(content)
-
-def handle_outsystem_special_screen(content):
-    cur_screen_node = add_new_screen_call_graph(content)
-    content["cur_screen_node"] = cur_screen_node
-    print_screen_info(content, True)
-    random_click_one_ele(content)
-
-def handle_new_screen(content):
-    cur_screen_node = add_new_screen_call_graph(content)
-    content["cur_screen_node"] = cur_screen_node
-    print_screen_info(content, True)
-    click_one_ele(content)
-
-def handle_exist_screen(content):
-    cur_screen_node = add_exist_screen_call_graph(content)
-    print_screen_info(content, False)
-    click_one_ele(content)
-
-def get_permission_screen_node(content):
-    cur_screen_pkg_name, cur_activity, cur_screen_all_text = get_screen_info_from_context(content)
-    cur_screen_node = ScreenNode()
-    # cur_screen_node.info = cur_screen_info
-    cur_screen_node.pkg_name = cur_screen_pkg_name
-    cur_screen_node.activity_name = cur_activity
-    clickable_eles, res_merged_diff = get_merged_clickable_elements(d, cur_activity)
-    cur_screen_node.merged_diff = res_merged_diff
-    cur_screen_node.clickable_elements = clickable_eles
-    cur_screen_node.all_text = cur_screen_all_text
-    return cur_screen_node
-
-def add_new_screen_call_graph(content):
-    cur_screen_pkg_name, cur_activity, cur_screen_all_text = get_screen_info_from_context(content)
-    last_screen_node = RuntimeContent.get_instance().get_last_screen_node()
-    # 初始化cur_screen_node信息
-    cur_screen_node = ScreenNode()
-    # cur_screen_node.info = cur_screen_info
-    # cur_screen_node.sig = cur_screen_sig
-    cur_screen_node.pkg_name = cur_screen_pkg_name
-    cur_screen_node.activity_name = cur_activity
-    clickable_eles, res_merged_diff = get_merged_clickable_elements(d, cur_activity)
-    last_clickable_elements = last_screen_node.get_exactly_clickable_eles()
-
-    sim = content["sim"]
-    most_similar_screen_node = content["most_similar_screen_node"]
-    if sim >= 0.70:
-    # TODO
-        most_sim_clickable_elements = most_similar_screen_node.get_exactly_clickable_eles()
-        diff_list = get_two_clickable_eles_diff(clickable_eles, most_sim_clickable_elements)
-        cur_screen_node.diff_clickable_elements = diff_list
-    #     cur_screen_node.merged_diff = res_merged_diff
-    #     cur_screen_node.clickable_elements = clickable_eles
-    #     # diff_text = get_screen_all_text_from_dict(diff_list, ele_uid_map)
-    #     # cur_screen_all_text = diff_text
-    #     cur_screen_node.all_text = cur_screen_all_text
-    #     screen_map[cur_screen_all_text] = cur_screen_node
-    # else:
-    cur_screen_node.merged_diff = res_merged_diff
-    cur_screen_node.clickable_elements = clickable_eles
-    cur_screen_node.all_text = cur_screen_all_text
-
-    # 将cur_screen加入到全局记录的screen_map
-    RuntimeContent.get_instance().put_screen_map(cur_screen_all_text, cur_screen_node)
-    # 将cur_screen加入到last_screen的子节点
-    last_screen_node.add_child(cur_screen_node)
-    return cur_screen_node
-def add_exist_screen_call_graph(content):
-    # cur_screen_pkg_name, cur_activity, cur_screen_all_text, cur_screen_info = get_screen_info(d)
-    cur_screen_pkg_name, cur_activity, cur_screen_all_text = get_screen_info_from_context(content)
-    cur_screen_node = get_cur_screen_node_from_context(content)
-    # 将cur_screen加入到last_screen的子节点
-    last_screen_node = RuntimeContent.get_instance().get_last_screen_node()
-    last_screen_node.add_child(cur_screen_node)
-    return cur_screen_node
-
-
-def random_click_one_ele(content):
-    # TODO
-    print("可能产生了不可去掉的框")
-    cur_screen_node = get_cur_screen_node_from_context(content)
-
-    cur_screen_node_clickable_eles = cur_screen_node.get_diff_or_clickable_eles()
-    cur_screen_pkg_name, cur_activity, cur_screen_all_text = get_screen_info_from_context(content)
-
-    #TODO
-    candidate = None
-    if cur_screen_node.candidate_random_clickable_eles is None or len(cur_screen_node.candidate_random_clickable_eles) == 0:
-        candidate = cur_screen_node.build_candidate_random_clickable_eles()
-    else:
-        candidate = cur_screen_node.candidate_random_clickable_eles
-
-    if candidate is None or len(candidate) == 0:
-        return
-
-    # choose = random.randint(0, len(cur_screen_node_clickable_eles) - 1)
-    # cur_clickable_ele_uid = cur_screen_node_clickable_eles[choose]
-    choose = random.randint(0, len(cur_screen_node.candidate_random_clickable_eles) - 1)
-    cur_clickable_ele_uid = cur_screen_node.candidate_random_clickable_eles[choose]
-    cur_clickable_ele_dict = RuntimeContent.get_instance().get_ele_uid_map_by_uid(cur_clickable_ele_uid)
-    loc_x, loc_y = get_location(cur_clickable_ele_dict)
-    cur_screen_node.ele_vis_map[cur_clickable_ele_uid] = True
-    # 点击该组件
-    print(f"随机点击组件&{choose}: {cur_clickable_ele_uid}")
-    StatRecorder.get_instance().inc_total_ele_cnt()
-    RuntimeContent.get_instance().set_last_screen_node(cur_screen_node)
-    RuntimeContent.get_instance().set_last_clickable_ele_uid(cur_clickable_ele_uid)
-    d.click(loc_x, loc_y)
-    time.sleep(Config.get_instance().get_sleep_time_sec())
-
-def click_one_ele(content):
-    # 遍历cur_screen的所有可点击组件
-    cur_screen_node = get_cur_screen_node_from_context(content)
-    cur_screen_pkg_name, cur_activity, cur_screen_all_text = get_screen_info_from_context(content)
-
-    cur_screen_node_clickable_eles = cur_screen_node.get_diff_or_clickable_eles()
-
-    last_screen_node = RuntimeContent.get_instance().get_last_screen_node()
-
-    if last_screen_node.all_text == cur_screen_node.all_text:
-        print("回到自己")
-        last_screen_node.update_callmap_item(RuntimeContent.get_instance().get_last_clickable_ele_uid())
-        pass
-    elif check_cycle(cur_screen_node, last_screen_node, screen_compare_strategy) == True:
-        #产生了回边
-        last_screen_node.cycle_set.add(RuntimeContent.get_instance().get_last_clickable_ele_uid())
-        print("产生回边")
-        last_screen_node.update_callmap_item(RuntimeContent.get_instance().get_last_clickable_ele_uid())
-        pass
-    else:
-        if last_screen_node.all_text != "root":
-            #call_map会更新
-            last_screen_node.call_map[RuntimeContent.get_instance().get_last_clickable_ele_uid()] = cur_screen_node
-        # else:
-        #     first_screen_text = cur_screen_all_text
-
-
-
-    clickable_ele_idx = cur_screen_node.already_clicked_cnt
-    while clickable_ele_idx < len(cur_screen_node_clickable_eles):
-        cur_clickable_ele_uid = cur_screen_node_clickable_eles[clickable_ele_idx]
-
-        # TODO 仅调试使用
-        # if clickable_ele_idx <= 0:
-        #     cur_screen_node.already_clicked_cnt += 1
-        #     clickable_ele_idx+=1
-        #     continue
-        cur_clickable_ele_dict = RuntimeContent.get_instance().get_ele_uid_map_by_uid(cur_clickable_ele_uid)
-
-        loc_x, loc_y = get_location(cur_clickable_ele_dict)
-        if loc_x >=60 and loc_x <= 70 and loc_y == 162:
-            cur_screen_node.already_clicked_cnt += 1
-            clickable_ele_idx+=1
-            continue
-        if loc_x >= 998 and loc_x <= 1010 and loc_y >= 155 and loc_y <= 165:
-            cur_screen_node.already_clicked_cnt += 1
-            clickable_ele_idx += 1
-            continue
-
-    # for clickable_ele_idx, cur_clickable_ele_uid in enumerate(cur_screen_node_clickable_eles):
-        #--------------------------------------
-        #判断当前组件是否需要访问
-        #1.如果没访问过，即vis_map[uid]=False，就直接访问
-        #2.如果访问过了，即vis_map[uid]=True,还得判断该组件是否是
-        #当前callmap的，如果是还需要递归判断该组件对应的call_map里面的节点(screen)
-        #的所有组件是否访问完毕
-
-        # 表示该组件已经访问过
-        # +1是因为下标从0开始
-        # cur_screen_node.already_clicked_cnt = clickable_ele_idx + 1
-        # uid = get_uid(cur_clickable_ele, d, umap, cur_activity)
-        cur_screen_ele_dict = RuntimeContent.get_instance().get_ele_uid_map_by_uid(cur_clickable_ele_uid)
-        if is_non_necessary_click(cur_screen_ele_dict):
-            cur_screen_node.ele_vis_map[cur_clickable_ele_uid] = True
-            if cur_screen_node.ele_uid_cnt_map.get(cur_clickable_ele_uid, None) is None:
-                cur_screen_node.ele_uid_cnt_map[cur_clickable_ele_uid] = 1
-            else:
-                cur_screen_node.ele_uid_cnt_map[cur_clickable_ele_uid] += 1
-            print(f"省略组件&{clickable_ele_idx}: {cur_clickable_ele_uid}")
-            clickable_ele_idx +=1
-            cur_screen_node.already_clicked_cnt += 1
-            continue
-
-        if cur_screen_node.ele_vis_map.get(cur_clickable_ele_uid, False) == False:
-            # 拿到该组件的坐标x, y
-            cur_clickable_ele_dict = RuntimeContent.get_instance().get_ele_uid_map_by_uid(cur_clickable_ele_uid)
-            loc_x, loc_y = get_location(cur_clickable_ele_dict)
-            cur_screen_node.ele_vis_map[cur_clickable_ele_uid] = True
-            #点击该组件
-            print(f"正常点击组件&{clickable_ele_idx}: {cur_clickable_ele_uid}")
-            StatRecorder.get_instance().inc_total_ele_cnt()
-            RuntimeContent.get_instance().set_last_screen_node(cur_screen_node)
-            RuntimeContent.get_instance().set_last_clickable_ele_uid(cur_clickable_ele_uid)
-
-            if cur_screen_node.ele_uid_cnt_map.get(cur_clickable_ele_uid, None) is None:
-                cur_screen_node.ele_uid_cnt_map[cur_clickable_ele_uid] = 1
-            else:
-                cur_screen_node.ele_uid_cnt_map[cur_clickable_ele_uid] += 1
-
-            d.click(loc_x, loc_y)
-            time.sleep(Config.get_instance().get_sleep_time_sec())
-            return 
-
-        else:
-            # if cur_screen_node.ele_uid_cnt_map.get(cur_clickable_ele_uid) is not None and cur_screen_node.ele_uid_cnt_map.get(cur_clickable_ele_uid) > Config.get_instance().get_CLICK_MAX_CNT():
-            #     print(f"该组件点击次数过多不点了&{clickable_ele_idx}: {cur_clickable_ele_uid}")
-            #     cur_screen_node.already_clicked_cnt += 1
-            #     clickable_ele_idx += 1
-            if cur_screen_node.call_map.get(cur_clickable_ele_uid, None) is not None:
-                target_screen_node = cur_screen_node.call_map.get(cur_clickable_ele_uid, None)
-                target_screen_all_text = target_screen_node.all_text
-
-                if check_is_error_clickable_ele(cur_clickable_ele_uid) == True:
-                    print(f"该组件会触发error screen因此跳过&{clickable_ele_idx}: {cur_clickable_ele_uid}")
-                    cur_screen_node.already_clicked_cnt += 1
-                    clickable_ele_idx += 1
-                    continue
-
-                if check_is_errorscreen(target_screen_all_text, screen_compare_strategy) == True:
-                    print(f"该组件会触发error screen因此跳过&{clickable_ele_idx}: {cur_clickable_ele_uid}")
-                    cur_screen_node.already_clicked_cnt += 1
-                    clickable_ele_idx += 1
-                    continue
-                if cur_screen_node.is_cur_callmap_finish(target_screen_all_text, screen_compare_strategy) == False:
-                    # click_map指示存在部分没完成
-                    cur_clickable_ele_dict = RuntimeContent.get_instance().get_ele_uid_map_by_uid(cur_clickable_ele_uid)
-                    loc_x, loc_y = get_location(cur_clickable_ele_dict)
-                    print(f"clickmap没完成点击组件&{clickable_ele_idx}: {cur_clickable_ele_uid}")
-                    StatRecorder.get_instance().inc_total_ele_cnt()
-                    RuntimeContent.get_instance().set_last_screen_node(cur_screen_node)
-                    RuntimeContent.get_instance().set_last_clickable_ele_uid(cur_clickable_ele_uid)
-
-                    if cur_screen_node.ele_uid_cnt_map.get(cur_clickable_ele_uid, None) is None:
-                        cur_screen_node.ele_uid_cnt_map[cur_clickable_ele_uid] = 0
-                    else:
-                        cur_screen_node.ele_uid_cnt_map[cur_clickable_ele_uid] += 1
-
-                    d.click(loc_x, loc_y) 
-                    time.sleep(Config.get_instance().get_sleep_time_sec())
-                    return 
-                
-                else:
-                    print(f"clickmap--该界面点击完成&{clickable_ele_idx}: {cur_clickable_ele_uid}")
-                    cur_screen_node.already_clicked_cnt += 1
-                    clickable_ele_idx += 1
-            else:
-                print(f"已点击过&{clickable_ele_idx}: {cur_clickable_ele_uid}")
-                cur_screen_node.already_clicked_cnt += 1
-                clickable_ele_idx += 1
-
-        # clickable_ele_idx +=1
-        
-
-def press_back():
-    d.press("back")
-    print("进行回退")
-    time.sleep(Config.get_instance().get_sleep_time_sec())
-    return
-
-def double_press_back():
-    d.press("back")
-    d.press("back")
-    time.sleep(Config.get_instance().get_sleep_time_sec())
-    return
-
-
 
 def do_transition(state, content):
     if state == 1:
-        handle_exit_app(content)
+        StateHandler.handle_exit_app(content)
     elif state == 2:
-        handle_inputmethod(content)
+        StateHandler.handle_inputmethod(content)
     elif state == 3:
-        handle_exist_screen(content)
+        StateHandler.handle_exist_screen(content)
     elif state == 4:
-        handle_exit_screen(content)
+        StateHandler.handle_exit_screen(content)
     elif state == 5:
-        handle_new_screen(content)
+        StateHandler.handle_new_screen(content)
     elif state == 6:
-        handle_special_screen(content)
+        StateHandler.handle_special_screen(content)
     elif state == 7:
         # TODO 重启机制
-        handle_restart(content)
+        StateHandler.handle_restart(content)
     elif state == 8:
-        handle_double_press(content)
+        StateHandler.handle_double_press(content)
     elif state == 9:
-        handle_system_permission_screen(content)
+        StateHandler.handle_system_permission_screen(content)
     elif state == 10:
-        handle_outsystem_special_screen(content)
+        StateHandler.handle_outsystem_special_screen(content)
     elif state == 11:
-        handle_WebView_screen(content)
+        StateHandler.handle_WebView_screen(content)
     elif state == 12:
-        handle_error_screen(content)
+        StateHandler.handle_error_screen(content)
     else:
         raise Exception("意外情况")
 
@@ -463,7 +154,6 @@ def FSM():
 
 if __name__ == "__main__":
 
-    d = Device()
     screen_compare_strategy = ScreenCompareStrategy(LCSComparator())
     default_screen_compare_strategy = ScreenCompareStrategy(LCSComparator(0.5))
 
@@ -479,6 +169,7 @@ if __name__ == "__main__":
     restart_cnt = 0
     while True:
         ## 启动app
+        d = RuntimeContent.get_instance().get_device()
         d.app_start(Config.get_instance().get_target_pkg_name(), use_monkey=True)
         time.sleep(10)
         try:

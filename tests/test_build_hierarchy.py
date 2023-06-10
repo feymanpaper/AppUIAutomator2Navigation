@@ -13,7 +13,7 @@ class TestElesTree(unittest.TestCase):
 
     def test_case1(self):
         d = Device()
-        xml_root = get_xml_root(d)
+        xml_root = get_xml_root()
         res_list = []
         text_list = []
         get_clickable_eles_tree(xml_root, "", res_list, text_list)

@@ -1,5 +1,5 @@
 from DeviceHelper import get_clickable_eles_tree
-from DeviceHelper import get_xml_root
+from DeviceHelper import get_dump_hierarchy
 from DeviceHelper import build_hierarchy
 from uiautomator2 import Device
 import unittest
@@ -8,7 +8,7 @@ from DeviceHelper import print_ui_root
 class TestElesTree(unittest.TestCase):
     def test_case1(self):
         d = Device()
-        xml_root = get_xml_root(d)
+        xml_root = get_dump_hierarchy()
         res_list = []
         text_list = []
         get_clickable_eles_tree(xml_root, "", res_list, text_list)
