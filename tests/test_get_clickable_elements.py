@@ -6,7 +6,7 @@ all_text = []
 d = Device()
 ele_uid_map = {}
 
-temp_screen_pkg, temp_activity, temp_all_text = get_screen_info(d)
+temp_screen_pkg, temp_activity, temp_all_text = get_screen_info()
 
 clickable_eles = get_clickable_elements(d, temp_activity)
 

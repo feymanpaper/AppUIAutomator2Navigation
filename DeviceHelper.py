@@ -107,7 +107,8 @@ def print_ui_root(root: UITreeNode, level=1):
 
 
 # screen_info = package_name + activity_name + screen_all_text
-def get_screen_info(d):
+def get_screen_info():
+    d = RuntimeContent.get_instance().get_device()
     current_screen = d.current_app()
     pkg_name = current_screen['package']
     act_name = current_screen['activity']

@@ -115,7 +115,8 @@ def check_screen_list_by_pattern_order(k, screen_list, step) -> bool:
     return True
 
 
-def check_is_inputmethod_in_cur_screen(d):
+def check_is_inputmethod_in_cur_screen():
+    d = RuntimeContent.get_instance().get_device()
     # 小米的输入法
     if d(packageName="com.sohu.inputmethod.sogou.xiaomi").exists():
         return True
