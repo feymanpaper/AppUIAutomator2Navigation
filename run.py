@@ -30,7 +30,7 @@ if __name__ == "__main__":
 
     FSM = FSM()
     root = ScreenNode()
-    root.all_text = "root"
+    root.ck_eles_text = "root"
     RuntimeContent.get_instance().set_last_screen_node(root)
     RuntimeContent.get_instance().put_screen_map("root", root)
 

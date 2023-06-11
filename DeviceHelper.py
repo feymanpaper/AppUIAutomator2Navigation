@@ -112,8 +112,8 @@ def get_screen_info():
     current_screen = d.current_app()
     pkg_name = current_screen['package']
     act_name = current_screen['activity']
-    all_text = get_screen_all_clickable_text_and_loc(d)
-    return pkg_name, act_name, all_text
+    ck_eles_text = get_screen_all_clickable_text_and_loc(d)
+    return pkg_name, act_name, ck_eles_text
 
 
 # 获取当前界面所有的可点击组件的文本内容，如果该节点可点但没有文本
@@ -229,7 +229,7 @@ def get_clickable_elements(d, activity_name):
     return clickable_elements
 
 def remove_dup(old_list) -> list:
-    return  list(dict.fromkeys(old_list))
+    return list(dict.fromkeys(old_list))
 
 # 只有可点的最细化节点可以当成clickable_ele
 def is_child_clickable(node) -> bool:
@@ -436,7 +436,7 @@ def print_current_window_all_clickable_elements(d):
         print(ele.info.get('text'))
 
 
-# com.alibaba.android.rimet
+
 def get_current_window_package(d):
     current_app = d.current_app()
     return current_app['package']
@@ -479,31 +479,25 @@ def print_current_window_detailed_elements(d):
     y = (top + bottom) // 2
 
 
-# 获取当前界面所有文本，包括不可点组件
-def get_all_text(d):
+def get_screen_text():
+    """
+    Get all text of the current Screen, including the non-clickable and clickable elements
+    :return: all text of current Screen
+    """
+    root = get_dump_hierarchy()
     text = ""
-    xml = d.dump_hierarchy()
-    root = ET.fromstring(xml)
     for element in root.findall('.//node'):
-        if element.get("package") not in system_view:
-            temp_text = element.get("text")
-            if temp_text:
-                text += temp_text + " "
-                # print(temp_text)
+        if element.get("package") in system_view:
+            continue
+        temp_text = element.get("text")
+        if temp_text:
+            if text == "":
+                text += temp_text
+            else:
+                text += "," + temp_text
     return text
 
 
-# 获取当前界面所有组件，包括不可点的
-def get_all_eles(d):
-    text = ""
-    xml = d.dump_hierarchy()
-    root = ET.fromstring(xml)
-    for element in root.findall('.//node'):
-        if element.get("package") not in system_view:
-            resource_id = element.get("resource-id")
-            text = element.get("text")
-            click = element.get("clickable")
-            print(f"{resource_id}-{text}-{click}")
 
 # # 对screen_info进行sha256签名,生成消息摘要
 # def get_signature(screen_info):

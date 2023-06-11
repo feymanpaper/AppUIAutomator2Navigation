@@ -2,7 +2,8 @@ class ScreenNode:
     def __init__(self):
         # 包名 + activity + 可点击组件的内部文本
         # self.sig = ""
-        self.all_text = ""
+        # 所有可点击组件的文本和位置
+        self.ck_eles_text = ""
         # # 当前screen的上一个screen
         # self.parent = None
         # 当前screen的下一个screen
@@ -12,8 +13,9 @@ class ScreenNode:
         self.diff_clickable_elements = None
         self.merged_diff = -1
         self.pkg_name = ""
-        self.class_name = ""
         self.activity_name = ""
+        # 所有组件的文本,包括不可点击组件的文本
+        self.screen_text = ""
 
 
 
@@ -108,7 +110,7 @@ class ScreenNode:
         # 根据call_map来找,其实call_map和children差不多,区别就是children有回边,call_map没有
         #TODO
         for child_node in self.call_map.values():
-            if screen_compare_strategy.compare_screen(child_node.all_text, target_screen_all_text)[0] == True:
+            if screen_compare_strategy.compare_screen(child_node.ck_eles_text, target_screen_all_text)[0] == True:
             # if child_node.all_text == target_screen_all_text:
             #     if child_node.already_clicked_cnt == len(child_node.clickable_elements):
                 if child_node.is_screen_clickable_finished():

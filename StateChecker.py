@@ -1,9 +1,9 @@
 from ScreenCompareStrategy import ScreenCompareStrategy
 from RuntimeContent import *
-def check_is_errorscreen(screen_text: str, screen_compare_strategy: ScreenCompareStrategy) -> bool:
+def check_is_errorscreen(ck_eles_text: str, screen_compare_strategy: ScreenCompareStrategy) -> bool:
     error_screen_list = RuntimeContent.get_instance().get_error_screen_list()
-    for err_screen_text in error_screen_list:
-        simi_flag, cur_similarity = screen_compare_strategy.compare_screen(screen_text, err_screen_text)
+    for err_ck_eles_text in error_screen_list:
+        simi_flag, cur_similarity = screen_compare_strategy.compare_screen(ck_eles_text, err_ck_eles_text)
         if simi_flag is True:
             return True
     return False
@@ -139,7 +139,10 @@ def check_is_in_home_screen(cur_screen_pkg_name):
     return False
 
 def check_is_in_webview(cur_activity:str) -> bool:
-    if "WebView" in cur_activity:
+    d = RuntimeContent.get_instance().get_device()
+    if d(className = "android.webkit.WebView").exists():
         return True
+    # if "WebView" in cur_activity or "webview" in cur_activity:
+    #     return True
     else:
         return False

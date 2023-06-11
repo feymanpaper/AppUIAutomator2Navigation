@@ -98,7 +98,7 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
         cur_screen_node = ScreenNode()
         cur_screen_node.info = cur_screen_info
         # cur_screen_node.sig = cur_screen_sig
-        cur_screen_node.all_text = cur_screen_all_text
+        cur_screen_node.ck_eles_text = cur_screen_all_text
         cur_screen_node.pkg_name = cur_screen_pkg_name
         cur_screen_node.activity_name = cur_activity
         clickable_eles, res_merged_diff = get_merged_clickable_elements(d, ele_uuid_map, cur_activity)
@@ -112,13 +112,13 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
         last_screen_node.add_child(cur_screen_node)
         print()
         print("*"*100)
-        print(f"该screen为新: {cur_screen_node.all_text[0:-1]}--总共{len(cur_screen_node.clickable_elements)}, 减少{cur_screen_node.merged_diff}")
+        print(f"该screen为新: {cur_screen_node.ck_eles_text[0:-1]}--总共{len(cur_screen_node.clickable_elements)}, 减少{cur_screen_node.merged_diff}")
         print("*"*100)
         print()
     else:
         print()
         print("*"*100)
-        print(f"该screen已存在: {cur_screen_node.all_text[0:-1]}--总共{len(cur_screen_node.clickable_elements)}, 减少{cur_screen_node.merged_diff}")
+        print(f"该screen已存在: {cur_screen_node.ck_eles_text[0:-1]}--总共{len(cur_screen_node.clickable_elements)}, 减少{cur_screen_node.merged_diff}")
         print("*"*100)
         print()
         if cur_screen_node.is_screen_clickable_finished():
@@ -250,7 +250,7 @@ def dfs_screen(last_screen_all_text, last_clickable_ele, last_activity):
 
                     dfs_screen(cur_screen_all_text, cur_clickable_ele, cur_activity)
                 else:
-                    print(f"clickmap--该界面点击完成&{clickable_ele_idx}: {uuid}----界面{cur_screen_node.all_text[0:-1]}")
+                    print(f"clickmap--该界面点击完成&{clickable_ele_idx}: {uuid}----界面{cur_screen_node.ck_eles_text[0:-1]}")
             else:
                 print(f"clickmap不存在&{clickable_ele_idx}: {uuid}")
         
@@ -350,7 +350,7 @@ if __name__ == "__main__":
     time.sleep(sleep_time_sec)
  
     root = ScreenNode()
-    root.all_text = "root"
+    root.ck_eles_text = "root"
     screen_map["root"] = root
 
     # try:

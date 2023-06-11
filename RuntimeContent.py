@@ -47,8 +47,8 @@ class RuntimeContent(object):
     def set_last_clickable_ele_uid(self, ele_uid):
         self.last_clickable_ele_uid = ele_uid
 
-    def append_screen_list(self, screen_text):
-        self.screen_list.append(screen_text)
+    def append_screen_list(self, ck_eles_text):
+        self.screen_list.append(ck_eles_text)
 
     def get_screen_list(self):
         return self.screen_list
@@ -65,8 +65,8 @@ class RuntimeContent(object):
     def clear_state_list(self):
         self.state_list.clear()
 
-    def append_error_screen_list(self, screen_text:str):
-        self.error_screen_list.append(screen_text)
+    def append_error_screen_list(self, ck_eles_text:str):
+        self.error_screen_list.append(ck_eles_text)
 
     def get_error_screen_list(self):
         return self.error_screen_list
@@ -77,8 +77,8 @@ class RuntimeContent(object):
     def get_error_clickable_ele_uid_list(self):
         return self.error_clickable_ele_uid_list
 
-    def put_screen_map(self, screen_text:str, screen_node:ScreenNode):
-        self.screen_map[screen_text] = screen_node
+    def put_screen_map(self, ck_eles_text:str, screen_node:ScreenNode):
+        self.screen_map[ck_eles_text] = screen_node
 
     def get_screen_map(self):
         return self.screen_map

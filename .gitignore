@@ -1,2 +1,4 @@
 /dumpjson/
+/__pycache__/
+/idea/
 *.pyc

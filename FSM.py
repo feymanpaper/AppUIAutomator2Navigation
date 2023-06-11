@@ -2,7 +2,6 @@ from StateHandler import *
 from DeviceHelper import *
 
 class FSM:
-
     def do_transition(self, state, content):
         if state == 1:
             StateHandler.handle_exit_app(content)
@@ -33,14 +32,18 @@ class FSM:
             raise Exception("意外情况")
 
     def get_state(self):
-        cur_screen_pkg_name, cur_activity, cur_screen_all_text = get_screen_info()
+        cur_screen_pkg_name, cur_activity, ck_eles_text = get_screen_info()
+        screen_text = get_screen_text()
+
         StatRecorder.get_instance().add_stat_stat_activity_set(cur_activity)
-        StatRecorder.get_instance().add_stat_screen_set(cur_screen_all_text)
+        StatRecorder.get_instance().add_stat_screen_set(ck_eles_text)
 
         content = {}
         content["cur_screen_pkg_name"] = cur_screen_pkg_name
         content["cur_activity"] = cur_activity
-        content["cur_screen_all_text"] = cur_screen_all_text
+        content["ck_eles_text"] = ck_eles_text
+        content["screen_text"] = screen_text
+
         if cur_screen_pkg_name != Config.get_instance().get_target_pkg_name():
             if check_is_in_home_screen(cur_screen_pkg_name):
                 return 100, content
@@ -61,27 +64,27 @@ class FSM:
             return 8, content
         if check_is_in_webview(cur_activity):
             return 11, content
-        # temp_screen_node = get_screennode_from_screenmap_by_similarity(screen_map, cur_screen_all_text, screen_compare_strategy)
+        # temp_screen_node = get_screennode_from_screenmap_by_similarity(screen_map, ck_eles_text, screen_compare_strategy)
         # if temp_screen_node is not None and len(temp_screen_node.clickable_elements) == clickable_cnt:
         #     cur_screen_node = temp_screen_node
         # else:
         #     cur_screen_node = None
-        sim, most_similar_screen_node = get_max_similarity_screen_node(cur_screen_all_text, ScreenCompareStrategy(LCSComparator(0.5)))
+        sim, most_similar_screen_node = get_max_similarity_screen_node(ck_eles_text, ScreenCompareStrategy(LCSComparator(0.5)))
         content["cur_screen_node"] = most_similar_screen_node
         content["most_similar_screen_node"] = most_similar_screen_node
         content["sim"] = sim
-        RuntimeContent.get_instance().append_screen_list(cur_screen_all_text)
+        RuntimeContent.get_instance().append_screen_list(ck_eles_text)
 
         # if cur_screen_node is not None:
         if sim >= 0.90:
             cur_screen_node = most_similar_screen_node
-            RuntimeContent.get_instance().put_screen_map(cur_screen_all_text, cur_screen_node)
+            RuntimeContent.get_instance().put_screen_map(ck_eles_text, cur_screen_node)
 
-            if check_is_errorscreen(cur_screen_all_text, ScreenCompareStrategy(LCSComparator())) and check_pattern_state(4, [12, 8]):
+            if check_is_errorscreen(ck_eles_text, ScreenCompareStrategy(LCSComparator())) and check_pattern_state(4, [12, 8]):
                 return 7, content
-            if check_is_errorscreen(cur_screen_all_text, ScreenCompareStrategy(LCSComparator())) and check_pattern_state(1, [12]) and check_screen_list_reverse(2):
+            if check_is_errorscreen(ck_eles_text, ScreenCompareStrategy(LCSComparator())) and check_pattern_state(1, [12]) and check_screen_list_reverse(2):
                 return 8, content
-            if check_is_errorscreen(cur_screen_all_text, ScreenCompareStrategy(LCSComparator())):
+            if check_is_errorscreen(ck_eles_text, ScreenCompareStrategy(LCSComparator())):
                 return 12, content
 
             # TODO k为6,表示出现了连续6个以上的pattern,且所有组件已经点击完毕,避免一些情况:页面有很多组件点了没反应,这个时候应该继续点而不是随机点
@@ -103,7 +106,7 @@ class FSM:
                 return 3, content
         else:
             # 放到后面建立完成之后在添加
-            # screen_map[cur_screen_all_text] = cur_screen_node
+            # screen_map[ck_eles_text] = cur_screen_node
             return 5, content
 
 

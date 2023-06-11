@@ -5,7 +5,7 @@ import time
 
 # 检测多层环
 def check_cycle(cur_node: ScreenNode, last_node: ScreenNode, screen_compare_strategy: ScreenCompareStrategy):
-    if screen_compare_strategy.compare_screen(cur_node.all_text, last_node.all_text)[0] == True:
+    if screen_compare_strategy.compare_screen(cur_node.ck_eles_text, last_node.ck_eles_text)[0] == True:
         return True
     # if cur_node.children is None or len(cur_node.children) == 0:
     #     return False
@@ -19,7 +19,7 @@ def check_cycle(cur_node: ScreenNode, last_node: ScreenNode, screen_compare_stra
     #         if res == True:
     #             return True
     for child in cur_node.call_map.values():
-        if screen_compare_strategy.compare_screen(child.all_text, last_node.all_text)[0] == True:
+        if screen_compare_strategy.compare_screen(child.ck_eles_text, last_node.ck_eles_text)[0] == True:
             return True
         else:
             res = check_cycle(child, last_node, screen_compare_strategy)
@@ -51,12 +51,12 @@ def print_screen_info(content, is_new):
     cur_screen_node = get_cur_screen_node_from_context(content)
     print("*" * 100)
     if is_new:
-        print(f"该screen为新: {cur_screen_node.all_text[0:-1]}--总共{len(cur_screen_node.clickable_elements)}, 减少{cur_screen_node.merged_diff}")
+        print(f"该screen为新: {cur_screen_node.ck_eles_text[0:-1]}--总共{len(cur_screen_node.clickable_elements)}, 减少{cur_screen_node.merged_diff}")
         if cur_screen_node.diff_clickable_elements is not None:
             print(f"差分后的数量为 {len(cur_screen_node.diff_clickable_elements)}")
 
     else:
-        print(f"该screen已存在: {cur_screen_node.all_text[0:-1]}--总共{len(cur_screen_node.clickable_elements)}, 减少{cur_screen_node.merged_diff}")
+        print(f"该screen已存在: {cur_screen_node.ck_eles_text[0:-1]}--总共{len(cur_screen_node.clickable_elements)}, 减少{cur_screen_node.merged_diff}")
         if cur_screen_node.diff_clickable_elements is not None:
             print(f"差分后的数量为 {len(cur_screen_node.diff_clickable_elements)}")
 
@@ -102,9 +102,12 @@ def get_two_clickable_eles_diff(cur_eles, last_eles):
 def get_screen_info_from_context(content):
     cur_screen_pkg_name = content["cur_screen_pkg_name"]
     cur_activity = content["cur_activity"]
-    cur_screen_all_text = content["cur_screen_all_text"]
+    ck_eles_text = content["ck_eles_text"]
 
-    return cur_screen_pkg_name, cur_activity, cur_screen_all_text
+    return cur_screen_pkg_name, cur_activity, ck_eles_text
+
+def get_screen_text_from_context(content):
+    return content["screen_text"]
 
 
 def get_cur_screen_node_from_context(content):
@@ -119,55 +122,55 @@ def get_screen_all_text_from_dict(clickable_eles, ele_uid_map):
     return text
 
 
-def get_screennode_from_screenmap(screen_map: dict, screen_text: str):
-    if screen_map.get(screen_text, None) is None:
+def get_screennode_from_screenmap(screen_map: dict, ck_eles_text: str):
+    if screen_map.get(ck_eles_text, None) is None:
         return None
     else:
-        return screen_map.get(screen_text)
+        return screen_map.get(ck_eles_text)
 
 
-# 从screen_map里得到取出和screen_text满足相似度阈值且相似度最高的screen_node
-def get_screennode_from_screenmap_by_similarity(screen_text: str, screen_compare_strategy) -> ScreenNode:
+# 从screen_map里得到取出和ck_eles_text满足相似度阈值且相似度最高的screen_node
+def get_screennode_from_screenmap_by_similarity(ck_eles_text: str, screen_compare_strategy) -> ScreenNode:
     screen_map = RuntimeContent.get_instance().get_screen_map()
-    if screen_map.get(screen_text, False) is False:
+    if screen_map.get(ck_eles_text, False) is False:
         # 如果没有,则遍历找满足相似度阈值的
         max_similarity = 0
         res_node = None
-        for candidate_screen_text in screen_map.keys():
-            simi_flag, cur_similarity = screen_compare_strategy.compare_screen(screen_text, candidate_screen_text)
+        for candidate_ck_eles_text in screen_map.keys():
+            simi_flag, cur_similarity = screen_compare_strategy.compare_screen(ck_eles_text, candidate_ck_eles_text)
             if simi_flag is True:
                 if cur_similarity > max_similarity:
                     max_similarity = cur_similarity
-                    res_node = screen_map.get(candidate_screen_text)
+                    res_node = screen_map.get(candidate_ck_eles_text)
         # 返回的要么是None, 要么是相似性最大的screen_node
         return res_node
 
     # 说明该节点之前存在screen_map
     else:
-        return screen_map.get(screen_text)
+        return screen_map.get(ck_eles_text)
 
-def get_max_similarity_screen_node(screen_text: str, screen_compare_strategy) -> tuple[float | ScreenNode]:
+def get_max_similarity_screen_node(ck_eles_text: str, screen_compare_strategy) -> tuple[float | ScreenNode]:
     screen_map = RuntimeContent.get_instance().get_screen_map()
-    if screen_map.get(screen_text, False) is False:
+    if screen_map.get(ck_eles_text, False) is False:
         # 如果没有,则遍历找满足相似度阈值的
         max_similarity = 0
         res_node = None
-        for candidate_screen_text in screen_map.keys():
-            simi_flag, cur_similarity = screen_compare_strategy.compare_screen(screen_text, candidate_screen_text)
+        for candidate_ck_eles_text in screen_map.keys():
+            simi_flag, cur_similarity = screen_compare_strategy.compare_screen(ck_eles_text, candidate_ck_eles_text)
             if simi_flag is True:
                 if cur_similarity > max_similarity:
                     max_similarity = cur_similarity
-                    res_node = screen_map.get(candidate_screen_text)
+                    res_node = screen_map.get(candidate_ck_eles_text)
         # 返回的要么是None, 要么是相似性最大的screen_node
         return max_similarity, res_node
 
     # 说明该节点之前存在screen_map
     else:
-        return 1.0, screen_map.get(screen_text)
+        return 1.0, screen_map.get(ck_eles_text)
 
 # def get_screennode_from_diffmap(diff_map: dict, screen_map, screen_compare_strategy):
-#     for screen_text in diff_map.keys():
-#         res = get_screennode_from_screenmap(screen_map, screen_text, screen_compare_strategy)
+#     for ck_eles_text in diff_map.keys():
+#         res = get_screennode_from_screenmap(screen_map, ck_eles_text, screen_compare_strategy)
 #         if res is not None:
 #             return res
 #     return None

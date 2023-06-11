@@ -6,9 +6,9 @@ import unittest
 class TestCheckCycle(unittest.TestCase):
     def test_case1(self):
         s1 = ScreenNode()
-        s1.all_text = "1"
+        s1.ck_eles_text = "1"
         s2 = ScreenNode()
-        s2.all_text = "2"
+        s2.ck_eles_text = "2"
         s1.add_child(s2)
         s2.add_child(s1)
         lcs_comp = ScreenCompareStrategy(LCSComparator())
@@ -22,13 +22,13 @@ class TestCheckCycle(unittest.TestCase):
 
     def test_case2(self):
         s1 = ScreenNode()
-        s1.all_text = "1"
+        s1.ck_eles_text = "1"
         s2 = ScreenNode()
-        s2.all_text = "2"
+        s2.ck_eles_text = "2"
         s3 = ScreenNode()
-        s3.all_text = "3"
+        s3.ck_eles_text = "3"
         s4 = ScreenNode()
-        s4.all_text = "4"
+        s4.ck_eles_text = "4"
         lcs_comp = ScreenCompareStrategy(LCSComparator())
         s1.add_child(s2)
         s2.add_child(s3)

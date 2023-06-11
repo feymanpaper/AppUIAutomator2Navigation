@@ -23,8 +23,8 @@ class StatRecorder(object):
     def inc_total_ele_cnt(self):
         self.total_eles_cnt +=1
 
-    def add_stat_screen_set(self, cur_screen_all_text:str):
-        self.stat_screen_set.add(cur_screen_all_text)
+    def add_stat_screen_set(self, ck_eles_text:str):
+        self.stat_screen_set.add(ck_eles_text)
 
     def add_stat_stat_activity_set(self, cur_activity):
         self.stat_activity_set.add(cur_activity)
