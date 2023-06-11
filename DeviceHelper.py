@@ -155,37 +155,19 @@ def get_screen_all_clickable_text_and_loc(d):
     for element in root.findall('.//node'):
         if element.get('clickable') == 'true':
             if element.get("package") not in system_view:
-                # if is_child_clickable(element) == True:
-                #     continue
-                temp_text = element.get("text")
-                if temp_text:
-                    # 只取前10个字符，节省LCS算法计算的时间
-                    if len(temp_text) > 10:
-                        temp_text = temp_text[0:10]
-                    loc_x, loc_y = get_location_from_xmlele(element)
-                    text += "&" + temp_text + " " + str(loc_x) + " " + str(loc_y)
-                    # print(temp_text)
-                else:
-                    text += traverse_tree_text_and_loc(element)
-    return text
-
-
-def get_screen_all_clickable_elements_text_loc_cnt(d):
-    xml = d.dump_hierarchy()
-    root = ET.fromstring(xml)
-    clickable_elements = []
-    text = ""
-    cnt = 0
-    for element in root.findall('.//node'):
-        if element.get('clickable') == 'true':
-            if element.get("package") not in system_view:
                 if is_child_clickable(element) == True:
                     continue
                 temp_text = element.get("text")
                 loc_x, loc_y = get_location_from_xmlele(element)
-                text += "--" + temp_text + " " + str(loc_x) + " " + str(loc_y)
-                cnt += 1
-    return text, cnt
+                if temp_text:
+                    # 只取前10个字符，节省LCS算法计算的时间
+                    if len(temp_text) > 10:
+                        temp_text = temp_text[0:10]
+                    text += "&" + temp_text + " " + str(loc_x) + " " + str(loc_y)
+                    # print(temp_text)
+                else:
+                    text += "&" + traverse_tree_text_and_loc(element) + " " + str(loc_x) + " " + str(loc_y)
+    return text
 
 
 def traverse_tree_text_and_loc(node):
@@ -196,18 +178,32 @@ def traverse_tree_text_and_loc(node):
     if temp_text:
         if len(temp_text) > 10:
             temp_text = temp_text[0:10]
-        loc_x, loc_y = get_location_from_xmlele(node)
-        text += "--" + temp_text + " " + str(loc_x) + " " + str(loc_y)
+        # loc_x, loc_y = get_location_from_xmlele(node)
+        # text += "--" + temp_text + " " + str(loc_x) + " " + str(loc_y)
+        text += temp_text
         return text
     for child in node:
         text += traverse_tree_text_and_loc(child)
     return text
 
 
+def to_string_ck_els(ck_eles) -> str:
+    text = ""
+    for ele_uid in ck_eles:
+        ele_dict = RuntimeContent.get_instance().get_ele_uid_map_by_uid(ele_uid)
+        temp_text = ele_dict.get("text")
+        if len(temp_text) > 10:
+            temp_text = temp_text[0:10]
+        loc_x, loc_y = get_location(ele_dict)
+        text += "&" + temp_text + " " + str(loc_x) + " " + str(loc_y)
+    return text
+
+
+
 # 获取当前界面所有可点击的组件
-def get_clickable_elements(d, activity_name):
-    xml = d.dump_hierarchy()
-    root = ET.fromstring(xml)
+def get_clickable_elements():
+    activity_name = get_screen_activity()
+    root = get_dump_hierarchy()
     clickable_elements = []
     # cnt = 0
     for element in root.findall('.//node'):
@@ -215,9 +211,8 @@ def get_clickable_elements(d, activity_name):
             if element.get("package") not in system_view:
                 if is_child_clickable(element) == True:
                     continue
-
-                clickable_ele_dict = get_dict_clickable_ele(d, element, activity_name)
-                uid = get_unique_id(d, clickable_ele_dict, activity_name)
+                clickable_ele_dict = get_dict_clickable_ele(element, activity_name)
+                uid = get_unique_id(clickable_ele_dict, activity_name)
                 RuntimeContent.get_instance().put_ele_uid_map(uid, clickable_ele_dict)
 
                 # 把有隐私的组件增加到前面
@@ -225,7 +220,6 @@ def get_clickable_elements(d, activity_name):
                     clickable_elements.insert(0, uid)
                 else:
                     clickable_elements.append(uid)
-
     return clickable_elements
 
 def remove_dup(old_list) -> list:
@@ -244,19 +238,14 @@ def is_child_clickable(node) -> bool:
 
 
 # 进行合并,对于选择国家和地区的场景,进行优化
-def get_merged_clickable_elements(activity_name):
-    d = RuntimeContent.get_instance().get_device()
-    clickable_eles = get_clickable_elements(d, activity_name)
-
-    pre_len = len(clickable_eles)
+def merged_clickable_elements(clickable_eles):
     k = 6
     if len(clickable_eles) < 6:
-        return clickable_eles, 0
+        return clickable_eles
     merged_clickable_eles = merge_same_clickable_elements_col(k, clickable_eles)
     merged_clickable_eles = merge_same_clickable_elements_row(k, merged_clickable_eles)
-    after_len = len(merged_clickable_eles)
 
-    return merged_clickable_eles, pre_len - after_len
+    return merged_clickable_eles
 
 
 def is_privacy_information_in_ele_dict(clickable_ele_dict):
@@ -371,7 +360,7 @@ def is_same_two_clickable_eles_col(ele1_uid, ele2_uid) -> bool:
 
 
 # get uid from element(dict)
-def get_unique_id(d, ele_dict, activity_name):
+def get_unique_id(ele_dict, activity_name):
     class_name = ele_dict.get("class")
     res_id = ele_dict.get("resource-id")
     pkg_name = ele_dict.get("package")
@@ -382,7 +371,7 @@ def get_unique_id(d, ele_dict, activity_name):
     return uid
 
 
-def get_dict_clickable_ele(d, clickable_ele, activity_name):
+def get_dict_clickable_ele(clickable_ele, activity_name):
     clickable_ele_dict = {}
     clickable_ele_dict["class"] = clickable_ele.get("class")
     clickable_ele_dict["resource-id"] = clickable_ele.get("resource-id")
@@ -437,12 +426,14 @@ def print_current_window_all_clickable_elements(d):
 
 
 
-def get_current_window_package(d):
+def get_screen_package():
+    d = RuntimeContent.get_instance().get_device()
     current_app = d.current_app()
     return current_app['package']
 
 
-def get_current_activity(d):
+def get_screen_activity():
+    d = RuntimeContent.get_instance().get_device()
     current_app = d.current_app()
     return current_app["activity"]
 

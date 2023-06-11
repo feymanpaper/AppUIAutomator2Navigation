@@ -139,6 +139,7 @@ def check_is_in_home_screen(cur_screen_pkg_name):
     return False
 
 def check_is_in_webview(cur_activity:str) -> bool:
+    return False
     d = RuntimeContent.get_instance().get_device()
     if d(className = "android.webkit.WebView").exists():
         return True

@@ -1,6 +1,7 @@
 from uiautomator2 import Device
 from DeviceHelper import get_screen_info
 from DeviceHelper import get_clickable_elements
+from DeviceHelper import to_string_ck_els
 
 all_text = []
 d = Device()
@@ -24,3 +25,7 @@ for idx, ele_id in enumerate(clickable_eles):
 # x, y = get_location(ele_uid_map[clickable_eles[2]])
 # d.click(x, y)
 # print("fck")
+
+
+print("*"*100)
+print(to_string_ck_els(clickable_eles))

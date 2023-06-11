@@ -32,8 +32,16 @@ class FSM:
             raise Exception("意外情况")
 
     def get_state(self):
-        cur_screen_pkg_name, cur_activity, ck_eles_text = get_screen_info()
+        cur_screen_pkg_name = get_screen_package()
+        cur_activity = get_screen_activity()
         screen_text = get_screen_text()
+        cur_ck_eles = get_clickable_elements()
+        pre_len = len(cur_ck_eles)
+        cur_ck_eles = remove_dup(cur_ck_eles)
+        cur_ck_eles = merged_clickable_elements(cur_ck_eles)
+        after_len = len(cur_ck_eles)
+        ck_eles_text = to_string_ck_els(cur_ck_eles)
+        print(f"当前Screen为: {ck_eles_text}")
 
         StatRecorder.get_instance().add_stat_stat_activity_set(cur_activity)
         StatRecorder.get_instance().add_stat_screen_set(ck_eles_text)
@@ -43,6 +51,9 @@ class FSM:
         content["cur_activity"] = cur_activity
         content["ck_eles_text"] = ck_eles_text
         content["screen_text"] = screen_text
+        content["cur_ck_eles"] = cur_ck_eles
+        content["merged_diff"] = pre_len - after_len
+
 
         if cur_screen_pkg_name != Config.get_instance().get_target_pkg_name():
             if check_is_in_home_screen(cur_screen_pkg_name):

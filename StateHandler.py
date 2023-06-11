@@ -172,11 +172,12 @@ class StateHandler(object):
         cur_screen_node.pkg_name = cur_screen_pkg_name
         cur_screen_node.activity_name = cur_activity
         d = RuntimeContent.get_instance().get_device()
-        clickable_eles, res_merged_diff = get_merged_clickable_elements(d, cur_activity)
-        cur_screen_node.merged_diff = res_merged_diff
+        cur_ck_eles = content["cur_ck_eles"]
+        merged_diff = content["merged_diff"]
         cur_screen_node.screen_text = screen_text
-        cur_screen_node.clickable_elements = clickable_eles
+        cur_screen_node.clickable_elements = cur_ck_eles
         cur_screen_node.ck_eles_text = ck_eles_text
+        cur_screen_node.merged_diff = merged_diff
         return cur_screen_node
 
     @classmethod
@@ -232,7 +233,8 @@ class StateHandler(object):
         cur_screen_node.pkg_name = cur_screen_pkg_name
         cur_screen_node.screen_text = screen_text
         cur_screen_node.activity_name = cur_activity
-        clickable_eles, res_merged_diff = get_merged_clickable_elements(cur_activity)
+        cur_ck_eles = content["cur_ck_eles"]
+        merged_diff = content["merged_diff"]
         last_clickable_elements = last_screen_node.get_exactly_clickable_eles()
 
         sim = content["sim"]
@@ -240,18 +242,17 @@ class StateHandler(object):
         if sim >= 0.70:
             # TODO
             most_sim_clickable_elements = most_similar_screen_node.get_exactly_clickable_eles()
-            diff_list = get_two_clickable_eles_diff(clickable_eles, most_sim_clickable_elements)
+            diff_list = get_two_clickable_eles_diff(cur_ck_eles, most_sim_clickable_elements)
             cur_screen_node.diff_clickable_elements = diff_list
-        #     cur_screen_node.merged_diff = res_merged_diff
         #     cur_screen_node.clickable_elements = clickable_eles
         #     # diff_text = get_screen_all_text_from_dict(diff_list, ele_uid_map)
         #     # ck_eles_text = diff_text
         #     cur_screen_node.all_text = ck_eles_text
         #     screen_map[ck_eles_text] = cur_screen_node
         # else:
-        cur_screen_node.merged_diff = res_merged_diff
-        cur_screen_node.clickable_elements = clickable_eles
+        cur_screen_node.clickable_elements = cur_ck_eles
         cur_screen_node.ck_eles_text = ck_eles_text
+        cur_screen_node.merged_diff = merged_diff
 
         # 将cur_screen加入到全局记录的screen_map
         RuntimeContent.get_instance().put_screen_map(ck_eles_text, cur_screen_node)

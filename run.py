@@ -58,6 +58,7 @@ if __name__ == "__main__":
             d.app_stop(Config.get_instance().get_target_pkg_name())
             time.sleep(10)
         except Exception as e:
+            logging.exception(e)
             break
 
     print("程序结束")
