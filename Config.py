@@ -1,7 +1,9 @@
+from uiautomator2 import Device
 class Config(object):
     def __init__(self):
         self.CLICK_MAX_CNT = 4
         self.sleep_time_sec = 2
+        self.device = None
         # self.target_pkg_name = "com.example.myapplication"
         self.target_pkg_name = "com.alibaba.android.rimet"
         # self.target_pkg_name = "net.csdn.csdnplus"
@@ -19,6 +21,8 @@ class Config(object):
 
 
         self.log_file_name = "./Log/" + self.target_pkg_name + "_1.log"
+        self.pickle_file_name = "./SavedRuntimeContent/" + self.target_pkg_name + "_1.pickle"
+        self.is_saved_start = False
 
 
     def __new__(cls, *args, **kwargs):
@@ -43,3 +47,14 @@ class Config(object):
 
     def get_log_file_name(self):
         return self.log_file_name
+
+    def get_pickle_file_name(self):
+        return self.pickle_file_name
+
+    def set_device(self, device):
+        self.device = device
+
+    def get_device(self):
+        if self.device is None:
+            self.set_device(Device())
+        return self.device

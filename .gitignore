@@ -2,5 +2,6 @@
 /__pycache__/
 /Log/
 /.idea/
+/SavedRuntimeContent/
 *.pyc
 .DS_Store

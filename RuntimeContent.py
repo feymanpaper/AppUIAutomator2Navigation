@@ -1,5 +1,4 @@
 from ScreenNode import *
-from uiautomator2 import Device
 class RuntimeContent(object):
     def __init__(self):
         # 存储运行时遍历过的screen序列
@@ -19,11 +18,7 @@ class RuntimeContent(object):
         self.last_clickable_ele_uid = None
         self.last_screen_node = None
 
-        self.device = None
-
         self.similarity_mem = {}
-
-
 
     def __new__(cls, *args, **kwargs):
         if not hasattr(RuntimeContent, "_instance"):
@@ -89,15 +84,6 @@ class RuntimeContent(object):
 
     def get_ele_uid_map_by_uid(self, uid):
         return self.ele_uid_map[uid]
-
-    def get_device(self):
-        if self.device is None:
-            self.set_device(Device())
-        return self.device
-
-    def set_device(self, device):
-        self.device = device
-
 
     def query_simi_mem(self, key):
         if self.similarity_mem.get(key , False) == False:

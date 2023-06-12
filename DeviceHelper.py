@@ -2,6 +2,7 @@ import xml.etree.ElementTree as ET
 import re
 from RuntimeContent import *
 from UITreeNode import *
+from Config import *
 
 system_view = [
     "com.android.systemui",
@@ -24,7 +25,7 @@ def get_ck_eles_hierarchy() -> list:
     return res
 
 def get_dump_hierarchy():
-    d = RuntimeContent.get_instance().get_device()
+    d = Config.get_instance().get_device()
     xml = d.dump_hierarchy()
     root = ET.fromstring(xml)
     return root
@@ -108,7 +109,7 @@ def print_ui_root(root: UITreeNode, level=1):
 
 # screen_info = package_name + activity_name + screen_all_text
 def get_screen_info():
-    d = RuntimeContent.get_instance().get_device()
+    d = Config.get_instance().get_device()
     current_screen = d.current_app()
     pkg_name = current_screen['package']
     act_name = current_screen['activity']
@@ -427,13 +428,13 @@ def print_current_window_all_clickable_elements(d):
 
 
 def get_screen_package():
-    d = RuntimeContent.get_instance().get_device()
+    d = Config.get_instance().get_device()
     current_app = d.current_app()
     return current_app['package']
 
 
 def get_screen_activity():
-    d = RuntimeContent.get_instance().get_device()
+    d = Config.get_instance().get_device()
     current_app = d.current_app()
     return current_app["activity"]
 

@@ -1,4 +1,5 @@
 import logging
+import sys
 from logging import StreamHandler
 from logging import FileHandler
 import os
@@ -26,8 +27,8 @@ class Logger:
 
     def __add_stream_handler(self):
         # 标准流处理器，设置的级别为WARAING
-        stream_handler = StreamHandler()
-        stream_handler.setLevel(logging.WARNING)
+        stream_handler = StreamHandler(stream=sys.stdout)
+        stream_handler.setLevel(logging.INFO)
         self.logger.addHandler(stream_handler)
 
     def __add_file_handler(self):
@@ -39,6 +40,7 @@ class Logger:
         self.__add_stream_handler()
         self.__add_file_handler()
         self.logger.setLevel(logging.DEBUG)
+        self.logger.setFormatter('%(message)s')
 
     def setup(self, file_path = "./Log/test.log"):
         self.file_path = file_path

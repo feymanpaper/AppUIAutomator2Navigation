@@ -1,5 +1,6 @@
 from ScreenCompareStrategy import ScreenCompareStrategy
 from RuntimeContent import *
+from Config import *
 def check_is_errorscreen(ck_eles_text: str, screen_compare_strategy: ScreenCompareStrategy) -> bool:
     error_screen_list = RuntimeContent.get_instance().get_error_screen_list()
     for err_ck_eles_text in error_screen_list:
@@ -116,7 +117,7 @@ def check_screen_list_by_pattern_order(k, screen_list, step) -> bool:
 
 
 def check_is_inputmethod_in_cur_screen():
-    d = RuntimeContent.get_instance().get_device()
+    d = Config.get_instance().get_device()
     # 小米的输入法
     if d(packageName="com.sohu.inputmethod.sogou.xiaomi").exists():
         return True
@@ -146,7 +147,7 @@ def check_is_in_home_screen(cur_screen_pkg_name):
 
 def check_is_in_webview(cur_activity:str) -> bool:
     return False
-    d = RuntimeContent.get_instance().get_device()
+    d = Config.get_instance().get_device()
     if d(className = "android.webkit.WebView").exists():
         return True
     # if "WebView" in cur_activity or "webview" in cur_activity:

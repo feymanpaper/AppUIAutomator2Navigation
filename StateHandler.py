@@ -93,7 +93,7 @@ class StateHandler(object):
                     cur_screen_node.ele_uid_cnt_map[cur_clickable_ele_uid] = 1
                 else:
                     cur_screen_node.ele_uid_cnt_map[cur_clickable_ele_uid] += 1
-                d = RuntimeContent.get_instance().get_device()
+                d = Config.get_instance().get_device()
                 d.click(loc_x, loc_y)
                 time.sleep(Config.get_instance().get_sleep_time_sec())
                 return
@@ -132,7 +132,7 @@ class StateHandler(object):
                             cur_screen_node.ele_uid_cnt_map[cur_clickable_ele_uid] = 0
                         else:
                             cur_screen_node.ele_uid_cnt_map[cur_clickable_ele_uid] += 1
-                        d = RuntimeContent.get_instance().get_device()
+                        d = Config.get_instance().get_device()
                         d.click(loc_x, loc_y)
                         time.sleep(Config.get_instance().get_sleep_time_sec())
                         return
@@ -156,7 +156,7 @@ class StateHandler(object):
         # cur_screen_node.info = cur_screen_info
         cur_screen_node.pkg_name = cur_screen_pkg_name
         cur_screen_node.activity_name = cur_activity
-        d = RuntimeContent.get_instance().get_device()
+        d = Config.get_instance().get_device()
         cur_ck_eles = content["cur_ck_eles"]
         merged_diff = content["merged_diff"]
         cur_screen_node.screen_text = screen_text
@@ -276,7 +276,7 @@ class StateHandler(object):
         StatRecorder.get_instance().inc_total_ele_cnt()
         RuntimeContent.get_instance().set_last_screen_node(cur_screen_node)
         RuntimeContent.get_instance().set_last_clickable_ele_uid(cur_clickable_ele_uid)
-        d = RuntimeContent.get_instance().get_device()
+        d = Config.get_instance().get_device()
         d.click(loc_x, loc_y)
         time.sleep(Config.get_instance().get_sleep_time_sec())
 
@@ -297,7 +297,7 @@ class StateHandler(object):
         cls.press_back()
 
     @classmethod
-    def handle_exit_screen(cls, content):
+    def handle_finish_screen(cls, content):
         cls.press_back()
 
     @classmethod
@@ -313,7 +313,7 @@ class StateHandler(object):
 
     @staticmethod
     def press_back():
-        d = RuntimeContent.get_instance().get_device()
+        d = Config.get_instance().get_device()
         d.press("back")
         print("进行回退")
         time.sleep(Config.get_instance().get_sleep_time_sec())
@@ -321,7 +321,7 @@ class StateHandler(object):
 
     @staticmethod
     def double_press_back():
-        d = RuntimeContent.get_instance().get_device()
+        d = Config.get_instance().get_device()
         d.press("back")
         d.press("back")
         time.sleep(Config.get_instance().get_sleep_time_sec())
