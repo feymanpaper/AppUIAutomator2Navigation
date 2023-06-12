@@ -15,6 +15,7 @@ class RuntimeContent(object):
         # 全局记录每个组件的uid {key:cur_clickable_ele_uid, val:clickable_ele}
         self.ele_uid_map = {}
 
+        self.first_screen_ck_eles_text = None
         self.last_clickable_ele_uid = None
         self.last_screen_node = None
 
@@ -109,4 +110,10 @@ class RuntimeContent(object):
 
     def get_similarity_mem(self):
         return self.similarity_mem
+
+    def get_first_screen_ck_eles_text(self):
+        return self.first_screen_ck_eles_text
+
+    def set_first_screen_ck_ele_text(self, ck_eles_text):
+        self.first_screen_ck_eles_text = ck_eles_text
 

@@ -128,6 +128,12 @@ def check_is_inputmethod_in_cur_screen():
     else:
         return False
 
+def check_is_first_scrren_finish():
+    first_scrren_ck_eles_text = RuntimeContent.get_instance().get_first_screen_ck_eles_text()
+    first_screen_node = RuntimeContent.get_instance().get_screen_map()[first_scrren_ck_eles_text]
+    if first_screen_node is not None and first_screen_node.is_screen_clickable_finished():
+        return True
+    return False
 
 def check_is_in_home_screen(cur_screen_pkg_name):
     # 小米的home screen

@@ -1,5 +1,6 @@
 /dumpjson/
 /__pycache__/
+/Log/
 /.idea/
 *.pyc
 .DS_Store

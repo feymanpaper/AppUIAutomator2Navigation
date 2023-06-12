@@ -9,21 +9,6 @@ import random
 from StateChecker import *
 
 class StateHandler(object):
-    state_map = {
-        1: "不是当前要测试的app,即app跳出了测试的app",
-        2: "发现当前界面有文本输入法框",
-        3: "当前Screen已经存在",
-        4: "当前Screen已经点完",
-        5: "当前Screen不存在,新建Screen",
-        6: "出现了不可回退的框, 启用随机点",
-        7: "出现了不可回退的框, 需要重启?",
-        8: "出现了不可回退的框, 启用double_press_back",
-        9: "出现了系统权限页面",
-        10: "出现了系统外不可回退的框",
-        11: "当前Screen为WebView",
-        12: "当前Screen为error不该点",
-    }
-
     @classmethod
     def click_one_ele(cls,content):
         # 遍历cur_screen的所有可点击组件
@@ -236,10 +221,9 @@ class StateHandler(object):
         cur_ck_eles = content["cur_ck_eles"]
         merged_diff = content["merged_diff"]
         last_clickable_elements = last_screen_node.get_exactly_clickable_eles()
-
-        sim = content["sim"]
-        most_similar_screen_node = content["most_similar_screen_node"]
-        if sim >= 0.70:
+        sim = content.get("sim", None)
+        most_similar_screen_node = content.get("most_similar_screen_node", None)
+        if sim is not None and sim >= 0.70:
             # TODO
             most_sim_clickable_elements = most_similar_screen_node.get_exactly_clickable_eles()
             diff_list = get_two_clickable_eles_diff(cur_ck_eles, most_sim_clickable_elements)
@@ -322,14 +306,10 @@ class StateHandler(object):
 
     @classmethod
     def handle_restart(cls, content):
-        RuntimeContent.get_instance().append_error_screen_list(content["ck_eles_text"])
+        RuntimeContent.get_instance().append_error_screen_list(RuntimeContent.get_instance().get_last_screen_node().ck_eles_text)
         RuntimeContent.get_instance().append_error_clickable_ele_uid_list(
             RuntimeContent.get_instance().get_last_clickable_ele_uid())
         raise RestartException("重启机制")
-
-    @classmethod
-    def print_state(cls, state):
-        print(f"状态为{state} {cls.state_map[state]}")
 
     @staticmethod
     def press_back():

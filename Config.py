@@ -2,7 +2,6 @@ class Config(object):
     def __init__(self):
         self.CLICK_MAX_CNT = 4
         self.sleep_time_sec = 2
-
         # self.target_pkg_name = "com.example.myapplication"
         self.target_pkg_name = "com.alibaba.android.rimet"
         # self.target_pkg_name = "net.csdn.csdnplus"
@@ -17,6 +16,9 @@ class Config(object):
         # self.target_pkg_name = "com.yipiao"
         # self.target_pkg_name = "app.podcast.cosmos"
         # self.target_pkg_name = "com.hunantv.imgo.activity"
+
+
+        self.log_file_name = "./Log/" + self.target_pkg_name + "_1.log"
 
 
     def __new__(cls, *args, **kwargs):
@@ -38,3 +40,6 @@ class Config(object):
 
     def get_sleep_time_sec(self):
         return self.sleep_time_sec
+
+    def get_log_file_name(self):
+        return self.log_file_name

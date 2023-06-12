@@ -9,6 +9,7 @@ from RuntimeContent import RuntimeContent
 from ScreenCompareStrategy import ScreenCompareStrategy, LCSComparator
 from ScreenNode import ScreenNode
 from StatRecorder import StatRecorder
+from Logger import *
 
 
 def suppress_keyboard_interrupt_message():
@@ -18,8 +19,8 @@ def suppress_keyboard_interrupt_message():
         if exctype != KeyboardInterrupt:
             old_excepthook(exctype, value, traceback)
         else:
-            print('\nKeyboardInterrupt ...')
-            print('do something after Interrupt ...')
+            Logger.get_instance().print('\nKeyboardInterrupt ...')
+            Logger.get_instance().print('do something after Interrupt ...')
             StatRecorder.get_instance().print_result()
             file_name = Config.get_instance().get_target_pkg_name() + "_" + "interupt"
             dump_screen_map_to_json(file_name)
@@ -27,7 +28,7 @@ def suppress_keyboard_interrupt_message():
 
 
 if __name__ == "__main__":
-
+    Logger.get_instance().setup(Config.get_instance().get_log_file_name())
     FSM = FSM()
     root = ScreenNode()
     root.ck_eles_text = "root"
@@ -48,7 +49,7 @@ if __name__ == "__main__":
             FSM.start()
         except RestartException as e:
             restart_cnt += 1
-            print("需要重启")
+            Logger.get_instance().print("需要重启")
             logging.exception(e)
             StatRecorder.get_instance().print_result()
             file_name = Config.get_instance().get_target_pkg_name() + "_" + str(restart_cnt)
@@ -61,5 +62,5 @@ if __name__ == "__main__":
             logging.exception(e)
             break
 
-    print("程序结束")
+    Logger.get_instance().print("程序结束")
     StatRecorder.get_instance().print_result()
