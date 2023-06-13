@@ -1,16 +1,10 @@
-import logging
-import sys
-import time
 from FSM import *
-from Config import Config
-from JsonHelper import dump_screen_map_to_json
+from Utils.JsonUtils import *
 from RestartException import RestartException
 from RuntimeContent import RuntimeContent
-from ScreenCompareStrategy import ScreenCompareStrategy, LCSComparator
 from ScreenNode import ScreenNode
-from StatRecorder import StatRecorder
 from Logger import *
-from SavedInstanceUtils import *
+from Utils.SavedInstanceUtils import *
 
 def suppress_keyboard_interrupt_message():
     old_excepthook = sys.excepthook
@@ -24,11 +18,8 @@ def suppress_keyboard_interrupt_message():
             StatRecorder.get_instance().print_result()
             RuntimeContent.get_instance().clear_state_list()
             RuntimeContent.get_instance().clear_screen_list()
-
-            json_file_name = Config.get_instance().get_target_pkg_name() + "_" + "interupt"
-            pickle_file_name = Config.get_instance().get_pickle_file_name()
-            dump_screen_map_to_json(json_file_name)
-            SavedInstanceUtils.dump_pickle(RuntimeContent.get_instance(), pickle_file_name)
+            JsonUtils.dump_screen_map_to_json()
+            SavedInstanceUtils.dump_pickle(RuntimeContent.get_instance())
     sys.excepthook = new_hook
 
 
@@ -62,10 +53,8 @@ if __name__ == "__main__":
             StatRecorder.get_instance().print_result()
             RuntimeContent.get_instance().clear_state_list()
             RuntimeContent.get_instance().clear_screen_list()
-            json_file_name = Config.get_instance().get_target_pkg_name() + "_" + str(restart_cnt)
-            pickle_file_name = Config.get_instance().get_pickle_file_name()
-            dump_screen_map_to_json(json_file_name)
-            SavedInstanceUtils.dump_pickle(RuntimeContent.get_instance(), pickle_file_name)
+            JsonUtils.dump_screen_map_to_json()
+            SavedInstanceUtils.dump_pickle(RuntimeContent.get_instance())
             d.app_stop(Config.get_instance().get_target_pkg_name())
             time.sleep(10)
         except Exception as e:
@@ -73,10 +62,8 @@ if __name__ == "__main__":
             StatRecorder.get_instance().print_result()
             RuntimeContent.get_instance().clear_state_list()
             RuntimeContent.get_instance().clear_screen_list()
-            json_file_name = Config.get_instance().get_target_pkg_name() + "_" + str(restart_cnt)
-            pickle_file_name = Config.get_instance().get_pickle_file_name()
-            dump_screen_map_to_json(json_file_name)
-            SavedInstanceUtils.dump_pickle(RuntimeContent.get_instance(), pickle_file_name)
+            JsonUtils.dump_screen_map_to_json()
+            SavedInstanceUtils.dump_pickle(RuntimeContent.get_instance())
             break
 
     Logger.get_instance().print("程序结束")

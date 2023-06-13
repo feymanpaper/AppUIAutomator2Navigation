@@ -21,7 +21,7 @@ class Config(object):
 
 
         self.log_file_name = "./Log/" + self.target_pkg_name + "_1.log"
-        self.pickle_file_name = "./SavedRuntimeContent/" + self.target_pkg_name + "_1.pickle"
+        self.use_pickle_file_name = "./SavedInstance/" + self.target_pkg_name + "_1.pickle"
         self.is_saved_start = False
 
 
@@ -49,7 +49,7 @@ class Config(object):
         return self.log_file_name
 
     def get_pickle_file_name(self):
-        return self.pickle_file_name
+        return self.use_pickle_file_name
 
     def set_device(self, device):
         self.device = device

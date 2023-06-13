@@ -1,4 +1,4 @@
-from SavedInstanceUtils import *
+from Utils.SavedInstanceUtils import *
 from RuntimeContent import *
 from uiautomator2 import Device
 

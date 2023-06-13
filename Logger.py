@@ -3,6 +3,8 @@ import sys
 from logging import StreamHandler
 from logging import FileHandler
 import os
+from Config import *
+from StatRecorder import *
 
 class Logger:
     def __new__(cls, *args, **kwargs):
@@ -60,4 +62,7 @@ class Logger:
     def print(self, *args):
         # self.rewrite_print(*args)
         self.log_info(*args)
+
+
+
 

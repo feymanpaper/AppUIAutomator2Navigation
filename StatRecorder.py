@@ -5,6 +5,8 @@ class StatRecorder(object):
         self.stat_screen_set = set()
         self.stat_activity_set = set()
         self.start_time = -1
+        self.end_time = -1
+        self.restart_cnt = 0
 
     def __new__(cls, *args, **kwargs):
         if not hasattr(StatRecorder, "_instance"):
@@ -35,8 +37,13 @@ class StatRecorder(object):
         print(f"总共点击的activity个数 {len(self.stat_activity_set)}")
         print(f"总共点击的Screen个数: {len(self.stat_screen_set)}")
         print(f"总共点击的组件个数: {self.total_eles_cnt}")
-        end_time = time.time()
-        print(f"时间为 {end_time - self.start_time}")
+        self.end_time = time.time()
+        print(f"时间为 {self.end_time - self.start_time}")
+
+    def to_string_result(self):
+        assert (self.end_time != -1)
+        diff_time = self.end_time - self.start_time
+        return f"_restart{self.restart_cnt}activity{len(self.stat_activity_set)}&screen{len(self.stat_screen_set)}&time{round(diff_time, 2)}s"
 
     def get_stat_screen_set(self):
         return self.stat_screen_set
