@@ -26,8 +26,8 @@ class JsonUtils:
         json.dump(res_list, fw, ensure_ascii = False)
         fw.close()
 
-    @staticmethod
-    def __get_res_list_from_screenmap(screen_map:dict[str, ScreenNode]) -> list:
+    @classmethod
+    def __get_res_list_from_screenmap(cls, screen_map:dict[str, ScreenNode]) -> list:
         res_list = []
         for ck_eles_text, screen_node in screen_map.items():
             json_dict = {}
@@ -36,8 +36,9 @@ class JsonUtils:
             json_dict["pkg_name"] = screen_node.pkg_name
             json_dict["activity_name"] = screen_node.activity_name
             json_dict["already_clicked_cnt"] = screen_node.already_clicked_cnt
-            # json_dict["nextlist"] = __get_nextlist(screen_node)
-            # json_dict["call_map"] = __get_callmap_list(screen_node)
+            json_dict["nextlist"] = cls.__get_nextlist(screen_node)
+            # json_dict["call_map_list"] = cls.__get_callmap_list(screen_node)
+            json_dict["call_map"] = cls.__get_callmap(screen_node)
             res_list.append(json_dict)
         # print(res_list)
         return res_list
@@ -49,6 +50,13 @@ class JsonUtils:
             call_map_list.append(call_screen_node.ck_eles_text)
         # print(call_map_list)
         return call_map_list
+
+    @staticmethod
+    def __get_callmap(screen_node: ScreenNode) -> dict:
+        res_call_map = {}
+        for ck_ele_uid, call_screen_node in screen_node.call_map.items():
+            res_call_map[ck_ele_uid] = call_screen_node.ck_eles_text
+        return res_call_map
 
     @staticmethod
     def __get_nextlist(screen_node: ScreenNode) -> list[str]:
