@@ -25,13 +25,14 @@ class FSM:
         4: "STATE_FinishScreen",
         5: "STATE_NewScreen",
         6: "STATE_SpecialScreen",
-        7: "STATE_Restart",
+        7: "STATE_StuckRestart",
         8: "STATE_DoublePress",
         9: "STATE_PermissonScreen",
         10: "STATE_OutsystemSpecialScreen",
         11: "STATE_WebViewScreen",
         12: "STATE_ErrorScreen",
-        100: "完成"
+        13: "STATE_HomeScreenRestart",
+        100: "STATE_Terminate"
     }
 
     STATE_ExitApp = 1
@@ -40,12 +41,14 @@ class FSM:
     STATE_FinishScreen = 4
     STATE_NewScreen = 5
     STATE_SpecialScreen = 6
-    STATE_Restart = 7
+    STATE_StuckRestart = 7
     STATE_DoublePress = 8
     STATE_PermissonScreen = 9
     STATE_OutsystemSpecialScreen = 10
     STATE_WebViewScreen = 11
     STATE_ErrorScreen = 12
+    STATE_HomeScreenRestart = 13
+    STATE_Terminate = 100
 
 
     def update_stat(self, cur_activity, ck_eles_text):
@@ -62,8 +65,13 @@ class FSM:
         cur_ck_eles = merged_clickable_elements(cur_ck_eles)
         after_len = len(cur_ck_eles)
         ck_eles_text = to_string_ck_els(cur_ck_eles)
-        if RuntimeContent.get_instance().get_first_screen_ck_eles_text() is None:
+
+        # if RuntimeContent.get_instance().get_first_screen_ck_eles_text() is None:
+        #     RuntimeContent.get_instance().set_first_screen_ck_ele_text(ck_eles_text)
+        last_screen_node = RuntimeContent.get_instance().get_last_screen_node()
+        if last_screen_node is not None and last_screen_node.ck_eles_text == "root":
             RuntimeContent.get_instance().set_first_screen_ck_ele_text(ck_eles_text)
+
         content = {}
         content["cur_screen_pkg_name"] = cur_screen_pkg_name
         content["cur_activity"] = cur_activity
@@ -85,9 +93,9 @@ class FSM:
             StateHandler.handle_new_screen(content)
         elif state == self.STATE_SpecialScreen:
             StateHandler.handle_special_screen(content)
-        elif state == self.STATE_Restart:
+        elif state == self.STATE_StuckRestart:
             # TODO 重启机制
-            StateHandler.handle_restart(content)
+            StateHandler.handle_stuck_restart(content)
         elif state == self.STATE_DoublePress:
             StateHandler.handle_double_press(content)
         elif state == self.STATE_PermissonScreen:
@@ -98,8 +106,12 @@ class FSM:
             StateHandler.handle_WebView_screen(content)
         elif state == self.STATE_ErrorScreen:
             StateHandler.handle_error_screen(content)
+        elif state == self.STATE_HomeScreenRestart:
+            StateHandler.handle_homes_screen_restart(content)
+        elif state == self.STATE_Terminate:
+            StateHandler.handle_terminate(content)
         else:
-            raise Exception("意外情况")
+             raise Exception("意外情况")
 
 
     def get_state(self):
@@ -108,18 +120,21 @@ class FSM:
         cur_screen_pkg_name = content["cur_screen_pkg_name"]
         ck_eles_text = content["ck_eles_text"]
         self.update_stat(cur_activity, ck_eles_text)
-        Logger.get_instance().print(f"当前Screen为: {ck_eles_text}")
+        LogUtils.log_info(f"当前Screen为: {ck_eles_text}")
+        RuntimeContent.get_instance().append_screen_list(ck_eles_text)
 
         if cur_screen_pkg_name != Config.get_instance().get_target_pkg_name():
             if check_is_in_home_screen(cur_screen_pkg_name) and check_is_first_scrren_finish():
-                return self.STATE_Restart, content
+                return self.STATE_Terminate, content
+            if check_is_in_home_screen(cur_screen_pkg_name) and not check_is_first_scrren_finish():
+                return self.STATE_HomeScreenRestart, content
             if check_is_in_home_screen(cur_screen_pkg_name):
                 return 100, content
-            if cur_screen_pkg_name == "com.google.android.packageinstaller":
+            if check_is_permisson_screen(cur_screen_pkg_name):
                 return self.STATE_PermissonScreen, content
             else:
                 if check_pattern_state(3, [self.STATE_ExitApp]):
-                    return self.STATE_Restart, content
+                    return self.STATE_StuckRestart, content
                 # if check_pattern_state(3, [self.STATE_ExitApp]):
                 #     return self.STATE_OutsystemSpecialScreen, content
                 else:
@@ -129,7 +144,7 @@ class FSM:
             return self.STATE_InputMethod, content
 
         if check_is_in_webview(cur_activity) and check_pattern_state(4, [self.STATE_DoublePress, self.STATE_WebViewScreen]):
-            return self.STATE_Restart, content
+            return self.STATE_StuckRestart, content
         if check_is_in_webview(cur_activity) and check_pattern_state(1, [self.STATE_WebViewScreen]):
             return self.STATE_DoublePress, content
         if check_is_in_webview(cur_activity):
@@ -143,7 +158,6 @@ class FSM:
         content["cur_screen_node"] = most_similar_screen_node
         content["most_similar_screen_node"] = most_similar_screen_node
         content["sim"] = sim
-        RuntimeContent.get_instance().append_screen_list(ck_eles_text)
 
         # if cur_screen_node is not None:
         if sim >= 0.90:
@@ -151,7 +165,7 @@ class FSM:
             RuntimeContent.get_instance().put_screen_map(ck_eles_text, cur_screen_node)
 
             if check_is_errorscreen(ck_eles_text, ScreenCompareStrategy(LCSComparator())) and check_pattern_state(4, [self.STATE_ErrorScreen, self.STATE_DoublePress]):
-                return self.STATE_Restart, content
+                return self.STATE_StuckRestart, content
             if check_is_errorscreen(ck_eles_text, ScreenCompareStrategy(LCSComparator())) and check_pattern_state(1, [self.STATE_ErrorScreen]) and check_screen_list_reverse(2):
                 return self.STATE_DoublePress, content
             if check_is_errorscreen(ck_eles_text, ScreenCompareStrategy(LCSComparator())):
@@ -161,7 +175,7 @@ class FSM:
             # if check_state_list_reverse(self.STATE_ExitApp, state_list, self.STATE_FinishScreen) and check_screen_list_reverse(self.STATE_OutsystemSpecialScreen, screen_list) and cur_screen_node.is_screen_clickable_finished():
             #     return self.STATE_Restart, content
             if cur_screen_node.is_screen_clickable_finished() and check_pattern_state(10, [self.STATE_FinishScreen, self.STATE_SpecialScreen, self.STATE_DoublePress]):
-                return self.STATE_Restart, content
+                return self.STATE_StuckRestart, content
             if cur_screen_node.is_screen_clickable_finished() and check_pattern_state(1, [self.STATE_SpecialScreen,
                                                                                           self.STATE_DoublePress]) and check_screen_list_reverse(3):
                 return self.STATE_SpecialScreen, content
@@ -181,12 +195,11 @@ class FSM:
 
     def print_state(self, state):
         # Logger.get_instance().print(f"状态为{self.reverse_state_map[state]} {self.state_map[state]}")
-        Logger.get_instance().print(f"状态为{self.reverse_state_map[state]}")
+        LogUtils.log_info(f"状态为{self.reverse_state_map[state]}")
 
 
     def start(self):
         stat_map = {}
-        state = -1
         while True:
             if len(StatRecorder.get_instance().get_stat_screen_set()) % 10 == 0 and stat_map.get(len(StatRecorder.get_instance().get_stat_screen_set()), False) is False:
                 stat_map[len(StatRecorder.get_instance().get_stat_screen_set())] = True
@@ -194,12 +207,12 @@ class FSM:
 
             state, content = self.get_state()
             RuntimeContent.get_instance().append_state_list(state)
-            Logger.get_instance().print("\n")
-            Logger.get_instance().print("-"*50)
+            LogUtils.log_info("\n")
+            LogUtils.log_info("-" * 50)
             self.print_state(state)
             self.do_transition(state, content)
-            Logger.get_instance().print("-"*50)
-            Logger.get_instance().print("\n")
+            LogUtils.log_info("-" * 50)
+            LogUtils.log_info("\n")
 
 
 

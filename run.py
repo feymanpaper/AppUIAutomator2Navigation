@@ -3,7 +3,7 @@ from Utils.JsonUtils import *
 from RestartException import RestartException
 from RuntimeContent import RuntimeContent
 from ScreenNode import ScreenNode
-from Logger import *
+from Utils.LogUtils import *
 from Utils.SavedInstanceUtils import *
 
 def suppress_keyboard_interrupt_message():
@@ -13,8 +13,8 @@ def suppress_keyboard_interrupt_message():
         if exctype != KeyboardInterrupt:
             old_excepthook(exctype, value, traceback)
         else:
-            Logger.get_instance().print('\nKeyboardInterrupt ...')
-            Logger.get_instance().print('do something after Interrupt ...')
+            LogUtils.log_info('\nKeyboardInterrupt ...')
+            LogUtils.log_info('do something after Interrupt ...')
             StatRecorder.get_instance().print_result()
             RuntimeContent.get_instance().clear_state_list()
             RuntimeContent.get_instance().clear_screen_list()
@@ -24,10 +24,11 @@ def suppress_keyboard_interrupt_message():
 
 
 if __name__ == "__main__":
-    Logger.get_instance().setup(Config.get_instance().get_log_file_name())
+    LogUtils.setup(Config.get_instance().get_log_file_name())
     FSM = FSM()
     if Config.get_instance().is_saved_start:
         runtime = SavedInstanceUtils.load_pickle(Config.get_instance().get_pickle_file_name())
+        root = runtime.screen_map["root"]
     else:
         root = ScreenNode()
         root.ck_eles_text = "root"
@@ -45,10 +46,11 @@ if __name__ == "__main__":
         d.app_start(Config.get_instance().get_target_pkg_name(), use_monkey=True)
         time.sleep(10)
         try:
+            RuntimeContent.get_instance().set_last_screen_node(root)
             FSM.start()
         except RestartException as e:
-            restart_cnt += 1
-            Logger.get_instance().print("需要重启")
+            StatRecorder.get_instance().inc_restart_cnt()
+            LogUtils.log_info("需要重启")
             logging.exception(e)
             StatRecorder.get_instance().print_result()
             RuntimeContent.get_instance().clear_state_list()
@@ -66,4 +68,4 @@ if __name__ == "__main__":
             SavedInstanceUtils.dump_pickle(RuntimeContent.get_instance())
             break
 
-    Logger.get_instance().print("程序结束")
+    LogUtils.log_info("程序结束")

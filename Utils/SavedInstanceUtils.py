@@ -2,6 +2,7 @@ import pickle
 import os
 from Config import *
 from StatRecorder import *
+from RuntimeContent import RuntimeContent
 
 class SavedInstanceUtils:
     @classmethod
@@ -14,7 +15,7 @@ class SavedInstanceUtils:
         f.close()
 
     @staticmethod
-    def load_pickle(file_path = "./SavedInstance/a.pickle"):
+    def load_pickle(file_path = "./SavedInstance/a.pickle") -> RuntimeContent:
         if not os.path.exists(file_path):
             raise Exception
         f = open(file_path, "rb")

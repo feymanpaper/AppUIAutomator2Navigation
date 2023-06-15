@@ -17,8 +17,6 @@ class ScreenNode:
         # 所有组件的文本,包括不可点击组件的文本
         self.screen_text = ""
 
-
-
         # call_map:{key:widget_uuid, value: next_screen_node}
         # call_map主要记录哪些组件能到达下一个Screen
         self.call_map = {}
@@ -32,6 +30,8 @@ class ScreenNode:
         self.ele_vis_map = {}
         # 记录当前screen已经被点击过的组件个数
         self.already_clicked_cnt = 0
+        # 最近一次到达当前界面所点击的上一个界面的组件uid
+        self.last_ck_ele_uid_list = []
 
     def update_callmap_item(self, ele_uid:str) -> bool:
         if ele_uid in self.call_map:
@@ -39,6 +39,12 @@ class ScreenNode:
             return True
         else:
             return False
+
+    def append_last_ck_ele_uid_list(self, uid):
+        self.last_ck_ele_uid_list.append(uid)
+
+    def get_last_ck_ele_uid_list(self):
+        return self.last_ck_ele_uid_list
 
 
     def build_candidate_random_clickable_eles(self):

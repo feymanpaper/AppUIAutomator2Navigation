@@ -31,14 +31,15 @@ class RuntimeContent(object):
             RuntimeContent._instance = RuntimeContent(*args, **kwargs)
         return RuntimeContent._instance
 
-    def get_last_clickable_ele_uid(self):
-        return self.last_clickable_ele_uid
 
     def get_last_screen_node(self):
         return self.last_screen_node
 
     def set_last_screen_node(self, target):
         self.last_screen_node = target
+
+    def get_last_clickable_ele_uid(self):
+        return self.last_clickable_ele_uid
 
     def set_last_clickable_ele_uid(self, ele_uid):
         self.last_clickable_ele_uid = ele_uid
@@ -69,6 +70,10 @@ class RuntimeContent(object):
 
     def append_error_clickable_ele_uid_list(self, ele_uid:str):
         self.error_clickable_ele_uid_list.append(ele_uid)
+
+    def append_more_error_ck_ele_uid_list(self, ele_uid_list:list):
+        for ele_uid in ele_uid_list:
+            self.error_clickable_ele_uid_list.append(ele_uid)
 
     def get_error_clickable_ele_uid_list(self):
         return self.error_clickable_ele_uid_list

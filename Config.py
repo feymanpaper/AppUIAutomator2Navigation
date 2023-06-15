@@ -21,7 +21,7 @@ class Config(object):
 
 
         self.log_file_name = "./Log/" + self.target_pkg_name + "_1.log"
-        self.use_pickle_file_name = "./SavedInstance/" + self.target_pkg_name + "_1.pickle"
+        self.use_pickle_file_name = "./SavedInstance/com.alibaba.android.rimet_restart3activity39&screen108&time1168.05s.pickle"
         self.is_saved_start = False
 
 

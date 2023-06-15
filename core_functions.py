@@ -1,8 +1,7 @@
-from ScreenNode import *
 from ScreenCompareStrategy import *
 from RuntimeContent import *
-from Logger import *
-import time
+from Utils.LogUtils import *
+
 
 # 检测多层环
 def check_cycle(cur_node: ScreenNode, last_node: ScreenNode, screen_compare_strategy: ScreenCompareStrategy):
@@ -50,18 +49,18 @@ def is_non_necessary_click(cur_clickable_ele_dict):
 
 def print_screen_info(content, is_new):
     cur_screen_node = get_cur_screen_node_from_context(content)
-    Logger.get_instance().print("*" * 100)
+    LogUtils.log_info("*" * 100)
     if is_new:
-        Logger.get_instance().print(f"该screen为新: {cur_screen_node.ck_eles_text[0:-1]}--总共{len(cur_screen_node.clickable_elements)}, 减少{cur_screen_node.merged_diff}")
+        LogUtils.log_info(f"该screen为新: {cur_screen_node.ck_eles_text[0:-1]}--总共{len(cur_screen_node.clickable_elements)}, 减少{cur_screen_node.merged_diff}")
         if cur_screen_node.diff_clickable_elements is not None:
-            Logger.get_instance().print(f"差分后的数量为 {len(cur_screen_node.diff_clickable_elements)}")
+            LogUtils.log_info(f"差分后的数量为 {len(cur_screen_node.diff_clickable_elements)}")
 
     else:
-        Logger.get_instance().print(f"该screen已存在: {cur_screen_node.ck_eles_text[0:-1]}--总共{len(cur_screen_node.clickable_elements)}, 减少{cur_screen_node.merged_diff}")
+        LogUtils.log_info(f"该screen已存在: {cur_screen_node.ck_eles_text[0:-1]}--总共{len(cur_screen_node.clickable_elements)}, 减少{cur_screen_node.merged_diff}")
         if cur_screen_node.diff_clickable_elements is not None:
-            Logger.get_instance().print(f"差分后的数量为 {len(cur_screen_node.diff_clickable_elements)}")
+            LogUtils.log_info(f"差分后的数量为 {len(cur_screen_node.diff_clickable_elements)}")
 
-    Logger.get_instance().print("*" * 100)
+    LogUtils.log_info("*" * 100)
 
 
 # def get_two_clickable_eles_diff(cur_eles, cur_activity, last_eles, last_activity):
@@ -94,7 +93,7 @@ def get_two_clickable_eles_diff(cur_eles, last_eles):
 
     # union_eles = union(d, cur_eles, cur_activity, last_eles, last_activity)
     diff_eles = list(set(cur_eles).difference(last_eles))
-    Logger.get_instance().print(f"出现了重叠,可能为框,差分之后数量为{len(diff_eles)}")
+    LogUtils.log_info(f"出现了重叠,可能为框,差分之后数量为{len(diff_eles)}")
     return diff_eles
 
 

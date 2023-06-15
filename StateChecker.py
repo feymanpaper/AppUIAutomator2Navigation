@@ -131,7 +131,7 @@ def check_is_inputmethod_in_cur_screen():
 
 def check_is_first_scrren_finish():
     first_scrren_ck_eles_text = RuntimeContent.get_instance().get_first_screen_ck_eles_text()
-    first_screen_node = RuntimeContent.get_instance().get_screen_map()[first_scrren_ck_eles_text]
+    first_screen_node = RuntimeContent.get_instance().get_screen_map().get(first_scrren_ck_eles_text, None)
     if first_screen_node is not None and first_screen_node.is_screen_clickable_finished():
         return True
     return False
@@ -145,8 +145,14 @@ def check_is_in_home_screen(cur_screen_pkg_name):
         return True
     return False
 
-def check_is_in_webview(cur_activity:str) -> bool:
+def check_is_permisson_screen(cur_screen_pkg_name):
+    if cur_screen_pkg_name == "com.google.android.packageinstaller":
+        return True
+    if cur_screen_pkg_name == "com.lbe.security.miui":
+        return True
     return False
+
+def check_is_in_webview(cur_activity:str) -> bool:
     d = Config.get_instance().get_device()
     if d(className = "android.webkit.WebView").exists():
         return True

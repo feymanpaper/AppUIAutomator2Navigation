@@ -54,5 +54,8 @@ class StatRecorder(object):
     def get_total_eles_cnt(self):
         return self.total_eles_cnt
 
+    def inc_restart_cnt(self):
+        self.restart_cnt +=1
+
 
 
