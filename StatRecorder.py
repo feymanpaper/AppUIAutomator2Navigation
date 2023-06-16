@@ -1,4 +1,5 @@
 import time
+from Utils.LogUtils import *
 class StatRecorder(object):
     def __init__(self):
         self.total_eles_cnt = 0
@@ -32,13 +33,13 @@ class StatRecorder(object):
         self.stat_activity_set.add(cur_activity)
 
     def print_result(self):
-        print("@" * 100)
-        print("@" * 100)
-        print(f"总共点击的activity个数 {len(self.stat_activity_set)}")
-        print(f"总共点击的Screen个数: {len(self.stat_screen_set)}")
-        print(f"总共点击的组件个数: {self.total_eles_cnt}")
+        LogUtils.log_info("@" * 100)
+        LogUtils.log_info("@" * 100)
+        LogUtils.log_info(f"总共点击的activity个数 {len(self.stat_activity_set)}")
+        LogUtils.log_info(f"总共点击的Screen个数: {len(self.stat_screen_set)}")
+        LogUtils.log_info(f"总共点击的组件个数: {self.total_eles_cnt}")
         self.end_time = time.time()
-        print(f"时间为 {self.end_time - self.start_time}")
+        LogUtils.log_info(f"时间为 {self.end_time - self.start_time}")
 
     def to_string_result(self):
         assert (self.end_time != -1)

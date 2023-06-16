@@ -17,6 +17,7 @@ class LogUtils:
     #     return LogUtils._instance
     file_path = ""
     logger = logging.getLogger(__name__)
+    logger.propagate = False
 
     @classmethod
     def setup(cls, file_path = "./Log/test.log"):

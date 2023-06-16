@@ -101,8 +101,6 @@ class ScreenNode:
     def is_cur_callmap_finish(self, target_screen_all_text, screen_compare_strategy):
         if self is None:
             return True
-
-
         # for child_node in self.children:
         #     if screen_compare_strategy.compare_screen(child_node.all_text, target_screen_all_text)[0] == True:
         #     # if child_node.all_text == target_screen_all_text:
@@ -111,8 +109,6 @@ class ScreenNode:
         #         else:
         #             return False
         # return True
-
-
         # 根据call_map来找,其实call_map和children差不多,区别就是children有回边,call_map没有
         #TODO
         for child_node in self.call_map.values():
