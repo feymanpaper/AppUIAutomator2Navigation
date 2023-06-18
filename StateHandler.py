@@ -102,8 +102,20 @@ class StateHandler(object):
                         cur_screen_node.already_clicked_cnt += 1
                         clickable_ele_idx += 1
                         continue
+                    if next_screen_node.pkg_name != Config.get_instance().get_target_pkg_name():
+                        LogUtils.log_info(f"clickmap--next界面非本app本包名&{clickable_ele_idx}: {cur_clickable_ele_uid}")
+                        cur_screen_node.already_clicked_cnt += 1
+                        clickable_ele_idx += 1
+                        continue
+                    if next_screen_node.get_isWebView():
+                        LogUtils.log_info(
+                            f"clickmap--next界面是WebView&{clickable_ele_idx}: {cur_clickable_ele_uid}")
+                        cur_screen_node.already_clicked_cnt += 1
+                        clickable_ele_idx += 1
+                        continue
+
                     if next_screen_node.is_screen_clickable_finished():
-                        LogUtils.log_info(f"clickmap--该界面点击完成&{clickable_ele_idx}: {cur_clickable_ele_uid}")
+                        LogUtils.log_info(f"clickmap--next界面点击完成&{clickable_ele_idx}: {cur_clickable_ele_uid}")
                         cur_screen_node.already_clicked_cnt += 1
                         clickable_ele_idx += 1
                         continue
@@ -237,6 +249,26 @@ class StateHandler(object):
         last_clickable_ele_uid = RuntimeContent.get_instance().get_last_clickable_ele_uid()
         if last_clickable_ele_uid is not None and last_clickable_ele_uid != "":
             cur_screen_node.append_last_ck_ele_uid_list(last_clickable_ele_uid)
+
+        if last_screen_node is not None:
+            if last_screen_node.ck_eles_text == cur_screen_node.ck_eles_text:
+                LogUtils.log_info("回到自己")
+                last_screen_node.update_callmap_item(RuntimeContent.get_instance().get_last_clickable_ele_uid())
+                pass
+            elif check_cycle(cur_screen_node, last_screen_node, ScreenCompareStrategy(LCSComparator())) == True:
+                # 产生了回边
+                last_screen_node.cycle_set.add(RuntimeContent.get_instance().get_last_clickable_ele_uid())
+                LogUtils.log_info("产生回边")
+                last_screen_node.update_callmap_item(RuntimeContent.get_instance().get_last_clickable_ele_uid())
+                pass
+            else:
+                if last_screen_node.ck_eles_text != "root":
+                    # call_map会更新
+                    last_screen_node.call_map[
+                        RuntimeContent.get_instance().get_last_clickable_ele_uid()] = cur_screen_node
+                # else:
+                #     first_screen_text = ck_eles_text
+
         return cur_screen_node
 
     @classmethod
@@ -394,6 +426,7 @@ class StateHandler(object):
     @classmethod
     def handle_WebView_screen(cls, content):
         cur_screen_node = cls.add_not_target_pkg_name_screen_call_graph(content)
+        cur_screen_node.set_isWebView(True)
         content["cur_screen_node"] = cur_screen_node
         print_screen_info(content, True)
         cls.press_back()

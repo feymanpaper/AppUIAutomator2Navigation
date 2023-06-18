@@ -35,13 +35,16 @@ def non_look_up(item_list, str):
     return res
 
 
-def get_missing_data_item(screen_text_file_name, pricacy_policy_file_name):
+def get_missing_data_item(screen_text_file_name, privacy_policy_file_name):
     item_list = parse_privacy_txt()
-    screen_text_file_name = "../dumpjson/com.alibaba.android.rimet_screen444time8000s.json"
     screen_text = parse_dumpjson(screen_text_file_name)
     match_privacy_item = look_up(item_list, screen_text)
-    privacy_policy_file_name = "../PrivacyData/PrivacyPolicySaveDir/钉钉.json"
     privacy_policy_text = parse_dumpjson(privacy_policy_file_name)
     exist_item = look_up(match_privacy_item, privacy_policy_text)
     non_exist_item = non_look_up(match_privacy_item, privacy_policy_text)
     return non_exist_item
+
+screen_text_file_name = "../dumpjson/com.alibaba.android.rimet_restart0activity76&screen249&time3603.69s.json"
+privacy_policy_file_name = "../PrivacyData/PrivacyPolicySaveDir/钉钉.json"
+print(get_missing_data_item(screen_text_file_name, privacy_policy_file_name))
+print(len(get_missing_data_item(screen_text_file_name, privacy_policy_file_name)))

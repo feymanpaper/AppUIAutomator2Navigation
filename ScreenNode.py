@@ -16,10 +16,11 @@ class ScreenNode:
         self.activity_name = ""
         # 所有组件的文本,包括不可点击组件的文本
         self.screen_text = ""
-
         # call_map:{key:widget_uuid, value: next_screen_node}
         # call_map主要记录哪些组件能到达下一个Screen
         self.call_map = {}
+        # 记录是否是WebView
+        self.isWebView = False
         # cycle_set记录了哪些组件产生回边
         self.cycle_set = set()
         # 记录哪些候选的随机点击组件
@@ -120,4 +121,12 @@ class ScreenNode:
                 else:
                     return False
         return True
+
+    def set_isWebView(self, flag):
+        self.isWebView = flag
+
+    def get_isWebView(self):
+        return self.isWebView
+
+
             
