@@ -5,7 +5,7 @@ class Config(object):
         self.sleep_time_sec = 2
         self.device = None
         # self.target_pkg_name = "com.example.myapplication"
-        # self.target_pkg_name = "com.alibaba.android.rimet"
+        self.target_pkg_name = "com.alibaba.android.rimet"
         # self.target_pkg_name = "com.ss.android.ugc.aweme" #抖音
         # self.target_pkg_name = "net.csdn.csdnplus"
         # self.target_pkg_name = "com.sina.weibo"
@@ -15,10 +15,12 @@ class Config(object):
         # self.target_pkg_name = "com.cloudy.component"
         # self.target_pkg_name = "com.jingyao.easybike"
         # self.target_pkg_name = "com.cainiao.wireless"
-        self.target_pkg_name = "com.xingin.xhs"
+        # self.target_pkg_name = "com.xingin.xhs"
         # self.target_pkg_name = "com.yipiao"
         # self.target_pkg_name = "app.podcast.cosmos"
         # self.target_pkg_name = "com.hunantv.imgo.activity"
+        # self.target_pkg_name = "tv.danmaku.bili" #b站
+        # self.target_pkg_name = "com.netease.edu.ucmooc" #MOOC
 
 
         self.log_file_name = "./Log/" + self.target_pkg_name + "_1.log"

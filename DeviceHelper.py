@@ -383,7 +383,10 @@ def get_dict_clickable_ele(clickable_ele, activity_name):
         clickable_ele_dict["text"] = temp_text
     else:
         temp_text = traverse_tree(clickable_ele)
-        clickable_ele_dict["text"] = temp_text
+        if temp_text:
+            clickable_ele_dict["text"] = temp_text
+        else:
+            clickable_ele_dict["text"] = clickable_ele.get("content-desc")
     clickable_ele_dict["bounds"] = clickable_ele.get('bounds')
     return clickable_ele_dict
 

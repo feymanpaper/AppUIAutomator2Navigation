@@ -1,0 +1,5719 @@
+[
+  {
+    "sentence-count": 68,
+    "data-count": 201,
+    "purpose-count": 38,
+    "data-cn-total": [
+      "交互",
+      "下载",
+      "IP",
+      "页面提示",
+      "金融账户",
+      "地址",
+      "部门",
+      "手机号码",
+      "加速度",
+      "订单",
+      "访问",
+      "操作记录",
+      "日志",
+      "报障",
+      "ANDROID ID",
+      "资料",
+      "健康",
+      "故障",
+      "身份",
+      "识别码",
+      "发票",
+      "注册",
+      "支付",
+      "IMEI",
+      "标识符",
+      "用户",
+      "IDFA",
+      "广播",
+      "昵称",
+      "SDK",
+      "时间",
+      "文件",
+      "网页记录",
+      "认证",
+      "操作系统",
+      "通讯",
+      "分享",
+      "SIM",
+      "账户",
+      "MEID",
+      "市场活动",
+      "设置",
+      "照片",
+      "面部",
+      "设备",
+      "图片",
+      "会员",
+      "安装列表",
+      "交易",
+      "头像",
+      "授权",
+      "位置",
+      "行踪轨迹",
+      "开户行",
+      "网络",
+      "商品",
+      "通话记录",
+      "MAC",
+      "注销申请",
+      "文章评论",
+      "通信",
+      "行为",
+      "使用情况",
+      "GUID",
+      "系统版本",
+      "设备型号",
+      "名称",
+      "OAID",
+      "排障过程",
+      "发布",
+      "COOKIE",
+      "企业",
+      "实名",
+      "邮编",
+      "证件",
+      "GPS",
+      "评价",
+      "宗教信仰",
+      "序列号",
+      "开户人",
+      "存储",
+      "软件列表",
+      "营业执照",
+      "联系人",
+      "IMSI",
+      "蓝牙",
+      "环境",
+      "陀螺仪",
+      "ICCID",
+      "文字",
+      "请求",
+      "记录",
+      "账号",
+      "剪切板",
+      "心率",
+      "传感器",
+      "地区",
+      "基站",
+      "姓名",
+      "沟通",
+      "联系",
+      "咨询记录",
+      "收件人",
+      "电子邮箱",
+      "身份证",
+      "WIFI",
+      "特征",
+      "银行",
+      "内容"
+    ],
+    "data-en-total": [
+      "account",
+      "transaction",
+      "IP",
+      "acceleration",
+      "member",
+      "fault",
+      "data",
+      "Marketing activities",
+      "Opening bank",
+      "company",
+      "record",
+      "ANDROID ID",
+      "serial number",
+      "action",
+      "phone number",
+      "Trajectory",
+      "avatar",
+      "release",
+      "set up",
+      "IMEI",
+      "storage",
+      "Business license",
+      "operation record",
+      "IDFA",
+      "Software List",
+      "SDK",
+      "Page prompt",
+      "identity",
+      "SIM",
+      "evaluate",
+      "Bluetooth",
+      "MEID",
+      "Installation List",
+      "radio broadcast",
+      "base station",
+      "log",
+      "Obstacle removal process",
+      "content",
+      "sign in",
+      "MAC",
+      "E-mail",
+      "device",
+      "gyroscope",
+      "Web page records",
+      "Article comments",
+      "Real name",
+      "authentication",
+      "heart rate",
+      "GUID",
+      "position",
+      "time",
+      "request",
+      "certificates",
+      "file",
+      "operating system",
+      "written words",
+      "full name",
+      "OAID",
+      "System version",
+      "to grant authorization",
+      "COOKIE",
+      "account number",
+      "user",
+      "contacts",
+      "religious belief",
+      "healthy",
+      "GPS",
+      "addressee",
+      "face",
+      "financial account",
+      "cancellation application",
+      "share",
+      "name",
+      "Account Holder",
+      "invoice",
+      "IMSI",
+      "Reporting obstacles",
+      "interactive",
+      "commodity",
+      "features",
+      "communicate",
+      "ICCID",
+      "payment",
+      "network",
+      "Call logs",
+      "Shear plate",
+      "identifier ",
+      "address",
+      "order",
+      "Identification code",
+      "Usage",
+      "download",
+      "bank",
+      "contact",
+      "communication",
+      "visit",
+      "picture",
+      "Equipment model",
+      "Photo",
+      "WIFI",
+      "ID",
+      "Postal Code",
+      "region",
+      "environment",
+      "department",
+      "nickname",
+      "Consultation records",
+      "signal communication",
+      "sensor"
+    ],
+    "data-en-chatgpt-total": [
+      [
+        "user",
+        "account",
+        "member"
+      ],
+      [
+        "storage",
+        "repository",
+        "storehouse"
+      ],
+      [
+        "auth",
+        "authorization",
+        "authorized"
+      ],
+      [
+        "usage",
+        "usage status",
+        "use status"
+      ],
+      [
+        "user",
+        "account",
+        "member"
+      ],
+      [
+        "user",
+        "account",
+        "member"
+      ],
+      [
+        "user",
+        "account",
+        "member"
+      ],
+      [
+        "log",
+        "record",
+        "trace"
+      ],
+      [
+        "operation record",
+        "operational record",
+        "operating record"
+      ],
+      [
+        "account",
+        "username",
+        "id"
+      ],
+      [
+        "phone number",
+        "telephone number",
+        "cellphone number"
+      ],
+      [
+        "Page prompt"
+      ],
+      [
+        "phone number",
+        "telephone number",
+        "cellphone number"
+      ],
+      [
+        "identity"
+      ],
+      [
+        "phone number",
+        "telephone number",
+        "cellphone number"
+      ],
+      [
+        "account",
+        "username",
+        "id"
+      ],
+      [
+        "name",
+        "first name",
+        "last name"
+      ],
+      [
+        "company"
+      ],
+      [
+        "name"
+      ],
+      [
+        "user",
+        "account",
+        "member"
+      ],
+      [
+        "credentials",
+        "certificate",
+        "certification"
+      ],
+      [
+        "ID card",
+        "identity card",
+        "ID"
+      ],
+      [
+        "user",
+        "account",
+        "member"
+      ],
+      [
+        "identity"
+      ],
+      [
+        "identity"
+      ],
+      [
+        "name",
+        "first name",
+        "last name"
+      ],
+      [
+        "company"
+      ],
+      [
+        "name"
+      ],
+      [
+        "user",
+        "account",
+        "member"
+      ],
+      [
+        "credentials",
+        "certificate",
+        "certification"
+      ],
+      [
+        "ID card",
+        "identity card",
+        "ID"
+      ],
+      [
+        "user",
+        "account holder",
+        "registered user"
+      ],
+      [
+        "account",
+        "username",
+        "id"
+      ],
+      [
+        "Real name"
+      ],
+      [
+        "company"
+      ],
+      [
+        "bank",
+        "bank name",
+        "bank account"
+      ],
+      [
+        "name"
+      ],
+      [
+        "account",
+        "account number",
+        "bank account"
+      ],
+      [
+        "Business license"
+      ],
+      [
+        "Opening bank"
+      ],
+      [
+        "register",
+        "sign up",
+        "enroll"
+      ],
+      [
+        "region"
+      ],
+      [
+        "face"
+      ],
+      [
+        "features"
+      ],
+      [
+        "photo",
+        "picture",
+        "image"
+      ],
+      [
+        "ID card",
+        "identity card",
+        "ID"
+      ],
+      [
+        "payment",
+        "payment amount",
+        "transaction id"
+      ],
+      [
+        "account",
+        "username",
+        "id"
+      ],
+      [
+        "name"
+      ],
+      [
+        "order",
+        "orders",
+        "purchase order"
+      ],
+      [
+        "SDK"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "payment",
+        "payment amount",
+        "transaction id"
+      ],
+      [
+        "name",
+        "first name",
+        "last name"
+      ],
+      [
+        "phone number",
+        "telephone number",
+        "cellphone number"
+      ],
+      [
+        "postcode",
+        "zip code",
+        "postal code"
+      ],
+      [
+        "recipient",
+        "consignee",
+        "mail"
+      ],
+      [
+        "invoice",
+        "invoice information",
+        "billing information"
+      ],
+      [
+        "E-mail"
+      ],
+      [
+        "address",
+        "location",
+        "place"
+      ],
+      [
+        "account",
+        "username",
+        "id"
+      ],
+      [
+        "share",
+        "forward",
+        "transmit"
+      ],
+      [
+        "network",
+        "networking",
+        "net"
+      ],
+      [
+        "log",
+        "record",
+        "trace"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "os",
+        "operating system"
+      ],
+      [
+        "OAID"
+      ],
+      [
+        "sensor",
+        "transducer",
+        "probe"
+      ],
+      [
+        "IP"
+      ],
+      [
+        "base",
+        "base station",
+        "station"
+      ],
+      [
+        "setting",
+        "configuration",
+        "preference"
+      ],
+      [
+        "address",
+        "location",
+        "place"
+      ],
+      [
+        "GPS"
+      ],
+      [
+        "WIFI"
+      ],
+      [
+        "position",
+        "location"
+      ],
+      [
+        "features"
+      ],
+      [
+        "MAC"
+      ],
+      [
+        "bluetooth",
+        "wireless"
+      ],
+      [
+        "IMEI"
+      ],
+      [
+        "identifier",
+        "id",
+        "mark"
+      ],
+      [
+        "IDFA"
+      ],
+      [
+        "record",
+        "log",
+        "trace"
+      ],
+      [
+        "system version",
+        "system edition",
+        "system type"
+      ],
+      [
+        "device model"
+      ],
+      [
+        "usage",
+        "usage status",
+        "use status"
+      ],
+      [
+        "time",
+        "date",
+        "duration"
+      ],
+      [
+        "access",
+        "visit",
+        "call"
+      ],
+      [
+        "Web page records"
+      ],
+      [
+        "fault"
+      ],
+      [
+        "record",
+        "records",
+        "log"
+      ],
+      [
+        "user",
+        "account",
+        "member"
+      ],
+      [
+        "Obstacle removal process"
+      ],
+      [
+        "Call logs"
+      ],
+      [
+        "communicate",
+        "communication",
+        "communicating"
+      ],
+      [
+        "fault report",
+        "report a fault",
+        "report an error"
+      ],
+      [
+        "written words"
+      ],
+      [
+        "content",
+        "text",
+        "body"
+      ],
+      [
+        "avatar",
+        "icon",
+        "profile picture"
+      ],
+      [
+        "publish",
+        "post",
+        "send"
+      ],
+      [
+        "nickname",
+        "name",
+        "title"
+      ],
+      [
+        "image",
+        "pic",
+        "photo"
+      ],
+      [
+        "Article comments"
+      ],
+      [
+        "auth",
+        "authorization",
+        "authorized"
+      ],
+      [
+        "content",
+        "text",
+        "body"
+      ],
+      [
+        "evaluate"
+      ],
+      [
+        "publish",
+        "post",
+        "send"
+      ],
+      [
+        "auth",
+        "authorization",
+        "authorized"
+      ],
+      [
+        "marketing activity",
+        "marketing campaign",
+        "promotion"
+      ],
+      [
+        "product",
+        "commodity",
+        "goods"
+      ],
+      [
+        "contact",
+        "contacts",
+        "get in touch"
+      ],
+      [
+        "auth",
+        "authorization",
+        "authorized"
+      ],
+      [
+        "auth",
+        "authorization",
+        "authorized"
+      ],
+      [
+        "interaction",
+        "dialogue",
+        "communication"
+      ],
+      [
+        "content",
+        "text",
+        "body"
+      ],
+      [
+        "Page prompt"
+      ],
+      [
+        "user",
+        "account",
+        "member"
+      ],
+      [
+        "user",
+        "account",
+        "member"
+      ],
+      [
+        "transaction",
+        "deal",
+        "trade"
+      ],
+      [
+        "identity"
+      ],
+      [
+        "user",
+        "account",
+        "member"
+      ],
+      [
+        "user",
+        "account",
+        "member"
+      ],
+      [
+        "auth",
+        "authorization",
+        "authorized"
+      ],
+      [
+        "user",
+        "account",
+        "member"
+      ],
+      [
+        "auth",
+        "authorization",
+        "authorized"
+      ],
+      [
+        "communication",
+        "communicate",
+        "com"
+      ],
+      [
+        "transaction",
+        "deal",
+        "trade"
+      ],
+      [
+        "share",
+        "forward",
+        "transmit"
+      ],
+      [
+        "contacts"
+      ],
+      [
+        "data"
+      ],
+      [
+        "authentication",
+        "auth",
+        "authorization"
+      ],
+      [
+        "Real name"
+      ],
+      [
+        "download",
+        "get",
+        "obtain"
+      ],
+      [
+        "contact",
+        "contacts",
+        "get in touch"
+      ],
+      [
+        "user",
+        "account",
+        "member"
+      ],
+      [
+        "request",
+        "requests",
+        "requesting"
+      ],
+      [
+        "contact",
+        "contacts",
+        "get in touch"
+      ],
+      [
+        "user",
+        "account",
+        "member"
+      ],
+      [
+        "setting",
+        "configuration",
+        "preference"
+      ],
+      [
+        "auth",
+        "authorization",
+        "authorized"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "request",
+        "requests",
+        "requesting"
+      ],
+      [
+        "auth",
+        "authorization",
+        "authorized"
+      ],
+      [
+        "contact",
+        "contacts",
+        "get in touch"
+      ],
+      [
+        "auth",
+        "authorization",
+        "authorized"
+      ],
+      [
+        "behavior",
+        "action",
+        "activity"
+      ],
+      [
+        "account",
+        "account number",
+        "bank account"
+      ],
+      [
+        "cancellation application"
+      ],
+      [
+        "account",
+        "account number",
+        "bank account"
+      ],
+      [
+        "contact",
+        "contacts",
+        "get in touch"
+      ],
+      [
+        "request",
+        "requests",
+        "requesting"
+      ],
+      [
+        "file",
+        "files",
+        "attachment"
+      ],
+      [
+        "storage",
+        "repository",
+        "storehouse"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "COOKIE"
+      ],
+      [
+        "COOKIE"
+      ],
+      [
+        "user",
+        "account",
+        "member"
+      ],
+      [
+        "setting",
+        "configuration",
+        "preference"
+      ],
+      [
+        "user",
+        "account",
+        "member"
+      ],
+      [
+        "user",
+        "account",
+        "member"
+      ],
+      [
+        "auth",
+        "authorization",
+        "authorized"
+      ],
+      [
+        "access",
+        "visit",
+        "call"
+      ],
+      [
+        "user",
+        "account",
+        "member"
+      ],
+      [
+        "user",
+        "account",
+        "member"
+      ],
+      [
+        "user",
+        "account",
+        "member"
+      ],
+      [
+        "storage",
+        "repository",
+        "storehouse"
+      ],
+      [
+        "authentication",
+        "auth",
+        "authorization"
+      ],
+      [
+        "department",
+        "department",
+        "department"
+      ],
+      [
+        "request",
+        "requests",
+        "requesting"
+      ],
+      [
+        "contact",
+        "contacts",
+        "get in touch"
+      ],
+      [
+        "member",
+        "vip",
+        "subscriber"
+      ],
+      [
+        "user",
+        "account",
+        "member"
+      ],
+      [
+        "name",
+        "first name",
+        "last name"
+      ],
+      [
+        "contact",
+        "contacts",
+        "get in touch"
+      ],
+      [
+        "communication",
+        "telecommunication",
+        "correspondence"
+      ],
+      [
+        "SIM"
+      ],
+      [
+        "clipboard",
+        "clip",
+        "paste"
+      ],
+      [
+        "heart rate"
+      ],
+      [
+        "MEID"
+      ],
+      [
+        "sensor",
+        "transducer",
+        "probe"
+      ],
+      [
+        "address",
+        "location",
+        "place"
+      ],
+      [
+        "acceleration"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "Installation List"
+      ],
+      [
+        "serial number"
+      ],
+      [
+        "ANDROID ID"
+      ],
+      [
+        "software list",
+        "software catalog",
+        "software directory"
+      ],
+      [
+        "identification code",
+        "identifying code",
+        "identification number"
+      ],
+      [
+        "IMSI"
+      ],
+      [
+        "MAC"
+      ],
+      [
+        "environment"
+      ],
+      [
+        "bluetooth",
+        "wireless"
+      ],
+      [
+        "gyroscope",
+        "gyro",
+        "g sensor"
+      ],
+      [
+        "ICCID"
+      ],
+      [
+        "IMEI"
+      ],
+      [
+        "radio broadcast"
+      ],
+      [
+        "GUID"
+      ],
+      [
+        "identity"
+      ],
+      [
+        "Trajectory"
+      ],
+      [
+        "religion",
+        "religious belief",
+        "faith"
+      ],
+      [
+        "financial account"
+      ],
+      [
+        "healthy"
+      ]
+    ],
+    "purpose-cn-total": [
+      "广告",
+      "关联",
+      "分享",
+      "修改",
+      "退订",
+      "实名认证",
+      "防范",
+      "验证码",
+      "匿名化",
+      "保障安全",
+      "比赛",
+      "联系",
+      "优化",
+      "履行义务",
+      "互动",
+      "网络日志保存",
+      "运转",
+      "安全检测",
+      "密码找回",
+      "绑定账户",
+      "判断账户",
+      "交易",
+      "变更",
+      "交易风险",
+      "删除",
+      "特征模型",
+      "响应请求",
+      "登录",
+      "注册",
+      "看到联络",
+      "共享",
+      "售后",
+      "打款账号",
+      "身份验证",
+      "推送",
+      "创建账户",
+      "创建交流",
+      "安全"
+    ],
+    "purpose-en-total": [
+      " create account",
+      " fulfillment of obligations",
+      " modification",
+      " optimization",
+      " contact",
+      " account binding",
+      " response request",
+      " create communication",
+      " after-sales",
+      " deletion",
+      " change",
+      " security",
+      " competition",
+      " authentication",
+      " login",
+      " unsubscription",
+      " interaction",
+      " network log preservation",
+      " association",
+      " anonymization",
+      " transaction risk",
+      " transaction",
+      " registration",
+      " see contact",
+      " verification code",
+      "Advertising",
+      " account judgment",
+      " password retrieval",
+      " security detection",
+      " sharing",
+      " call account",
+      " real-name authentication",
+      " feature model",
+      " push",
+      " operation",
+      " prevention"
+    ],
+    "permission_list": [
+      "READ_LOGS",
+      "DELETE_CACHE_FILES",
+      "MANAGE_DEVICE_POLICY_APP_USER_DATA",
+      "MANAGE_DEVICE_POLICY_ORGANIZATION_IDENTITY",
+      "WRITE_CALL_LOG",
+      "ACCOUNT_MANAGER",
+      "MANAGE_DEVICE_POLICY_CERTIFICATES",
+      "MANAGE_DEVICE_POLICY_WIFI",
+      "FOREGROUND_SERVICE_LOCATION",
+      "MANAGE_DEVICE_POLICY_TIME",
+      "READ_PHONE_NUMBERS",
+      "MANAGE_DEVICE_POLICY_BLUETOOTH",
+      "READ_CALL_LOG",
+      "CHANGE_WIFI_MULTICAST_STATE",
+      "MANAGE_DEVICE_POLICY_PROFILE_INTERACTION",
+      "MANAGE_DEVICE_POLICY_MODIFY_USERS",
+      "BLUETOOTH_PRIVILEGED",
+      "ACCESS_COARSE_LOCATION",
+      "FOREGROUND_SERVICE_SYSTEM_EXEMPTED",
+      "MANAGE_DEVICE_POLICY_PROFILES",
+      "CALL_PHONE",
+      "MANAGE_DEVICE_POLICY_MOBILE_NETWORK",
+      "MANAGE_DEVICE_POLICY_USERS",
+      "WRITE_SECURE_SETTINGS",
+      "BIND_QUICK_SETTINGS_TILE",
+      "BLUETOOTH_ADVERTISE",
+      "MANAGE_DEVICE_POLICY_ACROSS_USERS",
+      "LAUNCH_MULTI_PANE_SETTINGS_DEEP_LINK",
+      "CALL_PRIVILEGED",
+      "BLUETOOTH_SCAN",
+      "MANAGE_DEVICE_POLICY_SETTINGS",
+      "NFC",
+      "READ_USER_DICTIONARY",
+      "WRITE_SETTINGS",
+      "FOREGROUND_SERVICE_HEALTH",
+      "MANAGE_DEVICE_POLICY_DEBUGGING_FEATURES",
+      "OVERRIDE_WIFI_CONFIG",
+      "MANAGE_DEVICE_POLICY_SYSTEM_DIALOGS",
+      "BIND_VOICE_INTERACTION",
+      "MANAGE_DEVICE_POLICY_SCREEN_CONTENT",
+      "BLUETOOTH_CONNECT",
+      "SET_TIME",
+      "REORDER_TASKS",
+      "MOUNT_FORMAT_FILESYSTEMS",
+      "READ_MEDIA_IMAGES",
+      "NEARBY_WIFI_DEVICES",
+      "MOUNT_UNMOUNT_FILESYSTEMS",
+      "BLUETOOTH",
+      "MANAGE_DEVICE_POLICY_METERED_DATA",
+      "MANAGE_DEVICE_POLICY_QUERY_SYSTEM_UPDATES",
+      "EXECUTE_APP_ACTION",
+      "MANAGE_EXTERNAL_STORAGE",
+      "MANAGE_DEVICE_POLICY_PRIVATE_DNS",
+      "ANSWER_PHONE_CALLS",
+      "FOREGROUND_SERVICE_DATA_SYNC",
+      "MANAGE_DEVICE_POLICY_WIPE_DATA",
+      "START_VIEW_PERMISSION_USAGE",
+      "WRITE_SYNC_SETTINGS",
+      "ACCESS_FINE_LOCATION",
+      "RECORD_AUDIO",
+      "ACCESS_NETWORK_STATE",
+      "READ_ASSISTANT_APP_SEARCH_DATA",
+      "READ_MEDIA_AUDIO",
+      "INTERACT_ACROSS_PROFILES",
+      "MANAGE_DEVICE_POLICY_NETWORK_LOGGING",
+      "WRITE_APN_SETTINGS",
+      "MANAGE_DEVICE_POLICY_NEARBY_COMMUNICATION",
+      "POST_NOTIFICATIONS",
+      "PACKAGE_USAGE_STATS",
+      "BIND_NFC_SERVICE",
+      "MANAGE_DEVICE_POLICY_DEVICE_IDENTIFIERS",
+      "WRITE_EXTERNAL_STORAGE",
+      "READ_SYNC_SETTINGS",
+      "READ_CONTACTS",
+      "MANAGE_DEVICE_POLICY_SYSTEM_APPS",
+      "USE_SIP",
+      "BIND_COMPANION_DEVICE_SERVICE",
+      "BLUETOOTH_ADMIN",
+      "MANAGE_DEVICE_POLICY_SYSTEM_UPDATES",
+      "BIND_TELECOM_CONNECTION_SERVICE",
+      "GET_ACCOUNTS_PRIVILEGED",
+      "WRITE_USER_DICTIONARY",
+      "MANAGE_DOCUMENTS",
+      "CHANGE_NETWORK_STATE",
+      "MANAGE_DEVICE_POLICY_RESTRICT_PRIVATE_DNS",
+      "READ_EXTERNAL_STORAGE"
+    ]
+  },
+  [
+    {
+      "orig-sentence": "基于此，阿里云计算有限公司（以下或简称“我们”）特制定本《阿里云App法律声明和隐私政策》（以下或简称“本政策”），帮助您充分了解在您使用我们产品及/或服务的过程中，我们会如何收集、使用、共享、存储和保护您的用户信息以及您可以如何管理您的用户信息，以便您更好地作出适当的选择。",
+      "data-cn-list": [
+        "用户",
+        "存储"
+      ],
+      "data-en-list": [
+        "user",
+        "storage"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "user",
+          "account",
+          "member"
+        ],
+        [
+          "storage",
+          "repository",
+          "storehouse"
+        ]
+      ],
+      "purpose-cn-list": [
+        "共享"
+      ],
+      "purpose-en-list": [
+        " sharing"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "用户",
+          "data-en": "user",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "共享"
+          ],
+          "purpose-en": [
+            " sharing"
+          ]
+        },
+        {
+          "data-cn": "存储",
+          "data-en": "storage",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "共享"
+          ],
+          "purpose-en": [
+            " sharing"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "       您同意本政策表示您已了解我们提供的产品及/或服务，以及相应产品及/或服务功能运行所需的必要用户信息（请特别注意，本政策所述用户信息可能包含个人信息及/或敏感个人信息，具体请见“附录：相关定义”，以下不再赘述），并给予相应的收集使用授权。",
+      "data-cn-list": [
+        "授权"
+      ],
+      "data-en-list": [
+        "to grant authorization"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "auth",
+          "authorization",
+          "authorized"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "授权",
+          "data-en": "to grant authorization",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "但您同意本政策并不代表您已单独同意开启附加功能、处理非必要用户信息，相关附加功能的开启、处理非必要用户信息，我们会根据您的实际使用情况及相关法律法规规定单独征求您的同意。",
+      "data-cn-list": [
+        "使用情况"
+      ],
+      "data-en-list": [
+        "Usage"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "usage",
+          "usage status",
+          "use status"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "使用情况",
+          "data-en": "Usage",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "      二、我们如何对外提供您的用户信息。",
+      "data-cn-list": [
+        "用户"
+      ],
+      "data-en-list": [
+        "user"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "user",
+          "account",
+          "member"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "用户",
+          "data-en": "user",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "      七、我们如何保护和保存您的用户信息。",
+      "data-cn-list": [
+        "用户"
+      ],
+      "data-en-list": [
+        "user"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "user",
+          "account",
+          "member"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "用户",
+          "data-en": "user",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "二、我们如何收集和使用您的用户信息。",
+      "data-cn-list": [
+        "用户"
+      ],
+      "data-en-list": [
+        "user"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "user",
+          "account",
+          "member"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "用户",
+          "data-en": "user",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "（2）在您使用我们的产品及/或服务期间，我们主动收集的相关信息，如在您使用阿里云App的操作记录或其他日志类数据等；。",
+      "data-cn-list": [
+        "日志",
+        "操作记录"
+      ],
+      "data-en-list": [
+        "log",
+        "operation record"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "log",
+          "record",
+          "trace"
+        ],
+        [
+          "operation record",
+          "operational record",
+          "operating record"
+        ]
+      ],
+      "purpose-cn-list": [
+        ""
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "日志",
+          "data-en": "log",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            ""
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "操作记录",
+          "data-en": "operation record",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            ""
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "当您在阿里云App创建账户时，您须向我们提供账号名，以及您在中华人民共和国境内手机号码，并设置、确认您的登录密码。",
+      "data-cn-list": [
+        "账号"
+      ],
+      "data-en-list": [
+        "account number"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "account",
+          "username",
+          "id"
+        ]
+      ],
+      "purpose-cn-list": [
+        "创建账户"
+      ],
+      "purpose-en-list": [
+        " create account"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "账号",
+          "data-en": "account number",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "创建账户"
+          ],
+          "purpose-en": [
+            " create account"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "您提交的手机号码（“安全手机号码”或“账号联系人手机号码”）用于您注册、登录、绑定账户、密码找回时接受验证码，并且作为您与阿里云指定的联系方式之一，用来接受相关业务通知（如新品上线、服务变更等）。",
+      "data-cn-list": [
+        "手机号码"
+      ],
+      "data-en-list": [
+        "phone number"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "phone number",
+          "telephone number",
+          "cellphone number"
+        ]
+      ],
+      "purpose-cn-list": [
+        "联系",
+        "登录",
+        "注册",
+        "验证码",
+        "密码找回",
+        "绑定账户"
+      ],
+      "purpose-en-list": [
+        " contact",
+        " login",
+        " registration",
+        " verification code",
+        " password retrieval",
+        " account binding"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "手机号码",
+          "data-en": "phone number",
+          "subject": [],
+          "purpose-cn": [
+            "联系",
+            "登录",
+            "注册",
+            "验证码",
+            "密码找回",
+            "绑定账户"
+          ],
+          "purpose-en": [
+            " contact",
+            " login",
+            " registration",
+            " verification code",
+            " password retrieval",
+            " account binding"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "       如果您已经注册有淘宝平台账号、支付宝账号或阿里云认可的其他第三方账号（合称“第三方账号”）的，我们可能经您单独同意后从该等第三方处获取您的第三方账号信息（头像、昵称、收集号码及其他单独页面提示的信息），使您可以便捷地登录阿里云App。",
+      "data-cn-list": [
+        "页面提示"
+      ],
+      "data-en-list": [
+        "Page prompt"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "Page prompt"
+        ]
+      ],
+      "purpose-cn-list": [
+        "登录"
+      ],
+      "purpose-en-list": [
+        " login"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "页面提示",
+          "data-en": "Page prompt",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "登录"
+          ],
+          "purpose-en": [
+            " login"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "该第三方账号将绑定阿里云账号，但您届时仍应向阿里云提供您的真实身份信息以通过第2.2.（1）条所述的阿里云实名认证，且阿里云亦会要求您提供上述安全手机号码。",
+      "data-cn-list": [
+        "手机号码",
+        "身份"
+      ],
+      "data-en-list": [
+        "phone number",
+        "identity"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "phone number",
+          "telephone number",
+          "cellphone number"
+        ],
+        [
+          "identity"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "手机号码",
+          "data-en": "phone number",
+          "subject": [
+            "3st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "身份",
+          "data-en": "identity",
+          "subject": [
+            "3st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "如您提供的安全手机号码与第三方账号中绑定的手机号码不同，阿里云将使用您另行提交手机号码作为安全手机号码。",
+      "data-cn-list": [
+        "手机号码",
+        "账号"
+      ],
+      "data-en-list": [
+        "phone number",
+        "account number"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "phone number",
+          "telephone number",
+          "cellphone number"
+        ],
+        [
+          "account",
+          "username",
+          "id"
+        ]
+      ],
+      "purpose-cn-list": [
+        "安全"
+      ],
+      "purpose-en-list": [
+        " security"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "手机号码",
+          "data-en": "phone number",
+          "subject": [
+            "3st"
+          ],
+          "purpose-cn": [
+            "安全"
+          ],
+          "purpose-en": [
+            " security"
+          ]
+        },
+        {
+          "data-cn": "账号",
+          "data-en": "account number",
+          "subject": [
+            "3st"
+          ],
+          "purpose-cn": [
+            "安全"
+          ],
+          "purpose-en": [
+            " security"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "特别地，如果您在2018年8月31日前通过淘宝平台账户和支付宝账号登录阿里云App的，您相应账号的注册信息（手机号/邮箱等）及实名认证信息（个人用户包括：姓名、身份证号码；企业用户包括：企业名称、企业证件及信息、企业法定代表人信等）会同步至阿里云。",
+      "data-cn-list": [
+        "姓名",
+        "企业",
+        "名称",
+        "用户",
+        "证件",
+        "身份证"
+      ],
+      "data-en-list": [
+        "full name",
+        "company",
+        "name",
+        "user",
+        "certificates",
+        "ID"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "name",
+          "first name",
+          "last name"
+        ],
+        [
+          "company"
+        ],
+        [
+          "name"
+        ],
+        [
+          "user",
+          "account",
+          "member"
+        ],
+        [
+          "credentials",
+          "certificate",
+          "certification"
+        ],
+        [
+          "ID card",
+          "identity card",
+          "ID"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "姓名",
+          "data-en": "full name",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "企业",
+          "data-en": "company",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "名称",
+          "data-en": "name",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "用户",
+          "data-en": "user",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "证件",
+          "data-en": "certificates",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "身份证",
+          "data-en": "ID",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "我们会将依据与第三方的约定，在符合相关法律法规规定的前提下，使用您的这些用户信息。",
+      "data-cn-list": [
+        "用户"
+      ],
+      "data-en-list": [
+        "user"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "user",
+          "account",
+          "member"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "用户",
+          "data-en": "user",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "（1）根据中华人民共和国法律，在您购买并使用具体的技术服务时，您应通过您的账号提供您的真实身份信息。",
+      "data-cn-list": [
+        "身份"
+      ],
+      "data-en-list": [
+        "identity"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "identity"
+        ]
+      ],
+      "purpose-cn-list": [
+        ""
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "身份",
+          "data-en": "identity",
+          "subject": [],
+          "purpose-cn": [
+            ""
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "您通过阿里云账号提供真实身份信息的，阿里云为您提供了多种方式以协助您提供信息，您应根据您的身份属性选择适合的方式：。",
+      "data-cn-list": [
+        "身份"
+      ],
+      "data-en-list": [
+        "identity"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "identity"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "身份",
+          "data-en": "identity",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "① 如您通过支付宝实名认证来提供您的真实信息，您需先行输入支付宝账户以及密码登录支付宝账户，通过将支付宝账户绑定您的阿里云账户完成实名认证，即您授权支付宝向阿里云提交您的身份信息（个人用户包括：姓名、身份证号码；企业用户包括：企业名称、企业证件及信息、企业法定代表人信息等）。",
+      "data-cn-list": [
+        "姓名",
+        "企业",
+        "名称",
+        "用户",
+        "证件",
+        "身份证"
+      ],
+      "data-en-list": [
+        "full name",
+        "company",
+        "name",
+        "user",
+        "certificates",
+        "ID"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "name",
+          "first name",
+          "last name"
+        ],
+        [
+          "company"
+        ],
+        [
+          "name"
+        ],
+        [
+          "user",
+          "account",
+          "member"
+        ],
+        [
+          "credentials",
+          "certificate",
+          "certification"
+        ],
+        [
+          "ID card",
+          "identity card",
+          "ID"
+        ]
+      ],
+      "purpose-cn-list": [
+        "实名认证"
+      ],
+      "purpose-en-list": [
+        " real-name authentication"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "姓名",
+          "data-en": "full name",
+          "subject": [],
+          "purpose-cn": [
+            "实名认证"
+          ],
+          "purpose-en": [
+            " real-name authentication"
+          ]
+        },
+        {
+          "data-cn": "企业",
+          "data-en": "company",
+          "subject": [],
+          "purpose-cn": [
+            "实名认证"
+          ],
+          "purpose-en": [
+            " real-name authentication"
+          ]
+        },
+        {
+          "data-cn": "名称",
+          "data-en": "name",
+          "subject": [],
+          "purpose-cn": [
+            "实名认证"
+          ],
+          "purpose-en": [
+            " real-name authentication"
+          ]
+        },
+        {
+          "data-cn": "用户",
+          "data-en": "user",
+          "subject": [],
+          "purpose-cn": [
+            "实名认证"
+          ],
+          "purpose-en": [
+            " real-name authentication"
+          ]
+        },
+        {
+          "data-cn": "证件",
+          "data-en": "certificates",
+          "subject": [],
+          "purpose-cn": [
+            "实名认证"
+          ],
+          "purpose-en": [
+            " real-name authentication"
+          ]
+        },
+        {
+          "data-cn": "身份证",
+          "data-en": "ID",
+          "subject": [],
+          "purpose-cn": [
+            "实名认证"
+          ],
+          "purpose-en": [
+            " real-name authentication"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "② 如您通过企业对公账号方式进行实名认证的，您需向阿里云提交您的企业注册地区、企业性质、企业名称和营业执照注册号，以及银行账户信息（包括开户行、银行账号和开户人），阿里云将以您提交的企业注册地区、企业性质、企业名称和营业执照注册号确认您的实名信息，您提供的银行账户信息（包括开户行、银行账号和开户人）仅作为阿里云完成您的实名认证时的打款账号使用。",
+      "data-cn-list": [
+        "开户人",
+        "账号",
+        "实名",
+        "企业",
+        "银行",
+        "名称",
+        "账户",
+        "营业执照",
+        "开户行",
+        "注册",
+        "地区"
+      ],
+      "data-en-list": [
+        "Account Holder",
+        "account number",
+        "Real name",
+        "company",
+        "bank",
+        "name",
+        "account",
+        "Business license",
+        "Opening bank",
+        "sign in",
+        "region"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "user",
+          "account holder",
+          "registered user"
+        ],
+        [
+          "account",
+          "username",
+          "id"
+        ],
+        [
+          "Real name"
+        ],
+        [
+          "company"
+        ],
+        [
+          "bank",
+          "bank name",
+          "bank account"
+        ],
+        [
+          "name"
+        ],
+        [
+          "account",
+          "account number",
+          "bank account"
+        ],
+        [
+          "Business license"
+        ],
+        [
+          "Opening bank"
+        ],
+        [
+          "register",
+          "sign up",
+          "enroll"
+        ],
+        [
+          "region"
+        ]
+      ],
+      "purpose-cn-list": [
+        "打款账号",
+        "实名认证"
+      ],
+      "purpose-en-list": [
+        " call account",
+        " real-name authentication"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "开户人",
+          "data-en": "Account Holder",
+          "subject": [],
+          "purpose-cn": [
+            "打款账号",
+            "实名认证"
+          ],
+          "purpose-en": [
+            " call account",
+            " real-name authentication"
+          ]
+        },
+        {
+          "data-cn": "账号",
+          "data-en": "account number",
+          "subject": [],
+          "purpose-cn": [
+            "打款账号",
+            "实名认证"
+          ],
+          "purpose-en": [
+            " call account",
+            " real-name authentication"
+          ]
+        },
+        {
+          "data-cn": "实名",
+          "data-en": "Real name",
+          "subject": [],
+          "purpose-cn": [
+            "打款账号",
+            "实名认证"
+          ],
+          "purpose-en": [
+            " call account",
+            " real-name authentication"
+          ]
+        },
+        {
+          "data-cn": "企业",
+          "data-en": "company",
+          "subject": [],
+          "purpose-cn": [
+            "打款账号",
+            "实名认证"
+          ],
+          "purpose-en": [
+            " call account",
+            " real-name authentication"
+          ]
+        },
+        {
+          "data-cn": "银行",
+          "data-en": "bank",
+          "subject": [],
+          "purpose-cn": [
+            "打款账号",
+            "实名认证"
+          ],
+          "purpose-en": [
+            " call account",
+            " real-name authentication"
+          ]
+        },
+        {
+          "data-cn": "名称",
+          "data-en": "name",
+          "subject": [],
+          "purpose-cn": [
+            "打款账号",
+            "实名认证"
+          ],
+          "purpose-en": [
+            " call account",
+            " real-name authentication"
+          ]
+        },
+        {
+          "data-cn": "账户",
+          "data-en": "account",
+          "subject": [],
+          "purpose-cn": [
+            "打款账号",
+            "实名认证"
+          ],
+          "purpose-en": [
+            " call account",
+            " real-name authentication"
+          ]
+        },
+        {
+          "data-cn": "营业执照",
+          "data-en": "Business license",
+          "subject": [],
+          "purpose-cn": [
+            "打款账号",
+            "实名认证"
+          ],
+          "purpose-en": [
+            " call account",
+            " real-name authentication"
+          ]
+        },
+        {
+          "data-cn": "开户行",
+          "data-en": "Opening bank",
+          "subject": [],
+          "purpose-cn": [
+            "打款账号",
+            "实名认证"
+          ],
+          "purpose-en": [
+            " call account",
+            " real-name authentication"
+          ]
+        },
+        {
+          "data-cn": "注册",
+          "data-en": "sign in",
+          "subject": [],
+          "purpose-cn": [
+            "打款账号",
+            "实名认证"
+          ],
+          "purpose-en": [
+            " call account",
+            " real-name authentication"
+          ]
+        },
+        {
+          "data-cn": "地区",
+          "data-en": "region",
+          "subject": [],
+          "purpose-cn": [
+            "打款账号",
+            "实名认证"
+          ],
+          "purpose-en": [
+            " call account",
+            " real-name authentication"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "③ 如果您通过人脸识别来进行实名认证的，您需要向我们提供面部特征的生物识别信息和您身份证正、反面照片。",
+      "data-cn-list": [
+        "面部",
+        "特征",
+        "照片",
+        "身份证"
+      ],
+      "data-en-list": [
+        "face",
+        "features",
+        "Photo",
+        "ID"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "face"
+        ],
+        [
+          "features"
+        ],
+        [
+          "photo",
+          "picture",
+          "image"
+        ],
+        [
+          "ID card",
+          "identity card",
+          "ID"
+        ]
+      ],
+      "purpose-cn-list": [
+        "实名认证"
+      ],
+      "purpose-en-list": [
+        " real-name authentication"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "面部",
+          "data-en": "face",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "实名认证"
+          ],
+          "purpose-en": [
+            " real-name authentication"
+          ]
+        },
+        {
+          "data-cn": "特征",
+          "data-en": "features",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "实名认证"
+          ],
+          "purpose-en": [
+            " real-name authentication"
+          ]
+        },
+        {
+          "data-cn": "照片",
+          "data-en": "Photo",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "实名认证"
+          ],
+          "purpose-en": [
+            " real-name authentication"
+          ]
+        },
+        {
+          "data-cn": "身份证",
+          "data-en": "ID",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "实名认证"
+          ],
+          "purpose-en": [
+            " real-name authentication"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "我们会将您的账号名称、对应的支付宝账号名称、订单支付相关信息、订单安全相关设备信息及其他反洗钱法律要求的必要信息通过在网站或客户端中嵌入的支付宝软件工具开发包（“SDK”）及其他安全方式与支付宝公司共享。",
+      "data-cn-list": [
+        "支付",
+        "账号",
+        "名称",
+        "订单",
+        "SDK",
+        "设备"
+      ],
+      "data-en-list": [
+        "payment",
+        "account number",
+        "name",
+        "order",
+        "SDK",
+        "device"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "payment",
+          "payment amount",
+          "transaction id"
+        ],
+        [
+          "account",
+          "username",
+          "id"
+        ],
+        [
+          "name"
+        ],
+        [
+          "order",
+          "orders",
+          "purchase order"
+        ],
+        [
+          "SDK"
+        ],
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ]
+      ],
+      "purpose-cn-list": [
+        "共享"
+      ],
+      "purpose-en-list": [
+        " sharing"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "支付",
+          "data-en": "payment",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "共享"
+          ],
+          "purpose-en": [
+            " sharing"
+          ]
+        },
+        {
+          "data-cn": "账号",
+          "data-en": "account number",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "共享"
+          ],
+          "purpose-en": [
+            " sharing"
+          ]
+        },
+        {
+          "data-cn": "名称",
+          "data-en": "name",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "共享"
+          ],
+          "purpose-en": [
+            " sharing"
+          ]
+        },
+        {
+          "data-cn": "订单",
+          "data-en": "order",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "共享"
+          ],
+          "purpose-en": [
+            " sharing"
+          ]
+        },
+        {
+          "data-cn": "SDK",
+          "data-en": "SDK",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "共享"
+          ],
+          "purpose-en": [
+            " sharing"
+          ]
+        },
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "共享"
+          ],
+          "purpose-en": [
+            " sharing"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "为使我们及时获悉并确认您的支付进度及状态，为您提供售后与争议解决服务，您同意我们可自您所选择的交易对象、支付宝公司处收集与支付进度相关信息。",
+      "data-cn-list": [
+        "支付"
+      ],
+      "data-en-list": [
+        "payment"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "payment",
+          "payment amount",
+          "transaction id"
+        ]
+      ],
+      "purpose-cn-list": [
+        "售后"
+      ],
+      "purpose-en-list": [
+        " after-sales"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "支付",
+          "data-en": "payment",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "售后"
+          ],
+          "purpose-en": [
+            " after-sales"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "如您选择纸质发票的，您需要向我们提供您的发票收件地址，包括收件人姓名、详细地址、邮编、手机号码；如您选择电子发票的，您需要向我们提供您的电子邮箱地址。",
+      "data-cn-list": [
+        "姓名",
+        "手机号码",
+        "邮编",
+        "收件人",
+        "发票",
+        "电子邮箱",
+        "地址"
+      ],
+      "data-en-list": [
+        "full name",
+        "phone number",
+        "Postal Code",
+        "addressee",
+        "invoice",
+        "E-mail",
+        "address"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "name",
+          "first name",
+          "last name"
+        ],
+        [
+          "phone number",
+          "telephone number",
+          "cellphone number"
+        ],
+        [
+          "postcode",
+          "zip code",
+          "postal code"
+        ],
+        [
+          "recipient",
+          "consignee",
+          "mail"
+        ],
+        [
+          "invoice",
+          "invoice information",
+          "billing information"
+        ],
+        [
+          "E-mail"
+        ],
+        [
+          "address",
+          "location",
+          "place"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "姓名",
+          "data-en": "full name",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "手机号码",
+          "data-en": "phone number",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "邮编",
+          "data-en": "Postal Code",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "收件人",
+          "data-en": "addressee",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "发票",
+          "data-en": "invoice",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "电子邮箱",
+          "data-en": "E-mail",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "地址",
+          "data-en": "address",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "       为提高您使用我们及我们关联公司、合作伙伴提供服务的安全性，确保操作环境安全与识别账号异常状态，保护您或其他用户或公众的人身财产安全免遭侵害，更好地预防钓鱼网站、欺诈、网络漏洞、计算机病毒、网络攻击、网络侵入等安全风险，更准确地识别违反法律法规或阿里云相关协议、规则的情况，我们可能使用您的账号信息、并整合设备信息、有关网络日志以及我们关联公司、合作伙伴合法分享的信息，来判断您账户及交易风险、进行身份验证、安全事件的检测及防范，并依法采取必要的记录、审计、分析、处置措施。",
+      "data-cn-list": [
+        "账号",
+        "分享",
+        "网络",
+        "日志",
+        "设备"
+      ],
+      "data-en-list": [
+        "account number",
+        "share",
+        "network",
+        "log",
+        "device"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "account",
+          "username",
+          "id"
+        ],
+        [
+          "share",
+          "forward",
+          "transmit"
+        ],
+        [
+          "network",
+          "networking",
+          "net"
+        ],
+        [
+          "log",
+          "record",
+          "trace"
+        ],
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ]
+      ],
+      "purpose-cn-list": [
+        "交易风险",
+        "关联",
+        "身份验证",
+        "安全检测",
+        "防范",
+        "判断账户"
+      ],
+      "purpose-en-list": [
+        " transaction risk",
+        " association",
+        " authentication",
+        " security detection",
+        " prevention",
+        " account judgment"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "账号",
+          "data-en": "account number",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "交易风险",
+            "关联",
+            "身份验证",
+            "安全检测",
+            "防范",
+            "判断账户"
+          ],
+          "purpose-en": [
+            " transaction risk",
+            " association",
+            " authentication",
+            " security detection",
+            " prevention",
+            " account judgment"
+          ]
+        },
+        {
+          "data-cn": "分享",
+          "data-en": "share",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "交易风险",
+            "关联",
+            "身份验证",
+            "安全检测",
+            "防范",
+            "判断账户"
+          ],
+          "purpose-en": [
+            " transaction risk",
+            " association",
+            " authentication",
+            " security detection",
+            " prevention",
+            " account judgment"
+          ]
+        },
+        {
+          "data-cn": "网络",
+          "data-en": "network",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "交易风险",
+            "关联",
+            "身份验证",
+            "安全检测",
+            "防范",
+            "判断账户"
+          ],
+          "purpose-en": [
+            " transaction risk",
+            " association",
+            " authentication",
+            " security detection",
+            " prevention",
+            " account judgment"
+          ]
+        },
+        {
+          "data-cn": "日志",
+          "data-en": "log",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "交易风险",
+            "关联",
+            "身份验证",
+            "安全检测",
+            "防范",
+            "判断账户"
+          ],
+          "purpose-en": [
+            " transaction risk",
+            " association",
+            " authentication",
+            " security detection",
+            " prevention",
+            " account judgment"
+          ]
+        },
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "交易风险",
+            "关联",
+            "身份验证",
+            "安全检测",
+            "防范",
+            "判断账户"
+          ],
+          "purpose-en": [
+            " transaction risk",
+            " association",
+            " authentication",
+            " security detection",
+            " prevention",
+            " account judgment"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "（1）设备信息：我们会根据您在软件安装及使用中授予的具体权限，接收并记录您所使用的设备相关信息（例如设备型号、操作系统版本、设备设置、 MAC 地址及 IMEI 、 IDFA 、 OAID 及其他设备标识符等软硬件特征信息）、设备所在位置相关信息（例如 IP 地址、 GPS 位置以及能够提供相关信息的Wi-Fi接入点、蓝牙和基站等传感器信息）。",
+      "data-cn-list": [
+        "操作系统",
+        "OAID",
+        "传感器",
+        "IP",
+        "基站",
+        "设置",
+        "地址",
+        "GPS",
+        "WIFI",
+        "位置",
+        "特征",
+        "MAC",
+        "蓝牙",
+        "IMEI",
+        "标识符",
+        "IDFA",
+        "记录",
+        "系统版本",
+        "设备型号"
+      ],
+      "data-en-list": [
+        "operating system",
+        "OAID",
+        "sensor",
+        "IP",
+        "base station",
+        "set up",
+        "address",
+        "GPS",
+        "WIFI",
+        "position",
+        "features",
+        "MAC",
+        "Bluetooth",
+        "IMEI",
+        "identifier ",
+        "IDFA",
+        "record",
+        "System version",
+        "Equipment model"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "os",
+          "operating system"
+        ],
+        [
+          "OAID"
+        ],
+        [
+          "sensor",
+          "transducer",
+          "probe"
+        ],
+        [
+          "IP"
+        ],
+        [
+          "base",
+          "base station",
+          "station"
+        ],
+        [
+          "setting",
+          "configuration",
+          "preference"
+        ],
+        [
+          "address",
+          "location",
+          "place"
+        ],
+        [
+          "GPS"
+        ],
+        [
+          "WIFI"
+        ],
+        [
+          "position",
+          "location"
+        ],
+        [
+          "features"
+        ],
+        [
+          "MAC"
+        ],
+        [
+          "bluetooth",
+          "wireless"
+        ],
+        [
+          "IMEI"
+        ],
+        [
+          "identifier",
+          "id",
+          "mark"
+        ],
+        [
+          "IDFA"
+        ],
+        [
+          "record",
+          "log",
+          "trace"
+        ],
+        [
+          "system version",
+          "system edition",
+          "system type"
+        ],
+        [
+          "device model"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "操作系统",
+          "data-en": "operating system",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "OAID",
+          "data-en": "OAID",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "传感器",
+          "data-en": "sensor",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "IP",
+          "data-en": "IP",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "基站",
+          "data-en": "base station",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "设置",
+          "data-en": "set up",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "地址",
+          "data-en": "address",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "GPS",
+          "data-en": "GPS",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "WIFI",
+          "data-en": "WIFI",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "位置",
+          "data-en": "position",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "特征",
+          "data-en": "features",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "MAC",
+          "data-en": "MAC",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "蓝牙",
+          "data-en": "Bluetooth",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "IMEI",
+          "data-en": "IMEI",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "标识符",
+          "data-en": "identifier ",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "IDFA",
+          "data-en": "IDFA",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "记录",
+          "data-en": "record",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "系统版本",
+          "data-en": "System version",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "设备型号",
+          "data-en": "Equipment model",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "（2）日志信息：当您使用我们的客户端提供的服务时，我们会自动收集您对我们服务的详细使用情况，作为有关网络日志保存。",
+      "data-cn-list": [
+        "使用情况"
+      ],
+      "data-en-list": [
+        "Usage"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "usage",
+          "usage status",
+          "use status"
+        ]
+      ],
+      "purpose-cn-list": [
+        "网络日志保存"
+      ],
+      "purpose-en-list": [
+        " network log preservation"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "使用情况",
+          "data-en": "Usage",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "网络日志保存"
+          ],
+          "purpose-en": [
+            " network log preservation"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "例如您的搜索查询内容、IP地址、浏览器的类型、电信运营商、使用的语言、访问日期和时间及您访问的网页记录等。",
+      "data-cn-list": [
+        "时间",
+        "访问",
+        "网页记录"
+      ],
+      "data-en-list": [
+        "time",
+        "visit",
+        "Web page records"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "time",
+          "date",
+          "duration"
+        ],
+        [
+          "access",
+          "visit",
+          "call"
+        ],
+        [
+          "Web page records"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "时间",
+          "data-en": "time",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "访问",
+          "data-en": "visit",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "网页记录",
+          "data-en": "Web page records",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "       当您在服务中心内请求我们支持或帮助时，您需要向我们提供问题描述，同时我们会需要收集您的咨询记录、报障记录和针对用户故障的排障过程（如通信或通话记录），阿里云将通过记录、分析这些信息以便更及时响应您的帮助请求，以及用于改进服务。",
+      "data-cn-list": [
+        "故障",
+        "咨询记录",
+        "用户",
+        "排障过程",
+        "通话记录",
+        "通信",
+        "报障"
+      ],
+      "data-en-list": [
+        "fault",
+        "Consultation records",
+        "user",
+        "Obstacle removal process",
+        "Call logs",
+        "signal communication",
+        "Reporting obstacles"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "fault"
+        ],
+        [
+          "record",
+          "records",
+          "log"
+        ],
+        [
+          "user",
+          "account",
+          "member"
+        ],
+        [
+          "Obstacle removal process"
+        ],
+        [
+          "Call logs"
+        ],
+        [
+          "communicate",
+          "communication",
+          "communicating"
+        ],
+        [
+          "fault report",
+          "report a fault",
+          "report an error"
+        ]
+      ],
+      "purpose-cn-list": [
+        "响应请求"
+      ],
+      "purpose-en-list": [
+        " response request"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "故障",
+          "data-en": "fault",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "响应请求"
+          ],
+          "purpose-en": [
+            " response request"
+          ]
+        },
+        {
+          "data-cn": "咨询记录",
+          "data-en": "Consultation records",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "响应请求"
+          ],
+          "purpose-en": [
+            " response request"
+          ]
+        },
+        {
+          "data-cn": "用户",
+          "data-en": "user",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "响应请求"
+          ],
+          "purpose-en": [
+            " response request"
+          ]
+        },
+        {
+          "data-cn": "排障过程",
+          "data-en": "Obstacle removal process",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "响应请求"
+          ],
+          "purpose-en": [
+            " response request"
+          ]
+        },
+        {
+          "data-cn": "通话记录",
+          "data-en": "Call logs",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "响应请求"
+          ],
+          "purpose-en": [
+            " response request"
+          ]
+        },
+        {
+          "data-cn": "通信",
+          "data-en": "signal communication",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "响应请求"
+          ],
+          "purpose-en": [
+            " response request"
+          ]
+        },
+        {
+          "data-cn": "报障",
+          "data-en": "Reporting obstacles",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "响应请求"
+          ],
+          "purpose-en": [
+            " response request"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "（2）您可在开发者社区中发表您的技术观点、与其他开发者进行互动，为向您提供该等服务，我们将收集该等您上传、发布或形成的信息（可能包括您上传的图片、文字、文章评论信息），并有权展示您的昵称、头像和发布内容。",
+      "data-cn-list": [
+        "文字",
+        "内容",
+        "头像",
+        "发布",
+        "昵称",
+        "图片",
+        "文章评论"
+      ],
+      "data-en-list": [
+        "written words",
+        "content",
+        "avatar",
+        "release",
+        "nickname",
+        "picture",
+        "Article comments"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "written words"
+        ],
+        [
+          "content",
+          "text",
+          "body"
+        ],
+        [
+          "avatar",
+          "icon",
+          "profile picture"
+        ],
+        [
+          "publish",
+          "post",
+          "send"
+        ],
+        [
+          "nickname",
+          "name",
+          "title"
+        ],
+        [
+          "image",
+          "pic",
+          "photo"
+        ],
+        [
+          "Article comments"
+        ]
+      ],
+      "purpose-cn-list": [
+        "互动"
+      ],
+      "purpose-en-list": [
+        " interaction"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "文字",
+          "data-en": "written words",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "互动"
+          ],
+          "purpose-en": [
+            " interaction"
+          ]
+        },
+        {
+          "data-cn": "内容",
+          "data-en": "content",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "互动"
+          ],
+          "purpose-en": [
+            " interaction"
+          ]
+        },
+        {
+          "data-cn": "头像",
+          "data-en": "avatar",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "互动"
+          ],
+          "purpose-en": [
+            " interaction"
+          ]
+        },
+        {
+          "data-cn": "发布",
+          "data-en": "release",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "互动"
+          ],
+          "purpose-en": [
+            " interaction"
+          ]
+        },
+        {
+          "data-cn": "昵称",
+          "data-en": "nickname",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "互动"
+          ],
+          "purpose-en": [
+            " interaction"
+          ]
+        },
+        {
+          "data-cn": "图片",
+          "data-en": "picture",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "互动"
+          ],
+          "purpose-en": [
+            " interaction"
+          ]
+        },
+        {
+          "data-cn": "文章评论",
+          "data-en": "Article comments",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "互动"
+          ],
+          "purpose-en": [
+            " interaction"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "（3）当您选择参加我们举办的开发者社区活动、比赛，或领取相关奖励时，我们可能会收集您的必要信息，届时我们会单独告知您相关信息收集使用目的并获得您的授权。",
+      "data-cn-list": [
+        "授权"
+      ],
+      "data-en-list": [
+        "to grant authorization"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "auth",
+          "authorization",
+          "authorized"
+        ]
+      ],
+      "purpose-cn-list": [
+        "比赛"
+      ],
+      "purpose-en-list": [
+        " competition"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "授权",
+          "data-en": "to grant authorization",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "比赛"
+          ],
+          "purpose-en": [
+            " competition"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "       请您注意，您在使用我们的产品和/或服务时由您主动提供、上传或发布的内容和信息（例如您发布的产品或服务评价信息），可能会泄露您的敏感个人信息，请您谨慎对待。",
+      "data-cn-list": [
+        "内容",
+        "评价",
+        "发布"
+      ],
+      "data-en-list": [
+        "content",
+        "evaluate",
+        "release"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "content",
+          "text",
+          "body"
+        ],
+        [
+          "evaluate"
+        ],
+        [
+          "publish",
+          "post",
+          "send"
+        ]
+      ],
+      "purpose-cn-list": [
+        ""
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "内容",
+          "data-en": "content",
+          "subject": [],
+          "purpose-cn": [
+            ""
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "评价",
+          "data-en": "evaluate",
+          "subject": [],
+          "purpose-cn": [
+            ""
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "发布",
+          "data-en": "release",
+          "subject": [],
+          "purpose-cn": [
+            ""
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "请您注意，您开启任一权限即代表您授权我们可以收集和使用相关个人信息来为您提供对应服务，您一旦关闭任一权限即代表您取消了授权，我们将不再基于对应权限继续收集和使用相关个人信息，也无法为您提供该权限所对应的服务。",
+      "data-cn-list": [
+        "授权"
+      ],
+      "data-en-list": [
+        "to grant authorization"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "auth",
+          "authorization",
+          "authorized"
+        ]
+      ],
+      "purpose-cn-list": [
+        ""
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "授权",
+          "data-en": "to grant authorization",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            ""
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "（2）为向您展示更符合您个性化需求的信息，我们可能将来自阿里云网站某项服务的用户信息与来自其他项服务的信息结合起来，做出特征模型并进行用户画像，向您展示、推送信息和可能的商业广告，包括但不限于关于阿里云产品的新闻以及市场活动及优惠促销信息、阿里云合作第三方的推广信息，或其他您可能感兴趣的内容。",
+      "data-cn-list": [
+        "市场活动"
+      ],
+      "data-en-list": [
+        "Marketing activities"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "marketing activity",
+          "marketing campaign",
+          "promotion"
+        ]
+      ],
+      "purpose-cn-list": [
+        "广告",
+        "特征模型",
+        "推送"
+      ],
+      "purpose-en-list": [
+        "Advertising",
+        " feature model",
+        " push"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "市场活动",
+          "data-en": "Marketing activities",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "广告",
+            "特征模型",
+            "推送"
+          ],
+          "purpose-en": [
+            "Advertising",
+            " feature model",
+            " push"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "如您不愿接收我们的商业性信息及其他商品或服务信息，您可以通过短信、电子邮件中提供的退订方式以及直接联系我们的客服进行退订或关闭，如您希望关闭弹窗推送信息，您也可以通过弹窗页面上的“跳过”按钮或相关按钮进行关闭。",
+      "data-cn-list": [
+        "商品",
+        "联系"
+      ],
+      "data-en-list": [
+        "commodity",
+        "contact"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "product",
+          "commodity",
+          "goods"
+        ],
+        [
+          "contact",
+          "contacts",
+          "get in touch"
+        ]
+      ],
+      "purpose-cn-list": [
+        "推送",
+        "退订"
+      ],
+      "purpose-en-list": [
+        " push",
+        " unsubscription"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "商品",
+          "data-en": "commodity",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "推送",
+            "退订"
+          ],
+          "purpose-en": [
+            " push",
+            " unsubscription"
+          ]
+        },
+        {
+          "data-cn": "联系",
+          "data-en": "contact",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "推送",
+            "退订"
+          ],
+          "purpose-en": [
+            " push",
+            " unsubscription"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "2.7. 在法律允许的情况下，基于您的授权，为了向您提供更优化的服务，满足您的个性化需求，我们可能会从我们的关联公司或合作单位（如生态合作伙伴等）处接收您的个人信息或其他信息。",
+      "data-cn-list": [
+        "授权"
+      ],
+      "data-en-list": [
+        "to grant authorization"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "auth",
+          "authorization",
+          "authorized"
+        ]
+      ],
+      "purpose-cn-list": [
+        "优化"
+      ],
+      "purpose-en-list": [
+        " optimization"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "授权",
+          "data-en": "to grant authorization",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "优化"
+          ],
+          "purpose-en": [
+            " optimization"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "2.8. 您充分知晓，依据可适用的法律，在以下情形中，我们收集、使用您的个人信息无需征得您的授权同意：。",
+      "data-cn-list": [
+        "授权"
+      ],
+      "data-en-list": [
+        "to grant authorization"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "auth",
+          "authorization",
+          "authorized"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "授权",
+          "data-en": "to grant authorization",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "2.9. 请您理解，我们向您提供的功能和服务是不断更新和发展的，如果某一功能或服务未被包含在上述说明中且收集了您的信息，我们会通过页面提示、交互流程、网站公告、另行签署协议等方式另行向您说明信息收集的内容、范围和目的，以征得您的同意。",
+      "data-cn-list": [
+        "交互",
+        "内容",
+        "页面提示"
+      ],
+      "data-en-list": [
+        "interactive",
+        "content",
+        "Page prompt"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "interaction",
+          "dialogue",
+          "communication"
+        ],
+        [
+          "content",
+          "text",
+          "body"
+        ],
+        [
+          "Page prompt"
+        ]
+      ],
+      "purpose-cn-list": [
+        ""
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "交互",
+          "data-en": "interactive",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            ""
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "内容",
+          "data-en": "content",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            ""
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "页面提示",
+          "data-en": "Page prompt",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            ""
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "三、我们如何对外提供您的用户信息。",
+      "data-cn-list": [
+        "用户"
+      ],
+      "data-en-list": [
+        "user"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "user",
+          "account",
+          "member"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "用户",
+          "data-en": "user",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "（2）为履行阿里云法定义务所必需的共享：我们可能会根据法律法规规定、诉讼、仲裁解决需要，或按行政、司法机关依法提出的要求，对外共享您的用户信息；。",
+      "data-cn-list": [
+        "用户"
+      ],
+      "data-en-list": [
+        "user"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "user",
+          "account",
+          "member"
+        ]
+      ],
+      "purpose-cn-list": [
+        "履行义务"
+      ],
+      "purpose-en-list": [
+        " fulfillment of obligations"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "用户",
+          "data-en": "user",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "履行义务"
+          ],
+          "purpose-en": [
+            " fulfillment of obligations"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "（3）为订立、履行您作为一方当事人的合同所必需的情况下的共享，例如，在阿里云云市场上创建的某一交易中，如交易一方履行或部分履行了交易义务并提出合理的信息披露请求的，阿里云有权决定向其提供交易对方的联络方式等必要信息，以促成交易的完成；。",
+      "data-cn-list": [
+        "交易"
+      ],
+      "data-en-list": [
+        "transaction"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "transaction",
+          "deal",
+          "trade"
+        ]
+      ],
+      "purpose-cn-list": [
+        "共享"
+      ],
+      "purpose-en-list": [
+        " sharing"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "交易",
+          "data-en": "transaction",
+          "subject": [],
+          "purpose-cn": [
+            "共享"
+          ],
+          "purpose-en": [
+            " sharing"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "我们不会将您的个人身份信息委托合作伙伴处理。",
+      "data-cn-list": [
+        "身份"
+      ],
+      "data-en-list": [
+        "identity"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "identity"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "身份",
+          "data-en": "identity",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "（1）获得您充分同意或基于您的主动选择，我们可能会公开披露您的用户信息；。",
+      "data-cn-list": [
+        "用户"
+      ],
+      "data-en-list": [
+        "user"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "user",
+          "account",
+          "member"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "用户",
+          "data-en": "user",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "3.6. 对外提供用户信息时事先征得授权同意的例外。",
+      "data-cn-list": [
+        "用户",
+        "授权"
+      ],
+      "data-en-list": [
+        "user",
+        "to grant authorization"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "user",
+          "account",
+          "member"
+        ],
+        [
+          "auth",
+          "authorization",
+          "authorized"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "用户",
+          "data-en": "user",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "授权",
+          "data-en": "to grant authorization",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "       以下情形中，对外提供用户信息无需事先征得您的授权同意：。",
+      "data-cn-list": [
+        "用户",
+        "授权"
+      ],
+      "data-en-list": [
+        "user",
+        "to grant authorization"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "user",
+          "account",
+          "member"
+        ],
+        [
+          "auth",
+          "authorization",
+          "authorized"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "用户",
+          "data-en": "user",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "授权",
+          "data-en": "to grant authorization",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "当您通过我们的服务创建交流、交易或分享时，您可以自主选择沟通、交易或分享的对象，作为能够看到您的联络方式、交流信息或分享内容等相关信息的第三方。",
+      "data-cn-list": [
+        "沟通",
+        "交易",
+        "分享"
+      ],
+      "data-en-list": [
+        "communicate",
+        "transaction",
+        "share"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "communication",
+          "communicate",
+          "com"
+        ],
+        [
+          "transaction",
+          "deal",
+          "trade"
+        ],
+        [
+          "share",
+          "forward",
+          "transmit"
+        ]
+      ],
+      "purpose-cn-list": [
+        "创建交流",
+        "看到联络",
+        "交易",
+        "分享"
+      ],
+      "purpose-en-list": [
+        " create communication",
+        " see contact",
+        " transaction",
+        " sharing"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "沟通",
+          "data-en": "communicate",
+          "subject": [],
+          "purpose-cn": [
+            "创建交流",
+            "看到联络",
+            "交易",
+            "分享"
+          ],
+          "purpose-en": [
+            " create communication",
+            " see contact",
+            " transaction",
+            " sharing"
+          ]
+        },
+        {
+          "data-cn": "交易",
+          "data-en": "transaction",
+          "subject": [],
+          "purpose-cn": [
+            "创建交流",
+            "看到联络",
+            "交易",
+            "分享"
+          ],
+          "purpose-en": [
+            " create communication",
+            " see contact",
+            " transaction",
+            " sharing"
+          ]
+        },
+        {
+          "data-cn": "分享",
+          "data-en": "share",
+          "subject": [],
+          "purpose-cn": [
+            "创建交流",
+            "看到联络",
+            "交易",
+            "分享"
+          ],
+          "purpose-en": [
+            " create communication",
+            " see contact",
+            " transaction",
+            " sharing"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "（1）您可以登录阿里云网站“账号中心”查询、管理（变更、删除）使用阿里云服务时而提交的基本业务信息（基本资料）和联系人信息。",
+      "data-cn-list": [
+        "联系人",
+        "资料"
+      ],
+      "data-en-list": [
+        "contacts",
+        "data"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "contacts"
+        ],
+        [
+          "data"
+        ]
+      ],
+      "purpose-cn-list": [
+        ""
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "联系人",
+          "data-en": "contacts",
+          "subject": [],
+          "purpose-cn": [
+            ""
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "资料",
+          "data-en": "data",
+          "subject": [],
+          "purpose-cn": [
+            ""
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "（2）如果您需要变更您阿里云账户的实名认证信息，您需通过工单、电话等方式联系阿里云，按照阿里云的操作文档进操作；如您需变更通过淘宝、或支付宝账号提交的实名认证信息的，您需到原账号注册的网站进行变更。",
+      "data-cn-list": [
+        "认证",
+        "实名"
+      ],
+      "data-en-list": [
+        "authentication",
+        "Real name"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "authentication",
+          "auth",
+          "authorization"
+        ],
+        [
+          "Real name"
+        ]
+      ],
+      "purpose-cn-list": [
+        "变更"
+      ],
+      "purpose-en-list": [
+        " change"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "认证",
+          "data-en": "authentication",
+          "subject": [],
+          "purpose-cn": [
+            "变更"
+          ],
+          "purpose-en": [
+            " change"
+          ]
+        },
+        {
+          "data-cn": "实名",
+          "data-en": "Real name",
+          "subject": [],
+          "purpose-cn": [
+            "变更"
+          ],
+          "purpose-en": [
+            " change"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "（2）您可以通过“我的-服务中心”选择联系客服或选择拨打热线：400-80-13260，联系我们下载您平台内的个人信息。",
+      "data-cn-list": [
+        "下载",
+        "联系"
+      ],
+      "data-en-list": [
+        "download",
+        "contact"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "download",
+          "get",
+          "obtain"
+        ],
+        [
+          "contact",
+          "contacts",
+          "get in touch"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "下载",
+          "data-en": "download",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "联系",
+          "data-en": "contact",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "（2）在以下情形中，您可以通过“我的-服务中心”选择联系客服或选择拨打热线：400-80-13260，向我们提出删除用户信息的请求：。",
+      "data-cn-list": [
+        "用户",
+        "请求",
+        "联系"
+      ],
+      "data-en-list": [
+        "user",
+        "request",
+        "contact"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "user",
+          "account",
+          "member"
+        ],
+        [
+          "request",
+          "requests",
+          "requesting"
+        ],
+        [
+          "contact",
+          "contacts",
+          "get in touch"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "用户",
+          "data-en": "user",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "请求",
+          "data-en": "request",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "联系",
+          "data-en": "contact",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "② 如果我们收集、使用您的用户信息，却未征得您的明确同意；。",
+      "data-cn-list": [
+        "用户"
+      ],
+      "data-en-list": [
+        "user"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "user",
+          "account",
+          "member"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "用户",
+          "data-en": "user",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "（1）您可以改变或者收回您授权我们收集和处理您的个人信息的范围：您可以改变您的智能移动设备的设置等方式给予、修改或收回您的授权同意，通过以下方式自行进行：。",
+      "data-cn-list": [
+        "设置",
+        "授权",
+        "设备"
+      ],
+      "data-en-list": [
+        "set up",
+        "to grant authorization",
+        "device"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "setting",
+          "configuration",
+          "preference"
+        ],
+        [
+          "auth",
+          "authorization",
+          "authorized"
+        ],
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "设置",
+          "data-en": "set up",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "授权",
+          "data-en": "to grant authorization",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "（2）对于您无法直接通过上述方式设置的授权，您可以通过“我的-服务中心”选择联系客服或选择拨打热线：400-80-13260进行修改，但请注意，对于部分类型的个人信息，例如实现阿里云基本功能所必须的信息或者我们履行法律法规规定的义务所必需的信息，我们可能没有办法响应您改变授权范围的请求。",
+      "data-cn-list": [
+        "请求",
+        "授权",
+        "联系"
+      ],
+      "data-en-list": [
+        "request",
+        "to grant authorization",
+        "contact"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "request",
+          "requests",
+          "requesting"
+        ],
+        [
+          "auth",
+          "authorization",
+          "authorized"
+        ],
+        [
+          "contact",
+          "contacts",
+          "get in touch"
+        ]
+      ],
+      "purpose-cn-list": [
+        "修改",
+        "履行义务"
+      ],
+      "purpose-en-list": [
+        " modification",
+        " fulfillment of obligations"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "请求",
+          "data-en": "request",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "修改",
+            "履行义务"
+          ],
+          "purpose-en": [
+            " modification",
+            " fulfillment of obligations"
+          ]
+        },
+        {
+          "data-cn": "授权",
+          "data-en": "to grant authorization",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "修改",
+            "履行义务"
+          ],
+          "purpose-en": [
+            " modification",
+            " fulfillment of obligations"
+          ]
+        },
+        {
+          "data-cn": "联系",
+          "data-en": "contact",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "修改",
+            "履行义务"
+          ],
+          "purpose-en": [
+            " modification",
+            " fulfillment of obligations"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "但您撤回同意的决定，不会影响我们此前基于您的授权而开展的个人信息处理行为。",
+      "data-cn-list": [
+        "授权",
+        "行为"
+      ],
+      "data-en-list": [
+        "to grant authorization",
+        "action"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "auth",
+          "authorization",
+          "authorized"
+        ],
+        [
+          "behavior",
+          "action",
+          "activity"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "授权",
+          "data-en": "to grant authorization",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "行为",
+          "data-en": "action",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "① 您可自行在阿里云网站“注销账号”页面，通过“管理控制台-账号管理-安全设置-注销账号”提交账户注销申请。",
+      "data-cn-list": [
+        "账户",
+        "注销申请"
+      ],
+      "data-en-list": [
+        "account",
+        "cancellation application"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "account",
+          "account number",
+          "bank account"
+        ],
+        [
+          "cancellation application"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "账户",
+          "data-en": "account",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "注销申请",
+          "data-en": "cancellation application",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "② 您可登录手机阿里云客户端，通过“我的-服务中心”选择联系客服或选择拨打热线：400-80-13260寻求帮助，并协助您申请注销您的账户。",
+      "data-cn-list": [
+        "账户",
+        "联系"
+      ],
+      "data-en-list": [
+        "account",
+        "contact"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "account",
+          "account number",
+          "bank account"
+        ],
+        [
+          "contact",
+          "contacts",
+          "get in touch"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "账户",
+          "data-en": "account",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "联系",
+          "data-en": "contact",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "（1）为保障安全，您可能需要提供书面请求，或以其他方式证明您的身份。",
+      "data-cn-list": [
+        "请求"
+      ],
+      "data-en-list": [
+        "request"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "request",
+          "requests",
+          "requesting"
+        ]
+      ],
+      "purpose-cn-list": [
+        "保障安全"
+      ],
+      "purpose-en-list": [
+        " security"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "请求",
+          "data-en": "request",
+          "subject": [],
+          "purpose-cn": [
+            "保障安全"
+          ],
+          "purpose-en": [
+            " security"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "6.1. 为确保正常运转、为您获得更轻松的访问体验、我们会在您的移动设备上存储名为 Cookie 的小数据文件。",
+      "data-cn-list": [
+        "文件",
+        "存储",
+        "设备",
+        "COOKIE"
+      ],
+      "data-en-list": [
+        "file",
+        "storage",
+        "device",
+        "COOKIE"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "file",
+          "files",
+          "attachment"
+        ],
+        [
+          "storage",
+          "repository",
+          "storehouse"
+        ],
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ],
+        [
+          "COOKIE"
+        ]
+      ],
+      "purpose-cn-list": [
+        "运转"
+      ],
+      "purpose-en-list": [
+        " operation"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "文件",
+          "data-en": "file",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "运转"
+          ],
+          "purpose-en": [
+            " operation"
+          ]
+        },
+        {
+          "data-cn": "存储",
+          "data-en": "storage",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "运转"
+          ],
+          "purpose-en": [
+            " operation"
+          ]
+        },
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "运转"
+          ],
+          "purpose-en": [
+            " operation"
+          ]
+        },
+        {
+          "data-cn": "COOKIE",
+          "data-en": "COOKIE",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "运转"
+          ],
+          "purpose-en": [
+            " operation"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "阿里云只能读取阿里云提供的 Cookies 。",
+      "data-cn-list": [
+        "COOKIE"
+      ],
+      "data-en-list": [
+        "COOKIE"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "COOKIE"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "COOKIE",
+          "data-en": "COOKIE",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "但如果您这么做，则需要在每一次访问我们的网站时更改用户设置。",
+      "data-cn-list": [
+        "用户",
+        "设置"
+      ],
+      "data-en-list": [
+        "user",
+        "set up"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "user",
+          "account",
+          "member"
+        ],
+        [
+          "setting",
+          "configuration",
+          "preference"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "用户",
+          "data-en": "user",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "设置",
+          "data-en": "set up",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "七、我们如何保护和保存您的用户信息。",
+      "data-cn-list": [
+        "用户"
+      ],
+      "data-en-list": [
+        "user"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "user",
+          "account",
+          "member"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "用户",
+          "data-en": "user",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "例如，我们会使用加密技术提高用户信息的安全性；我们会使用受信赖的保护机制防止用户信息遭到恶意攻击；我们会部署访问控制机制，尽力确保只有授权人员才可访问用户信息；以及我们会举办安全和隐私保护培训课程，加强员工对于保护用户信息重要性的认识。",
+      "data-cn-list": [
+        "用户",
+        "授权",
+        "访问"
+      ],
+      "data-en-list": [
+        "user",
+        "to grant authorization",
+        "visit"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "user",
+          "account",
+          "member"
+        ],
+        [
+          "auth",
+          "authorization",
+          "authorized"
+        ],
+        [
+          "access",
+          "visit",
+          "call"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "用户",
+          "data-en": "user",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "授权",
+          "data-en": "to grant authorization",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "访问",
+          "data-en": "visit",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "7.2. 我们会采取合理可行的措施，尽力避免收集无关的用户信息。",
+      "data-cn-list": [
+        "用户"
+      ],
+      "data-en-list": [
+        "user"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "user",
+          "account",
+          "member"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "用户",
+          "data-en": "user",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "7.5. 如出现阿里云产品和服务停止运营的情形，我们会采取合理措施保护您用户信息安全，包括及时停止继续收集用户信息的活动；停止运营的通知将以逐一送达或公告的形式通知用户；并对所持有的个人信息进行删除或匿名化处理等。",
+      "data-cn-list": [
+        "用户"
+      ],
+      "data-en-list": [
+        "user"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "user",
+          "account",
+          "member"
+        ]
+      ],
+      "purpose-cn-list": [
+        "匿名化",
+        "删除"
+      ],
+      "purpose-en-list": [
+        " anonymization",
+        " deletion"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "用户",
+          "data-en": "user",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "匿名化",
+            "删除"
+          ],
+          "purpose-en": [
+            " anonymization",
+            " deletion"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "8.1. 原则上，我们在中华人民共和国境内产生或收集的用户信息，将存储在中华人民共和国境内。",
+      "data-cn-list": [
+        "用户",
+        "存储"
+      ],
+      "data-en-list": [
+        "user",
+        "storage"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "user",
+          "account",
+          "member"
+        ],
+        [
+          "storage",
+          "repository",
+          "storehouse"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "用户",
+          "data-en": "user",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "存储",
+          "data-en": "storage",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "我们会采取去标识化处理、加密传输、定期评估审计接收方的安全能力水平、签订数据处理协议/条款等必要措施，并根据相关法律法规的要求履行合规义务，包括向网信部门申报安全评估、申请个人信息保护认证或与境外接收方订立个人信息出境标准合同并向网信部门备案。",
+      "data-cn-list": [
+        "认证",
+        "部门"
+      ],
+      "data-en-list": [
+        "authentication",
+        "department"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "authentication",
+          "auth",
+          "authorization"
+        ],
+        [
+          "department",
+          "department",
+          "department"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "认证",
+          "data-en": "authentication",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "部门",
+          "data-en": "department",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "       您对本政策内容有任何疑问和意见，或者您对阿里云对本政策的实践以及操作上有任何疑问和意见，您可以通过“我的-服务中心”选择联系客服或选择拨打热线：400-80-13260与我们联系，我们将在15天内回复您的请求。",
+      "data-cn-list": [
+        "请求",
+        "联系"
+      ],
+      "data-en-list": [
+        "request",
+        "contact"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "request",
+          "requests",
+          "requesting"
+        ],
+        [
+          "contact",
+          "contacts",
+          "get in touch"
+        ]
+      ],
+      "purpose-cn-list": [
+        "联系"
+      ],
+      "purpose-en-list": [
+        " contact"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "请求",
+          "data-en": "request",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "联系"
+          ],
+          "purpose-en": [
+            " contact"
+          ]
+        },
+        {
+          "data-cn": "联系",
+          "data-en": "contact",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "联系"
+          ],
+          "purpose-en": [
+            " contact"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "用户信息：用户信息是指您注册阿里云网站账户，使用我们的服务以及我们为了向您提供服务，您提交的或者我们收集的用户会员类信息，如姓名、联系方式等，具体请见本政策“二、我们如何收集和使用您的用户信息”中各项业务功能对应所需要收集与使用的信息。",
+      "data-cn-list": [
+        "会员",
+        "用户",
+        "姓名",
+        "联系"
+      ],
+      "data-en-list": [
+        "member",
+        "user",
+        "full name",
+        "contact"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "member",
+          "vip",
+          "subscriber"
+        ],
+        [
+          "user",
+          "account",
+          "member"
+        ],
+        [
+          "name",
+          "first name",
+          "last name"
+        ],
+        [
+          "contact",
+          "contacts",
+          "get in touch"
+        ]
+      ],
+      "purpose-cn-list": [
+        ""
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "会员",
+          "data-en": "member",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            ""
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "用户",
+          "data-en": "user",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            ""
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "姓名",
+          "data-en": "full name",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            ""
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "联系",
+          "data-en": "contact",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            ""
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "设备信息：包括硬件型号、硬件序列号、软件列表、应用安装列表、软件安装列表、唯一设备识别码IMEI、设备MAC地址、SIM卡、IMSI信息、Android ID、MEID、Open UDID、GUID、蓝牙信息、广播组件通讯信息、ICCID、运营商信息、传感器（陀螺仪、重力传感器、加速度传感器、环境传感器、光学心率传感器）、剪切板。",
+      "data-cn-list": [
+        "通讯",
+        "SIM",
+        "剪切板",
+        "心率",
+        "MEID",
+        "传感器",
+        "地址",
+        "加速度",
+        "设备",
+        "安装列表",
+        "序列号",
+        "ANDROID ID",
+        "软件列表",
+        "识别码",
+        "IMSI",
+        "MAC",
+        "环境",
+        "蓝牙",
+        "陀螺仪",
+        "ICCID",
+        "IMEI",
+        "广播",
+        "GUID"
+      ],
+      "data-en-list": [
+        "communication",
+        "SIM",
+        "Shear plate",
+        "heart rate",
+        "MEID",
+        "sensor",
+        "address",
+        "acceleration",
+        "device",
+        "Installation List",
+        "serial number",
+        "ANDROID ID",
+        "Software List",
+        "Identification code",
+        "IMSI",
+        "MAC",
+        "environment",
+        "Bluetooth",
+        "gyroscope",
+        "ICCID",
+        "IMEI",
+        "radio broadcast",
+        "GUID"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "communication",
+          "telecommunication",
+          "correspondence"
+        ],
+        [
+          "SIM"
+        ],
+        [
+          "clipboard",
+          "clip",
+          "paste"
+        ],
+        [
+          "heart rate"
+        ],
+        [
+          "MEID"
+        ],
+        [
+          "sensor",
+          "transducer",
+          "probe"
+        ],
+        [
+          "address",
+          "location",
+          "place"
+        ],
+        [
+          "acceleration"
+        ],
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ],
+        [
+          "Installation List"
+        ],
+        [
+          "serial number"
+        ],
+        [
+          "ANDROID ID"
+        ],
+        [
+          "software list",
+          "software catalog",
+          "software directory"
+        ],
+        [
+          "identification code",
+          "identifying code",
+          "identification number"
+        ],
+        [
+          "IMSI"
+        ],
+        [
+          "MAC"
+        ],
+        [
+          "environment"
+        ],
+        [
+          "bluetooth",
+          "wireless"
+        ],
+        [
+          "gyroscope",
+          "gyro",
+          "g sensor"
+        ],
+        [
+          "ICCID"
+        ],
+        [
+          "IMEI"
+        ],
+        [
+          "radio broadcast"
+        ],
+        [
+          "GUID"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "通讯",
+          "data-en": "communication",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "SIM",
+          "data-en": "SIM",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "剪切板",
+          "data-en": "Shear plate",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "心率",
+          "data-en": "heart rate",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "MEID",
+          "data-en": "MEID",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "传感器",
+          "data-en": "sensor",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "地址",
+          "data-en": "address",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "加速度",
+          "data-en": "acceleration",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "安装列表",
+          "data-en": "Installation List",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "序列号",
+          "data-en": "serial number",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "ANDROID ID",
+          "data-en": "ANDROID ID",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "软件列表",
+          "data-en": "Software List",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "识别码",
+          "data-en": "Identification code",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "IMSI",
+          "data-en": "IMSI",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "MAC",
+          "data-en": "MAC",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "环境",
+          "data-en": "environment",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "蓝牙",
+          "data-en": "Bluetooth",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "陀螺仪",
+          "data-en": "gyroscope",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "ICCID",
+          "data-en": "ICCID",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "IMEI",
+          "data-en": "IMEI",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "广播",
+          "data-en": "radio broadcast",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "GUID",
+          "data-en": "GUID",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "敏感个人信息：敏感个人信息是一旦泄露或者非法使用，容易导致自然人的人格尊严受到侵害或者人身、财产安全受到危害的个人信息，包括生物识别、宗教信仰、特定身份、医疗健康、金融账户、行踪轨迹信息，以及不满十四周岁未成年人的个人信息。",
+      "data-cn-list": [
+        "身份",
+        "行踪轨迹",
+        "宗教信仰",
+        "金融账户",
+        "健康"
+      ],
+      "data-en-list": [
+        "identity",
+        "Trajectory",
+        "religious belief",
+        "financial account",
+        "healthy"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "identity"
+        ],
+        [
+          "Trajectory"
+        ],
+        [
+          "religion",
+          "religious belief",
+          "faith"
+        ],
+        [
+          "financial account"
+        ],
+        [
+          "healthy"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "身份",
+          "data-en": "identity",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "行踪轨迹",
+          "data-en": "Trajectory",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "宗教信仰",
+          "data-en": "religious belief",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "金融账户",
+          "data-en": "financial account",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "健康",
+          "data-en": "healthy",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    }
+  ]
+]

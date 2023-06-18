@@ -1,0 +1,5007 @@
+[
+  {
+    "sentence-count": 43,
+    "data-count": 168,
+    "purpose-count": 43,
+    "data-cn-total": [
+      "设备型号",
+      "设备",
+      "行踪轨迹",
+      "会员名",
+      "昵称",
+      "位置",
+      "页面提示",
+      "授权",
+      "心率",
+      "支付",
+      "使用情况",
+      "手机号码",
+      "语音",
+      "序列号",
+      "会员",
+      "查询",
+      "开关状态",
+      "收藏",
+      "商品",
+      "ANDROID ID",
+      "生日",
+      "剪切板",
+      "OAID",
+      "操作系统",
+      "金融账户",
+      "IP",
+      "IDFA",
+      "标识符",
+      "ICCID",
+      "日志",
+      "浏览",
+      "SIM",
+      "设置",
+      "搜索词",
+      "搜索记录",
+      "次数",
+      "地址",
+      "基站",
+      "评论",
+      "浏览记录",
+      "网络环境",
+      "搜索",
+      "相册",
+      "存储",
+      "浏览器",
+      "广播",
+      "密码",
+      "安装列表",
+      "订阅",
+      "配送",
+      "手机号",
+      "访问",
+      "SDK",
+      "显示",
+      "加速度",
+      "GUID",
+      "头像",
+      "账号",
+      "访问日期",
+      "订单",
+      "分享",
+      "发布",
+      "OPENUDID",
+      "IMSI",
+      "邮箱",
+      "内容",
+      "用户",
+      "行为",
+      "性能",
+      "WIFI",
+      "陀螺仪",
+      "MEID",
+      "服务日志",
+      "参数",
+      "记录",
+      "传感器",
+      "图片",
+      "相机",
+      "电话",
+      "请求",
+      "搜索时间",
+      "识别符",
+      "联系",
+      "注销申请",
+      "宗教信仰",
+      "点击",
+      "性别",
+      "IMEI",
+      "关注",
+      "账户",
+      "健康",
+      "身份",
+      "语言",
+      "MAC",
+      "通知开关",
+      "蓝牙",
+      "登录",
+      "时间",
+      "操作记录",
+      "崩溃",
+      "麦克风",
+      "通讯",
+      "交易",
+      "剪贴板"
+    ],
+    "data-en-total": [
+      "password",
+      "payment",
+      "commodity",
+      "search time",
+      "nickname",
+      "album",
+      "contact",
+      "cancellation application",
+      "OpenUDID",
+      "subscribe",
+      "Usage",
+      "frequency",
+      "account number",
+      "storage",
+      "action",
+      "network environment ",
+      "operating system",
+      "member",
+      "gyroscope",
+      "request",
+      "operation record",
+      "Identifier",
+      "release",
+      "collapse",
+      "Sign in",
+      "ANDROID ID",
+      "device",
+      "phone number",
+      "query",
+      "base station",
+      "OAID",
+      "time",
+      "acceleration",
+      "Gender",
+      "IP",
+      "identity",
+      "IDFA",
+      "ICCID",
+      "position",
+      "follow",
+      "religious belief",
+      "Search Records",
+      "SIM",
+      "transaction",
+      "Delivery",
+      "Browsing Records",
+      "sensor",
+      "click",
+      "serial number",
+      "avatar",
+      "camera",
+      "cellphone number",
+      "display",
+      "performance",
+      "voice",
+      "Bluetooth",
+      "content",
+      "SDK",
+      "log",
+      "birthday",
+      "visit",
+      "record",
+      "share",
+      "GUID",
+      "Microphone",
+      "order",
+      "Installation List",
+      "user",
+      "Search term",
+      "IMSI",
+      "address",
+      "Browsing",
+      "Switch status",
+      "Notification toggle",
+      "account",
+      "comment",
+      "WIFI",
+      "browser",
+      "MEID",
+      "communication",
+      "Telephone",
+      "financial account",
+      "radio broadcast",
+      "search",
+      "healthy",
+      "Service log",
+      "identifier ",
+      "Page prompt",
+      "Shear plate",
+      "to grant authorization",
+      "set up",
+      "Member Name",
+      "picture",
+      "parameter",
+      "IMEI",
+      "language",
+      "heart rate",
+      "mailbox",
+      "MAC",
+      "Collection",
+      "Access Date",
+      "Trajectory",
+      "clipboard",
+      "Equipment model"
+    ],
+    "data-en-chatgpt-total": [
+      [
+        "storage",
+        "repository",
+        "storehouse"
+      ],
+      [
+        "usage",
+        "usage status",
+        "use status"
+      ],
+      [
+        "auth",
+        "authorization",
+        "authorized"
+      ],
+      [
+        "Member Name"
+      ],
+      [
+        "phone number",
+        "telephone number",
+        "cellphone number"
+      ],
+      [
+        "password",
+        "pwd",
+        "secret"
+      ],
+      [
+        "avatar",
+        "icon",
+        "profile picture"
+      ],
+      [
+        "nickname",
+        "name",
+        "title"
+      ],
+      [
+        "account",
+        "username",
+        "id"
+      ],
+      [
+        "auth",
+        "authorization",
+        "authorized"
+      ],
+      [
+        "display"
+      ],
+      [
+        "comment",
+        "review",
+        "remark"
+      ],
+      [
+        "nickname",
+        "name",
+        "title"
+      ],
+      [
+        "avatar",
+        "icon",
+        "profile picture"
+      ],
+      [
+        "birthday",
+        "birth",
+        "date of birth"
+      ],
+      [
+        "setting",
+        "configuration",
+        "preference"
+      ],
+      [
+        "sex",
+        "gender",
+        "male"
+      ],
+      [
+        "publish",
+        "post",
+        "send"
+      ],
+      [
+        "avatar",
+        "icon",
+        "profile picture"
+      ],
+      [
+        "nickname",
+        "name",
+        "title"
+      ],
+      [
+        "account",
+        "account number",
+        "bank account"
+      ],
+      [
+        "Page prompt"
+      ],
+      [
+        "tel",
+        "phone",
+        "telephone"
+      ],
+      [
+        "identity"
+      ],
+      [
+        "service log",
+        "log",
+        "trace"
+      ],
+      [
+        "usage",
+        "usage status",
+        "use status"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "service log",
+        "log",
+        "trace"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "history",
+        "record",
+        "search history"
+      ],
+      [
+        "photo album",
+        "album"
+      ],
+      [
+        "image",
+        "pic",
+        "photo"
+      ],
+      [
+        "camera",
+        "photograph"
+      ],
+      [
+        "search time",
+        "seek time",
+        "find time"
+      ],
+      [
+        "content",
+        "text",
+        "body"
+      ],
+      [
+        "microphone",
+        "mic",
+        "mike"
+      ],
+      [
+        "voice"
+      ],
+      [
+        "search term",
+        "search word",
+        "search phrase"
+      ],
+      [
+        "times",
+        "frequency",
+        "number"
+      ],
+      [
+        "Browsing Records"
+      ],
+      [
+        "history",
+        "record",
+        "search history"
+      ],
+      [
+        "position",
+        "location"
+      ],
+      [
+        "Browsing"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "auth",
+        "authorization",
+        "authorized"
+      ],
+      [
+        "Delivery"
+      ],
+      [
+        "order",
+        "orders",
+        "purchase order"
+      ],
+      [
+        "position",
+        "location"
+      ],
+      [
+        "image",
+        "pic",
+        "photo"
+      ],
+      [
+        "auth",
+        "authorization",
+        "authorized"
+      ],
+      [
+        "contact",
+        "contacts",
+        "get in touch"
+      ],
+      [
+        "email",
+        "mail",
+        "e mail"
+      ],
+      [
+        "phone",
+        "telephone",
+        "cellphone"
+      ],
+      [
+        "setting",
+        "configuration",
+        "preference"
+      ],
+      [
+        "browser",
+        "web browser",
+        "internet browser"
+      ],
+      [
+        "account",
+        "account number",
+        "bank account"
+      ],
+      [
+        "nickname",
+        "name",
+        "title"
+      ],
+      [
+        "avatar",
+        "icon",
+        "profile picture"
+      ],
+      [
+        "contact",
+        "contacts",
+        "get in touch"
+      ],
+      [
+        "Browsing Records"
+      ],
+      [
+        "clipboard"
+      ],
+      [
+        "storage",
+        "repository",
+        "storehouse"
+      ],
+      [
+        "acceleration"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "sensor",
+        "transducer",
+        "probe"
+      ],
+      [
+        "address",
+        "location",
+        "place"
+      ],
+      [
+        "identifier",
+        "id",
+        "mark"
+      ],
+      [
+        "service log",
+        "log",
+        "trace"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "MAC"
+      ],
+      [
+        "auth",
+        "authorization",
+        "authorized"
+      ],
+      [
+        "member",
+        "vip",
+        "subscriber"
+      ],
+      [
+        "transaction",
+        "deal",
+        "trade"
+      ],
+      [
+        "IMEI"
+      ],
+      [
+        "record",
+        "log",
+        "trace"
+      ],
+      [
+        "auth",
+        "authorization",
+        "authorized"
+      ],
+      [
+        "storage",
+        "repository",
+        "storehouse"
+      ],
+      [
+        "access",
+        "visit",
+        "call"
+      ],
+      [
+        "browser",
+        "web browser",
+        "internet browser"
+      ],
+      [
+        "user",
+        "account",
+        "member"
+      ],
+      [
+        "setting",
+        "configuration",
+        "preference"
+      ],
+      [
+        "payment",
+        "payment amount",
+        "transaction id"
+      ],
+      [
+        "account",
+        "account number",
+        "bank account"
+      ],
+      [
+        "payment",
+        "payment amount",
+        "transaction id"
+      ],
+      [
+        "order",
+        "orders",
+        "purchase order"
+      ],
+      [
+        "browser",
+        "web browser",
+        "internet browser"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "SDK"
+      ],
+      [
+        "account",
+        "username",
+        "id"
+      ],
+      [
+        "operation record",
+        "operational record",
+        "operating record"
+      ],
+      [
+        "Browsing"
+      ],
+      [
+        "subscribe",
+        "subscription",
+        "subscriber"
+      ],
+      [
+        "login",
+        "sign in",
+        "sign up"
+      ],
+      [
+        "identity"
+      ],
+      [
+        "usage",
+        "usage status",
+        "use status"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "behavior",
+        "action",
+        "activity"
+      ],
+      [
+        "browser",
+        "web browser",
+        "internet browser"
+      ],
+      [
+        "transaction",
+        "deal",
+        "trade"
+      ],
+      [
+        "order",
+        "orders",
+        "purchase order"
+      ],
+      [
+        "product",
+        "commodity",
+        "goods"
+      ],
+      [
+        "contact",
+        "contacts",
+        "get in touch"
+      ],
+      [
+        "auth",
+        "authorization",
+        "authorized"
+      ],
+      [
+        "auth",
+        "authorization",
+        "authorized"
+      ],
+      [
+        "cancellation application"
+      ],
+      [
+        "account",
+        "account number",
+        "bank account"
+      ],
+      [
+        "request",
+        "requests",
+        "requesting"
+      ],
+      [
+        "storage",
+        "repository",
+        "storehouse"
+      ],
+      [
+        "access",
+        "visit",
+        "call"
+      ],
+      [
+        "auth",
+        "authorization",
+        "authorized"
+      ],
+      [
+        "Browsing"
+      ],
+      [
+        "browser",
+        "web browser",
+        "internet browser"
+      ],
+      [
+        "healthy"
+      ],
+      [
+        "identity"
+      ],
+      [
+        "religion",
+        "religious belief",
+        "faith"
+      ],
+      [
+        "financial account"
+      ],
+      [
+        "Trajectory"
+      ],
+      [
+        "WIFI"
+      ],
+      [
+        "gyroscope",
+        "gyro",
+        "g sensor"
+      ],
+      [
+        "device model"
+      ],
+      [
+        "MEID"
+      ],
+      [
+        "os",
+        "operating system"
+      ],
+      [
+        "parameter",
+        "param",
+        "arg"
+      ],
+      [
+        "sensor",
+        "transducer",
+        "probe"
+      ],
+      [
+        "IP"
+      ],
+      [
+        "acceleration"
+      ],
+      [
+        "IDFA"
+      ],
+      [
+        "ICCID"
+      ],
+      [
+        "Identifier"
+      ],
+      [
+        "GUID"
+      ],
+      [
+        "SIM"
+      ],
+      [
+        "heart rate"
+      ],
+      [
+        "IMEI"
+      ],
+      [
+        "address",
+        "location",
+        "place"
+      ],
+      [
+        "MAC"
+      ],
+      [
+        "serial number"
+      ],
+      [
+        "Notification toggle"
+      ],
+      [
+        "bluetooth",
+        "wireless"
+      ],
+      [
+        "base",
+        "base station",
+        "station"
+      ],
+      [
+        "OpenUDID"
+      ],
+      [
+        "IMSI"
+      ],
+      [
+        "network environment",
+        "network conditions",
+        "network state"
+      ],
+      [
+        "switch status",
+        "switch",
+        "state"
+      ],
+      [
+        "ANDROID ID"
+      ],
+      [
+        "crash"
+      ],
+      [
+        "communication",
+        "telecommunication",
+        "correspondence"
+      ],
+      [
+        "radio broadcast"
+      ],
+      [
+        "Installation List"
+      ],
+      [
+        "clipboard",
+        "clip",
+        "paste"
+      ],
+      [
+        "OAID"
+      ],
+      [
+        "IP"
+      ],
+      [
+        "log",
+        "record",
+        "trace"
+      ],
+      [
+        "click",
+        "clicking",
+        "clicked"
+      ],
+      [
+        "Access Date"
+      ],
+      [
+        "follow",
+        "focus",
+        "attention"
+      ],
+      [
+        "usage",
+        "usage status",
+        "use status"
+      ],
+      [
+        "address",
+        "location",
+        "place"
+      ],
+      [
+        "language",
+        "languages",
+        "foreign language",
+        "mother tongue"
+      ],
+      [
+        "share",
+        "forward",
+        "transmit"
+      ],
+      [
+        "query",
+        "search",
+        "find"
+      ],
+      [
+        "publish",
+        "post",
+        "send"
+      ],
+      [
+        "search",
+        "find",
+        "look up"
+      ],
+      [
+        "collect",
+        "favorite",
+        "bookmark"
+      ],
+      [
+        "browser",
+        "web browser",
+        "internet browser"
+      ],
+      [
+        "time",
+        "date",
+        "duration"
+      ],
+      [
+        "crash"
+      ],
+      [
+        "transaction",
+        "deal",
+        "trade"
+      ],
+      [
+        "performance",
+        "function",
+        "capacity"
+      ]
+    ],
+    "purpose-cn-total": [
+      "通知设置",
+      "交易风险",
+      "创建账户",
+      "日志保存",
+      "活动报名",
+      "检测",
+      "共享",
+      "订单支付",
+      "浏览历史",
+      "识别账号异常",
+      "售后",
+      "保障安全",
+      "通知",
+      "判断",
+      "购买",
+      "清除",
+      "小程序",
+      "退出模式",
+      "判断账户",
+      "搜索历史",
+      "创新交互",
+      "活动联动",
+      "重启",
+      "运营",
+      "个性化",
+      "推送通知",
+      "关联",
+      "本地缓存",
+      "个性化推荐",
+      "风险校验",
+      "防范安全",
+      "账号登录",
+      "广告",
+      "分享",
+      "搜索",
+      "身份验证",
+      "配送",
+      "履行义务",
+      "部分",
+      "上交互",
+      "改善化",
+      "营销活动",
+      "交易"
+    ],
+    "purpose-en-total": [
+      " restart",
+      "Notification settings",
+      " operation",
+      " association",
+      " advertising",
+      " account judgment",
+      " judgment",
+      " security",
+      " detection",
+      " interaction",
+      " delivery",
+      " transactions.",
+      " search",
+      " after-sales",
+      " identification of account abnormalities",
+      " search history",
+      " log preservation",
+      " local cache",
+      " personalized recommendation",
+      " applet",
+      " innovation interaction",
+      " transaction risks",
+      " marketing activities",
+      " exit mode",
+      " fulfillment of obligations",
+      " improvement",
+      " account creation",
+      " risk verification",
+      " part",
+      " browsing history",
+      " notification",
+      " push notification",
+      " security protection",
+      " personalization",
+      " account login",
+      " order payment",
+      " removal",
+      " sharing",
+      " authentication",
+      " purchase",
+      " activity linkage",
+      " activity registration"
+    ],
+    "permission_list": [
+      "MANAGE_DEVICE_POLICY_RESET_PASSWORD",
+      "RECORD_AUDIO",
+      "READ_USER_DICTIONARY",
+      "OVERRIDE_WIFI_CONFIG",
+      "MANAGE_DEVICE_POLICY_CAMERA",
+      "MANAGE_DEVICE_POLICY_PROFILE_INTERACTION",
+      "BLUETOOTH_ADVERTISE",
+      "CAMERA",
+      "START_VIEW_PERMISSION_USAGE",
+      "FOREGROUND_SERVICE_MICROPHONE",
+      "WRITE_SECURE_SETTINGS",
+      "MANAGE_DEVICE_POLICY_ORGANIZATION_IDENTITY",
+      "WRITE_USER_DICTIONARY",
+      "ACCESS_NETWORK_STATE",
+      "WRITE_CONTACTS",
+      "MANAGE_DEVICE_POLICY_USERS",
+      "VIBRATE",
+      "RECEIVE_BOOT_COMPLETED",
+      "MANAGE_DEVICE_POLICY_TIME",
+      "BLUETOOTH_SCAN",
+      "ACCOUNT_MANAGER",
+      "BIND_QUICK_SETTINGS_TILE",
+      "ACCESS_WIFI_STATE",
+      "MANAGE_DEVICE_POLICY_INPUT_METHODS",
+      "WRITE_GSERVICES",
+      "MANAGE_DEVICE_POLICY_WIFI",
+      "BIND_NFC_SERVICE",
+      "BIND_INPUT_METHOD",
+      "FOREGROUND_SERVICE_LOCATION",
+      "WRITE_VOICEMAIL",
+      "READ_PHONE_STATE",
+      "GET_ACCOUNTS_PRIVILEGED",
+      "WRITE_HISTORY_BOOKMARKS",
+      "BIND_VOICE_INTERACTION",
+      "ACTIVITY_RECOGNITION",
+      "MANAGE_DEVICE_POLICY_BLUETOOTH",
+      "WAKE_LOCK",
+      "READ_HISTORY_BOOKMARKS",
+      "CHANGE_WIFI_MULTICAST_STATE",
+      "MANAGE_DEVICE_POLICY_PRIVATE_DNS",
+      "REQUEST_PASSWORD_COMPLEXITY",
+      "READ_LOGS",
+      "READ_CALENDAR",
+      "MANAGE_DEVICE_POLICY_DISPLAY",
+      "MANAGE_DEVICE_POLICY_DEVICE_IDENTIFIERS",
+      "MANAGE_DEVICE_POLICY_SYSTEM_DIALOGS",
+      "MANAGE_DEVICE_POLICY_NEARBY_COMMUNICATION",
+      "CHANGE_WIFI_STATE",
+      "WRITE_SETTINGS",
+      "MANAGE_DEVICE_POLICY_SYSTEM_APPS",
+      "BLUETOOTH_CONNECT",
+      "READ_EXTERNAL_STORAGE",
+      "WRITE_APN_SETTINGS",
+      "WRITE_EXTERNAL_STORAGE",
+      "BLUETOOTH_ADMIN",
+      "NFC",
+      "FOREGROUND_SERVICE_HEALTH",
+      "READ_PHONE_NUMBERS",
+      "MANAGE_EXTERNAL_STORAGE",
+      "ACCESS_COARSE_LOCATION",
+      "FLASHLIGHT",
+      "CHANGE_NETWORK_STATE",
+      "FOREGROUND_SERVICE_SYSTEM_EXEMPTED",
+      "PACKAGE_USAGE_STATS",
+      "NEARBY_WIFI_DEVICES",
+      "FOREGROUND_SERVICE_PHONE_CALL",
+      "READ_CONTACTS",
+      "EXECUTE_APP_ACTION",
+      "MANAGE_DEVICE_POLICY_MOBILE_NETWORK",
+      "MANAGE_DEVICE_POLICY_APP_USER_DATA",
+      "READ_PROFILE",
+      "MANAGE_DEVICE_POLICY_BACKUP_SERVICE",
+      "MOUNT_FORMAT_FILESYSTEMS",
+      "BIND_COMPANION_DEVICE_SERVICE",
+      "WRITE_CALENDAR",
+      "ACCESS_LOCATION_EXTRA_COMMANDS",
+      "MOUNT_UNMOUNT_FILESYSTEMS",
+      "READ_SYNC_SETTINGS",
+      "MANAGE_DEVICE_POLICY_ACROSS_USERS",
+      "MANAGE_DEVICE_POLICY_SYSTEM_UPDATES",
+      "MANAGE_DEVICE_POLICY_NETWORK_LOGGING",
+      "CALL_PHONE",
+      "BLUETOOTH_PRIVILEGED",
+      "MANAGE_DEVICE_POLICY_SETTINGS",
+      "INTERNET",
+      "MANAGE_DEVICE_POLICY_CALLS",
+      "ANSWER_PHONE_CALLS",
+      "WRITE_SYNC_SETTINGS",
+      "READ_SOCIAL_STREAM",
+      "USE_SIP",
+      "MANAGE_DEVICE_POLICY_SCREEN_CONTENT",
+      "MANAGE_DEVICE_POLICY_RESTRICT_PRIVATE_DNS",
+      "WRITE_PROFILE",
+      "BIND_TELECOM_CONNECTION_SERVICE",
+      "SET_TIME",
+      "MANAGE_DEVICE_POLICY_MICROPHONE",
+      "LAUNCH_MULTI_PANE_SETTINGS_DEEP_LINK",
+      "MANAGE_DEVICE_POLICY_MODIFY_USERS",
+      "ACCESS_FINE_LOCATION",
+      "BLUETOOTH",
+      "MANAGE_DEVICE_POLICY_PACKAGE_STATE",
+      "MANAGE_DEVICE_POLICY_QUERY_SYSTEM_UPDATES",
+      "REORDER_TASKS",
+      "POST_NOTIFICATIONS"
+    ]
+  },
+  [
+    {
+      "orig-sentence": "基于此，UC浏览器服务提供者（或简称“我们”）制定本《UC浏览器隐私政策》（下称“本政策”或“本隐私政策”），帮助您充分了解在您使用我们产品及/或服务的过程中，我们会如何收集、使用、共享、存储和保护您的个人信息以及您可以如何管理您的个人信息，以便您更好地作出适当的选择。",
+      "data-cn-list": [
+        "存储"
+      ],
+      "data-en-list": [
+        "storage"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "storage",
+          "repository",
+          "storehouse"
+        ]
+      ],
+      "purpose-cn-list": [
+        "共享"
+      ],
+      "purpose-en-list": [
+        " sharing"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "存储",
+          "data-en": "storage",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "共享"
+          ],
+          "purpose-en": [
+            " sharing"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "您同意隐私政策表示您已了解应用提供的功能，以及功能运行所需的必要个人信息，并给予相应的收集使用授权，但并不代表您已单独同意开启附加功能、处理非必要个人信息，相关附加功能的开启、处理非必要个人信息以及处理敏感个人信息，我们会根据您的实际使用情况单独征求您的同意。",
+      "data-cn-list": [
+        "使用情况",
+        "授权"
+      ],
+      "data-en-list": [
+        "Usage",
+        "to grant authorization"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "usage",
+          "usage status",
+          "use status"
+        ],
+        [
+          "auth",
+          "authorization",
+          "authorized"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "使用情况",
+          "data-en": "Usage",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "授权",
+          "data-en": "to grant authorization",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "为了创建UC浏览器账户您需要至少向我们提供您的手机号码、拟使用的会员名和密码。",
+      "data-cn-list": [
+        "会员名",
+        "手机号码",
+        "密码"
+      ],
+      "data-en-list": [
+        "Member Name",
+        "phone number",
+        "password"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "Member Name"
+        ],
+        [
+          "phone number",
+          "telephone number",
+          "cellphone number"
+        ],
+        [
+          "password",
+          "pwd",
+          "secret"
+        ]
+      ],
+      "purpose-cn-list": [
+        "创建账户"
+      ],
+      "purpose-en-list": [
+        " account creation"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "会员名",
+          "data-en": "Member Name",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "创建账户"
+          ],
+          "purpose-en": [
+            " account creation"
+          ]
+        },
+        {
+          "data-cn": "手机号码",
+          "data-en": "phone number",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "创建账户"
+          ],
+          "purpose-en": [
+            " account creation"
+          ]
+        },
+        {
+          "data-cn": "密码",
+          "data-en": "password",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "创建账户"
+          ],
+          "purpose-en": [
+            " account creation"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "为实现前述目的，您理解并同意我们将从第三方获取并收集您的第三方账号信息，如昵称、头像等您在授权界面同意授予的信息。",
+      "data-cn-list": [
+        "头像",
+        "昵称",
+        "账号",
+        "授权"
+      ],
+      "data-en-list": [
+        "avatar",
+        "nickname",
+        "account number",
+        "to grant authorization"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "avatar",
+          "icon",
+          "profile picture"
+        ],
+        [
+          "nickname",
+          "name",
+          "title"
+        ],
+        [
+          "account",
+          "username",
+          "id"
+        ],
+        [
+          "auth",
+          "authorization",
+          "authorized"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "头像",
+          "data-en": "avatar",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "昵称",
+          "data-en": "nickname",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "账号",
+          "data-en": "account number",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "授权",
+          "data-en": "to grant authorization",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "为了提升您的账户个性化体验，如果您选择填写昵称、头像、性别、生日，其中，您设置的昵称和头像，将可能在某些场景下（如评论发布）公开显示。",
+      "data-cn-list": [
+        "显示",
+        "评论",
+        "昵称",
+        "头像",
+        "生日",
+        "设置",
+        "性别",
+        "发布"
+      ],
+      "data-en-list": [
+        "display",
+        "comment",
+        "nickname",
+        "avatar",
+        "birthday",
+        "set up",
+        "Gender",
+        "release"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "display"
+        ],
+        [
+          "comment",
+          "review",
+          "remark"
+        ],
+        [
+          "nickname",
+          "name",
+          "title"
+        ],
+        [
+          "avatar",
+          "icon",
+          "profile picture"
+        ],
+        [
+          "birthday",
+          "birth",
+          "date of birth"
+        ],
+        [
+          "setting",
+          "configuration",
+          "preference"
+        ],
+        [
+          "sex",
+          "gender",
+          "male"
+        ],
+        [
+          "publish",
+          "post",
+          "send"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "显示",
+          "data-en": "display",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "评论",
+          "data-en": "comment",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "昵称",
+          "data-en": "nickname",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "头像",
+          "data-en": "avatar",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "生日",
+          "data-en": "birthday",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "设置",
+          "data-en": "set up",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "性别",
+          "data-en": "Gender",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "发布",
+          "data-en": "release",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "我们可能经您单独同意后向第三方提供您的账户信息（头像、昵称及其他页面提示的信息），使您可以便捷地实现使用UC浏览器账号在第三方处直接登录。",
+      "data-cn-list": [
+        "头像",
+        "昵称",
+        "账户",
+        "页面提示"
+      ],
+      "data-en-list": [
+        "avatar",
+        "nickname",
+        "account",
+        "Page prompt"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "avatar",
+          "icon",
+          "profile picture"
+        ],
+        [
+          "nickname",
+          "name",
+          "title"
+        ],
+        [
+          "account",
+          "account number",
+          "bank account"
+        ],
+        [
+          "Page prompt"
+        ]
+      ],
+      "purpose-cn-list": [
+        "账号登录"
+      ],
+      "purpose-en-list": [
+        " account login"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "头像",
+          "data-en": "avatar",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "账号登录"
+          ],
+          "purpose-en": [
+            " account login"
+          ]
+        },
+        {
+          "data-cn": "昵称",
+          "data-en": "nickname",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "账号登录"
+          ],
+          "purpose-en": [
+            " account login"
+          ]
+        },
+        {
+          "data-cn": "账户",
+          "data-en": "account",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "账号登录"
+          ],
+          "purpose-en": [
+            " account login"
+          ]
+        },
+        {
+          "data-cn": "页面提示",
+          "data-en": "Page prompt",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "账号登录"
+          ],
+          "purpose-en": [
+            " account login"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "为满足《反电信网络诈骗法》、《互联网用户账号信息管理规定》等法律法规规定，确保用户身份真实性，在您使用部分特定服务/功能（如账号找回、小游戏、直播等）时，我们可能需要收集您的手机号或其他身份信息相进行身份验证。",
+      "data-cn-list": [
+        "手机号",
+        "身份"
+      ],
+      "data-en-list": [
+        "cellphone number",
+        "identity"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "tel",
+          "phone",
+          "telephone"
+        ],
+        [
+          "identity"
+        ]
+      ],
+      "purpose-cn-list": [
+        "身份验证",
+        "部分"
+      ],
+      "purpose-en-list": [
+        " authentication",
+        " part"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "手机号",
+          "data-en": "cellphone number",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "身份验证",
+            "部分"
+          ],
+          "purpose-en": [
+            " authentication",
+            " part"
+          ]
+        },
+        {
+          "data-cn": "身份",
+          "data-en": "identity",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "身份验证",
+            "部分"
+          ],
+          "purpose-en": [
+            " authentication",
+            " part"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "在您使用我们服务过程中，为识别账号异常状态、了解产品适配性、向您提供更契合您需求的页面展示和搜索结果，同时基于网页文件缓存、下载，日志存储等基础运营需求，我们需要获得您的存储读写权限，并可能会自动收集您的使用情况，包括：设备信息、服务日志信息。",
+      "data-cn-list": [
+        "服务日志",
+        "使用情况",
+        "设备"
+      ],
+      "data-en-list": [
+        "Service log",
+        "Usage",
+        "device"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "service log",
+          "log",
+          "trace"
+        ],
+        [
+          "usage",
+          "usage status",
+          "use status"
+        ],
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ]
+      ],
+      "purpose-cn-list": [
+        "识别账号异常"
+      ],
+      "purpose-en-list": [
+        " identification of account abnormalities"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "服务日志",
+          "data-en": "Service log",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "识别账号异常"
+          ],
+          "purpose-en": [
+            " identification of account abnormalities"
+          ]
+        },
+        {
+          "data-cn": "使用情况",
+          "data-en": "Usage",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "识别账号异常"
+          ],
+          "purpose-en": [
+            " identification of account abnormalities"
+          ]
+        },
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "识别账号异常"
+          ],
+          "purpose-en": [
+            " identification of account abnormalities"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "UC浏览器提供“无痕浏览”模式，请注意在您使用无痕浏览模式时，您的搜索历史、网页浏览历史、cookie和本地存储缓存，会在您退出无痕浏览模式或者重启浏览器之后全部清除，在但我们仍然会收集设备信息、服务日志等信息。",
+      "data-cn-list": [
+        "服务日志",
+        "设备"
+      ],
+      "data-en-list": [
+        "Service log",
+        "device"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "service log",
+          "log",
+          "trace"
+        ],
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ]
+      ],
+      "purpose-cn-list": [
+        "本地缓存",
+        "退出模式",
+        "搜索历史",
+        "重启",
+        "浏览历史"
+      ],
+      "purpose-en-list": [
+        " local cache",
+        " exit mode",
+        " search history",
+        " restart",
+        " browsing history"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "服务日志",
+          "data-en": "Service log",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "本地缓存",
+            "退出模式",
+            "搜索历史",
+            "重启",
+            "浏览历史"
+          ],
+          "purpose-en": [
+            " local cache",
+            " exit mode",
+            " search history",
+            " restart",
+            " browsing history"
+          ]
+        },
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "本地缓存",
+            "退出模式",
+            "搜索历史",
+            "重启",
+            "浏览历史"
+          ],
+          "purpose-en": [
+            " local cache",
+            " exit mode",
+            " search history",
+            " restart",
+            " browsing history"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "当您使用搜索功能（包括拍照搜索、语音搜索）时，我们会收集您的搜索记录，包括搜索内容（搜索词、图片、语音信息）、浏览记录/时间、搜索时间/次数，并根据您所使用功能的必需，申请麦克风权限或相机权限、相册权限。",
+      "data-cn-list": [
+        "搜索记录",
+        "相册",
+        "图片",
+        "相机",
+        "搜索时间",
+        "内容",
+        "麦克风",
+        "语音",
+        "搜索词",
+        "次数",
+        "浏览记录"
+      ],
+      "data-en-list": [
+        "Search Records",
+        "album",
+        "picture",
+        "camera",
+        "search time",
+        "content",
+        "Microphone",
+        "voice",
+        "Search term",
+        "frequency",
+        "Browsing Records"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "history",
+          "record",
+          "search history"
+        ],
+        [
+          "photo album",
+          "album"
+        ],
+        [
+          "image",
+          "pic",
+          "photo"
+        ],
+        [
+          "camera",
+          "photograph"
+        ],
+        [
+          "search time",
+          "seek time",
+          "find time"
+        ],
+        [
+          "content",
+          "text",
+          "body"
+        ],
+        [
+          "microphone",
+          "mic",
+          "mike"
+        ],
+        [
+          "voice"
+        ],
+        [
+          "search term",
+          "search word",
+          "search phrase"
+        ],
+        [
+          "times",
+          "frequency",
+          "number"
+        ],
+        [
+          "Browsing Records"
+        ]
+      ],
+      "purpose-cn-list": [
+        "搜索"
+      ],
+      "purpose-en-list": [
+        " search"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "搜索记录",
+          "data-en": "Search Records",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "搜索"
+          ],
+          "purpose-en": [
+            " search"
+          ]
+        },
+        {
+          "data-cn": "相册",
+          "data-en": "album",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "搜索"
+          ],
+          "purpose-en": [
+            " search"
+          ]
+        },
+        {
+          "data-cn": "图片",
+          "data-en": "picture",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "搜索"
+          ],
+          "purpose-en": [
+            " search"
+          ]
+        },
+        {
+          "data-cn": "相机",
+          "data-en": "camera",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "搜索"
+          ],
+          "purpose-en": [
+            " search"
+          ]
+        },
+        {
+          "data-cn": "搜索时间",
+          "data-en": "search time",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "搜索"
+          ],
+          "purpose-en": [
+            " search"
+          ]
+        },
+        {
+          "data-cn": "内容",
+          "data-en": "content",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "搜索"
+          ],
+          "purpose-en": [
+            " search"
+          ]
+        },
+        {
+          "data-cn": "麦克风",
+          "data-en": "Microphone",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "搜索"
+          ],
+          "purpose-en": [
+            " search"
+          ]
+        },
+        {
+          "data-cn": "语音",
+          "data-en": "voice",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "搜索"
+          ],
+          "purpose-en": [
+            " search"
+          ]
+        },
+        {
+          "data-cn": "搜索词",
+          "data-en": "Search term",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "搜索"
+          ],
+          "purpose-en": [
+            " search"
+          ]
+        },
+        {
+          "data-cn": "次数",
+          "data-en": "frequency",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "搜索"
+          ],
+          "purpose-en": [
+            " search"
+          ]
+        },
+        {
+          "data-cn": "浏览记录",
+          "data-en": "Browsing Records",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "搜索"
+          ],
+          "purpose-en": [
+            " search"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "为向您展示、推荐相关性更强的资讯、广告以及其他内容，提供更符合您需求的个性化体验，我们会将收集的前述浏览操作相关记录、搜索记录，与依法收集的设备信息、地理位置信息以及其他取得您授权的信息进行结合用于个性化推荐服务。",
+      "data-cn-list": [
+        "搜索记录",
+        "位置",
+        "浏览",
+        "设备",
+        "授权"
+      ],
+      "data-en-list": [
+        "Search Records",
+        "position",
+        "Browsing",
+        "device",
+        "to grant authorization"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "history",
+          "record",
+          "search history"
+        ],
+        [
+          "position",
+          "location"
+        ],
+        [
+          "Browsing"
+        ],
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ],
+        [
+          "auth",
+          "authorization",
+          "authorized"
+        ]
+      ],
+      "purpose-cn-list": [
+        "个性化推荐"
+      ],
+      "purpose-en-list": [
+        " personalized recommendation"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "搜索记录",
+          "data-en": "Search Records",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "个性化推荐"
+          ],
+          "purpose-en": [
+            " personalized recommendation"
+          ]
+        },
+        {
+          "data-cn": "位置",
+          "data-en": "position",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "个性化推荐"
+          ],
+          "purpose-en": [
+            " personalized recommendation"
+          ]
+        },
+        {
+          "data-cn": "浏览",
+          "data-en": "Browsing",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "个性化推荐"
+          ],
+          "purpose-en": [
+            " personalized recommendation"
+          ]
+        },
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "个性化推荐"
+          ],
+          "purpose-en": [
+            " personalized recommendation"
+          ]
+        },
+        {
+          "data-cn": "授权",
+          "data-en": "to grant authorization",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "个性化推荐"
+          ],
+          "purpose-en": [
+            " personalized recommendation"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "当您购买商品或服务时，为了帮助您完成订单支付，并顺利收取所购买的商品或服务，我们或提供服务的第三方会收集您的订单信息、配送信息。",
+      "data-cn-list": [
+        "配送",
+        "订单"
+      ],
+      "data-en-list": [
+        "Delivery",
+        "order"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "Delivery"
+        ],
+        [
+          "order",
+          "orders",
+          "purchase order"
+        ]
+      ],
+      "purpose-cn-list": [
+        "购买",
+        "订单支付"
+      ],
+      "purpose-en-list": [
+        " purchase",
+        " order payment"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "配送",
+          "data-en": "Delivery",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "购买",
+            "订单支付"
+          ],
+          "purpose-en": [
+            " purchase",
+            " order payment"
+          ]
+        },
+        {
+          "data-cn": "订单",
+          "data-en": "order",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "购买",
+            "订单支付"
+          ],
+          "purpose-en": [
+            " purchase",
+            " order payment"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "（2）当您与在UC浏览器上提供服务的第三方进行交互，需要基于位置进行时，我们会请求您授权位置权限，并收集与服务相关的位置信息。",
+      "data-cn-list": [
+        "位置"
+      ],
+      "data-en-list": [
+        "position"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "position",
+          "location"
+        ]
+      ],
+      "purpose-cn-list": [
+        "上交互"
+      ],
+      "purpose-en-list": [
+        " interaction"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "位置",
+          "data-en": "position",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "上交互"
+          ],
+          "purpose-en": [
+            " interaction"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "根据您的授权，我们可能会使用您提供的图片训练图像识别算法，以改善产品的智能化服务体验，但我们不会单独存储您的图片信息，也不会在该算法训练场景之外使用您的图片。",
+      "data-cn-list": [
+        "图片",
+        "授权"
+      ],
+      "data-en-list": [
+        "picture",
+        "to grant authorization"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "image",
+          "pic",
+          "photo"
+        ],
+        [
+          "auth",
+          "authorization",
+          "authorized"
+        ]
+      ],
+      "purpose-cn-list": [
+        "改善化"
+      ],
+      "purpose-en-list": [
+        " improvement"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "图片",
+          "data-en": "picture",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "改善化"
+          ],
+          "purpose-en": [
+            " improvement"
+          ]
+        },
+        {
+          "data-cn": "授权",
+          "data-en": "to grant authorization",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "改善化"
+          ],
+          "purpose-en": [
+            " improvement"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "我们在运营中可能会通过您在使用产品及/服务的过程中所提供的联系方式（如联系电话、联系邮箱），向您发送一种或多种类型的通知，例如服务通知、身份验证、安全验证、用户使用体验调研、您可能感兴趣的服务/功能、活动优惠等。",
+      "data-cn-list": [
+        "联系",
+        "邮箱",
+        "电话"
+      ],
+      "data-en-list": [
+        "contact",
+        "mailbox",
+        "Telephone"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "contact",
+          "contacts",
+          "get in touch"
+        ],
+        [
+          "email",
+          "mail",
+          "e mail"
+        ],
+        [
+          "phone",
+          "telephone",
+          "cellphone"
+        ]
+      ],
+      "purpose-cn-list": [
+        "运营"
+      ],
+      "purpose-en-list": [
+        " operation"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "联系",
+          "data-en": "contact",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "运营"
+          ],
+          "purpose-en": [
+            " operation"
+          ]
+        },
+        {
+          "data-cn": "邮箱",
+          "data-en": "mailbox",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "运营"
+          ],
+          "purpose-en": [
+            " operation"
+          ]
+        },
+        {
+          "data-cn": "电话",
+          "data-en": "Telephone",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "运营"
+          ],
+          "purpose-en": [
+            " operation"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "我们会通过客户端“消息”，向您推送平台通知（如资讯、活动优惠、互动消息、服务通知等），您可以在您的设备“设置”中选择开启/关闭UC浏览器的通知权限，或通过“我的”—“设置”—“资讯通知”进行消息通知设置。",
+      "data-cn-list": [
+        "设置",
+        "浏览器"
+      ],
+      "data-en-list": [
+        "set up",
+        "browser"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "setting",
+          "configuration",
+          "preference"
+        ],
+        [
+          "browser",
+          "web browser",
+          "internet browser"
+        ]
+      ],
+      "purpose-cn-list": [
+        "推送通知",
+        "通知设置"
+      ],
+      "purpose-en-list": [
+        " push notification",
+        "Notification settings"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "设置",
+          "data-en": "set up",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "推送通知",
+            "通知设置"
+          ],
+          "purpose-en": [
+            " push notification",
+            "Notification settings"
+          ]
+        },
+        {
+          "data-cn": "浏览器",
+          "data-en": "browser",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "推送通知",
+            "通知设置"
+          ],
+          "purpose-en": [
+            " push notification",
+            "Notification settings"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "当您参与我们举办的营销活动时，我们可能需要收集及使用您的相关个人信息（包括但不限于您的昵称、头像、联系方式、浏览记录、账户等级），以帮助您实现活动报名、抽奖、兑奖等，我们将在相关场景向您另行告知具体收集信息类型、使用目的，并征得您的同意。",
+      "data-cn-list": [
+        "账户",
+        "昵称",
+        "头像",
+        "联系",
+        "浏览记录"
+      ],
+      "data-en-list": [
+        "account",
+        "nickname",
+        "avatar",
+        "contact",
+        "Browsing Records"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "account",
+          "account number",
+          "bank account"
+        ],
+        [
+          "nickname",
+          "name",
+          "title"
+        ],
+        [
+          "avatar",
+          "icon",
+          "profile picture"
+        ],
+        [
+          "contact",
+          "contacts",
+          "get in touch"
+        ],
+        [
+          "Browsing Records"
+        ]
+      ],
+      "purpose-cn-list": [
+        "营销活动",
+        "活动报名"
+      ],
+      "purpose-en-list": [
+        " marketing activities",
+        " activity registration"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "账户",
+          "data-en": "account",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "营销活动",
+            "活动报名"
+          ],
+          "purpose-en": [
+            " marketing activities",
+            " activity registration"
+          ]
+        },
+        {
+          "data-cn": "昵称",
+          "data-en": "nickname",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "营销活动",
+            "活动报名"
+          ],
+          "purpose-en": [
+            " marketing activities",
+            " activity registration"
+          ]
+        },
+        {
+          "data-cn": "头像",
+          "data-en": "avatar",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "营销活动",
+            "活动报名"
+          ],
+          "purpose-en": [
+            " marketing activities",
+            " activity registration"
+          ]
+        },
+        {
+          "data-cn": "联系",
+          "data-en": "contact",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "营销活动",
+            "活动报名"
+          ],
+          "purpose-en": [
+            " marketing activities",
+            " activity registration"
+          ]
+        },
+        {
+          "data-cn": "浏览记录",
+          "data-en": "Browsing Records",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "营销活动",
+            "活动报名"
+          ],
+          "purpose-en": [
+            " marketing activities",
+            " activity registration"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "当您分享或接收被分享的信息、参加活动等情形下，我们会读取您的剪贴板内容以判断是否存在相关口令、分享码、链接，以实现跳转、分享、活动联动等功能或服务，但我们会在本地判断剪贴板内容是否属于跳转、分享、活动联动等指令时，才会将其上传我们的服务器，并不会收集、存储您的剪贴板其他信息。",
+      "data-cn-list": [
+        "剪贴板",
+        "存储"
+      ],
+      "data-en-list": [
+        "clipboard",
+        "storage"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "clipboard"
+        ],
+        [
+          "storage",
+          "repository",
+          "storehouse"
+        ]
+      ],
+      "purpose-cn-list": [
+        "活动联动",
+        "分享"
+      ],
+      "purpose-en-list": [
+        " activity linkage",
+        " sharing"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "剪贴板",
+          "data-en": "clipboard",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "活动联动",
+            "分享"
+          ],
+          "purpose-en": [
+            " activity linkage",
+            " sharing"
+          ]
+        },
+        {
+          "data-cn": "存储",
+          "data-en": "storage",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "活动联动",
+            "分享"
+          ],
+          "purpose-en": [
+            " activity linkage",
+            " sharing"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "当您在使用创新广告交互功能（如摇一摇、旋转等）时，我们会使用您设备的加速度、旋转矢量等传感器以判断您的设备状态，实现广告正常跳转，我们仅会在本地处理您的传感器数据。",
+      "data-cn-list": [
+        "加速度",
+        "设备",
+        "传感器"
+      ],
+      "data-en-list": [
+        "acceleration",
+        "device",
+        "sensor"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "acceleration"
+        ],
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ],
+        [
+          "sensor",
+          "transducer",
+          "probe"
+        ]
+      ],
+      "purpose-cn-list": [
+        "创新交互",
+        "广告",
+        "判断"
+      ],
+      "purpose-en-list": [
+        " innovation interaction",
+        " advertising",
+        " judgment"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "加速度",
+          "data-en": "acceleration",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "创新交互",
+            "广告",
+            "判断"
+          ],
+          "purpose-en": [
+            " innovation interaction",
+            " advertising",
+            " judgment"
+          ]
+        },
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "创新交互",
+            "广告",
+            "判断"
+          ],
+          "purpose-en": [
+            " innovation interaction",
+            " advertising",
+            " judgment"
+          ]
+        },
+        {
+          "data-cn": "传感器",
+          "data-en": "sensor",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "创新交互",
+            "广告",
+            "判断"
+          ],
+          "purpose-en": [
+            " innovation interaction",
+            " advertising",
+            " judgment"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "为履行保障电子商务交易安全的法定义务，提高您使用我们及我们关联公司、合作伙伴提供服务的安全性，保护您或其他用户或公众的人身安全、财产安全、账号安全、交易安全，更好地预防钓鱼网站、欺诈、网络漏洞、计算机病毒、网络攻击、网络侵入、恶意程序等安全风险，更准确地识别违反法律法规或UC浏览器相关协议、规则的情况，我们及我们的关联公司、合作伙伴会收集您的设备信息、服务日志信息，并可能使用或整合您的会员信息、交易信息、设备信息、服务日志信息以及我们关联公司、合作伙伴取得您授权或依据法律共享的信息（其中，我们可能会在应用后台运行期间收集MAC地址、IMEI及其他设备标识符进行风险校验），来综合判断您账户及交易风险、进行身份验证、检测及防范安全事件，并依法采取必要的记录、审计、分析、处置措施。",
+      "data-cn-list": [
+        "地址",
+        "标识符",
+        "服务日志",
+        "设备",
+        "MAC",
+        "授权",
+        "会员",
+        "交易",
+        "IMEI",
+        "记录"
+      ],
+      "data-en-list": [
+        "address",
+        "identifier ",
+        "Service log",
+        "device",
+        "MAC",
+        "to grant authorization",
+        "member",
+        "transaction",
+        "IMEI",
+        "record"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "address",
+          "location",
+          "place"
+        ],
+        [
+          "identifier",
+          "id",
+          "mark"
+        ],
+        [
+          "service log",
+          "log",
+          "trace"
+        ],
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ],
+        [
+          "MAC"
+        ],
+        [
+          "auth",
+          "authorization",
+          "authorized"
+        ],
+        [
+          "member",
+          "vip",
+          "subscriber"
+        ],
+        [
+          "transaction",
+          "deal",
+          "trade"
+        ],
+        [
+          "IMEI"
+        ],
+        [
+          "record",
+          "log",
+          "trace"
+        ]
+      ],
+      "purpose-cn-list": [
+        "身份验证",
+        "关联",
+        "风险校验",
+        "交易风险",
+        "履行义务",
+        "防范安全",
+        "判断账户",
+        "检测",
+        "共享"
+      ],
+      "purpose-en-list": [
+        " authentication",
+        " association",
+        " risk verification",
+        " transaction risks",
+        " fulfillment of obligations",
+        " security",
+        " account judgment",
+        " detection",
+        " sharing"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "地址",
+          "data-en": "address",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "身份验证",
+            "关联",
+            "风险校验",
+            "交易风险",
+            "履行义务",
+            "防范安全",
+            "判断账户",
+            "检测",
+            "共享"
+          ],
+          "purpose-en": [
+            " authentication",
+            " association",
+            " risk verification",
+            " transaction risks",
+            " fulfillment of obligations",
+            " security",
+            " account judgment",
+            " detection",
+            " sharing"
+          ]
+        },
+        {
+          "data-cn": "标识符",
+          "data-en": "identifier ",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "身份验证",
+            "关联",
+            "风险校验",
+            "交易风险",
+            "履行义务",
+            "防范安全",
+            "判断账户",
+            "检测",
+            "共享"
+          ],
+          "purpose-en": [
+            " authentication",
+            " association",
+            " risk verification",
+            " transaction risks",
+            " fulfillment of obligations",
+            " security",
+            " account judgment",
+            " detection",
+            " sharing"
+          ]
+        },
+        {
+          "data-cn": "服务日志",
+          "data-en": "Service log",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "身份验证",
+            "关联",
+            "风险校验",
+            "交易风险",
+            "履行义务",
+            "防范安全",
+            "判断账户",
+            "检测",
+            "共享"
+          ],
+          "purpose-en": [
+            " authentication",
+            " association",
+            " risk verification",
+            " transaction risks",
+            " fulfillment of obligations",
+            " security",
+            " account judgment",
+            " detection",
+            " sharing"
+          ]
+        },
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "身份验证",
+            "关联",
+            "风险校验",
+            "交易风险",
+            "履行义务",
+            "防范安全",
+            "判断账户",
+            "检测",
+            "共享"
+          ],
+          "purpose-en": [
+            " authentication",
+            " association",
+            " risk verification",
+            " transaction risks",
+            " fulfillment of obligations",
+            " security",
+            " account judgment",
+            " detection",
+            " sharing"
+          ]
+        },
+        {
+          "data-cn": "MAC",
+          "data-en": "MAC",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "身份验证",
+            "关联",
+            "风险校验",
+            "交易风险",
+            "履行义务",
+            "防范安全",
+            "判断账户",
+            "检测",
+            "共享"
+          ],
+          "purpose-en": [
+            " authentication",
+            " association",
+            " risk verification",
+            " transaction risks",
+            " fulfillment of obligations",
+            " security",
+            " account judgment",
+            " detection",
+            " sharing"
+          ]
+        },
+        {
+          "data-cn": "授权",
+          "data-en": "to grant authorization",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "身份验证",
+            "关联",
+            "风险校验",
+            "交易风险",
+            "履行义务",
+            "防范安全",
+            "判断账户",
+            "检测",
+            "共享"
+          ],
+          "purpose-en": [
+            " authentication",
+            " association",
+            " risk verification",
+            " transaction risks",
+            " fulfillment of obligations",
+            " security",
+            " account judgment",
+            " detection",
+            " sharing"
+          ]
+        },
+        {
+          "data-cn": "会员",
+          "data-en": "member",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "身份验证",
+            "关联",
+            "风险校验",
+            "交易风险",
+            "履行义务",
+            "防范安全",
+            "判断账户",
+            "检测",
+            "共享"
+          ],
+          "purpose-en": [
+            " authentication",
+            " association",
+            " risk verification",
+            " transaction risks",
+            " fulfillment of obligations",
+            " security",
+            " account judgment",
+            " detection",
+            " sharing"
+          ]
+        },
+        {
+          "data-cn": "交易",
+          "data-en": "transaction",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "身份验证",
+            "关联",
+            "风险校验",
+            "交易风险",
+            "履行义务",
+            "防范安全",
+            "判断账户",
+            "检测",
+            "共享"
+          ],
+          "purpose-en": [
+            " authentication",
+            " association",
+            " risk verification",
+            " transaction risks",
+            " fulfillment of obligations",
+            " security",
+            " account judgment",
+            " detection",
+            " sharing"
+          ]
+        },
+        {
+          "data-cn": "IMEI",
+          "data-en": "IMEI",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "身份验证",
+            "关联",
+            "风险校验",
+            "交易风险",
+            "履行义务",
+            "防范安全",
+            "判断账户",
+            "检测",
+            "共享"
+          ],
+          "purpose-en": [
+            " authentication",
+            " association",
+            " risk verification",
+            " transaction risks",
+            " fulfillment of obligations",
+            " security",
+            " account judgment",
+            " detection",
+            " sharing"
+          ]
+        },
+        {
+          "data-cn": "记录",
+          "data-en": "record",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "身份验证",
+            "关联",
+            "风险校验",
+            "交易风险",
+            "履行义务",
+            "防范安全",
+            "判断账户",
+            "检测",
+            "共享"
+          ],
+          "purpose-en": [
+            " authentication",
+            " association",
+            " risk verification",
+            " transaction risks",
+            " fulfillment of obligations",
+            " security",
+            " account judgment",
+            " detection",
+            " sharing"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "请您注意，您开启任一权限即代表您授权我们可以收集和使用相关个人信息来为您提供对应服务，您一旦关闭任一权限即代表您取消了授权，我们将不再基于对应权限继续收集和使用相关个人信息，也无法继续为您提供该权限所对应的服务。",
+      "data-cn-list": [
+        "授权"
+      ],
+      "data-en-list": [
+        "to grant authorization"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "auth",
+          "authorization",
+          "authorized"
+        ]
+      ],
+      "purpose-cn-list": [
+        ""
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "授权",
+          "data-en": "to grant authorization",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            ""
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "当您使用我们的服务时，我们可能会使用相关技术向您的设备发送一个或多个 Cookie 或匿名标识符（以下简称“Cookie”），以收集、标识和存储您访问、使用本产品时的信息。",
+      "data-cn-list": [
+        "存储",
+        "访问"
+      ],
+      "data-en-list": [
+        "storage",
+        "visit"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "storage",
+          "repository",
+          "storehouse"
+        ],
+        [
+          "access",
+          "visit",
+          "call"
+        ]
+      ],
+      "purpose-cn-list": [
+        ""
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "存储",
+          "data-en": "storage",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            ""
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "访问",
+          "data-en": "visit",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            ""
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "大多数浏览器均为用户提供了清除浏览器缓存数据的功能，您可以进行相应的数据清除操作，或可修改对Cookie的接受程度或拒绝我们的Cookie。",
+      "data-cn-list": [
+        "浏览器"
+      ],
+      "data-en-list": [
+        "browser"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "browser",
+          "web browser",
+          "internet browser"
+        ]
+      ],
+      "purpose-cn-list": [
+        "清除"
+      ],
+      "purpose-en-list": [
+        " removal"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "浏览器",
+          "data-en": "browser",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "清除"
+          ],
+          "purpose-en": [
+            " removal"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "若您提供的信息中含有其他用户的个人信息，在向我们提供这些个人信息之前，您需确保您已经取得合法的授权。",
+      "data-cn-list": [
+        "用户"
+      ],
+      "data-en-list": [
+        "user"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "user",
+          "account",
+          "member"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "用户",
+          "data-en": "user",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "针对我们在上述各项具体功能场景下收集和使用的您的个人信息，您可通过“我的-设置-个人信息清单”查看我们收集和使用的个人信息清单。",
+      "data-cn-list": [
+        "设置"
+      ],
+      "data-en-list": [
+        "set up"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "setting",
+          "configuration",
+          "preference"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "设置",
+          "data-en": "set up",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "为完成订单支付，您需要登录使用您的支付宝账户或微信账户。",
+      "data-cn-list": [
+        "支付",
+        "账户"
+      ],
+      "data-en-list": [
+        "payment",
+        "account"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "payment",
+          "payment amount",
+          "transaction id"
+        ],
+        [
+          "account",
+          "account number",
+          "bank account"
+        ]
+      ],
+      "purpose-cn-list": [
+        "订单支付"
+      ],
+      "purpose-en-list": [
+        " order payment"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "支付",
+          "data-en": "payment",
+          "subject": [],
+          "purpose-cn": [
+            "订单支付"
+          ],
+          "purpose-en": [
+            " order payment"
+          ]
+        },
+        {
+          "data-cn": "账户",
+          "data-en": "account",
+          "subject": [],
+          "purpose-cn": [
+            "订单支付"
+          ],
+          "purpose-en": [
+            " order payment"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "我们会将您的UC浏览器账号、订单支付相关信息、订单安全相关设备信息及其他反洗钱法律要求的必要信息通过SDK或其他安全方式与支付宝公司、微信公司共享。",
+      "data-cn-list": [
+        "支付",
+        "订单",
+        "浏览器",
+        "设备",
+        "SDK",
+        "账号"
+      ],
+      "data-en-list": [
+        "payment",
+        "order",
+        "browser",
+        "device",
+        "SDK",
+        "account number"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "payment",
+          "payment amount",
+          "transaction id"
+        ],
+        [
+          "order",
+          "orders",
+          "purchase order"
+        ],
+        [
+          "browser",
+          "web browser",
+          "internet browser"
+        ],
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ],
+        [
+          "SDK"
+        ],
+        [
+          "account",
+          "username",
+          "id"
+        ]
+      ],
+      "purpose-cn-list": [
+        "共享"
+      ],
+      "purpose-en-list": [
+        " sharing"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "支付",
+          "data-en": "payment",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "共享"
+          ],
+          "purpose-en": [
+            " sharing"
+          ]
+        },
+        {
+          "data-cn": "订单",
+          "data-en": "order",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "共享"
+          ],
+          "purpose-en": [
+            " sharing"
+          ]
+        },
+        {
+          "data-cn": "浏览器",
+          "data-en": "browser",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "共享"
+          ],
+          "purpose-en": [
+            " sharing"
+          ]
+        },
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "共享"
+          ],
+          "purpose-en": [
+            " sharing"
+          ]
+        },
+        {
+          "data-cn": "SDK",
+          "data-en": "SDK",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "共享"
+          ],
+          "purpose-en": [
+            " sharing"
+          ]
+        },
+        {
+          "data-cn": "账号",
+          "data-en": "account number",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "共享"
+          ],
+          "purpose-en": [
+            " sharing"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "当您使用频道（小程序）服务时，我们会收集、使用您的频道登录、浏览、使用、订阅/添加/取消等操作记录，以为您提供更加便捷、优质和个性化的频道服务和内容。",
+      "data-cn-list": [
+        "操作记录",
+        "浏览",
+        "订阅",
+        "登录"
+      ],
+      "data-en-list": [
+        "operation record",
+        "Browsing",
+        "subscribe",
+        "Sign in"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "operation record",
+          "operational record",
+          "operating record"
+        ],
+        [
+          "Browsing"
+        ],
+        [
+          "subscribe",
+          "subscription",
+          "subscriber"
+        ],
+        [
+          "login",
+          "sign in",
+          "sign up"
+        ]
+      ],
+      "purpose-cn-list": [
+        "个性化",
+        "小程序"
+      ],
+      "purpose-en-list": [
+        " personalization",
+        " applet"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "操作记录",
+          "data-en": "operation record",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "个性化",
+            "小程序"
+          ],
+          "purpose-en": [
+            " personalization",
+            " applet"
+          ]
+        },
+        {
+          "data-cn": "浏览",
+          "data-en": "Browsing",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "个性化",
+            "小程序"
+          ],
+          "purpose-en": [
+            " personalization",
+            " applet"
+          ]
+        },
+        {
+          "data-cn": "订阅",
+          "data-en": "subscribe",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "个性化",
+            "小程序"
+          ],
+          "purpose-en": [
+            " personalization",
+            " applet"
+          ]
+        },
+        {
+          "data-cn": "登录",
+          "data-en": "Sign in",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "个性化",
+            "小程序"
+          ],
+          "purpose-en": [
+            " personalization",
+            " applet"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "我们不会将您的个人身份信息委托合作方处理。",
+      "data-cn-list": [
+        "身份"
+      ],
+      "data-en-list": [
+        "identity"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "identity"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "身份",
+          "data-en": "identity",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "B.分析产品情况：为分析UC浏览器产品及/或服务的稳定性，提供分析服务的合作方可能需要使用服务情况、设备信息、应用总体安装使用情况等信息。",
+      "data-cn-list": [
+        "使用情况",
+        "设备"
+      ],
+      "data-en-list": [
+        "Usage",
+        "device"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "usage",
+          "usage status",
+          "use status"
+        ],
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ]
+      ],
+      "purpose-cn-list": [
+        ""
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "使用情况",
+          "data-en": "Usage",
+          "subject": [
+            "3st"
+          ],
+          "purpose-cn": [
+            ""
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [
+            "3st"
+          ],
+          "purpose-cn": [
+            ""
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "2、如果我们确定您出现违反法律法规或严重违反UC浏览器相关协议及规则的情况，或为保护UC浏览器用户或公众的人身财产安全免遭侵害，我们可能披露关于您的个人信息，包括相关违规行为以及UC浏览器已对您采取的措施。",
+      "data-cn-list": [
+        "行为",
+        "浏览器"
+      ],
+      "data-en-list": [
+        "action",
+        "browser"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "behavior",
+          "action",
+          "activity"
+        ],
+        [
+          "browser",
+          "web browser",
+          "internet browser"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "行为",
+          "data-en": "action",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "浏览器",
+          "data-en": "browser",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "1、为订立或履行与您签署的合同所必需：如您购买UC浏览器或UC浏览器合作方提供的商品或服务，我们会根据您的选择，将您的订单信息中与交易有关的必要信息共享给相关商品或服务的运营者、商家，以实现您的交易、配送及售后服务需求。",
+      "data-cn-list": [
+        "交易",
+        "订单",
+        "商品"
+      ],
+      "data-en-list": [
+        "transaction",
+        "order",
+        "commodity"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "transaction",
+          "deal",
+          "trade"
+        ],
+        [
+          "order",
+          "orders",
+          "purchase order"
+        ],
+        [
+          "product",
+          "commodity",
+          "goods"
+        ]
+      ],
+      "purpose-cn-list": [
+        "售后",
+        "交易",
+        "配送",
+        "共享"
+      ],
+      "purpose-en-list": [
+        " after-sales",
+        " transactions.",
+        " delivery",
+        " sharing"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "交易",
+          "data-en": "transaction",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "售后",
+            "交易",
+            "配送",
+            "共享"
+          ],
+          "purpose-en": [
+            " after-sales",
+            " transactions.",
+            " delivery",
+            " sharing"
+          ]
+        },
+        {
+          "data-cn": "订单",
+          "data-en": "order",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "售后",
+            "交易",
+            "配送",
+            "共享"
+          ],
+          "purpose-en": [
+            " after-sales",
+            " transactions.",
+            " delivery",
+            " sharing"
+          ]
+        },
+        {
+          "data-cn": "商品",
+          "data-en": "commodity",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "售后",
+            "交易",
+            "配送",
+            "共享"
+          ],
+          "purpose-en": [
+            " after-sales",
+            " transactions.",
+            " delivery",
+            " sharing"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "3、登录UC浏览器，进入“我的-客服中心”，选择联系客服。",
+      "data-cn-list": [
+        "联系"
+      ],
+      "data-en-list": [
+        "contact"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "contact",
+          "contacts",
+          "get in touch"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "联系",
+          "data-en": "contact",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "3、在“我的-设置-隐私设置-个人信息收集管理”中管理App使用的系统权限授权。",
+      "data-cn-list": [
+        "授权"
+      ],
+      "data-en-list": [
+        "to grant authorization"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "auth",
+          "authorization",
+          "authorized"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "授权",
+          "data-en": "to grant authorization",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "但您撤回授权的决定，不会影响我们此前基于您的授权而开展的个人信息处理。",
+      "data-cn-list": [
+        "授权"
+      ],
+      "data-en-list": [
+        "to grant authorization"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "auth",
+          "authorization",
+          "authorized"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "授权",
+          "data-en": "to grant authorization",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "1、在“我的-头像-账户申诉/注销安全-账号注销”提交账户注销申请；。",
+      "data-cn-list": [
+        "注销申请",
+        "账户"
+      ],
+      "data-en-list": [
+        "cancellation application",
+        "account"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "cancellation application"
+        ],
+        [
+          "account",
+          "account number",
+          "bank account"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "注销申请",
+          "data-en": "cancellation application",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "账户",
+          "data-en": "account",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "为保障您的账户安全和您的个人信息安全，您向我们提出上述请求时，我们可能会先验证您的身份（如增加账户核验、要求您提供书面请求或其他合理方式），然后再处理您的请求。",
+      "data-cn-list": [
+        "请求"
+      ],
+      "data-en-list": [
+        "request"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "request",
+          "requests",
+          "requesting"
+        ]
+      ],
+      "purpose-cn-list": [
+        "保障安全"
+      ],
+      "purpose-en-list": [
+        " security protection"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "请求",
+          "data-en": "request",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "保障安全"
+          ],
+          "purpose-en": [
+            " security protection"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "我们在中华人民共和国境内产生或收集的个人信息，存储在中国境内的服务器。",
+      "data-cn-list": [
+        "存储"
+      ],
+      "data-en-list": [
+        "storage"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "storage",
+          "repository",
+          "storehouse"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "存储",
+          "data-en": "storage",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "例如，我们会使用加密技术提高个人信息的安全性，在您的浏览器与服务器之间交换数据时受 SSL协议加密保护，我们提供HTTPS协议安全浏览方式；我们会使用受信赖的保护机制防止个人信息遭到恶意攻击；我们会部署访问控制机制，尽力确保只有授权人员才可访问个人信息。",
+      "data-cn-list": [
+        "访问",
+        "授权",
+        "浏览"
+      ],
+      "data-en-list": [
+        "visit",
+        "to grant authorization",
+        "Browsing"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "access",
+          "visit",
+          "call"
+        ],
+        [
+          "auth",
+          "authorization",
+          "authorized"
+        ],
+        [
+          "Browsing"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "访问",
+          "data-en": "visit",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "授权",
+          "data-en": "to grant authorization",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "浏览",
+          "data-en": "Browsing",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "对于重大变更，我们还会提供更为显著的通知（包括我们会通过UC浏览器公示的方式进行通知或向您提供弹窗提示）再次向您告知，并根据法律法规的相关要求征得您的同意。",
+      "data-cn-list": [
+        "浏览器"
+      ],
+      "data-en-list": [
+        "browser"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "browser",
+          "web browser",
+          "internet browser"
+        ]
+      ],
+      "purpose-cn-list": [
+        "通知"
+      ],
+      "purpose-en-list": [
+        " notification"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "浏览器",
+          "data-en": "browser",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "通知"
+          ],
+          "purpose-en": [
+            " notification"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "敏感个人信息：敏感个人信息是一旦泄露或者非法使用，容易导致自然人的人格尊严受到侵害或者人身、财产安全受到危害的个人信息，包括生物识别、宗教信仰、特定身份、医疗健康、金融账户、行踪轨迹等信息，以及不满十四周岁未成年人的个人信息。",
+      "data-cn-list": [
+        "健康",
+        "身份",
+        "宗教信仰",
+        "金融账户",
+        "行踪轨迹"
+      ],
+      "data-en-list": [
+        "healthy",
+        "identity",
+        "religious belief",
+        "financial account",
+        "Trajectory"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "healthy"
+        ],
+        [
+          "identity"
+        ],
+        [
+          "religion",
+          "religious belief",
+          "faith"
+        ],
+        [
+          "financial account"
+        ],
+        [
+          "Trajectory"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "健康",
+          "data-en": "healthy",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "身份",
+          "data-en": "identity",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "宗教信仰",
+          "data-en": "religious belief",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "金融账户",
+          "data-en": "financial account",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "行踪轨迹",
+          "data-en": "Trajectory",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "设备信息：包括设备识别符（IMEI、MAC、SIM卡、IMSI、Android ID、IDFA、OAID、MEID、IMSI、OpenUDID、GUID、ICCID及其他设备相关信息）；应用信息（应用崩溃信息、通知开关状态、应用安装列表及其他应用相关信息）；设备参数及系统信息（设备类型、设备型号、操作系统、硬件序列号及硬件相关信息）；设备网络环境信息（IP地址、WiFi信息、蓝牙信息、陀螺仪传感器、重力传感器、加速度传感器、线性加速度传感器、环境传感器、光学心率传感器、基站信息及其他网络相关信息）；运营商信息；广播组件通讯信息；剪切板信息。",
+      "data-cn-list": [
+        "WIFI",
+        "陀螺仪",
+        "设备型号",
+        "MEID",
+        "操作系统",
+        "参数",
+        "传感器",
+        "IP",
+        "加速度",
+        "IDFA",
+        "ICCID",
+        "识别符",
+        "GUID",
+        "SIM",
+        "心率",
+        "IMEI",
+        "地址",
+        "MAC",
+        "序列号",
+        "通知开关",
+        "蓝牙",
+        "基站",
+        "OPENUDID",
+        "IMSI",
+        "网络环境",
+        "开关状态",
+        "ANDROID ID",
+        "崩溃",
+        "通讯",
+        "广播",
+        "安装列表",
+        "剪切板",
+        "OAID"
+      ],
+      "data-en-list": [
+        "WIFI",
+        "gyroscope",
+        "Equipment model",
+        "MEID",
+        "operating system",
+        "parameter",
+        "sensor",
+        "IP",
+        "acceleration",
+        "IDFA",
+        "ICCID",
+        "Identifier",
+        "GUID",
+        "SIM",
+        "heart rate",
+        "IMEI",
+        "address",
+        "MAC",
+        "serial number",
+        "Notification toggle",
+        "Bluetooth",
+        "base station",
+        "OpenUDID",
+        "IMSI",
+        "network environment ",
+        "Switch status",
+        "ANDROID ID",
+        "collapse",
+        "communication",
+        "radio broadcast",
+        "Installation List",
+        "Shear plate",
+        "OAID"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "WIFI"
+        ],
+        [
+          "gyroscope",
+          "gyro",
+          "g sensor"
+        ],
+        [
+          "device model"
+        ],
+        [
+          "MEID"
+        ],
+        [
+          "os",
+          "operating system"
+        ],
+        [
+          "parameter",
+          "param",
+          "arg"
+        ],
+        [
+          "sensor",
+          "transducer",
+          "probe"
+        ],
+        [
+          "IP"
+        ],
+        [
+          "acceleration"
+        ],
+        [
+          "IDFA"
+        ],
+        [
+          "ICCID"
+        ],
+        [
+          "Identifier"
+        ],
+        [
+          "GUID"
+        ],
+        [
+          "SIM"
+        ],
+        [
+          "heart rate"
+        ],
+        [
+          "IMEI"
+        ],
+        [
+          "address",
+          "location",
+          "place"
+        ],
+        [
+          "MAC"
+        ],
+        [
+          "serial number"
+        ],
+        [
+          "Notification toggle"
+        ],
+        [
+          "bluetooth",
+          "wireless"
+        ],
+        [
+          "base",
+          "base station",
+          "station"
+        ],
+        [
+          "OpenUDID"
+        ],
+        [
+          "IMSI"
+        ],
+        [
+          "network environment",
+          "network conditions",
+          "network state"
+        ],
+        [
+          "switch status",
+          "switch",
+          "state"
+        ],
+        [
+          "ANDROID ID"
+        ],
+        [
+          "crash"
+        ],
+        [
+          "communication",
+          "telecommunication",
+          "correspondence"
+        ],
+        [
+          "radio broadcast"
+        ],
+        [
+          "Installation List"
+        ],
+        [
+          "clipboard",
+          "clip",
+          "paste"
+        ],
+        [
+          "OAID"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "WIFI",
+          "data-en": "WIFI",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "陀螺仪",
+          "data-en": "gyroscope",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "设备型号",
+          "data-en": "Equipment model",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "MEID",
+          "data-en": "MEID",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "操作系统",
+          "data-en": "operating system",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "参数",
+          "data-en": "parameter",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "传感器",
+          "data-en": "sensor",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "IP",
+          "data-en": "IP",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "加速度",
+          "data-en": "acceleration",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "IDFA",
+          "data-en": "IDFA",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "ICCID",
+          "data-en": "ICCID",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "识别符",
+          "data-en": "Identifier",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "GUID",
+          "data-en": "GUID",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "SIM",
+          "data-en": "SIM",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "心率",
+          "data-en": "heart rate",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "IMEI",
+          "data-en": "IMEI",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "地址",
+          "data-en": "address",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "MAC",
+          "data-en": "MAC",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "序列号",
+          "data-en": "serial number",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "通知开关",
+          "data-en": "Notification toggle",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "蓝牙",
+          "data-en": "Bluetooth",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "基站",
+          "data-en": "base station",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "OPENUDID",
+          "data-en": "OpenUDID",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "IMSI",
+          "data-en": "IMSI",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "网络环境",
+          "data-en": "network environment ",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "开关状态",
+          "data-en": "Switch status",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "ANDROID ID",
+          "data-en": "ANDROID ID",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "崩溃",
+          "data-en": "collapse",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "通讯",
+          "data-en": "communication",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "广播",
+          "data-en": "radio broadcast",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "安装列表",
+          "data-en": "Installation List",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "剪切板",
+          "data-en": "Shear plate",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "OAID",
+          "data-en": "OAID",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "服务日志信息：当您使用我们提供的产品或服务时，我们会自动收集您对我们服务的详细使用情况，作为服务日志保存，包括浏览、点击查看、搜索查询、收藏、交易、关注分享信息、发布信息、崩溃日志、性能日志以及IP地址、浏览器类型、电信运营商、使用语言、访问日期和时间。",
+      "data-cn-list": [
+        "IP",
+        "日志",
+        "点击",
+        "访问日期",
+        "关注",
+        "使用情况",
+        "地址",
+        "语言",
+        "分享",
+        "查询",
+        "发布",
+        "搜索",
+        "收藏",
+        "浏览器",
+        "时间",
+        "崩溃",
+        "交易",
+        "性能"
+      ],
+      "data-en-list": [
+        "IP",
+        "log",
+        "click",
+        "Access Date",
+        "follow",
+        "Usage",
+        "address",
+        "language",
+        "share",
+        "query",
+        "release",
+        "search",
+        "Collection",
+        "browser",
+        "time",
+        "collapse",
+        "transaction",
+        "performance"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "IP"
+        ],
+        [
+          "log",
+          "record",
+          "trace"
+        ],
+        [
+          "click",
+          "clicking",
+          "clicked"
+        ],
+        [
+          "Access Date"
+        ],
+        [
+          "follow",
+          "focus",
+          "attention"
+        ],
+        [
+          "usage",
+          "usage status",
+          "use status"
+        ],
+        [
+          "address",
+          "location",
+          "place"
+        ],
+        [
+          "language",
+          "languages",
+          "foreign language",
+          "mother tongue"
+        ],
+        [
+          "share",
+          "forward",
+          "transmit"
+        ],
+        [
+          "query",
+          "search",
+          "find"
+        ],
+        [
+          "publish",
+          "post",
+          "send"
+        ],
+        [
+          "search",
+          "find",
+          "look up"
+        ],
+        [
+          "collect",
+          "favorite",
+          "bookmark"
+        ],
+        [
+          "browser",
+          "web browser",
+          "internet browser"
+        ],
+        [
+          "time",
+          "date",
+          "duration"
+        ],
+        [
+          "crash"
+        ],
+        [
+          "transaction",
+          "deal",
+          "trade"
+        ],
+        [
+          "performance",
+          "function",
+          "capacity"
+        ]
+      ],
+      "purpose-cn-list": [
+        "日志保存"
+      ],
+      "purpose-en-list": [
+        " log preservation"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "IP",
+          "data-en": "IP",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "日志保存"
+          ],
+          "purpose-en": [
+            " log preservation"
+          ]
+        },
+        {
+          "data-cn": "日志",
+          "data-en": "log",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "日志保存"
+          ],
+          "purpose-en": [
+            " log preservation"
+          ]
+        },
+        {
+          "data-cn": "点击",
+          "data-en": "click",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "日志保存"
+          ],
+          "purpose-en": [
+            " log preservation"
+          ]
+        },
+        {
+          "data-cn": "访问日期",
+          "data-en": "Access Date",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "日志保存"
+          ],
+          "purpose-en": [
+            " log preservation"
+          ]
+        },
+        {
+          "data-cn": "关注",
+          "data-en": "follow",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "日志保存"
+          ],
+          "purpose-en": [
+            " log preservation"
+          ]
+        },
+        {
+          "data-cn": "使用情况",
+          "data-en": "Usage",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "日志保存"
+          ],
+          "purpose-en": [
+            " log preservation"
+          ]
+        },
+        {
+          "data-cn": "地址",
+          "data-en": "address",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "日志保存"
+          ],
+          "purpose-en": [
+            " log preservation"
+          ]
+        },
+        {
+          "data-cn": "语言",
+          "data-en": "language",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "日志保存"
+          ],
+          "purpose-en": [
+            " log preservation"
+          ]
+        },
+        {
+          "data-cn": "分享",
+          "data-en": "share",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "日志保存"
+          ],
+          "purpose-en": [
+            " log preservation"
+          ]
+        },
+        {
+          "data-cn": "查询",
+          "data-en": "query",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "日志保存"
+          ],
+          "purpose-en": [
+            " log preservation"
+          ]
+        },
+        {
+          "data-cn": "发布",
+          "data-en": "release",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "日志保存"
+          ],
+          "purpose-en": [
+            " log preservation"
+          ]
+        },
+        {
+          "data-cn": "搜索",
+          "data-en": "search",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "日志保存"
+          ],
+          "purpose-en": [
+            " log preservation"
+          ]
+        },
+        {
+          "data-cn": "收藏",
+          "data-en": "Collection",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "日志保存"
+          ],
+          "purpose-en": [
+            " log preservation"
+          ]
+        },
+        {
+          "data-cn": "浏览器",
+          "data-en": "browser",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "日志保存"
+          ],
+          "purpose-en": [
+            " log preservation"
+          ]
+        },
+        {
+          "data-cn": "时间",
+          "data-en": "time",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "日志保存"
+          ],
+          "purpose-en": [
+            " log preservation"
+          ]
+        },
+        {
+          "data-cn": "崩溃",
+          "data-en": "collapse",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "日志保存"
+          ],
+          "purpose-en": [
+            " log preservation"
+          ]
+        },
+        {
+          "data-cn": "交易",
+          "data-en": "transaction",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "日志保存"
+          ],
+          "purpose-en": [
+            " log preservation"
+          ]
+        },
+        {
+          "data-cn": "性能",
+          "data-en": "performance",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "日志保存"
+          ],
+          "purpose-en": [
+            " log preservation"
+          ]
+        }
+      ]
+    }
+  ]
+]

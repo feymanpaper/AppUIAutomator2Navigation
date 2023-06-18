@@ -1,0 +1,5525 @@
+[
+  {
+    "sentence-count": 54,
+    "data-count": 218,
+    "purpose-count": 27,
+    "data-cn-total": [
+      "特征",
+      "设备",
+      "共享",
+      "通话记录",
+      "人数",
+      "位置",
+      "实名",
+      "授权",
+      "民族",
+      "网络",
+      "心率",
+      "支付",
+      "手机号码",
+      "网页记录",
+      "序列号",
+      "联网",
+      "会员",
+      "文档",
+      "查询",
+      "应用列表",
+      "ANDROID ID",
+      "软件列表",
+      "BSSID",
+      "剪切板",
+      "链接",
+      "账户会员名",
+      "姓名",
+      "IP",
+      "ICCID",
+      "日志",
+      "标识符",
+      "SIM",
+      "设置",
+      "文件",
+      "地址",
+      "搜索",
+      "银行卡号",
+      "存储",
+      "浏览器",
+      "问题",
+      "环境",
+      "广播",
+      "安装列表",
+      "证件",
+      "短信",
+      "照片",
+      "省份",
+      "访问",
+      "识别号",
+      "SDK",
+      "显示",
+      "下载",
+      "加速度",
+      "GUID",
+      "头像",
+      "访问日期",
+      "订单",
+      "视频",
+      "配置",
+      "城市",
+      "纬度",
+      "有效期限",
+      "付款",
+      "分享",
+      "IMSI",
+      "OPENUDID",
+      "COOKIE",
+      "内容",
+      "掩码",
+      "用户",
+      "身份证",
+      "WIFI",
+      "陀螺仪",
+      "出生日期",
+      "音频",
+      "联系人",
+      "MEID",
+      "文字",
+      "识别码",
+      "面部",
+      "传感器",
+      "图片",
+      "名称",
+      "电话",
+      "联系",
+      "点击",
+      "通信",
+      "性别",
+      "IMEI",
+      "通讯录",
+      "身份",
+      "语言",
+      "MAC",
+      "蓝牙",
+      "登录",
+      "住址",
+      "时间",
+      "通讯",
+      "记录",
+      "次数"
+    ],
+    "data-en-total": [
+      "payment",
+      "contact",
+      "environment",
+      "OpenUDID",
+      "city",
+      "features",
+      "frequency",
+      "storage",
+      "ID",
+      "gyroscope",
+      "member",
+      "networking",
+      "Software List",
+      "problem",
+      "Photo",
+      "Sign in",
+      "ANDROID ID",
+      "BSSID",
+      "query",
+      "device",
+      "phone number",
+      "Identification number",
+      "time",
+      "acceleration",
+      "Gender",
+      "IP",
+      "identity",
+      "latitude",
+      "ICCID",
+      "position",
+      "SIM",
+      "people number",
+      "sensor",
+      "click",
+      "serial number",
+      "audio frequency",
+      "avatar",
+      "signal communication",
+      "display",
+      "file",
+      "Credit card number",
+      "Mask",
+      "written words",
+      "short message",
+      "Identification code",
+      "province",
+      "Bluetooth",
+      "content",
+      "log",
+      "SDK",
+      "visit",
+      "contacts",
+      "video",
+      "record",
+      "share",
+      "GUID",
+      "order",
+      "Installation List",
+      "Validity period",
+      "user",
+      "link",
+      "mail list",
+      "IMSI",
+      "address",
+      "nation",
+      "COOKIE",
+      "download",
+      "WIFI",
+      "browser",
+      "network",
+      "MEID",
+      "communication",
+      "Telephone",
+      "radio broadcast",
+      "Application List",
+      "search",
+      "identifier ",
+      "face",
+      "Shear plate",
+      "picture",
+      "to grant authorization",
+      "set up",
+      "name",
+      "Real name",
+      "IMEI",
+      "birthdate",
+      "language",
+      "heart rate",
+      "Web page records",
+      "full name",
+      "configure",
+      "Call logs",
+      "MAC",
+      "Access Date",
+      "Account member name",
+      "certificates"
+    ],
+    "data-en-chatgpt-total": [
+      [
+        "storage",
+        "repository",
+        "storehouse"
+      ],
+      [
+        "image",
+        "pic",
+        "photo"
+      ],
+      [
+        "photo",
+        "picture",
+        "image"
+      ],
+      [
+        "audio",
+        "audio file",
+        "audio stream"
+      ],
+      [
+        "video"
+      ],
+      [
+        "written words"
+      ],
+      [
+        "file"
+      ],
+      [
+        "content",
+        "text",
+        "body"
+      ],
+      [
+        "download",
+        "get",
+        "obtain"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "contact",
+        "contacts",
+        "get in touch"
+      ],
+      [
+        "identity"
+      ],
+      [
+        "features"
+      ],
+      [
+        "birthday",
+        "birth",
+        "date of birth"
+      ],
+      [
+        "photo",
+        "picture",
+        "image"
+      ],
+      [
+        "face"
+      ],
+      [
+        "name",
+        "first name",
+        "last name"
+      ],
+      [
+        "Real name"
+      ],
+      [
+        "avatar",
+        "icon",
+        "profile picture"
+      ],
+      [
+        "nation",
+        "nationality",
+        "ethnic group"
+      ],
+      [
+        "sex",
+        "gender",
+        "male"
+      ],
+      [
+        "payment",
+        "payment amount",
+        "transaction id"
+      ],
+      [
+        "phone number",
+        "telephone number",
+        "cellphone number"
+      ],
+      [
+        "validity",
+        "validity period",
+        "shelf life"
+      ],
+      [
+        "address"
+      ],
+      [
+        "ID card",
+        "identity card",
+        "ID"
+      ],
+      [
+        "credentials",
+        "certificate",
+        "certification"
+      ],
+      [
+        "gyroscope",
+        "gyro",
+        "g sensor"
+      ],
+      [
+        "ANDROID ID"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "SIM"
+      ],
+      [
+        "identification code",
+        "identifying code",
+        "identification number"
+      ],
+      [
+        "communication",
+        "telecommunication",
+        "correspondence"
+      ],
+      [
+        "serial number"
+      ],
+      [
+        "radio broadcast"
+      ],
+      [
+        "bluetooth",
+        "wireless"
+      ],
+      [
+        "clipboard",
+        "clip",
+        "paste"
+      ],
+      [
+        "record",
+        "log",
+        "trace"
+      ],
+      [
+        "IMEI"
+      ],
+      [
+        "IMSI"
+      ],
+      [
+        "sensor",
+        "transducer",
+        "probe"
+      ],
+      [
+        "search",
+        "find",
+        "look up"
+      ],
+      [
+        "IP"
+      ],
+      [
+        "address",
+        "location",
+        "place"
+      ],
+      [
+        "browser",
+        "web browser",
+        "internet browser"
+      ],
+      [
+        "time",
+        "date",
+        "duration"
+      ],
+      [
+        "content",
+        "text",
+        "body"
+      ],
+      [
+        "language",
+        "languages",
+        "foreign language",
+        "mother tongue"
+      ],
+      [
+        "Web page records"
+      ],
+      [
+        "query",
+        "search",
+        "find"
+      ],
+      [
+        "Access Date"
+      ],
+      [
+        "short message"
+      ],
+      [
+        "short message"
+      ],
+      [
+        "short message"
+      ],
+      [
+        "short message"
+      ],
+      [
+        "problem"
+      ],
+      [
+        "short message"
+      ],
+      [
+        "short message"
+      ],
+      [
+        "Call logs"
+      ],
+      [
+        "phone",
+        "telephone",
+        "cellphone"
+      ],
+      [
+        "short message"
+      ],
+      [
+        "display"
+      ],
+      [
+        "storage",
+        "repository",
+        "storehouse"
+      ],
+      [
+        "image",
+        "pic",
+        "photo"
+      ],
+      [
+        "access",
+        "visit",
+        "call"
+      ],
+      [
+        "click",
+        "clicking",
+        "clicked"
+      ],
+      [
+        "photo",
+        "picture",
+        "image"
+      ],
+      [
+        "image",
+        "pic",
+        "photo"
+      ],
+      [
+        "photo",
+        "picture",
+        "image"
+      ],
+      [
+        "display"
+      ],
+      [
+        "people number"
+      ],
+      [
+        "contact list",
+        "contacts",
+        "address book"
+      ],
+      [
+        "name"
+      ],
+      [
+        "contacts"
+      ],
+      [
+        "province",
+        "province",
+        "province"
+      ],
+      [
+        "times",
+        "frequency",
+        "number"
+      ],
+      [
+        "city",
+        "town",
+        "village"
+      ],
+      [
+        "auth",
+        "authorization",
+        "authorized"
+      ],
+      [
+        "user",
+        "account",
+        "member"
+      ],
+      [
+        "log",
+        "record",
+        "trace"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "network",
+        "networking",
+        "net"
+      ],
+      [
+        "member",
+        "vip",
+        "subscriber"
+      ],
+      [
+        "record",
+        "log",
+        "trace"
+      ],
+      [
+        "share",
+        "forward",
+        "transmit"
+      ],
+      [
+        "identification",
+        "identifier",
+        "ID"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "networking"
+      ],
+      [
+        "identifier",
+        "id",
+        "mark"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "identifier",
+        "id",
+        "mark"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "WIFI"
+      ],
+      [
+        "identifier",
+        "id",
+        "mark"
+      ],
+      [
+        "address",
+        "location",
+        "place"
+      ],
+      [
+        "position",
+        "location"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "apps",
+        "applications",
+        "application list"
+      ],
+      [
+        "identifier",
+        "id",
+        "mark"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "WIFI"
+      ],
+      [
+        "identifier",
+        "id",
+        "mark"
+      ],
+      [
+        "address",
+        "location",
+        "place"
+      ],
+      [
+        "position",
+        "location"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "apps",
+        "applications",
+        "application list"
+      ],
+      [
+        "config",
+        "configuration",
+        "configure"
+      ],
+      [
+        "IMEI"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "login",
+        "sign in",
+        "sign up"
+      ],
+      [
+        "storage",
+        "repository",
+        "storehouse"
+      ],
+      [
+        "network",
+        "networking",
+        "net"
+      ],
+      [
+        "address",
+        "location",
+        "place"
+      ],
+      [
+        "position",
+        "location"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "MAC"
+      ],
+      [
+        "latitude"
+      ],
+      [
+        "Installation List"
+      ],
+      [
+        "clipboard",
+        "clip",
+        "paste"
+      ],
+      [
+        "IMEI"
+      ],
+      [
+        "file",
+        "files",
+        "attachment"
+      ],
+      [
+        "IMSI"
+      ],
+      [
+        "BSSID"
+      ],
+      [
+        "address",
+        "location",
+        "place"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "link"
+      ],
+      [
+        "MAC"
+      ],
+      [
+        "network",
+        "networking",
+        "net"
+      ],
+      [
+        "IMEI"
+      ],
+      [
+        "IMSI"
+      ],
+      [
+        "apps",
+        "applications",
+        "application list"
+      ],
+      [
+        "network",
+        "networking",
+        "net"
+      ],
+      [
+        "address",
+        "location",
+        "place"
+      ],
+      [
+        "position",
+        "location"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "link"
+      ],
+      [
+        "SIM"
+      ],
+      [
+        "MAC"
+      ],
+      [
+        "serial number"
+      ],
+      [
+        "Installation List"
+      ],
+      [
+        "IMEI"
+      ],
+      [
+        "IMSI"
+      ],
+      [
+        "apps",
+        "applications",
+        "application list"
+      ],
+      [
+        "ICCID"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "SIM"
+      ],
+      [
+        "network",
+        "networking",
+        "net"
+      ],
+      [
+        "mask",
+        "encrypt",
+        "hash"
+      ],
+      [
+        "IMSI"
+      ],
+      [
+        "mask",
+        "encrypt",
+        "hash"
+      ],
+      [
+        "phone number",
+        "telephone number",
+        "cellphone number"
+      ],
+      [
+        "mask",
+        "encrypt",
+        "hash"
+      ],
+      [
+        "phone number",
+        "telephone number",
+        "cellphone number"
+      ],
+      [
+        "address",
+        "location",
+        "place"
+      ],
+      [
+        "position",
+        "location"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "MAC"
+      ],
+      [
+        "network",
+        "networking",
+        "net"
+      ],
+      [
+        "IMEI"
+      ],
+      [
+        "IMSI"
+      ],
+      [
+        "apps",
+        "applications",
+        "application list"
+      ],
+      [
+        "identifier",
+        "id",
+        "mark"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "SDK"
+      ],
+      [
+        "BSSID"
+      ],
+      [
+        "apps",
+        "applications",
+        "application list"
+      ],
+      [
+        "payment",
+        "payment amount",
+        "transaction id"
+      ],
+      [
+        "order",
+        "orders",
+        "purchase order"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "SDK"
+      ],
+      [
+        "Account member name"
+      ],
+      [
+        "share",
+        "communal",
+        "common"
+      ],
+      [
+        "payment",
+        "pay",
+        "money"
+      ],
+      [
+        "bank card number",
+        "bankcard number",
+        "debit card number"
+      ],
+      [
+        "payment",
+        "payment amount",
+        "transaction id"
+      ],
+      [
+        "name",
+        "first name",
+        "last name"
+      ],
+      [
+        "ID card",
+        "identity card",
+        "ID"
+      ],
+      [
+        "share",
+        "communal",
+        "common"
+      ],
+      [
+        "user",
+        "account",
+        "member"
+      ],
+      [
+        "query",
+        "search",
+        "find"
+      ],
+      [
+        "file",
+        "files",
+        "attachment"
+      ],
+      [
+        "storage",
+        "repository",
+        "storehouse"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "COOKIE"
+      ],
+      [
+        "COOKIE"
+      ],
+      [
+        "communicate",
+        "communication",
+        "communicating"
+      ],
+      [
+        "display"
+      ],
+      [
+        "file",
+        "files",
+        "attachment"
+      ],
+      [
+        "COOKIE"
+      ],
+      [
+        "setting",
+        "configuration",
+        "preference"
+      ],
+      [
+        "user",
+        "account",
+        "member"
+      ],
+      [
+        "user",
+        "account",
+        "member"
+      ],
+      [
+        "user",
+        "account",
+        "member"
+      ],
+      [
+        "user",
+        "account",
+        "member"
+      ],
+      [
+        "gyroscope",
+        "gyro",
+        "g sensor"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "MEID"
+      ],
+      [
+        "identification code",
+        "identifying code",
+        "identification number"
+      ],
+      [
+        "sensor",
+        "transducer",
+        "probe"
+      ],
+      [
+        "acceleration"
+      ],
+      [
+        "ICCID"
+      ],
+      [
+        "GUID"
+      ],
+      [
+        "SIM"
+      ],
+      [
+        "heart rate"
+      ],
+      [
+        "IMEI"
+      ],
+      [
+        "address",
+        "location",
+        "place"
+      ],
+      [
+        "MAC"
+      ],
+      [
+        "serial number"
+      ],
+      [
+        "bluetooth",
+        "wireless"
+      ],
+      [
+        "IMSI"
+      ],
+      [
+        "OpenUDID"
+      ],
+      [
+        "ANDROID ID"
+      ],
+      [
+        "software list",
+        "software catalog",
+        "software directory"
+      ],
+      [
+        "communication",
+        "telecommunication",
+        "correspondence"
+      ],
+      [
+        "environment"
+      ],
+      [
+        "radio broadcast"
+      ],
+      [
+        "Installation List"
+      ],
+      [
+        "clipboard",
+        "clip",
+        "paste"
+      ]
+    ],
+    "purpose-cn-total": [
+      "实名认证",
+      "交易风险",
+      "推送",
+      "呼叫号码",
+      "MTOP",
+      "拦截",
+      "推荐",
+      "防范",
+      "共享",
+      "拨打",
+      "支付共享",
+      "能上",
+      "安全检测",
+      "订单支付",
+      "拨打号码",
+      "联系",
+      "判断账户",
+      "小号统一管理",
+      "关联",
+      "支付",
+      "追踪效果",
+      "匿名化",
+      "显示归属",
+      "删除",
+      "身份验证",
+      "运转",
+      "反诈治理共享"
+    ],
+    "purpose-en-total": [
+      " association",
+      " operation",
+      " dialing number",
+      " call number",
+      " prevention",
+      " payment sharing",
+      " access",
+      " identity verification",
+      " contact",
+      " MTOP",
+      " trumpet unified management",
+      " recommendation",
+      " transaction risk",
+      " security detection",
+      " display attribution",
+      "Real name authentication",
+      " anti-fraud governance sharing",
+      " judgment account",
+      " push",
+      " tracking effect",
+      " anonymization",
+      " order payment",
+      " dialing",
+      " interception",
+      " sharing",
+      " deletion",
+      " payment"
+    ],
+    "permission_list": [
+      "CALL_PRIVILEGED",
+      "WRITE_SOCIAL_STREAM",
+      "RECEIVE_MMS",
+      "RECORD_AUDIO",
+      "READ_USER_DICTIONARY",
+      "OVERRIDE_WIFI_CONFIG",
+      "MANAGE_DEVICE_POLICY_CAMERA",
+      "MANAGE_DEVICE_POLICY_PROFILE_INTERACTION",
+      "BLUETOOTH_ADVERTISE",
+      "CAMERA",
+      "PROCESS_OUTGOING_CALLS",
+      "WRITE_SECURE_SETTINGS",
+      "MANAGE_DEVICE_POLICY_ORGANIZATION_IDENTITY",
+      "WRITE_USER_DICTIONARY",
+      "ACCESS_NETWORK_STATE",
+      "WRITE_CONTACTS",
+      "MANAGE_DEVICE_POLICY_USERS",
+      "MANAGE_DEVICE_POLICY_TIME",
+      "BLUETOOTH_SCAN",
+      "READ_MEDIA_VIDEO",
+      "REQUEST_COMPANION_PROFILE_APP_STREAMING",
+      "BIND_QUICK_SETTINGS_TILE",
+      "BIND_CARRIER_MESSAGING_SERVICE",
+      "MANAGE_DEVICE_POLICY_INPUT_METHODS",
+      "RECEIVE_WAP_PUSH",
+      "MANAGE_DEVICE_POLICY_WIFI",
+      "BIND_NFC_SERVICE",
+      "BIND_INPUT_METHOD",
+      "FOREGROUND_SERVICE_LOCATION",
+      "MANAGE_DEVICE_POLICY_BLUETOOTH",
+      "CHANGE_WIFI_MULTICAST_STATE",
+      "MANAGE_DEVICE_POLICY_PRIVATE_DNS",
+      "RECEIVE_SMS",
+      "WRITE_MEDIA_IMAGES",
+      "READ_LOGS",
+      "BIND_CARRIER_MESSAGING_CLIENT_SERVICE",
+      "MANAGE_DEVICE_POLICY_DISPLAY",
+      "MANAGE_DEVICE_POLICY_DEVICE_IDENTIFIERS",
+      "MODIFY_AUDIO_SETTINGS",
+      "MANAGE_DEVICE_POLICY_SYSTEM_DIALOGS",
+      "MANAGE_DEVICE_POLICY_NEARBY_COMMUNICATION",
+      "CAPTURE_AUDIO_OUTPUT",
+      "WRITE_SETTINGS",
+      "MANAGE_DEVICE_POLICY_SYSTEM_APPS",
+      "BLUETOOTH_CONNECT",
+      "READ_EXTERNAL_STORAGE",
+      "WRITE_APN_SETTINGS",
+      "READ_SMS",
+      "SEND_SMS",
+      "WRITE_EXTERNAL_STORAGE",
+      "MANAGE_DEVICE_POLICY_USB_FILE_TRANSFER",
+      "BLUETOOTH_ADMIN",
+      "NFC",
+      "READ_PHONE_NUMBERS",
+      "MANAGE_DEVICE_POLICY_CERTIFICATES",
+      "MANAGE_EXTERNAL_STORAGE",
+      "ACCESS_COARSE_LOCATION",
+      "FLASHLIGHT",
+      "GET_ACCOUNTS",
+      "CHANGE_NETWORK_STATE",
+      "FOREGROUND_SERVICE_SYSTEM_EXEMPTED",
+      "READ_MEDIA_AUDIO",
+      "NEARBY_WIFI_DEVICES",
+      "FOREGROUND_SERVICE_PHONE_CALL",
+      "READ_CONTACTS",
+      "MANAGE_DEVICE_POLICY_MOBILE_NETWORK",
+      "MANAGE_DEVICE_POLICY_APP_USER_DATA",
+      "READ_PROFILE",
+      "MOUNT_FORMAT_FILESYSTEMS",
+      "BIND_COMPANION_DEVICE_SERVICE",
+      "MOUNT_UNMOUNT_FILESYSTEMS",
+      "READ_SYNC_SETTINGS",
+      "MANAGE_DEVICE_POLICY_ACROSS_USERS",
+      "MANAGE_DEVICE_POLICY_SYSTEM_UPDATES",
+      "MANAGE_DEVICE_POLICY_NETWORK_LOGGING",
+      "CALL_PHONE",
+      "BLUETOOTH_PRIVILEGED",
+      "MANAGE_DEVICE_POLICY_SETTINGS",
+      "MANAGE_DEVICE_POLICY_CALLS",
+      "WRITE_MEDIA_AUDIO",
+      "MANAGE_DEVICE_POLICY_AUDIO_OUTPUT",
+      "ANSWER_PHONE_CALLS",
+      "WRITE_SYNC_SETTINGS",
+      "READ_SOCIAL_STREAM",
+      "USE_SIP",
+      "MANAGE_DEVICE_POLICY_SCREEN_CONTENT",
+      "MANAGE_DEVICE_POLICY_RESTRICT_PRIVATE_DNS",
+      "ADD_VOICEMAIL",
+      "READ_CALL_LOG",
+      "WRITE_PROFILE",
+      "BIND_TELECOM_CONNECTION_SERVICE",
+      "SET_TIME",
+      "DELETE_CACHE_FILES",
+      "INTERACT_ACROSS_PROFILES",
+      "MANAGE_DOCUMENTS",
+      "LAUNCH_MULTI_PANE_SETTINGS_DEEP_LINK",
+      "MANAGE_DEVICE_POLICY_MODIFY_USERS",
+      "MANAGE_DEVICE_POLICY_SMS",
+      "MANAGE_DEVICE_POLICY_DEBUGGING_FEATURES",
+      "WRITE_CALL_LOG",
+      "ACCESS_FINE_LOCATION",
+      "BLUETOOTH",
+      "READ_MEDIA_IMAGES",
+      "MANAGE_DEVICE_POLICY_QUERY_SYSTEM_UPDATES",
+      "REORDER_TASKS",
+      "MANAGE_DEVICE_POLICY_PROFILES"
+    ]
+  },
+  [
+    {
+      "orig-sentence": "我们制定本《隐私权政策》（下称“本政策/“本隐私权政策”）以帮助您充分了解，在您使用产品和服务的过程中，我们会如何收集、使用、共享、存储和保护您的个人信息以及您可以如何管理您的个人信息。",
+      "data-cn-list": [
+        "存储"
+      ],
+      "data-en-list": [
+        "storage"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "storage",
+          "repository",
+          "storehouse"
+        ]
+      ],
+      "purpose-cn-list": [
+        "共享"
+      ],
+      "purpose-en-list": [
+        " sharing"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "存储",
+          "data-en": "storage",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "共享"
+          ],
+          "purpose-en": [
+            " sharing"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "除非阿里通信另行声明，阿里通信拥有在阿里小号内发布文档等信息（包括但不限于文字、图形、图片、照片、音频、视频、图标、色彩、版面设计、电子文档）的所有权利（包括但不限于版权、商标权、专利权、商业秘密和其他所有相关权利）。",
+      "data-cn-list": [
+        "图片",
+        "照片",
+        "音频",
+        "视频",
+        "文字",
+        "文档"
+      ],
+      "data-en-list": [
+        "picture",
+        "Photo",
+        "audio frequency",
+        "video",
+        "written words",
+        "file"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "image",
+          "pic",
+          "photo"
+        ],
+        [
+          "photo",
+          "picture",
+          "image"
+        ],
+        [
+          "audio",
+          "audio file",
+          "audio stream"
+        ],
+        [
+          "video"
+        ],
+        [
+          "written words"
+        ],
+        [
+          "file"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "图片",
+          "data-en": "picture",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "照片",
+          "data-en": "Photo",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "音频",
+          "data-en": "audio frequency",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "视频",
+          "data-en": "video",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "文字",
+          "data-en": "written words",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "文档",
+          "data-en": "file",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "未经阿里通信许可，任何人不得擅自使用如上内容（包括但不限于通过程序或设备监视、复制、转播、展示、镜像、上传、下载阿里小号内的任何内容）。",
+      "data-cn-list": [
+        "内容",
+        "下载",
+        "设备"
+      ],
+      "data-en-list": [
+        "content",
+        "download",
+        "device"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "content",
+          "text",
+          "body"
+        ],
+        [
+          "download",
+          "get",
+          "obtain"
+        ],
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "内容",
+          "data-en": "content",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "下载",
+          "data-en": "download",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "如果您有任何疑问、意见或建议，请通过阿里通信提供的各种联系方式与我们联系。",
+      "data-cn-list": [
+        "联系"
+      ],
+      "data-en-list": [
+        "contact"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "contact",
+          "contacts",
+          "get in touch"
+        ]
+      ],
+      "purpose-cn-list": [
+        "联系"
+      ],
+      "purpose-en-list": [
+        " contact"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "联系",
+          "data-en": "contact",
+          "subject": [],
+          "purpose-cn": [
+            "联系"
+          ],
+          "purpose-en": [
+            " contact"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "根据《反恐怖主义法》、《网络安全法》、《全国人民代表大会常务委员会关于加强网络信息保护的决定》及《电话用户真实身份信息登记规定》等法律法规、监管文件要求，在您使用具体的技术服务时，您需要提供您的真实身份信息。",
+      "data-cn-list": [
+        "身份"
+      ],
+      "data-en-list": [
+        "identity"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "identity"
+        ]
+      ],
+      "purpose-cn-list": [
+        ""
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "身份",
+          "data-en": "identity",
+          "subject": [],
+          "purpose-cn": [
+            ""
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "阿里小号为您提供实名认证，您需要向我们提供面部特征的生物识别信息、您身份证正、反面照片（包含您的姓名、性别、民族、出生日期、住址、公民身份证号、头像、签发机关、有效期限）、手机号码、支付宝实名姓名、支付宝实名证件类型、支付宝实名身份证号码。",
+      "data-cn-list": [
+        "特征",
+        "出生日期",
+        "照片",
+        "面部",
+        "姓名",
+        "实名",
+        "头像",
+        "民族",
+        "性别",
+        "支付",
+        "手机号码",
+        "有效期限",
+        "住址",
+        "身份证",
+        "证件"
+      ],
+      "data-en-list": [
+        "features",
+        "birthdate",
+        "Photo",
+        "face",
+        "full name",
+        "Real name",
+        "avatar",
+        "nation",
+        "Gender",
+        "payment",
+        "phone number",
+        "Validity period",
+        "address",
+        "ID",
+        "certificates"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "features"
+        ],
+        [
+          "birthday",
+          "birth",
+          "date of birth"
+        ],
+        [
+          "photo",
+          "picture",
+          "image"
+        ],
+        [
+          "face"
+        ],
+        [
+          "name",
+          "first name",
+          "last name"
+        ],
+        [
+          "Real name"
+        ],
+        [
+          "avatar",
+          "icon",
+          "profile picture"
+        ],
+        [
+          "nation",
+          "nationality",
+          "ethnic group"
+        ],
+        [
+          "sex",
+          "gender",
+          "male"
+        ],
+        [
+          "payment",
+          "payment amount",
+          "transaction id"
+        ],
+        [
+          "phone number",
+          "telephone number",
+          "cellphone number"
+        ],
+        [
+          "validity",
+          "validity period",
+          "shelf life"
+        ],
+        [
+          "address"
+        ],
+        [
+          "ID card",
+          "identity card",
+          "ID"
+        ],
+        [
+          "credentials",
+          "certificate",
+          "certification"
+        ]
+      ],
+      "purpose-cn-list": [
+        "实名认证"
+      ],
+      "purpose-en-list": [
+        "Real name authentication"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "特征",
+          "data-en": "features",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "实名认证"
+          ],
+          "purpose-en": [
+            "Real name authentication"
+          ]
+        },
+        {
+          "data-cn": "出生日期",
+          "data-en": "birthdate",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "实名认证"
+          ],
+          "purpose-en": [
+            "Real name authentication"
+          ]
+        },
+        {
+          "data-cn": "照片",
+          "data-en": "Photo",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "实名认证"
+          ],
+          "purpose-en": [
+            "Real name authentication"
+          ]
+        },
+        {
+          "data-cn": "面部",
+          "data-en": "face",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "实名认证"
+          ],
+          "purpose-en": [
+            "Real name authentication"
+          ]
+        },
+        {
+          "data-cn": "姓名",
+          "data-en": "full name",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "实名认证"
+          ],
+          "purpose-en": [
+            "Real name authentication"
+          ]
+        },
+        {
+          "data-cn": "实名",
+          "data-en": "Real name",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "实名认证"
+          ],
+          "purpose-en": [
+            "Real name authentication"
+          ]
+        },
+        {
+          "data-cn": "头像",
+          "data-en": "avatar",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "实名认证"
+          ],
+          "purpose-en": [
+            "Real name authentication"
+          ]
+        },
+        {
+          "data-cn": "民族",
+          "data-en": "nation",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "实名认证"
+          ],
+          "purpose-en": [
+            "Real name authentication"
+          ]
+        },
+        {
+          "data-cn": "性别",
+          "data-en": "Gender",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "实名认证"
+          ],
+          "purpose-en": [
+            "Real name authentication"
+          ]
+        },
+        {
+          "data-cn": "支付",
+          "data-en": "payment",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "实名认证"
+          ],
+          "purpose-en": [
+            "Real name authentication"
+          ]
+        },
+        {
+          "data-cn": "手机号码",
+          "data-en": "phone number",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "实名认证"
+          ],
+          "purpose-en": [
+            "Real name authentication"
+          ]
+        },
+        {
+          "data-cn": "有效期限",
+          "data-en": "Validity period",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "实名认证"
+          ],
+          "purpose-en": [
+            "Real name authentication"
+          ]
+        },
+        {
+          "data-cn": "住址",
+          "data-en": "address",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "实名认证"
+          ],
+          "purpose-en": [
+            "Real name authentication"
+          ]
+        },
+        {
+          "data-cn": "身份证",
+          "data-en": "ID",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "实名认证"
+          ],
+          "purpose-en": [
+            "Real name authentication"
+          ]
+        },
+        {
+          "data-cn": "证件",
+          "data-en": "certificates",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "实名认证"
+          ],
+          "purpose-en": [
+            "Real name authentication"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "设备信息：我们会根据您在软件安装及使用中授予的具体权限，接收并记录您所使用的设备相关信息包括（硬件型号、蓝牙信息、运营商信息、硬件序列号、唯一设备识别码IMEI、SIM卡IMSI信息、Android ID、广播组件通讯信息、振动传感器、陀螺仪、重力传感器、剪切板），我们可能会将前面两类型信息进行关联，以便我们能在不同设备上为您提供一致的服务。",
+      "data-cn-list": [
+        "陀螺仪",
+        "ANDROID ID",
+        "设备",
+        "SIM",
+        "识别码",
+        "通讯",
+        "序列号",
+        "广播",
+        "蓝牙",
+        "剪切板",
+        "记录",
+        "IMEI",
+        "IMSI",
+        "传感器"
+      ],
+      "data-en-list": [
+        "gyroscope",
+        "ANDROID ID",
+        "device",
+        "SIM",
+        "Identification code",
+        "communication",
+        "serial number",
+        "radio broadcast",
+        "Bluetooth",
+        "Shear plate",
+        "record",
+        "IMEI",
+        "IMSI",
+        "sensor"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "gyroscope",
+          "gyro",
+          "g sensor"
+        ],
+        [
+          "ANDROID ID"
+        ],
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ],
+        [
+          "SIM"
+        ],
+        [
+          "identification code",
+          "identifying code",
+          "identification number"
+        ],
+        [
+          "communication",
+          "telecommunication",
+          "correspondence"
+        ],
+        [
+          "serial number"
+        ],
+        [
+          "radio broadcast"
+        ],
+        [
+          "bluetooth",
+          "wireless"
+        ],
+        [
+          "clipboard",
+          "clip",
+          "paste"
+        ],
+        [
+          "record",
+          "log",
+          "trace"
+        ],
+        [
+          "IMEI"
+        ],
+        [
+          "IMSI"
+        ],
+        [
+          "sensor",
+          "transducer",
+          "probe"
+        ]
+      ],
+      "purpose-cn-list": [
+        "关联",
+        "能上"
+      ],
+      "purpose-en-list": [
+        " association",
+        " access"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "陀螺仪",
+          "data-en": "gyroscope",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "关联",
+            "能上"
+          ],
+          "purpose-en": [
+            " association",
+            " access"
+          ]
+        },
+        {
+          "data-cn": "ANDROID ID",
+          "data-en": "ANDROID ID",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "关联",
+            "能上"
+          ],
+          "purpose-en": [
+            " association",
+            " access"
+          ]
+        },
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "关联",
+            "能上"
+          ],
+          "purpose-en": [
+            " association",
+            " access"
+          ]
+        },
+        {
+          "data-cn": "SIM",
+          "data-en": "SIM",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "关联",
+            "能上"
+          ],
+          "purpose-en": [
+            " association",
+            " access"
+          ]
+        },
+        {
+          "data-cn": "识别码",
+          "data-en": "Identification code",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "关联",
+            "能上"
+          ],
+          "purpose-en": [
+            " association",
+            " access"
+          ]
+        },
+        {
+          "data-cn": "通讯",
+          "data-en": "communication",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "关联",
+            "能上"
+          ],
+          "purpose-en": [
+            " association",
+            " access"
+          ]
+        },
+        {
+          "data-cn": "序列号",
+          "data-en": "serial number",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "关联",
+            "能上"
+          ],
+          "purpose-en": [
+            " association",
+            " access"
+          ]
+        },
+        {
+          "data-cn": "广播",
+          "data-en": "radio broadcast",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "关联",
+            "能上"
+          ],
+          "purpose-en": [
+            " association",
+            " access"
+          ]
+        },
+        {
+          "data-cn": "蓝牙",
+          "data-en": "Bluetooth",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "关联",
+            "能上"
+          ],
+          "purpose-en": [
+            " association",
+            " access"
+          ]
+        },
+        {
+          "data-cn": "剪切板",
+          "data-en": "Shear plate",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "关联",
+            "能上"
+          ],
+          "purpose-en": [
+            " association",
+            " access"
+          ]
+        },
+        {
+          "data-cn": "记录",
+          "data-en": "record",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "关联",
+            "能上"
+          ],
+          "purpose-en": [
+            " association",
+            " access"
+          ]
+        },
+        {
+          "data-cn": "IMEI",
+          "data-en": "IMEI",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "关联",
+            "能上"
+          ],
+          "purpose-en": [
+            " association",
+            " access"
+          ]
+        },
+        {
+          "data-cn": "IMSI",
+          "data-en": "IMSI",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "关联",
+            "能上"
+          ],
+          "purpose-en": [
+            " association",
+            " access"
+          ]
+        },
+        {
+          "data-cn": "传感器",
+          "data-en": "sensor",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "关联",
+            "能上"
+          ],
+          "purpose-en": [
+            " association",
+            " access"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "包括您的搜索查询内容、IP地址、浏览器的类型、电信运营商、使用的语言、访问日期和时间及您访问的网页记录。",
+      "data-cn-list": [
+        "搜索",
+        "IP",
+        "地址",
+        "浏览器",
+        "时间",
+        "内容",
+        "语言",
+        "网页记录",
+        "查询",
+        "访问日期"
+      ],
+      "data-en-list": [
+        "search",
+        "IP",
+        "address",
+        "browser",
+        "time",
+        "content",
+        "language",
+        "Web page records",
+        "query",
+        "Access Date"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "search",
+          "find",
+          "look up"
+        ],
+        [
+          "IP"
+        ],
+        [
+          "address",
+          "location",
+          "place"
+        ],
+        [
+          "browser",
+          "web browser",
+          "internet browser"
+        ],
+        [
+          "time",
+          "date",
+          "duration"
+        ],
+        [
+          "content",
+          "text",
+          "body"
+        ],
+        [
+          "language",
+          "languages",
+          "foreign language",
+          "mother tongue"
+        ],
+        [
+          "Web page records"
+        ],
+        [
+          "query",
+          "search",
+          "find"
+        ],
+        [
+          "Access Date"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "搜索",
+          "data-en": "search",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "IP",
+          "data-en": "IP",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "地址",
+          "data-en": "address",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "浏览器",
+          "data-en": "browser",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "时间",
+          "data-en": "time",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "内容",
+          "data-en": "content",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "语言",
+          "data-en": "language",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "网页记录",
+          "data-en": "Web page records",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "查询",
+          "data-en": "query",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "访问日期",
+          "data-en": "Access Date",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "普通短信信息：为保证您可以通过阿里小号服务统一管理、查询及发送短信，需要您授权阿里小号APP在您的本地手机同步您的短信信息，但阿里通信承诺不会在服务器端保存您的短信信息，您的短信信息留存于您的手机及阿里小号APP内。",
+      "data-cn-list": [
+        "短信"
+      ],
+      "data-en-list": [
+        "short message"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "short message"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "短信",
+          "data-en": "short message",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "如您拒绝授权阿里小号读取短信权限，则您将无法使用阿里小号统一管理、查询及发送短信功能。",
+      "data-cn-list": [
+        "短信"
+      ],
+      "data-en-list": [
+        "short message"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "short message"
+        ]
+      ],
+      "purpose-cn-list": [
+        "小号统一管理"
+      ],
+      "purpose-en-list": [
+        " trumpet unified management"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "短信",
+          "data-en": "short message",
+          "subject": [],
+          "purpose-cn": [
+            "小号统一管理"
+          ],
+          "purpose-en": [
+            " trumpet unified management"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "106短信信息：由于运营商短信管控政策，当106开头的服务号码向您的小号发送信息时，有可能被认定为垃圾短信进行拦截，进而可能导致您无法正常接收该类短信，为尽可能让您接收106短信，需要您授权打开106短信下发通道（APP PUSH）功能，此时您的106短信内容会通过阿里通信服务器端进行下发，但阿里通信承诺将在服务器端对此信息进行加密并仅对其最多保留6个月(短信发生当月起及其后5个月，含当月)。",
+      "data-cn-list": [
+        "短信"
+      ],
+      "data-en-list": [
+        "short message"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "short message"
+        ]
+      ],
+      "purpose-cn-list": [
+        "拦截"
+      ],
+      "purpose-en-list": [
+        " interception"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "短信",
+          "data-en": "short message",
+          "subject": [],
+          "purpose-cn": [
+            "拦截"
+          ],
+          "purpose-en": [
+            " interception"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "如您拒绝授权打开106短信下发通道（APP PUSH）功能，则您可能无法接收106短信。",
+      "data-cn-list": [
+        "短信"
+      ],
+      "data-en-list": [
+        "short message"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "short message"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "短信",
+          "data-en": "short message",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "您理解并确认，即便阿里通信提供此项技术旨在为解决106短信接收问题，但由于运营商管控及技术限制等原因，阿里通信不承诺您所有的106短信均能成功接收。",
+      "data-cn-list": [
+        "问题",
+        "短信"
+      ],
+      "data-en-list": [
+        "problem",
+        "short message"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "problem"
+        ],
+        [
+          "short message"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "问题",
+          "data-en": "problem",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "短信",
+          "data-en": "short message",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "此处106短信信息包括106、110、120、10086、10000、10010及95533、9556等等95开头的号码发送的短信信息。",
+      "data-cn-list": [
+        "短信"
+      ],
+      "data-en-list": [
+        "short message"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "short message"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "短信",
+          "data-en": "short message",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "拨打电话权限：您点击“同意开启”允许阿里小号后去访问您的拨打电话权限，以便于您方便地通过App呼叫对方电话号码，若不允许，则无法通过App拨打对方电话号码；您的通话记录数据不会上传到其他服务器。",
+      "data-cn-list": [
+        "通话记录",
+        "电话"
+      ],
+      "data-en-list": [
+        "Call logs",
+        "Telephone"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "Call logs"
+        ],
+        [
+          "phone",
+          "telephone",
+          "cellphone"
+        ]
+      ],
+      "purpose-cn-list": [
+        "呼叫号码"
+      ],
+      "purpose-en-list": [
+        " call number"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "通话记录",
+          "data-en": "Call logs",
+          "subject": [],
+          "purpose-cn": [
+            "呼叫号码"
+          ],
+          "purpose-en": [
+            " call number"
+          ]
+        },
+        {
+          "data-cn": "电话",
+          "data-en": "Telephone",
+          "subject": [],
+          "purpose-cn": [
+            "呼叫号码"
+          ],
+          "purpose-en": [
+            " call number"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "如果您不提供这些信息，不会影响您使用APP给你提供的拨打及接听电话、发送及接收短信等基本服务，但您可能无法获得这些附加服务给您带来的用户体验。",
+      "data-cn-list": [
+        "短信"
+      ],
+      "data-en-list": [
+        "short message"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "short message"
+        ]
+      ],
+      "purpose-cn-list": [
+        "拨打"
+      ],
+      "purpose-en-list": [
+        " dialing"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "短信",
+          "data-en": "short message",
+          "subject": [],
+          "purpose-cn": [
+            "拨打"
+          ],
+          "purpose-en": [
+            " dialing"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "存储权限：您点击“同意开启”允许阿里小号访问您的手机存储，用于在拨打号码时显示对方号码归属地等信息，若不允许，则无法显示对方号码归属地；您的存储数据不会上传到其他服务器。",
+      "data-cn-list": [
+        "显示",
+        "存储"
+      ],
+      "data-en-list": [
+        "display",
+        "storage"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "display"
+        ],
+        [
+          "storage",
+          "repository",
+          "storehouse"
+        ]
+      ],
+      "purpose-cn-list": [
+        "显示归属",
+        "拨打号码"
+      ],
+      "purpose-en-list": [
+        " display attribution",
+        " dialing number"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "显示",
+          "data-en": "display",
+          "subject": [],
+          "purpose-cn": [
+            "显示归属",
+            "拨打号码"
+          ],
+          "purpose-en": [
+            " display attribution",
+            " dialing number"
+          ]
+        },
+        {
+          "data-cn": "存储",
+          "data-en": "storage",
+          "subject": [],
+          "purpose-cn": [
+            "显示归属",
+            "拨打号码"
+          ],
+          "purpose-en": [
+            " display attribution",
+            " dialing number"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "访问相册权限：您点击“同意开启”允许阿里小号访问您的图片，若不允许，则无法上传截图哦；您的照片数据不会上传到其他服务器。",
+      "data-cn-list": [
+        "图片",
+        "访问",
+        "点击",
+        "照片"
+      ],
+      "data-en-list": [
+        "picture",
+        "visit",
+        "click",
+        "Photo"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "image",
+          "pic",
+          "photo"
+        ],
+        [
+          "access",
+          "visit",
+          "call"
+        ],
+        [
+          "click",
+          "clicking",
+          "clicked"
+        ],
+        [
+          "photo",
+          "picture",
+          "image"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "图片",
+          "data-en": "picture",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "访问",
+          "data-en": "visit",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "点击",
+          "data-en": "click",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "照片",
+          "data-en": "Photo",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "摄像头权限：您点击“同意开启”允许阿里小号获取访问您的摄像头权限，若不允许，则无法拍照上传图片哦；您的照片数据不会上传到其他服务器。",
+      "data-cn-list": [
+        "图片",
+        "照片"
+      ],
+      "data-en-list": [
+        "picture",
+        "Photo"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "image",
+          "pic",
+          "photo"
+        ],
+        [
+          "photo",
+          "picture",
+          "image"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "图片",
+          "data-en": "picture",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "照片",
+          "data-en": "Photo",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "读取联系人权限：您点击“同意开启”允许阿里小号访问您的通讯录联系人，若不允许，则无法显示名称；您的通讯录联系人数据不会上传到其他服务器。",
+      "data-cn-list": [
+        "显示",
+        "人数",
+        "通讯录",
+        "名称",
+        "联系人"
+      ],
+      "data-en-list": [
+        "display",
+        "people number",
+        "mail list",
+        "name",
+        "contacts"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "display"
+        ],
+        [
+          "people number"
+        ],
+        [
+          "contact list",
+          "contacts",
+          "address book"
+        ],
+        [
+          "name"
+        ],
+        [
+          "contacts"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "显示",
+          "data-en": "display",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "人数",
+          "data-en": "people number",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "通讯录",
+          "data-en": "mail list",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "名称",
+          "data-en": "name",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "联系人",
+          "data-en": "contacts",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "2.3.5 读位置权限：您点击“同意开启”允许阿里小号访问你的位置信息，阿里小号业务办理会根据不同省份及城市限制每个月和每个自然年的办理次数上限，若不允许最多办理次数上限会被限制为最小。",
+      "data-cn-list": [
+        "省份",
+        "次数",
+        "城市"
+      ],
+      "data-en-list": [
+        "province",
+        "frequency",
+        "city"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "province",
+          "province",
+          "province"
+        ],
+        [
+          "times",
+          "frequency",
+          "number"
+        ],
+        [
+          "city",
+          "town",
+          "village"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "省份",
+          "data-en": "province",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "次数",
+          "data-en": "frequency",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "城市",
+          "data-en": "city",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "请您注意，您开启任一权限即代表您授权我们可以收集和使用相关个人信息来为您提供对应服务，您一旦关闭任一权限即代表您取消了授权，我们将不再基于对应权限继续收集和使用相关个人信息，也无法为您提供该权限所对应的服务。",
+      "data-cn-list": [
+        "授权"
+      ],
+      "data-en-list": [
+        "to grant authorization"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "auth",
+          "authorization",
+          "authorized"
+        ]
+      ],
+      "purpose-cn-list": [
+        ""
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "授权",
+          "data-en": "to grant authorization",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            ""
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "2.4. 我们出于如下目的，使用您提交以及我们收集的用户信息：。",
+      "data-cn-list": [
+        "用户"
+      ],
+      "data-en-list": [
+        "user"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "user",
+          "account",
+          "member"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "用户",
+          "data-en": "user",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "为提高您使用我们及我们关联公司、合作伙伴提供服务的安全性，保护您或其他用户或公众的人身财产安全免遭侵害，更好地预防钓鱼网站、欺诈、网络漏洞、计算机病毒、网络攻击、网络侵入等安全风险，更准确地识别违反法律法规或阿里小号相关协议、规则的情况，我们可能在应用程序中嵌入我们关联公司开发的应用安全软件工具开发包（软件工具开发包在本声明和政策中简称“SDK”）收集使用您的会员信息、并整合设备信息、有关网络日志以及我们关联公司、合作伙伴分享的信息，来判断您账户及交易风险、进行身份验证、安全事件的检测及防范，并依法采取必要的记录、审计、分析、处置措施；。",
+      "data-cn-list": [
+        "日志",
+        "设备",
+        "网络",
+        "会员",
+        "记录",
+        "分享"
+      ],
+      "data-en-list": [
+        "log",
+        "device",
+        "network",
+        "member",
+        "record",
+        "share"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "log",
+          "record",
+          "trace"
+        ],
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ],
+        [
+          "network",
+          "networking",
+          "net"
+        ],
+        [
+          "member",
+          "vip",
+          "subscriber"
+        ],
+        [
+          "record",
+          "log",
+          "trace"
+        ],
+        [
+          "share",
+          "forward",
+          "transmit"
+        ]
+      ],
+      "purpose-cn-list": [
+        "身份验证",
+        "关联",
+        "交易风险",
+        "判断账户",
+        "防范",
+        "安全检测"
+      ],
+      "purpose-en-list": [
+        " identity verification",
+        " association",
+        " transaction risk",
+        " judgment account",
+        " prevention",
+        " security detection"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "日志",
+          "data-en": "log",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "身份验证",
+            "关联",
+            "交易风险",
+            "判断账户",
+            "防范",
+            "安全检测"
+          ],
+          "purpose-en": [
+            " identity verification",
+            " association",
+            " transaction risk",
+            " judgment account",
+            " prevention",
+            " security detection"
+          ]
+        },
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "身份验证",
+            "关联",
+            "交易风险",
+            "判断账户",
+            "防范",
+            "安全检测"
+          ],
+          "purpose-en": [
+            " identity verification",
+            " association",
+            " transaction risk",
+            " judgment account",
+            " prevention",
+            " security detection"
+          ]
+        },
+        {
+          "data-cn": "网络",
+          "data-en": "network",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "身份验证",
+            "关联",
+            "交易风险",
+            "判断账户",
+            "防范",
+            "安全检测"
+          ],
+          "purpose-en": [
+            " identity verification",
+            " association",
+            " transaction risk",
+            " judgment account",
+            " prevention",
+            " security detection"
+          ]
+        },
+        {
+          "data-cn": "会员",
+          "data-en": "member",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "身份验证",
+            "关联",
+            "交易风险",
+            "判断账户",
+            "防范",
+            "安全检测"
+          ],
+          "purpose-en": [
+            " identity verification",
+            " association",
+            " transaction risk",
+            " judgment account",
+            " prevention",
+            " security detection"
+          ]
+        },
+        {
+          "data-cn": "记录",
+          "data-en": "record",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "身份验证",
+            "关联",
+            "交易风险",
+            "判断账户",
+            "防范",
+            "安全检测"
+          ],
+          "purpose-en": [
+            " identity verification",
+            " association",
+            " transaction risk",
+            " judgment account",
+            " prevention",
+            " security detection"
+          ]
+        },
+        {
+          "data-cn": "分享",
+          "data-en": "share",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "身份验证",
+            "关联",
+            "交易风险",
+            "判断账户",
+            "防范",
+            "安全检测"
+          ],
+          "purpose-en": [
+            " identity verification",
+            " association",
+            " transaction risk",
+            " judgment account",
+            " prevention",
+            " security detection"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "如您使用华为/小米/魅族手机时，华为/小米/魅族Push SDK需要读取您的设备识别号、联网相关信息，用于推送/下发通知栏消息；如您使用向微博分享信息功能，相关SDK会收集您的设备识别号、联网相关信息。",
+      "data-cn-list": [
+        "识别号",
+        "设备",
+        "联网"
+      ],
+      "data-en-list": [
+        "Identification number",
+        "device",
+        "networking"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "identification",
+          "identifier",
+          "ID"
+        ],
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ],
+        [
+          "networking"
+        ]
+      ],
+      "purpose-cn-list": [
+        "推送"
+      ],
+      "purpose-en-list": [
+        " push"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "识别号",
+          "data-en": "Identification number",
+          "subject": [],
+          "purpose-cn": [
+            "推送"
+          ],
+          "purpose-en": [
+            " push"
+          ]
+        },
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [],
+          "purpose-cn": [
+            "推送"
+          ],
+          "purpose-en": [
+            " push"
+          ]
+        },
+        {
+          "data-cn": "联网",
+          "data-en": "networking",
+          "subject": [],
+          "purpose-cn": [
+            "推送"
+          ],
+          "purpose-en": [
+            " push"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "收集个人信息类型：设备标识符。",
+      "data-cn-list": [
+        "标识符",
+        "设备"
+      ],
+      "data-en-list": [
+        "identifier ",
+        "device"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "identifier",
+          "id",
+          "mark"
+        ],
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "标识符",
+          "data-en": "identifier ",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "收集个人信息类型：运营商信息、设备标识符。",
+      "data-cn-list": [
+        "标识符",
+        "设备"
+      ],
+      "data-en-list": [
+        "identifier ",
+        "device"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "identifier",
+          "id",
+          "mark"
+        ],
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "标识符",
+          "data-en": "identifier ",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "收集个人信息类型：设备标识符、位置信息、Wi-Fi地址、运营商信息、应用列表。",
+      "data-cn-list": [
+        "WIFI",
+        "标识符",
+        "地址",
+        "位置",
+        "设备",
+        "应用列表"
+      ],
+      "data-en-list": [
+        "WIFI",
+        "identifier ",
+        "address",
+        "position",
+        "device",
+        "Application List"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "WIFI"
+        ],
+        [
+          "identifier",
+          "id",
+          "mark"
+        ],
+        [
+          "address",
+          "location",
+          "place"
+        ],
+        [
+          "position",
+          "location"
+        ],
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ],
+        [
+          "apps",
+          "applications",
+          "application list"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "WIFI",
+          "data-en": "WIFI",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "标识符",
+          "data-en": "identifier ",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "地址",
+          "data-en": "address",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "位置",
+          "data-en": "position",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "应用列表",
+          "data-en": "Application List",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "收集个人信息类型：运营商信息、设备标识符。",
+      "data-cn-list": [
+        "标识符",
+        "设备"
+      ],
+      "data-en-list": [
+        "identifier ",
+        "device"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "identifier",
+          "id",
+          "mark"
+        ],
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "标识符",
+          "data-en": "identifier ",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "收集个人信息类型：设备标识符、位置信息、Wi-Fi地址、运营商信息、应用列表。",
+      "data-cn-list": [
+        "WIFI",
+        "标识符",
+        "地址",
+        "位置",
+        "设备",
+        "应用列表"
+      ],
+      "data-en-list": [
+        "WIFI",
+        "identifier ",
+        "address",
+        "position",
+        "device",
+        "Application List"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "WIFI"
+        ],
+        [
+          "identifier",
+          "id",
+          "mark"
+        ],
+        [
+          "address",
+          "location",
+          "place"
+        ],
+        [
+          "position",
+          "location"
+        ],
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ],
+        [
+          "apps",
+          "applications",
+          "application list"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "WIFI",
+          "data-en": "WIFI",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "标识符",
+          "data-en": "identifier ",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "地址",
+          "data-en": "address",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "位置",
+          "data-en": "position",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "应用列表",
+          "data-en": "Application List",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "功能：为 App提供客户端配置功能。",
+      "data-cn-list": [
+        "配置"
+      ],
+      "data-en-list": [
+        "configure"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "config",
+          "configuration",
+          "configure"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "配置",
+          "data-en": "configure",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "收集个人信息类型：设备标识信息（IMEI）。",
+      "data-cn-list": [
+        "IMEI",
+        "设备"
+      ],
+      "data-en-list": [
+        "IMEI",
+        "device"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "IMEI"
+        ],
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "IMEI",
+          "data-en": "IMEI",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "功能: 提供连接淘宝登录模块、淘宝agoo推送、淘宝sso登录、Mtop的功能。",
+      "data-cn-list": [
+        "登录"
+      ],
+      "data-en-list": [
+        "Sign in"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "login",
+          "sign in",
+          "sign up"
+        ]
+      ],
+      "purpose-cn-list": [
+        "MTOP",
+        "推送"
+      ],
+      "purpose-en-list": [
+        " MTOP",
+        " push"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "登录",
+          "data-en": "Sign in",
+          "subject": [],
+          "purpose-cn": [
+            "MTOP",
+            "推送"
+          ],
+          "purpose-en": [
+            " MTOP",
+            " push"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "收集个人信息类型：设备标识信息(运行中应用程序信息、IMEI、IMSI、应用安装列表,、运行中进程、外部文件存储目录信息、android_id)、应用标识信息（packagename）,网络信息（MAC地址、BSSID、SSID）,位置信息（位置经纬度），剪切板信息。",
+      "data-cn-list": [
+        "存储",
+        "网络",
+        "地址",
+        "位置",
+        "设备",
+        "MAC",
+        "纬度",
+        "安装列表",
+        "剪切板",
+        "IMEI",
+        "文件",
+        "IMSI",
+        "BSSID"
+      ],
+      "data-en-list": [
+        "storage",
+        "network",
+        "address",
+        "position",
+        "device",
+        "MAC",
+        "latitude",
+        "Installation List",
+        "Shear plate",
+        "IMEI",
+        "file",
+        "IMSI",
+        "BSSID"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "storage",
+          "repository",
+          "storehouse"
+        ],
+        [
+          "network",
+          "networking",
+          "net"
+        ],
+        [
+          "address",
+          "location",
+          "place"
+        ],
+        [
+          "position",
+          "location"
+        ],
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ],
+        [
+          "MAC"
+        ],
+        [
+          "latitude"
+        ],
+        [
+          "Installation List"
+        ],
+        [
+          "clipboard",
+          "clip",
+          "paste"
+        ],
+        [
+          "IMEI"
+        ],
+        [
+          "file",
+          "files",
+          "attachment"
+        ],
+        [
+          "IMSI"
+        ],
+        [
+          "BSSID"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "存储",
+          "data-en": "storage",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "网络",
+          "data-en": "network",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "地址",
+          "data-en": "address",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "位置",
+          "data-en": "position",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "MAC",
+          "data-en": "MAC",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "纬度",
+          "data-en": "latitude",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "安装列表",
+          "data-en": "Installation List",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "剪切板",
+          "data-en": "Shear plate",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "IMEI",
+          "data-en": "IMEI",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "文件",
+          "data-en": "file",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "IMSI",
+          "data-en": "IMSI",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "BSSID",
+          "data-en": "BSSID",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "Mtop运营方：浙江淘宝网络有限公司、淘宝（中国）软件有限公司功能：淘宝开放平台技术服务收集个人信息类型：设备标识信息（IMEI、IMSI）、网络信息（MAC地址）、运行中的应用列表隐私权政策链接：https://terms.alicdn.com/legal-agreement/terms/suit_bu1_taobao/suit_bu1_taobao201703241622_61002.html。",
+      "data-cn-list": [
+        "地址",
+        "设备",
+        "链接",
+        "MAC",
+        "网络",
+        "IMEI",
+        "IMSI",
+        "应用列表"
+      ],
+      "data-en-list": [
+        "address",
+        "device",
+        "link",
+        "MAC",
+        "network",
+        "IMEI",
+        "IMSI",
+        "Application List"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "address",
+          "location",
+          "place"
+        ],
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ],
+        [
+          "link"
+        ],
+        [
+          "MAC"
+        ],
+        [
+          "network",
+          "networking",
+          "net"
+        ],
+        [
+          "IMEI"
+        ],
+        [
+          "IMSI"
+        ],
+        [
+          "apps",
+          "applications",
+          "application list"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "地址",
+          "data-en": "address",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "链接",
+          "data-en": "link",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "MAC",
+          "data-en": "MAC",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "网络",
+          "data-en": "network",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "IMEI",
+          "data-en": "IMEI",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "IMSI",
+          "data-en": "IMSI",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "应用列表",
+          "data-en": "Application List",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "spm=a2145.7268393.0.0.f9aa5d7ccvMkrK淘宝登录模块/淘宝sso登录运营方：浙江淘宝网络有限公司、淘宝（中国）软件有限公司功能：帮助用户使用淘宝账号登录，将信息分享至淘宝收集个人信息类型：设备标识信息（IMEI、IMSI、SIM序列号）、网络信息（MAC地址）、位置信息、应用安装列表信息、运行中的应用列表隐私权政策链接：https://terms.alicdn.com/legal-agreement/terms/suit_bu1_taobao/suit_bu1_taobao201703241622_61002.html。",
+      "data-cn-list": [
+        "网络",
+        "地址",
+        "位置",
+        "设备",
+        "链接",
+        "SIM",
+        "MAC",
+        "序列号",
+        "安装列表",
+        "IMEI",
+        "IMSI",
+        "应用列表"
+      ],
+      "data-en-list": [
+        "network",
+        "address",
+        "position",
+        "device",
+        "link",
+        "SIM",
+        "MAC",
+        "serial number",
+        "Installation List",
+        "IMEI",
+        "IMSI",
+        "Application List"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "network",
+          "networking",
+          "net"
+        ],
+        [
+          "address",
+          "location",
+          "place"
+        ],
+        [
+          "position",
+          "location"
+        ],
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ],
+        [
+          "link"
+        ],
+        [
+          "SIM"
+        ],
+        [
+          "MAC"
+        ],
+        [
+          "serial number"
+        ],
+        [
+          "Installation List"
+        ],
+        [
+          "IMEI"
+        ],
+        [
+          "IMSI"
+        ],
+        [
+          "apps",
+          "applications",
+          "application list"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "网络",
+          "data-en": "network",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "地址",
+          "data-en": "address",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "位置",
+          "data-en": "position",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "链接",
+          "data-en": "link",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "SIM",
+          "data-en": "SIM",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "MAC",
+          "data-en": "MAC",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "序列号",
+          "data-en": "serial number",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "安装列表",
+          "data-en": "Installation List",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "IMEI",
+          "data-en": "IMEI",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "IMSI",
+          "data-en": "IMSI",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "应用列表",
+          "data-en": "Application List",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "功能：识别用户的手机号码快速登录 收集个人信息类型：当前手机掩码、设备信息（IMSI）、MCC、SIM卡信息、网络信息、ICCID。",
+      "data-cn-list": [
+        "ICCID",
+        "设备",
+        "SIM",
+        "网络",
+        "掩码",
+        "IMSI"
+      ],
+      "data-en-list": [
+        "ICCID",
+        "device",
+        "SIM",
+        "network",
+        "Mask",
+        "IMSI"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "ICCID"
+        ],
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ],
+        [
+          "SIM"
+        ],
+        [
+          "network",
+          "networking",
+          "net"
+        ],
+        [
+          "mask",
+          "encrypt",
+          "hash"
+        ],
+        [
+          "IMSI"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "ICCID",
+          "data-en": "ICCID",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "SIM",
+          "data-en": "SIM",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "网络",
+          "data-en": "network",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "掩码",
+          "data-en": "Mask",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "IMSI",
+          "data-en": "IMSI",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "收集个人信息类型：当前手机号码掩码。",
+      "data-cn-list": [
+        "掩码",
+        "手机号码"
+      ],
+      "data-en-list": [
+        "Mask",
+        "phone number"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "mask",
+          "encrypt",
+          "hash"
+        ],
+        [
+          "phone number",
+          "telephone number",
+          "cellphone number"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "掩码",
+          "data-en": "Mask",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "手机号码",
+          "data-en": "phone number",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "收集个人信息类型：当前手机号码掩码。",
+      "data-cn-list": [
+        "掩码",
+        "手机号码"
+      ],
+      "data-en-list": [
+        "Mask",
+        "phone number"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "mask",
+          "encrypt",
+          "hash"
+        ],
+        [
+          "phone number",
+          "telephone number",
+          "cellphone number"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "掩码",
+          "data-en": "Mask",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "手机号码",
+          "data-en": "phone number",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "收集个人信息类型：设备标识信息（IMEI、IMSI）、位置信息、网络信息（MAC地址）、应用列表。",
+      "data-cn-list": [
+        "地址",
+        "位置",
+        "设备",
+        "MAC",
+        "网络",
+        "IMEI",
+        "IMSI",
+        "应用列表"
+      ],
+      "data-en-list": [
+        "address",
+        "position",
+        "device",
+        "MAC",
+        "network",
+        "IMEI",
+        "IMSI",
+        "Application List"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "address",
+          "location",
+          "place"
+        ],
+        [
+          "position",
+          "location"
+        ],
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ],
+        [
+          "MAC"
+        ],
+        [
+          "network",
+          "networking",
+          "net"
+        ],
+        [
+          "IMEI"
+        ],
+        [
+          "IMSI"
+        ],
+        [
+          "apps",
+          "applications",
+          "application list"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "地址",
+          "data-en": "address",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "位置",
+          "data-en": "position",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "MAC",
+          "data-en": "MAC",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "网络",
+          "data-en": "network",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "IMEI",
+          "data-en": "IMEI",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "IMSI",
+          "data-en": "IMSI",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "应用列表",
+          "data-en": "Application List",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "收集个人信息类型：设备标识符（BSSID、SSID）、运营商信息、SDK采集应用列表。",
+      "data-cn-list": [
+        "标识符",
+        "设备",
+        "SDK",
+        "BSSID",
+        "应用列表"
+      ],
+      "data-en-list": [
+        "identifier ",
+        "device",
+        "SDK",
+        "BSSID",
+        "Application List"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "identifier",
+          "id",
+          "mark"
+        ],
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ],
+        [
+          "SDK"
+        ],
+        [
+          "BSSID"
+        ],
+        [
+          "apps",
+          "applications",
+          "application list"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "标识符",
+          "data-en": "identifier ",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "SDK",
+          "data-en": "SDK",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "BSSID",
+          "data-en": "BSSID",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "应用列表",
+          "data-en": "Application List",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "帮您完成支付的共享：为了完成订单支付，您需要提供支付宝账户并选择付款方式，我们会将您的账户会员名、对应的支付宝账户会员名、订单支付相关信息、订单安全相关设备信息及其他反洗钱法律要求的必要信息通过在应用程序中嵌入的支付宝SDK等方式与支付宝公司共享。",
+      "data-cn-list": [
+        "支付",
+        "订单",
+        "设备",
+        "SDK",
+        "账户会员名",
+        "共享",
+        "付款"
+      ],
+      "data-en-list": [
+        "payment",
+        "order",
+        "device",
+        "SDK",
+        "Account member name",
+        "share",
+        "payment"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "payment",
+          "payment amount",
+          "transaction id"
+        ],
+        [
+          "order",
+          "orders",
+          "purchase order"
+        ],
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ],
+        [
+          "SDK"
+        ],
+        [
+          "Account member name"
+        ],
+        [
+          "share",
+          "communal",
+          "common"
+        ],
+        [
+          "payment",
+          "pay",
+          "money"
+        ]
+      ],
+      "purpose-cn-list": [
+        "支付共享",
+        "订单支付"
+      ],
+      "purpose-en-list": [
+        " payment sharing",
+        " order payment"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "支付",
+          "data-en": "payment",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "支付共享",
+            "订单支付"
+          ],
+          "purpose-en": [
+            " payment sharing",
+            " order payment"
+          ]
+        },
+        {
+          "data-cn": "订单",
+          "data-en": "order",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "支付共享",
+            "订单支付"
+          ],
+          "purpose-en": [
+            " payment sharing",
+            " order payment"
+          ]
+        },
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "支付共享",
+            "订单支付"
+          ],
+          "purpose-en": [
+            " payment sharing",
+            " order payment"
+          ]
+        },
+        {
+          "data-cn": "SDK",
+          "data-en": "SDK",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "支付共享",
+            "订单支付"
+          ],
+          "purpose-en": [
+            " payment sharing",
+            " order payment"
+          ]
+        },
+        {
+          "data-cn": "账户会员名",
+          "data-en": "Account member name",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "支付共享",
+            "订单支付"
+          ],
+          "purpose-en": [
+            " payment sharing",
+            " order payment"
+          ]
+        },
+        {
+          "data-cn": "共享",
+          "data-en": "share",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "支付共享",
+            "订单支付"
+          ],
+          "purpose-en": [
+            " payment sharing",
+            " order payment"
+          ]
+        },
+        {
+          "data-cn": "付款",
+          "data-en": "payment",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "支付共享",
+            "订单支付"
+          ],
+          "purpose-en": [
+            " payment sharing",
+            " order payment"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "如您选择由其他金融机构为您提供支付服务的，我们还会将您的银行卡号、有效期在内的银行卡支付必要信息与您选择的相应金融机构共享。",
+      "data-cn-list": [
+        "银行卡号",
+        "支付"
+      ],
+      "data-en-list": [
+        "Credit card number",
+        "payment"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "bank card number",
+          "bankcard number",
+          "debit card number"
+        ],
+        [
+          "payment",
+          "payment amount",
+          "transaction id"
+        ]
+      ],
+      "purpose-cn-list": [
+        "支付",
+        "共享"
+      ],
+      "purpose-en-list": [
+        " payment",
+        " sharing"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "银行卡号",
+          "data-en": "Credit card number",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "支付",
+            "共享"
+          ],
+          "purpose-en": [
+            " payment",
+            " sharing"
+          ]
+        },
+        {
+          "data-cn": "支付",
+          "data-en": "payment",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "支付",
+            "共享"
+          ],
+          "purpose-en": [
+            " payment",
+            " sharing"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "3.1.6 完成反诈治理的共享：根据《反恐怖主义法》、《网络安全法》、《全国人民代表大会常务委员会关于加强网络信息保护的决定》及《电话用户真实身份信息登记规定》等法律法规要求，配合小号归属运营商进行反诈治理，我们会将您使用服务时提供的本机号码、姓名、身份证号（“三要素”）与本机号码对应的电信运营商共享，以完成“三要素”一致性比对，比对一致后才能正常使用本服务。",
+      "data-cn-list": [
+        "姓名",
+        "身份证",
+        "共享"
+      ],
+      "data-en-list": [
+        "full name",
+        "ID",
+        "share"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "name",
+          "first name",
+          "last name"
+        ],
+        [
+          "ID card",
+          "identity card",
+          "ID"
+        ],
+        [
+          "share",
+          "communal",
+          "common"
+        ]
+      ],
+      "purpose-cn-list": [
+        "反诈治理共享"
+      ],
+      "purpose-en-list": [
+        " anti-fraud governance sharing"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "姓名",
+          "data-en": "full name",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "反诈治理共享"
+          ],
+          "purpose-en": [
+            " anti-fraud governance sharing"
+          ]
+        },
+        {
+          "data-cn": "身份证",
+          "data-en": "ID",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "反诈治理共享"
+          ],
+          "purpose-en": [
+            " anti-fraud governance sharing"
+          ]
+        },
+        {
+          "data-cn": "共享",
+          "data-en": "share",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "反诈治理共享"
+          ],
+          "purpose-en": [
+            " anti-fraud governance sharing"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "我们不会将您的用户信息转移给任何公司、组织和个人，但以下情况除外：。",
+      "data-cn-list": [
+        "用户"
+      ],
+      "data-en-list": [
+        "user"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "user",
+          "account",
+          "member"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "用户",
+          "data-en": "user",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "您可以通过多种方式管理您的个人信息，包括查询、管理（复制、变更、删除）。",
+      "data-cn-list": [
+        "查询"
+      ],
+      "data-en-list": [
+        "query"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "query",
+          "search",
+          "find"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "查询",
+          "data-en": "query",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "为确保产品正常运转、为您获得更轻松的访问体验、向您推荐您可能感兴趣的内容，我们会在您的移动设备上存储名为 Cookie 的小数据文件。",
+      "data-cn-list": [
+        "文件",
+        "存储",
+        "设备",
+        "COOKIE"
+      ],
+      "data-en-list": [
+        "file",
+        "storage",
+        "device",
+        "COOKIE"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "file",
+          "files",
+          "attachment"
+        ],
+        [
+          "storage",
+          "repository",
+          "storehouse"
+        ],
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ],
+        [
+          "COOKIE"
+        ]
+      ],
+      "purpose-cn-list": [
+        "推荐",
+        "运转"
+      ],
+      "purpose-en-list": [
+        " recommendation",
+        " operation"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "文件",
+          "data-en": "file",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "推荐",
+            "运转"
+          ],
+          "purpose-en": [
+            " recommendation",
+            " operation"
+          ]
+        },
+        {
+          "data-cn": "存储",
+          "data-en": "storage",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "推荐",
+            "运转"
+          ],
+          "purpose-en": [
+            " recommendation",
+            " operation"
+          ]
+        },
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "推荐",
+            "运转"
+          ],
+          "purpose-en": [
+            " recommendation",
+            " operation"
+          ]
+        },
+        {
+          "data-cn": "COOKIE",
+          "data-en": "COOKIE",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "推荐",
+            "运转"
+          ],
+          "purpose-en": [
+            " recommendation",
+            " operation"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "阿里小号只能读取阿里小号提供的cookies。",
+      "data-cn-list": [
+        "COOKIE"
+      ],
+      "data-en-list": [
+        "COOKIE"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "COOKIE"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "COOKIE",
+          "data-en": "COOKIE",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "当下一次您再次访问的时候，我们将显示您需要的信息；或由阿里通信通过cookies文件来辨识您的来源网站，以便阿里通信能追踪阿里小号的广告效果。",
+      "data-cn-list": [
+        "通信",
+        "显示",
+        "文件",
+        "COOKIE"
+      ],
+      "data-en-list": [
+        "signal communication",
+        "display",
+        "file",
+        "COOKIE"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "communicate",
+          "communication",
+          "communicating"
+        ],
+        [
+          "display"
+        ],
+        [
+          "file",
+          "files",
+          "attachment"
+        ],
+        [
+          "COOKIE"
+        ]
+      ],
+      "purpose-cn-list": [
+        "追踪效果"
+      ],
+      "purpose-en-list": [
+        " tracking effect"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "通信",
+          "data-en": "signal communication",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "追踪效果"
+          ],
+          "purpose-en": [
+            " tracking effect"
+          ]
+        },
+        {
+          "data-cn": "显示",
+          "data-en": "display",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "追踪效果"
+          ],
+          "purpose-en": [
+            " tracking effect"
+          ]
+        },
+        {
+          "data-cn": "文件",
+          "data-en": "file",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "追踪效果"
+          ],
+          "purpose-en": [
+            " tracking effect"
+          ]
+        },
+        {
+          "data-cn": "COOKIE",
+          "data-en": "COOKIE",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "追踪效果"
+          ],
+          "purpose-en": [
+            " tracking effect"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "但如果您这么做，则需要在每一次访问我们的网站时更改用户设置。",
+      "data-cn-list": [
+        "设置",
+        "用户"
+      ],
+      "data-en-list": [
+        "set up",
+        "user"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "setting",
+          "configuration",
+          "preference"
+        ],
+        [
+          "user",
+          "account",
+          "member"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "设置",
+          "data-en": "set up",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "用户",
+          "data-en": "user",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "我们会采取合理可行的措施，尽力避免收集无关的用户信息。",
+      "data-cn-list": [
+        "用户"
+      ],
+      "data-en-list": [
+        "user"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "user",
+          "account",
+          "member"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "用户",
+          "data-en": "user",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "如出现阿里小号产品和服务停止运营的情形，我们会采取合理措施保护您用户信息安全，包括及时停止继续收集用户信息的活动；将停止运营的通知以逐一送达或公告的形式提前通知您；对所持有的您的个人信息进行删除或匿名化处等等。",
+      "data-cn-list": [
+        "用户"
+      ],
+      "data-en-list": [
+        "user"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "user",
+          "account",
+          "member"
+        ]
+      ],
+      "purpose-cn-list": [
+        "删除",
+        "匿名化"
+      ],
+      "purpose-en-list": [
+        " deletion",
+        " anonymization"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "用户",
+          "data-en": "user",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "删除",
+            "匿名化"
+          ],
+          "purpose-en": [
+            " deletion",
+            " anonymization"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "如超出与收集个人信息时所声称的目或超出具有直接或合理关联的范围后使用用户信息前，我们会再次向您告知并征得您的明示同意。",
+      "data-cn-list": [
+        "用户"
+      ],
+      "data-en-list": [
+        "user"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "user",
+          "account",
+          "member"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "用户",
+          "data-en": "user",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "设备信息：包括硬件型号、硬件序列号、软件列表、应用安装列表、软件安装列表、唯一设备识别码IMEI、设备MAC地址、SIM卡IMSI信息、Android ID、MEID、OpenUDID、GUID、蓝牙信息、广播组件通讯信息、ICCID、运营商信息、传感器（陀螺仪、重力传感器、加速度传感器、环境传感器、光学心率传感器）、剪切板。",
+      "data-cn-list": [
+        "陀螺仪",
+        "设备",
+        "MEID",
+        "识别码",
+        "传感器",
+        "加速度",
+        "ICCID",
+        "GUID",
+        "SIM",
+        "心率",
+        "IMEI",
+        "地址",
+        "MAC",
+        "序列号",
+        "蓝牙",
+        "IMSI",
+        "OPENUDID",
+        "ANDROID ID",
+        "软件列表",
+        "通讯",
+        "环境",
+        "广播",
+        "安装列表",
+        "剪切板"
+      ],
+      "data-en-list": [
+        "gyroscope",
+        "device",
+        "MEID",
+        "Identification code",
+        "sensor",
+        "acceleration",
+        "ICCID",
+        "GUID",
+        "SIM",
+        "heart rate",
+        "IMEI",
+        "address",
+        "MAC",
+        "serial number",
+        "Bluetooth",
+        "IMSI",
+        "OpenUDID",
+        "ANDROID ID",
+        "Software List",
+        "communication",
+        "environment",
+        "radio broadcast",
+        "Installation List",
+        "Shear plate"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "gyroscope",
+          "gyro",
+          "g sensor"
+        ],
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ],
+        [
+          "MEID"
+        ],
+        [
+          "identification code",
+          "identifying code",
+          "identification number"
+        ],
+        [
+          "sensor",
+          "transducer",
+          "probe"
+        ],
+        [
+          "acceleration"
+        ],
+        [
+          "ICCID"
+        ],
+        [
+          "GUID"
+        ],
+        [
+          "SIM"
+        ],
+        [
+          "heart rate"
+        ],
+        [
+          "IMEI"
+        ],
+        [
+          "address",
+          "location",
+          "place"
+        ],
+        [
+          "MAC"
+        ],
+        [
+          "serial number"
+        ],
+        [
+          "bluetooth",
+          "wireless"
+        ],
+        [
+          "IMSI"
+        ],
+        [
+          "OpenUDID"
+        ],
+        [
+          "ANDROID ID"
+        ],
+        [
+          "software list",
+          "software catalog",
+          "software directory"
+        ],
+        [
+          "communication",
+          "telecommunication",
+          "correspondence"
+        ],
+        [
+          "environment"
+        ],
+        [
+          "radio broadcast"
+        ],
+        [
+          "Installation List"
+        ],
+        [
+          "clipboard",
+          "clip",
+          "paste"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "陀螺仪",
+          "data-en": "gyroscope",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "MEID",
+          "data-en": "MEID",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "识别码",
+          "data-en": "Identification code",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "传感器",
+          "data-en": "sensor",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "加速度",
+          "data-en": "acceleration",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "ICCID",
+          "data-en": "ICCID",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "GUID",
+          "data-en": "GUID",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "SIM",
+          "data-en": "SIM",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "心率",
+          "data-en": "heart rate",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "IMEI",
+          "data-en": "IMEI",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "地址",
+          "data-en": "address",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "MAC",
+          "data-en": "MAC",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "序列号",
+          "data-en": "serial number",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "蓝牙",
+          "data-en": "Bluetooth",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "IMSI",
+          "data-en": "IMSI",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "OPENUDID",
+          "data-en": "OpenUDID",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "ANDROID ID",
+          "data-en": "ANDROID ID",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "软件列表",
+          "data-en": "Software List",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "通讯",
+          "data-en": "communication",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "环境",
+          "data-en": "environment",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "广播",
+          "data-en": "radio broadcast",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "安装列表",
+          "data-en": "Installation List",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "剪切板",
+          "data-en": "Shear plate",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    }
+  ]
+]

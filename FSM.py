@@ -119,7 +119,10 @@ class FSM:
         cur_activity = content["cur_activity"]
         cur_screen_pkg_name = content["cur_screen_pkg_name"]
         ck_eles_text = content["ck_eles_text"]
-        self.update_stat(cur_activity, ck_eles_text)
+
+        StatRecorder.get_instance().add_stat_stat_activity_set(cur_activity)
+        StatRecorder.get_instance().add_stat_screen_set(ck_eles_text)
+
         LogUtils.log_info(f"当前Screen为: {ck_eles_text}")
         RuntimeContent.get_instance().append_screen_list(ck_eles_text)
 
@@ -148,6 +151,7 @@ class FSM:
         if check_is_in_webview(cur_activity) and check_pattern_state(1, [self.STATE_WebViewScreen]):
             return self.STATE_DoublePress, content
         if check_is_in_webview(cur_activity):
+            StatRecorder.get_instance().add_webview_set(ck_eles_text)
             return self.STATE_WebViewScreen, content
         # temp_screen_node = get_screennode_from_screenmap_by_similarity(screen_map, ck_eles_text, screen_compare_strategy)
         # if temp_screen_node is not None and len(temp_screen_node.clickable_elements) == clickable_cnt:
@@ -205,6 +209,7 @@ class FSM:
                 stat_map[len(StatRecorder.get_instance().get_stat_screen_set())] = True
                 StatRecorder.get_instance().print_result()
 
+            StatRecorder.get_instance().count_time()
             state, content = self.get_state()
             RuntimeContent.get_instance().append_state_list(state)
             LogUtils.log_info("\n")

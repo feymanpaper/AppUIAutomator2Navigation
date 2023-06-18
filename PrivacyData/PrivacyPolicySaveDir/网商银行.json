@@ -1,0 +1,4014 @@
+[
+  {
+    "sentence-count": 50,
+    "data-count": 130,
+    "purpose-count": 38,
+    "data-cn-total": [
+      "访问页面",
+      "特征",
+      "手机号",
+      "输入",
+      "面容",
+      "照片",
+      "银行",
+      "WLAN",
+      "访问",
+      "设备",
+      "联系人",
+      "部门",
+      "姓名",
+      "显示",
+      "职业",
+      "标识符",
+      "位置",
+      "日历",
+      "浏览",
+      "银行卡",
+      "页面提示",
+      "联系",
+      "账号",
+      "授权",
+      "证件",
+      "网络",
+      "状态",
+      "设置",
+      "注册",
+      "ID",
+      "文件",
+      "支付",
+      "通讯录",
+      "账户",
+      "地址",
+      "开户行",
+      "资料",
+      "风险测评",
+      "手机号码",
+      "视频",
+      "身份",
+      "网页活动",
+      "基站",
+      "登录",
+      "通话",
+      "银行卡号",
+      "相册",
+      "存储",
+      "邮箱",
+      "浏览器",
+      "短信",
+      "身份证",
+      "时间",
+      "COOKIE",
+      "内容",
+      "交互",
+      "环境",
+      "密码",
+      "国家",
+      "交易",
+      "余额",
+      "卡号",
+      "行业"
+    ],
+    "data-en-total": [
+      "password",
+      "time",
+      "input",
+      "department",
+      "WLAN",
+      "payment",
+      "network",
+      "content",
+      "browser",
+      "industry",
+      "Web activity",
+      "album",
+      "contact",
+      "environment",
+      "bank",
+      "visit",
+      "contacts",
+      "Accessing pages",
+      "video",
+      "features",
+      "risk evaluation",
+      "identity",
+      "position",
+      "Card number",
+      "identifier ",
+      "occupation",
+      "face",
+      "Page prompt",
+      "country",
+      "to grant authorization",
+      "transaction",
+      "set up",
+      "sign in",
+      "account number",
+      "storage",
+      "bank card",
+      "ID",
+      "data",
+      "mailbox",
+      "full name",
+      "balance",
+      "mail list",
+      "Opening bank",
+      "conversation",
+      "interactive",
+      "cellphone number",
+      "address",
+      "Photo",
+      "Sign in",
+      "file",
+      "Credit card number",
+      "display",
+      "Browsing",
+      "short message",
+      "COOKIE",
+      "account",
+      "calendar",
+      "certificates",
+      "state",
+      "device",
+      "phone number",
+      "base station"
+    ],
+    "data-en-chatgpt-total": [
+      [
+        "storage",
+        "repository",
+        "storehouse"
+      ],
+      [
+        "storage",
+        "repository",
+        "storehouse"
+      ],
+      [
+        "name",
+        "first name",
+        "last name"
+      ],
+      [
+        "features"
+      ],
+      [
+        "profession",
+        "occupation",
+        "career"
+      ],
+      [
+        "email",
+        "mail",
+        "e mail"
+      ],
+      [
+        "account",
+        "account number",
+        "bank account"
+      ],
+      [
+        "address",
+        "location",
+        "place"
+      ],
+      [
+        "Opening bank"
+      ],
+      [
+        "bank",
+        "bank name",
+        "bank account"
+      ],
+      [
+        "ID card",
+        "identity card",
+        "ID"
+      ],
+      [
+        "phone number",
+        "telephone number",
+        "cellphone number"
+      ],
+      [
+        "Card number"
+      ],
+      [
+        "payment",
+        "payment amount",
+        "transaction id"
+      ],
+      [
+        "login",
+        "sign in",
+        "sign up"
+      ],
+      [
+        "payment",
+        "payment amount",
+        "transaction id"
+      ],
+      [
+        "account",
+        "username",
+        "id"
+      ],
+      [
+        "auth",
+        "authorization",
+        "authorized"
+      ],
+      [
+        "name",
+        "first name",
+        "last name"
+      ],
+      [
+        "payment",
+        "payment amount",
+        "transaction id"
+      ],
+      [
+        "bank card number",
+        "bankcard number",
+        "debit card number"
+      ],
+      [
+        "account",
+        "account number",
+        "bank account"
+      ],
+      [
+        "phone number",
+        "telephone number",
+        "cellphone number"
+      ],
+      [
+        "risk",
+        "assessment",
+        "evaluation"
+      ],
+      [
+        "balance",
+        "money",
+        "rest"
+      ],
+      [
+        "ID card",
+        "identity card",
+        "ID"
+      ],
+      [
+        "bank",
+        "bank name",
+        "bank account"
+      ],
+      [
+        "account",
+        "account number",
+        "bank account"
+      ],
+      [
+        "name",
+        "first name",
+        "last name"
+      ],
+      [
+        "tel",
+        "phone",
+        "telephone"
+      ],
+      [
+        "payment",
+        "payment amount",
+        "transaction id"
+      ],
+      [
+        "account",
+        "account number",
+        "bank account"
+      ],
+      [
+        "Opening bank"
+      ],
+      [
+        "bank",
+        "bank name",
+        "bank account"
+      ],
+      [
+        "account",
+        "username",
+        "id"
+      ],
+      [
+        "Card number"
+      ],
+      [
+        "transaction",
+        "deal",
+        "trade"
+      ],
+      [
+        "time",
+        "date",
+        "duration"
+      ],
+      [
+        "payment",
+        "payment amount",
+        "transaction id"
+      ],
+      [
+        "bank card",
+        "bank account",
+        "bank payment"
+      ],
+      [
+        "payment",
+        "payment amount",
+        "transaction id"
+      ],
+      [
+        "bank card",
+        "bank account",
+        "bank payment"
+      ],
+      [
+        "ID"
+      ],
+      [
+        "face"
+      ],
+      [
+        "password",
+        "pwd",
+        "secret"
+      ],
+      [
+        "login",
+        "sign in",
+        "sign up"
+      ],
+      [
+        "password",
+        "pwd",
+        "secret"
+      ],
+      [
+        "contact",
+        "contacts",
+        "get in touch"
+      ],
+      [
+        "bank",
+        "bank name",
+        "bank account"
+      ],
+      [
+        "content",
+        "text",
+        "body"
+      ],
+      [
+        "call",
+        "calling",
+        "called"
+      ],
+      [
+        "status",
+        "state",
+        "account status"
+      ],
+      [
+        "environment"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "base",
+        "base station",
+        "station"
+      ],
+      [
+        "position",
+        "location"
+      ],
+      [
+        "WLAN"
+      ],
+      [
+        "network",
+        "networking",
+        "net"
+      ],
+      [
+        "contact list",
+        "contacts",
+        "address book"
+      ],
+      [
+        "phone number",
+        "telephone number",
+        "cellphone number"
+      ],
+      [
+        "contacts"
+      ],
+      [
+        "storage",
+        "repository",
+        "storehouse"
+      ],
+      [
+        "identifier",
+        "id",
+        "mark"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "base",
+        "base station",
+        "station"
+      ],
+      [
+        "position",
+        "location"
+      ],
+      [
+        "WLAN"
+      ],
+      [
+        "network",
+        "networking",
+        "net"
+      ],
+      [
+        "photo album",
+        "album"
+      ],
+      [
+        "video"
+      ],
+      [
+        "photo",
+        "picture",
+        "image"
+      ],
+      [
+        "video"
+      ],
+      [
+        "photo",
+        "picture",
+        "image"
+      ],
+      [
+        "contact list",
+        "contacts",
+        "address book"
+      ],
+      [
+        "phone number",
+        "telephone number",
+        "cellphone number"
+      ],
+      [
+        "contacts"
+      ],
+      [
+        "calendar",
+        "date",
+        "time"
+      ],
+      [
+        "setting",
+        "configuration",
+        "preference"
+      ],
+      [
+        "calendar",
+        "date",
+        "time"
+      ],
+      [
+        "interaction",
+        "dialogue",
+        "communication"
+      ],
+      [
+        "Page prompt"
+      ],
+      [
+        "input",
+        "enter",
+        "type"
+      ],
+      [
+        "bank",
+        "bank name",
+        "bank account"
+      ],
+      [
+        "identity"
+      ],
+      [
+        "access",
+        "visit",
+        "call"
+      ],
+      [
+        "register",
+        "sign up",
+        "enroll"
+      ],
+      [
+        "file",
+        "files",
+        "attachment"
+      ],
+      [
+        "storage",
+        "repository",
+        "storehouse"
+      ],
+      [
+        "COOKIE"
+      ],
+      [
+        "browser",
+        "web browser",
+        "internet browser"
+      ],
+      [
+        "COOKIE"
+      ],
+      [
+        "visit page",
+        "visit the page",
+        "access page"
+      ],
+      [
+        "display"
+      ],
+      [
+        "address",
+        "location",
+        "place"
+      ],
+      [
+        "position",
+        "location"
+      ],
+      [
+        "Browsing"
+      ],
+      [
+        "web activity",
+        "online activity",
+        "network activity"
+      ],
+      [
+        "environment"
+      ],
+      [
+        "network",
+        "networking",
+        "net"
+      ],
+      [
+        "position",
+        "location"
+      ],
+      [
+        "storage",
+        "repository",
+        "storehouse"
+      ],
+      [
+        "country",
+        "nation",
+        "state"
+      ],
+      [
+        "department",
+        "department",
+        "department"
+      ],
+      [
+        "industry",
+        "business",
+        "sector"
+      ],
+      [
+        "data"
+      ],
+      [
+        "transaction",
+        "deal",
+        "trade"
+      ],
+      [
+        "identity"
+      ],
+      [
+        "department",
+        "department",
+        "department"
+      ],
+      [
+        "identity"
+      ],
+      [
+        "contact",
+        "contacts",
+        "get in touch"
+      ],
+      [
+        "credentials",
+        "certificate",
+        "certification"
+      ],
+      [
+        "country",
+        "nation",
+        "state"
+      ],
+      [
+        "name",
+        "first name",
+        "last name"
+      ],
+      [
+        "content",
+        "text",
+        "body"
+      ],
+      [
+        "contact",
+        "contacts",
+        "get in touch"
+      ],
+      [
+        "department",
+        "department",
+        "department"
+      ],
+      [
+        "credentials",
+        "certificate",
+        "certification"
+      ],
+      [
+        "account",
+        "account number",
+        "bank account"
+      ],
+      [
+        "Page prompt"
+      ],
+      [
+        "identity"
+      ],
+      [
+        "account",
+        "account number",
+        "bank account"
+      ],
+      [
+        "bank",
+        "bank name",
+        "bank account"
+      ],
+      [
+        "COOKIE"
+      ],
+      [
+        "storage",
+        "repository",
+        "storehouse"
+      ],
+      [
+        "bank",
+        "bank name",
+        "bank account"
+      ],
+      [
+        "auth",
+        "authorization",
+        "authorized"
+      ],
+      [
+        "password",
+        "pwd",
+        "secret"
+      ],
+      [
+        "login",
+        "sign in",
+        "sign up"
+      ],
+      [
+        "short message"
+      ]
+    ],
+    "purpose-cn-total": [
+      "竞赛",
+      "交易完全",
+      "关联银行卡",
+      "交易安全",
+      "识别要素",
+      "交叉验证核对",
+      "申请开立账户",
+      "校验",
+      "共享",
+      "开发",
+      "说明",
+      "保护",
+      "采取措施",
+      "理财",
+      "防范风险",
+      "设置",
+      "保障账户",
+      "联合",
+      "安全风控",
+      "生物识别",
+      "履行职责",
+      "转账",
+      "遵守国家",
+      "广告",
+      "投诉纠纷",
+      "登录",
+      "校验码",
+      "判断安全",
+      "密码登录",
+      "资产登记",
+      "活动",
+      "证件号码",
+      "履行义务",
+      "监管",
+      "发放奖品",
+      "创建网页",
+      "识别身份",
+      "推广投放"
+    ],
+    "purpose-en-total": [
+      " advertising",
+      " promotion and placement",
+      " judgment security",
+      " identification elements",
+      " check code",
+      " ID numbers",
+      " application for account opening",
+      " supervision",
+      " performance of duties",
+      "Competition",
+      " biometric identification",
+      " joint",
+      " associated bank card",
+      " explanation",
+      " asset registration",
+      " distribution of prizes",
+      " risk prevention",
+      " complete transaction",
+      " fulfillment of obligations",
+      " creation of web pages",
+      " activities",
+      " transfer",
+      " cross-verification check",
+      " development",
+      " setting up",
+      " transaction security",
+      " sharing",
+      " login",
+      " complaints and disputes",
+      " password login",
+      " verification",
+      " protection",
+      " measures taken",
+      " security risk control",
+      " financial management",
+      " account protection",
+      " identification of identities",
+      " compliance with the country"
+    ],
+    "permission_list": [
+      "BIND_VOICE_INTERACTION",
+      "READ_BASIC_PHONE_STATE",
+      "ACCESS_COARSE_LOCATION",
+      "MANAGE_DEVICE_POLICY_RESET_PASSWORD",
+      "MANAGE_DEVICE_POLICY_SETTINGS",
+      "FLASHLIGHT",
+      "RECORD_AUDIO",
+      "WRITE_MEDIA_AUDIO",
+      "CHANGE_WIFI_MULTICAST_STATE",
+      "CHANGE_NETWORK_STATE",
+      "WRITE_SYNC_SETTINGS",
+      "OVERRIDE_WIFI_CONFIG",
+      "MANAGE_DEVICE_POLICY_CAMERA",
+      "MANAGE_DEVICE_POLICY_PROFILE_INTERACTION",
+      "MANAGE_DEVICE_POLICY_SCREEN_CONTENT",
+      "CAMERA",
+      "REQUEST_PASSWORD_COMPLEXITY",
+      "WRITE_SECURE_SETTINGS",
+      "MANAGE_DEVICE_POLICY_ORGANIZATION_IDENTITY",
+      "RECEIVE_SMS",
+      "WRITE_MEDIA_IMAGES",
+      "BIND_CARRIER_MESSAGING_CLIENT_SERVICE",
+      "ACCESS_NETWORK_STATE",
+      "READ_MEDIA_AUDIO",
+      "NEARBY_WIFI_DEVICES",
+      "MANAGE_DEVICE_POLICY_DISPLAY",
+      "MANAGE_DEVICE_POLICY_DEVICE_IDENTIFIERS",
+      "SET_TIME",
+      "DELETE_CACHE_FILES",
+      "MANAGE_DEVICE_POLICY_MOBILE_NETWORK",
+      "MANAGE_DEVICE_POLICY_APP_USER_DATA",
+      "READ_INPUT_STATE",
+      "MANAGE_DEVICE_POLICY_TIME",
+      "ACCOUNT_MANAGER",
+      "READ_MEDIA_VIDEO",
+      "WRITE_SETTINGS",
+      "INTERACT_ACROSS_PROFILES",
+      "BIND_QUICK_SETTINGS_TILE",
+      "MANAGE_DEVICE_POLICY_METERED_DATA",
+      "BIND_COMPANION_DEVICE_SERVICE",
+      "MANAGE_DOCUMENTS",
+      "READ_EXTERNAL_STORAGE",
+      "ACCESS_WIFI_STATE",
+      "LAUNCH_MULTI_PANE_SETTINGS_DEEP_LINK",
+      "BIND_CARRIER_MESSAGING_SERVICE",
+      "MANAGE_DEVICE_POLICY_INPUT_METHODS",
+      "MANAGE_DEVICE_POLICY_WIPE_DATA",
+      "WRITE_APN_SETTINGS",
+      "MANAGE_DEVICE_POLICY_SMS",
+      "READ_SYNC_SETTINGS",
+      "MANAGE_DEVICE_POLICY_DEBUGGING_FEATURES",
+      "ACCESS_FINE_LOCATION",
+      "READ_SMS",
+      "FOREGROUND_SERVICE_DATA_SYNC",
+      "WRITE_EXTERNAL_STORAGE",
+      "BIND_NFC_SERVICE",
+      "READ_MEDIA_IMAGES",
+      "MANAGE_DEVICE_POLICY_PACKAGE_STATE",
+      "MANAGE_DEVICE_POLICY_WIFI",
+      "SEND_SMS",
+      "BIND_INPUT_METHOD",
+      "FOREGROUND_SERVICE_LOCATION",
+      "READ_PHONE_NUMBERS",
+      "MANAGE_DEVICE_POLICY_CERTIFICATES",
+      "READ_ASSISTANT_APP_SEARCH_DATA",
+      "WRITE_VOICEMAIL",
+      "GET_ACCOUNTS_PRIVILEGED",
+      "SUBSCRIBE_TO_KEYGUARD_LOCKED_STATE",
+      "MANAGE_EXTERNAL_STORAGE",
+      "MANAGE_DEVICE_POLICY_PROFILES"
+    ]
+  },
+  [
+    {
+      "orig-sentence": "您使用我们的服务时，我们将按照《网商银行隐私权政策》（以下简称“本政策”）收集、存储、保护、使用及对外提供您的信息。",
+      "data-cn-list": [
+        "存储"
+      ],
+      "data-en-list": [
+        "storage"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "storage",
+          "repository",
+          "storehouse"
+        ]
+      ],
+      "purpose-cn-list": [
+        ""
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "存储",
+          "data-en": "storage",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            ""
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": " 为了遵守国家法律法规及监管规定（例如：进行实名制管理、履行反洗钱职责、采取风险防范措施），也为了向您提供服务及提升服务质量，我们需要收集、存储、使用及对外提供您的信息。",
+      "data-cn-list": [
+        "存储"
+      ],
+      "data-en-list": [
+        "storage"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "storage",
+          "repository",
+          "storehouse"
+        ]
+      ],
+      "purpose-cn-list": [
+        "遵守国家",
+        "履行职责",
+        "采取措施",
+        "监管"
+      ],
+      "purpose-en-list": [
+        " compliance with the country",
+        " performance of duties",
+        " measures taken",
+        " supervision"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "存储",
+          "data-en": "storage",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "遵守国家",
+            "履行职责",
+            "采取措施",
+            "监管"
+          ],
+          "purpose-en": [
+            " compliance with the country",
+            " performance of duties",
+            " measures taken",
+            " supervision"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": " 为落实实名制、反洗钱及账户管理等法定义务及监管要求，为有效防范风险，在您申请开立网商银行账户或使用网商银行服务时，我们会向您收集必要信息，包括：您的身份信息（姓名、身份证影印件、生物识别特征）、手机号码、绑定账户信息（卡号、开户行、账户类型、绑卡手机号）、地址信息、职业信息、邮箱信息及需要您提供的其他信息；此外，为履行上述法定义务，避免您重复提交，我们会在监管要求的必要范围内，向合法留存您信息的其他机构（例如：网商银行的关联公司、合作金融机构、政府机关等，下同）收集您的前述信息并进行交叉验证核对。",
+      "data-cn-list": [
+        "姓名",
+        "特征",
+        "职业",
+        "邮箱",
+        "账户",
+        "地址",
+        "开户行",
+        "银行",
+        "身份证",
+        "手机号码",
+        "卡号"
+      ],
+      "data-en-list": [
+        "full name",
+        "features",
+        "occupation",
+        "mailbox",
+        "account",
+        "address",
+        "Opening bank",
+        "bank",
+        "ID",
+        "phone number",
+        "Card number"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "name",
+          "first name",
+          "last name"
+        ],
+        [
+          "features"
+        ],
+        [
+          "profession",
+          "occupation",
+          "career"
+        ],
+        [
+          "email",
+          "mail",
+          "e mail"
+        ],
+        [
+          "account",
+          "account number",
+          "bank account"
+        ],
+        [
+          "address",
+          "location",
+          "place"
+        ],
+        [
+          "Opening bank"
+        ],
+        [
+          "bank",
+          "bank name",
+          "bank account"
+        ],
+        [
+          "ID card",
+          "identity card",
+          "ID"
+        ],
+        [
+          "phone number",
+          "telephone number",
+          "cellphone number"
+        ],
+        [
+          "Card number"
+        ]
+      ],
+      "purpose-cn-list": [
+        "申请开立账户",
+        "交叉验证核对",
+        "履行义务",
+        "防范风险"
+      ],
+      "purpose-en-list": [
+        " application for account opening",
+        " cross-verification check",
+        " fulfillment of obligations",
+        " risk prevention"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "姓名",
+          "data-en": "full name",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "申请开立账户",
+            "交叉验证核对",
+            "履行义务",
+            "防范风险"
+          ],
+          "purpose-en": [
+            " application for account opening",
+            " cross-verification check",
+            " fulfillment of obligations",
+            " risk prevention"
+          ]
+        },
+        {
+          "data-cn": "特征",
+          "data-en": "features",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "申请开立账户",
+            "交叉验证核对",
+            "履行义务",
+            "防范风险"
+          ],
+          "purpose-en": [
+            " application for account opening",
+            " cross-verification check",
+            " fulfillment of obligations",
+            " risk prevention"
+          ]
+        },
+        {
+          "data-cn": "职业",
+          "data-en": "occupation",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "申请开立账户",
+            "交叉验证核对",
+            "履行义务",
+            "防范风险"
+          ],
+          "purpose-en": [
+            " application for account opening",
+            " cross-verification check",
+            " fulfillment of obligations",
+            " risk prevention"
+          ]
+        },
+        {
+          "data-cn": "邮箱",
+          "data-en": "mailbox",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "申请开立账户",
+            "交叉验证核对",
+            "履行义务",
+            "防范风险"
+          ],
+          "purpose-en": [
+            " application for account opening",
+            " cross-verification check",
+            " fulfillment of obligations",
+            " risk prevention"
+          ]
+        },
+        {
+          "data-cn": "账户",
+          "data-en": "account",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "申请开立账户",
+            "交叉验证核对",
+            "履行义务",
+            "防范风险"
+          ],
+          "purpose-en": [
+            " application for account opening",
+            " cross-verification check",
+            " fulfillment of obligations",
+            " risk prevention"
+          ]
+        },
+        {
+          "data-cn": "地址",
+          "data-en": "address",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "申请开立账户",
+            "交叉验证核对",
+            "履行义务",
+            "防范风险"
+          ],
+          "purpose-en": [
+            " application for account opening",
+            " cross-verification check",
+            " fulfillment of obligations",
+            " risk prevention"
+          ]
+        },
+        {
+          "data-cn": "开户行",
+          "data-en": "Opening bank",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "申请开立账户",
+            "交叉验证核对",
+            "履行义务",
+            "防范风险"
+          ],
+          "purpose-en": [
+            " application for account opening",
+            " cross-verification check",
+            " fulfillment of obligations",
+            " risk prevention"
+          ]
+        },
+        {
+          "data-cn": "银行",
+          "data-en": "bank",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "申请开立账户",
+            "交叉验证核对",
+            "履行义务",
+            "防范风险"
+          ],
+          "purpose-en": [
+            " application for account opening",
+            " cross-verification check",
+            " fulfillment of obligations",
+            " risk prevention"
+          ]
+        },
+        {
+          "data-cn": "身份证",
+          "data-en": "ID",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "申请开立账户",
+            "交叉验证核对",
+            "履行义务",
+            "防范风险"
+          ],
+          "purpose-en": [
+            " application for account opening",
+            " cross-verification check",
+            " fulfillment of obligations",
+            " risk prevention"
+          ]
+        },
+        {
+          "data-cn": "手机号码",
+          "data-en": "phone number",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "申请开立账户",
+            "交叉验证核对",
+            "履行义务",
+            "防范风险"
+          ],
+          "purpose-en": [
+            " application for account opening",
+            " cross-verification check",
+            " fulfillment of obligations",
+            " risk prevention"
+          ]
+        },
+        {
+          "data-cn": "卡号",
+          "data-en": "Card number",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "申请开立账户",
+            "交叉验证核对",
+            "履行义务",
+            "防范风险"
+          ],
+          "purpose-en": [
+            " application for account opening",
+            " cross-verification check",
+            " fulfillment of obligations",
+            " risk prevention"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": " 为了让您能够方便、快捷地登录网商银行，我们提供支付宝快捷登录。",
+      "data-cn-list": [
+        "支付",
+        "登录"
+      ],
+      "data-en-list": [
+        "payment",
+        "Sign in"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "payment",
+          "payment amount",
+          "transaction id"
+        ],
+        [
+          "login",
+          "sign in",
+          "sign up"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "支付",
+          "data-en": "payment",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "登录",
+          "data-en": "Sign in",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "在您使用快捷登录时，我们会基于您的授权从支付宝侧获取您的支付宝账号相关信息，具体信息字段以授权页面展示为准。",
+      "data-cn-list": [
+        "支付",
+        "账号",
+        "授权"
+      ],
+      "data-en-list": [
+        "payment",
+        "account number",
+        "to grant authorization"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "payment",
+          "payment amount",
+          "transaction id"
+        ],
+        [
+          "account",
+          "username",
+          "id"
+        ],
+        [
+          "auth",
+          "authorization",
+          "authorized"
+        ]
+      ],
+      "purpose-cn-list": [
+        "登录"
+      ],
+      "purpose-en-list": [
+        " login"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "支付",
+          "data-en": "payment",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "登录"
+          ],
+          "purpose-en": [
+            " login"
+          ]
+        },
+        {
+          "data-cn": "账号",
+          "data-en": "account number",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "登录"
+          ],
+          "purpose-en": [
+            " login"
+          ]
+        },
+        {
+          "data-cn": "授权",
+          "data-en": "to grant authorization",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "登录"
+          ],
+          "purpose-en": [
+            " login"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": " 在您使用理财产品时，我们会收集您的身份信息（姓名、身份证影印件）、手机号码、账户信息（银行卡号、支付宝余额、银行卡余额）、风险测评信息。",
+      "data-cn-list": [
+        "姓名",
+        "支付",
+        "银行卡号",
+        "账户",
+        "手机号码",
+        "风险测评",
+        "余额",
+        "身份证"
+      ],
+      "data-en-list": [
+        "full name",
+        "payment",
+        "Credit card number",
+        "account",
+        "phone number",
+        "risk evaluation",
+        "balance",
+        "ID"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "name",
+          "first name",
+          "last name"
+        ],
+        [
+          "payment",
+          "payment amount",
+          "transaction id"
+        ],
+        [
+          "bank card number",
+          "bankcard number",
+          "debit card number"
+        ],
+        [
+          "account",
+          "account number",
+          "bank account"
+        ],
+        [
+          "phone number",
+          "telephone number",
+          "cellphone number"
+        ],
+        [
+          "risk",
+          "assessment",
+          "evaluation"
+        ],
+        [
+          "balance",
+          "money",
+          "rest"
+        ],
+        [
+          "ID card",
+          "identity card",
+          "ID"
+        ]
+      ],
+      "purpose-cn-list": [
+        "理财"
+      ],
+      "purpose-en-list": [
+        " financial management"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "姓名",
+          "data-en": "full name",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "理财"
+          ],
+          "purpose-en": [
+            " financial management"
+          ]
+        },
+        {
+          "data-cn": "支付",
+          "data-en": "payment",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "理财"
+          ],
+          "purpose-en": [
+            " financial management"
+          ]
+        },
+        {
+          "data-cn": "银行卡号",
+          "data-en": "Credit card number",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "理财"
+          ],
+          "purpose-en": [
+            " financial management"
+          ]
+        },
+        {
+          "data-cn": "账户",
+          "data-en": "account",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "理财"
+          ],
+          "purpose-en": [
+            " financial management"
+          ]
+        },
+        {
+          "data-cn": "手机号码",
+          "data-en": "phone number",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "理财"
+          ],
+          "purpose-en": [
+            " financial management"
+          ]
+        },
+        {
+          "data-cn": "风险测评",
+          "data-en": "risk evaluation",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "理财"
+          ],
+          "purpose-en": [
+            " financial management"
+          ]
+        },
+        {
+          "data-cn": "余额",
+          "data-en": "balance",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "理财"
+          ],
+          "purpose-en": [
+            " financial management"
+          ]
+        },
+        {
+          "data-cn": "身份证",
+          "data-en": "ID",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "理财"
+          ],
+          "purpose-en": [
+            " financial management"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": " 基于您开立的网商银行账户类型，您可以使用不同的转账服务，如向他人转账、您名下不同账户间的转账（包括转入及转出）、进行前述资金交易而需要绑定或关联银行卡。",
+      "data-cn-list": [
+        "银行",
+        "账户"
+      ],
+      "data-en-list": [
+        "bank",
+        "account"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "bank",
+          "bank name",
+          "bank account"
+        ],
+        [
+          "account",
+          "account number",
+          "bank account"
+        ]
+      ],
+      "purpose-cn-list": [
+        "转账",
+        "关联银行卡"
+      ],
+      "purpose-en-list": [
+        " transfer",
+        " associated bank card"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "银行",
+          "data-en": "bank",
+          "subject": [],
+          "purpose-cn": [
+            "转账",
+            "关联银行卡"
+          ],
+          "purpose-en": [
+            " transfer",
+            " associated bank card"
+          ]
+        },
+        {
+          "data-cn": "账户",
+          "data-en": "account",
+          "subject": [],
+          "purpose-cn": [
+            "转账",
+            "关联银行卡"
+          ],
+          "purpose-en": [
+            " transfer",
+            " associated bank card"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "当您使用前述服务时，我们可能需要收集您绑定或关联的账户信息（姓名、卡号、开户行、账户类型、有效期、预留手机号）、支付宝账号信息、转账相对方的账户信息（姓名、卡号、开户行、账户类型），并通过清算机构、非银行支付机构及合法留存您信息的其他机构对前述信息进行校验。",
+      "data-cn-list": [
+        "姓名",
+        "手机号",
+        "支付",
+        "账户",
+        "开户行",
+        "银行",
+        "账号",
+        "卡号"
+      ],
+      "data-en-list": [
+        "full name",
+        "cellphone number",
+        "payment",
+        "account",
+        "Opening bank",
+        "bank",
+        "account number",
+        "Card number"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "name",
+          "first name",
+          "last name"
+        ],
+        [
+          "tel",
+          "phone",
+          "telephone"
+        ],
+        [
+          "payment",
+          "payment amount",
+          "transaction id"
+        ],
+        [
+          "account",
+          "account number",
+          "bank account"
+        ],
+        [
+          "Opening bank"
+        ],
+        [
+          "bank",
+          "bank name",
+          "bank account"
+        ],
+        [
+          "account",
+          "username",
+          "id"
+        ],
+        [
+          "Card number"
+        ]
+      ],
+      "purpose-cn-list": [
+        "校验"
+      ],
+      "purpose-en-list": [
+        " verification"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "姓名",
+          "data-en": "full name",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "校验"
+          ],
+          "purpose-en": [
+            " verification"
+          ]
+        },
+        {
+          "data-cn": "手机号",
+          "data-en": "cellphone number",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "校验"
+          ],
+          "purpose-en": [
+            " verification"
+          ]
+        },
+        {
+          "data-cn": "支付",
+          "data-en": "payment",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "校验"
+          ],
+          "purpose-en": [
+            " verification"
+          ]
+        },
+        {
+          "data-cn": "账户",
+          "data-en": "account",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "校验"
+          ],
+          "purpose-en": [
+            " verification"
+          ]
+        },
+        {
+          "data-cn": "开户行",
+          "data-en": "Opening bank",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "校验"
+          ],
+          "purpose-en": [
+            " verification"
+          ]
+        },
+        {
+          "data-cn": "银行",
+          "data-en": "bank",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "校验"
+          ],
+          "purpose-en": [
+            " verification"
+          ]
+        },
+        {
+          "data-cn": "账号",
+          "data-en": "account number",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "校验"
+          ],
+          "purpose-en": [
+            " verification"
+          ]
+        },
+        {
+          "data-cn": "卡号",
+          "data-en": "Card number",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "校验"
+          ],
+          "purpose-en": [
+            " verification"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "我们还会记录您转账相关的信息（转账金额、交易时间）统一展示在账单内。",
+      "data-cn-list": [
+        "交易",
+        "时间"
+      ],
+      "data-en-list": [
+        "transaction",
+        "time"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "transaction",
+          "deal",
+          "trade"
+        ],
+        [
+          "time",
+          "date",
+          "duration"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "交易",
+          "data-en": "transaction",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "时间",
+          "data-en": "time",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "您也可以主动选择一键添加支付宝端绑定的银行卡信息。",
+      "data-cn-list": [
+        "支付",
+        "银行卡"
+      ],
+      "data-en-list": [
+        "payment",
+        "bank card"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "payment",
+          "payment amount",
+          "transaction id"
+        ],
+        [
+          "bank card",
+          "bank account",
+          "bank payment"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "支付",
+          "data-en": "payment",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "银行卡",
+          "data-en": "bank card",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "您也可以主动选择一键添加支付宝端绑定的银行卡信息。",
+      "data-cn-list": [
+        "支付",
+        "银行卡"
+      ],
+      "data-en-list": [
+        "payment",
+        "bank card"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "payment",
+          "payment amount",
+          "transaction id"
+        ],
+        [
+          "bank card",
+          "bank account",
+          "bank payment"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "支付",
+          "data-en": "payment",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "银行卡",
+          "data-en": "bank card",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "我们仅接收验证结果，并不收集您的手势密码信息或面容ID信息。",
+      "data-cn-list": [
+        "ID",
+        "面容",
+        "密码"
+      ],
+      "data-en-list": [
+        "ID",
+        "face",
+        "password"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "ID"
+        ],
+        [
+          "face"
+        ],
+        [
+          "password",
+          "pwd",
+          "secret"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "ID",
+          "data-en": "ID",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "面容",
+          "data-en": "face",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "密码",
+          "data-en": "password",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "如您不需要使用密码登录或面容ID登录服务，您也可以选择密码登录等其他方式； 。",
+      "data-cn-list": [
+        "登录",
+        "密码"
+      ],
+      "data-en-list": [
+        "Sign in",
+        "password"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "login",
+          "sign in",
+          "sign up"
+        ],
+        [
+          "password",
+          "pwd",
+          "secret"
+        ]
+      ],
+      "purpose-cn-list": [
+        "密码登录"
+      ],
+      "purpose-en-list": [
+        " password login"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "登录",
+          "data-en": "Sign in",
+          "subject": [],
+          "purpose-cn": [
+            "密码登录"
+          ],
+          "purpose-en": [
+            " password login"
+          ]
+        },
+        {
+          "data-cn": "密码",
+          "data-en": "password",
+          "subject": [],
+          "purpose-cn": [
+            "密码登录"
+          ],
+          "purpose-en": [
+            " password login"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": " 为提升您的服务体验及改进服务质量，或者为您推荐更优质或更适合的服务，我们会基于向您提供客户服务，收集您使用网商银行服务的操作记录、您与客户服务团队联系时提供的信息及您参与问卷调查时向我们发送的信息。",
+      "data-cn-list": [
+        "联系"
+      ],
+      "data-en-list": [
+        "contact"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "contact",
+          "contacts",
+          "get in touch"
+        ]
+      ],
+      "purpose-cn-list": [
+        ""
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "联系",
+          "data-en": "contact",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            ""
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "需要特别说明的是，网商银行APP获取具体某一项权限并不代表网商银行APP必然会收集您的相关信息；即使您已经确认向网商银行APP开启权限，网商银行APP也仅会在合法、正当、必要的范围内收集您的相关信息。",
+      "data-cn-list": [
+        "银行"
+      ],
+      "data-en-list": [
+        "bank"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "bank",
+          "bank name",
+          "bank account"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "银行",
+          "data-en": "bank",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "  用于读取设备硬件信息，判断账户与设备的关联关系，设备信息权限可能被表述为“电话状态”，请您放心，该权限无法监听、获取您的通话内容与信息。",
+      "data-cn-list": [
+        "内容",
+        "通话"
+      ],
+      "data-en-list": [
+        "content",
+        "conversation"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "content",
+          "text",
+          "body"
+        ],
+        [
+          "call",
+          "calling",
+          "called"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "内容",
+          "data-en": "content",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "通话",
+          "data-en": "conversation",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "  用于保障账户、交易完全，完成安全风控，需要读取您的设备识别信息、设备状态信息以及设备环境信息  。",
+      "data-cn-list": [
+        "状态",
+        "环境",
+        "设备"
+      ],
+      "data-en-list": [
+        "state",
+        "environment",
+        "device"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "status",
+          "state",
+          "account status"
+        ],
+        [
+          "environment"
+        ],
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ]
+      ],
+      "purpose-cn-list": [
+        "安全风控",
+        "交易完全",
+        "保障账户"
+      ],
+      "purpose-en-list": [
+        " security risk control",
+        " complete transaction",
+        " account protection"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "状态",
+          "data-en": "state",
+          "subject": [],
+          "purpose-cn": [
+            "安全风控",
+            "交易完全",
+            "保障账户"
+          ],
+          "purpose-en": [
+            " security risk control",
+            " complete transaction",
+            " account protection"
+          ]
+        },
+        {
+          "data-cn": "环境",
+          "data-en": "environment",
+          "subject": [],
+          "purpose-cn": [
+            "安全风控",
+            "交易完全",
+            "保障账户"
+          ],
+          "purpose-en": [
+            " security risk control",
+            " complete transaction",
+            " account protection"
+          ]
+        },
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [],
+          "purpose-cn": [
+            "安全风控",
+            "交易完全",
+            "保障账户"
+          ],
+          "purpose-en": [
+            " security risk control",
+            " complete transaction",
+            " account protection"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "  提供网络位置信息（例如基站和WLAN）获取大致地理位置信息；提供全球定位系统（GPS）或网络位置信息（例如基站和WLAN）获取精准地理位置信息，获取精准地理位置信息需要您的单独授权  。",
+      "data-cn-list": [
+        "基站",
+        "位置",
+        "WLAN",
+        "网络"
+      ],
+      "data-en-list": [
+        "base station",
+        "position",
+        "WLAN",
+        "network"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "base",
+          "base station",
+          "station"
+        ],
+        [
+          "position",
+          "location"
+        ],
+        [
+          "WLAN"
+        ],
+        [
+          "network",
+          "networking",
+          "net"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "基站",
+          "data-en": "base station",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "位置",
+          "data-en": "position",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "WLAN",
+          "data-en": "WLAN",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "网络",
+          "data-en": "network",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "  提供系统中的通讯录信息  。",
+      "data-cn-list": [
+        "通讯录"
+      ],
+      "data-en-list": [
+        "mail list"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "contact list",
+          "contacts",
+          "address book"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "通讯录",
+          "data-en": "mail list",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "  当您在向他人进行转账时，为了提升您的服务体验，您可以选择或快速匹配响应的联系人及手机号码  。",
+      "data-cn-list": [
+        "手机号码",
+        "联系人"
+      ],
+      "data-en-list": [
+        "phone number",
+        "contacts"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "phone number",
+          "telephone number",
+          "cellphone number"
+        ],
+        [
+          "contacts"
+        ]
+      ],
+      "purpose-cn-list": [
+        "转账"
+      ],
+      "purpose-en-list": [
+        " transfer"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "手机号码",
+          "data-en": "phone number",
+          "subject": [],
+          "purpose-cn": [
+            "转账"
+          ],
+          "purpose-en": [
+            " transfer"
+          ]
+        },
+        {
+          "data-cn": "联系人",
+          "data-en": "contacts",
+          "subject": [],
+          "purpose-cn": [
+            "转账"
+          ],
+          "purpose-en": [
+            " transfer"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "  读取、写入存储空间  。",
+      "data-cn-list": [
+        "存储"
+      ],
+      "data-en-list": [
+        "storage"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "storage",
+          "repository",
+          "storehouse"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "存储",
+          "data-en": "storage",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "  允许应用获取您的设备标识符  。",
+      "data-cn-list": [
+        "标识符",
+        "设备"
+      ],
+      "data-en-list": [
+        "identifier ",
+        "device"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "identifier",
+          "id",
+          "mark"
+        ],
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "标识符",
+          "data-en": "identifier ",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "  用于保障账户、交易安全和提供个性化服务体验，需要获取您的设备标识权限并用于识别当前设备  。",
+      "data-cn-list": [
+        "设备"
+      ],
+      "data-en-list": [
+        "device"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ]
+      ],
+      "purpose-cn-list": [
+        "交易安全",
+        "保障账户"
+      ],
+      "purpose-en-list": [
+        " transaction security",
+        " account protection"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [],
+          "purpose-cn": [
+            "交易安全",
+            "保障账户"
+          ],
+          "purpose-en": [
+            " transaction security",
+            " account protection"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "  提供网络位置信息（例如基站和WLAN）获取大致地理位置信息；提供全球定位系统（GPS）或网络位置信息（例如基站和WLAN）获取精准地理位置信息，获取精准地理位置信息需要您的单独授权  。",
+      "data-cn-list": [
+        "基站",
+        "位置",
+        "WLAN",
+        "网络"
+      ],
+      "data-en-list": [
+        "base station",
+        "position",
+        "WLAN",
+        "network"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "base",
+          "base station",
+          "station"
+        ],
+        [
+          "position",
+          "location"
+        ],
+        [
+          "WLAN"
+        ],
+        [
+          "network",
+          "networking",
+          "net"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "基站",
+          "data-en": "base station",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "位置",
+          "data-en": "position",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "WLAN",
+          "data-en": "WLAN",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "网络",
+          "data-en": "network",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "  允许选择相册中的照片和视频、保存拍摄的照片和视频。",
+      "data-cn-list": [
+        "相册",
+        "视频",
+        "照片"
+      ],
+      "data-en-list": [
+        "album",
+        "video",
+        "Photo"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "photo album",
+          "album"
+        ],
+        [
+          "video"
+        ],
+        [
+          "photo",
+          "picture",
+          "image"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "相册",
+          "data-en": "album",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "视频",
+          "data-en": "video",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "照片",
+          "data-en": "Photo",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "请您放心，网商银行仅会使用您选中的照片/视频上传  。",
+      "data-cn-list": [
+        "视频",
+        "照片"
+      ],
+      "data-en-list": [
+        "video",
+        "Photo"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "video"
+        ],
+        [
+          "photo",
+          "picture",
+          "image"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "视频",
+          "data-en": "video",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "照片",
+          "data-en": "Photo",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "  提供系统中的通讯录信息  。",
+      "data-cn-list": [
+        "通讯录"
+      ],
+      "data-en-list": [
+        "mail list"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "contact list",
+          "contacts",
+          "address book"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "通讯录",
+          "data-en": "mail list",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "  当您在向他人进行转账时，为了提升您的服务体验，您可以选择或快速匹配相应的联系人及手机号码  。",
+      "data-cn-list": [
+        "手机号码",
+        "联系人"
+      ],
+      "data-en-list": [
+        "phone number",
+        "contacts"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "phone number",
+          "telephone number",
+          "cellphone number"
+        ],
+        [
+          "contacts"
+        ]
+      ],
+      "purpose-cn-list": [
+        "转账"
+      ],
+      "purpose-en-list": [
+        " transfer"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "手机号码",
+          "data-en": "phone number",
+          "subject": [],
+          "purpose-cn": [
+            "转账"
+          ],
+          "purpose-en": [
+            " transfer"
+          ]
+        },
+        {
+          "data-cn": "联系人",
+          "data-en": "contacts",
+          "subject": [],
+          "purpose-cn": [
+            "转账"
+          ],
+          "purpose-en": [
+            " transfer"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "  读取日历  。",
+      "data-cn-list": [
+        "日历"
+      ],
+      "data-en-list": [
+        "calendar"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "calendar",
+          "date",
+          "time"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "日历",
+          "data-en": "calendar",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "  您可以选择在日历中设置还款提醒  。",
+      "data-cn-list": [
+        "设置",
+        "日历"
+      ],
+      "data-en-list": [
+        "set up",
+        "calendar"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "setting",
+          "configuration",
+          "preference"
+        ],
+        [
+          "calendar",
+          "date",
+          "time"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "设置",
+          "data-en": "set up",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "日历",
+          "data-en": "calendar",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "如您选择使用了前述说明当中尚未涵盖的其他服务，基于该服务我们需要收集您的信息的，我们会通过页面提示、交互流程、协议约定的方式另行向您说明信息收集的范围与目的。",
+      "data-cn-list": [
+        "交互",
+        "页面提示"
+      ],
+      "data-en-list": [
+        "interactive",
+        "Page prompt"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "interaction",
+          "dialogue",
+          "communication"
+        ],
+        [
+          "Page prompt"
+        ]
+      ],
+      "purpose-cn-list": [
+        "说明"
+      ],
+      "purpose-en-list": [
+        " explanation"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "交互",
+          "data-en": "interactive",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "说明"
+          ],
+          "purpose-en": [
+            " explanation"
+          ]
+        },
+        {
+          "data-cn": "页面提示",
+          "data-en": "Page prompt",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "说明"
+          ],
+          "purpose-en": [
+            " explanation"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": " 为使您获得更轻松的访问体验，您访问网商银行网站或使用网商银行提供的服务时，我们可能会通过小型数据文件识别您的身份，这么做可帮您省去重复输入注册信息的步骤，或者帮助判断您的账户安全状态。",
+      "data-cn-list": [
+        "输入",
+        "银行",
+        "身份",
+        "访问",
+        "注册",
+        "文件"
+      ],
+      "data-en-list": [
+        "input",
+        "bank",
+        "identity",
+        "visit",
+        "sign in",
+        "file"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "input",
+          "enter",
+          "type"
+        ],
+        [
+          "bank",
+          "bank name",
+          "bank account"
+        ],
+        [
+          "identity"
+        ],
+        [
+          "access",
+          "visit",
+          "call"
+        ],
+        [
+          "register",
+          "sign up",
+          "enroll"
+        ],
+        [
+          "file",
+          "files",
+          "attachment"
+        ]
+      ],
+      "purpose-cn-list": [
+        "判断安全"
+      ],
+      "purpose-en-list": [
+        " judgment security"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "输入",
+          "data-en": "input",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "判断安全"
+          ],
+          "purpose-en": [
+            " judgment security"
+          ]
+        },
+        {
+          "data-cn": "银行",
+          "data-en": "bank",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "判断安全"
+          ],
+          "purpose-en": [
+            " judgment security"
+          ]
+        },
+        {
+          "data-cn": "身份",
+          "data-en": "identity",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "判断安全"
+          ],
+          "purpose-en": [
+            " judgment security"
+          ]
+        },
+        {
+          "data-cn": "访问",
+          "data-en": "visit",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "判断安全"
+          ],
+          "purpose-en": [
+            " judgment security"
+          ]
+        },
+        {
+          "data-cn": "注册",
+          "data-en": "sign in",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "判断安全"
+          ],
+          "purpose-en": [
+            " judgment security"
+          ]
+        },
+        {
+          "data-cn": "文件",
+          "data-en": "file",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "判断安全"
+          ],
+          "purpose-en": [
+            " judgment security"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "这些数据文件可能是Cookie，Flash Cookie，您的浏览器或关联应用程序提供的其他本地存储（以下简称“Cookie”）。",
+      "data-cn-list": [
+        "存储",
+        "COOKIE"
+      ],
+      "data-en-list": [
+        "storage",
+        "COOKIE"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "storage",
+          "repository",
+          "storehouse"
+        ],
+        [
+          "COOKIE"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "存储",
+          "data-en": "storage",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "COOKIE",
+          "data-en": "COOKIE",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "此外，您可以通过改变浏览器附加程序的设置，或通过访问提供商的网页，来关闭或删除浏览器附加程序使用的类似数据（例如：Flash Cookie）。",
+      "data-cn-list": [
+        "浏览器",
+        "COOKIE"
+      ],
+      "data-en-list": [
+        "browser",
+        "COOKIE"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "browser",
+          "web browser",
+          "internet browser"
+        ],
+        [
+          "COOKIE"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "浏览器",
+          "data-en": "browser",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "COOKIE",
+          "data-en": "COOKIE",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": " 我们网站上还可能包含一些电子图像（以下简称“单像素GIF文件”或“网络Beacon”），使用网络Beacon可以帮助网站计算浏览网页的用户或访问某些Cookie，我们会通过网络Beacon收集您浏览网页活动的信息，例如：您访问的页面地址、您先前访问的援引页面的位置、您的浏览环境以及显示设定。",
+      "data-cn-list": [
+        "访问页面",
+        "显示",
+        "地址",
+        "位置",
+        "浏览",
+        "网页活动",
+        "环境"
+      ],
+      "data-en-list": [
+        "Accessing pages",
+        "display",
+        "address",
+        "position",
+        "Browsing",
+        "Web activity",
+        "environment"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "visit page",
+          "visit the page",
+          "access page"
+        ],
+        [
+          "display"
+        ],
+        [
+          "address",
+          "location",
+          "place"
+        ],
+        [
+          "position",
+          "location"
+        ],
+        [
+          "Browsing"
+        ],
+        [
+          "web activity",
+          "online activity",
+          "network activity"
+        ],
+        [
+          "environment"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "访问页面",
+          "data-en": "Accessing pages",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "显示",
+          "data-en": "display",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "地址",
+          "data-en": "address",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "位置",
+          "data-en": "position",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "浏览",
+          "data-en": "Browsing",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "网页活动",
+          "data-en": "Web activity",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "环境",
+          "data-en": "environment",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": " 如您通过我们的网站或APP，使用了由第三方而非网商银行提供的服务时，我们无法保证这些第三方会按照我们的要求采取保护措施，为尽力确保您的账号安全，使您获得更安全的访问体验，我们可能会使用专用的网络协议及代理技术（以下简称“专用网络通道”或“网络代理”）。",
+      "data-cn-list": [
+        "网络"
+      ],
+      "data-en-list": [
+        "network"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "network",
+          "networking",
+          "net"
+        ]
+      ],
+      "purpose-cn-list": [
+        ""
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "网络",
+          "data-en": "network",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            ""
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "在此过程中，我们也可能会获得和保存关于设备的相关信息，例如：IP地址、硬件ID以及您访问的页面位置。",
+      "data-cn-list": [
+        "位置"
+      ],
+      "data-en-list": [
+        "position"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "position",
+          "location"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "位置",
+          "data-en": "position",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": " 1、我们在中华人民共和国境内收集和产生的个人信息将存储在中华人民共和国境内。",
+      "data-cn-list": [
+        "存储"
+      ],
+      "data-en-list": [
+        "storage"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "storage",
+          "repository",
+          "storehouse"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "存储",
+          "data-en": "storage",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "如部分服务涉及跨境业务，我们需要向境外机构传输境内收集的相关个人信息的，我们会按照法律法规和相关监管部门的规定执行，向您说明个人信息出境的目的、方式、境外主体、涉及的个人信息种类等事项，征得您的同意，并通过签订协议、现场核查等有效措施，要求境外机构为所获得的您的个人信息保密，如出境数据涉及个人金融信息，我们将依据国家、行业有关部门制定的办法与标准开展个人金融信息出境安全评估。",
+      "data-cn-list": [
+        "国家",
+        "部门",
+        "行业"
+      ],
+      "data-en-list": [
+        "country",
+        "department",
+        "industry"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "country",
+          "nation",
+          "state"
+        ],
+        [
+          "department",
+          "department",
+          "department"
+        ],
+        [
+          "industry",
+          "business",
+          "sector"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "国家",
+          "data-en": "country",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "部门",
+          "data-en": "department",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "行业",
+          "data-en": "industry",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "例如，我们将会按照《中华人民共和国反洗钱法》规定的期限保存您的身份资料、交易信息。",
+      "data-cn-list": [
+        "资料",
+        "交易",
+        "身份"
+      ],
+      "data-en-list": [
+        "data",
+        "transaction",
+        "identity"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "data"
+        ],
+        [
+          "transaction",
+          "deal",
+          "trade"
+        ],
+        [
+          "identity"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "资料",
+          "data-en": "data",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "交易",
+          "data-en": "transaction",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "身份",
+          "data-en": "identity",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": " 7、在您终止使用网商银行服务后，我们会停止对您的信息的收集和使用，法律法规或监管部门另有规定的除外。",
+      "data-cn-list": [
+        "部门"
+      ],
+      "data-en-list": [
+        "department"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "department",
+          "department",
+          "department"
+        ]
+      ],
+      "purpose-cn-list": [
+        ""
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "部门",
+          "data-en": "department",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            ""
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": " （10）我们可能与进行广告、内容推广投放的合作伙伴合作，委托他们处理与广告覆盖面和有效性相关的信息，但除非得到您的许可，我们不会共享用于识别您个人身份的信息，或者我们仅会向合作伙伴提供不能识别您个人身份的处理后信息，以帮助其在不识别您个人身份的前提下提升推广内容的有效触达率。",
+      "data-cn-list": [
+        "身份"
+      ],
+      "data-en-list": [
+        "identity"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "identity"
+        ]
+      ],
+      "purpose-cn-list": [
+        "识别身份",
+        "广告",
+        "推广投放",
+        "共享"
+      ],
+      "purpose-en-list": [
+        " identification of identities",
+        " advertising",
+        " promotion and placement",
+        " sharing"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "身份",
+          "data-en": "identity",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "识别身份",
+            "广告",
+            "推广投放",
+            "共享"
+          ],
+          "purpose-en": [
+            " identification of identities",
+            " advertising",
+            " promotion and placement",
+            " sharing"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "例如：您通过网商银行购买金融产品时，我们需要向合作金融机构提供您的有效证件信息与联系方式，以保证您完成购买流程合规性要求以及保证您的资产准确无误的登记； 。",
+      "data-cn-list": [
+        "联系",
+        "证件"
+      ],
+      "data-en-list": [
+        "contact",
+        "certificates"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "contact",
+          "contacts",
+          "get in touch"
+        ],
+        [
+          "credentials",
+          "certificate",
+          "certification"
+        ]
+      ],
+      "purpose-cn-list": [
+        "资产登记"
+      ],
+      "purpose-en-list": [
+        " asset registration"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "联系",
+          "data-en": "contact",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "资产登记"
+          ],
+          "purpose-en": [
+            " asset registration"
+          ]
+        },
+        {
+          "data-cn": "证件",
+          "data-en": "certificates",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "资产登记"
+          ],
+          "purpose-en": [
+            " asset registration"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": " （2）如您选择参与我们和第三方联合开展的抽奖、竞赛或类似推广活动，我们可能与其共享活动过程中产生的、为完成活动所必要的信息，以便第三方能及时向您发放奖品或为您提供服务，我们会依据法律法规或国家标准的要求，在活动规则页面或通过其他途径向您明确告知需要向第三方提供何种个人信息； 。",
+      "data-cn-list": [
+        "国家"
+      ],
+      "data-en-list": [
+        "country"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "country",
+          "nation",
+          "state"
+        ]
+      ],
+      "purpose-cn-list": [
+        "竞赛",
+        "活动",
+        "联合",
+        "发放奖品",
+        "共享"
+      ],
+      "purpose-en-list": [
+        "Competition",
+        " activities",
+        " joint",
+        " distribution of prizes",
+        " sharing"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "国家",
+          "data-en": "country",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "竞赛",
+            "活动",
+            "联合",
+            "发放奖品",
+            "共享"
+          ],
+          "purpose-en": [
+            "Competition",
+            " activities",
+            " joint",
+            " distribution of prizes",
+            " sharing"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": " 当您投诉他人或被他人投诉时，为了保护您及他人的合法权益，我们可能会将您的姓名及有效证件号码、联系方式、投诉相关内容提供给消费者权益保护部门、监管机关，以便及时解决投诉纠纷，但法律法规明确禁止提供的除外。",
+      "data-cn-list": [
+        "姓名",
+        "内容",
+        "联系",
+        "部门",
+        "证件"
+      ],
+      "data-en-list": [
+        "full name",
+        "content",
+        "contact",
+        "department",
+        "certificates"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "name",
+          "first name",
+          "last name"
+        ],
+        [
+          "content",
+          "text",
+          "body"
+        ],
+        [
+          "contact",
+          "contacts",
+          "get in touch"
+        ],
+        [
+          "department",
+          "department",
+          "department"
+        ],
+        [
+          "credentials",
+          "certificate",
+          "certification"
+        ]
+      ],
+      "purpose-cn-list": [
+        "保护",
+        "投诉纠纷"
+      ],
+      "purpose-en-list": [
+        " protection",
+        " complaints and disputes"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "姓名",
+          "data-en": "full name",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "保护",
+            "投诉纠纷"
+          ],
+          "purpose-en": [
+            " protection",
+            " complaints and disputes"
+          ]
+        },
+        {
+          "data-cn": "内容",
+          "data-en": "content",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "保护",
+            "投诉纠纷"
+          ],
+          "purpose-en": [
+            " protection",
+            " complaints and disputes"
+          ]
+        },
+        {
+          "data-cn": "联系",
+          "data-en": "contact",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "保护",
+            "投诉纠纷"
+          ],
+          "purpose-en": [
+            " protection",
+            " complaints and disputes"
+          ]
+        },
+        {
+          "data-cn": "部门",
+          "data-en": "department",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "保护",
+            "投诉纠纷"
+          ],
+          "purpose-en": [
+            " protection",
+            " complaints and disputes"
+          ]
+        },
+        {
+          "data-cn": "证件",
+          "data-en": "certificates",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "保护",
+            "投诉纠纷"
+          ],
+          "purpose-en": [
+            " protection",
+            " complaints and disputes"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": " 在您使用网商银行服务期间，为了您可以更加便捷地访问和管理您的个人信息，同时保障您注销账户的权利，我们在产品设计中为您提供了相应的操作设置，您可以参考下面的指引、或根据相关产品或服务页面提示进行操作。",
+      "data-cn-list": [
+        "账户",
+        "页面提示"
+      ],
+      "data-en-list": [
+        "account",
+        "Page prompt"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "account",
+          "account number",
+          "bank account"
+        ],
+        [
+          "Page prompt"
+        ]
+      ],
+      "purpose-cn-list": [
+        "设置"
+      ],
+      "purpose-en-list": [
+        " setting up"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "账户",
+          "data-en": "account",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "设置"
+          ],
+          "purpose-en": [
+            " setting up"
+          ]
+        },
+        {
+          "data-cn": "页面提示",
+          "data-en": "Page prompt",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "设置"
+          ],
+          "purpose-en": [
+            " setting up"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": " （1）您可登录网商银行账户，点击头像或“账户设置”按钮进入个人页面查阅您的身份信息、账户信息、交易记录以及绑定的关联账户/银行卡信息，同时，您可以在核身通过后，选择复制您的身份及账户信息。",
+      "data-cn-list": [
+        "身份",
+        "账户"
+      ],
+      "data-en-list": [
+        "identity",
+        "account"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "identity"
+        ],
+        [
+          "account",
+          "account number",
+          "bank account"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "身份",
+          "data-en": "identity",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "账户",
+          "data-en": "account",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": " 请您注意，您的交易相对方、您访问的第三方网站经营者、通过我们接入的第三方服务（例如：网商银行APP中第三方提供的应用）和由网商银行处接收您的个人信息的第三方可能有自己的隐私权保护政策；当您查看第三方创建的网页或使用第三方开发的应用程序时，这些第三方可能会放置他们自己的Cookie或像素标签，这些Cookie或像素标签不受我们的控制，且它们的使用不受本政策的约束。",
+      "data-cn-list": [
+        "银行",
+        "COOKIE"
+      ],
+      "data-en-list": [
+        "bank",
+        "COOKIE"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "bank",
+          "bank name",
+          "bank account"
+        ],
+        [
+          "COOKIE"
+        ]
+      ],
+      "purpose-cn-list": [
+        "创建网页",
+        "开发"
+      ],
+      "purpose-en-list": [
+        " creation of web pages",
+        " development"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "银行",
+          "data-en": "bank",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "创建网页",
+            "开发"
+          ],
+          "purpose-en": [
+            " creation of web pages",
+            " development"
+          ]
+        },
+        {
+          "data-cn": "COOKIE",
+          "data-en": "COOKIE",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "创建网页",
+            "开发"
+          ],
+          "purpose-en": [
+            " creation of web pages",
+            " development"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": " （2）收集、存储、使用个人信息的范围、目的、规则发生变化； 。",
+      "data-cn-list": [
+        "存储"
+      ],
+      "data-en-list": [
+        "storage"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "storage",
+          "repository",
+          "storehouse"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "存储",
+          "data-en": "storage",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": " 2、本政策中的“身份要素”是指：网商银行用于识别您身份的信息要素，包括您的网商银行授权登录信息、密码、短信校验码、电话号码、手机号码、证件号码及生物识别信息。",
+      "data-cn-list": [
+        "银行",
+        "授权",
+        "密码",
+        "登录",
+        "短信"
+      ],
+      "data-en-list": [
+        "bank",
+        "to grant authorization",
+        "password",
+        "Sign in",
+        "short message"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "bank",
+          "bank name",
+          "bank account"
+        ],
+        [
+          "auth",
+          "authorization",
+          "authorized"
+        ],
+        [
+          "password",
+          "pwd",
+          "secret"
+        ],
+        [
+          "login",
+          "sign in",
+          "sign up"
+        ],
+        [
+          "short message"
+        ]
+      ],
+      "purpose-cn-list": [
+        "生物识别",
+        "证件号码",
+        "识别要素",
+        "校验码"
+      ],
+      "purpose-en-list": [
+        " biometric identification",
+        " ID numbers",
+        " identification elements",
+        " check code"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "银行",
+          "data-en": "bank",
+          "subject": [],
+          "purpose-cn": [
+            "生物识别",
+            "证件号码",
+            "识别要素",
+            "校验码"
+          ],
+          "purpose-en": [
+            " biometric identification",
+            " ID numbers",
+            " identification elements",
+            " check code"
+          ]
+        },
+        {
+          "data-cn": "授权",
+          "data-en": "to grant authorization",
+          "subject": [],
+          "purpose-cn": [
+            "生物识别",
+            "证件号码",
+            "识别要素",
+            "校验码"
+          ],
+          "purpose-en": [
+            " biometric identification",
+            " ID numbers",
+            " identification elements",
+            " check code"
+          ]
+        },
+        {
+          "data-cn": "密码",
+          "data-en": "password",
+          "subject": [],
+          "purpose-cn": [
+            "生物识别",
+            "证件号码",
+            "识别要素",
+            "校验码"
+          ],
+          "purpose-en": [
+            " biometric identification",
+            " ID numbers",
+            " identification elements",
+            " check code"
+          ]
+        },
+        {
+          "data-cn": "登录",
+          "data-en": "Sign in",
+          "subject": [],
+          "purpose-cn": [
+            "生物识别",
+            "证件号码",
+            "识别要素",
+            "校验码"
+          ],
+          "purpose-en": [
+            " biometric identification",
+            " ID numbers",
+            " identification elements",
+            " check code"
+          ]
+        },
+        {
+          "data-cn": "短信",
+          "data-en": "short message",
+          "subject": [],
+          "purpose-cn": [
+            "生物识别",
+            "证件号码",
+            "识别要素",
+            "校验码"
+          ],
+          "purpose-en": [
+            " biometric identification",
+            " ID numbers",
+            " identification elements",
+            " check code"
+          ]
+        }
+      ]
+    }
+  ]
+]

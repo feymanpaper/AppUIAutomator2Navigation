@@ -1,5 +1,6 @@
 /dumpjson/
 /__pycache__/
+/PrivacyData/
 /Log/
 /.idea/
 /SavedInstance/

@@ -1,0 +1,357 @@
+[
+  {
+    "sentence-count": 5,
+    "data-count": 9,
+    "purpose-count": 4,
+    "data-cn-total": [
+      "IP",
+      "支付",
+      "存储",
+      "设备",
+      "网络",
+      "国家",
+      "用户"
+    ],
+    "data-en-total": [
+      "IP",
+      "payment",
+      "network",
+      "country",
+      "storage",
+      "device",
+      "user"
+    ],
+    "data-en-chatgpt-total": [
+      [
+        "storage",
+        "repository",
+        "storehouse"
+      ],
+      [
+        "IP"
+      ],
+      [
+        "payment",
+        "payment amount",
+        "transaction id"
+      ],
+      [
+        "device",
+        "equipment",
+        "instrument"
+      ],
+      [
+        "payment",
+        "payment amount",
+        "transaction id"
+      ],
+      [
+        "network",
+        "networking",
+        "net"
+      ],
+      [
+        "country",
+        "nation",
+        "state"
+      ],
+      [
+        "country",
+        "nation",
+        "state"
+      ],
+      [
+        "user",
+        "account",
+        "member"
+      ]
+    ],
+    "purpose-cn-total": [
+      "蚂蚁金服旗下协议协议",
+      "任一",
+      "维护权",
+      "共享"
+    ],
+    "purpose-en-total": [
+      " any",
+      " maintenance rights",
+      "Ant Financial's agreement agreement",
+      " sharing."
+    ],
+    "permission_list": [
+      "MANAGE_DEVICE_POLICY_RESTRICT_PRIVATE_DNS",
+      "WRITE_APN_SETTINGS",
+      "MANAGE_DEVICE_POLICY_ACROSS_USERS",
+      "WRITE_USER_DICTIONARY",
+      "WRITE_EXTERNAL_STORAGE",
+      "ACCESS_NETWORK_STATE",
+      "BIND_COMPANION_DEVICE_SERVICE",
+      "READ_USER_DICTIONARY",
+      "MANAGE_DEVICE_POLICY_MODIFY_USERS",
+      "READ_EXTERNAL_STORAGE",
+      "MANAGE_DEVICE_POLICY_PRIVATE_DNS",
+      "MANAGE_DEVICE_POLICY_USERS",
+      "CHANGE_WIFI_MULTICAST_STATE",
+      "CHANGE_NETWORK_STATE",
+      "MANAGE_DEVICE_POLICY_MOBILE_NETWORK",
+      "MANAGE_DEVICE_POLICY_APP_USER_DATA",
+      "USE_SIP",
+      "MANAGE_EXTERNAL_STORAGE"
+    ]
+  },
+  [
+    {
+      "orig-sentence": "本政策包含了我们收集、存储、保护、使用和共享您的个人信息的条款，我们建议您完整地阅读本政策，以帮助您了解维护自己隐私权的方式。",
+      "data-cn-list": [
+        "存储"
+      ],
+      "data-en-list": [
+        "storage"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "storage",
+          "repository",
+          "storehouse"
+        ]
+      ],
+      "purpose-cn-list": [
+        "维护权",
+        "共享"
+      ],
+      "purpose-en-list": [
+        " maintenance rights",
+        " sharing."
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "存储",
+          "data-en": "storage",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "维护权",
+            "共享"
+          ],
+          "purpose-en": [
+            " maintenance rights",
+            " sharing."
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "当您同意蚂蚁金服旗下公司的服务协议如《支付宝服务协议》时，或您访问蚂蚁金服旗下公司的网站如支付宝网站（www.alipay.com）及其相关网站、蚂蚁金服旗下公司的移动设备客户端时，或您使用我们提供的任一服务时，即表示您已同意我们按照本政策来合法使用和保护您的个人信息。",
+      "data-cn-list": [
+        "IP",
+        "支付",
+        "设备"
+      ],
+      "data-en-list": [
+        "IP",
+        "payment",
+        "device"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "IP"
+        ],
+        [
+          "payment",
+          "payment amount",
+          "transaction id"
+        ],
+        [
+          "device",
+          "equipment",
+          "instrument"
+        ]
+      ],
+      "purpose-cn-list": [
+        "蚂蚁金服旗下协议协议",
+        "任一"
+      ],
+      "purpose-en-list": [
+        "Ant Financial's agreement agreement",
+        " any"
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "IP",
+          "data-en": "IP",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "蚂蚁金服旗下协议协议",
+            "任一"
+          ],
+          "purpose-en": [
+            "Ant Financial's agreement agreement",
+            " any"
+          ]
+        },
+        {
+          "data-cn": "支付",
+          "data-en": "payment",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "蚂蚁金服旗下协议协议",
+            "任一"
+          ],
+          "purpose-en": [
+            "Ant Financial's agreement agreement",
+            " any"
+          ]
+        },
+        {
+          "data-cn": "设备",
+          "data-en": "device",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "蚂蚁金服旗下协议协议",
+            "任一"
+          ],
+          "purpose-en": [
+            "Ant Financial's agreement agreement",
+            " any"
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "2、浙江蚂蚁小微金融服务集团有限公司直接或间接控股的公司，包括但不限于支付宝（中国）网络技术有限公司、上海招财宝金融信息服务有限公司、芝麻信用管理有限公司；。",
+      "data-cn-list": [
+        "支付",
+        "网络"
+      ],
+      "data-en-list": [
+        "payment",
+        "network"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "payment",
+          "payment amount",
+          "transaction id"
+        ],
+        [
+          "network",
+          "networking",
+          "net"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "支付",
+          "data-en": "payment",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "网络",
+          "data-en": "network",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "我们将按照本政策来收集、保护、使用、共享您的个人信息，如国家法律法规或监管规定对蚂蚁金服旗下公司另行规定或您与蚂蚁金服旗下公司另行约定的条款与本政策不一致的，以另行规定、约定的为准。",
+      "data-cn-list": [
+        "国家"
+      ],
+      "data-en-list": [
+        "country"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "country",
+          "nation",
+          "state"
+        ]
+      ],
+      "purpose-cn-list": [
+        "共享"
+      ],
+      "purpose-en-list": [
+        " sharing."
+      ],
+      "result_sentence": [
+        {
+          "data-cn": "国家",
+          "data-en": "country",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "共享"
+          ],
+          "purpose-en": [
+            " sharing."
+          ]
+        }
+      ]
+    },
+    {
+      "orig-sentence": "我们收集、使用您的信息是出于遵守国家法律法规的规定以及向您提供服务及提升服务质量的目的（包括支持我们开发新产品或完善已有产品功能，为您和其他用户提供更为优质的服务）。",
+      "data-cn-list": [
+        "国家",
+        "用户"
+      ],
+      "data-en-list": [
+        "country",
+        "user"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "country",
+          "nation",
+          "state"
+        ],
+        [
+          "user",
+          "account",
+          "member"
+        ]
+      ],
+      "purpose-cn-list": [
+        ""
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "国家",
+          "data-en": "country",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            ""
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "用户",
+          "data-en": "user",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            ""
+          ],
+          "purpose-en": []
+        }
+      ]
+    }
+  ]
+]

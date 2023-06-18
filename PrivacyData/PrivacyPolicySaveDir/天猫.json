@@ -1,0 +1,5395 @@
+[
+  {
+    "sentence-count": 66,
+    "data-count": 185,
+    "purpose-count": 77,
+    "data-cn-total": [
+      "行踪轨迹",
+      "足迹",
+      "昵称",
+      "授权",
+      "网络",
+      "支付",
+      "手机号码",
+      "提供者",
+      "语音",
+      "会员",
+      "查询",
+      "收藏",
+      "商品",
+      "电子邮箱",
+      "国家",
+      "OAID",
+      "链接",
+      "互动",
+      "金融账户",
+      "统计数据",
+      "姓名",
+      "IP",
+      "IDFA",
+      "收货",
+      "浏览",
+      "设置",
+      "搜索词",
+      "搜索记录",
+      "次数",
+      "地址",
+      "浏览记录",
+      "搜索",
+      "银行卡号",
+      "存储",
+      "浏览器",
+      "订阅",
+      "配送",
+      "证件",
+      "短信",
+      "电子邮件",
+      "企业",
+      "访问",
+      "交易",
+      "识别号",
+      "显示",
+      "头像",
+      "认证",
+      "账号",
+      "访问日期",
+      "订单",
+      "视频",
+      "付款",
+      "分享",
+      "发布",
+      "收货人",
+      "财产",
+      "邮箱",
+      "内容",
+      "热度",
+      "用户",
+      "行为",
+      "身份证",
+      "加购",
+      "欺诈",
+      "文字",
+      "图片",
+      "电话",
+      "请求",
+      "搜索时间",
+      "联系",
+      "注销申请",
+      "宗教信仰",
+      "购物车",
+      "点击",
+      "关注",
+      "账户",
+      "健康",
+      "身份",
+      "物流",
+      "发票",
+      "评价",
+      "语言",
+      "登录",
+      "榜单",
+      "查询记录",
+      "时间",
+      "口令",
+      "操作记录",
+      "记录",
+      "剪贴板"
+    ],
+    "data-en-total": [
+      "payment",
+      "commodity",
+      "heat degree",
+      "search time",
+      "nickname",
+      "logistics",
+      "contact",
+      "footprint",
+      "cancellation application",
+      "subscribe",
+      "frequency",
+      "account number",
+      "storage",
+      "action",
+      "ID",
+      "E-mail",
+      "member",
+      "Shopping Cart",
+      "request",
+      "Password",
+      "interaction",
+      "cheat",
+      "authentication",
+      "operation record",
+      "release",
+      "Sign in",
+      "Email",
+      "query",
+      "phone number",
+      "Identification number",
+      "OAID",
+      "time",
+      "List",
+      "consignee",
+      "IP",
+      "identity",
+      "IDFA",
+      "follow",
+      "religious belief",
+      "Search Records",
+      "transaction",
+      "Delivery",
+      "Browsing Records",
+      "click",
+      "avatar",
+      "display",
+      "Credit card number",
+      "written words",
+      "short message",
+      "invoice",
+      "voice",
+      "content",
+      "evaluate",
+      "visit",
+      "Provider",
+      "property",
+      "video",
+      "record",
+      "share",
+      "country",
+      "order",
+      "statistical data",
+      "user",
+      "link",
+      "Search term",
+      "company",
+      "address",
+      "Browsing",
+      "Receipt",
+      "account",
+      "browser",
+      "network",
+      "Telephone",
+      "financial account",
+      "Query Records",
+      "search",
+      "healthy",
+      "to grant authorization",
+      "set up",
+      "picture",
+      "language",
+      "mailbox",
+      "full name",
+      "Add Purchase",
+      "Collection",
+      "Access Date",
+      "Trajectory",
+      "certificates",
+      "clipboard"
+    ],
+    "data-en-chatgpt-total": [
+      [
+        "storage",
+        "repository",
+        "storehouse"
+      ],
+      [
+        "search",
+        "find",
+        "look up"
+      ],
+      [
+        "transaction",
+        "deal",
+        "trade"
+      ],
+      [
+        "Browsing"
+      ],
+      [
+        "contact",
+        "contacts",
+        "get in touch"
+      ],
+      [
+        "storage",
+        "repository",
+        "storehouse"
+      ],
+      [
+        "auth",
+        "authorization",
+        "authorized"
+      ],
+      [
+        "phone number",
+        "telephone number",
+        "cellphone number"
+      ],
+      [
+        "account",
+        "username",
+        "id"
+      ],
+      [
+        "avatar",
+        "icon",
+        "profile picture"
+      ],
+      [
+        "setting",
+        "configuration",
+        "preference"
+      ],
+      [
+        "display"
+      ],
+      [
+        "nickname",
+        "name",
+        "title"
+      ],
+      [
+        "avatar",
+        "icon",
+        "profile picture"
+      ],
+      [
+        "nickname",
+        "name",
+        "title"
+      ],
+      [
+        "link"
+      ],
+      [
+        "payment",
+        "payment amount",
+        "transaction id"
+      ],
+      [
+        "account",
+        "account number",
+        "bank account"
+      ],
+      [
+        "company"
+      ],
+      [
+        "identity"
+      ],
+      [
+        "authentication",
+        "auth",
+        "authorization"
+      ],
+      [
+        "name",
+        "first name",
+        "last name"
+      ],
+      [
+        "payment",
+        "payment amount",
+        "transaction id"
+      ],
+      [
+        "account",
+        "account number",
+        "bank account"
+      ],
+      [
+        "authentication",
+        "auth",
+        "authorization"
+      ],
+      [
+        "account",
+        "username",
+        "id"
+      ],
+      [
+        "auth",
+        "authorization",
+        "authorized"
+      ],
+      [
+        "country",
+        "nation",
+        "state"
+      ],
+      [
+        "record",
+        "log",
+        "trace"
+      ],
+      [
+        "ID card",
+        "identity card",
+        "ID"
+      ],
+      [
+        "footprint"
+      ],
+      [
+        "operation record",
+        "operational record",
+        "operating record"
+      ],
+      [
+        "footprint"
+      ],
+      [
+        "Browsing Records"
+      ],
+      [
+        "history",
+        "record",
+        "search history"
+      ],
+      [
+        "image",
+        "pic",
+        "photo"
+      ],
+      [
+        "search time",
+        "seek time",
+        "find time"
+      ],
+      [
+        "content",
+        "text",
+        "body"
+      ],
+      [
+        "voice"
+      ],
+      [
+        "search term",
+        "search word",
+        "search phrase"
+      ],
+      [
+        "times",
+        "frequency",
+        "number"
+      ],
+      [
+        "Browsing Records"
+      ],
+      [
+        "history",
+        "record",
+        "search history"
+      ],
+      [
+        "Browsing"
+      ],
+      [
+        "product",
+        "commodity",
+        "goods"
+      ],
+      [
+        "Add Purchase"
+      ],
+      [
+        "name",
+        "first name",
+        "last name"
+      ],
+      [
+        "address",
+        "location",
+        "place"
+      ],
+      [
+        "phone",
+        "telephone",
+        "cellphone"
+      ],
+      [
+        "contact",
+        "contacts",
+        "get in touch"
+      ],
+      [
+        "consignee",
+        "recipient"
+      ],
+      [
+        "name",
+        "first name",
+        "last name"
+      ],
+      [
+        "ID card",
+        "identity card",
+        "ID"
+      ],
+      [
+        "credentials",
+        "certificate",
+        "certification"
+      ],
+      [
+        "query",
+        "search",
+        "find"
+      ],
+      [
+        "identity"
+      ],
+      [
+        "transaction",
+        "deal",
+        "trade"
+      ],
+      [
+        "order",
+        "orders",
+        "purchase order"
+      ],
+      [
+        "E-mail"
+      ],
+      [
+        "invoice",
+        "invoice information",
+        "billing information"
+      ],
+      [
+        "identification",
+        "identifier",
+        "ID"
+      ],
+      [
+        "Delivery"
+      ],
+      [
+        "order",
+        "orders",
+        "purchase order"
+      ],
+      [
+        "contact",
+        "contacts",
+        "get in touch"
+      ],
+      [
+        "order",
+        "orders",
+        "purchase order"
+      ],
+      [
+        "account",
+        "account number",
+        "bank account"
+      ],
+      [
+        "image",
+        "pic",
+        "photo"
+      ],
+      [
+        "video"
+      ],
+      [
+        "evaluate"
+      ],
+      [
+        "content",
+        "text",
+        "body"
+      ],
+      [
+        "avatar",
+        "icon",
+        "profile picture"
+      ],
+      [
+        "written words"
+      ],
+      [
+        "publish",
+        "post",
+        "send"
+      ],
+      [
+        "avatar",
+        "icon",
+        "profile picture"
+      ],
+      [
+        "nickname",
+        "name",
+        "title"
+      ],
+      [
+        "content",
+        "text",
+        "body"
+      ],
+      [
+        "evaluate"
+      ],
+      [
+        "product",
+        "commodity",
+        "goods"
+      ],
+      [
+        "contact",
+        "contacts",
+        "get in touch"
+      ],
+      [
+        "email",
+        "mail",
+        "e mail"
+      ],
+      [
+        "phone",
+        "telephone",
+        "cellphone"
+      ],
+      [
+        "contact",
+        "contacts",
+        "get in touch"
+      ],
+      [
+        "identity"
+      ],
+      [
+        "product",
+        "commodity",
+        "goods"
+      ],
+      [
+        "email",
+        "e mail",
+        "mail"
+      ],
+      [
+        "contact",
+        "contacts",
+        "get in touch"
+      ],
+      [
+        "user",
+        "account",
+        "member"
+      ],
+      [
+        "short message"
+      ],
+      [
+        "setting",
+        "configuration",
+        "preference"
+      ],
+      [
+        "order",
+        "orders",
+        "purchase order"
+      ],
+      [
+        "account",
+        "account number",
+        "bank account"
+      ],
+      [
+        "nickname",
+        "name",
+        "title"
+      ],
+      [
+        "delivery",
+        "receipt",
+        "acceptance"
+      ],
+      [
+        "avatar",
+        "icon",
+        "profile picture"
+      ],
+      [
+        "contact",
+        "contacts",
+        "get in touch"
+      ],
+      [
+        "Password"
+      ],
+      [
+        "share",
+        "forward",
+        "transmit"
+      ],
+      [
+        "link"
+      ],
+      [
+        "content",
+        "text",
+        "body"
+      ],
+      [
+        "clipboard"
+      ],
+      [
+        "List"
+      ],
+      [
+        "heat degree"
+      ],
+      [
+        "interaction",
+        "interactive",
+        "interactively"
+      ],
+      [
+        "statistical data",
+        "statistics",
+        "data"
+      ],
+      [
+        "IDFA"
+      ],
+      [
+        "OAID"
+      ],
+      [
+        "member",
+        "vip",
+        "subscriber"
+      ],
+      [
+        "transaction",
+        "deal",
+        "trade"
+      ],
+      [
+        "auth",
+        "authorization",
+        "authorized"
+      ],
+      [
+        "storage",
+        "repository",
+        "storehouse"
+      ],
+      [
+        "access",
+        "visit",
+        "call"
+      ],
+      [
+        "browser",
+        "web browser",
+        "internet browser"
+      ],
+      [
+        "user",
+        "account",
+        "member"
+      ],
+      [
+        "auth",
+        "authorization",
+        "authorized"
+      ],
+      [
+        "payment",
+        "pay",
+        "money"
+      ],
+      [
+        "payment",
+        "payment amount",
+        "transaction id"
+      ],
+      [
+        "order",
+        "orders",
+        "purchase order"
+      ],
+      [
+        "IDFA"
+      ],
+      [
+        "account",
+        "username",
+        "id"
+      ],
+      [
+        "OAID"
+      ],
+      [
+        "bank card number",
+        "bankcard number",
+        "debit card number"
+      ],
+      [
+        "payment",
+        "payment amount",
+        "transaction id"
+      ],
+      [
+        "payment",
+        "payment amount",
+        "transaction id"
+      ],
+      [
+        "phone number",
+        "telephone number",
+        "cellphone number"
+      ],
+      [
+        "account",
+        "username",
+        "id"
+      ],
+      [
+        "payment",
+        "payment amount",
+        "transaction id"
+      ],
+      [
+        "Delivery"
+      ],
+      [
+        "logistics"
+      ],
+      [
+        "Delivery"
+      ],
+      [
+        "operation record",
+        "operational record",
+        "operating record"
+      ],
+      [
+        "Browsing"
+      ],
+      [
+        "subscribe",
+        "subscription",
+        "subscriber"
+      ],
+      [
+        "login",
+        "sign in",
+        "sign up"
+      ],
+      [
+        "identity"
+      ],
+      [
+        "user",
+        "account",
+        "member"
+      ],
+      [
+        "behavior",
+        "action",
+        "activity"
+      ],
+      [
+        "property"
+      ],
+      [
+        "transaction",
+        "deal",
+        "trade"
+      ],
+      [
+        "order",
+        "orders",
+        "purchase order"
+      ],
+      [
+        "product",
+        "commodity",
+        "goods"
+      ],
+      [
+        "provider",
+        "auth type",
+        "oauth type"
+      ],
+      [
+        "member",
+        "vip",
+        "subscriber"
+      ],
+      [
+        "IP"
+      ],
+      [
+        "contact",
+        "contacts",
+        "get in touch"
+      ],
+      [
+        "login",
+        "sign in",
+        "sign up"
+      ],
+      [
+        "behavior",
+        "action",
+        "activity"
+      ],
+      [
+        "setting",
+        "configuration",
+        "preference"
+      ],
+      [
+        "auth",
+        "authorization",
+        "authorized"
+      ],
+      [
+        "request",
+        "requests",
+        "requesting"
+      ],
+      [
+        "auth",
+        "authorization",
+        "authorized"
+      ],
+      [
+        "cancellation application"
+      ],
+      [
+        "account",
+        "account number",
+        "bank account"
+      ],
+      [
+        "request",
+        "requests",
+        "requesting"
+      ],
+      [
+        "storage",
+        "repository",
+        "storehouse"
+      ],
+      [
+        "transaction",
+        "deal",
+        "trade"
+      ],
+      [
+        "order",
+        "orders",
+        "purchase order"
+      ],
+      [
+        "access",
+        "visit",
+        "call"
+      ],
+      [
+        "auth",
+        "authorization",
+        "authorized"
+      ],
+      [
+        "Browsing"
+      ],
+      [
+        "cheat"
+      ],
+      [
+        "payment",
+        "payment amount",
+        "transaction id"
+      ],
+      [
+        "network",
+        "networking",
+        "net"
+      ],
+      [
+        "healthy"
+      ],
+      [
+        "identity"
+      ],
+      [
+        "religion",
+        "religious belief",
+        "faith"
+      ],
+      [
+        "financial account"
+      ],
+      [
+        "Trajectory"
+      ],
+      [
+        "Add Purchase"
+      ],
+      [
+        "transaction",
+        "deal",
+        "trade"
+      ],
+      [
+        "IP"
+      ],
+      [
+        "cart",
+        "shopping cart",
+        "trolley"
+      ],
+      [
+        "click",
+        "clicking",
+        "clicked"
+      ],
+      [
+        "Access Date"
+      ],
+      [
+        "follow",
+        "focus",
+        "attention"
+      ],
+      [
+        "address",
+        "location",
+        "place"
+      ],
+      [
+        "language",
+        "languages",
+        "foreign language",
+        "mother tongue"
+      ],
+      [
+        "share",
+        "forward",
+        "transmit"
+      ],
+      [
+        "publish",
+        "post",
+        "send"
+      ],
+      [
+        "Browsing Records"
+      ],
+      [
+        "search",
+        "find",
+        "look up"
+      ],
+      [
+        "collect",
+        "favorite",
+        "bookmark"
+      ],
+      [
+        "browser",
+        "web browser",
+        "internet browser"
+      ],
+      [
+        "query record",
+        "search record",
+        "inquiry record"
+      ],
+      [
+        "time",
+        "date",
+        "duration"
+      ],
+      [
+        "contact",
+        "contacts",
+        "get in touch"
+      ]
+    ],
+    "purpose-cn-total": [
+      "创建账户",
+      "共享",
+      "咨询",
+      "观看直播",
+      "跨境电商",
+      "足迹",
+      "安全保障履行保障电子商务交易安全义务",
+      "判断账户",
+      "活动联动",
+      "运营",
+      "推送通知",
+      "支付",
+      "修改",
+      "网上购物",
+      "展示购物车",
+      "账号锁定",
+      "收藏",
+      "公示",
+      "体验调研",
+      "推送",
+      "沟通",
+      "添加",
+      "下单",
+      "检测",
+      "订单支付",
+      "保障安全",
+      "账号日志",
+      "偏好",
+      "非范围",
+      "注册",
+      "退订",
+      "跨境交易",
+      "关联",
+      "常购展示",
+      "设置提醒",
+      "唤醒端",
+      "展示",
+      "搜索",
+      "身份验证",
+      "身份认证",
+      "配送",
+      "订阅",
+      "方案",
+      "天猫",
+      "交易",
+      "点赞",
+      "小程序",
+      "订单",
+      "分享",
+      "发布",
+      "通话",
+      "履行义务",
+      "不再",
+      "登记",
+      "营销活动",
+      "通知设置",
+      "交易风险",
+      "降价",
+      "售后",
+      "购买",
+      "清除",
+      "联系",
+      "通信",
+      "管理",
+      "优惠提醒",
+      "关注",
+      "个性化",
+      "交付",
+      "个性化推荐",
+      "防范安全",
+      "投诉",
+      "发票",
+      "评价",
+      "页面推荐",
+      "清关",
+      "浏览天猫",
+      "账户管理"
+    ],
+    "purpose-en-total": [
+      " operation",
+      " communication",
+      " association",
+      " setting reminder",
+      " display",
+      " modification",
+      " cross-border e-commerce",
+      " management",
+      " release",
+      " security",
+      " cross-border transaction",
+      " detection",
+      " wake-up end",
+      " identity verification",
+      " attention",
+      " contact",
+      " complaints",
+      " consult",
+      " delivery",
+      " praise",
+      " order placing",
+      " search",
+      "Create accounts",
+      " after-sales",
+      " account management",
+      " subscription",
+      " order",
+      " distribution",
+      " applet",
+      " personalized recommendation",
+      " frequent purchase display",
+      " scheme",
+      " Tmall",
+      " notification setting",
+      " unsubscription",
+      " no longer",
+      " collection",
+      " marketing activities",
+      " prevention of security",
+      " footprint",
+      " evaluation",
+      " non-scope",
+      " fulfillment of obligations",
+      " transaction risk",
+      " customs clearance",
+      " browsing Tmall",
+      " call",
+      " preferential reminder",
+      " push",
+      " invoices",
+      " push notification",
+      " page recommendation",
+      " personalization",
+      " fulfill the obligation to ensure the security of e-commerce transactions",
+      " publicity",
+      " display shopping cart",
+      " order payment",
+      " registration",
+      " transaction",
+      " sharing",
+      " removal",
+      " online shopping",
+      " preference",
+      " share",
+      " account locking",
+      " activity linkage",
+      " judge accounts",
+      " account log",
+      " addition",
+      " identity authentication",
+      " purchase",
+      " experience research",
+      " watch live broadcasts",
+      " payment",
+      " price reduction"
+    ],
+    "permission_list": [
+      "BODY_SENSORS",
+      "MANAGE_DEVICE_POLICY_RESET_PASSWORD",
+      "RECEIVE_MMS",
+      "RECORD_AUDIO",
+      "READ_USER_DICTIONARY",
+      "MANAGE_DEVICE_POLICY_CAMERA",
+      "MANAGE_DEVICE_POLICY_PROFILE_INTERACTION",
+      "CAMERA",
+      "WRITE_SECURE_SETTINGS",
+      "MANAGE_DEVICE_POLICY_ORGANIZATION_IDENTITY",
+      "WRITE_USER_DICTIONARY",
+      "ACCESS_NETWORK_STATE",
+      "BIND_TV_INTERACTIVE_APP",
+      "MANAGE_DEVICE_POLICY_USERS",
+      "RECEIVE_BOOT_COMPLETED",
+      "MANAGE_DEVICE_POLICY_TIME",
+      "ACCOUNT_MANAGER",
+      "MANAGE_DEVICE_POLICY_METERED_DATA",
+      "BIND_QUICK_SETTINGS_TILE",
+      "BIND_CARRIER_MESSAGING_SERVICE",
+      "MANAGE_DEVICE_POLICY_INPUT_METHODS",
+      "RECEIVE_WAP_PUSH",
+      "BIND_NOTIFICATION_LISTENER_SERVICE",
+      "FOREGROUND_SERVICE_DATA_SYNC",
+      "BIND_INPUT_METHOD",
+      "READ_ASSISTANT_APP_SEARCH_DATA",
+      "WRITE_VOICEMAIL",
+      "GET_ACCOUNTS_PRIVILEGED",
+      "BIND_VOICE_INTERACTION",
+      "ACTIVITY_RECOGNITION",
+      "CHANGE_WIFI_MULTICAST_STATE",
+      "MANAGE_DEVICE_POLICY_PRIVATE_DNS",
+      "REQUEST_PASSWORD_COMPLEXITY",
+      "RECEIVE_SMS",
+      "BIND_CARRIER_MESSAGING_CLIENT_SERVICE",
+      "READ_LOGS",
+      "MANAGE_DEVICE_POLICY_DISPLAY",
+      "MANAGE_DEVICE_POLICY_SYSTEM_DIALOGS",
+      "MANAGE_DEVICE_POLICY_NEARBY_COMMUNICATION",
+      "WRITE_SETTINGS",
+      "MANAGE_DEVICE_POLICY_SYSTEM_APPS",
+      "READ_EXTERNAL_STORAGE",
+      "WRITE_APN_SETTINGS",
+      "READ_SMS",
+      "SEND_SMS",
+      "WRITE_EXTERNAL_STORAGE",
+      "FOREGROUND_SERVICE_HEALTH",
+      "READ_PHONE_NUMBERS",
+      "MANAGE_DEVICE_POLICY_CERTIFICATES",
+      "MANAGE_EXTERNAL_STORAGE",
+      "FLASHLIGHT",
+      "CHANGE_NETWORK_STATE",
+      "FOREGROUND_SERVICE_SYSTEM_EXEMPTED",
+      "FOREGROUND_SERVICE_PHONE_CALL",
+      "MANAGE_DEVICE_POLICY_MOBILE_NETWORK",
+      "MANAGE_DEVICE_POLICY_APP_USER_DATA",
+      "MOUNT_FORMAT_FILESYSTEMS",
+      "MOUNT_UNMOUNT_FILESYSTEMS",
+      "READ_SYNC_SETTINGS",
+      "MANAGE_DEVICE_POLICY_ACROSS_USERS",
+      "MANAGE_DEVICE_POLICY_SYSTEM_UPDATES",
+      "READ_NOTIFICATIONS",
+      "MANAGE_DEVICE_POLICY_NETWORK_LOGGING",
+      "CALL_PHONE",
+      "READ_SYNC_STATS",
+      "MANAGE_DEVICE_POLICY_SETTINGS",
+      "MANAGE_DEVICE_POLICY_CALLS",
+      "ANSWER_PHONE_CALLS",
+      "WRITE_SYNC_SETTINGS",
+      "USE_SIP",
+      "MANAGE_DEVICE_POLICY_SCREEN_CONTENT",
+      "MANAGE_DEVICE_POLICY_RESTRICT_PRIVATE_DNS",
+      "SET_TIME",
+      "LAUNCH_MULTI_PANE_SETTINGS_DEEP_LINK",
+      "MANAGE_DEVICE_POLICY_MODIFY_USERS",
+      "MANAGE_DEVICE_POLICY_WIPE_DATA",
+      "MANAGE_DEVICE_POLICY_SMS",
+      "MANAGE_DEVICE_POLICY_QUERY_SYSTEM_UPDATES",
+      "REORDER_TASKS",
+      "POST_NOTIFICATIONS"
+    ]
+  },
+  [
+    {
+      "orig-sentence": "基于此，天猫服务提供者（或简称“我们”）制定本《天猫基本功能隐私政策》（下称“本政策”/“本隐私政策”），帮助您充分了解在您使用我们产品和服务的过程中，我们会如何收集、使用、共享、存储和保护您的个人信息以及您可以如何管理您的个人信息，以便您更好地作出适当的选择。",
+      "data-cn-list": [
+        "存储"
+      ],
+      "data-en-list": [
+        "storage"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "storage",
+          "repository",
+          "storehouse"
+        ]
+      ],
+      "purpose-cn-list": [
+        "共享"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "存储",
+          "data-en": "storage",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "共享"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "我们的产品基本功能为网上购物，包括为您提供会员及账户管理，浏览、搜索、个性化推荐，交易服务，客服及争议处理，信息公开发布，互动交流，安全保障等；扩展功能主要包括：猫享花园功能及数字空间功能等。",
+      "data-cn-list": [
+        "搜索",
+        "交易",
+        "浏览"
+      ],
+      "data-en-list": [
+        "search",
+        "transaction",
+        "Browsing"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "search",
+          "find",
+          "look up"
+        ],
+        [
+          "transaction",
+          "deal",
+          "trade"
+        ],
+        [
+          "Browsing"
+        ]
+      ],
+      "purpose-cn-list": [
+        "账户管理"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "搜索",
+          "data-en": "search",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "账户管理"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "交易",
+          "data-en": "transaction",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "账户管理"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "浏览",
+          "data-en": "Browsing",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "账户管理"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "本隐私政策将帮助您了解以下内容：一、适用范围二、信息收集及使用三、数据使用过程中涉及的合作方及转移、公开个人信息四、您的权利五、信息的存储六、政策的更新七、未成年人保护八、联系我们附录：相关定义一、适用范围本政策适用于天猫服务提供者以网站、客户端、小程序以及随技术发展出现的新形态向您提供的各项产品和服务。",
+      "data-cn-list": [
+        "联系",
+        "存储"
+      ],
+      "data-en-list": [
+        "contact",
+        "storage"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "contact",
+          "contacts",
+          "get in touch"
+        ],
+        [
+          "storage",
+          "repository",
+          "storehouse"
+        ]
+      ],
+      "purpose-cn-list": [
+        "天猫"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "联系",
+          "data-en": "contact",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "天猫"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "存储",
+          "data-en": "storage",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "天猫"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "二、信息收集及使用为实现向您提供我们产品及服务的基本功能，及履行法律法规规定的义务，您须授权我们收集、使用的必要的信息。",
+      "data-cn-list": [
+        "授权"
+      ],
+      "data-en-list": [
+        "to grant authorization"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "auth",
+          "authorization",
+          "authorized"
+        ]
+      ],
+      "purpose-cn-list": [
+        ""
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "授权",
+          "data-en": "to grant authorization",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            ""
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "为了创建淘宝平台账户您需要至少向我们提供您的手机号码用于注册，我们将通过该手机号来验证您的身份是否有效。",
+      "data-cn-list": [
+        "手机号码"
+      ],
+      "data-en-list": [
+        "phone number"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "phone number",
+          "telephone number",
+          "cellphone number"
+        ]
+      ],
+      "purpose-cn-list": [
+        "注册",
+        "创建账户"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "手机号码",
+          "data-en": "phone number",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "注册",
+            "创建账户"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "此外，您还可以根据自身的需求自主设置您的账号密码，此类信息属于该功能的非必要信息，如您拒绝提供该类信息会降低账号安全保护能力，但不影响使用注册功能。",
+      "data-cn-list": [
+        "账号"
+      ],
+      "data-en-list": [
+        "account number"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "account",
+          "username",
+          "id"
+        ]
+      ],
+      "purpose-cn-list": [
+        "注册"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "账号",
+          "data-en": "account number",
+          "subject": [],
+          "purpose-cn": [
+            "注册"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "您可以选择填写昵称、头像，同时您设置的昵称和头像，将公开显示。",
+      "data-cn-list": [
+        "头像",
+        "设置",
+        "显示",
+        "昵称"
+      ],
+      "data-en-list": [
+        "avatar",
+        "set up",
+        "display",
+        "nickname"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "avatar",
+          "icon",
+          "profile picture"
+        ],
+        [
+          "setting",
+          "configuration",
+          "preference"
+        ],
+        [
+          "display"
+        ],
+        [
+          "nickname",
+          "name",
+          "title"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "头像",
+          "data-en": "avatar",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "设置",
+          "data-en": "set up",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "显示",
+          "data-en": "display",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "昵称",
+          "data-en": "nickname",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "此类信息为非必要信息，您可以自主选择是否提供，如果您不提供上述信息将由系统为您自动生成默认昵称及头像。",
+      "data-cn-list": [
+        "头像",
+        "昵称"
+      ],
+      "data-en-list": [
+        "avatar",
+        "nickname"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "avatar",
+          "icon",
+          "profile picture"
+        ],
+        [
+          "nickname",
+          "name",
+          "title"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "头像",
+          "data-en": "avatar",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "昵称",
+          "data-en": "nickname",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "如果您已拥有淘宝平台账户，我们会在天猫服务中显示您的上述个人信息，以及您在天猫上或与淘宝平台账户相关联的产品和服务中执行的操作（您可通过淘宝平台账户在我们网站或者客户端提供的链接入口或其他产品/服务入口使用我们及/或关联公司提供的产品或服务），包括通过淘宝平台账户集中展示您的个人资料、优惠权益、交易订单。",
+      "data-cn-list": [
+        "链接"
+      ],
+      "data-en-list": [
+        "link"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "link"
+        ]
+      ],
+      "purpose-cn-list": [
+        "关联"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "链接",
+          "data-en": "link",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "关联"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "如果您申请注册成为卖家、服务商或其他存在额外身份认证要求的会员角色，您需主动向我们提供身份信息及/或企业相关信息，或授权我们自支付宝公司处获取您对应支付宝账户的上述相关认证信息，用于您身份及其他会员角色获取资格的核验、登记、公示及其他我们明确告知的目的。",
+      "data-cn-list": [
+        "支付",
+        "账户",
+        "企业",
+        "身份",
+        "认证"
+      ],
+      "data-en-list": [
+        "payment",
+        "account",
+        "company",
+        "identity",
+        "authentication"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "payment",
+          "payment amount",
+          "transaction id"
+        ],
+        [
+          "account",
+          "account number",
+          "bank account"
+        ],
+        [
+          "company"
+        ],
+        [
+          "identity"
+        ],
+        [
+          "authentication",
+          "auth",
+          "authorization"
+        ]
+      ],
+      "purpose-cn-list": [
+        "公示",
+        "登记",
+        "身份认证"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "支付",
+          "data-en": "payment",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "公示",
+            "登记",
+            "身份认证"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "账户",
+          "data-en": "account",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "公示",
+            "登记",
+            "身份认证"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "企业",
+          "data-en": "company",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "公示",
+            "登记",
+            "身份认证"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "身份",
+          "data-en": "identity",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "公示",
+            "登记",
+            "身份认证"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "认证",
+          "data-en": "authentication",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "公示",
+            "登记",
+            "身份认证"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "为实现认证目的，您需要主动提供相关真实身份信息（包括：姓名、身份证信息，包括身份证号码及身份证影印件），并授权我们通过国家权威可信身份认证机构进行信息核验，或授权我们自淘宝账号获取您的以上身份信息或支付宝公司处获取您绑定支付宝账户的必要认证信息，我们将依法记录、保存认证信息及认证结果，这些信息仅供完成认证目的，或其他法律法规所规定的用途，未经您明示授权不会用作其他目的。",
+      "data-cn-list": [
+        "姓名",
+        "支付",
+        "账户",
+        "认证",
+        "账号",
+        "授权",
+        "国家",
+        "记录",
+        "身份证"
+      ],
+      "data-en-list": [
+        "full name",
+        "payment",
+        "account",
+        "authentication",
+        "account number",
+        "to grant authorization",
+        "country",
+        "record",
+        "ID"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "name",
+          "first name",
+          "last name"
+        ],
+        [
+          "payment",
+          "payment amount",
+          "transaction id"
+        ],
+        [
+          "account",
+          "account number",
+          "bank account"
+        ],
+        [
+          "authentication",
+          "auth",
+          "authorization"
+        ],
+        [
+          "account",
+          "username",
+          "id"
+        ],
+        [
+          "auth",
+          "authorization",
+          "authorized"
+        ],
+        [
+          "country",
+          "nation",
+          "state"
+        ],
+        [
+          "record",
+          "log",
+          "trace"
+        ],
+        [
+          "ID card",
+          "identity card",
+          "ID"
+        ]
+      ],
+      "purpose-cn-list": [
+        "身份认证"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "姓名",
+          "data-en": "full name",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "身份认证"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "支付",
+          "data-en": "payment",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "身份认证"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "账户",
+          "data-en": "account",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "身份认证"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "认证",
+          "data-en": "authentication",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "身份认证"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "账号",
+          "data-en": "account number",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "身份认证"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "授权",
+          "data-en": "to grant authorization",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "身份认证"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "国家",
+          "data-en": "country",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "身份认证"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "记录",
+          "data-en": "record",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "身份认证"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "身份证",
+          "data-en": "ID",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "身份认证"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "（二）帮助您使用浏览、搜索和个性化推荐功能1、浏览必要信息、非必要信息范围：当您浏览天猫时，您可以选择对感兴趣的商品、店铺、频道、直播间、内容（图文、短视频）进行收藏/订阅/添加/关注/分享/点赞操作，我们会收集您的操作记录用于向您展示“足迹”服务；并根据您的“足迹”预测您的偏好，为您提供更加符合您个人偏好的商品。",
+      "data-cn-list": [
+        "足迹",
+        "操作记录"
+      ],
+      "data-en-list": [
+        "footprint",
+        "operation record"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "footprint"
+        ],
+        [
+          "operation record",
+          "operational record",
+          "operating record"
+        ]
+      ],
+      "purpose-cn-list": [
+        "搜索",
+        "收藏",
+        "足迹",
+        "展示",
+        "浏览天猫",
+        "点赞",
+        "偏好",
+        "添加",
+        "非范围",
+        "订阅",
+        "分享",
+        "关注"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "足迹",
+          "data-en": "footprint",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "搜索",
+            "收藏",
+            "足迹",
+            "展示",
+            "浏览天猫",
+            "点赞",
+            "偏好",
+            "添加",
+            "非范围",
+            "订阅",
+            "分享",
+            "关注"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "操作记录",
+          "data-en": "operation record",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "搜索",
+            "收藏",
+            "足迹",
+            "展示",
+            "浏览天猫",
+            "点赞",
+            "偏好",
+            "添加",
+            "非范围",
+            "订阅",
+            "分享",
+            "关注"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "以上信息为非必要信息，您可以自主选择是否提供，并通过“天猫客户端-我-足迹”或天猫网首页“我的足迹”进行编辑，删除您的浏览记录。",
+      "data-cn-list": [
+        "足迹",
+        "浏览记录"
+      ],
+      "data-en-list": [
+        "footprint",
+        "Browsing Records"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "footprint"
+        ],
+        [
+          "Browsing Records"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "足迹",
+          "data-en": "footprint",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "浏览记录",
+          "data-en": "Browsing Records",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "2、搜索必要信息、非必要信息范围：当您使用搜索功能（包括拍立享、文字搜索、语音搜索）时，我们会收集您的搜索记录，包括搜索内容（搜索词、图片、语音信息）、浏览记录/时间、搜索时间/次数。",
+      "data-cn-list": [
+        "搜索记录",
+        "图片",
+        "搜索时间",
+        "内容",
+        "语音",
+        "搜索词",
+        "次数",
+        "浏览记录"
+      ],
+      "data-en-list": [
+        "Search Records",
+        "picture",
+        "search time",
+        "content",
+        "voice",
+        "Search term",
+        "frequency",
+        "Browsing Records"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "history",
+          "record",
+          "search history"
+        ],
+        [
+          "image",
+          "pic",
+          "photo"
+        ],
+        [
+          "search time",
+          "seek time",
+          "find time"
+        ],
+        [
+          "content",
+          "text",
+          "body"
+        ],
+        [
+          "voice"
+        ],
+        [
+          "search term",
+          "search word",
+          "search phrase"
+        ],
+        [
+          "times",
+          "frequency",
+          "number"
+        ],
+        [
+          "Browsing Records"
+        ]
+      ],
+      "purpose-cn-list": [
+        "搜索"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "搜索记录",
+          "data-en": "Search Records",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "搜索"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "图片",
+          "data-en": "picture",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "搜索"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "搜索时间",
+          "data-en": "search time",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "搜索"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "内容",
+          "data-en": "content",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "搜索"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "语音",
+          "data-en": "voice",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "搜索"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "搜索词",
+          "data-en": "Search term",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "搜索"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "次数",
+          "data-en": "frequency",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "搜索"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "浏览记录",
+          "data-en": "Browsing Records",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "搜索"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "3、个性化推荐必要信息、非必要信息范围：为向您展示、推荐相关性更强的商品、服务及/或内容，提供更符合您需求的个性化体验，我们会将收集的前述浏览操作相关记录、搜索记录用于个性化推荐服务。",
+      "data-cn-list": [
+        "搜索记录",
+        "浏览"
+      ],
+      "data-en-list": [
+        "Search Records",
+        "Browsing"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "history",
+          "record",
+          "search history"
+        ],
+        [
+          "Browsing"
+        ]
+      ],
+      "purpose-cn-list": [
+        "个性化推荐"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "搜索记录",
+          "data-en": "Search Records",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "个性化推荐"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "浏览",
+          "data-en": "Browsing",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "个性化推荐"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "2)如您不想看到我们在首页或进入支付完成页面给您推荐的商品或服务，您可以通过长按被推荐的商品或服务图片，在随后出现的弹窗中根据提示选择屏蔽类似商品或者商品或服务所属的类目。",
+      "data-cn-list": [
+        "商品"
+      ],
+      "data-en-list": [
+        "commodity"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "product",
+          "commodity",
+          "goods"
+        ]
+      ],
+      "purpose-cn-list": [
+        "页面推荐"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "商品",
+          "data-en": "commodity",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "页面推荐"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "（三）帮助您完成交易1、购物车必要信息、非必要信息范围：当您使用购物车功能时，我们会收集您的加购信息以便为您展示购物车商品，同时优化您的购物体验（如进行降价/优惠提醒、常购商品展示）。",
+      "data-cn-list": [
+        "加购"
+      ],
+      "data-en-list": [
+        "Add Purchase"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "Add Purchase"
+        ]
+      ],
+      "purpose-cn-list": [
+        "常购展示",
+        "降价",
+        "展示购物车",
+        "非范围",
+        "交易",
+        "优惠提醒"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "加购",
+          "data-en": "Add Purchase",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "常购展示",
+            "降价",
+            "展示购物车",
+            "非范围",
+            "交易",
+            "优惠提醒"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "在下单过程中,您需至少提供您的收货人姓名、收货地址、收货人联系电话，您可以通过我们的产品为其他人订购商品及/或服务，您需要提供该实际收货人的前述个人信息，并确保已取得该实际收货人的同意。",
+      "data-cn-list": [
+        "姓名",
+        "地址",
+        "电话",
+        "联系",
+        "收货人"
+      ],
+      "data-en-list": [
+        "full name",
+        "address",
+        "Telephone",
+        "contact",
+        "consignee"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "name",
+          "first name",
+          "last name"
+        ],
+        [
+          "address",
+          "location",
+          "place"
+        ],
+        [
+          "phone",
+          "telephone",
+          "cellphone"
+        ],
+        [
+          "contact",
+          "contacts",
+          "get in touch"
+        ],
+        [
+          "consignee",
+          "recipient"
+        ]
+      ],
+      "purpose-cn-list": [
+        "下单"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "姓名",
+          "data-en": "full name",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "下单"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "地址",
+          "data-en": "address",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "下单"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "电话",
+          "data-en": "Telephone",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "下单"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "联系",
+          "data-en": "contact",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "下单"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "收货人",
+          "data-en": "consignee",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "下单"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "涉及跨境交易时您需要提供您的姓名、身份证件信息以完成清关。",
+      "data-cn-list": [
+        "姓名",
+        "身份证",
+        "证件"
+      ],
+      "data-en-list": [
+        "full name",
+        "ID",
+        "certificates"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "name",
+          "first name",
+          "last name"
+        ],
+        [
+          "ID card",
+          "identity card",
+          "ID"
+        ],
+        [
+          "credentials",
+          "certificate",
+          "certification"
+        ]
+      ],
+      "purpose-cn-list": [
+        "清关"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "姓名",
+          "data-en": "full name",
+          "subject": [],
+          "purpose-cn": [
+            "清关"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "身份证",
+          "data-en": "ID",
+          "subject": [],
+          "purpose-cn": [
+            "清关"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "证件",
+          "data-en": "certificates",
+          "subject": [],
+          "purpose-cn": [
+            "清关"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "同时在您购买跨境商品时我们将根据您提供的身份信息查询您的跨境电子商务年度个人额度，以尽量减少在您购买跨境商品时因超过跨境电子商务零售进口商品的年度交易限值给跨境商品经营者及/或您造成的损失。",
+      "data-cn-list": [
+        "查询",
+        "身份"
+      ],
+      "data-en-list": [
+        "query",
+        "identity"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "query",
+          "search",
+          "find"
+        ],
+        [
+          "identity"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "查询",
+          "data-en": "query",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "身份",
+          "data-en": "identity",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "此类信息属于我们为您提供网上购物服务的必要信息，我们收集这些信息是为了帮助您顺利完成交易、保障您的交易安全、便于您查询订单信息、提供客服与售后服务及其他我们明确告知的目的，如您不提供我们将无法为您提供交易、订单管理及售后服务。",
+      "data-cn-list": [
+        "交易",
+        "订单"
+      ],
+      "data-en-list": [
+        "transaction",
+        "order"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "transaction",
+          "deal",
+          "trade"
+        ],
+        [
+          "order",
+          "orders",
+          "purchase order"
+        ]
+      ],
+      "purpose-cn-list": [
+        "交易",
+        "保障安全",
+        "订单",
+        "网上购物"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "交易",
+          "data-en": "transaction",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "交易",
+            "保障安全",
+            "订单",
+            "网上购物"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "订单",
+          "data-en": "order",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "交易",
+            "保障安全",
+            "订单",
+            "网上购物"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "若您需要开具发票，还需要提供发票抬头、纳税人识别号以及接收发票的电子邮箱，在此情况下此类信息为必要信息。",
+      "data-cn-list": [
+        "电子邮箱",
+        "发票",
+        "识别号"
+      ],
+      "data-en-list": [
+        "E-mail",
+        "invoice",
+        "Identification number"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "E-mail"
+        ],
+        [
+          "invoice",
+          "invoice information",
+          "billing information"
+        ],
+        [
+          "identification",
+          "identifier",
+          "ID"
+        ]
+      ],
+      "purpose-cn-list": [
+        "发票"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "电子邮箱",
+          "data-en": "E-mail",
+          "subject": [],
+          "purpose-cn": [
+            "发票"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "发票",
+          "data-en": "invoice",
+          "subject": [],
+          "purpose-cn": [
+            "发票"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "识别号",
+          "data-en": "Identification number",
+          "subject": [],
+          "purpose-cn": [
+            "发票"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "3、商品或服务的支付与交付必要信息、非必要信息范围：当您购买商品或服务时，为了帮助您完成或代他人完成订单支付，并顺利收取所购买的商品或服务，我们或提供服务的第三方会收集您的订单信息、配送信息。",
+      "data-cn-list": [
+        "配送",
+        "订单"
+      ],
+      "data-en-list": [
+        "Delivery",
+        "order"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "Delivery"
+        ],
+        [
+          "order",
+          "orders",
+          "purchase order"
+        ]
+      ],
+      "purpose-cn-list": [
+        "购买",
+        "订单支付"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "配送",
+          "data-en": "Delivery",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "购买",
+            "订单支付"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "订单",
+          "data-en": "order",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "购买",
+            "订单支付"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "为便于与您联系、尽快帮助您解决问题或记录相关问题的处理方案及结果，我们会保存您与我们的沟通、通信/通话记录及相关内容（包括账户信息、订单信息、您为了证明相关事实提供的其他信息，或您留下的联系方式信息）。",
+      "data-cn-list": [
+        "联系"
+      ],
+      "data-en-list": [
+        "contact"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "contact",
+          "contacts",
+          "get in touch"
+        ]
+      ],
+      "purpose-cn-list": [
+        "联系",
+        "沟通",
+        "通信",
+        "方案",
+        "通话"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "联系",
+          "data-en": "contact",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "联系",
+            "沟通",
+            "通信",
+            "方案",
+            "通话"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "如果您针对具体订单进行咨询、投诉或提供建议的，我们会使用您的账户信息和订单信息。",
+      "data-cn-list": [
+        "订单",
+        "账户"
+      ],
+      "data-en-list": [
+        "order",
+        "account"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "order",
+          "orders",
+          "purchase order"
+        ],
+        [
+          "account",
+          "account number",
+          "bank account"
+        ]
+      ],
+      "purpose-cn-list": [
+        "投诉",
+        "咨询"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "订单",
+          "data-en": "order",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "投诉",
+            "咨询"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "账户",
+          "data-en": "account",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "投诉",
+            "咨询"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "（五）为您提供信息公开发布功能1、评价、评论必要信息、非必要信息范围：当您对交易的商品及/或服务进行评价时，我们会收集并展示您的评价内容（包括您发布的文字、图片、视频等评价内容）、头像。",
+      "data-cn-list": [
+        "图片",
+        "视频",
+        "评价",
+        "内容",
+        "头像",
+        "文字",
+        "发布"
+      ],
+      "data-en-list": [
+        "picture",
+        "video",
+        "evaluate",
+        "content",
+        "avatar",
+        "written words",
+        "release"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "image",
+          "pic",
+          "photo"
+        ],
+        [
+          "video"
+        ],
+        [
+          "evaluate"
+        ],
+        [
+          "content",
+          "text",
+          "body"
+        ],
+        [
+          "avatar",
+          "icon",
+          "profile picture"
+        ],
+        [
+          "written words"
+        ],
+        [
+          "publish",
+          "post",
+          "send"
+        ]
+      ],
+      "purpose-cn-list": [
+        "交易",
+        "发布",
+        "评价"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "图片",
+          "data-en": "picture",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "交易",
+            "发布",
+            "评价"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "视频",
+          "data-en": "video",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "交易",
+            "发布",
+            "评价"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "评价",
+          "data-en": "evaluate",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "交易",
+            "发布",
+            "评价"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "内容",
+          "data-en": "content",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "交易",
+            "发布",
+            "评价"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "头像",
+          "data-en": "avatar",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "交易",
+            "发布",
+            "评价"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "文字",
+          "data-en": "written words",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "交易",
+            "发布",
+            "评价"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "发布",
+          "data-en": "release",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "交易",
+            "发布",
+            "评价"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "如您选择匿名评价，您的头像、昵称不会对外展示且评价内容不会在公共页面展示。",
+      "data-cn-list": [
+        "头像",
+        "昵称",
+        "内容",
+        "评价"
+      ],
+      "data-en-list": [
+        "avatar",
+        "nickname",
+        "content",
+        "evaluate"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "avatar",
+          "icon",
+          "profile picture"
+        ],
+        [
+          "nickname",
+          "name",
+          "title"
+        ],
+        [
+          "content",
+          "text",
+          "body"
+        ],
+        [
+          "evaluate"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "头像",
+          "data-en": "avatar",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "昵称",
+          "data-en": "nickname",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "内容",
+          "data-en": "content",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "评价",
+          "data-en": "evaluate",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "2、个人主页个人主页展示您的头像、昵称、“我的喜欢”、“我的清单”及相关互动信息，其他用户可以通过扫描您提供的二维码查看您喜欢的商品，也可以通过在“有点喜欢”频道或其余公共页面点击您的头像进入您的个人主页。",
+      "data-cn-list": [
+        "商品"
+      ],
+      "data-en-list": [
+        "commodity"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "product",
+          "commodity",
+          "goods"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "商品",
+          "data-en": "commodity",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "（六）互动交流1、消息通知必要信息、非必要信息范围：我们在运营中会通过您在使用产品及/或服务的过程中所提供的联系方式（如联系电话、联系邮箱），向您同时发送一种或多种类型的通知。",
+      "data-cn-list": [
+        "联系",
+        "邮箱",
+        "电话"
+      ],
+      "data-en-list": [
+        "contact",
+        "mailbox",
+        "Telephone"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "contact",
+          "contacts",
+          "get in touch"
+        ],
+        [
+          "email",
+          "mail",
+          "e mail"
+        ],
+        [
+          "phone",
+          "telephone",
+          "cellphone"
+        ]
+      ],
+      "purpose-cn-list": [
+        "运营"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "联系",
+          "data-en": "contact",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "运营"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "邮箱",
+          "data-en": "mailbox",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "运营"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "电话",
+          "data-en": "Telephone",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "运营"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "当我们通过您提供的联系方式向您发送服务通知、身份验证、安全验证时，该信息为必要信息，如您不提供可能导致我们无法及时向您告知您的交易情况、无法进行身份认证、安全认证导致您无法享受我们为您提供的基本服务。",
+      "data-cn-list": [
+        "联系",
+        "身份"
+      ],
+      "data-en-list": [
+        "contact",
+        "identity"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "contact",
+          "contacts",
+          "get in touch"
+        ],
+        [
+          "identity"
+        ]
+      ],
+      "purpose-cn-list": [
+        "身份认证"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "联系",
+          "data-en": "contact",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "身份认证"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "身份",
+          "data-en": "identity",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "身份认证"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "当我们通过您提供的联系方式向您发送用户使用体验调研，以短信、电话的方式，为您展示您感兴趣的服务、功能或活动的商业性信息及其他商品或服务信息时，以上信息为非必要信息，您可以自主选择是否接收我们的商业性信息及其他商品或服务信息，如您不愿您可以通过短信、电子邮件中提供的退订方式以及直接联系我们的客服进行退订或关闭或通过“我—设置—消息提醒设置—营销短信开关”进行关闭，如您希望关闭弹窗推送信息，您也可以【通过弹窗页面上的“跳过”按钮或相关按钮进行关闭】，这不会影响您使用基本业务功能。",
+      "data-cn-list": [
+        "商品",
+        "电子邮件",
+        "联系",
+        "用户",
+        "短信"
+      ],
+      "data-en-list": [
+        "commodity",
+        "Email",
+        "contact",
+        "user",
+        "short message"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "product",
+          "commodity",
+          "goods"
+        ],
+        [
+          "email",
+          "e mail",
+          "mail"
+        ],
+        [
+          "contact",
+          "contacts",
+          "get in touch"
+        ],
+        [
+          "user",
+          "account",
+          "member"
+        ],
+        [
+          "short message"
+        ]
+      ],
+      "purpose-cn-list": [
+        "推送",
+        "设置提醒",
+        "退订",
+        "展示",
+        "体验调研"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "商品",
+          "data-en": "commodity",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "推送",
+            "设置提醒",
+            "退订",
+            "展示",
+            "体验调研"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "电子邮件",
+          "data-en": "Email",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "推送",
+            "设置提醒",
+            "退订",
+            "展示",
+            "体验调研"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "联系",
+          "data-en": "contact",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "推送",
+            "设置提醒",
+            "退订",
+            "展示",
+            "体验调研"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "用户",
+          "data-en": "user",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "推送",
+            "设置提醒",
+            "退订",
+            "展示",
+            "体验调研"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "短信",
+          "data-en": "short message",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "推送",
+            "设置提醒",
+            "退订",
+            "展示",
+            "体验调研"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "我们会通过客户端“消息”，向您推送平台通知（如交易物流、活动优惠、互动消息、服务通知等），您可以在您的设备“设置”中选择开启/关闭天猫客户端的通知权限，或通过“手机天猫首页”—“我“—“设置”—“消息提醒通知”进行消息通知设置。",
+      "data-cn-list": [
+        "设置"
+      ],
+      "data-en-list": [
+        "set up"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "setting",
+          "configuration",
+          "preference"
+        ]
+      ],
+      "purpose-cn-list": [
+        "推送通知",
+        "通知设置"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "设置",
+          "data-en": "set up",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "推送通知",
+            "通知设置"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "2、活动参与必要信息、非必要信息范围：当您参与我们举办的营销活动时，我们根据活动形式不同我们需要收集及使用您的相关个人信息（包括您的昵称、头像、联系方式、收货信息、订单信息、账户等级）。",
+      "data-cn-list": [
+        "订单",
+        "账户",
+        "昵称",
+        "收货",
+        "头像",
+        "联系"
+      ],
+      "data-en-list": [
+        "order",
+        "account",
+        "nickname",
+        "Receipt",
+        "avatar",
+        "contact"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "order",
+          "orders",
+          "purchase order"
+        ],
+        [
+          "account",
+          "account number",
+          "bank account"
+        ],
+        [
+          "nickname",
+          "name",
+          "title"
+        ],
+        [
+          "delivery",
+          "receipt",
+          "acceptance"
+        ],
+        [
+          "avatar",
+          "icon",
+          "profile picture"
+        ],
+        [
+          "contact",
+          "contacts",
+          "get in touch"
+        ]
+      ],
+      "purpose-cn-list": [
+        "营销活动"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "订单",
+          "data-en": "order",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "营销活动"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "账户",
+          "data-en": "account",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "营销活动"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "昵称",
+          "data-en": "nickname",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "营销活动"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "收货",
+          "data-en": "Receipt",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "营销活动"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "头像",
+          "data-en": "avatar",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "营销活动"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "联系",
+          "data-en": "contact",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "营销活动"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "3、商品/活动分享必要信息、非必要信息范围：当您分享或接收被分享的信息、参加特定活动、重新唤醒客户端情形下，我们会读取您的剪贴板内容以判断是否存在相关口令、分享码、链接，以实现跳转、分享、活动联动功能或服务，当我们识别出剪贴板内容符合“手机天猫商品分享”、“手机天猫活动联动指令”规则时才会将其上传我们的服务器。",
+      "data-cn-list": [
+        "口令",
+        "分享",
+        "链接",
+        "内容",
+        "剪贴板"
+      ],
+      "data-en-list": [
+        "Password",
+        "share",
+        "link",
+        "content",
+        "clipboard"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "Password"
+        ],
+        [
+          "share",
+          "forward",
+          "transmit"
+        ],
+        [
+          "link"
+        ],
+        [
+          "content",
+          "text",
+          "body"
+        ],
+        [
+          "clipboard"
+        ]
+      ],
+      "purpose-cn-list": [
+        "活动联动",
+        "分享",
+        "唤醒端"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "口令",
+          "data-en": "Password",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "活动联动",
+            "分享",
+            "唤醒端"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "分享",
+          "data-en": "share",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "活动联动",
+            "分享",
+            "唤醒端"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "链接",
+          "data-en": "link",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "活动联动",
+            "分享",
+            "唤醒端"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "内容",
+          "data-en": "content",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "活动联动",
+            "分享",
+            "唤醒端"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "剪贴板",
+          "data-en": "clipboard",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "活动联动",
+            "分享",
+            "唤醒端"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "直播间互动必要信息、非必要信息范围：当您观看直播时，您的昵称、直播间内互动信息（包括评论、点赞、打赏、礼物、粉丝等级）将在直播间内公开展示，同时我们会收集您的互动情况形成直播间内的统计数据（包括榜单、热度）并公开展示。",
+      "data-cn-list": [
+        "榜单",
+        "热度",
+        "互动",
+        "统计数据"
+      ],
+      "data-en-list": [
+        "List",
+        "heat degree",
+        "interaction",
+        "statistical data"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "List"
+        ],
+        [
+          "heat degree"
+        ],
+        [
+          "interaction",
+          "interactive",
+          "interactively"
+        ],
+        [
+          "statistical data",
+          "statistics",
+          "data"
+        ]
+      ],
+      "purpose-cn-list": [
+        "观看直播"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "榜单",
+          "data-en": "List",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "观看直播"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "热度",
+          "data-en": "heat degree",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "观看直播"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "互动",
+          "data-en": "interaction",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "观看直播"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "统计数据",
+          "data-en": "statistical data",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "观看直播"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "（七）为您提供安全保障为履行保障电子商务交易安全的法定义务，提高您使用我们及我们关联公司、合作伙伴提供服务的安全性，保护您或其他用户或公众的人身安全、财产安全、账号安全、交易安全，更好地预防钓鱼网站、欺诈、网络漏洞、计算机病毒、网络攻击、网络侵入、恶意程序等安全风险，更准确地识别违反法律法规或天猫的相关协议、规则的情况，我们会收集您的OAID、IDFA、Android。",
+      "data-cn-list": [
+        "IDFA",
+        "OAID"
+      ],
+      "data-en-list": [
+        "IDFA",
+        "OAID"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "IDFA"
+        ],
+        [
+          "OAID"
+        ]
+      ],
+      "purpose-cn-list": [
+        "关联",
+        "安全保障履行保障电子商务交易安全义务"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "IDFA",
+          "data-en": "IDFA",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "关联",
+            "安全保障履行保障电子商务交易安全义务"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "OAID",
+          "data-en": "OAID",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "关联",
+            "安全保障履行保障电子商务交易安全义务"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "服务日志信息，并使用或整合您的会员信息、交易信息、来综合判断您账户及交易风险、进行身份验证、检测及防范安全事件，并依法采取必要的记录、审计、分析、处置措施。",
+      "data-cn-list": [
+        "会员",
+        "交易"
+      ],
+      "data-en-list": [
+        "member",
+        "transaction"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "member",
+          "vip",
+          "subscriber"
+        ],
+        [
+          "transaction",
+          "deal",
+          "trade"
+        ]
+      ],
+      "purpose-cn-list": [
+        "身份验证",
+        "交易风险",
+        "防范安全",
+        "判断账户",
+        "检测"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "会员",
+          "data-en": "member",
+          "subject": [],
+          "purpose-cn": [
+            "身份验证",
+            "交易风险",
+            "防范安全",
+            "判断账户",
+            "检测"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "交易",
+          "data-en": "transaction",
+          "subject": [],
+          "purpose-cn": [
+            "身份验证",
+            "交易风险",
+            "防范安全",
+            "判断账户",
+            "检测"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "请您注意，您开启权限即代表您授权我们可以在相应场景下收集和使用相关个人信息来为您提供对应服务，您一旦关闭权限即代表您取消了授权，我们将不再基于对应权限继续收集和使用相关个人信息，也无法继续为您提供该权限所对应的服务。",
+      "data-cn-list": [
+        "授权"
+      ],
+      "data-en-list": [
+        "to grant authorization"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "auth",
+          "authorization",
+          "authorized"
+        ]
+      ],
+      "purpose-cn-list": [
+        ""
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "授权",
+          "data-en": "to grant authorization",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            ""
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "或匿名标识符（以下简称“Cookie”），以收集、标识和存储您访问、使用本产品时的信息。",
+      "data-cn-list": [
+        "存储",
+        "访问"
+      ],
+      "data-en-list": [
+        "storage",
+        "visit"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "storage",
+          "repository",
+          "storehouse"
+        ],
+        [
+          "access",
+          "visit",
+          "call"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "存储",
+          "data-en": "storage",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "访问",
+          "data-en": "visit",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "大多数浏览器均为用户提供了清除浏览器缓存数据的功能，您可以进行相应的数据清除操作，或可修改对Cookie的接受程度或拒绝我们的Cookie。",
+      "data-cn-list": [
+        "浏览器"
+      ],
+      "data-en-list": [
+        "browser"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "browser",
+          "web browser",
+          "internet browser"
+        ]
+      ],
+      "purpose-cn-list": [
+        "清除"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "浏览器",
+          "data-en": "browser",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "清除"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "（九）收集和使用个人信息的其他规则若您提供的信息中含有其他用户的个人信息，在向我们提供这些个人信息之前，您需确保您已经取得合法的授权。",
+      "data-cn-list": [
+        "用户",
+        "授权"
+      ],
+      "data-en-list": [
+        "user",
+        "to grant authorization"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "user",
+          "account",
+          "member"
+        ],
+        [
+          "auth",
+          "authorization",
+          "authorized"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "用户",
+          "data-en": "user",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "授权",
+          "data-en": "to grant authorization",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "5、合作场景1)为实现业务功能A.支付服务为完成订单支付，您需要绑定我们合作方【支付宝公司】的【支付宝账户】并选择付款方式。",
+      "data-cn-list": [
+        "付款"
+      ],
+      "data-en-list": [
+        "payment"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "payment",
+          "pay",
+          "money"
+        ]
+      ],
+      "purpose-cn-list": [
+        "订单支付"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "付款",
+          "data-en": "payment",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "订单支付"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "我们会将您的【淘宝平台账号】、对应的【支付宝账号】、订单支付相关信息、订单安全相关信息（OAID、IDFA、Android。",
+      "data-cn-list": [
+        "支付",
+        "订单",
+        "IDFA",
+        "账号",
+        "OAID"
+      ],
+      "data-en-list": [
+        "payment",
+        "order",
+        "IDFA",
+        "account number",
+        "OAID"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "payment",
+          "payment amount",
+          "transaction id"
+        ],
+        [
+          "order",
+          "orders",
+          "purchase order"
+        ],
+        [
+          "IDFA"
+        ],
+        [
+          "account",
+          "username",
+          "id"
+        ],
+        [
+          "OAID"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "支付",
+          "data-en": "payment",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "订单",
+          "data-en": "order",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "IDFA",
+          "data-en": "IDFA",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "账号",
+          "data-en": "account number",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "OAID",
+          "data-en": "OAID",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "如您选择由其他金融机构为您提供支付服务，您的银行卡号、有效期及其他银行卡支付必要信息会由您选择的相应金融机构使用。",
+      "data-cn-list": [
+        "银行卡号",
+        "支付"
+      ],
+      "data-en-list": [
+        "Credit card number",
+        "payment"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "bank card number",
+          "bankcard number",
+          "debit card number"
+        ],
+        [
+          "payment",
+          "payment amount",
+          "transaction id"
+        ]
+      ],
+      "purpose-cn-list": [
+        "支付"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "银行卡号",
+          "data-en": "Credit card number",
+          "subject": [],
+          "purpose-cn": [
+            "支付"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "支付",
+          "data-en": "payment",
+          "subject": [],
+          "purpose-cn": [
+            "支付"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "您可以请求其他人为您付款，那么您需要提供代付人的【支付宝账号】及/或手机号码。",
+      "data-cn-list": [
+        "支付",
+        "手机号码",
+        "账号"
+      ],
+      "data-en-list": [
+        "payment",
+        "phone number",
+        "account number"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "payment",
+          "payment amount",
+          "transaction id"
+        ],
+        [
+          "phone number",
+          "telephone number",
+          "cellphone number"
+        ],
+        [
+          "account",
+          "username",
+          "id"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "支付",
+          "data-en": "payment",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "手机号码",
+          "data-en": "phone number",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "账号",
+          "data-en": "account number",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "为使我们及时获悉并确认您的支付进度及状态，为您提供售后与争议解决服务，您同意我们可自您所选择的交易对象、【支付宝公司】或您选择的其他金融机构处收集与支付进度相关的信息。",
+      "data-cn-list": [
+        "支付"
+      ],
+      "data-en-list": [
+        "payment"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "payment",
+          "payment amount",
+          "transaction id"
+        ]
+      ],
+      "purpose-cn-list": [
+        "售后"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "支付",
+          "data-en": "payment",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "售后"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "B.物流服务为保证您购买的商品及/或服务能够顺利、安全、准确送达、提供，我们会向为【天猫平台】提供物流信息系统和技术服务的合作方【浙江菜鸟供应链管理有限公司】披露订单相关的配送信息，并由其根据商品及/或服务提供主体的选择向相应的物流配送主体同步相关配送信息。",
+      "data-cn-list": [
+        "配送",
+        "物流"
+      ],
+      "data-en-list": [
+        "Delivery",
+        "logistics"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "Delivery"
+        ],
+        [
+          "logistics"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "配送",
+          "data-en": "Delivery",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "物流",
+          "data-en": "logistics",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "您理解并同意相应物流配送主体不可避免地获知及使用您的配送信息，用于完成交付目的。",
+      "data-cn-list": [
+        "配送"
+      ],
+      "data-en-list": [
+        "Delivery"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "Delivery"
+        ]
+      ],
+      "purpose-cn-list": [
+        "交付"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "配送",
+          "data-en": "Delivery",
+          "subject": [],
+          "purpose-cn": [
+            "交付"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "C.频道（小程序）服务当您使用频道（小程序）服务时，我们会收集、使用您的频道登录、浏览、使用、订阅/添加/取消操作记录，以为您提供更加便捷、优质和个性化的频道服务和内容。",
+      "data-cn-list": [
+        "操作记录",
+        "浏览",
+        "订阅",
+        "登录"
+      ],
+      "data-en-list": [
+        "operation record",
+        "Browsing",
+        "subscribe",
+        "Sign in"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "operation record",
+          "operational record",
+          "operating record"
+        ],
+        [
+          "Browsing"
+        ],
+        [
+          "subscribe",
+          "subscription",
+          "subscriber"
+        ],
+        [
+          "login",
+          "sign in",
+          "sign up"
+        ]
+      ],
+      "purpose-cn-list": [
+        "个性化",
+        "小程序"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "操作记录",
+          "data-en": "operation record",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "个性化",
+            "小程序"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "浏览",
+          "data-en": "Browsing",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "个性化",
+            "小程序"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "订阅",
+          "data-en": "subscribe",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "个性化",
+            "小程序"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "登录",
+          "data-en": "Sign in",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "个性化",
+            "小程序"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "我们不会将您的个人身份信息委托合作方处理。",
+      "data-cn-list": [
+        "身份"
+      ],
+      "data-en-list": [
+        "identity"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "identity"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "身份",
+          "data-en": "identity",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "（三）公开披露我们仅会在以下情况下，公开披露您的个人信息：1、基于您的主动选择及其他单独同意的情况下，我们会公开披露您的个人信息；2、如果我们确定您出现违反法律法规或严重违反天猫相关协议及规则的情况，或为保护天猫用户或公众的人身财产安全免遭侵害，我们披露关于您的个人信息，包括相关违规行为以及天猫已对您采取的措施。",
+      "data-cn-list": [
+        "用户",
+        "行为",
+        "财产"
+      ],
+      "data-en-list": [
+        "user",
+        "action",
+        "property"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "user",
+          "account",
+          "member"
+        ],
+        [
+          "behavior",
+          "action",
+          "activity"
+        ],
+        [
+          "property"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "用户",
+          "data-en": "user",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "行为",
+          "data-en": "action",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "财产",
+          "data-en": "property",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "（五）依法豁免征得您的授权同意的情形请您理解，在下列情形中，根据法律法规及国家标准，合作方使用，或我们转移、公开您的个人信息无需征得您的授权同意：1、根据您的要求订立或履行合同所必需：您通过天猫平台购买商品或服务，我们会根据您的选择，将您的订单信息中与交易有关的必要信息共享给相关商品或服务的提供者或者天猫平台上相关服务市场的运营者，以实现您的交易、配送及售后服务需求。",
+      "data-cn-list": [
+        "交易",
+        "订单",
+        "商品",
+        "提供者"
+      ],
+      "data-en-list": [
+        "transaction",
+        "order",
+        "commodity",
+        "Provider"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "transaction",
+          "deal",
+          "trade"
+        ],
+        [
+          "order",
+          "orders",
+          "purchase order"
+        ],
+        [
+          "product",
+          "commodity",
+          "goods"
+        ],
+        [
+          "provider",
+          "auth type",
+          "oauth type"
+        ]
+      ],
+      "purpose-cn-list": [
+        "售后",
+        "交易",
+        "配送",
+        "共享"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "交易",
+          "data-en": "transaction",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "售后",
+            "交易",
+            "配送",
+            "共享"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "订单",
+          "data-en": "order",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "售后",
+            "交易",
+            "配送",
+            "共享"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "商品",
+          "data-en": "commodity",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "售后",
+            "交易",
+            "配送",
+            "共享"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "提供者",
+          "data-en": "Provider",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "售后",
+            "交易",
+            "配送",
+            "共享"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "四、您的权利您可以通过以下方式查阅和管理您的信息，我们会在符合法律法规要求的情形下响应您的请求：（一）查阅、更正和补充您有权通过以下方式查阅、更正和补充、复制您的信息：1、登录天猫网站，进入“我的淘宝”首页，点击头像或昵称编辑资料；2、登录天猫客户端，进入“我-设置-个人信息”；3、登录天猫网站选择联系客服，或登录天猫客户端，选择“我-我的工具-查看全部-客服小蜜”或“我-会员中心-专属管家（88VIP）”。",
+      "data-cn-list": [
+        "会员",
+        "IP",
+        "联系",
+        "登录"
+      ],
+      "data-en-list": [
+        "member",
+        "IP",
+        "contact",
+        "Sign in"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "member",
+          "vip",
+          "subscriber"
+        ],
+        [
+          "IP"
+        ],
+        [
+          "contact",
+          "contacts",
+          "get in touch"
+        ],
+        [
+          "login",
+          "sign in",
+          "sign up"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "会员",
+          "data-en": "member",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "IP",
+          "data-en": "IP",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "联系",
+          "data-en": "contact",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "登录",
+          "data-en": "Sign in",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "在以下情形中，您可以通过与客服向我们提出删除个人信息的请求：1、如果我们处理个人信息的行为违反法律法规；2、如果我们收集、使用您的个人信息，却未征得您的明确同意；3、如果我们处理个人信息的行为严重违反了与您的约定；4、如果我们的处理目的已实现、无法实现或者为实现处理目的不再必要；5、如果我们停止提供产品或者服务，或者保存期限已届满。",
+      "data-cn-list": [
+        "行为"
+      ],
+      "data-en-list": [
+        "action"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "behavior",
+          "action",
+          "activity"
+        ]
+      ],
+      "purpose-cn-list": [
+        "不再"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "行为",
+          "data-en": "action",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "不再"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "（四）改变授权范围您可以通过以下方式改变或者撤回您授权我们收集和处理您的个人信息的范围：在“天猫首页-我-设置-隐私-系统权限管理”中管理App使用的系统权限授权，对于您无法直接通过前述方式设置的授权，您可以通过客服小蜜进行修改，但请注意，对于部分类型的个人信息，例如实现天猫基本功能所必须的信息或者我们履行法律法规规定的义务所必需的信息，我们无法响应您改变授权范围的请求。",
+      "data-cn-list": [
+        "设置",
+        "授权",
+        "请求"
+      ],
+      "data-en-list": [
+        "set up",
+        "to grant authorization",
+        "request"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "setting",
+          "configuration",
+          "preference"
+        ],
+        [
+          "auth",
+          "authorization",
+          "authorized"
+        ],
+        [
+          "request",
+          "requests",
+          "requesting"
+        ]
+      ],
+      "purpose-cn-list": [
+        "天猫",
+        "修改",
+        "履行义务"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "设置",
+          "data-en": "set up",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "天猫",
+            "修改",
+            "履行义务"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "授权",
+          "data-en": "to grant authorization",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "天猫",
+            "修改",
+            "履行义务"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "请求",
+          "data-en": "request",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "天猫",
+            "修改",
+            "履行义务"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "但您撤回授权的决定，不会影响我们此前基于您的授权而开展的个人信息处理。",
+      "data-cn-list": [
+        "授权"
+      ],
+      "data-en-list": [
+        "to grant authorization"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "auth",
+          "authorization",
+          "authorized"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "授权",
+          "data-en": "to grant authorization",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "（五）注销账户您可以通过以下方式申请注销您的账户：1、在“手机天猫首页-我-设置-账户安全-注销账户”提交账户注销申请；2、通过客服联系，申请并协助注销您的账户。",
+      "data-cn-list": [
+        "注销申请",
+        "账户"
+      ],
+      "data-en-list": [
+        "cancellation application",
+        "account"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "cancellation application"
+        ],
+        [
+          "account",
+          "account number",
+          "bank account"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "注销申请",
+          "data-en": "cancellation application",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "账户",
+          "data-en": "account",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "为保障您的账户安全和您的个人信息安全，您向我们提出上述请求时，我们会先验证您的身份（如增加账户核验、要求您提供书面请求或其他合理方式），然后再处理您的请求。",
+      "data-cn-list": [
+        "请求"
+      ],
+      "data-en-list": [
+        "request"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "request",
+          "requests",
+          "requesting"
+        ]
+      ],
+      "purpose-cn-list": [
+        "保障安全"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "请求",
+          "data-en": "request",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [
+            "保障安全"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "（二）存储位置与全球传输原则上，我们在中华人民共和国境内收集和产生的个人信息，根据适用法律的要求存储在境内。",
+      "data-cn-list": [
+        "存储"
+      ],
+      "data-en-list": [
+        "storage"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "storage",
+          "repository",
+          "storehouse"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "存储",
+          "data-en": "storage",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "例如，如您通过我们或我们关联方平台购买境外卖家及其他第三方合作伙伴向您提供的跨境电商服务，为实现您的跨境交易、跨境物流寄递、清关及售后服务需求，我们或我们的关联方会将您的订单信息中与交易有关的必要信息传输至境外卖家及其他第三方合作伙伴。",
+      "data-cn-list": [
+        "交易",
+        "订单"
+      ],
+      "data-en-list": [
+        "transaction",
+        "order"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "transaction",
+          "deal",
+          "trade"
+        ],
+        [
+          "order",
+          "orders",
+          "purchase order"
+        ]
+      ],
+      "purpose-cn-list": [
+        "售后",
+        "跨境交易",
+        "清关",
+        "跨境电商"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "交易",
+          "data-en": "transaction",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "售后",
+            "跨境交易",
+            "清关",
+            "跨境电商"
+          ],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "订单",
+          "data-en": "order",
+          "subject": [
+            "3st",
+            "1st"
+          ],
+          "purpose-cn": [
+            "售后",
+            "跨境交易",
+            "清关",
+            "跨境电商"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "SSL协议加密保护，我们提供HTTPS协议安全浏览方式；我们会使用受信赖的保护机制防止个人信息遭到恶意攻击；我们会部署访问控制机制，尽力确保只有授权人员才可访问个人信息。",
+      "data-cn-list": [
+        "访问",
+        "授权",
+        "浏览"
+      ],
+      "data-en-list": [
+        "visit",
+        "to grant authorization",
+        "Browsing"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "access",
+          "visit",
+          "call"
+        ],
+        [
+          "auth",
+          "authorization",
+          "authorized"
+        ],
+        [
+          "Browsing"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "访问",
+          "data-en": "visit",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "授权",
+          "data-en": "to grant authorization",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "浏览",
+          "data-en": "Browsing",
+          "subject": [
+            "1st"
+          ],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "您也可以在“手机天猫首页-我-设置-账户安全-安全中心”自主进行使用“设备管理”“账号日志”“账号锁定”等功能，以及提交欺诈的投诉举报等。",
+      "data-cn-list": [
+        "欺诈"
+      ],
+      "data-en-list": [
+        "cheat"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "cheat"
+        ]
+      ],
+      "purpose-cn-list": [
+        "管理",
+        "账号锁定",
+        "账号日志"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "欺诈",
+          "data-en": "cheat",
+          "subject": [],
+          "purpose-cn": [
+            "管理",
+            "账号锁定",
+            "账号日志"
+          ],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "支付宝公司：指提供支付宝服务的主体支付宝（中国）网络技术有限公司。",
+      "data-cn-list": [
+        "支付",
+        "网络"
+      ],
+      "data-en-list": [
+        "payment",
+        "network"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "payment",
+          "payment amount",
+          "transaction id"
+        ],
+        [
+          "network",
+          "networking",
+          "net"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "支付",
+          "data-en": "payment",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "网络",
+          "data-en": "network",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "敏感个人信息：敏感个人信息是一旦泄露或者非法使用，容易导致自然人的人格尊严受到侵害或者人身、财产安全受到危害的个人信息，包括生物识别、宗教信仰、特定身份、医疗健康、金融账户、行踪轨迹信息，以及不满十四周岁未成年人的个人信息。",
+      "data-cn-list": [
+        "健康",
+        "身份",
+        "宗教信仰",
+        "金融账户",
+        "行踪轨迹"
+      ],
+      "data-en-list": [
+        "healthy",
+        "identity",
+        "religious belief",
+        "financial account",
+        "Trajectory"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "healthy"
+        ],
+        [
+          "identity"
+        ],
+        [
+          "religion",
+          "religious belief",
+          "faith"
+        ],
+        [
+          "financial account"
+        ],
+        [
+          "Trajectory"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "健康",
+          "data-en": "healthy",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "身份",
+          "data-en": "identity",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "宗教信仰",
+          "data-en": "religious belief",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "金融账户",
+          "data-en": "financial account",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "行踪轨迹",
+          "data-en": "Trajectory",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "服务日志信息：包括浏览记录、点击查看记录、搜索查询记录、收藏、添加至购物车、交易、售后、关注分享信息、发布信息，以及IP地址、浏览器类型、电信运营商、使用语言、访问日期和时间。",
+      "data-cn-list": [
+        "加购",
+        "交易",
+        "IP",
+        "购物车",
+        "点击",
+        "访问日期",
+        "关注",
+        "地址",
+        "语言",
+        "分享",
+        "发布",
+        "浏览记录",
+        "搜索",
+        "收藏",
+        "浏览器",
+        "查询记录",
+        "时间"
+      ],
+      "data-en-list": [
+        "Add Purchase",
+        "transaction",
+        "IP",
+        "Shopping Cart",
+        "click",
+        "Access Date",
+        "follow",
+        "address",
+        "language",
+        "share",
+        "release",
+        "Browsing Records",
+        "search",
+        "Collection",
+        "browser",
+        "Query Records",
+        "time"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "Add Purchase"
+        ],
+        [
+          "transaction",
+          "deal",
+          "trade"
+        ],
+        [
+          "IP"
+        ],
+        [
+          "cart",
+          "shopping cart",
+          "trolley"
+        ],
+        [
+          "click",
+          "clicking",
+          "clicked"
+        ],
+        [
+          "Access Date"
+        ],
+        [
+          "follow",
+          "focus",
+          "attention"
+        ],
+        [
+          "address",
+          "location",
+          "place"
+        ],
+        [
+          "language",
+          "languages",
+          "foreign language",
+          "mother tongue"
+        ],
+        [
+          "share",
+          "forward",
+          "transmit"
+        ],
+        [
+          "publish",
+          "post",
+          "send"
+        ],
+        [
+          "Browsing Records"
+        ],
+        [
+          "search",
+          "find",
+          "look up"
+        ],
+        [
+          "collect",
+          "favorite",
+          "bookmark"
+        ],
+        [
+          "browser",
+          "web browser",
+          "internet browser"
+        ],
+        [
+          "query record",
+          "search record",
+          "inquiry record"
+        ],
+        [
+          "time",
+          "date",
+          "duration"
+        ]
+      ],
+      "purpose-cn-list": [],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "加购",
+          "data-en": "Add Purchase",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "交易",
+          "data-en": "transaction",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "IP",
+          "data-en": "IP",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "购物车",
+          "data-en": "Shopping Cart",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "点击",
+          "data-en": "click",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "访问日期",
+          "data-en": "Access Date",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "关注",
+          "data-en": "follow",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "地址",
+          "data-en": "address",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "语言",
+          "data-en": "language",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "分享",
+          "data-en": "share",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "发布",
+          "data-en": "release",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "浏览记录",
+          "data-en": "Browsing Records",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "搜索",
+          "data-en": "search",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "收藏",
+          "data-en": "Collection",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "浏览器",
+          "data-en": "browser",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "查询记录",
+          "data-en": "Query Records",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        },
+        {
+          "data-cn": "时间",
+          "data-en": "time",
+          "subject": [],
+          "purpose-cn": [],
+          "purpose-en": []
+        }
+      ]
+    },
+    {
+      "orig-sentence": "如对本政策内容有任何疑问、意见或建议，您可通过手机天猫提供的各种联系方式与我们联系。",
+      "data-cn-list": [
+        "联系"
+      ],
+      "data-en-list": [
+        "contact"
+      ],
+      "data-en-chatgpt-list": [
+        [
+          "contact",
+          "contacts",
+          "get in touch"
+        ]
+      ],
+      "purpose-cn-list": [
+        "联系"
+      ],
+      "purpose-en-list": [],
+      "result_sentence": [
+        {
+          "data-cn": "联系",
+          "data-en": "contact",
+          "subject": [],
+          "purpose-cn": [
+            "联系"
+          ],
+          "purpose-en": []
+        }
+      ]
+    }
+  ]
+]

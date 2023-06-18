@@ -8,6 +8,7 @@ class StatRecorder(object):
         self.start_time = -1
         self.end_time = -1
         self.restart_cnt = 0
+        self.webview_set = set()
 
     def __new__(cls, *args, **kwargs):
         if not hasattr(StatRecorder, "_instance"):
@@ -29,8 +30,16 @@ class StatRecorder(object):
     def add_stat_screen_set(self, ck_eles_text:str):
         self.stat_screen_set.add(ck_eles_text)
 
+    def add_webview_set(self, webview_text:str):
+        self.webview_set.add(webview_text)
+
     def add_stat_stat_activity_set(self, cur_activity):
         self.stat_activity_set.add(cur_activity)
+
+    def count_time(self):
+        self.end_time = time.time()
+        if self.end_time - self.start_time > 3600:
+            raise Exception
 
     def print_result(self):
         LogUtils.log_info("@" * 100)
@@ -38,6 +47,7 @@ class StatRecorder(object):
         LogUtils.log_info(f"总共点击的activity个数 {len(self.stat_activity_set)}")
         LogUtils.log_info(f"总共点击的Screen个数: {len(self.stat_screen_set)}")
         LogUtils.log_info(f"总共点击的组件个数: {self.total_eles_cnt}")
+        LogUtils.log_info(f"总共触发的WebView个数: {len(self.webview_set)}")
         self.end_time = time.time()
         LogUtils.log_info(f"时间为 {self.end_time - self.start_time}")
 
@@ -57,6 +67,9 @@ class StatRecorder(object):
 
     def inc_restart_cnt(self):
         self.restart_cnt +=1
+
+    def get_webview_set(self):
+        return self.webview_set
 
 
 
