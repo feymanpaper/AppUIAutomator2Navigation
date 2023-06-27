@@ -16,11 +16,12 @@ class ScreenNode:
         self.activity_name = ""
         # 所有组件的文本,包括不可点击组件的文本
         self.screen_text = ""
+
+
+
         # call_map:{key:widget_uuid, value: next_screen_node}
         # call_map主要记录哪些组件能到达下一个Screen
         self.call_map = {}
-        # 记录是否是WebView
-        self.isWebView = False
         # cycle_set记录了哪些组件产生回边
         self.cycle_set = set()
         # 记录哪些候选的随机点击组件
@@ -31,8 +32,6 @@ class ScreenNode:
         self.ele_vis_map = {}
         # 记录当前screen已经被点击过的组件个数
         self.already_clicked_cnt = 0
-        # 最近一次到达当前界面所点击的上一个界面的组件uid
-        self.last_ck_ele_uid_list = []
 
     def update_callmap_item(self, ele_uid:str) -> bool:
         if ele_uid in self.call_map:
@@ -40,12 +39,6 @@ class ScreenNode:
             return True
         else:
             return False
-
-    def append_last_ck_ele_uid_list(self, uid):
-        self.last_ck_ele_uid_list.append(uid)
-
-    def get_last_ck_ele_uid_list(self):
-        return self.last_ck_ele_uid_list
 
 
     def build_candidate_random_clickable_eles(self):
@@ -102,6 +95,8 @@ class ScreenNode:
     def is_cur_callmap_finish(self, target_screen_all_text, screen_compare_strategy):
         if self is None:
             return True
+
+
         # for child_node in self.children:
         #     if screen_compare_strategy.compare_screen(child_node.all_text, target_screen_all_text)[0] == True:
         #     # if child_node.all_text == target_screen_all_text:
@@ -110,6 +105,8 @@ class ScreenNode:
         #         else:
         #             return False
         # return True
+
+
         # 根据call_map来找,其实call_map和children差不多,区别就是children有回边,call_map没有
         #TODO
         for child_node in self.call_map.values():
@@ -121,12 +118,4 @@ class ScreenNode:
                 else:
                     return False
         return True
-
-    def set_isWebView(self, flag):
-        self.isWebView = flag
-
-    def get_isWebView(self):
-        return self.isWebView
-
-
             
