@@ -30,6 +30,10 @@ def get_dump_hierarchy():
     root = ET.fromstring(xml)
     return root
 
+def get_dump_xml_text():
+    d = Config.get_instance().get_device()
+    xml = d.dump_hierarchy()
+    return xml
 
 def get_clickable_eles_tree(node, text, text_list: list):
     if node is None:
@@ -256,7 +260,7 @@ def is_privacy_information_in_ele_dict(clickable_ele_dict):
         if sip_info == text:
             return True
 
-    privacy_information = ["设置", "账号", "个人", "认证"]
+    privacy_information = ["设置", "账号", "个人"]
     for p_info in privacy_information:
         if p_info in text:
             return True
@@ -383,10 +387,7 @@ def get_dict_clickable_ele(clickable_ele, activity_name):
         clickable_ele_dict["text"] = temp_text
     else:
         temp_text = traverse_tree(clickable_ele)
-        if temp_text:
-            clickable_ele_dict["text"] = temp_text
-        else:
-            clickable_ele_dict["text"] = clickable_ele.get("content-desc")
+        clickable_ele_dict["text"] = temp_text
     clickable_ele_dict["bounds"] = clickable_ele.get('bounds')
     return clickable_ele_dict
 

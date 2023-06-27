@@ -20,6 +20,26 @@ class RuntimeContent(object):
 
         self.similarity_mem = {}
 
+    def clear_all(self):
+        # 存储运行时遍历过的screen序列
+        self.screen_list = []
+        # 存储运行时的state序列
+        self.state_list = []
+        # 存储因为错误导致重启的screen序列
+        self.error_screen_list = []
+        # 存储因为错误导致重启的clickable_ele
+        self.error_clickable_ele_uid_list = []
+        # 存储着整个app所有screen(ScrennNode) {key:screen_sig, val:screen_node}
+        self.screen_map = {}
+        # 全局记录每个组件的uid {key:cur_clickable_ele_uid, val:clickable_ele}
+        self.ele_uid_map = {}
+
+        self.first_screen_ck_eles_text = None
+        self.last_clickable_ele_uid = None
+        self.last_screen_node = None
+
+        self.similarity_mem = {}
+
     def __new__(cls, *args, **kwargs):
         if not hasattr(RuntimeContent, "_instance"):
             RuntimeContent._instance = object.__new__(cls)
@@ -31,15 +51,14 @@ class RuntimeContent(object):
             RuntimeContent._instance = RuntimeContent(*args, **kwargs)
         return RuntimeContent._instance
 
+    def get_last_clickable_ele_uid(self):
+        return self.last_clickable_ele_uid
 
     def get_last_screen_node(self):
         return self.last_screen_node
 
     def set_last_screen_node(self, target):
         self.last_screen_node = target
-
-    def get_last_clickable_ele_uid(self):
-        return self.last_clickable_ele_uid
 
     def set_last_clickable_ele_uid(self, ele_uid):
         self.last_clickable_ele_uid = ele_uid
@@ -70,10 +89,6 @@ class RuntimeContent(object):
 
     def append_error_clickable_ele_uid_list(self, ele_uid:str):
         self.error_clickable_ele_uid_list.append(ele_uid)
-
-    def append_more_error_ck_ele_uid_list(self, ele_uid_list:list):
-        for ele_uid in ele_uid_list:
-            self.error_clickable_ele_uid_list.append(ele_uid)
 
     def get_error_clickable_ele_uid_list(self):
         return self.error_clickable_ele_uid_list

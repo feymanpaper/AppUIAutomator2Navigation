@@ -1,12 +1,27 @@
+import os
+
 from uiautomator2 import Device
 class Config(object):
     def __init__(self):
+
+        # 自动收集时的手动设置数据
+        # 要跑的app的路径
+        self.app_path = "E:\\adv_data_set\\app300"
+        # 跑出来的数据存放地址
+        self.app_data_path = "G:\\app_audit\\"
+        # 每个app跑的时间，以秒为单位
+        self.ever_app_run_time = 60*15
+
+        # 自动收集的运行时数据,不需要改动
+        self.cur_app_path = ""
+
+
         self.CLICK_MAX_CNT = 4
         self.sleep_time_sec = 2
         self.device = None
         # self.target_pkg_name = "com.example.myapplication"
-        # self.target_pkg_name = "com.alibaba.android.rimet"
-        # self.target_pkg_name = "com.ss.android.ugc.aweme" #抖音
+        self.target_pkg_name = ""
+        # app_data_path/packagename_timestamp
         # self.target_pkg_name = "net.csdn.csdnplus"
         # self.target_pkg_name = "com.sina.weibo"
         # self.target_pkg_name = "com.youku.phone"
@@ -19,13 +34,10 @@ class Config(object):
         # self.target_pkg_name = "com.yipiao"
         # self.target_pkg_name = "app.podcast.cosmos"
         # self.target_pkg_name = "com.hunantv.imgo.activity"
-        # self.target_pkg_name = "tv.danmaku.bili" #b站
-        # self.target_pkg_name = "com.netease.edu.ucmooc" #MOOC
-        self.target_pkg_name = "com.cainiao.wireless"
 
 
         self.log_file_name = "./Log/" + self.target_pkg_name + "_1.log"
-        self.use_pickle_file_name = "./SavedInstance/com.cainiao.wireless_restart0activity7&screen22&time251.1s.pickle"
+        self.use_pickle_file_name = "./SavedInstance/" + self.target_pkg_name + "_1.pickle"
         self.is_saved_start = False
 
 
