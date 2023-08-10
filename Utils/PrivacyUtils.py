@@ -44,7 +44,7 @@ def get_missing_data_item(screen_text_file_name, privacy_policy_file_name):
     non_exist_item = non_look_up(match_privacy_item, privacy_policy_text)
     return non_exist_item
 
-screen_text_file_name = "../dumpjson/com.alibaba.android.rimet_restart0activity76&screen249&time3603.69s.json"
-privacy_policy_file_name = "../PrivacyData/PrivacyPolicySaveDir/钉钉.json"
+screen_text_file_name = "../dumpjson/com.eg.android.AlipayGphone_restart1activity64&screen314&time3602.65s.json"
+privacy_policy_file_name = "../PrivacyData/PrivacyPolicySaveDir/支付宝.json"
 print(get_missing_data_item(screen_text_file_name, privacy_policy_file_name))
 print(len(get_missing_data_item(screen_text_file_name, privacy_policy_file_name)))
