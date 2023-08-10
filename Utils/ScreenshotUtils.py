@@ -1,4 +1,5 @@
 from DeviceHelper import *
+# 任务:
 # 实现一个屏幕截图功能, 注: uiautomator2具有截图功能
 # 要求实现截图, 并且将截图命名为encode_screen_uid(screen_uid),即编码当前界面信息的字符串,并且将文件保存在Screenshot目录下(目录不存在则程序自动创建)
 # 并且encode_screen_uid(screen_uid)能够进行解码回screen_uid, 即decode_screen_uid(encode_screen_uid(screen_uid)) = screen_uid
