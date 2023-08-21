@@ -12,8 +12,99 @@
 
 # 任务:根据App界面截图和json邻接表, 建立一个App界面之间的跳转图, 并且可视化出来
 
+import json
+import os
+import networkx as nx
+import matplotlib.pyplot as plt
+from PIL import Image
+
+# 点布局相关
+x_root = 0
+y_root = 0
+x_space = 3000
+y_space = 5000
+
+# 截图比例相关
+enlarge_ratio = 1600
+node_size = 1000
+length_to_width_ratio = 1.5
+
 class DrawGraphUtils:
     @staticmethod
     def draw_callgraph(cls):
         #TODO
+        # 获取json文件夹路径
+        current_dir = os.getcwd()
+        json_folder = os.path.join(current_dir, "dumpjson")
+
+        # 遍历文件夹所有文件
+        for filename in os.listdir(json_folder):
+            if filename.endswith(".json"):
+                file_path = os.path.join(json_folder, filename)
+
+                # 打开/读取JSON文件
+                with open(file_path, 'r', encoding='utf-8') as file:
+                    data = json.load(file)
+
+                    graph = nx.DiGraph()
+                    # 存放截图显示位置
+                    pos = {}
+                    root_flag = 1
+
+                    for obj in data:
+                        ck_eles_text = obj["ck_eles_text"]
+                        nextlist = obj["nextlist"]
+                        call_map = obj["call_map"]
+
+                        if root_flag:
+                            graph.add_node(ck_eles_text)
+                            pos["ck_eles_text"] = (x_root, y_root)
+                            root_flag = 0
+
+                        x_parent, y_parent = pos["ck_eles_text"]
+                        num = len(nextlist)
+                        x_first = x_parent - num * x_space / 2
+                        order = 0
+
+                        for nxt in nextlist:
+                            if nxt is not None and ck_eles_text != nxt:
+                                graph.add_edge(ck_eles_text, nxt)
+                                x_child = x_first + order * x_space
+                                order += 1
+                                y_child = y_parent + y_space
+                                pos["nxt"] = (x_child, y_child)
+
+                        for _, target in call_map.items():
+                            if target is not None and ck_eles_text != target:
+                                graph.add_edge(ck_eles_text, target)
+
+                    # 获取每个点对应截图
+                    image_files = {node: 'image1.png' for node in graph.nodes}
+                    nx.set_node_attributes(graph, image_files, 'image')
+
+                    fig, ax = plt.subplots(figsize=(100, 150))
+
+                    # 调整截图显示位置和比例
+                    for node in graph.nodes:
+                        x, y = pos[node]
+                        x *= enlarge_ratio
+                        y *= enlarge_ratio
+                        img_path = graph.nodes[node]['image']
+                        img = Image.open(img_path)
+                        resized_img = img.resize((node_size, int(node_size * length_to_width_ratio)))
+                        img_width, img_height = img.size
+
+                        x -= img_width / 2
+                        y -= img_height / 2
+                        ax.imshow(resized_img, extent=(x, x + img_width, y, y + img_height), zorder=1)
+
+                    # 画图
+                    nx.draw_networkx_edges(graph, pos, ax=ax, width=2, edge_color='black', alpha=0.7)
+                    ax.margins(0.2)
+                    plt.axis('off')
+                    # # 保存图片
+                    # picture_folder = os.path.join(current_dir, "graph_picture") + '\\'
+                    # picture_name = filename + '.png'
+                    # plt.savefig(picture_folder + picture_name)
+                    plt.show()
         pass
