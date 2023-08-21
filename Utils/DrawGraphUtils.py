@@ -25,14 +25,12 @@ x_space = 3000
 y_space = 5000
 
 # 截图比例相关
-enlarge_ratio = 1600
 node_size = 1000
 length_to_width_ratio = 1.5
 
 class DrawGraphUtils:
     @staticmethod
     def draw_callgraph(cls):
-        #TODO
         # 获取json文件夹路径
         current_dir = os.getcwd()
         json_folder = os.path.join(current_dir, "dumpjson")
@@ -84,39 +82,38 @@ class DrawGraphUtils:
                         else:
                             break
 
-                    # 测试点位置
-                    node_size = 20
-                    nx.draw_networkx_edges(graph, pos, arrowstyle='-', width=1)
-                    nx.draw_networkx(graph, pos, with_labels=False, arrows=True, node_size=node_size)
-                    plt.show()
-
-                    # # 获取每个点对应截图
-                    # image_files = {node: 'image1.png' for node in graph.nodes}
-                    # nx.set_node_attributes(graph, image_files, 'image')
-                    #
-                    # fig, ax = plt.subplots(figsize=(100, 150))
-                    #
-                    # # 调整截图显示位置和比例
-                    # for node in graph.nodes:
-                    #     x, y = pos[node]
-                    #     x *= enlarge_ratio
-                    #     y *= enlarge_ratio
-                    #     img_path = graph.nodes[node]['image']
-                    #     img = Image.open(img_path)
-                    #     resized_img = img.resize((node_size, int(node_size * length_to_width_ratio)))
-                    #     img_width, img_height = img.size
-                    #
-                    #     x -= img_width / 2
-                    #     y -= img_height / 2
-                    #     ax.imshow(resized_img, extent=(x, x + img_width, y, y + img_height), zorder=1)
-                    #
-                    # # 画图
-                    # nx.draw_networkx_edges(graph, pos, ax=ax, width=2, edge_color='black', alpha=0.7)
-                    # ax.margins(0.2)
-                    # plt.axis('off')
-                    # # # 保存图片
-                    # # picture_folder = os.path.join(current_dir, "graph_picture") + '\\'
-                    # # picture_name = filename + '.png'
-                    # # plt.savefig(picture_folder + picture_name)
+                    # # 测试点位置
+                    # print(pos)
+                    # print("--------------------------------------------------------")
+                    # node_size = 20
+                    # nx.draw_networkx_edges(graph, pos, arrowstyle='-', width=1)
+                    # nx.draw_networkx(graph, pos, with_labels=False, arrows=True, node_size=node_size)
                     # plt.show()
-        
+
+                    # 获取每个点对应截图
+                    image_files = {node: 'image1.png' for node in graph.nodes}
+                    nx.set_node_attributes(graph, image_files, 'image')
+
+                    fig, ax = plt.subplots(figsize=(100, 150))
+
+                    # 调整截图显示位置和比例
+                    for node in graph.nodes:
+                        x, y = pos[node]
+                        img_path = graph.nodes[node]['image']
+                        img = Image.open(img_path)
+                        resized_img = img.resize((node_size, int(node_size * length_to_width_ratio)))
+                        img_width, img_height = img.size
+
+                        x -= img_width / 2
+                        y -= img_height / 2
+                        ax.imshow(resized_img, extent=(x, x + img_width, y, y + img_height), zorder=1)
+
+                    # 画图
+                    nx.draw_networkx_edges(graph, pos, ax=ax, width=1.5, edge_color='gray', arrowstyle='->')
+                    ax.margins(0.2)
+                    plt.axis('off')
+                    # # 保存图片
+                    # picture_folder = os.path.join(current_dir, "graph_picture") + '\\'
+                    # picture_name = filename + '.png'
+                    # plt.savefig(picture_folder + picture_name)
+                    plt.show()
