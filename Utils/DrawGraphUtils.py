@@ -61,50 +61,62 @@ class DrawGraphUtils:
                             pos[ck_eles_text] = (x_root, y_root)
                             root_flag = 0
 
-                        x_parent, y_parent = pos[ck_eles_text]
-                        num = len(nextlist)
-                        x_first = x_parent - num * x_space / 2
-                        order = 0
+                        if graph.has_node(ck_eles_text):
+                            x_parent, y_parent = pos[ck_eles_text]
+                            num = len(nextlist)
+                            x_first = x_parent - num * x_space / 2
+                            order = 0
 
-                        for nxt in nextlist:
-                            if nxt is not None and ck_eles_text != nxt:
-                                graph.add_edge(ck_eles_text, nxt)
-                                x_child = x_first + order * x_space
-                                order += 1
-                                y_child = y_parent + y_space
-                                pos[nxt] = (x_child, y_child)
+                            for nxt in nextlist:
+                                if not graph.has_node(nxt):
+                                    graph.add_node(nxt)
+                                    x_child = x_first + order * x_space
+                                    order += 1
+                                    y_child = y_parent - y_space
+                                    pos[nxt] = (x_child, y_child)
 
-                        for _, target in call_map.items():
-                            if target is not None and ck_eles_text != target:
-                                graph.add_edge(ck_eles_text, target)
+                                if nxt is not None and ck_eles_text != nxt:
+                                    graph.add_edge(ck_eles_text, nxt)
 
-                    # 获取每个点对应截图
-                    image_files = {node: 'image1.png' for node in graph.nodes}
-                    nx.set_node_attributes(graph, image_files, 'image')
+                            for _, target in call_map.items():
+                                if target is not None and ck_eles_text != target:
+                                    graph.add_edge(ck_eles_text, target)
+                        else:
+                            break
 
-                    fig, ax = plt.subplots(figsize=(100, 150))
-
-                    # 调整截图显示位置和比例
-                    for node in graph.nodes:
-                        x, y = pos[node]
-                        x *= enlarge_ratio
-                        y *= enlarge_ratio
-                        img_path = graph.nodes[node]['image']
-                        img = Image.open(img_path)
-                        resized_img = img.resize((node_size, int(node_size * length_to_width_ratio)))
-                        img_width, img_height = img.size
-
-                        x -= img_width / 2
-                        y -= img_height / 2
-                        ax.imshow(resized_img, extent=(x, x + img_width, y, y + img_height), zorder=1)
-
-                    # 画图
-                    nx.draw_networkx_edges(graph, pos, ax=ax, width=2, edge_color='black', alpha=0.7)
-                    ax.margins(0.2)
-                    plt.axis('off')
-                    # # 保存图片
-                    # picture_folder = os.path.join(current_dir, "graph_picture") + '\\'
-                    # picture_name = filename + '.png'
-                    # plt.savefig(picture_folder + picture_name)
+                    # 测试点位置
+                    node_size = 20
+                    nx.draw_networkx_edges(graph, pos, arrowstyle='-', width=1)
+                    nx.draw_networkx(graph, pos, with_labels=False, arrows=True, node_size=node_size)
                     plt.show()
-        pass
+
+                    # # 获取每个点对应截图
+                    # image_files = {node: 'image1.png' for node in graph.nodes}
+                    # nx.set_node_attributes(graph, image_files, 'image')
+                    #
+                    # fig, ax = plt.subplots(figsize=(100, 150))
+                    #
+                    # # 调整截图显示位置和比例
+                    # for node in graph.nodes:
+                    #     x, y = pos[node]
+                    #     x *= enlarge_ratio
+                    #     y *= enlarge_ratio
+                    #     img_path = graph.nodes[node]['image']
+                    #     img = Image.open(img_path)
+                    #     resized_img = img.resize((node_size, int(node_size * length_to_width_ratio)))
+                    #     img_width, img_height = img.size
+                    #
+                    #     x -= img_width / 2
+                    #     y -= img_height / 2
+                    #     ax.imshow(resized_img, extent=(x, x + img_width, y, y + img_height), zorder=1)
+                    #
+                    # # 画图
+                    # nx.draw_networkx_edges(graph, pos, ax=ax, width=2, edge_color='black', alpha=0.7)
+                    # ax.margins(0.2)
+                    # plt.axis('off')
+                    # # # 保存图片
+                    # # picture_folder = os.path.join(current_dir, "graph_picture") + '\\'
+                    # # picture_name = filename + '.png'
+                    # # plt.savefig(picture_folder + picture_name)
+                    # plt.show()
+        
