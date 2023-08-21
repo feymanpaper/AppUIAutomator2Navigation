@@ -58,10 +58,10 @@ class DrawGraphUtils:
 
                         if root_flag:
                             graph.add_node(ck_eles_text)
-                            pos["ck_eles_text"] = (x_root, y_root)
+                            pos[ck_eles_text] = (x_root, y_root)
                             root_flag = 0
 
-                        x_parent, y_parent = pos["ck_eles_text"]
+                        x_parent, y_parent = pos[ck_eles_text]
                         num = len(nextlist)
                         x_first = x_parent - num * x_space / 2
                         order = 0
@@ -72,7 +72,7 @@ class DrawGraphUtils:
                                 x_child = x_first + order * x_space
                                 order += 1
                                 y_child = y_parent + y_space
-                                pos["nxt"] = (x_child, y_child)
+                                pos[nxt] = (x_child, y_child)
 
                         for _, target in call_map.items():
                             if target is not None and ck_eles_text != target:
