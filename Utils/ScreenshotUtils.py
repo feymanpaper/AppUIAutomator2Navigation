@@ -57,7 +57,6 @@ class ScreenshotUtils:
     @staticmethod
     def decode_screen_uid(encode_str: str) -> str:
         file_path = "Screenshot/" + "screenshot_map.json"
-
         with open(file_path, 'r') as file:
             data = json.load(file)
 

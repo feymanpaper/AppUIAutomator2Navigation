@@ -17,7 +17,7 @@ import os
 import networkx as nx
 import matplotlib.pyplot as plt
 from PIL import Image
-import ScreenshotUtils
+from ScreenshotUtils import *
 
 # 点布局相关
 x_root = 0
@@ -31,10 +31,12 @@ length_to_width_ratio = 1.5
 
 class DrawGraphUtils:
     @staticmethod
-    def draw_callgraph(cls):
+    def draw_callgraph():
         # 获取json文件夹路径
         current_dir = os.getcwd()
-        json_folder = os.path.join(current_dir, '..', 'PrivacyData', 'PrivacyPolicySave', 'dumpjson')
+        json_folder = os.path.join(current_dir, '..', 'PrivacyData', 'PrivacyPolicySaveDir', 'dumpjson')
+        json_folder = json_folder.replace("\\Utils\\test\\..\\PrivacyData", "\\PrivacyData")
+        json_folder = json_folder.replace("\\Utils\\..\\PrivacyData", "\\PrivacyData")
 
         # 遍历文件夹所有文件
         for filename in os.listdir(json_folder):
@@ -88,14 +90,13 @@ class DrawGraphUtils:
                                 graph.add_edge(ck_eles_text, target)
 
                     # 获取每个点对应截图
-                    test_raw_uid = "&我的 810 1540&0今日清单清单记录 242 323&0今日扫码扫码记录 657 323&成语我特牛应用名称： 450 725&个性二维码 238 1071&连续扫码 662 1071&文件管理 238 1229&精准核对 662 1229&快扫(电脑) 238 1387&历史查询 662 1387& 238 1472& 662 1472&收派 270 1540& 450 1540&仓库 630 1540& 450 1540"
-                    test_decode_uid = ScreenshotUtils.decode_screen_uid(test_raw_uid)
-                    test_picture_dir = os.path.join(current_dir, 'test', 'Screenshot', 'ScreenshotPicture')
-                    image_files = {node: os.path.join(test_picture_dir, f'{test_decode_uid}.png') for node in graph.nodes}
+                    # 截图所在文件夹路径
+                    test_picture_dir = os.path.join(current_dir, 'Screenshot', 'ScreenshotPicture')
+                    # 预览用同一张截图
+                    image_files = {node: os.path.join(test_picture_dir, 'S-8vH7t7mC_sxQMhOXKnpJwaJFugPUyArYN72paAe1A=.png') for node in graph.nodes}
+                    # 实际应换作下行代码
+                    # image_files = {node: os.path.join(test_picture_dir, f'{ScreenshotUtils.encode_screen_uid(node)}.png') for node in graph.nodes}
                     nx.set_node_attributes(graph, image_files, 'image')
-
-                    # screenshot_folder = os.path.join(current_dir, '..', 'privacydata', 'Screenshot')
-                    # image_files = {node: os.path.join(screenshot_folder, f'{ScreenshotUtils.decode_screen_uid(node)}.png') for node in graph.nodes}
 
                     # 调整截图显示位置和比例
                     fig, ax = plt.subplots(figsize=(100, 150))
@@ -117,7 +118,9 @@ class DrawGraphUtils:
                     plt.axis('off')
                     # 保存图片
                     picture_folder = os.path.join(current_dir, '..', 'PrivacyData', 'JumpGraph') + '\\'
-                    picture_name = filename + '.png'
+                    picture_folder = picture_folder.replace("\\Utils\\test\\..\\PrivacyData", "\\PrivacyData")
+                    picture_folder = picture_folder.replace("\\Utils\\..\\PrivacyData", "\\PrivacyData")
+                    picture_name = filename.replace('.json', '.png')
                     plt.savefig(picture_folder + picture_name)
-                    
+
                     plt.show()
