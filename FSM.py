@@ -1,6 +1,6 @@
 from StateHandler import *
 from DeviceHelper import *
-
+from Utils.ScreenshotUtils import *
 class FSM:
     # state_map = {
     #     1: "不是当前要测试的app,即app跳出了测试的app",
@@ -119,6 +119,9 @@ class FSM:
         cur_activity = content["cur_activity"]
         cur_screen_pkg_name = content["cur_screen_pkg_name"]
         ck_eles_text = content["ck_eles_text"]
+
+        # 截图
+        ScreenshotUtils.screen_shot(ck_eles_text)
 
         StatRecorder.get_instance().add_stat_stat_activity_set(cur_activity)
         StatRecorder.get_instance().add_stat_screen_set(ck_eles_text)
