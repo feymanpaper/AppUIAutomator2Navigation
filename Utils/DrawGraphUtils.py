@@ -16,6 +16,7 @@ import json
 import os
 import networkx as nx
 import matplotlib.pyplot as plt
+from matplotlib.patches import ConnectionPatch
 from PIL import Image
 from ScreenshotUtils import *
 
@@ -23,7 +24,7 @@ from ScreenshotUtils import *
 x_root = 0
 y_root = 0
 x_space = 3000
-y_space = 4000
+y_space = 6000
 
 # 截图比例相关
 node_size = 1000
@@ -32,75 +33,110 @@ length_to_width_ratio = 1.5
 class DrawGraphUtils:
     @staticmethod
     def draw_callgraph():
-        # 获取json文件夹路径
+        # 读文件夹JSON文件
         current_dir = os.getcwd()
         json_folder = os.path.join(current_dir, '..', 'PrivacyData', 'PrivacyPolicySaveDir', 'dumpjson')
         json_folder = json_folder.replace("\\Utils\\test\\..\\PrivacyData", "\\PrivacyData")
         json_folder = json_folder.replace("\\Utils\\..\\PrivacyData", "\\PrivacyData")
 
-        # 遍历文件夹所有文件
         for filename in os.listdir(json_folder):
             if filename.endswith(".json"):
                 file_path = os.path.join(json_folder, filename)
 
-                # 读取JSON文件
                 with open(file_path, 'r', encoding='utf-8') as file:
                     data = json.load(file)
 
                     graph = nx.DiGraph()
                     # 存放截图显示位置
                     pos = {}
+                    record_pos = {}
                     root_flag = 1
                     root_count = 0
+                    edge_color = 'orange'
 
                     for obj in data:
                         ck_eles_text = obj["ck_eles_text"]
                         nextlist = obj["nextlist"]
                         call_map = obj["call_map"]
 
+                        # 初始根节点
                         if root_flag:
                             graph.add_node(ck_eles_text)
                             pos[ck_eles_text] = (x_root, y_root)
+                            record_pos[y_root] = x_root
                             root_flag = 0
 
+                        # 遍历完一支后新的根节点
                         if not graph.has_node(ck_eles_text):
                             graph.add_node(ck_eles_text)
-                            pos[ck_eles_text] = (
-                            x_root + root_count * x_space / 1.5, y_root - root_count * y_space / 20)
                             root_count += 1
+
+                            if len(nextlist) > 0 and graph.has_node(nextlist[0]) and nextlist[0] in pos:
+                                _, y_nxt = pos[nextlist[0]]
+                                # y:放置在后续第一个子节点的上方y_space/2处
+                                y_new = y_nxt + y_space / 2
+                                # x:放置在y高度线上最右边节点的旁边
+                                x_record = [x for y, x in record_pos.items() if y == y_nxt]
+                                if len(x_record) > 0:
+                                    max_x_record = max(x_record)
+                                    x_new = max_x_record + x_space
+                                else:
+                                    x_new = x_root + root_count * x_space
+
+                                record_pos[y_nxt] = x_new
+                            else:
+                                y_new = y_root
+
+                                x_record = [x for y, x in record_pos.items() if y == y_root]
+                                if len(x_record) > 0:
+                                    max_x_record = max(x_record)
+                                    x_new = max_x_record + x_space
+
+                                record_pos[y_root] = x_new
+
+                            pos[ck_eles_text] = (x_new, y_new)
 
                         x_parent, y_parent = pos[ck_eles_text]
                         num = len(nextlist)
                         x_first = x_parent - num * x_space / 2
                         order = 0
 
+                        if edge_color == 'orange':
+                            edge_color = 'cyan'
+                        else:
+                            edge_color = 'orange'
+
+                        # 子节点
                         for nxt in nextlist:
                             if not graph.has_node(nxt):
                                 graph.add_node(nxt)
+                                # x: 在父节点正下方散开
                                 x_child = x_first + order * x_space
                                 order += 1
+                                # y：放在父节点下方y_space处
                                 y_child = y_parent - y_space
+
                                 pos[nxt] = (x_child, y_child)
+                                record_pos[y_child] = x_child
 
                             if nxt is not None and ck_eles_text != nxt:
-                                graph.add_edge(ck_eles_text, nxt)
+                                graph.add_edge(ck_eles_text, nxt, color = edge_color)
 
                         for _, target in call_map.items():
                             if target is not None and ck_eles_text != target:
-                                graph.add_edge(ck_eles_text, target)
+                                graph.add_edge(ck_eles_text, target, color = edge_color)
 
-                    # 获取每个点对应截图
-                    # 截图所在文件夹路径
+                    # 获取点对应截图
                     test_picture_dir = os.path.join(current_dir, 'Screenshot', 'ScreenshotPicture')
-                    # 预览用同一张截图
+                    # 预览用同一张截图，实际应换作底下一行代码
                     image_files = {node: os.path.join(test_picture_dir, 'S-8vH7t7mC_sxQMhOXKnpJwaJFugPUyArYN72paAe1A=.png') for node in graph.nodes}
-                    # 实际应换作下行代码
                     # image_files = {node: os.path.join(test_picture_dir, f'{ScreenshotUtils.encode_screen_uid(node)}.png') for node in graph.nodes}
                     nx.set_node_attributes(graph, image_files, 'image')
 
-                    # 调整截图显示位置和比例
+                    # 画图
                     fig, ax = plt.subplots(figsize=(100, 150))
 
+                    # 调整截图位置和比例
                     for node in graph.nodes:
                         x, y = pos[node]
                         img_path = graph.nodes[node]['image']
@@ -110,17 +146,31 @@ class DrawGraphUtils:
 
                         x -= img_width / 2
                         y -= img_height / 2
-                        ax.imshow(resized_img, extent=(x, x + img_width, y, y + img_height), zorder=1)
+                        ax.imshow(resized_img, extent=(x, x + img_width, y, y + img_height), zorder=2)
 
-                    # 画图
-                    nx.draw_networkx_edges(graph, pos, ax=ax, width=1.5, edge_color='gray', arrowstyle='->')
-                    ax.margins(0.2)
+                    nx.draw_networkx_edges(graph, pos, ax=ax, width=1.5, edge_color='gray', arrows=False, alpha=0.1)
+                    for edge in graph.edges():
+                        start_node = edge[0]
+                        end_node = edge[1]
+                        x_start, y_start = pos[start_node]
+                        x_end, y_end = pos[end_node]
+                        arrow_pos_x = (x_start + x_end) / 2
+                        arrow_pos_y = (y_start + y_end) / 2
+
+                        cl = graph.edges[edge]['color']
+
+                        arrow_connection = ConnectionPatch((x_start, y_start), (arrow_pos_x, arrow_pos_y),
+                                                           "data", "data", arrowstyle='->', color=cl, alpha=0.5)
+                        next_connection = ConnectionPatch((arrow_pos_x, arrow_pos_y),(x_end, y_end),
+                                                           "data", "data", arrowstyle='-', color=cl, alpha=0.5)
+                        ax.add_artist(arrow_connection)
+                        ax.add_artist(next_connection)
+
                     plt.axis('off')
-                    # 保存图片
+
+                    # 存图
                     picture_folder = os.path.join(current_dir, '..', 'PrivacyData', 'JumpGraph') + '\\'
                     picture_folder = picture_folder.replace("\\Utils\\test\\..\\PrivacyData", "\\PrivacyData")
                     picture_folder = picture_folder.replace("\\Utils\\..\\PrivacyData", "\\PrivacyData")
-                    picture_name = filename.replace('.json', '.png')
-                    plt.savefig(picture_folder + picture_name)
-
-                    plt.show()
+                    picture_name = filename.replace('.json', '.svg')
+                    plt.savefig(picture_folder + picture_name, bbox_inches='tight', dpi=300)
