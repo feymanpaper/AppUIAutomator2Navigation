@@ -33,6 +33,7 @@ class FSM:
         11: "STATE_WebViewScreen",
         12: "STATE_ErrorScreen",
         13: "STATE_HomeScreenRestart",
+        14 :"STATE_ExceedDepth",
         100: "STATE_Terminate"
     }
 
@@ -49,6 +50,7 @@ class FSM:
     STATE_WebViewScreen = 11
     STATE_ErrorScreen = 12
     STATE_HomeScreenRestart = 13
+    STATE_ExceedDepth = 14
     STATE_Terminate = 100
 
 
@@ -111,6 +113,8 @@ class FSM:
             StateHandler.handle_homes_screen_restart(content)
         elif state == self.STATE_Terminate:
             StateHandler.handle_terminate(content)
+        elif state == self.STATE_ExceedDepth:
+            StateHandler.handle_ExceedDepth(content)
         else:
              raise Exception("意外情况")
 
@@ -150,7 +154,7 @@ class FSM:
         if check_is_inputmethod_in_cur_screen() == True:
             return self.STATE_InputMethod, content
 
-
+        #Check WebView
         # if check_is_in_webview(cur_activity) and check_pattern_state(4, [self.STATE_DoublePress, self.STATE_WebViewScreen]):
         #     return self.STATE_StuckRestart, content
         # if check_is_in_webview(cur_activity) and check_pattern_state(1, [self.STATE_WebViewScreen]):
@@ -159,10 +163,26 @@ class FSM:
         #     StatRecorder.get_instance().add_webview_set(ck_eles_text)
         #     return self.STATE_WebViewScreen, content
 
+        screen_depth_map = RuntimeContent.get_instance().screen_depth_map
         last_screen_node = RuntimeContent.get_instance().last_screen_node
-        if last_screen_node is not None and last_screen_node.ck_eles_text != ck_eles_text:
-            depth_cnt = CalDepthUtils.calDepth(RuntimeContent.get_instance().get_screen_map(), RuntimeContent.get_instance().last_screen_node.ck_eles_text)
-            LogUtils.log_info(f"当前层数为: {depth_cnt}")
+        cur_screen_depth = -1
+        res_sim, res_depth = get_max_sim_from_screen_depth_map(ck_eles_text, ScreenCompareStrategy(LCSComparator()))
+        if res_sim >= Config.get_instance().screen_similarity_threshold:
+            cur_screen_depth = res_depth
+        elif last_screen_node is not None and last_screen_node.ck_eles_text != ck_eles_text:
+            cur_screen_depth = CalDepthUtils.calDepth(RuntimeContent.get_instance().get_screen_map(), RuntimeContent.get_instance().last_screen_node.ck_eles_text)
+            screen_depth_map[ck_eles_text] = cur_screen_depth
+
+        if cur_screen_depth == -1:
+            raise Exception
+        LogUtils.log_info(f"当前层数为: {cur_screen_depth}")
+
+        if cur_screen_depth > Config.get_instance().maxDepth and check_pattern_state(4, [self.STATE_DoublePress, self.STATE_ExceedDepth]):
+            return self.STATE_StuckRestart, content
+        if cur_screen_depth > Config.get_instance().maxDepth and check_pattern_state(1, [self.STATE_ExceedDepth]):
+            return self.STATE_DoublePress, content
+        if cur_screen_depth > Config.get_instance().maxDepth:
+            return self.STATE_ExceedDepth, content
 
 
         # temp_screen_node = get_screennode_from_screenmap_by_similarity(screen_map, ck_eles_text, screen_compare_strategy)
@@ -177,7 +197,7 @@ class FSM:
         content["sim"] = sim
 
         # if cur_screen_node is not None:
-        if sim >= 0.90:
+        if sim >= Config.get_instance().screen_similarity_threshold:
             cur_screen_node = most_similar_screen_node
             RuntimeContent.get_instance().put_screen_map(ck_eles_text, cur_screen_node)
 

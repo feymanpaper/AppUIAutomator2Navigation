@@ -14,6 +14,8 @@ class RuntimeContent(object):
         # 全局记录每个组件的uid {key:cur_clickable_ele_uid, val:clickable_ele}
         self.ele_uid_map = {}
 
+        self.screen_depth_map = {}
+
         self.first_screen_ck_eles_text = None
         self.last_clickable_ele_uid = None
         self.last_screen_node = None

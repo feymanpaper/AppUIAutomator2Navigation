@@ -6,9 +6,9 @@ class CalDepthUtils:
     def calDepth(cls, screen_map, target_uid):
         try:
             depth = cls.bfs(screen_map, "root", target_uid) + 1
-        except:
-            depth = cls.bfs(screen_map, "root", target_uid)
-            print("?")
+        except Exception as e:
+            print(e)
+            raise Exception
         return depth
 
     @classmethod

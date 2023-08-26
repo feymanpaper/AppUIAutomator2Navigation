@@ -152,6 +152,20 @@ def get_screennode_from_screenmap_by_similarity(ck_eles_text: str, screen_compar
     else:
         return screen_map.get(ck_eles_text)
 
+
+def get_max_sim_from_screen_depth_map(ck_eles_text:str, screen_compare_strategy) -> tuple[float|int]:
+    screen_depth_map = RuntimeContent.get_instance().screen_depth_map
+    if screen_depth_map.get(ck_eles_text, False) is False:
+        max_sim = 0
+        res_depth = -1
+        for candidate_ck_eles_text  in screen_depth_map.keys():
+            cur_sim = screen_compare_strategy.compare_screen(ck_eles_text, candidate_ck_eles_text)
+            if cur_sim >= Config.get_instance().screen_similarity_threshold:
+                if cur_sim > max_sim:
+                    max_sim = cur_sim
+                    res_depth = screen_depth_map.get(candidate_ck_eles_text)
+        return max_sim, res_depth
+    return 1.0, screen_depth_map.get(ck_eles_text)
 def get_max_similarity_screen_node(ck_eles_text: str, screen_compare_strategy) -> tuple[float | ScreenNode]:
     screen_map = RuntimeContent.get_instance().get_screen_map()
     if screen_map.get(ck_eles_text, False) is False:

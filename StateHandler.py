@@ -430,6 +430,16 @@ class StateHandler(object):
         RuntimeContent.get_instance().set_last_clickable_ele_uid("")
 
     @classmethod
+    def handle_ExceedDepth(cls, content):
+        cur_screen_node = cls.add_not_target_pkg_name_screen_call_graph(content)
+        cur_screen_node.set_isWebView(True)
+        content["cur_screen_node"] = cur_screen_node
+        print_screen_info(content, True)
+        cls.__press_back()
+        RuntimeContent.get_instance().set_last_screen_node(None)
+        RuntimeContent.get_instance().set_last_clickable_ele_uid("")
+
+    @classmethod
     def handle_finish_screen(cls, content):
         cur_screen_node = cls.add_exist_screen_call_graph(content)
         cls.__press_back()
