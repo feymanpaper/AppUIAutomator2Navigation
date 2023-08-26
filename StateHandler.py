@@ -106,6 +106,21 @@ class StateHandler(object):
                         cur_screen_node.already_clicked_cnt += 1
                         clickable_ele_idx += 1
                         continue
+
+                    res_sim, res_depth = get_max_sim_from_screen_depth_map(next_screen_all_text,
+                                                                           ScreenCompareStrategy(LCSComparator()))
+                    if res_depth == -1:
+                        LogUtils.log_info(f"clickmap--next界面是UndefineDepth&{clickable_ele_idx}: {cur_clickable_ele_uid}")
+                        cur_screen_node.already_clicked_cnt += 1
+                        clickable_ele_idx += 1
+                        continue
+
+                    if res_sim >= Config.get_instance().screen_similarity_threshold and res_depth > Config.get_instance().maxDepth:
+                        LogUtils.log_info(f"clickmap--next界面是超过限制层数的&{clickable_ele_idx}: {cur_clickable_ele_uid}")
+                        cur_screen_node.already_clicked_cnt += 1
+                        clickable_ele_idx += 1
+                        continue
+
                     if next_screen_node.get_isWebView():
                         LogUtils.log_info(
                             f"clickmap--next界面是WebView&{clickable_ele_idx}: {cur_clickable_ele_uid}")
@@ -431,6 +446,16 @@ class StateHandler(object):
 
     @classmethod
     def handle_ExceedDepth(cls, content):
+        cur_screen_node = cls.add_not_target_pkg_name_screen_call_graph(content)
+        cur_screen_node.set_isWebView(True)
+        content["cur_screen_node"] = cur_screen_node
+        print_screen_info(content, True)
+        cls.__press_back()
+        RuntimeContent.get_instance().set_last_screen_node(None)
+        RuntimeContent.get_instance().set_last_clickable_ele_uid("")
+
+    @classmethod
+    def handle_UndefineDepth(cls, content):
         cur_screen_node = cls.add_not_target_pkg_name_screen_call_graph(content)
         cur_screen_node.set_isWebView(True)
         content["cur_screen_node"] = cur_screen_node
