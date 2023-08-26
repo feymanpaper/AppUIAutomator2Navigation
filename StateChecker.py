@@ -4,8 +4,8 @@ from Config import *
 def check_is_errorscreen(ck_eles_text: str, screen_compare_strategy: ScreenCompareStrategy) -> bool:
     error_screen_list = RuntimeContent.get_instance().get_error_screen_list()
     for err_ck_eles_text in error_screen_list:
-        simi_flag, cur_similarity = screen_compare_strategy.compare_screen(ck_eles_text, err_ck_eles_text)
-        if simi_flag is True:
+        cur_similarity = screen_compare_strategy.compare_screen(ck_eles_text, err_ck_eles_text)
+        if cur_similarity >= Config.get_instance().screen_similarity_threshold:
             return True
     return False
 

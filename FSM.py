@@ -171,7 +171,7 @@ class FSM:
         # else:
         #     cur_screen_node = None
 
-        sim, most_similar_screen_node = get_max_similarity_screen_node(ck_eles_text, ScreenCompareStrategy(LCSComparator(0.5)))
+        sim, most_similar_screen_node = get_max_similarity_screen_node(ck_eles_text, ScreenCompareStrategy(LCSComparator()))
         content["cur_screen_node"] = most_similar_screen_node
         content["most_similar_screen_node"] = most_similar_screen_node
         content["sim"] = sim

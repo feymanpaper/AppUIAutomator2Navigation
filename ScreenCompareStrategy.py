@@ -6,7 +6,7 @@ class BaseTextComparator(object):
     def __init__(self, threshold = 0.9):
         self.threshold = threshold
 
-    def compare_text(self, text1: str, text2: str) -> tuple:
+    def compare_text(self, text1: str, text2: str) -> float:
         pass
 
 ## 最小编辑距离进行比较Screen文本
@@ -41,13 +41,10 @@ class EditDistanceComparator(BaseTextComparator):
 
         return D[n][m]
 
-    def compare_text(self, text1: str, text2: str) -> tuple:
+    def compare_text(self, text1: str, text2: str) -> float:
         diff = self.get_minEditDistance(text1, text2)
         similarity = 1 - diff/len(text1)
-        if similarity >= self.threshold:
-            return True, similarity
-        else:
-            return False, similarity
+        return similarity
 
 ## 最长公共子序列进行比较Screen文本
 class LCSComparator(BaseTextComparator):
@@ -66,33 +63,30 @@ class LCSComparator(BaseTextComparator):
         
         return dp[m][n]
 
-    def compare_text(self, text1: str, text2: str) -> tuple:
+    def compare_text(self, text1: str, text2: str) -> float:
         lcs = self.get_lcs(text1, text2)
         if len(text1) < len(text2):
             similarity = lcs/len(text2)
         else:
             similarity = lcs/len(text1)
+        return similarity
 
-        if similarity >= self.threshold:
-            return True, similarity
-        else:
-            return False, similarity
 
 ## 具体的比较策略
 class ScreenCompareStrategy(object):
     def __init__(self, strategy: BaseTextComparator) -> None:
         self.screen_compare_strategy = strategy
     
-    def compare_screen(self, text1: str, text2: str) -> tuple:
+    def compare_screen(self, text1: str, text2: str) -> float:
         if text1 == text2:
-            return True, 1
+            return 1
         else:
             query_res = RuntimeContent.get_instance().query_simi_mem((text1, text2))
             if query_res is None:
-                flag, similarity = self.screen_compare_strategy.compare_text(text1, text2)
-                RuntimeContent.get_instance().update_simi_mem((text1, text2), (flag, similarity))
-                RuntimeContent.get_instance().update_simi_mem((text2, text1), (flag, similarity))
-                return flag, similarity
+                similarity = self.screen_compare_strategy.compare_text(text1, text2)
+                RuntimeContent.get_instance().update_simi_mem((text1, text2), similarity)
+                RuntimeContent.get_instance().update_simi_mem((text2, text1), similarity)
+                return similarity
             else:
                 return query_res
 
