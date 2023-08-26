@@ -20,20 +20,63 @@ from matplotlib.patches import ConnectionPatch
 from PIL import Image
 from ScreenshotUtils import *
 
-# 点布局相关
-x_root = 0
-y_root = 0
-x_space = 3000
-y_space = 6000
-
-# 截图比例相关
-node_size = 1000
-length_to_width_ratio = 1.5
-
 class DrawGraphUtils:
+
     @staticmethod
     def draw_callgraph(jsonFilePath, screenShotFilePath, svgSaveFilePath):
-        # 读json文件
+        result = DrawGraphUtils.load_data(jsonFilePath)
+        num_objects, graph, pos = result
+
+        # 获取截图
+        screenshot_folder = os.path.abspath(screenShotFilePath)
+        screenshot_files = {node: os.path.join(screenshot_folder, f'{ScreenshotUtils.encode_screen_uid(node)}.png') for node in graph.nodes}
+        nx.set_node_attributes(graph, screenshot_files, 'image')
+
+        # 画图
+        fig, ax = plt.subplots(figsize=(100, 150))
+        plt.axis('off')
+
+        node_size = 1000
+        length_to_width_ratio = 1.5
+
+        # 调整截图位置和比例
+        for node in graph.nodes:
+            x, y = pos[node]
+            img_path = graph.nodes[node]['image']
+            img = Image.open(img_path)
+            resized_img = img.resize((node_size, int(node_size * length_to_width_ratio)))
+            img_width, img_height = img.size
+
+            x -= img_width / 2
+            y -= img_height / 2
+            ax.imshow(resized_img, extent=(x, x + img_width, y, y + img_height), zorder=2, interpolation='nearest')
+
+        # 画边
+        nx.draw_networkx_edges(graph, pos, ax=ax, width=1.5, edge_color='gray', arrows=False, alpha=0.1)
+        for edge in graph.edges():
+            start_node = edge[0]
+            end_node = edge[1]
+            x_start, y_start = pos[start_node]
+            x_end, y_end = pos[end_node]
+            arrow_pos_x = (x_start + x_end) / 2
+            arrow_pos_y = (y_start + y_end) / 2
+
+            cl = graph.edges[edge]['color']
+            l_w = -0.015 * num_objects + 5.5
+            m_s = -0.25 * num_objects + 85
+
+            arrow_connection = ConnectionPatch((x_start, y_start), (arrow_pos_x, arrow_pos_y),
+                                               "data", "data", arrowstyle='->', color=cl, alpha=0.8, linewidth=l_w, mutation_scale=m_s)
+            next_connection = ConnectionPatch((arrow_pos_x, arrow_pos_y), (x_end, y_end),
+                                              "data", "data", arrowstyle='-', color=cl, alpha=0.8, linewidth=l_w, mutation_scale=m_s)
+            ax.add_artist(arrow_connection)
+            ax.add_artist(next_connection)
+
+        DrawGraphUtils.save_data(jsonFilePath, svgSaveFilePath)
+
+    @staticmethod
+    def load_data(jsonFilePath):
+        # 读取json文件，返回界面数量、跳转关系和画图位置
         json_file_path = os.path.abspath(jsonFilePath)
 
         with open(json_file_path, 'r', encoding='utf-8') as file:
@@ -41,9 +84,13 @@ class DrawGraphUtils:
             num_objects = len(data)
 
             graph = nx.DiGraph()
-            # 存放截图显示位置
             pos = {}
+
             record_pos = {}
+            x_root = 0
+            y_root = 0
+            x_space = 3000
+            y_space = 6000
             virtual_root_flag = 1
             root_flag = 1
             root_count = 0
@@ -126,62 +173,16 @@ class DrawGraphUtils:
                     if target is not None and ck_eles_text != target:
                         graph.add_edge(ck_eles_text, target, color=edge_color)
 
-            # 获取截图
-            screenshot_folder = os.path.abspath(screenShotFilePath)
-            screenshot_files = {node: os.path.join(screenshot_folder, f'{ScreenshotUtils.encode_screen_uid(node)}.png') for node in graph.nodes}
-            nx.set_node_attributes(graph, screenshot_files, 'image')
-
-            # 画图
-            fig, ax = plt.subplots(figsize=(100, 150))
-
-            # 调整截图位置和比例
-            for node in graph.nodes:
-                x, y = pos[node]
-                img_path = graph.nodes[node]['image']
-                img = Image.open(img_path)
-                resized_img = img.resize((node_size, int(node_size * length_to_width_ratio)))
-                img_width, img_height = img.size
-
-                x -= img_width / 2
-                y -= img_height / 2
-                ax.imshow(resized_img, extent=(x, x + img_width, y, y + img_height), zorder=2, interpolation='nearest')
-
-            nx.draw_networkx_edges(graph, pos, ax=ax, width=1.5, edge_color='gray', arrows=False, alpha=0.1)
-            for edge in graph.edges():
-                start_node = edge[0]
-                end_node = edge[1]
-                x_start, y_start = pos[start_node]
-                x_end, y_end = pos[end_node]
-                arrow_pos_x = (x_start + x_end) / 2
-                arrow_pos_y = (y_start + y_end) / 2
-
-                cl = graph.edges[edge]['color']
-                l_w = -0.015 * num_objects + 5.5
-                m_s = -0.25 * num_objects + 85
-
-                arrow_connection = ConnectionPatch((x_start, y_start), (arrow_pos_x, arrow_pos_y),
-                                                   "data", "data", arrowstyle='->', color=cl, alpha=0.8, linewidth=l_w, mutation_scale=m_s)
-                next_connection = ConnectionPatch((arrow_pos_x, arrow_pos_y), (x_end, y_end),
-                                                  "data", "data", arrowstyle='-', color=cl, alpha=0.8, linewidth=l_w, mutation_scale=m_s)
-                ax.add_artist(arrow_connection)
-                ax.add_artist(next_connection)
-
-            plt.axis('off')
-
-            # 存图
-            svg_save_folder = os.path.abspath(svgSaveFilePath)
-
-            if not os.path.exists(svg_save_folder):
-                os.makedirs(svg_save_folder)
-
-            svg_save_name = jsonFilePath.replace("./dumpjson", "")
-            svg_save_name = svg_save_name.replace(".json", ".svg")
-            plt.savefig(svg_save_folder + svg_save_name, bbox_inches='tight', dpi=300)
+        return num_objects, graph, pos
 
     @staticmethod
-    def load_data():
-        pass
+    def save_data(jsonFilePath, svgSaveFilePath):
+        # 保存svg图像，图像与json文件同名
+        svg_save_folder = os.path.abspath(svgSaveFilePath)
 
-    @staticmethod
-    def save_data():
-        pass
+        if not os.path.exists(svg_save_folder):
+            os.makedirs(svg_save_folder)
+
+        svg_save_name = jsonFilePath.replace("./dumpjson", "")
+        svg_save_name = svg_save_name.replace(".json", ".svg")
+        plt.savefig(svg_save_folder + svg_save_name, bbox_inches='tight', dpi=300)
