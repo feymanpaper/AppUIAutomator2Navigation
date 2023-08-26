@@ -34,10 +34,7 @@ class DrawGraphUtils:
     @staticmethod
     def draw_callgraph(jsonFilePath, screenShotFilePath, svgSaveFilePath):
         # 读json文件
-        current_dir = os.getcwd()
-        json_file_path = os.path.join(current_dir, jsonFilePath)
-        json_file_path = json_file_path.replace("./", "")
-        json_file_path = json_file_path.replace("/", "\\")
+        json_file_path = os.path.abspath(jsonFilePath)
 
         with open(json_file_path, 'r', encoding='utf-8') as file:
             data = json.load(file)
@@ -130,10 +127,8 @@ class DrawGraphUtils:
                         graph.add_edge(ck_eles_text, target, color=edge_color)
 
             # 获取截图
-            screenshot_dir = os.path.join(current_dir, screenShotFilePath)
-            screenshot_dir = screenshot_dir.replace("./", "")
-            screenshot_dir = screenshot_dir.replace("/", "\\")
-            screenshot_files = {node: os.path.join(screenshot_dir, f'{ScreenshotUtils.encode_screen_uid(node)}.png') for node in graph.nodes}
+            screenshot_folder = os.path.abspath(screenShotFilePath)
+            screenshot_files = {node: os.path.join(screenshot_folder, f'{ScreenshotUtils.encode_screen_uid(node)}.png') for node in graph.nodes}
             nx.set_node_attributes(graph, screenshot_files, 'image')
 
             # 画图
@@ -174,9 +169,7 @@ class DrawGraphUtils:
             plt.axis('off')
 
             # 存图
-            svg_save_folder = os.path.join(current_dir, svgSaveFilePath) + '\\'
-            svg_save_folder = svg_save_folder.replace("./", "")
-            svg_save_folder = svg_save_folder.replace("/", "\\")
+            svg_save_folder = os.path.abspath(svgSaveFilePath)
 
             if not os.path.exists(svg_save_folder):
                 os.makedirs(svg_save_folder)
