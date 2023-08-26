@@ -2,12 +2,17 @@ import json
 from collections import deque
 
 class CalDepthUtils:
-    @staticmethod
-    def calDepth(screen_map):
-        pass
+    @classmethod
+    def calDepth(cls, screen_map, target_uid):
+        try:
+            depth = cls.bfs(screen_map, "root", target_uid) + 1
+        except:
+            depth = cls.bfs(screen_map, "root", target_uid)
+            print("?")
+        return depth
 
-    @staticmethod
-    def bfs(adj_list, start_uid, target_uid) -> int:
+    @classmethod
+    def bfs(cls, adj_list, start_uid, target_uid) -> int:
         """
         使用BFS算法遍历邻接表，并计算每个节点的层数
         """
@@ -34,14 +39,15 @@ class CalDepthUtils:
 
             # 遍历这个节点的所有邻居，并将它们加入队列中
             target_screen = CalDepthUtils.indexScreen(adj_list, uid)
-            for neighbor in target_screen['call_map'].values():
-                queue.append((neighbor, level + 1))
+            for key, value in target_screen.call_map.items():
+                queue.append((value.ck_eles_text, level + 1))
 
-    @staticmethod
-    def indexScreen(adj_list, target_uid):
-        for screen in adj_list:
-            if screen["ck_eles_text"] == target_uid:
-                return screen
+
+    @classmethod
+    def indexScreen(cls, adj_list, target_uid):
+        for key, value in adj_list.items():
+            if value.ck_eles_text == target_uid:
+                return value
 
 if __name__ == "__main__":
     print(1)

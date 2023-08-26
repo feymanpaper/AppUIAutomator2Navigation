@@ -314,6 +314,7 @@ class StateHandler(object):
                 pass
             elif check_cycle(cur_screen_node, last_screen_node, ScreenCompareStrategy(LCSComparator())) == True:
                 # 产生了回边
+                check_cycle(cur_screen_node, last_screen_node, ScreenCompareStrategy(LCSComparator()))
                 last_screen_node.cycle_set.add(RuntimeContent.get_instance().get_last_clickable_ele_uid())
                 LogUtils.log_info("产生回边")
                 last_screen_node.update_callmap_item(RuntimeContent.get_instance().get_last_clickable_ele_uid())

@@ -5,8 +5,10 @@ from Utils.LogUtils import *
 
 # 检测多层环
 def check_cycle(cur_node: ScreenNode, last_node: ScreenNode, screen_compare_strategy: ScreenCompareStrategy):
-    if screen_compare_strategy.compare_screen(cur_node.ck_eles_text, last_node.ck_eles_text)[0] == True:
+    flag, similarity = screen_compare_strategy.compare_screen(cur_node.ck_eles_text, last_node.ck_eles_text)
+    if flag:
         return True
+
     # if cur_node.children is None or len(cur_node.children) == 0:
     #     return False
     if cur_node.call_map is None or len(cur_node.call_map) == 0 or cur_node.call_map is {}:

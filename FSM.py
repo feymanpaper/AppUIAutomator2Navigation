@@ -1,6 +1,7 @@
 from StateHandler import *
 from DeviceHelper import *
 from Utils.ScreenshotUtils import *
+from Utils.CalDepthUtils import *
 class FSM:
     # state_map = {
     #     1: "不是当前要测试的app,即app跳出了测试的app",
@@ -149,13 +150,19 @@ class FSM:
         if check_is_inputmethod_in_cur_screen() == True:
             return self.STATE_InputMethod, content
 
-        if check_is_in_webview(cur_activity) and check_pattern_state(4, [self.STATE_DoublePress, self.STATE_WebViewScreen]):
-            return self.STATE_StuckRestart, content
-        if check_is_in_webview(cur_activity) and check_pattern_state(1, [self.STATE_WebViewScreen]):
-            return self.STATE_DoublePress, content
-        if check_is_in_webview(cur_activity):
-            StatRecorder.get_instance().add_webview_set(ck_eles_text)
-            return self.STATE_WebViewScreen, content
+
+        # if check_is_in_webview(cur_activity) and check_pattern_state(4, [self.STATE_DoublePress, self.STATE_WebViewScreen]):
+        #     return self.STATE_StuckRestart, content
+        # if check_is_in_webview(cur_activity) and check_pattern_state(1, [self.STATE_WebViewScreen]):
+        #     return self.STATE_DoublePress, content
+        # if check_is_in_webview(cur_activity):
+        #     StatRecorder.get_instance().add_webview_set(ck_eles_text)
+        #     return self.STATE_WebViewScreen, content
+
+        last_screen_node = RuntimeContent.get_instance().last_screen_node
+        if last_screen_node is not None and last_screen_node.ck_eles_text != ck_eles_text:
+            depth_cnt = CalDepthUtils.calDepth(RuntimeContent.get_instance().get_screen_map(), RuntimeContent.get_instance().last_screen_node.ck_eles_text)
+            LogUtils.log_info(f"当前层数为: {depth_cnt}")
 
 
         # temp_screen_node = get_screennode_from_screenmap_by_similarity(screen_map, ck_eles_text, screen_compare_strategy)
