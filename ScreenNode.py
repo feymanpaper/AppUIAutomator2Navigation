@@ -34,6 +34,7 @@ class ScreenNode:
         # 最近一次到达当前界面所点击的上一个界面的组件uid
         self.last_ck_ele_uid_list = []
 
+
     def update_callmap_item(self, ele_uid:str) -> bool:
         if ele_uid in self.call_map:
             del self.call_map[ele_uid]

@@ -156,11 +156,14 @@ class FSM:
         if check_is_in_webview(cur_activity):
             StatRecorder.get_instance().add_webview_set(ck_eles_text)
             return self.STATE_WebViewScreen, content
+
+
         # temp_screen_node = get_screennode_from_screenmap_by_similarity(screen_map, ck_eles_text, screen_compare_strategy)
         # if temp_screen_node is not None and len(temp_screen_node.clickable_elements) == clickable_cnt:
         #     cur_screen_node = temp_screen_node
         # else:
         #     cur_screen_node = None
+
         sim, most_similar_screen_node = get_max_similarity_screen_node(ck_eles_text, ScreenCompareStrategy(LCSComparator(0.5)))
         content["cur_screen_node"] = most_similar_screen_node
         content["most_similar_screen_node"] = most_similar_screen_node

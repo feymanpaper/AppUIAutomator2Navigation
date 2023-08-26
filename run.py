@@ -33,6 +33,7 @@ if __name__ == "__main__":
         root = ScreenNode()
         root.ck_eles_text = "root"
         RuntimeContent.get_instance().set_last_screen_node(root)
+        RuntimeContent.get_instance().set_last_clickable_ele_uid("dummy_root_element")
         RuntimeContent.get_instance().put_screen_map("root", root)
 
     suppress_keyboard_interrupt_message()
