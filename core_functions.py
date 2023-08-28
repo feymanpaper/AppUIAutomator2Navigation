@@ -1,12 +1,14 @@
 from ScreenCompareStrategy import *
 from RuntimeContent import *
 from Utils.LogUtils import *
-
+from Config import *
 
 # 检测多层环
 def check_cycle(cur_node: ScreenNode, last_node: ScreenNode, screen_compare_strategy: ScreenCompareStrategy):
-    if screen_compare_strategy.compare_screen(cur_node.ck_eles_text, last_node.ck_eles_text)[0] == True:
+    similarity = screen_compare_strategy.compare_screen(cur_node.ck_eles_text, last_node.ck_eles_text)
+    if similarity >= Config.get_instance().screen_similarity_threshold:
         return True
+
     # if cur_node.children is None or len(cur_node.children) == 0:
     #     return False
     if cur_node.call_map is None or len(cur_node.call_map) == 0 or cur_node.call_map is {}:
@@ -19,7 +21,8 @@ def check_cycle(cur_node: ScreenNode, last_node: ScreenNode, screen_compare_stra
     #         if res == True:
     #             return True
     for child in cur_node.call_map.values():
-        if screen_compare_strategy.compare_screen(child.ck_eles_text, last_node.ck_eles_text)[0] == True:
+        child_sim = screen_compare_strategy.compare_screen(child.ck_eles_text, last_node.ck_eles_text)
+        if child_sim >= Config.get_instance().screen_similarity_threshold:
             return True
         else:
             res = check_cycle(child, last_node, screen_compare_strategy)
@@ -137,8 +140,8 @@ def get_screennode_from_screenmap_by_similarity(ck_eles_text: str, screen_compar
         max_similarity = 0
         res_node = None
         for candidate_ck_eles_text in screen_map.keys():
-            simi_flag, cur_similarity = screen_compare_strategy.compare_screen(ck_eles_text, candidate_ck_eles_text)
-            if simi_flag is True:
+            cur_similarity = screen_compare_strategy.compare_screen(ck_eles_text, candidate_ck_eles_text)
+            if cur_similarity >= Config.get_instance().screen_similarity_threshold:
                 if cur_similarity > max_similarity:
                     max_similarity = cur_similarity
                     res_node = screen_map.get(candidate_ck_eles_text)
@@ -149,6 +152,20 @@ def get_screennode_from_screenmap_by_similarity(ck_eles_text: str, screen_compar
     else:
         return screen_map.get(ck_eles_text)
 
+
+def get_max_sim_from_screen_depth_map(ck_eles_text:str, screen_compare_strategy) -> tuple[float|int]:
+    screen_depth_map = RuntimeContent.get_instance().screen_depth_map
+    if screen_depth_map.get(ck_eles_text, False) is False:
+        max_sim = 0
+        res_depth = -1
+        for candidate_ck_eles_text  in screen_depth_map.keys():
+            cur_sim = screen_compare_strategy.compare_screen(ck_eles_text, candidate_ck_eles_text)
+            if cur_sim >= Config.get_instance().screen_similarity_threshold:
+                if cur_sim > max_sim:
+                    max_sim = cur_sim
+                    res_depth = screen_depth_map.get(candidate_ck_eles_text)
+        return max_sim, res_depth
+    return 1.0, screen_depth_map.get(ck_eles_text)
 def get_max_similarity_screen_node(ck_eles_text: str, screen_compare_strategy) -> tuple[float | ScreenNode]:
     screen_map = RuntimeContent.get_instance().get_screen_map()
     if screen_map.get(ck_eles_text, False) is False:
@@ -156,8 +173,8 @@ def get_max_similarity_screen_node(ck_eles_text: str, screen_compare_strategy) -
         max_similarity = 0
         res_node = None
         for candidate_ck_eles_text in screen_map.keys():
-            simi_flag, cur_similarity = screen_compare_strategy.compare_screen(ck_eles_text, candidate_ck_eles_text)
-            if simi_flag is True:
+            cur_similarity = screen_compare_strategy.compare_screen(ck_eles_text, candidate_ck_eles_text)
+            if cur_similarity >= Config.get_instance().screen_similarity_threshold:
                 if cur_similarity > max_similarity:
                     max_similarity = cur_similarity
                     res_node = screen_map.get(candidate_ck_eles_text)

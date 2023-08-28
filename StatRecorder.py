@@ -1,5 +1,6 @@
 import time
 from Utils.LogUtils import *
+from Config import *
 class StatRecorder(object):
     def __init__(self):
         self.total_eles_cnt = 0
@@ -38,7 +39,7 @@ class StatRecorder(object):
 
     def count_time(self):
         self.end_time = time.time()
-        if self.end_time - self.start_time > 3600:
+        if self.end_time - self.start_time > Config.get_instance().test_time:
             raise Exception
 
     def print_result(self):

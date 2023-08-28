@@ -18,7 +18,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from matplotlib.patches import ConnectionPatch
 from PIL import Image
-from ScreenshotUtils import *
+from Utils.ScreenshotUtils import *
 
 class DrawGraphUtils:
 

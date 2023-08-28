@@ -4,6 +4,9 @@ class Config(object):
         self.CLICK_MAX_CNT = 4
         self.sleep_time_sec = 2
         self.device = None
+        self.test_time = 3600 #s
+        self.screen_similarity_threshold = 0.9
+        self.maxDepth = 8
         # self.target_pkg_name = "com.example.myapplication"
         self.target_pkg_name = "com.alibaba.android.rimet"
         # self.target_pkg_name = "com.ss.android.ugc.aweme" #抖音
