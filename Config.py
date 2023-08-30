@@ -29,13 +29,19 @@ class Config(object):
         # self.target_pkg_name = "com.hunantv.imgo.activity"
         # self.target_pkg_name = "tv.danmaku.bili" #b站
         # self.target_pkg_name = "com.netease.edu.ucmooc" #MOOC
-        # self.target_pkg_name = "com.cainiao.wireless"
+        # self.target_pkg_name = "com.cainiao.wireless" #菜鸟
+        # self.target_pkg_name = "com.taobao.taobao" #淘宝
+        # self.target_pkg_name = "com.taobao.mobile.dipei"#口碑
+        # self.target_pkg_name = "com.taobao.trip"#飞猪旅行
+        # self.target_pkg_name = "com.youku.phone"#优酷
+        # self.target_pkg_name = "com.eg.android.AlipayGphone"#支付宝
+        # self.target_pkg_name = "com.xiaomi.smarthome" #米家
+        # self.target_pkg_name = "me.ele" #饿了么
 
         self.root_path = "collectData"
         self.start_time = datetime.now().strftime("%Y%m%d-%H%M%S")
         self.log_file_name = "./Log/" + self.target_pkg_name + "_1.log"
-
-        self.use_pickle_file_name = "./SavedInstance/com.cainiao.wireless_restart0activity7&screen22&time251.1s.pickle"
+        self.use_pickle_file_name = "./SavedInstance/com.eg.android.AlipayGphone_restart0activity28&screen78&time3601.86s.pickle"
         self.is_saved_start = False
 
     def __new__(cls, *args, **kwargs):

@@ -237,20 +237,20 @@ class StateHandler(object):
         screen_map = RuntimeContent.get_instance().get_screen_map()
         ck_eles_text = content["ck_eles_text"]
         if screen_map.get(ck_eles_text, False) is not False:
-            return screen_map.get(ck_eles_text)
-
-        cur_screen_pkg_name, cur_activity, ck_eles_text = get_screen_info_from_context(content)
-        screen_text = get_screen_text_from_context(content)
-        # 初始化cur_screen_node信息
-        cur_screen_node = ScreenNode()
-        cur_screen_node.pkg_name = cur_screen_pkg_name
-        cur_screen_node.screen_text = screen_text
-        cur_screen_node.activity_name = cur_activity
-        cur_ck_eles = content["cur_ck_eles"]
-        cur_screen_node.clickable_elements = cur_ck_eles
-        cur_screen_node.ck_eles_text = ck_eles_text
-        # 将cur_screen加入到全局记录的screen_map
-        RuntimeContent.get_instance().put_screen_map(ck_eles_text, cur_screen_node)
+            cur_screen_node = screen_map.get(ck_eles_text)
+        else:
+            cur_screen_pkg_name, cur_activity, ck_eles_text = get_screen_info_from_context(content)
+            screen_text = get_screen_text_from_context(content)
+            # 初始化cur_screen_node信息
+            cur_screen_node = ScreenNode()
+            cur_screen_node.pkg_name = cur_screen_pkg_name
+            cur_screen_node.screen_text = screen_text
+            cur_screen_node.activity_name = cur_activity
+            cur_ck_eles = content["cur_ck_eles"]
+            cur_screen_node.clickable_elements = cur_ck_eles
+            cur_screen_node.ck_eles_text = ck_eles_text
+            # 将cur_screen加入到全局记录的screen_map
+            RuntimeContent.get_instance().put_screen_map(ck_eles_text, cur_screen_node)
         # 将cur_screen加入到last_screen的子节点
         last_screen_node = RuntimeContent.get_instance().get_last_screen_node()
         if last_screen_node is not None:
@@ -376,6 +376,16 @@ class StateHandler(object):
                 #     first_screen_text = ck_eles_text
 
         return cur_screen_node
+
+    @classmethod
+    def handle_kill_other_app(cls, content):
+        non_pkg_name = content["cur_screen_pkg_name"]
+        d = Config.get_instance().get_device()
+        d.app_stop(non_pkg_name)
+        time.sleep(3)
+        start_pkg_name = Config.get_instance().get_target_pkg_name()
+        d.app_start(start_pkg_name)
+        time.sleep(3)
 
     @classmethod
     def handle_exist_screen(cls, content):
