@@ -455,10 +455,6 @@ class StateHandler(object):
         RuntimeContent.get_instance().set_last_clickable_ele_uid("")
 
     @classmethod
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> f1acb98 (增加了判断undefine depth状态，以及callmap判断exceed depth及undefine depth)
     def handle_UndefineDepth(cls, content):
         cur_screen_node = cls.add_not_target_pkg_name_screen_call_graph(content)
         cur_screen_node.set_isWebView(True)
@@ -525,5 +521,3 @@ class StateHandler(object):
         d.click(x, y)
         time.sleep(Config.get_instance().get_sleep_time_sec())
         return
-
-
