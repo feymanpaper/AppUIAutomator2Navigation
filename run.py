@@ -5,6 +5,8 @@ from RuntimeContent import RuntimeContent
 from ScreenNode import ScreenNode
 from Utils.LogUtils import *
 from Utils.SavedInstanceUtils import *
+from queue import Queue
+from FridaLibs.mq_producer import Producer
 
 def suppress_keyboard_interrupt_message():
     old_excepthook = sys.excepthook
@@ -25,7 +27,6 @@ def suppress_keyboard_interrupt_message():
 
 if __name__ == "__main__":
     LogUtils.setup()
-    FSM = FSM()
     if Config.get_instance().is_saved_start:
         runtime = SavedInstanceUtils.load_pickle(Config.get_instance().get_pickle_file_name())
         root = runtime.screen_map["root"]
@@ -46,6 +47,16 @@ if __name__ == "__main__":
         d = Config.get_instance().get_device()
         d.app_start(Config.get_instance().get_target_pkg_name(), use_monkey=True)
         time.sleep(10)
+
+        queue = Queue()
+        producer = Producer('Producer', queue)
+        consumer_fsm = FSM('Consumer', queue)
+        # consumer = Consumer('Con', queue)
+        producer.start()
+        consumer_fsm.start()
+        # producer.join()
+        # consumer.join()
+
         try:
             RuntimeContent.get_instance().set_last_screen_node(root)
             FSM.start()

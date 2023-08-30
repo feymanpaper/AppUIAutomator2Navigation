@@ -256,7 +256,7 @@ def is_privacy_information_in_ele_dict(clickable_ele_dict):
         if sip_info == text:
             return True
 
-    privacy_information = ["设置", "账号", "个人", "认证"]
+    privacy_information = ["设置", "账号", "个人", "认证", "我的", "隐私"]
     for p_info in privacy_information:
         if p_info in text:
             return True
