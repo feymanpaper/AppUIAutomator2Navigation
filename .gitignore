@@ -6,3 +6,6 @@
 /SavedInstance/
 *.pyc
 .DS_Store
+/Screenshot/
+/svgSaveDir/
+/collectData/

@@ -24,7 +24,7 @@ def suppress_keyboard_interrupt_message():
 
 
 if __name__ == "__main__":
-    LogUtils.setup(Config.get_instance().get_log_file_name())
+    LogUtils.setup()
     FSM = FSM()
     if Config.get_instance().is_saved_start:
         runtime = SavedInstanceUtils.load_pickle(Config.get_instance().get_pickle_file_name())
@@ -33,6 +33,7 @@ if __name__ == "__main__":
         root = ScreenNode()
         root.ck_eles_text = "root"
         RuntimeContent.get_instance().set_last_screen_node(root)
+        RuntimeContent.get_instance().set_last_clickable_ele_uid("dummy_root_element")
         RuntimeContent.get_instance().put_screen_map("root", root)
 
     suppress_keyboard_interrupt_message()

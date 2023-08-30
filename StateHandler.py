@@ -11,7 +11,7 @@ from Utils.LogUtils import *
 
 class StateHandler(object):
     @classmethod
-    def click_one_ele(cls,content):
+    def click_one_ele(cls, content):
         # 遍历cur_screen的所有可点击组件
         cur_screen_node = get_cur_screen_node_from_context(content)
         cur_screen_pkg_name, cur_activity, ck_eles_text = get_screen_info_from_context(content)
@@ -78,9 +78,8 @@ class StateHandler(object):
                     cur_screen_node.ele_uid_cnt_map[cur_clickable_ele_uid] = 1
                 else:
                     cur_screen_node.ele_uid_cnt_map[cur_clickable_ele_uid] += 1
-                d = Config.get_instance().get_device()
-                d.click(loc_x, loc_y)
-                time.sleep(Config.get_instance().get_sleep_time_sec())
+
+                cls.__click(loc_x, loc_y)
                 return
 
             else:
@@ -107,6 +106,21 @@ class StateHandler(object):
                         cur_screen_node.already_clicked_cnt += 1
                         clickable_ele_idx += 1
                         continue
+
+                    res_sim, res_depth = get_max_sim_from_screen_depth_map(next_screen_all_text,
+                                                                           ScreenCompareStrategy(LCSComparator()))
+                    if res_depth == -1:
+                        LogUtils.log_info(f"clickmap--next界面是UndefineDepth&{clickable_ele_idx}: {cur_clickable_ele_uid}")
+                        cur_screen_node.already_clicked_cnt += 1
+                        clickable_ele_idx += 1
+                        continue
+
+                    if res_sim >= Config.get_instance().screen_similarity_threshold and res_depth > Config.get_instance().maxDepth:
+                        LogUtils.log_info(f"clickmap--next界面是超过限制层数的&{clickable_ele_idx}: {cur_clickable_ele_uid}")
+                        cur_screen_node.already_clicked_cnt += 1
+                        clickable_ele_idx += 1
+                        continue
+
                     if next_screen_node.get_isWebView():
                         LogUtils.log_info(
                             f"clickmap--next界面是WebView&{clickable_ele_idx}: {cur_clickable_ele_uid}")
@@ -135,9 +149,9 @@ class StateHandler(object):
                             cur_screen_node.ele_uid_cnt_map[cur_clickable_ele_uid] = 0
                         else:
                             cur_screen_node.ele_uid_cnt_map[cur_clickable_ele_uid] += 1
-                        d = Config.get_instance().get_device()
-                        d.click(loc_x, loc_y)
-                        time.sleep(Config.get_instance().get_sleep_time_sec())
+
+                        cls.__click(loc_x, loc_y)
+
                         return
                 else:
                     LogUtils.log_info(f"已点击过&{clickable_ele_idx}: {cur_clickable_ele_uid}")
@@ -181,9 +195,7 @@ class StateHandler(object):
         RuntimeContent.get_instance().set_last_screen_node(cur_screen_node)
         RuntimeContent.get_instance().set_last_clickable_ele_uid(cur_clickable_ele_uid)
 
-        d = Config.get_instance().get_device()
-        d.click(loc_x, loc_y)
-        time.sleep(Config.get_instance().get_sleep_time_sec())
+        cls.__click(loc_x, loc_y)
 
 
     @classmethod
@@ -218,9 +230,7 @@ class StateHandler(object):
         RuntimeContent.get_instance().set_last_screen_node(cur_screen_node)
         RuntimeContent.get_instance().set_last_clickable_ele_uid(cur_clickable_ele_uid)
 
-        d = Config.get_instance().get_device()
-        d.click(loc_x, loc_y)
-        time.sleep(Config.get_instance().get_sleep_time_sec())
+        cls.__click(loc_x, loc_y)
 
     @classmethod
     def add_not_target_pkg_name_screen_call_graph(cls, content):
@@ -306,6 +316,8 @@ class StateHandler(object):
         if last_screen_node is not None:
             last_screen_node.add_child(cur_screen_node)
 
+
+
         last_clickable_ele_uid = RuntimeContent.get_instance().get_last_clickable_ele_uid()
         if last_clickable_ele_uid is not None and last_clickable_ele_uid != "":
             cur_screen_node.append_last_ck_ele_uid_list(last_clickable_ele_uid)
@@ -317,15 +329,14 @@ class StateHandler(object):
                 pass
             elif check_cycle(cur_screen_node, last_screen_node, ScreenCompareStrategy(LCSComparator())) == True:
                 # 产生了回边
+                check_cycle(cur_screen_node, last_screen_node, ScreenCompareStrategy(LCSComparator()))
                 last_screen_node.cycle_set.add(RuntimeContent.get_instance().get_last_clickable_ele_uid())
                 LogUtils.log_info("产生回边")
                 last_screen_node.update_callmap_item(RuntimeContent.get_instance().get_last_clickable_ele_uid())
                 pass
             else:
-                if last_screen_node.ck_eles_text != "root":
-                    # call_map会更新
-                    last_screen_node.call_map[
-                        RuntimeContent.get_instance().get_last_clickable_ele_uid()] = cur_screen_node
+                # call_map会更新
+                last_screen_node.call_map[RuntimeContent.get_instance().get_last_clickable_ele_uid()] = cur_screen_node
                 # else:
                 #     first_screen_text = ck_eles_text
 
@@ -407,19 +418,19 @@ class StateHandler(object):
     def handle_exit_app(cls, content):
         cur_screen_node = cls.add_not_target_pkg_name_screen_call_graph(content)
         content["cur_screen_node"] = cur_screen_node
-        cls.press_back()
+        cls.__press_back()
         RuntimeContent.get_instance().set_last_screen_node(None)
         RuntimeContent.get_instance().set_last_clickable_ele_uid("")
 
     @classmethod
     def handle_double_press(cls, content):
-        cls.double_press_back()
+        cls.__double_press_back()
         RuntimeContent.get_instance().set_last_screen_node(None)
         RuntimeContent.get_instance().set_last_clickable_ele_uid("")
 
     @classmethod
     def handle_inputmethod(cls, content):
-        cls.press_back()
+        cls.__press_back()
         RuntimeContent.get_instance().set_last_screen_node(None)
         RuntimeContent.get_instance().set_last_clickable_ele_uid("")
 
@@ -429,20 +440,40 @@ class StateHandler(object):
         cur_screen_node.set_isWebView(True)
         content["cur_screen_node"] = cur_screen_node
         print_screen_info(content, True)
-        cls.press_back()
+        cls.__press_back()
+        RuntimeContent.get_instance().set_last_screen_node(None)
+        RuntimeContent.get_instance().set_last_clickable_ele_uid("")
+
+    @classmethod
+    def handle_ExceedDepth(cls, content):
+        cur_screen_node = cls.add_not_target_pkg_name_screen_call_graph(content)
+        cur_screen_node.set_isWebView(True)
+        content["cur_screen_node"] = cur_screen_node
+        print_screen_info(content, True)
+        cls.__press_back()
+        RuntimeContent.get_instance().set_last_screen_node(None)
+        RuntimeContent.get_instance().set_last_clickable_ele_uid("")
+
+    @classmethod
+    def handle_UndefineDepth(cls, content):
+        cur_screen_node = cls.add_not_target_pkg_name_screen_call_graph(content)
+        cur_screen_node.set_isWebView(True)
+        content["cur_screen_node"] = cur_screen_node
+        print_screen_info(content, True)
+        cls.__press_back()
         RuntimeContent.get_instance().set_last_screen_node(None)
         RuntimeContent.get_instance().set_last_clickable_ele_uid("")
 
     @classmethod
     def handle_finish_screen(cls, content):
         cur_screen_node = cls.add_exist_screen_call_graph(content)
-        cls.press_back()
+        cls.__press_back()
         RuntimeContent.get_instance().set_last_screen_node(None)
         RuntimeContent.get_instance().set_last_clickable_ele_uid("")
 
     @classmethod
     def handle_error_screen(cls, content):
-        cls.press_back()
+        cls.__press_back()
         RuntimeContent.get_instance().set_last_screen_node(None)
         RuntimeContent.get_instance().set_last_clickable_ele_uid("")
 
@@ -468,19 +499,25 @@ class StateHandler(object):
     def handle_homes_screen_restart(cls, content):
         raise RestartException("重启机制")
 
-    @staticmethod
-    def press_back():
+    @classmethod
+    def __press_back(cls):
         d = Config.get_instance().get_device()
         d.press("back")
         LogUtils.log_info("进行回退")
         time.sleep(Config.get_instance().get_sleep_time_sec())
         return
 
-    @staticmethod
-    def double_press_back():
+    @classmethod
+    def __double_press_back(cls):
         d = Config.get_instance().get_device()
         d.press("back")
         d.press("back")
         time.sleep(Config.get_instance().get_sleep_time_sec())
         return
 
+    @classmethod
+    def __click(cls, x, y):
+        d = Config.get_instance().get_device()
+        d.click(x, y)
+        time.sleep(Config.get_instance().get_sleep_time_sec())
+        return

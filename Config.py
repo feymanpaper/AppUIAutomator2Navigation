@@ -1,9 +1,17 @@
+import os.path
+
 from uiautomator2 import Device
+from datetime import datetime
+
+
 class Config(object):
     def __init__(self):
         self.CLICK_MAX_CNT = 4
-        self.sleep_time_sec = 2
+        self.sleep_time_sec = 2  # 配置点击之后睡眠的时间
         self.device = None
+        self.test_time = 3600  # 配置测试的时间,以秒为单位
+        self.screen_similarity_threshold = 0.9  # 配置界面与界面之间相似度多少表示同一界面, 默认90%/0.9
+        self.maxDepth = 6  # 配置点击的最大深度
         # self.target_pkg_name = "com.example.myapplication"
         self.target_pkg_name = "com.alibaba.android.rimet"
         # self.target_pkg_name = "com.ss.android.ugc.aweme" #抖音
@@ -23,11 +31,12 @@ class Config(object):
         # self.target_pkg_name = "com.netease.edu.ucmooc" #MOOC
         # self.target_pkg_name = "com.cainiao.wireless"
 
-
+        self.root_path = "collectData"
+        self.start_time = datetime.now().strftime("%Y%m%d-%H%M%S")
         self.log_file_name = "./Log/" + self.target_pkg_name + "_1.log"
+
         self.use_pickle_file_name = "./SavedInstance/com.cainiao.wireless_restart0activity7&screen22&time251.1s.pickle"
         self.is_saved_start = False
-
 
     def __new__(cls, *args, **kwargs):
         if not hasattr(Config, "_instance"):
@@ -62,3 +71,7 @@ class Config(object):
         if self.device is None:
             self.set_device(Device())
         return self.device
+
+    def get_collectDataPath(self):
+        pkg_path = self.target_pkg_name + "-" + self.start_time
+        return os.path.join(self.root_path, pkg_path)

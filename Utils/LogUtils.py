@@ -3,6 +3,7 @@ import sys
 from logging import StreamHandler
 from logging import FileHandler
 import os
+from Config import *
 
 class LogUtils:
     # def __new__(cls, *args, **kwargs):
@@ -20,10 +21,17 @@ class LogUtils:
     logger.propagate = False
 
     @classmethod
-    def setup(cls, file_path = "./Log/test.log"):
-        cls.file_path = file_path
+    def setup(cls):
+        cls.file_path = cls.__get_log_file_path()
         cls.__create_dir()
         cls.__set_logger()
+
+    @staticmethod
+    def __get_log_file_path():
+        config_path = Config.get_instance().get_collectDataPath()
+        log_path = "Log"
+        log_file_name = Config.get_instance().get_target_pkg_name() + ".log"
+        return os.path.join(config_path, log_path, log_file_name)
 
     @classmethod
     def log_info(cls, msg):

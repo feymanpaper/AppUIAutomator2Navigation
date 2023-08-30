@@ -1,3 +1,4 @@
+from Config import *
 class ScreenNode:
     def __init__(self):
         # 包名 + activity + 可点击组件的内部文本
@@ -33,6 +34,7 @@ class ScreenNode:
         self.already_clicked_cnt = 0
         # 最近一次到达当前界面所点击的上一个界面的组件uid
         self.last_ck_ele_uid_list = []
+
 
     def update_callmap_item(self, ele_uid:str) -> bool:
         if ele_uid in self.call_map:
@@ -113,7 +115,8 @@ class ScreenNode:
         # 根据call_map来找,其实call_map和children差不多,区别就是children有回边,call_map没有
         #TODO
         for child_node in self.call_map.values():
-            if screen_compare_strategy.compare_screen(child_node.ck_eles_text, target_screen_all_text)[0] == True:
+            sim = screen_compare_strategy.compare_screen(child_node.ck_eles_text, target_screen_all_text)
+            if sim >= Config.get_instance().screen_similarity_threshold:
             # if child_node.all_text == target_screen_all_text:
             #     if child_node.already_clicked_cnt == len(child_node.clickable_elements):
                 if child_node.is_screen_clickable_finished():
