@@ -23,11 +23,12 @@ from Utils.ScreenshotUtils import *
 class DrawGraphUtils:
 
     @staticmethod
-    def draw_callgraph(jsonFilePath, screenShotFilePath, svgSaveFilePath):
-        result = DrawGraphUtils.load_data(jsonFilePath)
+    def draw_callgraph(package):
+        result = DrawGraphUtils.load_data(package)
         num_objects, graph, pos = result
 
         # 获取截图
+        screenShotFilePath = os.path.join("../collectData", package, "Screenshot", "ScreenshotPicture")
         screenshot_folder = os.path.abspath(screenShotFilePath)
         screenshot_files = {node: os.path.join(screenshot_folder, f'{ScreenshotUtils.encode_screen_uid(node)}.png') for node in graph.nodes}
         nx.set_node_attributes(graph, screenshot_files, 'image')
@@ -72,14 +73,21 @@ class DrawGraphUtils:
             ax.add_artist(arrow_connection)
             ax.add_artist(next_connection)
 
-        DrawGraphUtils.save_data(jsonFilePath, svgSaveFilePath)
+        DrawGraphUtils.save_data(package)
 
     @staticmethod
-    def load_data(jsonFilePath):
+    def load_data(package):
         # 读取json文件，返回界面数量、跳转关系和画图位置
-        json_file_path = os.path.abspath(jsonFilePath)
+        jsonFilePath = os.path.join("../collectData", package, "Dumpjson")
+        jsonFilePath = os.path.abspath(jsonFilePath)
+        files = os.listdir(jsonFilePath)
+        for file in files:
+            if file.endswith('.json'):
+                json_file_name = file
+                break
+        jsonFilePath = os.path.join(jsonFilePath, json_file_name)
 
-        with open(json_file_path, 'r', encoding='utf-8') as file:
+        with open(jsonFilePath, 'r', encoding='utf-8') as file:
             data = json.load(file)
             num_objects = len(data)
 
@@ -176,13 +184,13 @@ class DrawGraphUtils:
         return num_objects, graph, pos
 
     @staticmethod
-    def save_data(jsonFilePath, svgSaveFilePath):
-        # 保存svg图像，图像与json文件同名
+    def save_data(package):
+        # 保存svg图像，图像与文件夹同名
+        svgSaveFilePath = os.path.join("../collectData", package, "AppCallGraph")
         svg_save_folder = os.path.abspath(svgSaveFilePath)
 
         if not os.path.exists(svg_save_folder):
             os.makedirs(svg_save_folder)
 
-        svg_save_name = jsonFilePath.replace("./dumpjson", "")
-        svg_save_name = svg_save_name.replace(".json", ".svg")
-        plt.savefig(svg_save_folder + svg_save_name, bbox_inches='tight', dpi=300)
+        svg_save_name = package + ".svg"
+        plt.savefig(os.path.join(svg_save_folder, svg_save_name), bbox_inches='tight', dpi=300)
