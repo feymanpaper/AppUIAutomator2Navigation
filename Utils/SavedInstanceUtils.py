@@ -25,6 +25,7 @@ class SavedInstanceUtils:
 
     @staticmethod
     def __get_pickle_file_path():
-        dir_path = "./SavedInstance/"
+        config_path = Config.get_instance().get_collectDataPath()
+        instance_path = "SavedInstance"
         pickle_file_name = Config.get_instance().get_target_pkg_name() + StatRecorder.get_instance().to_string_result() + ".pickle"
-        return dir_path + pickle_file_name
+        return os.path.join(config_path, instance_path, pickle_file_name)

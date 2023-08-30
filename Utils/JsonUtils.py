@@ -14,9 +14,10 @@ class JsonUtils:
 
     @staticmethod
     def __get_json_file_path():
-        dir_path = "./dumpjson/"
+        config_path = Config.get_instance().get_collectDataPath()
+        json_path = "Dumpjson"
         json_file_name = Config.get_instance().get_target_pkg_name() + StatRecorder.get_instance().to_string_result() + ".json"
-        return dir_path + json_file_name
+        return os.path.join(config_path, json_path, json_file_name)
 
     @staticmethod
     def __dump_to_json(file_path:str, res_list:list):

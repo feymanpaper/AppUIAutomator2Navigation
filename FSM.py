@@ -186,7 +186,6 @@ class FSM:
         if cur_screen_depth == -1:
             return self.STATE_UndefineDepth, content
 
-
         LogUtils.log_info(f"当前层数为: {cur_screen_depth}")
         if cur_screen_depth > Config.get_instance().maxDepth and check_pattern_state(4, [self.STATE_DoublePress, self.STATE_ExceedDepth]):
             return self.STATE_StuckRestart, content
@@ -194,35 +193,6 @@ class FSM:
             return self.STATE_DoublePress, content
         if cur_screen_depth > Config.get_instance().maxDepth:
             return self.STATE_ExceedDepth, content
-
-
-        screen_depth_map = RuntimeContent.get_instance().screen_depth_map
-        last_screen_node = RuntimeContent.get_instance().last_screen_node
-        cur_screen_depth = -1
-        res_sim, res_depth = get_max_sim_from_screen_depth_map(ck_eles_text, ScreenCompareStrategy(LCSComparator()))
-        if res_sim >= Config.get_instance().screen_similarity_threshold:
-            cur_screen_depth = res_depth
-        elif last_screen_node is not None and last_screen_node.ck_eles_text != ck_eles_text:
-            cur_screen_depth = CalDepthUtils.calDepth(RuntimeContent.get_instance().get_screen_map(), RuntimeContent.get_instance().last_screen_node.ck_eles_text)
-            screen_depth_map[ck_eles_text] = cur_screen_depth
-
-
-        if cur_screen_depth == -1 and check_pattern_state(4, [self.STATE_DoublePress, self.STATE_UndefineDepth]):
-            return self.STATE_StuckRestart, content
-        if cur_screen_depth == -1 and check_pattern_state(1, [self.STATE_UndefineDepth]):
-            return self.STATE_DoublePress, content
-        if cur_screen_depth == -1:
-            return self.STATE_UndefineDepth, content
-
-
-        LogUtils.log_info(f"当前层数为: {cur_screen_depth}")
-        if cur_screen_depth > Config.get_instance().maxDepth and check_pattern_state(4, [self.STATE_DoublePress, self.STATE_ExceedDepth]):
-            return self.STATE_StuckRestart, content
-        if cur_screen_depth > Config.get_instance().maxDepth and check_pattern_state(1, [self.STATE_ExceedDepth]):
-            return self.STATE_DoublePress, content
-        if cur_screen_depth > Config.get_instance().maxDepth:
-            return self.STATE_ExceedDepth, content
-
 
 
         # temp_screen_node = get_screennode_from_screenmap_by_similarity(screen_map, ck_eles_text, screen_compare_strategy)

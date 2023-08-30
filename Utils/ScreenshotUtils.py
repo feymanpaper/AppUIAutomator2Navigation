@@ -4,6 +4,7 @@ import os
 import hashlib
 import json
 from DeviceHelper import *
+from Config import *
 
 # 任务:
 # 实现一个屏幕截图功能, 注: uiautomator2具有截图功能
@@ -24,8 +25,10 @@ class ScreenshotUtils:
         # 获取屏幕截图
         screenshot = d.screenshot()
 
+        config_path = Config.get_instance().get_collectDataPath()
+        screenshot_dir = "Screenshot"
         # 创建保存截图和json的目录（如果不存在）
-        screenshot_dir = 'Screenshot'
+        screenshot_dir = os.path.join(config_path, screenshot_dir)
         if not os.path.exists(screenshot_dir):
             os.makedirs(screenshot_dir)
 
@@ -56,7 +59,9 @@ class ScreenshotUtils:
     @staticmethod
     def create_json_file(name):
         # 创建保存 JSON 文件的目录（如果不存在）
-        dir_path = 'Screenshot'
+        config_path = Config.get_instance().get_collectDataPath()
+        screenshot_dir = "Screenshot"
+        dir_path = os.path.join(config_path, screenshot_dir)
         if not os.path.exists(dir_path):
             os.makedirs(dir_path)
 
@@ -78,9 +83,11 @@ class ScreenshotUtils:
 
     @staticmethod
     def write_mapping_to_json(name, key, value):
-        file_path = f"{name}.json"
-        file_path = 'Screenshot/ScreenshotJson/' + file_path
-
+        config_path = Config.get_instance().get_collectDataPath()
+        screenshot_dir = "ScreenShot"
+        screenshot_json_dir = "ScreenshotJson"
+        json_name = f"{name}.json"
+        file_path = os.path.join(config_path, screenshot_dir, screenshot_json_dir, json_name)
         # 读取 JSON 文件
         with open(file_path, 'r') as file:
             data = json.load(file)
@@ -91,5 +98,7 @@ class ScreenshotUtils:
         # 写入 JSON 文件
         with open(file_path, 'w') as file:
             json.dump(data, file)
+
+
 
 
