@@ -2,7 +2,15 @@ from StateHandler import *
 from DeviceHelper import *
 from Utils.ScreenshotUtils import *
 from Utils.CalDepthUtils import *
-class FSM:
+import threading
+from queue import Queue
+
+class FSM(threading.Thread):
+
+    def __init__(self, t_name, queue:Queue):
+        threading.Thread.__init__(self, name=t_name)
+        self.data = queue
+
     # state_map = {
     #     1: "不是当前要测试的app,即app跳出了测试的app",
     #     2: "发现当前界面有文本输入法框",
@@ -33,8 +41,12 @@ class FSM:
         11: "STATE_WebViewScreen",
         12: "STATE_ErrorScreen",
         13: "STATE_HomeScreenRestart",
+<<<<<<< HEAD
         14 :"STATE_ExceedDepth",
         15: "STATE_UndefineDepth",
+=======
+        14: "STATE_KillOtherApp",
+>>>>>>> 82f9162 (Add feat/frida hook url)
         100: "STATE_Terminate"
     }
 
@@ -51,8 +63,12 @@ class FSM:
     STATE_WebViewScreen = 11
     STATE_ErrorScreen = 12
     STATE_HomeScreenRestart = 13
+<<<<<<< HEAD
     STATE_ExceedDepth = 14
     STATE_UndefineDepth = 15
+=======
+    STATE_KillOtherApp = 14
+>>>>>>> 82f9162 (Add feat/frida hook url)
     STATE_Terminate = 100
 
 
@@ -65,6 +81,7 @@ class FSM:
         cur_activity = get_screen_activity()
         screen_text = get_screen_text()
         cur_ck_eles = get_clickable_elements()
+
         pre_len = len(cur_ck_eles)
         cur_ck_eles = remove_dup(cur_ck_eles)
         cur_ck_eles = merged_clickable_elements(cur_ck_eles)
@@ -113,6 +130,8 @@ class FSM:
             StateHandler.handle_error_screen(content)
         elif state == self.STATE_HomeScreenRestart:
             StateHandler.handle_homes_screen_restart(content)
+        elif state == self.STATE_KillOtherApp:
+            StateHandler.handle_kill_other_app(content)
         elif state == self.STATE_Terminate:
             StateHandler.handle_terminate(content)
         elif state == self.STATE_ExceedDepth:
@@ -148,9 +167,9 @@ class FSM:
             if check_is_permisson_screen(cur_screen_pkg_name):
                 return self.STATE_PermissonScreen, content
             else:
-                if check_pattern_state(3, [self.STATE_ExitApp]):
-                    return self.STATE_StuckRestart, content
-                # if check_pattern_state(3, [self.STATE_ExitApp]):
+                if check_pattern_state(2, [self.STATE_ExitApp]):
+                    return self.STATE_KillOtherApp, content
+                # if check_pattern_state(1, [self.STATE_ExitApp]):
                 #     return self.STATE_OutsystemSpecialScreen, content
                 else:
                     return self.STATE_ExitApp, content
@@ -158,7 +177,10 @@ class FSM:
         if check_is_inputmethod_in_cur_screen() == True:
             return self.STATE_InputMethod, content
 
+<<<<<<< HEAD
         #Check WebView
+=======
+>>>>>>> 82f9162 (Add feat/frida hook url)
         # if check_is_in_webview(cur_activity) and check_pattern_state(4, [self.STATE_DoublePress, self.STATE_WebViewScreen]):
         #     return self.STATE_StuckRestart, content
         # if check_is_in_webview(cur_activity) and check_pattern_state(1, [self.STATE_WebViewScreen]):
@@ -168,6 +190,7 @@ class FSM:
         #     return self.STATE_WebViewScreen, content
 
 
+<<<<<<< HEAD
         screen_depth_map = RuntimeContent.get_instance().screen_depth_map
         last_screen_node = RuntimeContent.get_instance().last_screen_node
         cur_screen_depth = -1
@@ -195,14 +218,38 @@ class FSM:
             return self.STATE_ExceedDepth, content
 
 
+=======
+>>>>>>> 82f9162 (Add feat/frida hook url)
         # temp_screen_node = get_screennode_from_screenmap_by_similarity(screen_map, ck_eles_text, screen_compare_strategy)
         # if temp_screen_node is not None and len(temp_screen_node.clickable_elements) == clickable_cnt:
         #     cur_screen_node = temp_screen_node
         # else:
         #     cur_screen_node = None
+<<<<<<< HEAD
 
         sim, most_similar_screen_node = get_max_similarity_screen_node(ck_eles_text, ScreenCompareStrategy(LCSComparator()))
 
+=======
+        temp_list = []
+        while 1:
+            try:
+                url_data = self.data.get(1, 1)
+                for url in url_data:
+                    temp_list.append(url)
+                print()
+                print("*" * 50 + f"Consumer{self.name}" + "*" * 50)
+                print(url_data)
+                print("*" * 50 + f"Consumer{self.name}" + "*" * 50)
+                print()
+            except:
+                break
+        if "隐私政策" in content["screen_text"] and len(temp_list) > 0:
+            print(f"找到了隐私政策的url:{url_data}")
+
+
+
+        sim, most_similar_screen_node = get_max_similarity_screen_node(ck_eles_text, ScreenCompareStrategy(LCSComparator(0.5)))
+>>>>>>> 82f9162 (Add feat/frida hook url)
         content["cur_screen_node"] = most_similar_screen_node
         content["most_similar_screen_node"] = most_similar_screen_node
         content["sim"] = sim
@@ -262,6 +309,9 @@ class FSM:
             self.do_transition(state, content)
             LogUtils.log_info("-" * 50)
             LogUtils.log_info("\n")
+
+    def run(self):
+        self.start()
 
 
 
