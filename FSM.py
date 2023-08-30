@@ -158,7 +158,7 @@ class FSM:
         if check_is_inputmethod_in_cur_screen() == True:
             return self.STATE_InputMethod, content
 
-        #Check WebView
+
         # if check_is_in_webview(cur_activity) and check_pattern_state(4, [self.STATE_DoublePress, self.STATE_WebViewScreen]):
         #     return self.STATE_StuckRestart, content
         # if check_is_in_webview(cur_activity) and check_pattern_state(1, [self.STATE_WebViewScreen]):
@@ -166,6 +166,7 @@ class FSM:
         # if check_is_in_webview(cur_activity):
         #     StatRecorder.get_instance().add_webview_set(ck_eles_text)
         #     return self.STATE_WebViewScreen, content
+
 
         screen_depth_map = RuntimeContent.get_instance().screen_depth_map
         last_screen_node = RuntimeContent.get_instance().last_screen_node
@@ -193,6 +194,12 @@ class FSM:
             return self.STATE_DoublePress, content
         if cur_screen_depth > Config.get_instance().maxDepth:
             return self.STATE_ExceedDepth, content
+
+
+        last_screen_node = RuntimeContent.get_instance().last_screen_node
+        if last_screen_node is not None and last_screen_node.ck_eles_text != ck_eles_text:
+            depth_cnt = CalDepthUtils.calDepth(RuntimeContent.get_instance().get_screen_map(), RuntimeContent.get_instance().last_screen_node.ck_eles_text)
+            LogUtils.log_info(f"当前层数为: {depth_cnt}")
 
 
 
