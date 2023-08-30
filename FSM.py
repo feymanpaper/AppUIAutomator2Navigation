@@ -53,7 +53,6 @@ class FSM:
     STATE_HomeScreenRestart = 13
     STATE_ExceedDepth = 14
     STATE_UndefineDepth = 15
-
     STATE_Terminate = 100
 
 
@@ -207,10 +206,16 @@ class FSM:
             cur_screen_depth = CalDepthUtils.calDepth(RuntimeContent.get_instance().get_screen_map(), RuntimeContent.get_instance().last_screen_node.ck_eles_text)
             screen_depth_map[ck_eles_text] = cur_screen_depth
 
-        if cur_screen_depth == -1:
-            raise Exception
-        LogUtils.log_info(f"当前层数为: {cur_screen_depth}")
 
+        if cur_screen_depth == -1 and check_pattern_state(4, [self.STATE_DoublePress, self.STATE_UndefineDepth]):
+            return self.STATE_StuckRestart, content
+        if cur_screen_depth == -1 and check_pattern_state(1, [self.STATE_UndefineDepth]):
+            return self.STATE_DoublePress, content
+        if cur_screen_depth == -1:
+            return self.STATE_UndefineDepth, content
+
+
+        LogUtils.log_info(f"当前层数为: {cur_screen_depth}")
         if cur_screen_depth > Config.get_instance().maxDepth and check_pattern_state(4, [self.STATE_DoublePress, self.STATE_ExceedDepth]):
             return self.STATE_StuckRestart, content
         if cur_screen_depth > Config.get_instance().maxDepth and check_pattern_state(1, [self.STATE_ExceedDepth]):

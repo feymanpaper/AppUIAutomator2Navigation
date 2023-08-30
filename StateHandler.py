@@ -456,6 +456,9 @@ class StateHandler(object):
 
     @classmethod
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f1acb98 (增加了判断undefine depth状态，以及callmap判断exceed depth及undefine depth)
     def handle_UndefineDepth(cls, content):
         cur_screen_node = cls.add_not_target_pkg_name_screen_call_graph(content)
         cur_screen_node.set_isWebView(True)
@@ -466,8 +469,6 @@ class StateHandler(object):
         RuntimeContent.get_instance().set_last_clickable_ele_uid("")
 
     @classmethod
-=======
->>>>>>> ee04288 (在FSM增加判断层数的状态)
     def handle_finish_screen(cls, content):
         cur_screen_node = cls.add_exist_screen_call_graph(content)
         cls.__press_back()
