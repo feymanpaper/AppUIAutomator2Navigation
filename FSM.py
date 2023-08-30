@@ -195,6 +195,7 @@ class FSM:
             return self.STATE_ExceedDepth, content
 
 
+
         # temp_screen_node = get_screennode_from_screenmap_by_similarity(screen_map, ck_eles_text, screen_compare_strategy)
         # if temp_screen_node is not None and len(temp_screen_node.clickable_elements) == clickable_cnt:
         #     cur_screen_node = temp_screen_node
@@ -202,6 +203,7 @@ class FSM:
         #     cur_screen_node = None
 
         sim, most_similar_screen_node = get_max_similarity_screen_node(ck_eles_text, ScreenCompareStrategy(LCSComparator()))
+
         content["cur_screen_node"] = most_similar_screen_node
         content["most_similar_screen_node"] = most_similar_screen_node
         content["sim"] = sim

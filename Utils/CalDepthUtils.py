@@ -11,8 +11,9 @@ class CalDepthUtils:
             raise Exception
         return depth
 
-    @classmethod
-    def bfs(cls, adj_list, start_uid, target_uid) -> int:
+
+    @staticmethod
+    def bfs(adj_list, start_uid, target_uid) -> int:
         """
         使用BFS算法遍历邻接表，并计算每个节点的层数
         """
