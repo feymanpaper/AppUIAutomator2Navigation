@@ -12,16 +12,6 @@ from DeviceHelper import *
 # 编码解码格式可以自行选择
 # 测试可以在test/ScreenshotUtils_test.py上进行测试, 不需要跑其他文件
 class ScreenshotUtils:
-
-    @staticmethod
-    def get_screen_uid():
-        # 该方法返回当前界面信息(可点击组件的文本和位置)
-        cur_ck_eles = get_clickable_elements()
-        cur_ck_eles = remove_dup(cur_ck_eles)
-        cur_ck_eles = merged_clickable_elements(cur_ck_eles)
-        ck_eles_text = to_string_ck_els(cur_ck_eles)
-        return ck_eles_text
-
     @staticmethod
     def screen_shot(screen_uid:str):
         # 连接设备
