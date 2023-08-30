@@ -27,7 +27,6 @@ def suppress_keyboard_interrupt_message():
 
 if __name__ == "__main__":
     LogUtils.setup()
-    FSM = FSM()
     if Config.get_instance().is_saved_start:
         runtime = SavedInstanceUtils.load_pickle(Config.get_instance().get_pickle_file_name())
         root = runtime.screen_map["root"]
