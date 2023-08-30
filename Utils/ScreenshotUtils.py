@@ -4,6 +4,7 @@ import os
 import hashlib
 import json
 from DeviceHelper import *
+from Config import *
 
 # 任务:
 # 实现一个屏幕截图功能, 注: uiautomator2具有截图功能
@@ -12,16 +13,6 @@ from DeviceHelper import *
 # 编码解码格式可以自行选择
 # 测试可以在test/ScreenshotUtils_test.py上进行测试, 不需要跑其他文件
 class ScreenshotUtils:
-
-    @staticmethod
-    def get_screen_uid():
-        # 该方法返回当前界面信息(可点击组件的文本和位置)
-        cur_ck_eles = get_clickable_elements()
-        cur_ck_eles = remove_dup(cur_ck_eles)
-        cur_ck_eles = merged_clickable_elements(cur_ck_eles)
-        ck_eles_text = to_string_ck_els(cur_ck_eles)
-        return ck_eles_text
-
     @staticmethod
     def screen_shot(screen_uid:str):
         # 连接设备
@@ -34,8 +25,10 @@ class ScreenshotUtils:
         # 获取屏幕截图
         screenshot = d.screenshot()
 
+        config_path = Config.get_instance().get_collectDataPath()
+        screenshot_dir = "Screenshot"
         # 创建保存截图和json的目录（如果不存在）
-        screenshot_dir = 'Screenshot'
+        screenshot_dir = os.path.join(config_path, screenshot_dir)
         if not os.path.exists(screenshot_dir):
             os.makedirs(screenshot_dir)
 
@@ -66,7 +59,9 @@ class ScreenshotUtils:
     @staticmethod
     def create_json_file(name):
         # 创建保存 JSON 文件的目录（如果不存在）
-        dir_path = 'Screenshot'
+        config_path = Config.get_instance().get_collectDataPath()
+        screenshot_dir = "Screenshot"
+        dir_path = os.path.join(config_path, screenshot_dir)
         if not os.path.exists(dir_path):
             os.makedirs(dir_path)
 
@@ -88,9 +83,11 @@ class ScreenshotUtils:
 
     @staticmethod
     def write_mapping_to_json(name, key, value):
-        file_path = f"{name}.json"
-        file_path = 'Screenshot/ScreenshotJson/' + file_path
-
+        config_path = Config.get_instance().get_collectDataPath()
+        screenshot_dir = "ScreenShot"
+        screenshot_json_dir = "ScreenshotJson"
+        json_name = f"{name}.json"
+        file_path = os.path.join(config_path, screenshot_dir, screenshot_json_dir, json_name)
         # 读取 JSON 文件
         with open(file_path, 'r') as file:
             data = json.load(file)
@@ -101,5 +98,7 @@ class ScreenshotUtils:
         # 写入 JSON 文件
         with open(file_path, 'w') as file:
             json.dump(data, file)
+
+
 
 

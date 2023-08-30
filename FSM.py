@@ -167,6 +167,7 @@ class FSM:
         #     StatRecorder.get_instance().add_webview_set(ck_eles_text)
         #     return self.STATE_WebViewScreen, content
 
+
         screen_depth_map = RuntimeContent.get_instance().screen_depth_map
         last_screen_node = RuntimeContent.get_instance().last_screen_node
         cur_screen_depth = -1
@@ -185,7 +186,6 @@ class FSM:
         if cur_screen_depth == -1:
             return self.STATE_UndefineDepth, content
 
-
         LogUtils.log_info(f"当前层数为: {cur_screen_depth}")
         if cur_screen_depth > Config.get_instance().maxDepth and check_pattern_state(4, [self.STATE_DoublePress, self.STATE_ExceedDepth]):
             return self.STATE_StuckRestart, content
@@ -202,6 +202,7 @@ class FSM:
         #     cur_screen_node = None
 
         sim, most_similar_screen_node = get_max_similarity_screen_node(ck_eles_text, ScreenCompareStrategy(LCSComparator()))
+
         content["cur_screen_node"] = most_similar_screen_node
         content["most_similar_screen_node"] = most_similar_screen_node
         content["sim"] = sim

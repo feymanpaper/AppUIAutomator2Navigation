@@ -521,5 +521,3 @@ class StateHandler(object):
         d.click(x, y)
         time.sleep(Config.get_instance().get_sleep_time_sec())
         return
-
-
