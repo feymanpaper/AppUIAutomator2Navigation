@@ -2,6 +2,7 @@ from StateHandler import *
 from DeviceHelper import *
 from Utils.ScreenshotUtils import *
 from Utils.CalDepthUtils import *
+from Utils.PrivacyUrlUtils import *
 import threading
 from queue import Queue
 
@@ -225,8 +226,10 @@ class FSM(threading.Thread):
                 print()
             except:
                 break
-        if "隐私政策" in content["screen_text"] and len(temp_list) > 0:
-            print(f"找到了隐私政策的url:{url_data}")
+        if len(temp_list) > 0 and ("隐私政策" in content["screen_text"] or "隐私权政策" in content["screen_text"]):
+            PrivacyUrlUtils.save_privacy(temp_list[0])
+            print(f"找到了隐私政策的url:{temp_list[0]}")
+
 
 
         sim, most_similar_screen_node = get_max_similarity_screen_node(ck_eles_text, ScreenCompareStrategy(LCSComparator()))

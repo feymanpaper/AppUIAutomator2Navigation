@@ -251,7 +251,7 @@ def merged_clickable_elements(clickable_eles):
 
 def is_privacy_information_in_ele_dict(clickable_ele_dict):
     text = clickable_ele_dict["text"]
-    single_word_privacy_information = ["我", "我的", "编辑资料", "编辑材料"]
+    single_word_privacy_information = ["我", "我的", "编辑资料", "编辑材料", "隐私政策", "隐私权政策"]
     for sip_info in single_word_privacy_information:
         if sip_info == text:
             return True
