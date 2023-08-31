@@ -7,14 +7,15 @@ from datetime import datetime
 class Config(object):
     def __init__(self):
         self.CLICK_MAX_CNT = 4
-        self.sleep_time_sec = 2  # 配置点击之后睡眠的时间
+        self.sleep_time_sec = 1  # 配置点击之后睡眠的时间
         self.device = None
-        self.test_time = 3600  # 配置测试的时间,以秒为单位
+        self.test_time = 600  # 配置测试的时间,以秒为单位
         self.screen_similarity_threshold = 0.9  # 配置界面与界面之间相似度多少表示同一界面, 默认90%/0.9
         self.maxDepth = 6  # 配置点击的最大深度
         self.isDrawAppCallGraph = False  # 配置是否绘制App界面跳转图
         # self.target_pkg_name = "com.example.myapplication"
-        self.target_pkg_name = "com.alibaba.android.rimet"
+        self.target_pkg_name = "com.taobao.taobao"
+        self.app_name = "淘宝"
         # self.target_pkg_name = "com.ss.android.ugc.aweme" #抖音
         # self.target_pkg_name = "net.csdn.csdnplus"
         # self.target_pkg_name = "com.sina.weibo"

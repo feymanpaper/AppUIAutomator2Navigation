@@ -3,7 +3,7 @@ from queue import Queue
 import sys
 import frida
 import re
-
+from Config import *
 
 lock = threading.Lock()
 
@@ -34,7 +34,8 @@ class Producer(threading.Thread):
         device = frida.get_usb_device()
         # 启动`demo02`这个app
         print(device)
-        pid = device.attach("钉钉")
+        appName = Config.get_instance().app_name
+        pid = device.attach(appName)
         # 加载s1.js脚本
         with open("./FridaLibs/hook_rpc.js") as f:
             script = pid.create_script(f.read())
