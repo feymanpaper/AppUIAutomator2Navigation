@@ -30,6 +30,13 @@ from datetime import datetime
 # "com.xiaomi.smarthome" #米家
 # "me.ele" #饿了么
 # "com.alibaba.wireless.lstretailer" # 阿里零售通
+# "com.alibaba.cloudmail" # 阿里邮箱
+# ”com.taobao.aliAuction“  #阿里拍卖
+# "com.alibaba.aliyun" # 阿里云
+# "com.alicloud.databox" # 阿里云盘
+# "com.wudaokou.hippo" # 盒马
+# "com.moji.mjweather" # 淘宝联盟
+# "com.moji.mjweather" # 墨迹天气
 class Config(object):
     def __init__(self):
         self.CLICK_MAX_CNT = 4
@@ -40,8 +47,8 @@ class Config(object):
         self.maxDepth = 6  # 配置点击的最大深度
         self.isDrawAppCallGraph = False  # 配置是否绘制App界面跳转图
 
-        self.target_pkg_name = "com.alibaba.cloudmail"
-        self.app_name = "阿里邮箱"
+        self.target_pkg_name = "com.tmall.wireless"
+        self.app_name = "淘宝"
 
         self.root_path = "collectData"
         self.start_time = datetime.now().strftime("%Y%m%d-%H%M%S")

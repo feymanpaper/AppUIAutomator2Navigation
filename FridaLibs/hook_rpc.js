@@ -4,16 +4,6 @@ Java.perform(function x() {
     act.getData.implementation = function() {
         var data = this.getData()
         var extra = this.getExtras()
-//        if(extra === null || JSON.stringify(extra)=="{}"){
-//            return data.toString()
-//        }
-//        if(data === null || JSON.stringify(data) == "{}"){
-//            return data.toString()
-//        }
-//        if(extra === null){
-//            return data
-//        }
-
         send(data)
         send(extra.toString())
         return data
@@ -22,20 +12,26 @@ Java.perform(function x() {
      act.getData.implementation = function() {
         var data = this.getData()
         var extra = this.getExtras()
-//        if(extra === null || JSON.stringify(extra)=="{}"){
-//            return data.toString()
-//        }
-//        if(data === null || JSON.stringify(data) == "{}"){
-//            return data.toString()
-//        }
-
-//        if(extra === null){
-//            return data
-//        }
         send(data)
         send(extra.toString())
         return data
     };
+
+//    var Webview = Java.use("android.webkit.WebView")
+//        Webview.loadUrl.overload("java.lang.String").implementation = function(url) {
+//        console.log("[+]Loading URL from", url);
+//        this.loadUrl.overload("java.lang.String").call(this, url);
+//    }
+//
+//    Java.choose('android.webkit.WebView',{
+//        onMatch: function (instance) {
+//            console.log("Found instance: " + instance);
+//            console.log("URL: "+instance.getUrl());
+//        },
+//        onComplete: function () {
+//            console.log('Finished')
+//        }
+//    });
 
 });
 
