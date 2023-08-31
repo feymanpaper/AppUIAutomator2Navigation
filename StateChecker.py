@@ -123,6 +123,8 @@ def check_is_inputmethod_in_cur_screen():
         return True
     elif d(packageName="com.miui.securityinputmethod").exists():
         return True
+    elif d(packageName="com.baidu.input_mi").exists():
+        return True
     # pixel的输入法
     elif d(packageName="com.google.android.inputmethod.latin").exists():
         return True
