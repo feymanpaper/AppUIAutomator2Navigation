@@ -28,7 +28,7 @@ class DrawGraphUtils:
         num_objects, graph, pos = result
 
         # 获取截图
-        screenShotFilePath = os.path.join("../collectData", package, "Screenshot", "ScreenshotPicture")
+        screenShotFilePath = os.path.join("./collectData", package, "Screenshot", "ScreenshotPicture")
         screenshot_folder = os.path.abspath(screenShotFilePath)
         screenshot_files = {node: os.path.join(screenshot_folder, f'{ScreenshotUtils.encode_screen_uid(node)}.png') for node in graph.nodes}
         nx.set_node_attributes(graph, screenshot_files, 'image')
@@ -78,7 +78,7 @@ class DrawGraphUtils:
     @staticmethod
     def load_data(package):
         # 读取json文件，返回界面数量、跳转关系和画图位置
-        jsonFilePath = os.path.join("../collectData", package, "Dumpjson")
+        jsonFilePath = os.path.join("./collectData", package, "Dumpjson")
         jsonFilePath = os.path.abspath(jsonFilePath)
         files = os.listdir(jsonFilePath)
         for file in files:
@@ -186,7 +186,7 @@ class DrawGraphUtils:
     @staticmethod
     def save_data(package):
         # 保存svg图像，图像与文件夹同名
-        svgSaveFilePath = os.path.join("../collectData", package, "AppCallGraph")
+        svgSaveFilePath = os.path.join("./collectData", package, "AppCallGraph")
         svg_save_folder = os.path.abspath(svgSaveFilePath)
 
         if not os.path.exists(svg_save_folder):

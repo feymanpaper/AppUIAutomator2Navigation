@@ -1,12 +1,10 @@
 from FSM import *
 from Utils.JsonUtils import *
 from RestartException import RestartException
-from RuntimeContent import RuntimeContent
-from ScreenNode import ScreenNode
-from Utils.LogUtils import *
 from Utils.SavedInstanceUtils import *
 from queue import Queue
 from FridaLibs.mq_producer import Producer
+from Utils.DrawGraphUtils import *
 
 def suppress_keyboard_interrupt_message():
     old_excepthook = sys.excepthook
@@ -22,6 +20,10 @@ def suppress_keyboard_interrupt_message():
             RuntimeContent.get_instance().clear_screen_list()
             JsonUtils.dump_screen_map_to_json()
             SavedInstanceUtils.dump_pickle(RuntimeContent.get_instance())
+
+            # 绘制App界面跳转图
+            if Config.get_instance().isDrawAppCallGraph:
+                DrawGraphUtils.draw_callgraph(Config.get_instance().get_CollectDataName())
     sys.excepthook = new_hook
 
 
@@ -79,5 +81,9 @@ if __name__ == "__main__":
             JsonUtils.dump_screen_map_to_json()
             SavedInstanceUtils.dump_pickle(RuntimeContent.get_instance())
             break
+
+        # 绘制App界面跳转图
+        if Config.get_instance().isDrawAppCallGraph:
+            DrawGraphUtils.draw_callgraph(Config.get_instance().get_CollectDataName())
 
     LogUtils.log_info("程序结束")
