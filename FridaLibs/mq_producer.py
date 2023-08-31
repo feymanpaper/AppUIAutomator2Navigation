@@ -37,6 +37,7 @@ class Producer(threading.Thread):
         appName = Config.get_instance().app_name
         pid = device.attach(appName)
         # 加载s1.js脚本
+        # with open("./hook_rpc.js") as f:
         with open("./FridaLibs/hook_rpc.js") as f:
             script = pid.create_script(f.read())
         script.on('message', self.on_message)

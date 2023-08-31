@@ -441,8 +441,9 @@ class StateHandler(object):
     @classmethod
     def handle_inputmethod(cls, content):
         cls.__press_back()
-        RuntimeContent.get_instance().set_last_screen_node(None)
-        RuntimeContent.get_instance().set_last_clickable_ele_uid("")
+        # 输入法不需要处理
+        # RuntimeContent.get_instance().set_last_screen_node(None)
+        # RuntimeContent.get_instance().set_last_clickable_ele_uid("")
 
     @classmethod
     def handle_WebView_screen(cls, content):

@@ -4,6 +4,32 @@ from uiautomator2 import Device
 from datetime import datetime
 
 
+# "com.taobao.taobao"
+# "com.autonavi.minimap" # 高德
+# "com.ss.android.ugc.aweme" #抖音
+# "net.csdn.csdnplus"
+# "com.sina.weibo"
+# "com.youku.phone"
+# "cn.damai"
+# "com.ss.android.lark"
+# "com.cloudy.component"
+# "com.jingyao.easybike"
+# "com.cainiao.wireless"
+# "com.xingin.xhs"
+# "com.yipiao"
+# "app.podcast.cosmos"
+# "com.hunantv.imgo.activity"
+# "tv.danmaku.bili" #b站
+# "com.netease.edu.ucmooc" #MOOC
+# "com.cainiao.wireless" #菜鸟
+# "com.taobao.taobao" #淘宝
+# "com.taobao.mobile.dipei"#口碑
+# "com.taobao.trip"#飞猪旅行
+# "com.youku.phone"#优酷
+# "com.eg.android.AlipayGphone"#支付宝
+# "com.xiaomi.smarthome" #米家
+# "me.ele" #饿了么
+# "com.alibaba.wireless.lstretailer" # 阿里零售通
 class Config(object):
     def __init__(self):
         self.CLICK_MAX_CNT = 4
@@ -13,32 +39,9 @@ class Config(object):
         self.screen_similarity_threshold = 0.9  # 配置界面与界面之间相似度多少表示同一界面, 默认90%/0.9
         self.maxDepth = 6  # 配置点击的最大深度
         self.isDrawAppCallGraph = False  # 配置是否绘制App界面跳转图
-        # self.target_pkg_name = "com.example.myapplication"
-        self.target_pkg_name = "com.taobao.taobao"
-        self.app_name = "淘宝"
-        # self.target_pkg_name = "com.ss.android.ugc.aweme" #抖音
-        # self.target_pkg_name = "net.csdn.csdnplus"
-        # self.target_pkg_name = "com.sina.weibo"
-        # self.target_pkg_name = "com.youku.phone"
-        # self.target_pkg_name = "cn.damai"
-        # self.target_pkg_name = "com.ss.android.lark"
-        # self.target_pkg_name = "com.cloudy.component"
-        # self.target_pkg_name = "com.jingyao.easybike"
-        # self.target_pkg_name = "com.cainiao.wireless"
-        # self.target_pkg_name = "com.xingin.xhs"
-        # self.target_pkg_name = "com.yipiao"
-        # self.target_pkg_name = "app.podcast.cosmos"
-        # self.target_pkg_name = "com.hunantv.imgo.activity"
-        # self.target_pkg_name = "tv.danmaku.bili" #b站
-        # self.target_pkg_name = "com.netease.edu.ucmooc" #MOOC
-        # self.target_pkg_name = "com.cainiao.wireless" #菜鸟
-        # self.target_pkg_name = "com.taobao.taobao" #淘宝
-        # self.target_pkg_name = "com.taobao.mobile.dipei"#口碑
-        # self.target_pkg_name = "com.taobao.trip"#飞猪旅行
-        # self.target_pkg_name = "com.youku.phone"#优酷
-        # self.target_pkg_name = "com.eg.android.AlipayGphone"#支付宝
-        # self.target_pkg_name = "com.xiaomi.smarthome" #米家
-        # self.target_pkg_name = "me.ele" #饿了么
+
+        self.target_pkg_name = "com.alibaba.cloudmail"
+        self.app_name = "阿里邮箱"
 
         self.root_path = "collectData"
         self.start_time = datetime.now().strftime("%Y%m%d-%H%M%S")
@@ -86,3 +89,7 @@ class Config(object):
     def get_collectDataPath(self):
         pkg_path = self.target_pkg_name + "-" + self.start_time
         return os.path.join(self.root_path, pkg_path)
+
+
+
+

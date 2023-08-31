@@ -10,12 +10,33 @@ Java.perform(function x() {
 //        if(data === null || JSON.stringify(data) == "{}"){
 //            return data.toString()
 //        }
-        if(extra === null){
-            return data
-        }
+//        if(extra === null){
+//            return data
+//        }
+
+        send(data)
         send(extra.toString())
         return data
     };
+
+     act.getData.implementation = function() {
+        var data = this.getData()
+        var extra = this.getExtras()
+//        if(extra === null || JSON.stringify(extra)=="{}"){
+//            return data.toString()
+//        }
+//        if(data === null || JSON.stringify(data) == "{}"){
+//            return data.toString()
+//        }
+
+//        if(extra === null){
+//            return data
+//        }
+        send(data)
+        send(extra.toString())
+        return data
+    };
+
 });
 
 
