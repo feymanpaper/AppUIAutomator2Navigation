@@ -1,10 +1,13 @@
 ## 环境配置
 配置uiautomator2环境:https://github.com/openatx/uiautomator2
 
+配置frida环境: https://github.com/frida/frida
+
 ## 运行
-在Config.py中更改要测试的包名
+在Config.py中更改要测试的包名及应用名
 ```commandline
 self.target_pkg_name = "com.example.packagename"
+self.app_name = "appName"  
 ```
 运行run.py
 

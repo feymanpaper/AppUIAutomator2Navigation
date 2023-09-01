@@ -35,26 +35,29 @@ from datetime import datetime
 # "com.alibaba.aliyun" # 阿里云
 # "com.alicloud.databox" # 阿里云盘
 # "com.wudaokou.hippo" # 盒马
-# "com.moji.mjweather" # 淘宝联盟
 # "com.moji.mjweather" # 墨迹天气
+# "com.alibaba.android.rimet" #钉钉
+
 class Config(object):
     def __init__(self):
-        self.CLICK_MAX_CNT = 4
-        self.sleep_time_sec = 1  # 配置点击之后睡眠的时间
-        self.device = None
-        self.test_time = 600  # 配置测试的时间,以秒为单位
-        self.screen_similarity_threshold = 0.9  # 配置界面与界面之间相似度多少表示同一界面, 默认90%/0.9
-        self.maxDepth = 6  # 配置点击的最大深度
-        self.isDrawAppCallGraph = False  # 配置是否绘制App界面跳转图
 
-        self.target_pkg_name = "com.tmall.wireless"
-        self.app_name = "淘宝"
+        self.target_pkg_name = "com.alibaba.android.rimet"  # 应用包名
+        self.app_name = "钉钉"  # 应用名
+
+        self.test_time = 600  # 配置测试的时间,以秒为单位
+        self.sleep_time_sec = 1  # 配置点击之后睡眠的时间
+        self.maxDepth = 5  # 配置点击的最大深度
+        self.isDrawAppCallGraph = True  # 配置是否绘制App界面跳转图
+
+        self.CLICK_MAX_CNT = 4
+        self.device = None
+        self.screen_similarity_threshold = 0.9  # 配置界面与界面之间相似度多少表示同一界面, 默认90%/0.9
 
         self.root_path = "collectData"
         self.start_time = datetime.now().strftime("%Y%m%d-%H%M%S")
 
-        self.use_pickle_file_name = "./SavedInstance/com.eg.android.AlipayGphone_restart0activity28&screen78&time3601.86s.pickle"
-        self.is_saved_start = False
+        # self.use_pickle_file_name = "./SavedInstance/com.eg.android.AlipayGphone_restart0activity28&screen78&time3601.86s.pickle"
+        # self.is_saved_start = False
 
     def __new__(cls, *args, **kwargs):
         if not hasattr(Config, "_instance"):
@@ -96,7 +99,3 @@ class Config(object):
     def get_collectDataPath(self):
         pkg_path = self.target_pkg_name + "-" + self.start_time
         return os.path.join(self.root_path, pkg_path)
-
-
-
-
