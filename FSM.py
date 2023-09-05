@@ -4,6 +4,7 @@ from Utils.ScreenshotUtils import *
 from Utils.CalDepthUtils import *
 from Utils.PrivacyUrlUtils import *
 import threading
+from RestartException import RestartException
 from queue import Queue
 
 class FSM(threading.Thread):
@@ -11,6 +12,11 @@ class FSM(threading.Thread):
     def __init__(self, t_name, queue:Queue):
         threading.Thread.__init__(self, name=t_name)
         self.data = queue
+
+        self.exit_code = 0
+        self.exception = None
+        self.exc_traceback = ''
+
 
     # state_map = {
     #     1: "不是当前要测试的app,即app跳出了测试的app",
@@ -276,7 +282,7 @@ class FSM(threading.Thread):
         LogUtils.log_info(f"状态为{self.reverse_state_map[state]}")
 
 
-    def start(self):
+    def __run(self):
         stat_map = {}
         while True:
             if len(StatRecorder.get_instance().get_stat_screen_set()) % 10 == 0 and stat_map.get(len(StatRecorder.get_instance().get_stat_screen_set()), False) is False:
@@ -294,7 +300,14 @@ class FSM(threading.Thread):
             LogUtils.log_info("\n")
 
     def run(self):
-        self.start()
+        try:
+            self.__run()
+        except RestartException as e:
+            self.exit_code = 1
+            self.exception = e
+        except Exception as e:
+            self.exit_code = 2
+            self.exception = e
 
 
 

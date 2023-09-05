@@ -1,10 +1,10 @@
 from FSM import *
 from Utils.JsonUtils import *
-from RestartException import RestartException
 from Utils.SavedInstanceUtils import *
 from queue import Queue
 from FridaLibs.mq_producer import Producer
 from Utils.DrawGraphUtils import *
+
 
 def suppress_keyboard_interrupt_message():
     old_excepthook = sys.excepthook
@@ -24,6 +24,7 @@ def suppress_keyboard_interrupt_message():
             # 绘制App界面跳转图
             if Config.get_instance().isDrawAppCallGraph:
                 DrawGraphUtils.draw_callgraph(Config.get_instance().get_CollectDataName())
+
     sys.excepthook = new_hook
 
 
@@ -44,28 +45,30 @@ if __name__ == "__main__":
     StatRecorder.get_instance().set_start_time()
 
     restart_cnt = 0
+
+    ## 启动app
+    d = Config.get_instance().get_device()
+    d.app_start(Config.get_instance().get_target_pkg_name(), use_monkey=True)
+    RuntimeContent.get_instance().set_last_screen_node(root)
+    time.sleep(10)
+
+    # frida开始hook
+    queue = Queue()
+    # 后台线程
+    producer = Producer('Producer', queue, daemon=True)
+    producer.start()
+
     while True:
-        ## 启动app
-        d = Config.get_instance().get_device()
-        d.app_start(Config.get_instance().get_target_pkg_name(), use_monkey=True)
-        time.sleep(10)
-
-        queue = Queue()
-        producer = Producer('Producer', queue)
+        # FSM开始运行
         consumer_fsm = FSM('Consumer', queue)
-        # consumer = Consumer('Con', queue)
-        producer.start()
         consumer_fsm.start()
-        # producer.join()
-        # consumer.join()
+        consumer_fsm.join()
 
-        try:
-            RuntimeContent.get_instance().set_last_screen_node(root)
-            FSM.start()
-        except RestartException as e:
+        # fsm线程触发了RestartException
+        if consumer_fsm.exit_code == 1:
             StatRecorder.get_instance().inc_restart_cnt()
             LogUtils.log_info("需要重启")
-            logging.exception(e)
+            logging.exception(consumer_fsm.exception)
             StatRecorder.get_instance().print_result()
             RuntimeContent.get_instance().clear_state_list()
             RuntimeContent.get_instance().clear_screen_list()
@@ -73,17 +76,22 @@ if __name__ == "__main__":
             SavedInstanceUtils.dump_pickle(RuntimeContent.get_instance())
             d.app_stop(Config.get_instance().get_target_pkg_name())
             time.sleep(10)
-        except Exception as e:
-            logging.exception(e)
+        elif consumer_fsm.exit_code == 2:
+            logging.exception(consumer_fsm.exception)
             StatRecorder.get_instance().print_result()
             RuntimeContent.get_instance().clear_state_list()
             RuntimeContent.get_instance().clear_screen_list()
             JsonUtils.dump_screen_map_to_json()
             SavedInstanceUtils.dump_pickle(RuntimeContent.get_instance())
             break
+        else:
+            LogUtils.log_info("未知情况退出")
+            break
 
-        # 绘制App界面跳转图
-        if Config.get_instance().isDrawAppCallGraph:
-            DrawGraphUtils.draw_callgraph(Config.get_instance().get_CollectDataName())
+    # 程序收尾
+
+    # 绘制App界面跳转图
+    if Config.get_instance().isDrawAppCallGraph:
+        DrawGraphUtils.draw_callgraph(Config.get_instance().get_CollectDataName())
 
     LogUtils.log_info("程序结束")
