@@ -7,9 +7,10 @@ from Config import *
 
 lock = threading.Lock()
 
+
 class Producer(threading.Thread):
-    def __init__(self, t_name, queue):
-        threading.Thread.__init__(self, name=t_name)
+    def __init__(self, t_name: str, queue: Queue, daemon: bool):
+        threading.Thread.__init__(self, name=t_name, daemon=daemon)
         self.data = queue
 
     def is_http(self, test_str):
