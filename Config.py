@@ -56,8 +56,8 @@ class Config(object):
         self.root_path = "collectData"
         self.start_time = datetime.now().strftime("%Y%m%d-%H%M%S")
 
-        # self.use_pickle_file_name = "./SavedInstance/com.eg.android.AlipayGphone_restart0activity28&screen78&time3601.86s.pickle"
-        # self.is_saved_start = False
+        self.use_pickle_file_name = "./SavedInstance/com.eg.android.AlipayGphone_restart0activity28&screen78&time3601.86s.pickle"
+        self.is_saved_start = False
 
     def __new__(cls, *args, **kwargs):
         if not hasattr(Config, "_instance"):
