@@ -16,6 +16,7 @@ def suppress_keyboard_interrupt_message():
             LogUtils.log_info('\nKeyboardInterrupt ...')
             LogUtils.log_info('do something after Interrupt ...')
             StatRecorder.get_instance().print_result()
+            StatRecorder.get_instance().print_coverage()
             RuntimeContent.get_instance().clear_state_list()
             RuntimeContent.get_instance().clear_screen_list()
             JsonUtils.dump_screen_map_to_json()
@@ -29,6 +30,7 @@ def suppress_keyboard_interrupt_message():
 
 
 if __name__ == "__main__":
+
     LogUtils.setup()
     if Config.get_instance().is_saved_start:
         runtime = SavedInstanceUtils.load_pickle(Config.get_instance().get_pickle_file_name())
@@ -41,12 +43,13 @@ if __name__ == "__main__":
         RuntimeContent.get_instance().put_screen_map("root", root)
 
     suppress_keyboard_interrupt_message()
+
     # 计时开始
     StatRecorder.get_instance().set_start_time()
 
     restart_cnt = 0
 
-    ## 启动app
+    # 启动app
     d = Config.get_instance().get_device()
     d.app_start(Config.get_instance().get_target_pkg_name(), use_monkey=True)
     RuntimeContent.get_instance().set_last_screen_node(root)
@@ -58,6 +61,7 @@ if __name__ == "__main__":
     producer = Producer('Producer', queue, daemon=True)
     producer.start()
 
+    # 控制FSM线程, 重启会继续运行
     while True:
         # FSM开始运行
         consumer_fsm = FSM('Consumer', queue)
@@ -68,17 +72,26 @@ if __name__ == "__main__":
         if consumer_fsm.exit_code == 1:
             StatRecorder.get_instance().inc_restart_cnt()
             LogUtils.log_info("需要重启")
-            logging.exception(consumer_fsm.exception)
+            # logging.exception(consumer_fsm.exception)
+            # logging.exception(consumer_fsm.exc_traceback)
             StatRecorder.get_instance().print_result()
+            StatRecorder.get_instance().print_coverage()
             RuntimeContent.get_instance().clear_state_list()
             RuntimeContent.get_instance().clear_screen_list()
             JsonUtils.dump_screen_map_to_json()
             SavedInstanceUtils.dump_pickle(RuntimeContent.get_instance())
+            # 重启
             d.app_stop(Config.get_instance().get_target_pkg_name())
-            time.sleep(10)
+            time.sleep(5)
+            d.app_start(Config.get_instance().get_target_pkg_name(), use_monkey=True)
+            time.sleep(5)
+            RuntimeContent.get_instance().set_last_screen_node(root)
+
         elif consumer_fsm.exit_code == 2:
-            logging.exception(consumer_fsm.exception)
+            # logging.exception(consumer_fsm.exception)
+            # logging.exception(consumer_fsm.exc_traceback)
             StatRecorder.get_instance().print_result()
+            StatRecorder.get_instance().print_coverage()
             RuntimeContent.get_instance().clear_state_list()
             RuntimeContent.get_instance().clear_screen_list()
             JsonUtils.dump_screen_map_to_json()
