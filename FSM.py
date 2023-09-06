@@ -6,6 +6,7 @@ from Utils.PrivacyUrlUtils import *
 import threading
 from RestartException import RestartException
 from queue import Queue
+from traceback import format_exc
 
 class FSM(threading.Thread):
 
@@ -305,9 +306,11 @@ class FSM(threading.Thread):
         except RestartException as e:
             self.exit_code = 1
             self.exception = e
+            self.exc_traceback = format_exc()
         except Exception as e:
             self.exit_code = 2
             self.exception = e
+            self.exc_traceback = format_exc()
 
 
 
