@@ -71,19 +71,21 @@ class StatRecorder(object):
         LogUtils.log_info("@" * 100)
         LogUtils.log_info("@" * 100)
         screen_depth_map = RuntimeContent.get_instance().screen_depth_map
-        for screen_uid, depth in screen_depth_map.items():
+        screen_uid_list = [screen_uid for screen_uid, depth in sorted(screen_depth_map.items(), key=lambda x: x[1])]
+        for screen_uid in screen_uid_list:
+            depth = screen_depth_map.get(screen_uid)
             if depth > Config.get_instance().maxDepth:
                 continue
             screen_node = RuntimeContent.get_instance().get_screen_map().get(screen_uid)
             if screen_node is not None:
                 clickable_eles = screen_node.get_diff_or_clickable_eles()
                 if clickable_eles is None or len(clickable_eles) == 0:
-                    print(f"{screen_uid} 没有可点击组件")
+                    print(f"深度{depth}: {screen_uid} 没有可点击组件")
                 else:
                     total_cnt = len(screen_node.get_diff_or_clickable_eles())
                     click_cnt = screen_node.already_clicked_cnt
                     res = click_cnt/total_cnt
-                    print(f"{screen_uid} 的覆盖率为 {res}")
+                    print(f"深度{depth}: {screen_uid} 的覆盖率为 {res}")
 
     def to_string_result(self):
         assert (self.end_time != -1)

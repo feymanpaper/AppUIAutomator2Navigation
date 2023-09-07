@@ -46,7 +46,7 @@ class Config(object):
 
         self.test_time = 600  # 配置测试的时间,以秒为单位
         self.sleep_time_sec = 1  # 配置点击之后睡眠的时间
-        self.maxDepth = 3  # 配置点击的最大深度
+        self.maxDepth = 2  # 配置点击的最大深度
         self.isDrawAppCallGraph = False  # 配置是否绘制App界面跳转图
 
         self.CLICK_MAX_CNT = 4
