@@ -1,6 +1,8 @@
 console.log("Script loaded successfully ");
 Java.perform(function x() {
     var act = Java.use("android.content.Intent");
+    var Activity = Java.use("android.app.Activity");
+
     act.getData.implementation = function() {
         var data = this.getData()
         var extra = this.getExtras()
@@ -16,6 +18,17 @@ Java.perform(function x() {
         send(extra.toString())
         return data
     };
+
+    Activity.startActivity.overload('android.content.Intent').implementation=function(p1){
+        var data = decodeURIComponent(p1.toUri(256))
+        send(data)
+        this.startActivity(p1);
+    }
+    Activity.startActivity.overload('android.content.Intent', 'android.os.Bundle').implementation=function(p1,p2){
+        var data = decodeURIComponent(p1.toUri(256))
+        send(data)
+        this.startActivity(p1,p2);
+    }
 
 //    var Webview = Java.use("android.webkit.WebView")
 //        Webview.loadUrl.overload("java.lang.String").implementation = function(url) {
