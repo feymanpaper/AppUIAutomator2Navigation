@@ -159,6 +159,28 @@ class FSM(threading.Thread):
         LogUtils.log_info(f"当前Screen为: {ck_eles_text}")
         RuntimeContent.get_instance().append_screen_list(ck_eles_text)
 
+        # 判断当前界面是否是从上一个"隐私权政策文本"点击过来的
+        temp_list = []
+        while 1:
+            try:
+                url_data = self.data.get(1, 1)
+                for url in url_data:
+                    temp_list.append(url)
+                print()
+                print("*" * 50 + f"Consumer{self.name}" + "*" * 50)
+                print(url_data)
+                print("*" * 50 + f"Consumer{self.name}" + "*" * 50)
+                print()
+            except:
+                break
+        last_clickable_ele_uid = RuntimeContent.get_instance().last_clickable_ele_uid
+        # 判断是否点击了隐私政策
+        if len(temp_list) > 0 and last_clickable_ele_uid is not None and "隐私权政策" in last_clickable_ele_uid:
+            PrivacyUrlUtils.save_privacy(temp_list[0])
+            print(f"找到了隐私政策的url:{temp_list[0]}")
+
+
+
         if cur_screen_pkg_name != Config.get_instance().get_target_pkg_name():
             if check_is_in_home_screen(cur_screen_pkg_name) and check_is_first_scrren_finish():
                 return self.STATE_Terminate, content
@@ -220,25 +242,7 @@ class FSM(threading.Thread):
         #     cur_screen_node = temp_screen_node
         # else:
         #     cur_screen_node = None
-        temp_list = []
-        while 1:
-            try:
-                url_data = self.data.get(1, 1)
-                for url in url_data:
-                    temp_list.append(url)
-                print()
-                print("*" * 50 + f"Consumer{self.name}" + "*" * 50)
-                print(url_data)
-                print("*" * 50 + f"Consumer{self.name}" + "*" * 50)
-                print()
-            except:
-                break
 
-        last_clickable_ele_uid = RuntimeContent.get_instance().last_clickable_ele_uid
-        # 判断当前界面是否属于隐私权政策
-        if len(temp_list) > 0 and last_clickable_ele_uid is not None and "隐私权政策" in last_clickable_ele_uid:
-            PrivacyUrlUtils.save_privacy(temp_list[0])
-            print(f"找到了隐私政策的url:{temp_list[0]}")
 
         sim, most_similar_screen_node = get_max_similarity_screen_node(ck_eles_text,
                                                                        ScreenCompareStrategy(LCSComparator()))
