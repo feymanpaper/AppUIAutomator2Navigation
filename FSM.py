@@ -288,19 +288,23 @@ class FSM(threading.Thread):
 
             # TODO 添加cliakable=false 的隐私政策权的组件
             if is_exist_privacy_policy_ele():
-                pp_x, pp_y, w, h = cal_privacy_ele_loc(screenshot_path)
-                pp_ele_dict = {
-                    'class': '',
-                    'resource-id': '',
-                    'package': cur_screen_pkg_name,
-                    'text': '隐私权政策',
-                    'bounds': "["+str(pp_x)+","+str(pp_y)+"]["+str(w)+","+str(h)+"]"
-                }
-                pp_ele_uid = get_unique_id(pp_ele_dict, cur_activity)
-                RuntimeContent.get_instance().put_ele_uid_map(pp_ele_uid, pp_ele_dict)
-                clickable_elements = content["cur_ck_eles"]
-                clickable_elements.insert(0, pp_ele_uid)
-
+                loc_tuple = cal_privacy_ele_loc(screenshot_path)
+                if loc_tuple is not None:
+                    pp_x, pp_y, w, h = loc_tuple[0], loc_tuple[1], loc_tuple[2], loc_tuple[3]
+                    pp_ele_dict = {
+                        'class': '',
+                        'resource-id': '',
+                        'package': cur_screen_pkg_name,
+                        'text': '隐私权政策',
+                        'bounds': "["+str(pp_x)+","+str(pp_y)+"]["+str(w)+","+str(h)+"]"
+                    }
+                    pp_ele_uid = get_unique_id(pp_ele_dict, cur_activity)
+                    RuntimeContent.get_instance().put_ele_uid_map(pp_ele_uid, pp_ele_dict)
+                    clickable_elements = content["cur_ck_eles"]
+                    clickable_elements.insert(0, pp_ele_uid)
+                    LogUtils.log_info("OCR到隐私权政策")
+                else:
+                    LogUtils.log_info("没有OCR到隐私权政策")
             return self.STATE_NewScreen, content
 
     def print_state(self, state):

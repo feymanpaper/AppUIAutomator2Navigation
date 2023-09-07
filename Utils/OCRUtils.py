@@ -1,18 +1,34 @@
 from PIL import Image
 import pytesseract
+from PIL import ImageEnhance
 
-
-def cal_privacy_ele_loc(img_path: str):
+def cal_privacy_ele_loc(img_path: str) -> tuple():
     """
     :param img_path: 截图的路径
     :return: "隐私权政策"文本的坐标
     """
-    image = Image.open(img_path)
-    data = pytesseract.image_to_data(image, output_type='dict', lang='chi_sim')
+    img = Image.open(img_path)
+    # 修改图片的灰度
+    img = img.convert('RGB')  # 这里也可以尝试使用L
+    enhancer = ImageEnhance.Color(img)
+    enhancer = enhancer.enhance(0)
+    enhancer = ImageEnhance.Brightness(enhancer)
+    enhancer = enhancer.enhance(2)
+    enhancer = ImageEnhance.Contrast(enhancer)
+    enhancer = enhancer.enhance(8)
+    enhancer = ImageEnhance.Sharpness(enhancer)
+    img = enhancer.enhance(20)
+    # config = '--psm 3 -c tessedit_char_whitelist=隐私权政策,'
+    # text = pytesseract.image_to_string(img, lang = 'chi_sim')
+    # print(text)
+
+    data = pytesseract.image_to_data(img, output_type='dict', lang='chi_sim')
     loc_list = __get_privacy_loc_list(data)
-    assert (len(loc_list) >= 5)
+    if len(loc_list) < 5:
+        return None
     st_index = __get_first_privacy_loc(loc_list)
-    assert (st_index != -1)
+    if st_index == -1:
+        return None
     mid_index = __get_mid_index(st_index)
     # 此处的变换是为了迎合ele_dict
     x, y, w, h = int(2*loc_list[mid_index][1]), int(2*loc_list[mid_index][2]), int(0), int(0)
