@@ -14,7 +14,7 @@ from Config import *
 # 测试可以在test/ScreenshotUtils_test.py上进行测试, 不需要跑其他文件
 class ScreenshotUtils:
     @staticmethod
-    def screen_shot(screen_uid:str):
+    def screen_shot(screen_uid:str) -> str:
         # 连接设备
         d = u2.connect()
 
@@ -40,6 +40,7 @@ class ScreenshotUtils:
             os.makedirs(savepath)
         filepath = savepath + '/' + filename + '.png'
         screenshot.save(filepath)
+        return filepath
 
     @staticmethod
     def encode_screen_uid(screen_uid: str) -> str:

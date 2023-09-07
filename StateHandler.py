@@ -1,7 +1,7 @@
 from RuntimeContent import *
 import time
 from Config import *
-from RestartException import RestartException
+from DefException import *
 from core_functions import *
 from DeviceHelper import *
 from StatRecorder import *
@@ -393,9 +393,7 @@ class StateHandler(object):
         print_screen_info(content, False)
         cls.click_one_ele(content)
 
-    @classmethod
-    def handle_terminate(cls, content):
-        raise Exception("完成")
+
 
     @classmethod
     def handle_new_screen(cls, content):
@@ -505,6 +503,10 @@ class StateHandler(object):
             RuntimeContent.get_instance().append_more_error_ck_ele_uid_list(last_ck_ele_uid_list)
 
         raise RestartException("重启机制")
+
+    @classmethod
+    def handle_terminate(cls, content):
+        raise TerminateException("完成")
 
     @classmethod
     def handle_homes_screen_restart(cls, content):

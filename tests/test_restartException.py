@@ -1,4 +1,4 @@
-from RestartException import RestartException
+from DefException import RestartException
 
 
 def test():

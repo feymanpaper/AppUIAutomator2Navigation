@@ -25,7 +25,7 @@ from datetime import datetime
 # "com.taobao.taobao" #淘宝
 # "com.taobao.mobile.dipei"#口碑
 # "com.taobao.trip"#飞猪旅行
-# "com.youku.phone"#优酷
+# "com.youku.phone"#优酷视频
 # "com.eg.android.AlipayGphone"#支付宝
 # "com.xiaomi.smarthome" #米家
 # "me.ele" #饿了么
@@ -41,12 +41,12 @@ from datetime import datetime
 class Config(object):
     def __init__(self):
 
-        self.target_pkg_name = "com.youku.phone"  # 应用包名
-        self.app_name = "优酷视频"  # 应用名
+        self.target_pkg_name = "com.alibaba.android.rimet"  # 应用包名
+        self.app_name = "钉钉"  # 应用名
 
         self.test_time = 600  # 配置测试的时间,以秒为单位
         self.sleep_time_sec = 1  # 配置点击之后睡眠的时间
-        self.maxDepth = 1  # 配置点击的最大深度
+        self.maxDepth = 3  # 配置点击的最大深度
         self.isDrawAppCallGraph = False  # 配置是否绘制App界面跳转图
 
         self.CLICK_MAX_CNT = 4

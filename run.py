@@ -86,8 +86,9 @@ if __name__ == "__main__":
             d.app_start(Config.get_instance().get_target_pkg_name(), use_monkey=True)
             time.sleep(5)
             RuntimeContent.get_instance().set_last_screen_node(root)
-
+        # fsm线程触发了TerminateException
         elif consumer_fsm.exit_code == 2:
+            LogUtils.log_info("程序结束")
             # logging.exception(consumer_fsm.exception)
             # logging.exception(consumer_fsm.exc_traceback)
             StatRecorder.get_instance().print_result()
@@ -97,8 +98,17 @@ if __name__ == "__main__":
             JsonUtils.dump_screen_map_to_json()
             SavedInstanceUtils.dump_pickle(RuntimeContent.get_instance())
             break
+        # fsm线程触发了未知错误
         else:
             LogUtils.log_info("未知情况退出")
+            logging.exception(consumer_fsm.exception)
+            logging.exception(consumer_fsm.exc_traceback)
+            StatRecorder.get_instance().print_result()
+            StatRecorder.get_instance().print_coverage()
+            RuntimeContent.get_instance().clear_state_list()
+            RuntimeContent.get_instance().clear_screen_list()
+            JsonUtils.dump_screen_map_to_json()
+            SavedInstanceUtils.dump_pickle(RuntimeContent.get_instance())
             break
 
     # 程序收尾
@@ -107,4 +117,3 @@ if __name__ == "__main__":
     if Config.get_instance().isDrawAppCallGraph:
         DrawGraphUtils.draw_callgraph(Config.get_instance().get_CollectDataName())
 
-    LogUtils.log_info("程序结束")
