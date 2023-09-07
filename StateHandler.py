@@ -22,7 +22,7 @@ class StateHandler(object):
             cur_clickable_ele_uid = cur_screen_node_clickable_eles[clickable_ele_idx]
 
             # TODO 仅调试使用
-            # if clickable_ele_idx <= 0:
+            # if clickable_ele_idx <= 4:
             #     cur_screen_node.already_clicked_cnt += 1
             #     clickable_ele_idx+=1
             #     continue

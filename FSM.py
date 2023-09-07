@@ -302,6 +302,9 @@ class FSM(threading.Thread):
                     RuntimeContent.get_instance().put_ele_uid_map(pp_ele_uid, pp_ele_dict)
                     clickable_elements = content["cur_ck_eles"]
                     clickable_elements.insert(0, pp_ele_uid)
+                    LogUtils.log_info("OCR到隐私权政策")
+                else:
+                    LogUtils.log_info("没有OCR到隐私权政策")
             return self.STATE_NewScreen, content
 
     def print_state(self, state):
