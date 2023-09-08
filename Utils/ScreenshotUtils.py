@@ -1,4 +1,3 @@
-import uiautomator2 as u2
 import base64
 import os
 import hashlib
@@ -16,7 +15,7 @@ class ScreenshotUtils:
     @staticmethod
     def screen_shot(screen_uid:str) -> str:
         # 连接设备
-        d = u2.connect()
+        d = Config.get_instance().get_device()
 
         # 创建及写入映射json
         ScreenshotUtils.create_json_file('screenshot_map')

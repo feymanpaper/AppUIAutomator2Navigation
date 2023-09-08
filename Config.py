@@ -41,8 +41,8 @@ from datetime import datetime
 class Config(object):
     def __init__(self):
 
-        self.target_pkg_name = "com.alibaba.android.rimet"  # 应用包名
-        self.app_name = "钉钉"  # 应用名
+        self.target_pkg_name = "me.ele"  # 应用包名
+        self.app_name = "饿了么"  # 应用名
 
         self.test_time = 600  # 配置测试的时间,以秒为单位
         self.sleep_time_sec = 1  # 配置点击之后睡眠的时间
