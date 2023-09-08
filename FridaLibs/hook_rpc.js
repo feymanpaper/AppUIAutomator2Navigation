@@ -1,7 +1,7 @@
 console.log("Script loaded successfully ");
 Java.perform(function x() {
+    // hook Intent之间传递的url
     var act = Java.use("android.content.Intent");
-    var Activity = Java.use("android.app.Activity");
 
     act.getData.implementation = function() {
         var data = this.getData()
@@ -18,7 +18,8 @@ Java.perform(function x() {
         send(extra.toString())
         return data
     };
-
+    // hook startActivity传递的url
+    var Activity = Java.use("android.app.Activity");
     Activity.startActivity.overload('android.content.Intent').implementation=function(p1){
         var data = decodeURIComponent(p1.toUri(256))
         send(data)
@@ -28,6 +29,14 @@ Java.perform(function x() {
         var data = decodeURIComponent(p1.toUri(256))
         send(data)
         this.startActivity(p1,p2);
+    }
+
+    var Window = Java.use("android.view.Window");
+    Window.setFlags.implementation = function(flags, mask){
+        // 将 FLAG_SECURE 参数更改为 0
+        var newFlags = flags & ~WindowManager.LayoutParams.FLAG_SECURE;
+        // 调用原始方法
+        this.setFlags(newFlags, mask);
     }
 
 //    var Webview = Java.use("android.webkit.WebView")
