@@ -492,8 +492,7 @@ def get_screen_text():
                 text += "," + temp_text
     return text
 
-def is_exist_privacy_policy_ele() -> bool:
-    target_text = "隐私权政策"
+def is_exist_privacy_policy_ele():
     root = get_dump_hierarchy()
     for element in root.findall('.//node'):
         if element.get("package") in system_view:
@@ -501,9 +500,11 @@ def is_exist_privacy_policy_ele() -> bool:
         if element.get('clickable') == 'true':
             continue
         temp_text = element.get("text")
-        if temp_text and target_text in temp_text:
-            return True
-    return False
+        pp_text_list = Config.get_instance().privacy_policy_text_list
+        for pp_text in pp_text_list:
+            if temp_text and pp_text in temp_text:
+                return True, pp_text
+    return False, None
 
 # # 对screen_info进行sha256签名,生成消息摘要
 # def get_signature(screen_info):

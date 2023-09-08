@@ -41,8 +41,8 @@ from datetime import datetime
 class Config(object):
     def __init__(self):
 
-        self.target_pkg_name = "me.ele"  # 应用包名
-        self.app_name = "饿了么"  # 应用名
+        self.target_pkg_name = "com.taobao.trip"  # 应用包名
+        self.app_name = "飞猪旅行"  # 应用名
 
         self.test_time = 600  # 配置测试的时间,以秒为单位
         self.sleep_time_sec = 1  # 配置点击之后睡眠的时间
@@ -56,6 +56,7 @@ class Config(object):
         self.root_path = "collectData"
         self.start_time = datetime.now().strftime("%Y%m%d-%H%M%S")
 
+        self.privacy_policy_text_list = ["隐私权政策", "隐私政策"]
         self.use_pickle_file_name = "./SavedInstance/com.eg.android.AlipayGphone_restart0activity28&screen78&time3601.86s.pickle"
         self.is_saved_start = False
 

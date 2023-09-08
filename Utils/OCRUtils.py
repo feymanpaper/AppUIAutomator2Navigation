@@ -2,7 +2,7 @@ from PIL import Image
 import pytesseract
 from PIL import ImageEnhance
 
-def cal_privacy_ele_loc(img_path: str) -> tuple():
+def cal_privacy_ele_loc(img_path: str, privacy_text:str) -> tuple():
     """
     :param img_path: 截图的路径
     :return: "隐私权政策"文本的坐标
@@ -26,10 +26,12 @@ def cal_privacy_ele_loc(img_path: str) -> tuple():
     # print(text)
 
     data = pytesseract.image_to_data(img, output_type='dict', lang='chi_sim')
-    loc_list = __get_privacy_loc_list(data)
-    if len(loc_list) < 5:
+    loc_list = __get_privacy_loc_list(data, privacy_text)
+
+    if len(loc_list) < len(privacy_text):
         return None
-    st_index = __get_first_privacy_loc(loc_list)
+
+    st_index = __get_first_privacy_loc(loc_list, privacy_text)
     if st_index == -1:
         return None
     mid_index = __get_mid_index(st_index)
@@ -38,25 +40,18 @@ def cal_privacy_ele_loc(img_path: str) -> tuple():
     return x, y, w, h
 
 
-def __is_privacy_related(content: str):
-    if content == '隐':
-        return True
-    elif content == '私':
-        return True
-    elif content == '权':
-        return True
-    elif content == '政':
-        return True
-    elif content == '策':
-        return True
+def __is_privacy_related(content: str, pp_text:str):
+    for c in pp_text:
+        if content == c:
+            return True
     return False
 
 
-def __get_privacy_loc_list(data):
+def __get_privacy_loc_list(data, pp_text):
     boxes = len(data['level'])
     loc_list = []
     for i in range(boxes):
-        if data['text'][i] != '' and __is_privacy_related(data['text'][i]):
+        if data['text'][i] != '' and __is_privacy_related(data['text'][i], pp_text):
             x1 = data['left'][i]
             y1 = data['top'][i]
             width = data['width'][i]
@@ -67,11 +62,15 @@ def __get_privacy_loc_list(data):
     return loc_list
 
 
-def __get_first_privacy_loc(loc_list):
+def __get_first_privacy_loc(loc_list, privacy_text:str):
     index = -1
-    for i in range(len(loc_list) - 5 + 1):
-        if loc_list[i][0] == "隐" and loc_list[i + 1][0] == "私" and loc_list[i + 2][0] == "权" and loc_list[i + 3][
-            0] == "政" and loc_list[i + 4][0] == "策":
+    for i in range(len(loc_list) - len(privacy_text) + 1):
+        flag = True
+        for j in range(len(privacy_text)):
+            if loc_list[i+j][0] != privacy_text[j]:
+                flag = False
+                break
+        if flag:
             index = i
             break
     return index
