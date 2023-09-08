@@ -175,9 +175,12 @@ class FSM(threading.Thread):
                 break
         last_clickable_ele_uid = RuntimeContent.get_instance().last_clickable_ele_uid
         # 判断是否点击了隐私政策
-        if len(temp_list) > 0 and last_clickable_ele_uid is not None and "隐私权政策" in last_clickable_ele_uid:
-            PrivacyUrlUtils.save_privacy(temp_list[0])
-            print(f"找到了隐私政策的url:{temp_list[0]}")
+        if len(temp_list) > 0 and last_clickable_ele_uid is not None:
+            pp_text_list = Config.get_instance().privacy_policy_text_list
+            for pp_text in pp_text_list:
+                if pp_text in last_clickable_ele_uid:
+                    PrivacyUrlUtils.save_privacy(temp_list[0])
+                    print(f"找到了{pp_text}的url:{temp_list[0]}")
 
 
 
@@ -291,24 +294,27 @@ class FSM(threading.Thread):
             # screen_map[ck_eles_text] = cur_screen_node
 
             # TODO 添加cliakable=false 的隐私政策权的组件
-            if is_exist_privacy_policy_ele():
-                loc_tuple = cal_privacy_ele_loc(screenshot_path)
+            is_pp_exist, pp_text = is_exist_privacy_policy_ele()
+            if is_pp_exist:
+                loc_tuple = cal_privacy_ele_loc(screenshot_path, pp_text)
                 if loc_tuple is not None:
                     pp_x, pp_y, w, h = loc_tuple[0], loc_tuple[1], loc_tuple[2], loc_tuple[3]
                     pp_ele_dict = {
                         'class': '',
                         'resource-id': '',
                         'package': cur_screen_pkg_name,
-                        'text': '隐私权政策',
+                        'text': pp_text,
                         'bounds': "["+str(pp_x)+","+str(pp_y)+"]["+str(w)+","+str(h)+"]"
                     }
                     pp_ele_uid = get_unique_id(pp_ele_dict, cur_activity)
                     RuntimeContent.get_instance().put_ele_uid_map(pp_ele_uid, pp_ele_dict)
                     clickable_elements = content["cur_ck_eles"]
                     clickable_elements.insert(0, pp_ele_uid)
-                    LogUtils.log_info("OCR到隐私权政策")
+                    LogUtils.log_info(f"OCR到{pp_text}")
                 else:
-                    LogUtils.log_info("没有OCR到隐私权政策")
+                    LogUtils.log_info(f"没有OCR到{pp_text}")
+            else:
+                LogUtils.log_info(f"没有找到隐私政策文本")
             return self.STATE_NewScreen, content
 
     def print_state(self, state):
