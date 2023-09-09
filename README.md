@@ -3,6 +3,10 @@
 
 配置frida环境: https://github.com/frida/frida
 
+配置tesseract环境,同时需要配置中文语言包:  https://github.com/tesseract-ocr/tesseract
+
+将系统编码方式改成utf-8而非gbk
+
 ## 运行
 在Config.py中更改要测试的包名及应用名
 ```commandline
