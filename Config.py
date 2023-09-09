@@ -41,6 +41,7 @@ from datetime import datetime
 class Config(object):
     def __init__(self):
 
+
         self.target_pkg_name = "com.taobao.aliAuction"  # 应用包名
         self.app_name = "阿里拍卖"  # 应用名
 
