@@ -49,17 +49,22 @@ if __name__ == "__main__":
 
     restart_cnt = 0
 
+    queue = Queue()
+
     # 启动app
     d = Config.get_instance().get_device()
+
     d.app_start(Config.get_instance().get_target_pkg_name(), use_monkey=True)
-    RuntimeContent.get_instance().set_last_screen_node(root)
-    time.sleep(10)
 
     # frida开始hook
-    queue = Queue()
     # 后台线程
     producer = Producer('Producer', queue, daemon=True)
     producer.start()
+
+    RuntimeContent.get_instance().set_last_screen_node(root)
+    time.sleep(10)
+
+
 
     # 控制FSM线程, 重启会继续运行
     while True:
