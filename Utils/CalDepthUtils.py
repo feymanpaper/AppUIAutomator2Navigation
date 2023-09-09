@@ -5,7 +5,11 @@ class CalDepthUtils:
     @classmethod
     def calDepth(cls, screen_map, target_uid):
         try:
-            depth = cls.bfs(screen_map, "root", target_uid) + 1
+            depth = cls.bfs(screen_map, "root", target_uid)
+            if depth is None:
+                depth = -1
+            else:
+                depth = depth + 1
         except Exception as e:
             print(e)
             raise Exception
@@ -43,6 +47,8 @@ class CalDepthUtils:
             target_screen = CalDepthUtils.indexScreen(adj_list, uid)
             for key, value in target_screen.call_map.items():
                 queue.append((value.ck_eles_text, level + 1))
+
+        return None
 
 
     @classmethod
