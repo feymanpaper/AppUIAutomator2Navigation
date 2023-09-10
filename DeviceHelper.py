@@ -499,8 +499,9 @@ def get_privacy_policy_ele_list():
     for element in root.findall('.//node'):
         if element.get("package") in system_view:
             continue
-        if element.get('clickable') == 'true':
-            continue
+        # 不需要clickable=True, 因为即使为True也可能产生位置偏移导致点不到的问题
+        # if element.get('clickable') == 'true':
+        #     continue
         temp_text = element.get("text")
         if not temp_text:
             continue

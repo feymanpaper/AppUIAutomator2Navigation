@@ -9,7 +9,7 @@ def on_message(message, data):
 device = frida.get_usb_device()
 # 启动`demo02`这个app
 print(device)
-pid = device.attach("阿里拍卖")
+pid = device.attach("高德地图")
 # 加载s1.js脚本
 with open("hook_rpc.js") as f:
     script = pid.create_script(f.read())
