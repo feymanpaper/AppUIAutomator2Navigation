@@ -1,5 +1,19 @@
 import signal
 import subprocess
+import platform
+def get_OS_type():
+    sys_platform = platform.platform().lower()
+    os_type = ''
+    if "windows" in sys_platform:
+        os_type = 'win'
+    elif "darwin" in sys_platform or 'mac' in sys_platform:
+        os_type = 'mac'
+    elif "linux" in sys_platform:
+        os_type = 'linux'
+    else:
+        print('Unknown OS,regard as linux...')
+        os_type = 'linux'
+    return os_type
 
 
 def execute_cmd_with_timeout(cmd, timeout=600):
@@ -23,7 +37,11 @@ pkgName_appName_list = [item.rstrip('\n') for item in content]
 for pkgName_appName in pkgName_appName_list:
     try:
         pkgName, appName = pkgName_appName.split(' | ')
-        # TODO 还有'get_pp_from_dynamically_running_app', 'dynamic_ui_depth', 'dynamic_pp_parsing'需要配置
-        execute_cmd_with_timeout('./run.sh {} {} {}'.format(pkgName, appName, config_settings['dynamic_ui_depth']))
+        appName = appName.strip('\'')
+        if get_OS_type() in ['linux', 'mac']:
+            execute_cmd_with_timeout('./run.sh {} {} {}'.format(pkgName, appName, config_settings['dynamic_ui_depth']))
+        elif get_OS_type() == 'win':
+            execute_cmd_with_timeout(
+                'PowerShell.exe ./run.ps1 {} {} {}'.format(pkgName, appName, config_settings['dynamic_ui_depth']))
     except Exception:
         print('error occurred, continue...')
