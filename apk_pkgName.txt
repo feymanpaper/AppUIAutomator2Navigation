@@ -1,0 +1,5 @@
+com.alicloud.databox | 阿里云盘
+com.shuqi.controller | 书旗小说
+com.taobao.trip | 飞猪旅行
+com.taobao.aliAuction | 阿里拍卖
+com.youku.phone | 优酷视频
