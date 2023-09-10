@@ -34,7 +34,6 @@ class Producer(threading.Thread):
     def run(self):
         device = frida.get_usb_device()
         # 启动`demo02`这个app
-        print(device)
         appName = Config.get_instance().app_name
         pid = device.attach(appName)
         # 加载s1.js脚本
@@ -44,4 +43,3 @@ class Producer(threading.Thread):
         script.on('message', self.on_message)
         script.load()
         sys.stdin.read()
-        print("%s: %s finished!" % (time.ctime(), self.name))

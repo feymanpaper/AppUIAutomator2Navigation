@@ -4,8 +4,7 @@ from uiautomator2 import Device
 from datetime import datetime
 
 
-# "com.taobao.taobao"
-# "com.autonavi.minimap" # 高德
+# "com.autonavi.minimap" # 高德地图
 # "com.ss.android.ugc.aweme" #抖音
 # "net.csdn.csdnplus"
 # "com.sina.weibo"
@@ -37,17 +36,25 @@ from datetime import datetime
 # "com.wudaokou.hippo" # 盒马
 # "com.moji.mjweather" # 墨迹天气
 # "com.alibaba.android.rimet" #钉钉
+# "com.taobao.idlefish" # 闲鱼
+# "com.alimama.moon" # 淘宝联盟
+# "com.shuqi.controller" # 书旗小说
+# "com.taobao.qianniu" # 千牛
+# "com.UCMobile" # UC浏览器
+# "com.taobao.etao" # 一淘
+# "com.tmall.wireless" # 手机天猫
+# "com.taobao.movie.android" # 淘票票
+# “com.antfortune.wealth” # 蚂蚁财富
+# “com.mybank.android.phone” # 网商银行
 
 class Config(object):
     def __init__(self):
-
-
-        self.target_pkg_name = "com.taobao.aliAuction"  # 应用包名
-        self.app_name = "阿里拍卖"  # 应用名
+        self.target_pkg_name = "com.autonavi.minimap"  # 应用包名
+        self.app_name = "高德地图"  # 应用名
 
         self.test_time = 600  # 配置测试的时间,以秒为单位
         self.sleep_time_sec = 1  # 配置点击之后睡眠的时间
-        self.maxDepth = 2  # 配置点击的最大深度
+        self.maxDepth = 3  # 配置点击的最大深度
         self.isDrawAppCallGraph = False  # 配置是否绘制App界面跳转图
 
         self.CLICK_MAX_CNT = 4
