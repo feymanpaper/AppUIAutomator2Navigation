@@ -50,6 +50,7 @@ if __name__ == "__main__":
     restart_cnt = 0
 
     queue = Queue()
+    producer = Producer('Producer', queue, daemon=True)
 
     # 启动app
     d = Config.get_instance().get_device()
@@ -58,7 +59,6 @@ if __name__ == "__main__":
 
     # frida开始hook
     # 后台线程
-    producer = Producer('Producer', queue, daemon=True)
     producer.start()
 
     RuntimeContent.get_instance().set_last_screen_node(root)
