@@ -30,7 +30,11 @@ def suppress_keyboard_interrupt_message():
 
 
 if __name__ == "__main__":
-
+    pkgName = sys.argv[1]
+    appName = sys.argv[2]
+    depth = sys.argv[3]
+    with open('tmp.txt', 'w') as f:
+        f.write(pkgName + ";" + appName + ";" + depth)
     LogUtils.setup()
     if Config.get_instance().is_saved_start:
         runtime = SavedInstanceUtils.load_pickle(Config.get_instance().get_pickle_file_name())
