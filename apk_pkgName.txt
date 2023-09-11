@@ -1,0 +1,3 @@
+com.youku.phone | 优酷视频
+com.shuqi.controller | 书旗小说
+com.autonavi.minimap | 高德地图
