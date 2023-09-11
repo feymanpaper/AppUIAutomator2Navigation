@@ -4,8 +4,7 @@ from uiautomator2 import Device
 from datetime import datetime
 
 
-# "com.taobao.taobao"
-# "com.autonavi.minimap" # 高德
+# "com.autonavi.minimap" # 高德地图
 # "com.ss.android.ugc.aweme" #抖音
 # "net.csdn.csdnplus"
 # "com.sina.weibo"
@@ -25,7 +24,7 @@ from datetime import datetime
 # "com.taobao.taobao" #淘宝
 # "com.taobao.mobile.dipei"#口碑
 # "com.taobao.trip"#飞猪旅行
-# "com.youku.phone"#优酷
+# "com.youku.phone"#优酷视频
 # "com.eg.android.AlipayGphone"#支付宝
 # "com.xiaomi.smarthome" #米家
 # "me.ele" #饿了么
@@ -37,6 +36,16 @@ from datetime import datetime
 # "com.wudaokou.hippo" # 盒马
 # "com.moji.mjweather" # 墨迹天气
 # "com.alibaba.android.rimet" #钉钉
+# "com.taobao.idlefish" # 闲鱼
+# "com.alimama.moon" # 淘宝联盟
+# "com.shuqi.controller" # 书旗小说
+# "com.taobao.qianniu" # 千牛
+# "com.UCMobile" # UC浏览器
+# "com.taobao.etao" # 一淘
+# "com.tmall.wireless" # 手机天猫
+# "com.taobao.movie.android" # 淘票票
+# “com.antfortune.wealth” # 蚂蚁财富
+# “com.mybank.android.phone” # 网商银行
 
 class Config(object):
     def __init__(self):
@@ -52,6 +61,7 @@ class Config(object):
         # print('depth read from file:', depth)
         self.maxDepth = int(depth)  # 配置点击的最大深度
         # self.maxDepth = 3  # 配置点击的最大深度
+
         self.isDrawAppCallGraph = False  # 配置是否绘制App界面跳转图
 
         self.CLICK_MAX_CNT = 4
@@ -61,6 +71,7 @@ class Config(object):
         self.root_path = "collectData"
         self.start_time = datetime.now().strftime("%Y%m%d-%H%M%S")
 
+        self.privacy_policy_text_list = ["隐私权政策", "隐私政策", "隐私保护政策"]
         self.use_pickle_file_name = "./SavedInstance/com.eg.android.AlipayGphone_restart0activity28&screen78&time3601.86s.pickle"
         self.is_saved_start = False
 

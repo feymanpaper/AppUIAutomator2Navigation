@@ -1,11 +1,14 @@
 console.log("Script loaded successfully ");
 Java.perform(function x() {
+    // hook Intent之间传递的url
     var act = Java.use("android.content.Intent");
+
     act.getData.implementation = function() {
         var data = this.getData()
         var extra = this.getExtras()
         send(data)
         send(extra.toString())
+        send(this.toUri(256))
         return data
     };
 
@@ -14,14 +17,35 @@ Java.perform(function x() {
         var extra = this.getExtras()
         send(data)
         send(extra.toString())
+        send(this.toUri(256))
         return data
     };
+    // hook startActivity传递的url
+    var Activity = Java.use("android.app.Activity");
+    Activity.startActivity.overload('android.content.Intent').implementation=function(p1){
+        var data = decodeURIComponent(p1.toUri(256))
+        send(data)
+        this.startActivity(p1);
+    }
+    Activity.startActivity.overload('android.content.Intent', 'android.os.Bundle').implementation=function(p1,p2){
+        var data = decodeURIComponent(p1.toUri(256))
+        send(data)
+        this.startActivity(p1,p2);
+    }
 
-//    var Webview = Java.use("android.webkit.WebView")
-//        Webview.loadUrl.overload("java.lang.String").implementation = function(url) {
-//        console.log("[+]Loading URL from", url);
-//        this.loadUrl.overload("java.lang.String").call(this, url);
-//    }
+    var Window = Java.use("android.view.Window");
+    Window.setFlags.implementation = function(flags, mask){
+        // 将 FLAG_SECURE 参数更改为 0
+        var newFlags = flags & ~WindowManager.LayoutParams.FLAG_SECURE;
+        // 调用原始方法
+        this.setFlags(newFlags, mask);
+    }
+
+    var Webview = Java.use("android.webkit.WebView")
+        Webview.loadUrl.overload("java.lang.String").implementation = function(url) {
+        send("[+]Loading URL from", url);
+        this.loadUrl.overload("java.lang.String").call(this, url);
+    }
 //
 //    Java.choose('android.webkit.WebView',{
 //        onMatch: function (instance) {

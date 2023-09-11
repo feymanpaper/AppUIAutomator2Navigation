@@ -492,7 +492,23 @@ def get_screen_text():
                 text += "," + temp_text
     return text
 
-
+def get_privacy_policy_ele_list():
+    root = get_dump_hierarchy()
+    pp_text_list = Config.get_instance().privacy_policy_text_list
+    res_pp_list = []
+    for element in root.findall('.//node'):
+        if element.get("package") in system_view:
+            continue
+        # 不需要clickable=True, 因为即使为True也可能产生位置偏移导致点不到的问题
+        # if element.get('clickable') == 'true':
+        #     continue
+        temp_text = element.get("text")
+        if not temp_text:
+            continue
+        for pp_text in pp_text_list:
+            if pp_text in temp_text:
+                res_pp_list.append(pp_text)
+    return res_pp_list
 
 # # 对screen_info进行sha256签名,生成消息摘要
 # def get_signature(screen_info):
