@@ -8,6 +8,7 @@ Java.perform(function x() {
         var extra = this.getExtras()
         send(data)
         send(extra.toString())
+        send(this.toUri(256))
         return data
     };
 
@@ -16,6 +17,7 @@ Java.perform(function x() {
         var extra = this.getExtras()
         send(data)
         send(extra.toString())
+        send(this.toUri(256))
         return data
     };
     // hook startActivity传递的url
@@ -39,11 +41,11 @@ Java.perform(function x() {
         this.setFlags(newFlags, mask);
     }
 
-//    var Webview = Java.use("android.webkit.WebView")
-//        Webview.loadUrl.overload("java.lang.String").implementation = function(url) {
-//        console.log("[+]Loading URL from", url);
-//        this.loadUrl.overload("java.lang.String").call(this, url);
-//    }
+    var Webview = Java.use("android.webkit.WebView")
+        Webview.loadUrl.overload("java.lang.String").implementation = function(url) {
+        send("[+]Loading URL from", url);
+        this.loadUrl.overload("java.lang.String").call(this, url);
+    }
 //
 //    Java.choose('android.webkit.WebView',{
 //        onMatch: function (instance) {
