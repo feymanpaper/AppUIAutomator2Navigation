@@ -87,14 +87,21 @@ class StatRecorder(object):
                     continue
                 else:
                     if cal_cov_map.get(depth, None) is None:
-                        cal_cov_map[depth] = [0, 0]
+                        cal_cov_map[depth] = [0, 0, 0]
                     total_cnt = len(screen_node.get_diff_or_clickable_eles())
                     click_cnt = screen_node.already_clicked_cnt
+
+                    candidate_click_cnt = 0
+                    for ele in screen_node.get_diff_or_clickable_eles():
+                        if ele in RuntimeContent.get_instance().already_click_eles:
+                            candidate_click_cnt +=1
+
                     cal_cov_map[depth][0] += click_cnt
-                    cal_cov_map[depth][1] += total_cnt
+                    cal_cov_map[depth][1] += candidate_click_cnt
+                    cal_cov_map[depth][2] += total_cnt
         depth_list = [depth for depth, cov_pair in sorted(cal_cov_map.items(), key=lambda x:x[0])]
         for depth in depth_list:
-            print(f"层数{depth} 组件为个数 {cal_cov_map[depth][0]} {cal_cov_map[depth][1]} 覆盖率为 {cal_cov_map[depth][0]/cal_cov_map[depth][1]}")
+            print(f"层数{depth} 组件为个数 {cal_cov_map[depth][0]} {cal_cov_map[depth][1]} {cal_cov_map[depth][2]}覆盖率为 {cal_cov_map[depth][1]/cal_cov_map[depth][2]}")
 
 
     def to_string_result(self):

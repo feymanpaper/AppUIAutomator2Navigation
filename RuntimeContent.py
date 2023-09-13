@@ -21,6 +21,9 @@ class RuntimeContent(object):
         self.last_clickable_ele_uid = None
         self.last_screen_node = None
 
+        self.already_click_eles = set()
+
+
         self.similarity_mem = {}
 
     def __new__(cls, *args, **kwargs):

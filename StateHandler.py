@@ -31,11 +31,14 @@ class StateHandler(object):
             loc_x, loc_y = get_location(cur_clickable_ele_dict)
             if loc_x >= 60 and loc_x <= 70 and loc_y == 162:
                 cur_screen_node.already_clicked_cnt += 1
+                RuntimeContent.get_instance().already_click_eles.add(cur_clickable_ele_uid)
                 clickable_ele_idx += 1
                 continue
             if loc_x >= 998 and loc_x <= 1010 and loc_y >= 155 and loc_y <= 165:
                 cur_screen_node.already_clicked_cnt += 1
+                RuntimeContent.get_instance().already_click_eles.add(cur_clickable_ele_uid)
                 clickable_ele_idx += 1
+
                 continue
 
             # for clickable_ele_idx, cur_clickable_ele_uid in enumerate(cur_screen_node_clickable_eles):
@@ -61,6 +64,7 @@ class StateHandler(object):
                 LogUtils.log_info("\n")
                 clickable_ele_idx += 1
                 cur_screen_node.already_clicked_cnt += 1
+                RuntimeContent.get_instance().already_click_eles.add(cur_clickable_ele_uid)
                 continue
 
             if cur_screen_node.ele_vis_map.get(cur_clickable_ele_uid, False) == False:
@@ -79,6 +83,7 @@ class StateHandler(object):
                 else:
                     cur_screen_node.ele_uid_cnt_map[cur_clickable_ele_uid] += 1
 
+                # 标识点击过的组件
                 cls.__click(loc_x, loc_y)
                 return
 
@@ -94,16 +99,19 @@ class StateHandler(object):
                     if check_is_error_clickable_ele(cur_clickable_ele_uid) == True:
                         LogUtils.log_info(f"该组件会触发error screen因此跳过&{clickable_ele_idx}: {cur_clickable_ele_uid}")
                         cur_screen_node.already_clicked_cnt += 1
+                        RuntimeContent.get_instance().already_click_eles.add(cur_clickable_ele_uid)
                         clickable_ele_idx += 1
                         continue
                     if check_is_errorscreen(next_screen_all_text, ScreenCompareStrategy(LCSComparator())) == True:
                         LogUtils.log_info(f"该组件会触发error screen因此跳过&{clickable_ele_idx}: {cur_clickable_ele_uid}")
                         cur_screen_node.already_clicked_cnt += 1
+                        RuntimeContent.get_instance().already_click_eles.add(cur_clickable_ele_uid)
                         clickable_ele_idx += 1
                         continue
                     if next_screen_node.pkg_name != Config.get_instance().get_target_pkg_name():
                         LogUtils.log_info(f"clickmap--next界面非本app本包名&{clickable_ele_idx}: {cur_clickable_ele_uid}")
                         cur_screen_node.already_clicked_cnt += 1
+                        RuntimeContent.get_instance().already_click_eles.add(cur_clickable_ele_uid)
                         clickable_ele_idx += 1
                         continue
 
@@ -112,12 +120,14 @@ class StateHandler(object):
                     if res_depth == -1:
                         LogUtils.log_info(f"clickmap--next界面是UndefineDepth&{clickable_ele_idx}: {cur_clickable_ele_uid}")
                         cur_screen_node.already_clicked_cnt += 1
+                        RuntimeContent.get_instance().already_click_eles.add(cur_clickable_ele_uid)
                         clickable_ele_idx += 1
                         continue
 
                     if res_sim >= Config.get_instance().screen_similarity_threshold and res_depth > Config.get_instance().maxDepth:
                         LogUtils.log_info(f"clickmap--next界面是超过限制层数的&{clickable_ele_idx}: {cur_clickable_ele_uid}")
                         cur_screen_node.already_clicked_cnt += 1
+                        RuntimeContent.get_instance().already_click_eles.add(cur_clickable_ele_uid)
                         clickable_ele_idx += 1
                         continue
 
@@ -125,12 +135,14 @@ class StateHandler(object):
                         LogUtils.log_info(
                             f"clickmap--next界面是WebView&{clickable_ele_idx}: {cur_clickable_ele_uid}")
                         cur_screen_node.already_clicked_cnt += 1
+                        RuntimeContent.get_instance().already_click_eles.add(cur_clickable_ele_uid)
                         clickable_ele_idx += 1
                         continue
 
                     if next_screen_node.is_screen_clickable_finished():
                         LogUtils.log_info(f"clickmap--next界面点击完成&{clickable_ele_idx}: {cur_clickable_ele_uid}")
                         cur_screen_node.already_clicked_cnt += 1
+                        RuntimeContent.get_instance().already_click_eles.add(cur_clickable_ele_uid)
                         clickable_ele_idx += 1
                         continue
                     else:
@@ -156,6 +168,7 @@ class StateHandler(object):
                 else:
                     LogUtils.log_info(f"已点击过&{clickable_ele_idx}: {cur_clickable_ele_uid}")
                     cur_screen_node.already_clicked_cnt += 1
+                    RuntimeContent.get_instance().already_click_eles.add(cur_clickable_ele_uid)
                     clickable_ele_idx += 1
 
 
