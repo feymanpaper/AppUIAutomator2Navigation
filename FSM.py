@@ -226,7 +226,7 @@ class FSM(threading.Thread):
 
         if cur_screen_depth == -1 and check_pattern_state(4, [self.STATE_DoublePress, self.STATE_UndefineDepth]):
             return self.STATE_StuckRestart, content
-        if cur_screen_depth == -1 and check_pattern_state(1, [self.STATE_UndefineDepth]):
+        if cur_screen_depth == -1 and check_pattern_state(1, [self.STATE_UndefineDepth]) and check_screen_list_reverse(2):
             return self.STATE_DoublePress, content
         if cur_screen_depth == -1:
             return self.STATE_UndefineDepth, content
@@ -235,8 +235,9 @@ class FSM(threading.Thread):
         if cur_screen_depth > Config.get_instance().maxDepth and check_pattern_state(4, [self.STATE_DoublePress,
                                                                                          self.STATE_ExceedDepth]):
             return self.STATE_StuckRestart, content
-        if cur_screen_depth > Config.get_instance().maxDepth and check_pattern_state(1, [self.STATE_ExceedDepth]):
+        if cur_screen_depth > Config.get_instance().maxDepth and check_pattern_state(1, [self.STATE_ExceedDepth]) and check_screen_list_reverse(2):
             return self.STATE_DoublePress, content
+
         if cur_screen_depth > Config.get_instance().maxDepth:
             return self.STATE_ExceedDepth, content
 

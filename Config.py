@@ -54,13 +54,13 @@ class Config(object):
         #     pkgName, appName, depth = f.readline().split(";")
         # print(pkgName,appName,depth)
 
-        self.target_pkg_name = "com.taobao.idlefish"  # 应用包名
-        self.app_name = "闲鱼"  # 应用名
+        self.target_pkg_name = "com.taobao.taobao"  # 应用包名
+        self.app_name = "淘宝"  # 应用名
         # self.target_pkg_name = "com.taobao.aliAuction"  # 应用包名
         # self.app_name = "阿里拍卖"  # 应用名
 
         self.test_time = 1800  # 配置测试的时间,以秒为单位
-        self.sleep_time_sec = 0.5  # 配置点击之后睡眠的时间
+        self.sleep_time_sec = 0.1  # 配置点击之后睡眠的时间
         self.maxDepth = 3  # 配置点击的最大深度
         self.isDrawAppCallGraph = False  # 配置是否绘制App界面跳转图
         # 到此处结束===========================================

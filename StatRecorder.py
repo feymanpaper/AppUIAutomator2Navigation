@@ -101,7 +101,7 @@ class StatRecorder(object):
                     cal_cov_map[depth][2] += total_cnt
         depth_list = [depth for depth, cov_pair in sorted(cal_cov_map.items(), key=lambda x:x[0])]
         for depth in depth_list:
-            print(f"层数{depth} 组件为个数 {cal_cov_map[depth][0]} {cal_cov_map[depth][1]} {cal_cov_map[depth][2]}覆盖率为 {cal_cov_map[depth][1]/cal_cov_map[depth][2]}")
+            LogUtils.log_info(f"层数{depth} 组件为个数 {cal_cov_map[depth][0]} {cal_cov_map[depth][1]} {cal_cov_map[depth][2]}覆盖率为 {cal_cov_map[depth][1]/cal_cov_map[depth][2]}")
 
 
     def to_string_result(self):

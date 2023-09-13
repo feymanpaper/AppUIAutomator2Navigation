@@ -93,7 +93,7 @@ if __name__ == "__main__":
             SavedInstanceUtils.dump_pickle(RuntimeContent.get_instance())
             # 重启
             d.app_stop(Config.get_instance().get_target_pkg_name())
-            time.sleep(5)
+            time.sleep(1)
             d.app_start(Config.get_instance().get_target_pkg_name(), use_monkey=True)
             time.sleep(5)
             RuntimeContent.get_instance().set_last_screen_node(root)
