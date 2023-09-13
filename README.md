@@ -8,12 +8,9 @@
 将系统编码方式改成utf-8而非gbk
 
 ## 运行
-在Config.py中更改要测试的包名及应用名
-```commandline
-self.target_pkg_name = "com.example.packagename"
-self.app_name = "appName"  
-```
-运行run.py
+在apk_pkgName.txt中更改要测试的包名及应用名,格式为包名 | 应用名。支持批量分析。注意|的左右两边都需要有一个空格。
+在test_integrate.py的config_settings字典中可以设置遍历层数，对应的键为'dynamic_ui_depth'。
+运行test_integrate.py
 
 ## 遍历思路
 ### 点击过程
