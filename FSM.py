@@ -329,6 +329,7 @@ class FSM(threading.Thread):
                     len(StatRecorder.get_instance().get_stat_screen_set()), False) is False:
                 stat_map[len(StatRecorder.get_instance().get_stat_screen_set())] = True
                 StatRecorder.get_instance().print_result()
+                StatRecorder.get_instance().print_coverage()
 
             StatRecorder.get_instance().count_time()
             state, content = self.get_state()
@@ -351,7 +352,11 @@ class FSM(threading.Thread):
             self.exit_code = 2
             self.exception = e
             self.exc_traceback = format_exc()
-        except Exception as e:
+        except TimeLimitException as e:
             self.exit_code = 3
+            self.exception = e
+            self.exc_traceback = format_exc()
+        except Exception as e:
+            self.exit_code = 4
             self.exception = e
             self.exc_traceback = format_exc()

@@ -97,7 +97,18 @@ if __name__ == "__main__":
             RuntimeContent.get_instance().set_last_screen_node(root)
         # fsm线程触发了TerminateException
         elif consumer_fsm.exit_code == 2:
-            LogUtils.log_info("程序结束")
+            LogUtils.log_info("程序正常结束")
+            # logging.exception(consumer_fsm.exception)
+            # logging.exception(consumer_fsm.exc_traceback)
+            StatRecorder.get_instance().print_result()
+            StatRecorder.get_instance().print_coverage()
+            RuntimeContent.get_instance().clear_state_list()
+            RuntimeContent.get_instance().clear_screen_list()
+            JsonUtils.dump_screen_map_to_json()
+            SavedInstanceUtils.dump_pickle(RuntimeContent.get_instance())
+            break
+        elif consumer_fsm.exit_code == 3:
+            LogUtils.log_info("程序超时退出")
             # logging.exception(consumer_fsm.exception)
             # logging.exception(consumer_fsm.exc_traceback)
             StatRecorder.get_instance().print_result()

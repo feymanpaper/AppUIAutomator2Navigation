@@ -31,7 +31,7 @@ config_settings = {'ui_static': 'true', 'ui_dynamic': 'true', 'code_inspection':
                        'pp_print_sensitive_item': 'true', 'pp_print_others': 'true', 'pp_print_long_sentences': 'true',
                        'dynamic_print_full_ui_content': 'true', 'dynamic_print_sensitive_item': 'true',
                        'get_pp_from_app_store': 'true', 'get_pp_from_dynamically_running_app': 'false',
-                       'dynamic_ui_depth': '3', 'dynamic_pp_parsing': 'true'}
+                       'dynamic_ui_depth': '1', 'dynamic_pp_parsing': 'true'}
 
 with open('apk_pkgName.txt') as f:
     content = f.readlines()
