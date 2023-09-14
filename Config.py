@@ -61,7 +61,7 @@ class Config(object):
         # self.app_name = "阿里拍卖"  # 应用名
 
         self.test_time = 1800  # 配置测试的时间,以秒为单位
-        self.sleep_time_sec = 0.1  # 配置点击之后睡眠的时间
+        self.sleep_time_sec = 1  # 配置点击之后睡眠的时间
         self.maxDepth = 3  # 配置点击的最大深度
 
         self.isDrawAppCallGraph = False  # 配置是否绘制App界面跳转图
@@ -71,7 +71,7 @@ class Config(object):
         self.CLICK_MAX_CNT = 4
         self.device = None
         self.screen_similarity_threshold = 0.9  # 配置界面与界面之间相似度多少表示同一界面, 默认90%/0.9
-
+        self.UndefineDepth = 100000
         self.root_path = "collectData"
         self.start_time = datetime.now().strftime("%Y%m%d-%H%M%S")
 

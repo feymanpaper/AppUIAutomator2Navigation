@@ -381,10 +381,10 @@ class StateHandler(object):
                 last_screen_node.update_callmap_item(RuntimeContent.get_instance().get_last_clickable_ele_uid())
                 pass
             else:
-                if last_screen_node.ck_eles_text != "root":
+                # if last_screen_node.ck_eles_text != "root":
                     # call_map会更新
-                    last_screen_node.call_map[
-                        RuntimeContent.get_instance().get_last_clickable_ele_uid()] = cur_screen_node
+                last_screen_node.call_map[
+                    RuntimeContent.get_instance().get_last_clickable_ele_uid()] = cur_screen_node
                 # else:
                 #     first_screen_text = ck_eles_text
 

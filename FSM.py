@@ -182,8 +182,6 @@ class FSM(threading.Thread):
                     PrivacyUrlUtils.save_privacy(temp_list[0])
                     print(f"找到了{pp_text}的url:{temp_list[0]}")
 
-
-
         if cur_screen_pkg_name != Config.get_instance().get_target_pkg_name():
             if check_is_in_home_screen(cur_screen_pkg_name) and check_is_first_scrren_finish():
                 return self.STATE_Terminate, content
@@ -215,27 +213,38 @@ class FSM(threading.Thread):
 
         screen_depth_map = RuntimeContent.get_instance().screen_depth_map
         last_screen_node = RuntimeContent.get_instance().last_screen_node
-        cur_screen_depth = -1
+        cur_screen_depth = Config.get_instance().UndefineDepth
+        # 从cache中得到当前界面的层数结果
         res_sim, res_depth = get_max_sim_from_screen_depth_map(ck_eles_text, ScreenCompareStrategy(LCSComparator()))
         if res_sim >= Config.get_instance().screen_similarity_threshold:
             cur_screen_depth = res_depth
-        elif last_screen_node is not None and last_screen_node.ck_eles_text != ck_eles_text:
-            cur_screen_depth = CalDepthUtils.calDepth(RuntimeContent.get_instance().get_screen_map(),
-                                                      RuntimeContent.get_instance().last_screen_node.ck_eles_text)
+
+        # 直接计算当前界面的层数结果
+        if last_screen_node is not None and last_screen_node.ck_eles_text != ck_eles_text:
+            if last_screen_node.ck_eles_text == "root":
+                cal_depth = 1
+            else:
+                cal_depth = CalDepthUtils.calDepth(RuntimeContent.get_instance().get_screen_map(),
+                                                          RuntimeContent.get_instance().last_screen_node.ck_eles_text)
+            cur_screen_depth = min(cur_screen_depth, cal_depth)
+        # 将最新最小的结果写入cache
+        if cur_screen_depth < res_depth:
             screen_depth_map[ck_eles_text] = cur_screen_depth
 
-        if cur_screen_depth == -1 and check_pattern_state(4, [self.STATE_DoublePress, self.STATE_UndefineDepth]):
+        if cur_screen_depth == Config.get_instance().UndefineDepth and check_pattern_state(4, [self.STATE_DoublePress, self.STATE_UndefineDepth]):
             return self.STATE_StuckRestart, content
-        if cur_screen_depth == -1 and check_pattern_state(1, [self.STATE_UndefineDepth]) and check_screen_list_reverse(2):
+        if cur_screen_depth == Config.get_instance().UndefineDepth and check_pattern_state(1, [self.STATE_UndefineDepth]) and check_screen_list_reverse(
+                2):
             return self.STATE_DoublePress, content
-        if cur_screen_depth == -1:
+        if cur_screen_depth == Config.get_instance().UndefineDepth:
             return self.STATE_UndefineDepth, content
 
         LogUtils.log_info(f"当前层数为: {cur_screen_depth}")
         if cur_screen_depth > Config.get_instance().maxDepth and check_pattern_state(4, [self.STATE_DoublePress,
                                                                                          self.STATE_ExceedDepth]):
             return self.STATE_StuckRestart, content
-        if cur_screen_depth > Config.get_instance().maxDepth and check_pattern_state(1, [self.STATE_ExceedDepth]) and check_screen_list_reverse(2):
+        if cur_screen_depth > Config.get_instance().maxDepth and check_pattern_state(1, [
+            self.STATE_ExceedDepth]) and check_screen_list_reverse(2):
             return self.STATE_DoublePress, content
 
         if cur_screen_depth > Config.get_instance().maxDepth:
@@ -246,7 +255,6 @@ class FSM(threading.Thread):
         #     cur_screen_node = temp_screen_node
         # else:
         #     cur_screen_node = None
-
 
         sim, most_similar_screen_node = get_max_similarity_screen_node(ck_eles_text,
                                                                        ScreenCompareStrategy(LCSComparator()))
@@ -306,7 +314,7 @@ class FSM(threading.Thread):
                             'resource-id': '',
                             'package': cur_screen_pkg_name,
                             'text': pp_text,
-                            'bounds': "["+str(pp_x)+","+str(pp_y)+"]["+str(w)+","+str(h)+"]"
+                            'bounds': "[" + str(pp_x) + "," + str(pp_y) + "][" + str(w) + "," + str(h) + "]"
                         }
                         pp_ele_uid = get_unique_id(pp_ele_dict, cur_activity)
                         RuntimeContent.get_instance().put_ele_uid_map(pp_ele_uid, pp_ele_dict)
