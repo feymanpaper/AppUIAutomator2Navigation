@@ -5,7 +5,7 @@ from mq_consumer import Consumer
 
 def main():
     queue = Queue()
-    producer = Producer('Pro', queue)
+    producer = Producer('Pro', queue, False)
     consumer = Consumer('Con', queue)
     producer.start()
     consumer.start()
