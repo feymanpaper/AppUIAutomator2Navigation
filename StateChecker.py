@@ -138,6 +138,9 @@ def check_is_first_scrren_finish():
         return True
     return False
 
+def check_is_layer_finish(layer:int):
+    pass
+
 def check_is_in_home_screen(cur_screen_pkg_name):
     # 小米的home screen
     if cur_screen_pkg_name == "com.miui.home":

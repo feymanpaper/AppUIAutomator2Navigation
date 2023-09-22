@@ -182,13 +182,13 @@ class FSM(threading.Thread):
                     PrivacyUrlUtils.save_privacy(temp_list[0])
                     print(f"找到了{pp_text}的url:{temp_list[0]}")
 
+
+        if Config.get_instance().curDepth > Config.get_instance().maxDepth:
+            return self.STATE_Terminate
+
         if cur_screen_pkg_name != Config.get_instance().get_target_pkg_name():
-            if check_is_in_home_screen(cur_screen_pkg_name) and check_is_first_scrren_finish():
-                return self.STATE_Terminate, content
-            if check_is_in_home_screen(cur_screen_pkg_name) and not check_is_first_scrren_finish():
-                return self.STATE_HomeScreenRestart, content
             if check_is_in_home_screen(cur_screen_pkg_name):
-                return 100, content
+                return self.STATE_HomeScreenRestart, content
             if check_is_permisson_screen(cur_screen_pkg_name):
                 return self.STATE_PermissonScreen, content
             else:
@@ -352,7 +352,7 @@ class FSM(threading.Thread):
             cur_depth = Config.get_instance().curDepth
             if cal_cov_map.get(cur_depth, None) is not None:
                 cov = cal_cov_map[cur_depth][1] / cal_cov_map[cur_depth][2]
-                if cov > 0.9 and cur_depth < Config.get_instance().maxDepth:
+                if cov == 1.0 and cur_depth < Config.get_instance().maxDepth:
                     Config.get_instance().curDepth += 1
                     LogUtils.log_info(f"层数{cur_depth} 的覆盖率{cov} 足够, 可以增加当前深度" * 50)
 
