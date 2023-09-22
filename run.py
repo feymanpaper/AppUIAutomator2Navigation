@@ -95,7 +95,7 @@ if __name__ == "__main__":
             d.app_stop(Config.get_instance().get_target_pkg_name())
             time.sleep(1)
             d.app_start(Config.get_instance().get_target_pkg_name(), use_monkey=True)
-            time.sleep(2)
+            time.sleep(3)
             RuntimeContent.get_instance().set_last_screen_node(root)
         # fsm线程触发了TerminateException
         elif consumer_fsm.exit_code == 2:

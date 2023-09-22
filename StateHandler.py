@@ -9,6 +9,7 @@ import random
 from StateChecker import *
 from Utils.LogUtils import *
 
+
 class StateHandler(object):
     @classmethod
     def click_one_ele(cls, content):
@@ -435,12 +436,12 @@ class StateHandler(object):
         cls.random_click_ele(content)
 
     @classmethod
-    def handle_exit_app(cls, content):
-        cur_screen_node = cls.add_not_target_pkg_name_screen_call_graph(content)
-        content["cur_screen_node"] = cur_screen_node
+    def handle_inputmethod(cls, content):
         cls.__press_back()
-        RuntimeContent.get_instance().set_last_screen_node(None)
-        RuntimeContent.get_instance().set_last_clickable_ele_uid("")
+        # 输入法不需要处理
+        # RuntimeContent.get_instance().set_last_screen_node(None)
+        # RuntimeContent.get_instance().set_last_clickable_ele_uid("")
+
 
     @classmethod
     def handle_double_press(cls, content):
@@ -448,42 +449,57 @@ class StateHandler(object):
         RuntimeContent.get_instance().set_last_screen_node(None)
         RuntimeContent.get_instance().set_last_clickable_ele_uid("")
 
-    @classmethod
-    def handle_inputmethod(cls, content):
-        cls.__press_back()
-        # 输入法不需要处理
-        # RuntimeContent.get_instance().set_last_screen_node(None)
-        # RuntimeContent.get_instance().set_last_clickable_ele_uid("")
 
     @classmethod
-    def handle_WebView_screen(cls, content):
+    def handle_back(cls, content):
         cur_screen_node = cls.add_not_target_pkg_name_screen_call_graph(content)
-        cur_screen_node.set_isWebView(True)
+        # cur_screen_node.set_isWebView(True)
         content["cur_screen_node"] = cur_screen_node
-        print_screen_info(content, True)
+        # print_screen_info(content, True)
+        pre_ck_eles_text = content["ck_eles_text"]
+        cls.__press_back()
+        LogUtils.log_info("进行回退")
+        RuntimeContent.get_instance().set_last_screen_node(None)
+        RuntimeContent.get_instance().set_last_clickable_ele_uid("")
+
+        after_ck_eles_text = get_screen_content()["ck_eles_text"]
+
+        # 如果不一样说明文本变化了, 说明一次back即可回退
+        cur_similarity = ScreenCompareStrategy(LCSComparator()).compare_screen(pre_ck_eles_text, after_ck_eles_text)
+        if cur_similarity < Config.get_instance().screen_similarity_threshold:
+            return
+
+        # 如果没变化, 尝试double_press_back
+        LogUtils.log_info("一次回退失败, 二次回退")
+
+        cls.__double_press_back()
+        after_ck_eles_text = get_screen_content()["ck_eles_text"]
+        # 如果不一样说明文本变化了, 说明两次back即可回退
+        cur_similarity = ScreenCompareStrategy(LCSComparator()).compare_screen(pre_ck_eles_text, after_ck_eles_text)
+        if cur_similarity < Config.get_instance().screen_similarity_threshold:
+            return
+
+        # 上述方法都失效,重启
+        RuntimeContent.get_instance().append_error_screen_list(pre_ck_eles_text)
+        cur_screen_node = content.get("cur_screen_node", None)
+        if cur_screen_node is not None:
+            last_ck_ele_uid_list = cur_screen_node.get_last_ck_ele_uid_list()
+            RuntimeContent.get_instance().append_more_error_ck_ele_uid_list(last_ck_ele_uid_list)
+
+        LogUtils.log_info("二次回退失败, 重启")
+        raise RestartException("重启机制")
+
+
+
+    @classmethod
+    def handle_exit_app(cls, content):
+        cur_screen_node = cls.add_not_target_pkg_name_screen_call_graph(content)
+        content["cur_screen_node"] = cur_screen_node
         cls.__press_back()
         RuntimeContent.get_instance().set_last_screen_node(None)
         RuntimeContent.get_instance().set_last_clickable_ele_uid("")
 
-    @classmethod
-    def handle_ExceedDepth(cls, content):
-        cur_screen_node = cls.add_not_target_pkg_name_screen_call_graph(content)
-        cur_screen_node.set_isWebView(True)
-        content["cur_screen_node"] = cur_screen_node
-        print_screen_info(content, True)
-        cls.__press_back()
-        RuntimeContent.get_instance().set_last_screen_node(None)
-        RuntimeContent.get_instance().set_last_clickable_ele_uid("")
 
-    @classmethod
-    def handle_UndefineDepth(cls, content):
-        cur_screen_node = cls.add_not_target_pkg_name_screen_call_graph(content)
-        cur_screen_node.set_isWebView(True)
-        content["cur_screen_node"] = cur_screen_node
-        print_screen_info(content, True)
-        cls.__press_back()
-        RuntimeContent.get_instance().set_last_screen_node(None)
-        RuntimeContent.get_instance().set_last_clickable_ele_uid("")
 
     @classmethod
     def handle_finish_screen(cls, content):
@@ -492,11 +508,6 @@ class StateHandler(object):
         RuntimeContent.get_instance().set_last_screen_node(None)
         RuntimeContent.get_instance().set_last_clickable_ele_uid("")
 
-    @classmethod
-    def handle_error_screen(cls, content):
-        cls.__press_back()
-        RuntimeContent.get_instance().set_last_screen_node(None)
-        RuntimeContent.get_instance().set_last_clickable_ele_uid("")
 
     @classmethod
     def handle_stuck_restart(cls, content):
@@ -528,7 +539,6 @@ class StateHandler(object):
     def __press_back(cls):
         d = Config.get_instance().get_device()
         d.press("back")
-        LogUtils.log_info("进行回退")
         time.sleep(Config.get_instance().get_sleep_time_sec())
         return
 

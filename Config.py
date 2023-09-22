@@ -57,9 +57,6 @@ class Config(object):
         self.target_pkg_name = "com.alibaba.android.rimet"  # 应用包名
         self.app_name = "钉钉"  # 应用名
 
-        # self.target_pkg_name = "com.taobao.aliAuction"  # 应用包名
-        # self.app_name = "阿里拍卖"  # 应用名
-
         self.test_time = 1800  # 配置测试的时间,以秒为单位
         self.sleep_time_sec = 0.2  # 配置点击之后睡眠的时间
         self.maxDepth = 2  # 配置点击的最大深度
