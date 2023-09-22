@@ -42,7 +42,7 @@ class StatRecorder(object):
     def count_time(self):
         self.end_time = time.time()
         if self.end_time - self.start_time > Config.get_instance().test_time:
-            raise TimeLimitException
+            raise TimeLimitException("超时")
 
     def print_result(self):
         LogUtils.log_info("@" * 100)
@@ -94,7 +94,7 @@ class StatRecorder(object):
                     cal_cov_map[depth][1] += total_cnt
         depth_list = [depth for depth, cov_pair in sorted(cal_cov_map.items(), key=lambda x:x[0])]
         for depth in depth_list:
-            print(f"{depth} 组件为个数 {cal_cov_map[depth][0]} {cal_cov_map[depth][1]} 覆盖率为 {cal_cov_map[depth][0]/cal_cov_map[depth][1]}")
+            print(f"层数{depth} 组件为个数 {cal_cov_map[depth][0]} {cal_cov_map[depth][1]} 覆盖率为 {cal_cov_map[depth][0]/cal_cov_map[depth][1]}")
 
 
     def to_string_result(self):

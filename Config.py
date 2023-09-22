@@ -49,18 +49,19 @@ from datetime import datetime
 
 class Config(object):
     def __init__(self):
-        with open('tmp.txt', encoding="utf-8") as f:
-            pkgName, appName, depth = f.readline().split(";")
-        print(pkgName,appName,depth)
-        # 其余可修改的配置，从此处开始===========================
-        self.target_pkg_name = pkgName  # 应用包名
-        self.app_name = appName  # 应用名
+
+        # with open('tmp.txt') as f:
+        #     pkgName, appName, depth = f.readline().split(";")
+        # print(pkgName,appName,depth)
+
+        self.target_pkg_name = "com.taobao.idlefish"  # 应用包名
+        self.app_name = "闲鱼"  # 应用名
         # self.target_pkg_name = "com.taobao.aliAuction"  # 应用包名
         # self.app_name = "阿里拍卖"  # 应用名
 
-        self.test_time = 600  # 配置测试的时间,以秒为单位
-        self.sleep_time_sec = 1  # 配置点击之后睡眠的时间
-        self.maxDepth = int(depth)  # 配置点击的最大深度
+        self.test_time = 1800  # 配置测试的时间,以秒为单位
+        self.sleep_time_sec = 0.5  # 配置点击之后睡眠的时间
+        self.maxDepth = 3  # 配置点击的最大深度
         self.isDrawAppCallGraph = False  # 配置是否绘制App界面跳转图
         # 到此处结束===========================================
         # 下面的配置不要修改

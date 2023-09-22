@@ -39,6 +39,7 @@ class Producer(threading.Thread):
                         self.data.put(res)
                         # print("%s: %s is producing %d to the queue!" % (time.ctime(), self.name, message))
 
+
     def run(self):
         # device = frida.get_usb_device()
         # 连接模拟器
