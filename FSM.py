@@ -354,7 +354,7 @@ class FSM(threading.Thread):
                 cov = cal_cov_map[cur_depth][1] / cal_cov_map[cur_depth][2]
                 if cov == 1.0 and cur_depth < Config.get_instance().maxDepth:
                     Config.get_instance().curDepth += 1
-                    LogUtils.log_info(f"层数{cur_depth} 的覆盖率{cov} 足够, 可以增加当前深度")
+                    LogUtils.log_info(f"增加当前深度, 层数{cur_depth} 的覆盖率{cov} 足够")
 
                     # 重置screenNode的点击下标already_click_cnt
                     screen_depth_map = RuntimeContent.get_instance().screen_depth_map
