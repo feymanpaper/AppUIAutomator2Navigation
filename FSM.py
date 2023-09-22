@@ -240,14 +240,14 @@ class FSM(threading.Thread):
             return self.STATE_UndefineDepth, content
 
         LogUtils.log_info(f"当前层数为: {cur_screen_depth}")
-        if cur_screen_depth > Config.get_instance().maxDepth and check_pattern_state(4, [self.STATE_DoublePress,
+        if cur_screen_depth > Config.get_instance().curDepth and check_pattern_state(4, [self.STATE_DoublePress,
                                                                                          self.STATE_ExceedDepth]):
             return self.STATE_StuckRestart, content
-        if cur_screen_depth > Config.get_instance().maxDepth and check_pattern_state(1, [
+        if cur_screen_depth > Config.get_instance().curDepth and check_pattern_state(1, [
             self.STATE_ExceedDepth]) and check_screen_list_reverse(2):
             return self.STATE_DoublePress, content
 
-        if cur_screen_depth > Config.get_instance().maxDepth:
+        if cur_screen_depth > Config.get_instance().curDepth:
             return self.STATE_ExceedDepth, content
 
         # temp_screen_node = get_screennode_from_screenmap_by_similarity(screen_map, ck_eles_text, screen_compare_strategy)
@@ -338,7 +338,6 @@ class FSM(threading.Thread):
                     len(StatRecorder.get_instance().get_stat_screen_set()), False) is False:
                 stat_map[len(StatRecorder.get_instance().get_stat_screen_set())] = True
                 StatRecorder.get_instance().print_result()
-                StatRecorder.get_instance().print_coverage()
 
             StatRecorder.get_instance().count_time()
             state, content = self.get_state()
@@ -347,6 +346,17 @@ class FSM(threading.Thread):
             LogUtils.log_info("-" * 50)
             self.print_state(state)
             self.do_transition(state, content)
+
+            #TODO 增加bfs
+            cal_cov_map = StatRecorder.get_instance().print_coverage()
+            cur_depth = Config.get_instance().curDepth
+            if cal_cov_map.get(cur_depth, None) is not None:
+                cov = cal_cov_map[cur_depth][1] / cal_cov_map[cur_depth][2]
+                if cov > 0.9 and cur_depth < Config.get_instance().maxDepth:
+                    Config.get_instance().curDepth += 1
+                    LogUtils.log_info(f"层数{cur_depth} 的覆盖率{cov} 足够, 可以增加当前深度" * 50)
+
+
             LogUtils.log_info("-" * 50)
             LogUtils.log_info("\n")
 
