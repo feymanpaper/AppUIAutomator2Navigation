@@ -1,5 +1,6 @@
 import json
 from collections import deque
+from Config import *
 
 class CalDepthUtils:
     @classmethod
@@ -7,7 +8,7 @@ class CalDepthUtils:
         try:
             depth = cls.bfs(screen_map, "root", target_uid)
             if depth is None:
-                depth = -1
+                depth = Config.get_instance().UndefineDepth
             else:
                 depth = depth + 1
         except Exception as e:

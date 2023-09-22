@@ -49,18 +49,21 @@ from datetime import datetime
 
 class Config(object):
     def __init__(self):
-        with open('tmp.txt', encoding="utf-8") as f:
-            pkgName, appName, depth = f.readline().split(";")
-        print(pkgName,appName,depth)
-        # 其余可修改的配置，从此处开始===========================
-        self.target_pkg_name = pkgName  # 应用包名
-        self.app_name = appName  # 应用名
+
+        # with open('tmp.txt') as f:
+        #     pkgName, appName, depth = f.readline().split(";")
+        # print(pkgName,appName,depth)
+
+        self.target_pkg_name = "com.wudaokou.hippo"  # 应用包名
+        self.app_name = "盒马"  # 应用名
+
         # self.target_pkg_name = "com.taobao.aliAuction"  # 应用包名
         # self.app_name = "阿里拍卖"  # 应用名
 
-        self.test_time = 600  # 配置测试的时间,以秒为单位
+        self.test_time = 1800  # 配置测试的时间,以秒为单位
         self.sleep_time_sec = 1  # 配置点击之后睡眠的时间
-        self.maxDepth = int(depth)  # 配置点击的最大深度
+        self.maxDepth = 3  # 配置点击的最大深度
+
         self.isDrawAppCallGraph = False  # 配置是否绘制App界面跳转图
         # 到此处结束===========================================
         # 下面的配置不要修改
@@ -68,7 +71,7 @@ class Config(object):
         self.CLICK_MAX_CNT = 4
         self.device = None
         self.screen_similarity_threshold = 0.9  # 配置界面与界面之间相似度多少表示同一界面, 默认90%/0.9
-
+        self.UndefineDepth = 100000
         self.root_path = "collectData"
         self.start_time = datetime.now().strftime("%Y%m%d-%H%M%S")
 
