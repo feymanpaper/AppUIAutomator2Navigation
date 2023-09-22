@@ -348,13 +348,23 @@ class FSM(threading.Thread):
             self.do_transition(state, content)
 
             #TODO 增加bfs
-            cal_cov_map = StatRecorder.get_instance().print_coverage()
             cur_depth = Config.get_instance().curDepth
+            cal_cov_map = StatRecorder.get_instance().get_coverage(cur_depth)
             if cal_cov_map.get(cur_depth, None) is not None:
                 cov = cal_cov_map[cur_depth][1] / cal_cov_map[cur_depth][2]
                 if cov == 1.0 and cur_depth < Config.get_instance().maxDepth:
                     Config.get_instance().curDepth += 1
-                    LogUtils.log_info(f"层数{cur_depth} 的覆盖率{cov} 足够, 可以增加当前深度" * 50)
+                    LogUtils.log_info(f"层数{cur_depth} 的覆盖率{cov} 足够, 可以增加当前深度")
+
+                    # 重置screenNode的点击下标already_click_cnt
+                    screen_depth_map = RuntimeContent.get_instance().screen_depth_map
+                    screen_uid_list = screen_depth_map.keys()
+                    for screen_uid in screen_uid_list:
+                        depth = screen_depth_map.get(screen_uid)
+                        if depth != cur_depth:
+                            continue
+                        screen_node = RuntimeContent.get_instance().get_screen_map().get(screen_uid)
+                        screen_node.already_clicked_cnt = 0
 
 
             LogUtils.log_info("-" * 50)

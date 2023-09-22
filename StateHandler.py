@@ -28,18 +28,17 @@ class StateHandler(object):
             #     continue
             cur_clickable_ele_dict = RuntimeContent.get_instance().get_ele_uid_map_by_uid(cur_clickable_ele_uid)
 
-            loc_x, loc_y = get_location(cur_clickable_ele_dict)
-            if loc_x >= 60 and loc_x <= 70 and loc_y == 162:
-                cur_screen_node.already_clicked_cnt += 1
-                RuntimeContent.get_instance().already_click_eles.add(cur_clickable_ele_uid)
-                clickable_ele_idx += 1
-                continue
-            if loc_x >= 998 and loc_x <= 1010 and loc_y >= 155 and loc_y <= 165:
-                cur_screen_node.already_clicked_cnt += 1
-                RuntimeContent.get_instance().already_click_eles.add(cur_clickable_ele_uid)
-                clickable_ele_idx += 1
-
-                continue
+            # loc_x, loc_y = get_location(cur_clickable_ele_dict)
+            # if loc_x >= 60 and loc_x <= 70 and loc_y == 162:
+            #     cur_screen_node.already_clicked_cnt += 1
+            #     RuntimeContent.get_instance().already_click_eles.add(cur_clickable_ele_uid)
+            #     clickable_ele_idx += 1
+            #     continue
+            # if loc_x >= 998 and loc_x <= 1010 and loc_y >= 155 and loc_y <= 165:
+            #     cur_screen_node.already_clicked_cnt += 1
+            #     RuntimeContent.get_instance().already_click_eles.add(cur_clickable_ele_uid)
+            #     clickable_ele_idx += 1
+            #     continue
 
             # for clickable_ele_idx, cur_clickable_ele_uid in enumerate(cur_screen_node_clickable_eles):
             # --------------------------------------
@@ -124,20 +123,20 @@ class StateHandler(object):
                         clickable_ele_idx += 1
                         continue
 
-                    if res_sim >= Config.get_instance().screen_similarity_threshold and res_depth > Config.get_instance().maxDepth:
+                    if res_sim >= Config.get_instance().screen_similarity_threshold and res_depth > Config.get_instance().curDepth:
                         LogUtils.log_info(f"clickmap--next界面是超过限制层数的&{clickable_ele_idx}: {cur_clickable_ele_uid}")
                         cur_screen_node.already_clicked_cnt += 1
                         RuntimeContent.get_instance().already_click_eles.add(cur_clickable_ele_uid)
                         clickable_ele_idx += 1
                         continue
 
-                    if next_screen_node.get_isWebView():
-                        LogUtils.log_info(
-                            f"clickmap--next界面是WebView&{clickable_ele_idx}: {cur_clickable_ele_uid}")
-                        cur_screen_node.already_clicked_cnt += 1
-                        RuntimeContent.get_instance().already_click_eles.add(cur_clickable_ele_uid)
-                        clickable_ele_idx += 1
-                        continue
+                    # if next_screen_node.get_isWebView():
+                    #     LogUtils.log_info(
+                    #         f"clickmap--next界面是WebView&{clickable_ele_idx}: {cur_clickable_ele_uid}")
+                    #     cur_screen_node.already_clicked_cnt += 1
+                    #     RuntimeContent.get_instance().already_click_eles.add(cur_clickable_ele_uid)
+                    #     clickable_ele_idx += 1
+                    #     continue
 
                     if next_screen_node.is_screen_clickable_finished():
                         LogUtils.log_info(f"clickmap--next界面点击完成&{clickable_ele_idx}: {cur_clickable_ele_uid}")
