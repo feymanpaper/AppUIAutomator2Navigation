@@ -190,9 +190,9 @@ class FSM(threading.Thread):
                 cal_depth = CalDepthUtils.calDepth(RuntimeContent.get_instance().get_screen_map(),
                                                           RuntimeContent.get_instance().last_screen_node.ck_eles_text)
             cur_screen_depth = min(cur_screen_depth, cal_depth)
+
         # 将最新最小的结果写入cache
-        if res_sim >= Config.get_instance().screen_similarity_threshold and cur_screen_depth < res_depth:
-            screen_depth_map[ck_eles_text] = cur_screen_depth
+        screen_depth_map[ck_eles_text] = cur_screen_depth
 
         if cur_screen_depth == Config.get_instance().UndefineDepth:
             LogUtils.log_info("Undefine")
@@ -223,22 +223,22 @@ class FSM(threading.Thread):
                 LogUtils.log_info("ErrorScreen")
                 return self.STATE_Back, content
 
-            # TODO k为6,表示出现了连续6个以上的pattern,且所有组件已经点击完毕,避免一些情况:页面有很多组件点了没反应,这个时候应该继续点而不是随机点
+            # # TODO k为6,表示出现了连续6个以上的pattern,且所有组件已经点击完毕,避免一些情况:页面有很多组件点了没反应,这个时候应该继续点而不是随机点
+            # if cur_screen_node.is_screen_clickable_finished() and check_pattern_state2(10, [self.STATE_FinishScreen,
+            #                                                                                 self.STATE_SpecialScreen,
+            #                                                                                 self.STATE_DoublePress]):
+            #     return self.STATE_StuckRestart, content
+            # if cur_screen_node.is_screen_clickable_finished() and check_pattern_state(1, [self.STATE_SpecialScreen,
+            #                                                                                self.STATE_DoublePress]) and check_screen_list_reverse(
+            #     3):
+            #     return self.STATE_SpecialScreen, content
+            # if cur_screen_node.is_screen_clickable_finished() and check_pattern_state(1,
+            #                                                                            [
+            #                                                                               self.STATE_FinishScreen]) and check_screen_list_reverse(
+            #     2):
+            #     return self.STATE_DoublePress, content
 
-            if cur_screen_node.is_screen_clickable_finished() and check_pattern_state2(10, [self.STATE_FinishScreen,
-                                                                                            self.STATE_SpecialScreen,
-                                                                                            self.STATE_DoublePress]):
-                return self.STATE_StuckRestart, content
-            if cur_screen_node.is_screen_clickable_finished() and check_pattern_state(1, [self.STATE_SpecialScreen,
-                                                                                           self.STATE_DoublePress]) and check_screen_list_reverse(
-                3):
-                return self.STATE_SpecialScreen, content
-            if cur_screen_node.is_screen_clickable_finished() and check_pattern_state(1,
-                                                                                       [
-                                                                                          self.STATE_FinishScreen]) and check_screen_list_reverse(
-                2):
-                return self.STATE_DoublePress, content
-            # 4说明已经点完, press_back
+            # 说明已经点完, press_back
             if cur_screen_node.is_screen_clickable_finished():
                 return self.STATE_FinishScreen, content
             # 3说明未点完, 触发点一个组件
@@ -248,7 +248,7 @@ class FSM(threading.Thread):
             # 放到后面建立完成之后在添加
             # screen_map[ck_eles_text] = cur_screen_node
 
-            # TODO 添加cliakable=false 的隐私政策权的组件
+            # 添加cliakable=false 的隐私政策权的组件
             pp_text_list = get_privacy_policy_ele_list()
             if len(pp_text_list) > 0:
                 for pp_text in pp_text_list:

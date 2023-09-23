@@ -113,7 +113,7 @@ class StateHandler(object):
                         continue
 
                     res_sim, res_depth = get_max_sim_from_screen_depth_map(next_screen_all_text)
-                    if res_depth == -1:
+                    if res_sim >= Config.get_instance().screen_similarity_threshold and res_depth == Config.get_instance().UndefineDepth:
                         LogUtils.log_info(f"clickmap--next界面是UndefineDepth&{clickable_ele_idx}: {cur_clickable_ele_uid}")
                         cur_screen_node.already_clicked_cnt += 1
                         RuntimeContent.get_instance().already_click_eles.add(cur_clickable_ele_uid)
@@ -500,9 +500,37 @@ class StateHandler(object):
     @classmethod
     def handle_finish_screen(cls, content):
         cur_screen_node = cls.add_exist_screen_call_graph(content)
+        pre_ck_eles_text = content["ck_eles_text"]
         cls.__press_back()
+        LogUtils.log_info("进行回退")
         RuntimeContent.get_instance().set_last_screen_node(None)
         RuntimeContent.get_instance().set_last_clickable_ele_uid("")
+
+        after_ck_eles_text = get_screen_content()["ck_eles_text"]
+        # 如果不一样说明文本变化了, 说明一次back即可回退
+        sim_flag = is_text_similar(pre_ck_eles_text, after_ck_eles_text)
+        if not sim_flag:
+            return
+
+        # 如果没变化, 尝试double_press_back
+        LogUtils.log_info("一次回退失败, 二次回退")
+
+        cls.__double_press_back()
+        after_ck_eles_text = get_screen_content()["ck_eles_text"]
+        # 如果不一样说明文本变化了, 说明两次back即可回退
+        sim_flag = is_text_similar(pre_ck_eles_text, after_ck_eles_text)
+        if not sim_flag:
+            return
+
+        # 上述方法都失效,重启
+        RuntimeContent.get_instance().append_error_screen_list(pre_ck_eles_text)
+        cur_screen_node = content.get("cur_screen_node", None)
+        if cur_screen_node is not None:
+            last_ck_ele_uid_list = cur_screen_node.get_last_ck_ele_uid_list()
+            RuntimeContent.get_instance().append_more_error_ck_ele_uid_list(last_ck_ele_uid_list)
+
+        LogUtils.log_info("二次回退失败, 重启")
+        raise RestartException("重启机制")
 
 
     @classmethod
