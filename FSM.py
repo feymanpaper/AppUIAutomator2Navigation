@@ -191,9 +191,8 @@ class FSM(threading.Thread):
                                                           RuntimeContent.get_instance().last_screen_node.ck_eles_text)
             cur_screen_depth = min(cur_screen_depth, cal_depth)
         # 将最新最小的结果写入cache
-        if cur_screen_depth < res_depth:
+        if res_sim >= Config.get_instance().screen_similarity_threshold and cur_screen_depth < res_depth:
             screen_depth_map[ck_eles_text] = cur_screen_depth
-            cur_screen_depth = res_depth
 
         if cur_screen_depth == Config.get_instance().UndefineDepth:
             LogUtils.log_info("Undefine")
@@ -295,7 +294,7 @@ class FSM(threading.Thread):
 
             # BFS动态增加层数的条件是: 当前发现pattern_state和pattern_screen, 表示无法再继续增长
             cur_depth = Config.get_instance().curDepth
-            cal_cov_map = StatRecorder.get_instance().get_coverage()
+            cal_cov_map = StatRecorder.get_instance().get_coverage(cur_depth)
             if check_pattern_state(2, [self.STATE_HomeScreenRestart, self.STATE_FinishScreen]) and check_pattern_screen(
                     2, 2):
 

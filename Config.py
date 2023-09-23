@@ -57,7 +57,7 @@ class Config(object):
         self.target_pkg_name = "com.alibaba.android.rimet"  # 应用包名
         self.app_name = "钉钉"  # 应用名
 
-        self.test_time = 7200  # 配置测试的时间,以秒为单位
+        self.test_time = 1800  # 配置测试的时间,以秒为单位
         self.sleep_time_sec = 0.2  # 配置点击之后睡眠的时间
         self.maxDepth = 3  # 配置点击的最大深度
         self.curDepth = 1
@@ -74,8 +74,9 @@ class Config(object):
         self.start_time = datetime.now().strftime("%Y%m%d-%H%M%S")
 
         self.privacy_policy_text_list = ["隐私权政策", "隐私政策", "隐私保护政策"]
+
         self.use_pickle_file_name = "./collectData/com.alibaba.android.rimet-20230923-124332/SavedInstance/com.alibaba.android.rimet_restart201activity30&screen193&time5929.48s.pickle"
-        self.is_saved_start = True
+        self.is_saved_start = False
 
     def __new__(cls, *args, **kwargs):
         if not hasattr(Config, "_instance"):

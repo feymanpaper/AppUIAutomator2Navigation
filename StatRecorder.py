@@ -67,7 +67,7 @@ class StatRecorder(object):
                 res = click_cnt/total_cnt
                 print(f"{screen_uid} 的覆盖率为 {res}")
 
-    def get_coverage(self, curDepth:int):
+    def get_coverage(self, cur_depth:int):
         LogUtils.log_info("@" * 100)
         LogUtils.log_info("@" * 100)
         screen_depth_map = RuntimeContent.get_instance().screen_depth_map
@@ -76,7 +76,7 @@ class StatRecorder(object):
         cal_cov_map = {}
         for screen_uid in screen_uid_list:
             depth = screen_depth_map.get(screen_uid)
-            if depth != curDepth:
+            if depth != cur_depth:
                 continue
             screen_node = RuntimeContent.get_instance().get_screen_map().get(screen_uid)
             if screen_node is not None:
