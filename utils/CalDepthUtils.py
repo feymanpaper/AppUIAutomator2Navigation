@@ -1,6 +1,7 @@
 import json
 from collections import deque
-from Config import *
+from utils.ScreenCompareUtils import *
+
 
 class CalDepthUtils:
     @classmethod
@@ -41,7 +42,9 @@ class CalDepthUtils:
             visited.add(uid)
 
             # 输出这个节点的层数
-            if uid == target_uid:
+            cur_similarity = compare_sreen_similarity(uid, target_uid)
+            # if uid == target_uid:
+            if cur_similarity >= Config.get_instance().screen_similarity_threshold:
                 return level
 
             # 遍历这个节点的所有邻居，并将它们加入队列中

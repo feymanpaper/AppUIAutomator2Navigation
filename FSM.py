@@ -292,7 +292,7 @@ class FSM(threading.Thread):
             LogUtils.log_info("-" * 50)
             self.print_state(state)
 
-            # BFS动态增加层数的条件是: 当前发现pattern_state和pattern_screen无法再继续增长
+            # BFS动态增加层数的条件是: 当前发现pattern_state和pattern_screen, 表示无法再继续增长
             cur_depth = Config.get_instance().curDepth
             if check_pattern_state(2, [self.STATE_HomeScreenRestart, self.STATE_FinishScreen]) and check_pattern_screen(
                     2, 2):
