@@ -3,6 +3,7 @@ from Config import *
 from RuntimeContent import *
 from ScreenNode import *
 
+
 def get_max_similarity_screen_node(ck_eles_text: str) -> tuple[float | ScreenNode]:
     screen_map = RuntimeContent.get_instance().get_screen_map()
     if screen_map.get(ck_eles_text, False) is False:
@@ -28,7 +29,7 @@ def get_max_sim_from_screen_depth_map(ck_eles_text: str) -> tuple[float | int]:
     if screen_depth_map.get(ck_eles_text, False) is False:
         max_sim = 0
         res_depth = Config.get_instance().UndefineDepth
-        for candidate_ck_eles_text  in screen_depth_map.keys():
+        for candidate_ck_eles_text in screen_depth_map.keys():
             cur_sim = get_text_similarity(ck_eles_text, candidate_ck_eles_text)
             if cur_sim >= Config.get_instance().screen_similarity_threshold:
                 if cur_sim > max_sim:
@@ -57,11 +58,13 @@ def get_screennode_from_screenmap_by_similarity(ck_eles_text: str) -> ScreenNode
     else:
         return screen_map.get(ck_eles_text)
 
-def get_text_similarity(text1:str, text2:str) -> bool:
+
+def get_text_similarity(text1: str, text2: str) -> float:
     screen_compare_strategy = ScreenCompareStrategy(LCSComparator())
     return screen_compare_strategy.compare_screen(text1, text2)
 
-def is_text_similar(text1:str, text2:str):
+
+def is_text_similar(text1: str, text2: str) -> bool:
     screen_compare_strategy = ScreenCompareStrategy(LCSComparator())
     sim = screen_compare_strategy.compare_screen(text1, text2)
     if sim >= Config.get_instance().screen_similarity_threshold:

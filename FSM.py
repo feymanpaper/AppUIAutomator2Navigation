@@ -8,6 +8,7 @@ from constant.DefException import RestartException
 from queue import Queue
 from traceback import format_exc
 from utils.OCRUtils import *
+from utils.FileUtils import *
 
 
 class FSM(threading.Thread):
@@ -294,10 +295,17 @@ class FSM(threading.Thread):
 
             # BFS动态增加层数的条件是: 当前发现pattern_state和pattern_screen, 表示无法再继续增长
             cur_depth = Config.get_instance().curDepth
+            cal_cov_map = StatRecorder.get_instance().get_coverage()
             if check_pattern_state(2, [self.STATE_HomeScreenRestart, self.STATE_FinishScreen]) and check_pattern_screen(
                     2, 2):
+
                 Config.get_instance().curDepth += 1
-                LogUtils.log_info(f"动态增加当前层数{cur_depth}-->层数{cur_depth + 1}")
+                if cal_cov_map.get(cur_depth, None) is not None:
+                    cov = cal_cov_map[cur_depth][1] / cal_cov_map[cur_depth][2]
+
+                LogUtils.log_info(f"动态增加当前层数{cur_depth}-->层数{cur_depth + 1}, 覆盖率为:{cov}")
+                # 追加保存覆盖率结果
+                FileUtils.save_coverage(cur_depth, cov)
 
                 # 重置screenNode的点击下标already_click_cnt
                 screen_depth_map = RuntimeContent.get_instance().screen_depth_map
