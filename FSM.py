@@ -1,12 +1,13 @@
 from StateHandler import *
-from Utils.ScreenshotUtils import *
-from Utils.CalDepthUtils import *
-from Utils.PrivacyUrlUtils import *
+from utils.ScreenCompareUtils import get_max_similarity_screen_node, get_max_sim_from_screen_depth_map
+from utils.ScreenshotUtils import *
+from utils.CalDepthUtils import *
+from utils.PrivacyUrlUtils import *
 import threading
-from DefException import RestartException
+from constant.DefException import RestartException
 from queue import Queue
 from traceback import format_exc
-from Utils.OCRUtils import *
+from utils.OCRUtils import *
 
 
 class FSM(threading.Thread):
@@ -176,7 +177,7 @@ class FSM(threading.Thread):
         last_screen_node = RuntimeContent.get_instance().last_screen_node
         cur_screen_depth = Config.get_instance().UndefineDepth
         # 从cache中得到当前界面的层数结果
-        res_sim, res_depth = get_max_sim_from_screen_depth_map(ck_eles_text, ScreenCompareStrategy(LCSComparator()))
+        res_sim, res_depth = get_max_sim_from_screen_depth_map(ck_eles_text)
         if res_sim >= Config.get_instance().screen_similarity_threshold:
             cur_screen_depth = res_depth
 
@@ -191,6 +192,7 @@ class FSM(threading.Thread):
         # 将最新最小的结果写入cache
         if cur_screen_depth < res_depth:
             screen_depth_map[ck_eles_text] = cur_screen_depth
+            cur_screen_depth = res_depth
 
         if cur_screen_depth == Config.get_instance().UndefineDepth:
             LogUtils.log_info("Undefine")
@@ -207,8 +209,7 @@ class FSM(threading.Thread):
         # else:
         #     cur_screen_node = None
 
-        sim, most_similar_screen_node = get_max_similarity_screen_node(ck_eles_text,
-                                                                       ScreenCompareStrategy(LCSComparator()))
+        sim, most_similar_screen_node = get_max_similarity_screen_node(ck_eles_text)
         content["cur_screen_node"] = most_similar_screen_node
         content["most_similar_screen_node"] = most_similar_screen_node
         content["sim"] = sim
@@ -218,22 +219,22 @@ class FSM(threading.Thread):
             cur_screen_node = most_similar_screen_node
             RuntimeContent.get_instance().put_screen_map(ck_eles_text, cur_screen_node)
 
-            if check_is_errorscreen(ck_eles_text, ScreenCompareStrategy(LCSComparator())):
+            if check_is_errorscreen(ck_eles_text):
                 LogUtils.log_info("ErrorScreen")
                 return self.STATE_Back, content
 
             # TODO k为6,表示出现了连续6个以上的pattern,且所有组件已经点击完毕,避免一些情况:页面有很多组件点了没反应,这个时候应该继续点而不是随机点
 
-            if cur_screen_node.is_screen_clickable_finished() and check_pattern_state(10, [self.STATE_FinishScreen,
-                                                                                           self.STATE_SpecialScreen,
-                                                                                           self.STATE_DoublePress]):
+            if cur_screen_node.is_screen_clickable_finished() and check_pattern_state2(10, [self.STATE_FinishScreen,
+                                                                                            self.STATE_SpecialScreen,
+                                                                                            self.STATE_DoublePress]):
                 return self.STATE_StuckRestart, content
             if cur_screen_node.is_screen_clickable_finished() and check_pattern_state(1, [self.STATE_SpecialScreen,
-                                                                                          self.STATE_DoublePress]) and check_screen_list_reverse(
+                                                                                           self.STATE_DoublePress]) and check_screen_list_reverse(
                 3):
                 return self.STATE_SpecialScreen, content
             if cur_screen_node.is_screen_clickable_finished() and check_pattern_state(1,
-                                                                                      [
+                                                                                       [
                                                                                           self.STATE_FinishScreen]) and check_screen_list_reverse(
                 2):
                 return self.STATE_DoublePress, content
@@ -297,7 +298,7 @@ class FSM(threading.Thread):
             cal_cov_map = StatRecorder.get_instance().get_coverage(cur_depth)
             if cal_cov_map.get(cur_depth, None) is not None:
                 cov = cal_cov_map[cur_depth][1] / cal_cov_map[cur_depth][2]
-                if cov == 1.0 and cur_depth < Config.get_instance().maxDepth:
+                if cov == 1.0:
                     Config.get_instance().curDepth += 1
                     LogUtils.log_info(f"动态增加当前层数, 层数{cur_depth} 的覆盖率{cov} 达到目标")
 

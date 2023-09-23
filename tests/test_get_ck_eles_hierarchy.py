@@ -1,4 +1,4 @@
-from DeviceHelper import get_ck_eles_hierarchy
+from utils.DeviceUtils import get_ck_eles_hierarchy
 
 
 res = get_ck_eles_hierarchy()

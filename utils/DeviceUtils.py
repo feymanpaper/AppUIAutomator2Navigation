@@ -561,3 +561,18 @@ def get_privacy_policy_ele_list():
 #     loc_x, loc_y = get_location(ele)
 #     uid = activity_name + "-" +pkg_name + "-" + class_name + "-" +res_id + "-" + "(" + str(loc_x) + "," + str(loc_y) + ")" + "-" + text
 #     return uid
+def get_cur_screen_node_from_context(content):
+    cur_screen_node = content["cur_screen_node"]
+    return cur_screen_node
+
+
+def get_screen_text_from_context(content):
+    return content["screen_text"]
+
+
+def get_screen_info_from_context(content):
+    cur_screen_pkg_name = content["cur_screen_pkg_name"]
+    cur_activity = content["cur_activity"]
+    ck_eles_text = content["ck_eles_text"]
+
+    return cur_screen_pkg_name, cur_activity, ck_eles_text

@@ -1,8 +1,6 @@
 import sys
 sys.path.append("..")
-from uiautomator2 import Device
-from core_functions import *
-import xml.etree.ElementTree as ET
+from utils.core_functions import *
 import unittest
 
 

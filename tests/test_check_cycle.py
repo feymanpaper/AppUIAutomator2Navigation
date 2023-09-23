@@ -1,5 +1,5 @@
-from core_functions import *
-from ScreenCompareStrategy import *
+from utils.core_functions import *
+from utils.ScreenCompareStrategy import *
 import unittest
 
 
@@ -14,11 +14,11 @@ class TestCheckCycle(unittest.TestCase):
         lcs_comp = ScreenCompareStrategy(LCSComparator())
         s1.call_map["a"] = s2
 
-        self.assertFalse(check_cycle(s2, s1, lcs_comp))
+        self.assertFalse(check_cycle(s2, s1))
 
         s2.call_map["aa"] = s1
-        self.assertTrue(check_cycle(s1, s2, lcs_comp))
-        self.assertTrue(check_cycle(s2, s1, lcs_comp))
+        self.assertTrue(check_cycle(s1, s2))
+        self.assertTrue(check_cycle(s2, s1))
 
     def test_case2(self):
         s1 = ScreenNode()
@@ -38,11 +38,11 @@ class TestCheckCycle(unittest.TestCase):
         s2.call_map["a"] = s3
         s3.call_map["a"] = s4
         s4.call_map["a"] = s1
-        self.assertTrue(check_cycle(s1, s4, lcs_comp))
+        self.assertTrue(check_cycle(s1, s4))
         del s4.call_map["a"]
-        self.assertFalse(check_cycle(s3, s2, lcs_comp))
-        self.assertFalse(check_cycle(s2, s1, lcs_comp))
-        self.assertFalse(check_cycle(s4, s3, lcs_comp))
+        self.assertFalse(check_cycle(s3, s2))
+        self.assertFalse(check_cycle(s2, s1))
+        self.assertFalse(check_cycle(s4, s3))
 
 
 if __name__ == '__main__':

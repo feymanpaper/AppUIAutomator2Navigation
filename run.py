@@ -1,9 +1,9 @@
 from FSM import *
-from Utils.JsonUtils import *
-from Utils.SavedInstanceUtils import *
+from utils.JsonUtils import *
+from utils.SavedInstanceUtils import *
 from queue import Queue
 from FridaLibs.mq_producer import Producer
-from Utils.DrawGraphUtils import *
+from utils.DrawGraphUtils import *
 
 
 def suppress_keyboard_interrupt_message():

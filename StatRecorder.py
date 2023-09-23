@@ -1,8 +1,7 @@
 import time
-from Utils.LogUtils import *
-from Config import *
+from utils.LogUtils import *
 from RuntimeContent import *
-from DefException import TimeLimitException
+from constant.DefException import TimeLimitException
 class StatRecorder(object):
     def __init__(self):
         self.total_eles_cnt = 0

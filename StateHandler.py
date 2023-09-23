@@ -1,14 +1,11 @@
-from RuntimeContent import *
-import time
-from Config import *
-from DefException import *
-from core_functions import *
-from DeviceHelper import *
+from constant.DefException import *
+from utils.core_functions import *
 from StatRecorder import *
 import random
 from StateChecker import *
-from Utils.LogUtils import *
-
+from utils.DeviceUtils import *
+from utils.LogUtils import *
+from utils.ScreenCompareUtils import *
 
 class StateHandler(object):
     @classmethod
@@ -102,7 +99,7 @@ class StateHandler(object):
                         RuntimeContent.get_instance().already_click_eles.add(cur_clickable_ele_uid)
                         clickable_ele_idx += 1
                         continue
-                    if check_is_errorscreen(next_screen_all_text, ScreenCompareStrategy(LCSComparator())) == True:
+                    if check_is_errorscreen(next_screen_all_text) == True:
                         LogUtils.log_info(f"该组件会触发error screen因此跳过&{clickable_ele_idx}: {cur_clickable_ele_uid}")
                         cur_screen_node.already_clicked_cnt += 1
                         RuntimeContent.get_instance().already_click_eles.add(cur_clickable_ele_uid)
@@ -115,8 +112,7 @@ class StateHandler(object):
                         clickable_ele_idx += 1
                         continue
 
-                    res_sim, res_depth = get_max_sim_from_screen_depth_map(next_screen_all_text,
-                                                                           ScreenCompareStrategy(LCSComparator()))
+                    res_sim, res_depth = get_max_sim_from_screen_depth_map(next_screen_all_text)
                     if res_depth == -1:
                         LogUtils.log_info(f"clickmap--next界面是UndefineDepth&{clickable_ele_idx}: {cur_clickable_ele_uid}")
                         cur_screen_node.already_clicked_cnt += 1
@@ -278,7 +274,7 @@ class StateHandler(object):
                 LogUtils.log_info("回到自己")
                 last_screen_node.update_callmap_item(RuntimeContent.get_instance().get_last_clickable_ele_uid())
                 pass
-            elif check_cycle(cur_screen_node, last_screen_node, ScreenCompareStrategy(LCSComparator())) == True:
+            elif check_cycle(cur_screen_node, last_screen_node) == True:
                 # 产生了回边
                 last_screen_node.cycle_set.add(RuntimeContent.get_instance().get_last_clickable_ele_uid())
                 LogUtils.log_info("产生回边")
@@ -340,9 +336,9 @@ class StateHandler(object):
                 LogUtils.log_info("回到自己")
                 last_screen_node.update_callmap_item(RuntimeContent.get_instance().get_last_clickable_ele_uid())
                 pass
-            elif check_cycle(cur_screen_node, last_screen_node, ScreenCompareStrategy(LCSComparator())) == True:
+            elif check_cycle(cur_screen_node, last_screen_node) == True:
                 # 产生了回边
-                check_cycle(cur_screen_node, last_screen_node, ScreenCompareStrategy(LCSComparator()))
+                check_cycle(cur_screen_node, last_screen_node)
                 last_screen_node.cycle_set.add(RuntimeContent.get_instance().get_last_clickable_ele_uid())
                 LogUtils.log_info("产生回边")
                 last_screen_node.update_callmap_item(RuntimeContent.get_instance().get_last_clickable_ele_uid())
@@ -374,7 +370,7 @@ class StateHandler(object):
                 LogUtils.log_info("回到自己")
                 last_screen_node.update_callmap_item(RuntimeContent.get_instance().get_last_clickable_ele_uid())
                 pass
-            elif check_cycle(cur_screen_node, last_screen_node, ScreenCompareStrategy(LCSComparator())) == True:
+            elif check_cycle(cur_screen_node, last_screen_node) == True:
                 # 产生了回边
                 last_screen_node.cycle_set.add(RuntimeContent.get_instance().get_last_clickable_ele_uid())
                 LogUtils.log_info("产生回边")
@@ -465,7 +461,7 @@ class StateHandler(object):
         after_ck_eles_text = get_screen_content()["ck_eles_text"]
 
         # 如果不一样说明文本变化了, 说明一次back即可回退
-        cur_similarity = ScreenCompareStrategy(LCSComparator()).compare_screen(pre_ck_eles_text, after_ck_eles_text)
+        cur_similarity = compare_sreen_similarity(pre_ck_eles_text, after_ck_eles_text)
         if cur_similarity < Config.get_instance().screen_similarity_threshold:
             return
 
@@ -475,7 +471,7 @@ class StateHandler(object):
         cls.__double_press_back()
         after_ck_eles_text = get_screen_content()["ck_eles_text"]
         # 如果不一样说明文本变化了, 说明两次back即可回退
-        cur_similarity = ScreenCompareStrategy(LCSComparator()).compare_screen(pre_ck_eles_text, after_ck_eles_text)
+        cur_similarity = compare_sreen_similarity(pre_ck_eles_text, after_ck_eles_text)
         if cur_similarity < Config.get_instance().screen_similarity_threshold:
             return
 
