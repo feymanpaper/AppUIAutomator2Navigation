@@ -42,9 +42,9 @@ class CalDepthUtils:
             visited.add(uid)
 
             # 输出这个节点的层数
-            cur_similarity = compare_sreen_similarity(uid, target_uid)
+            sim_flag = is_text_similar(uid, target_uid)
             # if uid == target_uid:
-            if cur_similarity >= Config.get_instance().screen_similarity_threshold:
+            if sim_flag:
                 return level
 
             # 遍历这个节点的所有邻居，并将它们加入队列中

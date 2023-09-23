@@ -5,8 +5,8 @@ from Config import *
 def check_is_errorscreen(ck_eles_text: str) -> bool:
     error_screen_list = RuntimeContent.get_instance().get_error_screen_list()
     for err_ck_eles_text in error_screen_list:
-        cur_similarity = compare_sreen_similarity(ck_eles_text, err_ck_eles_text)
-        if cur_similarity >= Config.get_instance().screen_similarity_threshold:
+        sim_flag = is_text_similar(ck_eles_text, err_ck_eles_text)
+        if sim_flag:
             return True
     return False
 

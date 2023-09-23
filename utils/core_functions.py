@@ -8,8 +8,8 @@ from utils.ScreenCompareUtils import *
 
 # 检测多层环
 def check_cycle(cur_node: ScreenNode, last_node: ScreenNode):
-    similarity = compare_sreen_similarity(cur_node.ck_eles_text, last_node.ck_eles_text)
-    if similarity >= Config.get_instance().screen_similarity_threshold:
+    sim_flag = is_text_similar(cur_node.ck_eles_text, last_node.ck_eles_text)
+    if sim_flag:
         return True
 
     # if cur_node.children is None or len(cur_node.children) == 0:
@@ -24,12 +24,12 @@ def check_cycle(cur_node: ScreenNode, last_node: ScreenNode):
     #         if res == True:
     #             return True
     for child in cur_node.call_map.values():
-        child_sim = compare_sreen_similarity(child.ck_eles_text, last_node.ck_eles_text)
-        if child_sim >= Config.get_instance().screen_similarity_threshold:
+        sim_flag = is_text_similar(child.ck_eles_text, last_node.ck_eles_text)
+        if sim_flag:
             return True
         else:
             res = check_cycle(child, last_node)
-            if res == True:
+            if res:
                 return True
     return False
 

@@ -461,8 +461,8 @@ class StateHandler(object):
         after_ck_eles_text = get_screen_content()["ck_eles_text"]
 
         # 如果不一样说明文本变化了, 说明一次back即可回退
-        cur_similarity = compare_sreen_similarity(pre_ck_eles_text, after_ck_eles_text)
-        if cur_similarity < Config.get_instance().screen_similarity_threshold:
+        sim_flag = is_text_similar(pre_ck_eles_text, after_ck_eles_text)
+        if not sim_flag:
             return
 
         # 如果没变化, 尝试double_press_back
@@ -471,8 +471,8 @@ class StateHandler(object):
         cls.__double_press_back()
         after_ck_eles_text = get_screen_content()["ck_eles_text"]
         # 如果不一样说明文本变化了, 说明两次back即可回退
-        cur_similarity = compare_sreen_similarity(pre_ck_eles_text, after_ck_eles_text)
-        if cur_similarity < Config.get_instance().screen_similarity_threshold:
+        sim_flag = is_text_similar(pre_ck_eles_text, after_ck_eles_text)
+        if not sim_flag:
             return
 
         # 上述方法都失效,重启
