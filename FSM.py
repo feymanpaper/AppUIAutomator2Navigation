@@ -152,7 +152,7 @@ class FSM(threading.Thread):
 
 
         if Config.get_instance().curDepth > Config.get_instance().maxDepth:
-            return self.STATE_Terminate
+            return self.STATE_Terminate, content
 
         if cur_screen_pkg_name != Config.get_instance().get_target_pkg_name():
             if check_is_in_home_screen(cur_screen_pkg_name):
@@ -291,27 +291,25 @@ class FSM(threading.Thread):
             LogUtils.log_info("\n")
             LogUtils.log_info("-" * 50)
             self.print_state(state)
-            self.do_transition(state, content)
 
-            #TODO 增加bfs
+            # BFS动态增加层数的条件是: 当前发现pattern_state和pattern_screen无法再继续增长
             cur_depth = Config.get_instance().curDepth
-            cal_cov_map = StatRecorder.get_instance().get_coverage(cur_depth)
-            if cal_cov_map.get(cur_depth, None) is not None:
-                cov = cal_cov_map[cur_depth][1] / cal_cov_map[cur_depth][2]
-                if cov == 1.0:
-                    Config.get_instance().curDepth += 1
-                    LogUtils.log_info(f"动态增加当前层数, 层数{cur_depth} 的覆盖率{cov} 达到目标")
+            if check_pattern_state(2, [self.STATE_HomeScreenRestart, self.STATE_FinishScreen]) and check_pattern_screen(
+                    2, 2):
+                Config.get_instance().curDepth += 1
+                LogUtils.log_info(f"动态增加当前层数{cur_depth}-->层数{cur_depth + 1}")
 
-                    # 重置screenNode的点击下标already_click_cnt
-                    screen_depth_map = RuntimeContent.get_instance().screen_depth_map
-                    screen_uid_list = screen_depth_map.keys()
-                    for screen_uid in screen_uid_list:
-                        depth = screen_depth_map.get(screen_uid)
-                        if depth != cur_depth:
-                            continue
-                        screen_node = RuntimeContent.get_instance().get_screen_map().get(screen_uid)
-                        screen_node.already_clicked_cnt = 0
+                # 重置screenNode的点击下标already_click_cnt
+                screen_depth_map = RuntimeContent.get_instance().screen_depth_map
+                screen_uid_list = screen_depth_map.keys()
+                for screen_uid in screen_uid_list:
+                    depth = screen_depth_map.get(screen_uid)
+                    if depth > cur_depth:
+                        continue
+                    screen_node = RuntimeContent.get_instance().get_screen_map().get(screen_uid)
+                    screen_node.already_clicked_cnt = 0
 
+            self.do_transition(state, content)
 
             LogUtils.log_info("-" * 50)
             LogUtils.log_info("\n")
