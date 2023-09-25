@@ -30,11 +30,11 @@ def suppress_keyboard_interrupt_message():
 
 
 if __name__ == "__main__":
-    # pkgName = sys.argv[1]
-    # appName = sys.argv[2]
-    # depth = sys.argv[3]
-    # with open('tmp.txt', 'w') as f:
-    #     f.write(pkgName + ";" + appName + ";" + depth)
+    pkgName = sys.argv[1]
+    appName = sys.argv[2]
+    depth = sys.argv[3]
+    with open('tmp.txt', 'w') as f:
+        f.write(pkgName + ";" + appName + ";" + depth)
 
     LogUtils.setup()
 
@@ -95,7 +95,7 @@ if __name__ == "__main__":
             d.app_stop(Config.get_instance().get_target_pkg_name())
             time.sleep(1)
             d.app_start(Config.get_instance().get_target_pkg_name(), use_monkey=True)
-            time.sleep(3)
+            time.sleep(5)
             RuntimeContent.get_instance().set_last_screen_node(root)
         # fsm线程触发了TerminateException
         elif consumer_fsm.exit_code == 2:
@@ -123,6 +123,8 @@ if __name__ == "__main__":
         # fsm线程触发了未知错误
         else:
             LogUtils.log_info("未知情况退出")
+            LogUtils.log_info(consumer_fsm.exception)
+            LogUtils.log_info(consumer_fsm.exc_traceback)
             logging.exception(consumer_fsm.exception)
             logging.exception(consumer_fsm.exc_traceback)
             StatRecorder.get_instance().print_result()
