@@ -47,15 +47,13 @@ Java.perform(function x() {
        }
     }
 
+
     var Window = Java.use("android.view.Window");
-    var WindowManager = Java.use("android.view.WindowManager")
     Window.setFlags.implementation = function(flags, mask){
-        if(Window != undefined && WindowManager!=undefined){
-            // 将 FLAG_SECURE 参数更改为 0
-            var newFlags = flags & ~WindowManager.LayoutParams.FLAG_SECURE;
-            // 调用原始方法
-            this.setFlags(newFlags, mask);
-        }
+        // 将 FLAG_SECURE 参数更改为 0
+        var newFlags = flags & ~WindowManager.LayoutParams.FLAG_SECURE;
+        // 调用原始方法
+        this.setFlags(newFlags, mask);
     }
 
 

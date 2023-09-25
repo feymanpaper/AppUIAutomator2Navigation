@@ -24,8 +24,8 @@ def cal_privacy_ele_loc(img_path: str, privacy_text: str) -> tuple():
     # img = enhancer.enhance(20)
 
     # config = 'tessedit_char_whitelist=隐私权政策'
-    # text = pytesseract.image_to_string(img, lang='chi_sim')
-    # print(text)
+    text = pytesseract.image_to_string(img, lang='chi_sim')
+    print(text)
 
     data = pytesseract.image_to_data(img, output_type='dict', lang='chi_sim')
     if len(data) < len(privacy_text):
