@@ -58,8 +58,8 @@ class Config(object):
         # self.app_name = appName  # 应用名
         # self.maxDepth = int(depth)  # 配置点击的最大深度
 
-        self.target_pkg_name = "com.alibaba.wireless.lstretailer"  # 应用包名
-        self.app_name = "阿里零售通"  # 应用名
+        self.target_pkg_name = "com.eg.android.AlipayGphone"  # 应用包名
+        self.app_name = "支付宝"  # 应用名
         self.maxDepth = 3  # 配置点击的最大深度
 
         self.curDepth = 1
