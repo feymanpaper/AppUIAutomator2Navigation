@@ -28,18 +28,20 @@ class Producer(threading.Thread):
 
     def on_message(self, message, data):
         with lock:
-            if message.get('type') == 'send':
-                payload = message.get('payload')
-                if payload is not None:
-                    res = self.is_http(payload)
-                    if res:
-                        print()
-                        print("*" * 50 + f"Producer{self.name}" + "*" * 50)
-                        print(res)
-                        print("*" * 50 + f"Producer{self.name}" + "*" * 50)
-                        print()
-                        self.data.put(res)
-                    # print("%s: %s is producing %d to the queue!" % (time.ctime(), self.name, message))
+            if message.get('type') != 'send':
+                return
+            payload = message.get('payload')
+            if payload is None:
+                return
+            res = self.is_http(payload)
+            if res:
+                print()
+                print("*" * 50 + f"Producer{self.name}" + "*" * 50)
+                print(res)
+                print("*" * 50 + f"Producer{self.name}" + "*" * 50)
+                print()
+                self.data.put(res)
+            # print("%s: %s is producing %d to the queue!" % (time.ctime(), self.name, message))
 
 
 

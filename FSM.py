@@ -148,8 +148,9 @@ class FSM(threading.Thread):
             pp_text_list = Config.get_instance().privacy_policy_text_list
             for pp_text in pp_text_list:
                 if pp_text in last_clickable_ele_uid:
-                    PrivacyUrlUtils.save_privacy(temp_list[0])
-                    print(f"找到了{pp_text}的url:{temp_list[0]}")
+                    for pri_url in temp_list:
+                        PrivacyUrlUtils.save_privacy(pri_url)
+                        print(f"找到了{pp_text}的url:{pri_url}")
 
 
         if Config.get_instance().curDepth > Config.get_instance().maxDepth:
