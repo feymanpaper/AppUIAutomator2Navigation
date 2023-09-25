@@ -9,29 +9,42 @@ Java.perform(function x() {
         send(data)
         send(extra.toString())
         send(this.toUri(256))
+//        send({"type":"Intent.Data", "data":data})
+//        send({"type":"Intent.Extra", "bb":extra.toString()})
+//        send({"type":"Intent.URI", "cc":this.toUri(256)})
         return data
     };
 
-     act.getData.implementation = function() {
-        var data = this.getData()
-        var extra = this.getExtras()
-        send(data)
-        send(extra.toString())
-        send(this.toUri(256))
-        return data
-    };
     // hook startActivity传递的url
     var Activity = Java.use("android.app.Activity");
     Activity.startActivity.overload('android.content.Intent').implementation=function(p1){
         var data = decodeURIComponent(p1.toUri(256))
         send(data)
+//        send({"type":"startActivity1.Data", "data":data})
         this.startActivity(p1);
     }
     Activity.startActivity.overload('android.content.Intent', 'android.os.Bundle').implementation=function(p1,p2){
         var data = decodeURIComponent(p1.toUri(256))
         send(data)
+//        send({"type":"startActivity2.Data", "data":data})
         this.startActivity(p1,p2);
     }
+
+//    var Webview = Java.use("android.webkit.WebView")
+//        Webview.loadUrl.overload("java.lang.String").implementation = function(url) {
+//        send("[+]Loading URL from", url);
+//        this.loadUrl.overload("java.lang.String").call(this, url);
+//    }
+
+    var WebView = Java.use("android.webkit.WebView");
+    if (WebView != undefined){
+        WebView.loadUrl.overload("java.lang.String").implementation = function(arg) {
+        send(arg);
+//        send({"type":"WebView", "data":arg})
+        this.loadUrl(arg);
+       }
+    }
+
 
     var Window = Java.use("android.view.Window");
     Window.setFlags.implementation = function(flags, mask){
@@ -41,11 +54,8 @@ Java.perform(function x() {
         this.setFlags(newFlags, mask);
     }
 
-    var Webview = Java.use("android.webkit.WebView")
-        Webview.loadUrl.overload("java.lang.String").implementation = function(url) {
-        send("[+]Loading URL from", url);
-        this.loadUrl.overload("java.lang.String").call(this, url);
-    }
+
+
 //
 //    Java.choose('android.webkit.WebView',{
 //        onMatch: function (instance) {

@@ -523,7 +523,7 @@ def get_screen_text():
 def get_privacy_policy_ele_list():
     root = get_dump_hierarchy()
     pp_text_list = Config.get_instance().privacy_policy_text_list
-    res_pp_list = []
+    res_pp_list = set()
     for element in root.findall('.//node'):
         if element.get("package") in system_view:
             continue
@@ -535,8 +535,8 @@ def get_privacy_policy_ele_list():
             continue
         for pp_text in pp_text_list:
             if pp_text in temp_text:
-                res_pp_list.append(pp_text)
-    return res_pp_list
+                res_pp_list.add(pp_text)
+    return list(res_pp_list)
 
 # # 对screen_info进行sha256签名,生成消息摘要
 # def get_signature(screen_info):

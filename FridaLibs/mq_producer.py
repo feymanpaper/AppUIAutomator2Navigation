@@ -17,6 +17,7 @@ class Producer(threading.Thread):
         # 使用re模块进行匹配
         pattern = r'http[s]?(?:://|%3A%2F%2F)(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|[#]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
 
+        # print(test_str)
         matches = re.findall(pattern, test_str)
         if not matches:
             return None
@@ -27,18 +28,20 @@ class Producer(threading.Thread):
 
     def on_message(self, message, data):
         with lock:
-            if message.get('type') == 'send':
-                payload = message.get('payload')
-                if payload is not None:
-                    res = self.is_http(payload)
-                    if res:
-                        print()
-                        print("*" * 50 + f"Producer{self.name}" + "*" * 50)
-                        print(res)
-                        print("*" * 50 + f"Producer{self.name}" + "*" * 50)
-                        print()
-                        self.data.put(res)
-                        # print("%s: %s is producing %d to the queue!" % (time.ctime(), self.name, message))
+            if message.get('type') != 'send':
+                return
+            payload = message.get('payload')
+            if payload is None:
+                return
+            res = self.is_http(payload)
+            if res:
+                print()
+                print("*" * 50 + f"Producer{self.name}" + "*" * 50)
+                print(res)
+                print("*" * 50 + f"Producer{self.name}" + "*" * 50)
+                print()
+                self.data.put(res)
+            # print("%s: %s is producing %d to the queue!" % (time.ctime(), self.name, message))
 
 
 

@@ -17,7 +17,7 @@ class PrivacyUrlUtils:
     def __write_url(file_path:str, data:str):
         if not os.path.exists(os.path.dirname(file_path)):
             os.makedirs(os.path.dirname(file_path))
-        fw = open(file_path, 'w', encoding='utf-8')
+        fw = open(file_path, 'a', encoding='utf-8')
         fw.write(data + "\n")
         fw.close()
 
