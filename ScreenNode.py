@@ -1,4 +1,3 @@
-from Config import *
 class ScreenNode:
     def __init__(self):
         # 包名 + activity + 可点击组件的内部文本
@@ -101,29 +100,29 @@ class ScreenNode:
 
     
     # 只检测level1的children是否全部完成
-    def is_cur_callmap_finish(self, target_screen_all_text, screen_compare_strategy):
-        if self is None:
-            return True
-        # for child_node in self.children:
-        #     if screen_compare_strategy.compare_screen(child_node.all_text, target_screen_all_text)[0] == True:
-        #     # if child_node.all_text == target_screen_all_text:
-        #         if child_node.already_clicked_cnt == len(child_node.clickable_elements):
-        #             return True
-        #         else:
-        #             return False
-        # return True
-        # 根据call_map来找,其实call_map和children差不多,区别就是children有回边,call_map没有
-        #TODO
-        for child_node in self.call_map.values():
-            sim = screen_compare_strategy.compare_screen(child_node.ck_eles_text, target_screen_all_text)
-            if sim >= Config.get_instance().screen_similarity_threshold:
-            # if child_node.all_text == target_screen_all_text:
-            #     if child_node.already_clicked_cnt == len(child_node.clickable_elements):
-                if child_node.is_screen_clickable_finished():
-                    return True
-                else:
-                    return False
-        return True
+    # def is_cur_callmap_finish(self, target_screen_all_text):
+    #     if self is None:
+    #         return True
+    #     # for child_node in self.children:
+    #     #     if screen_compare_strategy.compare_screen(child_node.all_text, target_screen_all_text)[0] == True:
+    #     #     # if child_node.all_text == target_screen_all_text:
+    #     #         if child_node.already_clicked_cnt == len(child_node.clickable_elements):
+    #     #             return True
+    #     #         else:
+    #     #             return False
+    #     # return True
+    #     # 根据call_map来找,其实call_map和children差不多,区别就是children有回边,call_map没有
+    #     #TODO
+    #     for child_node in self.call_map.values():
+    #         sim = compare_sreen_similarity(child_node.ck_eles_text, target_screen_all_text)
+    #         if sim >= Config.get_instance().screen_similarity_threshold:
+    #         # if child_node.all_text == target_screen_all_text:
+    #         #     if child_node.already_clicked_cnt == len(child_node.clickable_elements):
+    #             if child_node.is_screen_clickable_finished():
+    #                 return True
+    #             else:
+    #                 return False
+    #     return True
 
     def set_isWebView(self, flag):
         self.isWebView = flag

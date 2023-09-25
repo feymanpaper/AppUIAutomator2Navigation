@@ -45,5 +45,8 @@ for pkgName_appName in pkgName_appName_list:
         elif get_OS_type() == 'win':
             execute_cmd_with_timeout(
                 'PowerShell.exe ./run.ps1 {} {} {}'.format(pkgName, appName, config_settings['dynamic_ui_depth']))
-    except Exception:
+
+    except Exception as e:
+        print(e)
         print('error occurred, continue...')
+

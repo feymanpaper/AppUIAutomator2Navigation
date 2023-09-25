@@ -16,6 +16,7 @@ class Producer(threading.Thread):
     def is_http(self, test_str):
         # 使用re模块进行匹配
         pattern = r'http[s]?(?:://|%3A%2F%2F)(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|[#]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
+
         matches = re.findall(pattern, test_str)
         if not matches:
             return None
@@ -39,16 +40,19 @@ class Producer(threading.Thread):
                         self.data.put(res)
                         # print("%s: %s is producing %d to the queue!" % (time.ctime(), self.name, message))
 
+
+
     def run(self):
-        # device = frida.get_usb_device()
+        device = frida.get_usb_device()
         # 连接模拟器
-        device = frida.get_remote_device()
+        # device = frida.get_remote_device()
         # 启动`demo02`这个app
         appName = Config.get_instance().app_name
         pid = device.attach(appName)
         # 加载s1.js脚本
-        with open("./hook_rpc.js",encoding="utf-8") as f:
-        # with open("./FridaLibs/hook_rpc.js") as f:
+
+        # with open("./hook_rpc.js",encoding="utf-8") as f:
+        with open("./FridaLibs/hook_rpc.js") as f:
             script = pid.create_script(f.read())
         script.on('message', self.on_message)
         script.load()

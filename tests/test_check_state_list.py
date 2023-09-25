@@ -1,7 +1,3 @@
-import random
-
-from core_functions import *
-from ScreenCompareStrategy import *
 import unittest
 
 

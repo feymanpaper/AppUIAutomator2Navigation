@@ -1,6 +1,6 @@
 from uiautomator2 import Device
-from DeviceHelper import get_screen_info
-from DeviceHelper import get_clickable_elements
+from utils.DeviceUtils import get_screen_info
+from utils.DeviceUtils import get_clickable_elements
 
 all_text = []
 d = Device()

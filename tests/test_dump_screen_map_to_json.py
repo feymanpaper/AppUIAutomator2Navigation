@@ -1,5 +1,5 @@
-from Utils.JsonUtils import dump_screen_map_to_json
-from Utils.SavedInstanceUtils import *
+from utils.JsonUtils import dump_screen_map_to_json
+from utils.SavedInstanceUtils import *
 
 Config.get_instance().target_pkg_name = "com.alibaba.android.rimit"
 StatRecorder.get_instance().start_time = time.time()

@@ -1,9 +1,8 @@
-from DeviceHelper import get_clickable_eles_tree
-from DeviceHelper import get_dump_hierarchy
-from DeviceHelper import build_hierarchy
+from utils.DeviceUtils import get_clickable_eles_tree
+from utils.DeviceUtils import get_dump_hierarchy
 from uiautomator2 import Device
 import unittest
-from DeviceHelper import print_ui_root
+
 
 class TestElesTree(unittest.TestCase):
     def test_case1(self):

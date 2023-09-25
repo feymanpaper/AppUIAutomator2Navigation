@@ -1,6 +1,6 @@
-from DeviceHelper import *
-from Utils.OCRUtils import *
-from Utils.ScreenshotUtils import *
+from utils.DeviceUtils import *
+from utils.OCRUtils import *
+from utils.ScreenshotUtils import *
 pp_text_list = get_privacy_policy_ele_list()
 if len(pp_text_list)>0:
     print(pp_text_list)
