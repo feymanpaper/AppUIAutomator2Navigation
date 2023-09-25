@@ -49,8 +49,8 @@ from datetime import datetime
 
 class Config(object):
     def __init__(self):
-
-        with open('tmp.txt') as f:
+      
+        with open('tmp.txt', encoding="utf-8") as f:
             pkgName, appName, depth = f.readline().split(";")
         print(pkgName,appName,depth)
 
