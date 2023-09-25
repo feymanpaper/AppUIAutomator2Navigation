@@ -17,6 +17,7 @@ class Producer(threading.Thread):
         # 使用re模块进行匹配
         pattern = r'http[s]?(?:://|%3A%2F%2F)(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|[#]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
 
+        # print(test_str)
         matches = re.findall(pattern, test_str)
         if not matches:
             return None
@@ -38,7 +39,7 @@ class Producer(threading.Thread):
                         print("*" * 50 + f"Producer{self.name}" + "*" * 50)
                         print()
                         self.data.put(res)
-                        # print("%s: %s is producing %d to the queue!" % (time.ctime(), self.name, message))
+                    # print("%s: %s is producing %d to the queue!" % (time.ctime(), self.name, message))
 
 
 
