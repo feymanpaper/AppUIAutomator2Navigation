@@ -1,13 +1,14 @@
 from StateHandler import *
-from DeviceHelper import *
-from Utils.ScreenshotUtils import *
-from Utils.CalDepthUtils import *
-from Utils.PrivacyUrlUtils import *
+from utils.ScreenCompareUtils import get_max_similarity_screen_node, get_max_sim_from_screen_depth_map
+from utils.ScreenshotUtils import *
+from utils.CalDepthUtils import *
+from utils.PrivacyUrlUtils import *
 import threading
-from DefException import RestartException
+from constant.DefException import RestartException
 from queue import Queue
 from traceback import format_exc
-from Utils.OCRUtils import *
+from utils.OCRUtils import *
+from utils.FileUtils import *
 
 
 class FSM(threading.Thread):
@@ -53,6 +54,7 @@ class FSM(threading.Thread):
         14: "STATE_ExceedDepth",
         15: "STATE_UndefineDepth",
         16: "STATE_KillOtherApp",
+        17: "STATE_Back",
         100: "STATE_Terminate"
     }
 
@@ -72,38 +74,13 @@ class FSM(threading.Thread):
     STATE_ExceedDepth = 14
     STATE_UndefineDepth = 15
     STATE_KillOtherApp = 16
+    STATE_Back = 17
     STATE_Terminate = 100
+
 
     def update_stat(self, cur_activity, ck_eles_text):
         StatRecorder.get_instance().add_stat_stat_activity_set(cur_activity)
         StatRecorder.get_instance().add_stat_screen_set(ck_eles_text)
-
-    def get_screen_content(self):
-        cur_screen_pkg_name = get_screen_package()
-        cur_activity = get_screen_activity()
-        screen_text = get_screen_text()
-        cur_ck_eles = get_clickable_elements()
-
-        pre_len = len(cur_ck_eles)
-        cur_ck_eles = remove_dup(cur_ck_eles)
-        cur_ck_eles = merged_clickable_elements(cur_ck_eles)
-        after_len = len(cur_ck_eles)
-        ck_eles_text = to_string_ck_els(cur_ck_eles)
-
-        # if RuntimeContent.get_instance().get_first_screen_ck_eles_text() is None:
-        #     RuntimeContent.get_instance().set_first_screen_ck_ele_text(ck_eles_text)
-        last_screen_node = RuntimeContent.get_instance().get_last_screen_node()
-        if last_screen_node is not None and last_screen_node.ck_eles_text == "root":
-            RuntimeContent.get_instance().set_first_screen_ck_ele_text(ck_eles_text)
-
-        content = {}
-        content["cur_screen_pkg_name"] = cur_screen_pkg_name
-        content["cur_activity"] = cur_activity
-        content["ck_eles_text"] = ck_eles_text
-        content["screen_text"] = screen_text
-        content["cur_ck_eles"] = cur_ck_eles
-        content["merged_diff"] = pre_len - after_len
-        return content
 
     def do_transition(self, state, content):
         if state == self.STATE_ExitApp:
@@ -125,27 +102,19 @@ class FSM(threading.Thread):
             StateHandler.handle_double_press(content)
         elif state == self.STATE_PermissonScreen:
             StateHandler.handle_system_permission_screen(content)
-        elif state == self.STATE_OutsystemSpecialScreen:
-            StateHandler.handle_outsystem_special_screen(content)
-        elif state == self.STATE_WebViewScreen:
-            StateHandler.handle_WebView_screen(content)
-        elif state == self.STATE_ErrorScreen:
-            StateHandler.handle_error_screen(content)
         elif state == self.STATE_HomeScreenRestart:
             StateHandler.handle_homes_screen_restart(content)
         elif state == self.STATE_KillOtherApp:
             StateHandler.handle_kill_other_app(content)
         elif state == self.STATE_Terminate:
             StateHandler.handle_terminate(content)
-        elif state == self.STATE_ExceedDepth:
-            StateHandler.handle_ExceedDepth(content)
-        elif state == self.STATE_UndefineDepth:
-            StateHandler.handle_UndefineDepth(content)
+        elif state == self.STATE_Back:
+            StateHandler.handle_back(content)
         else:
             raise Exception("意外情况")
 
     def get_state(self):
-        content = self.get_screen_content()
+        content = get_screen_content()
         cur_activity = content["cur_activity"]
         cur_screen_pkg_name = content["cur_screen_pkg_name"]
         ck_eles_text = content["ck_eles_text"]
@@ -182,20 +151,18 @@ class FSM(threading.Thread):
                     PrivacyUrlUtils.save_privacy(temp_list[0])
                     print(f"找到了{pp_text}的url:{temp_list[0]}")
 
+
+        if Config.get_instance().curDepth > Config.get_instance().maxDepth:
+            return self.STATE_Terminate, content
+
         if cur_screen_pkg_name != Config.get_instance().get_target_pkg_name():
-            if check_is_in_home_screen(cur_screen_pkg_name) and check_is_first_scrren_finish():
-                return self.STATE_Terminate, content
-            if check_is_in_home_screen(cur_screen_pkg_name) and not check_is_first_scrren_finish():
-                return self.STATE_HomeScreenRestart, content
             if check_is_in_home_screen(cur_screen_pkg_name):
-                return 100, content
+                return self.STATE_HomeScreenRestart, content
             if check_is_permisson_screen(cur_screen_pkg_name):
                 return self.STATE_PermissonScreen, content
             else:
                 if check_pattern_state(2, [self.STATE_ExitApp]):
                     return self.STATE_KillOtherApp, content
-                # if check_pattern_state(1, [self.STATE_ExitApp]):
-                #     return self.STATE_OutsystemSpecialScreen, content
                 else:
                     return self.STATE_ExitApp, content
 
@@ -203,19 +170,15 @@ class FSM(threading.Thread):
             return self.STATE_InputMethod, content
 
         # Check WebView
-        # if check_is_in_webview(cur_activity) and check_pattern_state(4, [self.STATE_DoublePress, self.STATE_WebViewScreen]):
-        #     return self.STATE_StuckRestart, content
-        # if check_is_in_webview(cur_activity) and check_pattern_state(1, [self.STATE_WebViewScreen]):
-        #     return self.STATE_DoublePress, content
         # if check_is_in_webview(cur_activity):
         #     StatRecorder.get_instance().add_webview_set(ck_eles_text)
-        #     return self.STATE_WebViewScreen, content
+        #     return self.STATE_Back, content
 
         screen_depth_map = RuntimeContent.get_instance().screen_depth_map
         last_screen_node = RuntimeContent.get_instance().last_screen_node
         cur_screen_depth = Config.get_instance().UndefineDepth
         # 从cache中得到当前界面的层数结果
-        res_sim, res_depth = get_max_sim_from_screen_depth_map(ck_eles_text, ScreenCompareStrategy(LCSComparator()))
+        res_sim, res_depth = get_max_sim_from_screen_depth_map(ck_eles_text)
         if res_sim >= Config.get_instance().screen_similarity_threshold:
             cur_screen_depth = res_depth
 
@@ -227,28 +190,18 @@ class FSM(threading.Thread):
                 cal_depth = CalDepthUtils.calDepth(RuntimeContent.get_instance().get_screen_map(),
                                                           RuntimeContent.get_instance().last_screen_node.ck_eles_text)
             cur_screen_depth = min(cur_screen_depth, cal_depth)
-        # 将最新最小的结果写入cache
-        if cur_screen_depth < res_depth:
-            screen_depth_map[ck_eles_text] = cur_screen_depth
 
-        if cur_screen_depth == Config.get_instance().UndefineDepth and check_pattern_state(4, [self.STATE_DoublePress, self.STATE_UndefineDepth]):
-            return self.STATE_StuckRestart, content
-        if cur_screen_depth == Config.get_instance().UndefineDepth and check_pattern_state(1, [self.STATE_UndefineDepth]) and check_screen_list_reverse(
-                2):
-            return self.STATE_DoublePress, content
+        # 将最新最小的结果写入cache
+        screen_depth_map[ck_eles_text] = cur_screen_depth
+
         if cur_screen_depth == Config.get_instance().UndefineDepth:
-            return self.STATE_UndefineDepth, content
+            LogUtils.log_info("Undefine")
+            return self.STATE_Back, content
 
         LogUtils.log_info(f"当前层数为: {cur_screen_depth}")
-        if cur_screen_depth > Config.get_instance().maxDepth and check_pattern_state(4, [self.STATE_DoublePress,
-                                                                                         self.STATE_ExceedDepth]):
-            return self.STATE_StuckRestart, content
-        if cur_screen_depth > Config.get_instance().maxDepth and check_pattern_state(1, [
-            self.STATE_ExceedDepth]) and check_screen_list_reverse(2):
-            return self.STATE_DoublePress, content
-
-        if cur_screen_depth > Config.get_instance().maxDepth:
-            return self.STATE_ExceedDepth, content
+        if cur_screen_depth > Config.get_instance().curDepth:
+            LogUtils.log_info("ExceedDepth")
+            return self.STATE_Back, content
 
         # temp_screen_node = get_screennode_from_screenmap_by_similarity(screen_map, ck_eles_text, screen_compare_strategy)
         # if temp_screen_node is not None and len(temp_screen_node.clickable_elements) == clickable_cnt:
@@ -256,8 +209,7 @@ class FSM(threading.Thread):
         # else:
         #     cur_screen_node = None
 
-        sim, most_similar_screen_node = get_max_similarity_screen_node(ck_eles_text,
-                                                                       ScreenCompareStrategy(LCSComparator()))
+        sim, most_similar_screen_node = get_max_similarity_screen_node(ck_eles_text)
         content["cur_screen_node"] = most_similar_screen_node
         content["most_similar_screen_node"] = most_similar_screen_node
         content["sim"] = sim
@@ -267,32 +219,26 @@ class FSM(threading.Thread):
             cur_screen_node = most_similar_screen_node
             RuntimeContent.get_instance().put_screen_map(ck_eles_text, cur_screen_node)
 
-            if check_is_errorscreen(ck_eles_text, ScreenCompareStrategy(LCSComparator())) and check_pattern_state(4, [
-                self.STATE_ErrorScreen, self.STATE_DoublePress]):
-                return self.STATE_StuckRestart, content
-            if check_is_errorscreen(ck_eles_text, ScreenCompareStrategy(LCSComparator())) and check_pattern_state(1, [
-                self.STATE_ErrorScreen]) and check_screen_list_reverse(2):
-                return self.STATE_DoublePress, content
-            if check_is_errorscreen(ck_eles_text, ScreenCompareStrategy(LCSComparator())):
-                return self.STATE_ErrorScreen, content
+            if check_is_errorscreen(ck_eles_text):
+                LogUtils.log_info("ErrorScreen")
+                return self.STATE_Back, content
 
-            # TODO k为6,表示出现了连续6个以上的pattern,且所有组件已经点击完毕,避免一些情况:页面有很多组件点了没反应,这个时候应该继续点而不是随机点
-            # if check_state_list_reverse(self.STATE_ExitApp, state_list, self.STATE_FinishScreen) and check_screen_list_reverse(self.STATE_OutsystemSpecialScreen, screen_list) and cur_screen_node.is_screen_clickable_finished():
-            #     return self.STATE_Restart, content
-            if cur_screen_node.is_screen_clickable_finished() and check_pattern_state(10, [self.STATE_FinishScreen,
-                                                                                           self.STATE_SpecialScreen,
-                                                                                           self.STATE_DoublePress]):
-                return self.STATE_StuckRestart, content
-            if cur_screen_node.is_screen_clickable_finished() and check_pattern_state(1, [self.STATE_SpecialScreen,
-                                                                                          self.STATE_DoublePress]) and check_screen_list_reverse(
-                3):
-                return self.STATE_SpecialScreen, content
-            if cur_screen_node.is_screen_clickable_finished() and check_pattern_state(1,
-                                                                                      [
-                                                                                          self.STATE_FinishScreen]) and check_screen_list_reverse(
-                2):
-                return self.STATE_DoublePress, content
-            # 4说明已经点完, press_back
+            # # TODO k为6,表示出现了连续6个以上的pattern,且所有组件已经点击完毕,避免一些情况:页面有很多组件点了没反应,这个时候应该继续点而不是随机点
+            # if cur_screen_node.is_screen_clickable_finished() and check_pattern_state2(10, [self.STATE_FinishScreen,
+            #                                                                                 self.STATE_SpecialScreen,
+            #                                                                                 self.STATE_DoublePress]):
+            #     return self.STATE_StuckRestart, content
+            # if cur_screen_node.is_screen_clickable_finished() and check_pattern_state(1, [self.STATE_SpecialScreen,
+            #                                                                                self.STATE_DoublePress]) and check_screen_list_reverse(
+            #     3):
+            #     return self.STATE_SpecialScreen, content
+            # if cur_screen_node.is_screen_clickable_finished() and check_pattern_state(1,
+            #                                                                            [
+            #                                                                               self.STATE_FinishScreen]) and check_screen_list_reverse(
+            #     2):
+            #     return self.STATE_DoublePress, content
+
+            # 说明已经点完, press_back
             if cur_screen_node.is_screen_clickable_finished():
                 return self.STATE_FinishScreen, content
             # 3说明未点完, 触发点一个组件
@@ -302,7 +248,7 @@ class FSM(threading.Thread):
             # 放到后面建立完成之后在添加
             # screen_map[ck_eles_text] = cur_screen_node
 
-            # TODO 添加cliakable=false 的隐私政策权的组件
+            # 添加cliakable=false 的隐私政策权的组件
             pp_text_list = get_privacy_policy_ele_list()
             if len(pp_text_list) > 0:
                 for pp_text in pp_text_list:
@@ -338,7 +284,6 @@ class FSM(threading.Thread):
                     len(StatRecorder.get_instance().get_stat_screen_set()), False) is False:
                 stat_map[len(StatRecorder.get_instance().get_stat_screen_set())] = True
                 StatRecorder.get_instance().print_result()
-                StatRecorder.get_instance().print_coverage()
 
             StatRecorder.get_instance().count_time()
             state, content = self.get_state()
@@ -346,7 +291,33 @@ class FSM(threading.Thread):
             LogUtils.log_info("\n")
             LogUtils.log_info("-" * 50)
             self.print_state(state)
+
+            # BFS动态增加层数的条件是: 当前发现pattern_state和pattern_screen, 表示无法再继续增长
+            cur_depth = Config.get_instance().curDepth
+            cal_cov_map = StatRecorder.get_instance().get_coverage(cur_depth)
+            if check_pattern_state(2, [self.STATE_HomeScreenRestart, self.STATE_FinishScreen]) and check_pattern_screen(
+                    2, 2):
+
+                Config.get_instance().curDepth += 1
+                if cal_cov_map.get(cur_depth, None) is not None:
+                    cov = cal_cov_map[cur_depth][1] / cal_cov_map[cur_depth][2]
+
+                LogUtils.log_info(f"动态增加当前层数{cur_depth}-->层数{cur_depth + 1}, 覆盖率为:{cov}")
+                # 追加保存覆盖率结果
+                FileUtils.save_coverage(cur_depth, cov)
+
+                # 重置screenNode的点击下标already_click_cnt
+                screen_depth_map = RuntimeContent.get_instance().screen_depth_map
+                screen_uid_list = screen_depth_map.keys()
+                for screen_uid in screen_uid_list:
+                    depth = screen_depth_map.get(screen_uid)
+                    if depth > cur_depth:
+                        continue
+                    screen_node = RuntimeContent.get_instance().get_screen_map().get(screen_uid)
+                    screen_node.already_clicked_cnt = 0
+
             self.do_transition(state, content)
+
             LogUtils.log_info("-" * 50)
             LogUtils.log_info("\n")
 

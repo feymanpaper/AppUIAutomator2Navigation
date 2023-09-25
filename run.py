@@ -1,9 +1,9 @@
 from FSM import *
-from Utils.JsonUtils import *
-from Utils.SavedInstanceUtils import *
+from utils.JsonUtils import *
+from utils.SavedInstanceUtils import *
 from queue import Queue
 from FridaLibs.mq_producer import Producer
-from Utils.DrawGraphUtils import *
+from utils.DrawGraphUtils import *
 
 
 def suppress_keyboard_interrupt_message():
@@ -16,9 +16,9 @@ def suppress_keyboard_interrupt_message():
             LogUtils.log_info('\nKeyboardInterrupt ...')
             LogUtils.log_info('do something after Interrupt ...')
             StatRecorder.get_instance().print_result()
-            StatRecorder.get_instance().print_coverage()
-            RuntimeContent.get_instance().clear_state_list()
-            RuntimeContent.get_instance().clear_screen_list()
+            # StatRecorder.get_instance().print_coverage()
+            # RuntimeContent.get_instance().clear_state_list()
+            # RuntimeContent.get_instance().clear_screen_list()
             JsonUtils.dump_screen_map_to_json()
             SavedInstanceUtils.dump_pickle(RuntimeContent.get_instance())
 
@@ -30,11 +30,11 @@ def suppress_keyboard_interrupt_message():
 
 
 if __name__ == "__main__":
-    # pkgName = sys.argv[1]
-    # appName = sys.argv[2]
-    # depth = sys.argv[3]
-    # with open('tmp.txt', 'w') as f:
-    #     f.write(pkgName + ";" + appName + ";" + depth)
+    pkgName = sys.argv[1]
+    appName = sys.argv[2]
+    depth = sys.argv[3]
+    with open('tmp.txt', 'w') as f:
+        f.write(pkgName + ";" + appName + ";" + depth)
 
     LogUtils.setup()
 
@@ -86,9 +86,9 @@ if __name__ == "__main__":
             # logging.exception(consumer_fsm.exception)
             # logging.exception(consumer_fsm.exc_traceback)
             StatRecorder.get_instance().print_result()
-            StatRecorder.get_instance().print_coverage()
-            RuntimeContent.get_instance().clear_state_list()
-            RuntimeContent.get_instance().clear_screen_list()
+            # StatRecorder.get_instance().print_coverage()
+            # RuntimeContent.get_instance().clear_state_list()
+            # RuntimeContent.get_instance().clear_screen_list()
             JsonUtils.dump_screen_map_to_json()
             SavedInstanceUtils.dump_pickle(RuntimeContent.get_instance())
             # 重启
@@ -103,9 +103,9 @@ if __name__ == "__main__":
             # logging.exception(consumer_fsm.exception)
             # logging.exception(consumer_fsm.exc_traceback)
             StatRecorder.get_instance().print_result()
-            StatRecorder.get_instance().print_coverage()
-            RuntimeContent.get_instance().clear_state_list()
-            RuntimeContent.get_instance().clear_screen_list()
+            # StatRecorder.get_instance().print_coverage()
+            # RuntimeContent.get_instance().clear_state_list()
+            # RuntimeContent.get_instance().clear_screen_list()
             JsonUtils.dump_screen_map_to_json()
             SavedInstanceUtils.dump_pickle(RuntimeContent.get_instance())
             break
@@ -114,21 +114,23 @@ if __name__ == "__main__":
             # logging.exception(consumer_fsm.exception)
             # logging.exception(consumer_fsm.exc_traceback)
             StatRecorder.get_instance().print_result()
-            StatRecorder.get_instance().print_coverage()
-            RuntimeContent.get_instance().clear_state_list()
-            RuntimeContent.get_instance().clear_screen_list()
+            # StatRecorder.get_instance().print_coverage()
+            # RuntimeContent.get_instance().clear_state_list()
+            # RuntimeContent.get_instance().clear_screen_list()
             JsonUtils.dump_screen_map_to_json()
             SavedInstanceUtils.dump_pickle(RuntimeContent.get_instance())
             break
         # fsm线程触发了未知错误
         else:
             LogUtils.log_info("未知情况退出")
+            LogUtils.log_info(consumer_fsm.exception)
+            LogUtils.log_info(consumer_fsm.exc_traceback)
             logging.exception(consumer_fsm.exception)
             logging.exception(consumer_fsm.exc_traceback)
             StatRecorder.get_instance().print_result()
-            StatRecorder.get_instance().print_coverage()
-            RuntimeContent.get_instance().clear_state_list()
-            RuntimeContent.get_instance().clear_screen_list()
+            # StatRecorder.get_instance().print_coverage()
+            # RuntimeContent.get_instance().clear_state_list()
+            # RuntimeContent.get_instance().clear_screen_list()
             JsonUtils.dump_screen_map_to_json()
             SavedInstanceUtils.dump_pickle(RuntimeContent.get_instance())
             break

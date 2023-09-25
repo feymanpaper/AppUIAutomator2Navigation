@@ -1,13 +1,15 @@
-from ScreenCompareStrategy import ScreenCompareStrategy
-from RuntimeContent import *
+from utils.ScreenCompareUtils import *
 from Config import *
-def check_is_errorscreen(ck_eles_text: str, screen_compare_strategy: ScreenCompareStrategy) -> bool:
+
+
+def check_is_errorscreen(ck_eles_text: str) -> bool:
     error_screen_list = RuntimeContent.get_instance().get_error_screen_list()
     for err_ck_eles_text in error_screen_list:
-        cur_similarity = screen_compare_strategy.compare_screen(ck_eles_text, err_ck_eles_text)
-        if cur_similarity >= Config.get_instance().screen_similarity_threshold:
+        sim_flag = is_text_similar(ck_eles_text, err_ck_eles_text)
+        if sim_flag:
             return True
     return False
+
 
 def check_is_error_clickable_ele(clickable_ele_uid):
     error_clickable_ele_uid_list = RuntimeContent.get_instance().get_error_clickable_ele_uid_list()
@@ -15,6 +17,7 @@ def check_is_error_clickable_ele(clickable_ele_uid):
         if err_ele_uid == clickable_ele_uid:
             return True
     return False
+
 
 def check_screen_list(screen_list):
     if screen_list is None:
@@ -38,7 +41,26 @@ def check_state_list_reverse(k, state_list, target) -> bool:
             return False
     return True
 
-def check_pattern_state(k, exception_states) -> bool:
+
+def check_pattern_state(k: int, pattern_list: list) -> bool:
+    """ 检查state_list是否有连续k个子列表(从最后一个元素开始算起)为pattern_list
+    :return: 返回state_list是否为pattern_state
+    """
+    state_list = RuntimeContent.get_instance().get_state_list()
+    if k * len(pattern_list) > len(state_list):
+        return False
+    for i in range(k):
+        is_ex = True
+        for j in range(len(pattern_list)):
+            if state_list[len(state_list) - 1 - i * len(pattern_list) - j] != pattern_list[j]:
+                is_ex = False
+                break
+        if not is_ex:
+            return False
+    return True
+
+
+def check_pattern_state2(k, exception_states) -> bool:
     state_list = RuntimeContent.get_instance().get_state_list()
     if k > len(state_list):
         return False
@@ -48,11 +70,9 @@ def check_pattern_state(k, exception_states) -> bool:
             if state_list[len(state_list) - 1 - i] == ex:
                 is_ex = True
                 break
-        if is_ex == False:
+        if not is_ex:
             return False
     return True
-
-
 
 
 def check_screen_list_reverse(k) -> bool:
@@ -61,7 +81,7 @@ def check_screen_list_reverse(k) -> bool:
         return False
     if screen_list is None or len(screen_list) == 0:
         return False
-    if len(screen_list) < k:
+    if len(screen_list) < 3 * k:
         return False
     # step为1, 2, 3
     for step in range(1, 4, 1):
@@ -69,6 +89,28 @@ def check_screen_list_reverse(k) -> bool:
         if res is True:
             return True
     return False
+
+
+def check_pattern_screen(k: int, step: int) -> bool:
+    """ 检查screen_list是否有连续k个子列表(从最后一个元素开始算起)为pattern_screen_list
+        pattern_screen_list为screen_list倒数的step个元素
+    :return: 返回screen_list是否为pattern_screen
+    """
+    screen_list = RuntimeContent.get_instance().get_screen_list()
+    if k * step > len(screen_list):
+        return False
+    pattern_screen_list = []
+    for i in range(step):
+        pattern_screen_list.append(screen_list[len(screen_list) - 1 - i])
+    for i in range(k):
+        is_ex = True
+        for j in range(len(pattern_screen_list)):
+            if screen_list[len(screen_list) - 1 - i * len(pattern_screen_list) - j] != pattern_screen_list[j]:
+                is_ex = False
+                break
+        if not is_ex:
+            return False
+    return True
 
 
 def check_screen_list_by_pattern_reverse(k, screen_list, step) -> bool:
@@ -131,12 +173,18 @@ def check_is_inputmethod_in_cur_screen():
     else:
         return False
 
+
 def check_is_first_scrren_finish():
     first_scrren_ck_eles_text = RuntimeContent.get_instance().get_first_screen_ck_eles_text()
     first_screen_node = RuntimeContent.get_instance().get_screen_map().get(first_scrren_ck_eles_text, None)
     if first_screen_node is not None and first_screen_node.is_screen_clickable_finished():
         return True
     return False
+
+
+def check_is_layer_finish(layer: int):
+    pass
+
 
 def check_is_in_home_screen(cur_screen_pkg_name):
     # 小米的home screen
@@ -146,6 +194,7 @@ def check_is_in_home_screen(cur_screen_pkg_name):
     if cur_screen_pkg_name == "com.google.android.apps.nexuslauncher":
         return True
     return False
+
 
 def check_is_permisson_screen(cur_screen_pkg_name):
     if cur_screen_pkg_name == "com.android.permissioncontroller":
@@ -158,9 +207,10 @@ def check_is_permisson_screen(cur_screen_pkg_name):
         return True
     return False
 
-def check_is_in_webview(cur_activity:str) -> bool:
+
+def check_is_in_webview(cur_activity: str) -> bool:
     d = Config.get_instance().get_device()
-    if d(className = "android.webkit.WebView").exists():
+    if d(className="android.webkit.WebView").exists():
         return True
     # if "WebView" in cur_activity or "webview" in cur_activity:
     #     return True

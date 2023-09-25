@@ -1,8 +1,7 @@
 import time
-from Utils.LogUtils import *
-from Config import *
+from utils.LogUtils import *
 from RuntimeContent import *
-from DefException import TimeLimitException
+from constant.DefException import TimeLimitException
 class StatRecorder(object):
     def __init__(self):
         self.total_eles_cnt = 0
@@ -68,7 +67,7 @@ class StatRecorder(object):
                 res = click_cnt/total_cnt
                 print(f"{screen_uid} 的覆盖率为 {res}")
 
-    def print_coverage(self):
+    def get_coverage(self, cur_depth:int):
         LogUtils.log_info("@" * 100)
         LogUtils.log_info("@" * 100)
         screen_depth_map = RuntimeContent.get_instance().screen_depth_map
@@ -77,7 +76,7 @@ class StatRecorder(object):
         cal_cov_map = {}
         for screen_uid in screen_uid_list:
             depth = screen_depth_map.get(screen_uid)
-            if depth > Config.get_instance().maxDepth:
+            if depth != cur_depth:
                 continue
             screen_node = RuntimeContent.get_instance().get_screen_map().get(screen_uid)
             if screen_node is not None:
@@ -102,6 +101,7 @@ class StatRecorder(object):
         depth_list = [depth for depth, cov_pair in sorted(cal_cov_map.items(), key=lambda x:x[0])]
         for depth in depth_list:
             LogUtils.log_info(f"层数{depth} 组件为个数 {cal_cov_map[depth][0]} {cal_cov_map[depth][1]} {cal_cov_map[depth][2]}覆盖率为 {cal_cov_map[depth][1]/cal_cov_map[depth][2]}")
+        return cal_cov_map
 
 
     def to_string_result(self):

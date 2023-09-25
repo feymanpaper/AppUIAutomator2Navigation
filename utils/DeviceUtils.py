@@ -1,6 +1,7 @@
 import xml.etree.ElementTree as ET
 import re
 from RuntimeContent import *
+from RuntimeContent import RuntimeContent
 from UITreeNode import *
 from Config import *
 
@@ -14,6 +15,33 @@ system_view = [
     "com.google.android.inputmethod.latin",
     "com.android.chrome"
 ]
+
+def get_screen_content():
+    cur_screen_pkg_name = get_screen_package()
+    cur_activity = get_screen_activity()
+    screen_text = get_screen_text()
+    cur_ck_eles = get_clickable_elements()
+
+    pre_len = len(cur_ck_eles)
+    cur_ck_eles = remove_dup(cur_ck_eles)
+    cur_ck_eles = merged_clickable_elements(cur_ck_eles)
+    after_len = len(cur_ck_eles)
+    ck_eles_text = to_string_ck_els(cur_ck_eles)
+
+    # if RuntimeContent.get_instance().get_first_screen_ck_eles_text() is None:
+    #     RuntimeContent.get_instance().set_first_screen_ck_ele_text(ck_eles_text)
+    last_screen_node = RuntimeContent.get_instance().get_last_screen_node()
+    if last_screen_node is not None and last_screen_node.ck_eles_text == "root":
+        RuntimeContent.get_instance().set_first_screen_ck_ele_text(ck_eles_text)
+
+    content = {}
+    content["cur_screen_pkg_name"] = cur_screen_pkg_name
+    content["cur_activity"] = cur_activity
+    content["ck_eles_text"] = ck_eles_text
+    content["screen_text"] = screen_text
+    content["cur_ck_eles"] = cur_ck_eles
+    content["merged_diff"] = pre_len - after_len
+    return content
 
 
 def get_ck_eles_hierarchy() -> list:
@@ -533,3 +561,18 @@ def get_privacy_policy_ele_list():
 #     loc_x, loc_y = get_location(ele)
 #     uid = activity_name + "-" +pkg_name + "-" + class_name + "-" +res_id + "-" + "(" + str(loc_x) + "," + str(loc_y) + ")" + "-" + text
 #     return uid
+def get_cur_screen_node_from_context(content):
+    cur_screen_node = content["cur_screen_node"]
+    return cur_screen_node
+
+
+def get_screen_text_from_context(content):
+    return content["screen_text"]
+
+
+def get_screen_info_from_context(content):
+    cur_screen_pkg_name = content["cur_screen_pkg_name"]
+    cur_activity = content["cur_activity"]
+    ck_eles_text = content["ck_eles_text"]
+
+    return cur_screen_pkg_name, cur_activity, ck_eles_text

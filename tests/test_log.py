@@ -1,4 +1,4 @@
-from Utils.LogUtils import *
+from utils.LogUtils import *
 
 LogUtils.setup()
 LogUtils.log_info("aaa")
