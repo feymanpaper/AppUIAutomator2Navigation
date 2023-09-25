@@ -15,7 +15,7 @@ class Producer(threading.Thread):
 
     def is_http(self, test_str):
         # 使用re模块进行匹配
-        pattern = r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|[#]|(?:%[0-9a-fA-F][0-9a-fA-F]|[#]))+'
+        pattern = r'http[s]?(?:://|%3A%2F%2F)(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|[#]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
         matches = re.findall(pattern, test_str)
         if not matches:
             return None
