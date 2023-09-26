@@ -15,12 +15,21 @@ class Producer(threading.Thread):
 
     def is_http(self, test_str):
         # 使用re模块进行匹配
-        pattern = r'http[s]?(?:://|%3A%2F%2F)(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|[#]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
+        pattern = r'http[s]?://(?:[a-zA-Z0-9_=.:\/?&#\-@+\*]|(?:%5F|%3D|%2E|%3A|%2F|%3F|%26|%23|%2D|%40|%2B|%2A|%3B))+|http[s]?%3A%2F%2F(?:[a-zA-Z0-9_=.:\/?&#$\-@+]|(?:%5F|%3D|%2E|%3A|%2F|%3F|%26|%23|%2D|%40|%2B|%2A|%3B))+'
         matches = re.findall(pattern, test_str)
         if not matches:
             return None
+
+        # 去掉re返回的多余分组和作为正则表达式的url
+        url_list = []
+        for url in matches:
+            if url.startswith('http') and not url.endswith('.') and not url.endswith('.*'):
+                url_list.append(url)
+
         # 对url编码进行解码
-        decoded_urls = [unquote(match) for match in matches]
+        decoded_urls = [unquote(url).rstrip('\\') for url in url_list]
+        print(decoded_urls)
+
         # 返回url列表
         return decoded_urls
 
