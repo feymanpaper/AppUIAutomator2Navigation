@@ -129,12 +129,12 @@ class FSM(threading.Thread):
         RuntimeContent.get_instance().append_screen_list(ck_eles_text)
 
         # 判断当前界面是否是从上一个"隐私权政策文本"点击过来的
-        temp_list = []
+        find_url_set = set()
         while 1:
             try:
                 url_data = self.data.get(1, 1)
                 for url in url_data:
-                    temp_list.append(url)
+                    find_url_set.add(url)
                 print()
                 print("*" * 50 + f"Consumer{self.name}" + "*" * 50)
                 print(url_data)
@@ -144,11 +144,11 @@ class FSM(threading.Thread):
                 break
         last_clickable_ele_uid = RuntimeContent.get_instance().last_clickable_ele_uid
         # 判断是否点击了隐私政策
-        if len(temp_list) > 0 and last_clickable_ele_uid is not None:
-            pp_text_list = Config.get_instance().privacy_policy_text_list
-            for pp_text in pp_text_list:
+        if len(find_url_set) > 0 and last_clickable_ele_uid is not None:
+            pp_text_dict = Config.get_instance().privacy_policy_text_list
+            for pp_text in pp_text_dict:
                 if pp_text in last_clickable_ele_uid:
-                    for pri_url in temp_list:
+                    for pri_url in find_url_set:
                         PrivacyUrlUtils.save_privacy(pri_url)
                         print(f"找到了{pp_text}的url:{pri_url}")
 
@@ -250,10 +250,10 @@ class FSM(threading.Thread):
             # screen_map[ck_eles_text] = cur_screen_node
 
             # 添加cliakable=false 的隐私政策权的组件
-            pp_text_list = get_privacy_policy_ele_list()
-            if len(pp_text_list) > 0:
-                for pp_text in pp_text_list:
-                    loc_list = cal_privacy_ele_loc(screenshot_path, pp_text)
+            pp_text_dict = get_privacy_policy_ele_dict()
+            if len(pp_text_dict) > 0:
+                for pp_text, pp_text_cnt in pp_text_dict.items():
+                    loc_list = cal_privacy_ele_loc(screenshot_path, pp_text, pp_text_cnt)
                     for loc_tuple in loc_list:
                         if loc_tuple is not None:
                             pp_x, pp_y, w, h = loc_tuple[0], loc_tuple[1], loc_tuple[2], loc_tuple[3]

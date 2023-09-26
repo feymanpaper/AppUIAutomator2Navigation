@@ -4,7 +4,7 @@ from PIL import ImageEnhance
 from collections import OrderedDict
 
 
-def cal_privacy_ele_loc(img_path: str, privacy_text: str) -> tuple():
+def cal_privacy_ele_loc(img_path: str, privacy_text: str, pp_text_cnt:int) -> tuple():
     """
     :param img_path: 截图的路径
     :return: "隐私权政策"文本的坐标
@@ -24,8 +24,8 @@ def cal_privacy_ele_loc(img_path: str, privacy_text: str) -> tuple():
     # img = enhancer.enhance(20)
 
     # config = 'tessedit_char_whitelist=隐私权政策'
-    text = pytesseract.image_to_string(img, lang='chi_sim')
-    print(text)
+    # text = pytesseract.image_to_string(img, lang='chi_sim')
+    # print(text)
 
     data = pytesseract.image_to_data(img, output_type='dict', lang='chi_sim')
     if len(data) < len(privacy_text):
@@ -34,7 +34,7 @@ def cal_privacy_ele_loc(img_path: str, privacy_text: str) -> tuple():
     if loc_list is None or len(loc_list) == 0:
         return None
     group = __get_group_by_row(loc_list)
-    sel_group = __select_group(group, privacy_text)
+    sel_group = __select_group(group, privacy_text, pp_text_cnt)
 
     sel_loc_list = __get_group_loc_list(sel_group)
     return sel_loc_list
@@ -65,18 +65,31 @@ def __get_group_by_row(loc_list):
     return group
 
 
-def __select_group(group, privacy_text):
+def __select_group(group, privacy_text, pp_text_cnt):
     """ 将同一行内或者相邻行内大于阈值个数的隐私关键字放在一起
+    :param pp_text_cnt:
     """
     res_group = []
     match_threshold = len(privacy_text) - 1
-    for i in range(len(group)):
+    i = 0
+    temp_group = []
+    while i < len(group):
+    # for i in range(len(group)):
         # 同一行内
         if match_threshold <= len(group[i]) <= len(privacy_text):
             res_group.append(group[i])
         # 相邻行内
         elif i != len(group) - 1 and match_threshold <= len(group[i]) + len(group[i + 1]) <= len(privacy_text):
             res_group.append(group[i] + group[i + 1])
+            i += 1
+        else:
+            temp_group.append(group[i])
+        i += 1
+
+    # 如果没有填充到指定的pp_text_cnt个数, 就都把剩下的关键词都加上去
+    if len(res_group) < pp_text_cnt:
+        for temp_item in temp_group:
+            res_group.append(temp_item)
     return res_group
 
 

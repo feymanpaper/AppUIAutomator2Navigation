@@ -520,10 +520,13 @@ def get_screen_text():
                 text += "," + temp_text
     return text
 
-def get_privacy_policy_ele_list():
+def get_privacy_policy_ele_dict():
+    """
+    :return: 隐私政策文本关键词出现的个数dict, dict{key:关键词, val:出现的个数}
+    """
     root = get_dump_hierarchy()
     pp_text_list = Config.get_instance().privacy_policy_text_list
-    res_pp_list = set()
+    res_pp_dict = dict()
     for element in root.findall('.//node'):
         if element.get("package") in system_view:
             continue
@@ -535,8 +538,12 @@ def get_privacy_policy_ele_list():
             continue
         for pp_text in pp_text_list:
             if pp_text in temp_text:
-                res_pp_list.add(pp_text)
-    return list(res_pp_list)
+                if not res_pp_dict.get(pp_text, False):
+                    res_pp_dict[pp_text] = 1
+                else:
+                    res_pp_dict[pp_text] += 1
+
+    return res_pp_dict
 
 # # 对screen_info进行sha256签名,生成消息摘要
 # def get_signature(screen_info):
