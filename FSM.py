@@ -297,14 +297,27 @@ class FSM(threading.Thread):
             # BFS动态增加层数的条件是: 当前发现pattern_state和pattern_screen, 表示无法再继续增长
             cur_depth = Config.get_instance().curDepth
             cal_cov_map = StatRecorder.get_instance().get_coverage(cur_depth)
-            if check_pattern_state(2, [self.STATE_HomeScreenRestart, self.STATE_FinishScreen]) and check_pattern_screen(
-                    2, 2):
+            StatRecorder.get_instance().print_coverage(cal_cov_map)
+            dq = RuntimeContent.get_instance().cov_mono_que
+            if cal_cov_map.get(cur_depth, None) is not None:
+                cov = cal_cov_map[cur_depth][1] / cal_cov_map[cur_depth][2]
+                if state == self.STATE_ExistScreen or state == self.STATE_FinishScreen or state == self.STATE_NewScreen:
+                    while dq and cov != dq[-1][0]:
+                        dq.pop()
+                    dq.append((cov, state))
+            else:
+                if state == self.STATE_ExistScreen or state == self.STATE_FinishScreen or state == self.STATE_NewScreen:
+                    dq.append((-1, state))
 
+
+            if len(RuntimeContent.get_instance().cov_mono_que) >= 2 and dq[-1][1] == self.STATE_FinishScreen and dq[-2][1] == self.STATE_FinishScreen:
+            # if check_pattern_state(2, [self.STATE_HomeScreenRestart, self.STATE_FinishScreen]) and check_pattern_screen(
+            #         2, 2):
+                RuntimeContent.get_instance().cov_mono_que.clear()
+
+                LogUtils.log_info(f"动态增加当前层数{cur_depth}-->层数{cur_depth + 1}")
                 Config.get_instance().curDepth += 1
-                if cal_cov_map.get(cur_depth, None) is not None:
-                    cov = cal_cov_map[cur_depth][1] / cal_cov_map[cur_depth][2]
 
-                LogUtils.log_info(f"动态增加当前层数{cur_depth}-->层数{cur_depth + 1}, 覆盖率为:{cov}")
                 # 追加保存覆盖率结果
                 FileUtils.save_coverage(cur_depth, cov)
 

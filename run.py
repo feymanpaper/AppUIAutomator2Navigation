@@ -22,6 +22,14 @@ def suppress_keyboard_interrupt_message():
             JsonUtils.dump_screen_map_to_json()
             SavedInstanceUtils.dump_pickle(RuntimeContent.get_instance())
 
+            # 退出时写入覆盖率
+            cur_depth = Config.get_instance().curDepth
+            cal_cov_map = StatRecorder.get_instance().get_coverage(cur_depth)
+            StatRecorder.get_instance().print_coverage(cal_cov_map)
+            if cal_cov_map.get(cur_depth, None) is not None:
+                cov = cal_cov_map[cur_depth][1] / cal_cov_map[cur_depth][2]
+            FileUtils.save_coverage(cur_depth, cov)
+
             # 绘制App界面跳转图
             if Config.get_instance().isDrawAppCallGraph:
                 DrawGraphUtils.draw_callgraph(Config.get_instance().get_CollectDataName())
@@ -30,11 +38,11 @@ def suppress_keyboard_interrupt_message():
 
 
 if __name__ == "__main__":
-    pkgName = sys.argv[1]
-    appName = sys.argv[2]
-    depth = sys.argv[3]
-    with open('tmp.txt', 'w') as f:
-        f.write(pkgName + ";" + appName + ";" + depth)
+    # pkgName = sys.argv[1]
+    # appName = sys.argv[2]
+    # depth = sys.argv[3]
+    # with open('tmp.txt', 'w') as f:
+    #     f.write(pkgName + ";" + appName + ";" + depth)
 
     LogUtils.setup()
 
@@ -86,10 +94,6 @@ if __name__ == "__main__":
             # logging.exception(consumer_fsm.exception)
             # logging.exception(consumer_fsm.exc_traceback)
             StatRecorder.get_instance().print_result()
-            # StatRecorder.get_instance().print_coverage()
-            # RuntimeContent.get_instance().clear_state_list()
-            # RuntimeContent.get_instance().clear_screen_list()
-            JsonUtils.dump_screen_map_to_json()
             SavedInstanceUtils.dump_pickle(RuntimeContent.get_instance())
             # 重启
             d.app_stop(Config.get_instance().get_target_pkg_name())
@@ -100,25 +104,11 @@ if __name__ == "__main__":
         # fsm线程触发了TerminateException
         elif consumer_fsm.exit_code == 2:
             LogUtils.log_info("程序正常结束")
-            # logging.exception(consumer_fsm.exception)
-            # logging.exception(consumer_fsm.exc_traceback)
-            StatRecorder.get_instance().print_result()
-            # StatRecorder.get_instance().print_coverage()
-            # RuntimeContent.get_instance().clear_state_list()
-            # RuntimeContent.get_instance().clear_screen_list()
-            JsonUtils.dump_screen_map_to_json()
-            SavedInstanceUtils.dump_pickle(RuntimeContent.get_instance())
             break
         elif consumer_fsm.exit_code == 3:
             LogUtils.log_info("程序超时退出")
             # logging.exception(consumer_fsm.exception)
             # logging.exception(consumer_fsm.exc_traceback)
-            StatRecorder.get_instance().print_result()
-            # StatRecorder.get_instance().print_coverage()
-            # RuntimeContent.get_instance().clear_state_list()
-            # RuntimeContent.get_instance().clear_screen_list()
-            JsonUtils.dump_screen_map_to_json()
-            SavedInstanceUtils.dump_pickle(RuntimeContent.get_instance())
             break
         # fsm线程触发了未知错误
         else:
@@ -126,16 +116,24 @@ if __name__ == "__main__":
             LogUtils.log_info(consumer_fsm.exception)
             LogUtils.log_info(consumer_fsm.exc_traceback)
             logging.exception(consumer_fsm.exception)
-            logging.exception(consumer_fsm.exc_traceback)
-            StatRecorder.get_instance().print_result()
-            # StatRecorder.get_instance().print_coverage()
-            # RuntimeContent.get_instance().clear_state_list()
-            # RuntimeContent.get_instance().clear_screen_list()
-            JsonUtils.dump_screen_map_to_json()
-            SavedInstanceUtils.dump_pickle(RuntimeContent.get_instance())
             break
 
     # 程序收尾
+    StatRecorder.get_instance().print_result()
+    # StatRecorder.get_instance().print_coverage()
+    # RuntimeContent.get_instance().clear_state_list()
+    # RuntimeContent.get_instance().clear_screen_list()
+    JsonUtils.dump_screen_map_to_json()
+    SavedInstanceUtils.dump_pickle(RuntimeContent.get_instance())
+
+    # 退出时写入覆盖率
+    cur_depth = Config.get_instance().curDepth
+    cal_cov_map = StatRecorder.get_instance().get_coverage(cur_depth)
+    StatRecorder.get_instance().print_coverage(cal_cov_map)
+    if cal_cov_map.get(cur_depth, None) is not None:
+        cov = cal_cov_map[cur_depth][1] / cal_cov_map[cur_depth][2]
+    FileUtils.save_coverage(cur_depth, cov)
+
 
     # 绘制App界面跳转图
     if Config.get_instance().isDrawAppCallGraph:
