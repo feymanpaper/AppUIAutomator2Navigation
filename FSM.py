@@ -129,12 +129,12 @@ class FSM(threading.Thread):
         RuntimeContent.get_instance().append_screen_list(ck_eles_text)
 
         # 判断当前界面是否是从上一个"隐私权政策文本"点击过来的
-        temp_list = []
+        find_url_set = set()
         while 1:
             try:
                 url_data = self.data.get(1, 1)
                 for url in url_data:
-                    temp_list.append(url)
+                    find_url_set.add(url)
                 print()
                 print("*" * 50 + f"Consumer{self.name}" + "*" * 50)
                 print(url_data)
@@ -144,11 +144,11 @@ class FSM(threading.Thread):
                 break
         last_clickable_ele_uid = RuntimeContent.get_instance().last_clickable_ele_uid
         # 判断是否点击了隐私政策
-        if len(temp_list) > 0 and last_clickable_ele_uid is not None:
+        if len(find_url_set) > 0 and last_clickable_ele_uid is not None:
             pp_text_list = Config.get_instance().privacy_policy_text_list
             for pp_text in pp_text_list:
                 if pp_text in last_clickable_ele_uid:
-                    for pri_url in temp_list:
+                    for pri_url in find_url_set:
                         PrivacyUrlUtils.save_privacy(pri_url)
                         print(f"找到了{pp_text}的url:{pri_url}")
 
