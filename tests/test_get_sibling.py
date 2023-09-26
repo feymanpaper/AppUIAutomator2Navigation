@@ -1,5 +1,4 @@
-from uiautomator2 import Device
-from DeviceHelper import *
+from utils.DeviceUtils import *
 
 all_text = []
 d = Device()
