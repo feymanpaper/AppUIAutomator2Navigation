@@ -35,11 +35,11 @@ class Producer(threading.Thread):
                 return
             res = self.is_http(payload)
             if res:
-                print()
-                print("*" * 50 + f"Producer{self.name}" + "*" * 50)
-                print(res)
-                print("*" * 50 + f"Producer{self.name}" + "*" * 50)
-                print()
+                # print()
+                # print("*" * 50 + f"Producer{self.name}" + "*" * 50)
+                # print(res)
+                # print("*" * 50 + f"Producer{self.name}" + "*" * 50)
+                # print()
                 self.data.put(res)
             # print("%s: %s is producing %d to the queue!" % (time.ctime(), self.name, message))
 
