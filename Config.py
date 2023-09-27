@@ -49,6 +49,7 @@ from datetime import datetime
 
 class Config(object):
     def __init__(self):
+
         with open('tmp.txt','r',encoding='utf-8') as f:
             pkgName, appName, depth = f.readline().split(";")
         print(pkgName,appName,depth)
@@ -71,6 +72,7 @@ class Config(object):
         # 到此处结束===========================================
         # 下面的配置不要修改
 
+        self.curDepth = 1
         self.CLICK_MAX_CNT = 4
         self.device = None
         self.screen_similarity_threshold = 0.9  # 配置界面与界面之间相似度多少表示同一界面, 默认90%/0.9

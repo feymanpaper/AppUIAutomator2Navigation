@@ -1,4 +1,5 @@
 from ScreenNode import *
+from collections import deque
 class RuntimeContent(object):
     def __init__(self):
         # 存储运行时遍历过的screen序列
@@ -14,7 +15,7 @@ class RuntimeContent(object):
         # 全局记录每个组件的uid {key:cur_clickable_ele_uid, val:clickable_ele}
         self.ele_uid_map = {}
 
-
+        self.cov_mono_que = deque()
         self.screen_depth_map = {}
 
         self.first_screen_ck_eles_text = None
