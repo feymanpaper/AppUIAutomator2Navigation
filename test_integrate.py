@@ -15,6 +15,10 @@ def get_OS_type():
         os_type = 'linux'
     return os_type
 
+def clear_app_cache(app_package_name):
+    print('正在清除应用包名为{}的数据。。。'.format(app_package_name))
+    execute_cmd_with_timeout('adb shell pm clear {}'.format(app_package_name))
+    print('清除完毕。')
 
 
 def execute_cmd_with_timeout(cmd, timeout=600):
@@ -33,21 +37,23 @@ if __name__ == '__main__':
                            'get_pp_from_app_store': 'true', 'get_pp_from_dynamically_running_app': 'false',
                            'dynamic_ui_depth': '3', 'dynamic_pp_parsing': 'true'}
 
-    with open('apk_pkgName.txt') as f:
+    with open('apk_pkgName.txt','r',encoding='utf-8') as f:
         content = f.readlines()
     pkgName_appName_list = [item.rstrip('\n') for item in content]
     for pkgName_appName in pkgName_appName_list:
-        if pkgName_appName.startswith('# '):
+        if pkgName_appName.startswith('#'):
             continue
         try:
             pkgName, appName = pkgName_appName.split(' | ')
             appName = appName.strip('\'')
+            clear_app_cache(pkgName)
             if get_OS_type() in ['linux', 'mac']:
                 execute_cmd_with_timeout('python3 run.py {} {} {}'.format(pkgName, appName, config_settings['dynamic_ui_depth']))
-                # execute_cmd_with_timeout('./run.sh {} {} {}'.format(pkgName, appName, config_settings['dynamic_ui_depth']))
             elif get_OS_type() == 'win':
-                execute_cmd_with_timeout('python run.py {} {} {}'.format(pkgName, appName, config_settings['dynamic_ui_depth']))
-                # execute_cmd_with_timeout(
-                #     'PowerShell.exe ./run.ps1 {} {} {}'.format(pkgName, appName, config_settings['dynamic_ui_depth']))
-        except Exception:
+                execute_cmd_with_timeout(
+                    'python run.py {} {} {}'.format(pkgName, appName, config_settings['dynamic_ui_depth']))
+
+        except Exception as e:
+            print(e)
             print('error occurred, continue...')
+
