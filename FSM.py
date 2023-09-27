@@ -310,7 +310,7 @@ class FSM(threading.Thread):
                     dq.append((-1, state))
 
 
-            if len(RuntimeContent.get_instance().cov_mono_que) >= 2 and dq[-1][1] == self.STATE_FinishScreen and dq[-2][1] == self.STATE_FinishScreen:
+            if len(RuntimeContent.get_instance().cov_mono_que) >= 4 and dq[-1][1] == self.STATE_FinishScreen and dq[-2][1] == self.STATE_FinishScreen and dq[-3][1] == self.STATE_FinishScreen and dq[-4][1] == self.STATE_FinishScreen:
             # if check_pattern_state(2, [self.STATE_HomeScreenRestart, self.STATE_FinishScreen]) and check_pattern_screen(
             #         2, 2):
                 RuntimeContent.get_instance().cov_mono_que.clear()
