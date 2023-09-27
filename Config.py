@@ -49,31 +49,39 @@ from datetime import datetime
 
 class Config(object):
     def __init__(self):
-        with open('tmp.txt', encoding="utf-8") as f:
-            pkgName, appName, depth = f.readline().split(";")
-        print(pkgName,appName,depth)
-        # 其余可修改的配置，从此处开始===========================
-        self.target_pkg_name = pkgName  # 应用包名
-        self.app_name = appName  # 应用名
-        # self.target_pkg_name = "com.taobao.aliAuction"  # 应用包名
-        # self.app_name = "阿里拍卖"  # 应用名
 
-        self.test_time = 600  # 配置测试的时间,以秒为单位
-        self.sleep_time_sec = 1  # 配置点击之后睡眠的时间
-        self.maxDepth = int(depth)  # 配置点击的最大深度
+        # with open('tmp.txt','r',encoding='utf-8') as f:
+        #     pkgName, appName, depth = f.readline().split(";")
+        # print(pkgName,appName,depth)
+        #
+        # # 其余可修改的配置，从此处开始===========================
+        # self.target_pkg_name = pkgName  # 应用包名
+        # self.app_name = appName  # 应用名
+        # self.maxDepth = int(depth)  # 配置点击的最大深度
+
+        self.target_pkg_name = "com.taobao.trip"  # 应用包名
+        self.app_name = "飞猪旅行"  # 应用名
+        self.maxDepth = 3  # 配置点击的最大深度
+
+        self.curDepth = 1
+        self.test_time = 1800  # 配置测试的时间,以秒为单位
+        self.sleep_time_sec = 0.2  # 配置点击之后睡眠的时间
+
         self.isDrawAppCallGraph = False  # 配置是否绘制App界面跳转图
         # 到此处结束===========================================
         # 下面的配置不要修改
 
+        self.curDepth = 1
         self.CLICK_MAX_CNT = 4
         self.device = None
         self.screen_similarity_threshold = 0.9  # 配置界面与界面之间相似度多少表示同一界面, 默认90%/0.9
-
+        self.UndefineDepth = 100000
         self.root_path = "collectData"
         self.start_time = datetime.now().strftime("%Y%m%d-%H%M%S")
 
-        self.privacy_policy_text_list = ["隐私权政策", "隐私政策", "隐私保护政策"]
-        self.use_pickle_file_name = "./SavedInstance/com.eg.android.AlipayGphone_restart0activity28&screen78&time3601.86s.pickle"
+        self.privacy_policy_text_list = ["隐私权政策", "隐私政策", "隐私保护政策", "隐私保护指引"]
+
+        self.use_pickle_file_name = "./collectData/com.alibaba.android.rimet-20230923-180714/SavedInstance/com.alibaba.android.rimet_restart144activity8&screen19&time1810.84s.pickle"
         self.is_saved_start = False
 
     def __new__(cls, *args, **kwargs):

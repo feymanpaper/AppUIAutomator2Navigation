@@ -13,11 +13,11 @@ class Consumer(threading.Thread):
             time.sleep(5)
             try:
                 data = self.data.get(1, 2)
-                print()
-                print("*" * 50 + f"Consumer{self.name}" + "*" * 50)
-                print(data)
-                print("*" * 50 + f"Consumer{self.name}" + "*" * 50)
-                print()
+                # print()
+                # print("*" * 50 + f"Consumer{self.name}" + "*" * 50)
+                # print(data)
+                # print("*" * 50 + f"Consumer{self.name}" + "*" * 50)
+                # print()
             except:
                 flag = True
             if flag == True:

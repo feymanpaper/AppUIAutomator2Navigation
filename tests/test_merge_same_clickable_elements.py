@@ -1,6 +1,5 @@
 import sys 
 sys.path.append("..")
-from core_functions import *
 from uiautomator2 import Device
 
 # k = 6

@@ -1,4 +1,4 @@
-from Utils.SavedInstanceUtils import *
+from utils.SavedInstanceUtils import *
 from RuntimeContent import *
 Config.get_instance().target_pkg_name = "com.alibaba.android.rimit"
 StatRecorder.get_instance().start_time = time.time()

@@ -1,7 +1,7 @@
 import time
-from Utils.LogUtils import *
-from Config import *
+from utils.LogUtils import *
 from RuntimeContent import *
+from constant.DefException import TimeLimitException
 class StatRecorder(object):
     def __init__(self):
         self.total_eles_cnt = 0
@@ -41,11 +41,9 @@ class StatRecorder(object):
     def count_time(self):
         self.end_time = time.time()
         if self.end_time - self.start_time > Config.get_instance().test_time:
-            raise Exception
+            raise TimeLimitException("超时")
 
     def print_result(self):
-        LogUtils.log_info("@" * 100)
-        LogUtils.log_info("@" * 100)
         LogUtils.log_info(f"总共点击的activity个数 {len(self.stat_activity_set)}")
         LogUtils.log_info(f"总共点击的Screen个数: {len(self.stat_screen_set)}")
         LogUtils.log_info(f"总共点击的组件个数: {self.total_eles_cnt}")
@@ -54,8 +52,6 @@ class StatRecorder(object):
         LogUtils.log_info(f"时间为 {self.end_time - self.start_time}")
 
     def printAcoverage(self):
-        LogUtils.log_info("@" * 100)
-        LogUtils.log_info("@" * 100)
         screen_map = RuntimeContent.get_instance().get_screen_map()
         for screen_uid, screen_node in screen_map.items():
             clickable_eles = screen_node.get_diff_or_clickable_eles()
@@ -67,25 +63,43 @@ class StatRecorder(object):
                 res = click_cnt/total_cnt
                 print(f"{screen_uid} 的覆盖率为 {res}")
 
-    def print_coverage(self):
-        LogUtils.log_info("@" * 100)
-        LogUtils.log_info("@" * 100)
+    def get_coverage(self, cur_depth:int):
         screen_depth_map = RuntimeContent.get_instance().screen_depth_map
-        screen_uid_list = [screen_uid for screen_uid, depth in sorted(screen_depth_map.items(), key=lambda x: x[1])]
+        # screen_uid_list = [screen_uid for screen_uid, depth in sorted(screen_depth_map.items(), key=lambda x: x[1])]
+        screen_uid_list = screen_depth_map.keys()
+        cal_cov_map = {}
         for screen_uid in screen_uid_list:
             depth = screen_depth_map.get(screen_uid)
-            if depth > Config.get_instance().maxDepth:
+            if depth != cur_depth:
                 continue
             screen_node = RuntimeContent.get_instance().get_screen_map().get(screen_uid)
             if screen_node is not None:
                 clickable_eles = screen_node.get_diff_or_clickable_eles()
                 if clickable_eles is None or len(clickable_eles) == 0:
-                    print(f"深度{depth}: {screen_uid} 没有可点击组件")
+                    # print(f"深度{depth}: {screen_uid} 没有可点击组件")
+                    continue
                 else:
+                    if cal_cov_map.get(depth, None) is None:
+                        cal_cov_map[depth] = [0, 0, 0]
                     total_cnt = len(screen_node.get_diff_or_clickable_eles())
                     click_cnt = screen_node.already_clicked_cnt
-                    res = click_cnt/total_cnt
-                    print(f"深度{depth}: {screen_uid} 的覆盖率为 {res}")
+
+                    candidate_click_cnt = 0
+                    for ele in screen_node.get_diff_or_clickable_eles():
+                        if ele in RuntimeContent.get_instance().already_click_eles:
+                            candidate_click_cnt +=1
+
+                    cal_cov_map[depth][0] += click_cnt
+                    cal_cov_map[depth][1] += candidate_click_cnt
+                    cal_cov_map[depth][2] += total_cnt
+        return cal_cov_map
+
+    def print_coverage(self, cal_cov_map):
+        depth_list = [depth for depth, cov_pair in sorted(cal_cov_map.items(), key=lambda x:x[0])]
+        for depth in depth_list:
+            LogUtils.log_info(f"层数{depth} 组件为个数 {cal_cov_map[depth][0]} {cal_cov_map[depth][1]} {cal_cov_map[depth][2]}覆盖率为 {cal_cov_map[depth][1]/cal_cov_map[depth][2]}")
+        return cal_cov_map
+
 
     def to_string_result(self):
         assert (self.end_time != -1)

@@ -6,8 +6,9 @@ def on_message(message, data):
     print(message)
 
 
-# device = frida.get_usb_device()
-device = frida.get_remote_device()
+device = frida.get_usb_device()
+# device = frida.get_remote_device()
+
 # 启动`demo02`这个app
 print(device)
 pid = device.attach("淘宝")

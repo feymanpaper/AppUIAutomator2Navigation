@@ -1,5 +1,7 @@
 import json
 from collections import deque
+from utils.ScreenCompareUtils import *
+
 
 class CalDepthUtils:
     @classmethod
@@ -7,7 +9,7 @@ class CalDepthUtils:
         try:
             depth = cls.bfs(screen_map, "root", target_uid)
             if depth is None:
-                depth = -1
+                depth = Config.get_instance().UndefineDepth
             else:
                 depth = depth + 1
         except Exception as e:
@@ -40,7 +42,9 @@ class CalDepthUtils:
             visited.add(uid)
 
             # 输出这个节点的层数
-            if uid == target_uid:
+            sim_flag = is_text_similar(uid, target_uid)
+            # if uid == target_uid:
+            if sim_flag:
                 return level
 
             # 遍历这个节点的所有邻居，并将它们加入队列中

@@ -1,13 +1,11 @@
-from RuntimeContent import *
-import time
-from Config import *
-from DefException import *
-from core_functions import *
-from DeviceHelper import *
+from constant.DefException import *
+from utils.core_functions import *
 from StatRecorder import *
 import random
 from StateChecker import *
-from Utils.LogUtils import *
+from utils.DeviceUtils import *
+from utils.LogUtils import *
+from utils.ScreenCompareUtils import *
 
 class StateHandler(object):
     @classmethod
@@ -28,15 +26,17 @@ class StateHandler(object):
             #     continue
             cur_clickable_ele_dict = RuntimeContent.get_instance().get_ele_uid_map_by_uid(cur_clickable_ele_uid)
 
-            loc_x, loc_y = get_location(cur_clickable_ele_dict)
-            if loc_x >= 60 and loc_x <= 70 and loc_y == 162:
-                cur_screen_node.already_clicked_cnt += 1
-                clickable_ele_idx += 1
-                continue
-            if loc_x >= 998 and loc_x <= 1010 and loc_y >= 155 and loc_y <= 165:
-                cur_screen_node.already_clicked_cnt += 1
-                clickable_ele_idx += 1
-                continue
+            # loc_x, loc_y = get_location(cur_clickable_ele_dict)
+            # if loc_x >= 60 and loc_x <= 70 and loc_y == 162:
+            #     cur_screen_node.already_clicked_cnt += 1
+            #     RuntimeContent.get_instance().already_click_eles.add(cur_clickable_ele_uid)
+            #     clickable_ele_idx += 1
+            #     continue
+            # if loc_x >= 998 and loc_x <= 1010 and loc_y >= 155 and loc_y <= 165:
+            #     cur_screen_node.already_clicked_cnt += 1
+            #     RuntimeContent.get_instance().already_click_eles.add(cur_clickable_ele_uid)
+            #     clickable_ele_idx += 1
+            #     continue
 
             # for clickable_ele_idx, cur_clickable_ele_uid in enumerate(cur_screen_node_clickable_eles):
             # --------------------------------------
@@ -61,6 +61,7 @@ class StateHandler(object):
                 LogUtils.log_info("\n")
                 clickable_ele_idx += 1
                 cur_screen_node.already_clicked_cnt += 1
+                RuntimeContent.get_instance().already_click_eles.add(cur_clickable_ele_uid)
                 continue
 
             if cur_screen_node.ele_vis_map.get(cur_clickable_ele_uid, False) == False:
@@ -79,6 +80,7 @@ class StateHandler(object):
                 else:
                     cur_screen_node.ele_uid_cnt_map[cur_clickable_ele_uid] += 1
 
+                # 标识点击过的组件
                 cls.__click(loc_x, loc_y)
                 return
 
@@ -94,43 +96,49 @@ class StateHandler(object):
                     if check_is_error_clickable_ele(cur_clickable_ele_uid) == True:
                         LogUtils.log_info(f"该组件会触发error screen因此跳过&{clickable_ele_idx}: {cur_clickable_ele_uid}")
                         cur_screen_node.already_clicked_cnt += 1
+                        RuntimeContent.get_instance().already_click_eles.add(cur_clickable_ele_uid)
                         clickable_ele_idx += 1
                         continue
-                    if check_is_errorscreen(next_screen_all_text, ScreenCompareStrategy(LCSComparator())) == True:
+                    if check_is_errorscreen(next_screen_all_text) == True:
                         LogUtils.log_info(f"该组件会触发error screen因此跳过&{clickable_ele_idx}: {cur_clickable_ele_uid}")
                         cur_screen_node.already_clicked_cnt += 1
+                        RuntimeContent.get_instance().already_click_eles.add(cur_clickable_ele_uid)
                         clickable_ele_idx += 1
                         continue
                     if next_screen_node.pkg_name != Config.get_instance().get_target_pkg_name():
                         LogUtils.log_info(f"clickmap--next界面非本app本包名&{clickable_ele_idx}: {cur_clickable_ele_uid}")
                         cur_screen_node.already_clicked_cnt += 1
+                        RuntimeContent.get_instance().already_click_eles.add(cur_clickable_ele_uid)
                         clickable_ele_idx += 1
                         continue
 
-                    res_sim, res_depth = get_max_sim_from_screen_depth_map(next_screen_all_text,
-                                                                           ScreenCompareStrategy(LCSComparator()))
-                    if res_depth == -1:
+                    res_sim, res_depth = get_max_sim_from_screen_depth_map(next_screen_all_text)
+                    if res_sim >= Config.get_instance().screen_similarity_threshold and res_depth == Config.get_instance().UndefineDepth:
                         LogUtils.log_info(f"clickmap--next界面是UndefineDepth&{clickable_ele_idx}: {cur_clickable_ele_uid}")
                         cur_screen_node.already_clicked_cnt += 1
+                        RuntimeContent.get_instance().already_click_eles.add(cur_clickable_ele_uid)
                         clickable_ele_idx += 1
                         continue
 
-                    if res_sim >= Config.get_instance().screen_similarity_threshold and res_depth > Config.get_instance().maxDepth:
+                    if res_sim >= Config.get_instance().screen_similarity_threshold and res_depth > Config.get_instance().curDepth:
                         LogUtils.log_info(f"clickmap--next界面是超过限制层数的&{clickable_ele_idx}: {cur_clickable_ele_uid}")
                         cur_screen_node.already_clicked_cnt += 1
+                        RuntimeContent.get_instance().already_click_eles.add(cur_clickable_ele_uid)
                         clickable_ele_idx += 1
                         continue
 
-                    if next_screen_node.get_isWebView():
-                        LogUtils.log_info(
-                            f"clickmap--next界面是WebView&{clickable_ele_idx}: {cur_clickable_ele_uid}")
-                        cur_screen_node.already_clicked_cnt += 1
-                        clickable_ele_idx += 1
-                        continue
+                    # if next_screen_node.get_isWebView():
+                    #     LogUtils.log_info(
+                    #         f"clickmap--next界面是WebView&{clickable_ele_idx}: {cur_clickable_ele_uid}")
+                    #     cur_screen_node.already_clicked_cnt += 1
+                    #     RuntimeContent.get_instance().already_click_eles.add(cur_clickable_ele_uid)
+                    #     clickable_ele_idx += 1
+                    #     continue
 
                     if next_screen_node.is_screen_clickable_finished():
                         LogUtils.log_info(f"clickmap--next界面点击完成&{clickable_ele_idx}: {cur_clickable_ele_uid}")
                         cur_screen_node.already_clicked_cnt += 1
+                        RuntimeContent.get_instance().already_click_eles.add(cur_clickable_ele_uid)
                         clickable_ele_idx += 1
                         continue
                     else:
@@ -156,6 +164,7 @@ class StateHandler(object):
                 else:
                     LogUtils.log_info(f"已点击过&{clickable_ele_idx}: {cur_clickable_ele_uid}")
                     cur_screen_node.already_clicked_cnt += 1
+                    RuntimeContent.get_instance().already_click_eles.add(cur_clickable_ele_uid)
                     clickable_ele_idx += 1
 
 
@@ -265,7 +274,7 @@ class StateHandler(object):
                 LogUtils.log_info("回到自己")
                 last_screen_node.update_callmap_item(RuntimeContent.get_instance().get_last_clickable_ele_uid())
                 pass
-            elif check_cycle(cur_screen_node, last_screen_node, ScreenCompareStrategy(LCSComparator())) == True:
+            elif check_cycle(cur_screen_node, last_screen_node) == True:
                 # 产生了回边
                 last_screen_node.cycle_set.add(RuntimeContent.get_instance().get_last_clickable_ele_uid())
                 LogUtils.log_info("产生回边")
@@ -327,9 +336,9 @@ class StateHandler(object):
                 LogUtils.log_info("回到自己")
                 last_screen_node.update_callmap_item(RuntimeContent.get_instance().get_last_clickable_ele_uid())
                 pass
-            elif check_cycle(cur_screen_node, last_screen_node, ScreenCompareStrategy(LCSComparator())) == True:
+            elif check_cycle(cur_screen_node, last_screen_node) == True:
                 # 产生了回边
-                check_cycle(cur_screen_node, last_screen_node, ScreenCompareStrategy(LCSComparator()))
+                check_cycle(cur_screen_node, last_screen_node)
                 last_screen_node.cycle_set.add(RuntimeContent.get_instance().get_last_clickable_ele_uid())
                 LogUtils.log_info("产生回边")
                 last_screen_node.update_callmap_item(RuntimeContent.get_instance().get_last_clickable_ele_uid())
@@ -361,17 +370,17 @@ class StateHandler(object):
                 LogUtils.log_info("回到自己")
                 last_screen_node.update_callmap_item(RuntimeContent.get_instance().get_last_clickable_ele_uid())
                 pass
-            elif check_cycle(cur_screen_node, last_screen_node, ScreenCompareStrategy(LCSComparator())) == True:
+            elif check_cycle(cur_screen_node, last_screen_node) == True:
                 # 产生了回边
                 last_screen_node.cycle_set.add(RuntimeContent.get_instance().get_last_clickable_ele_uid())
                 LogUtils.log_info("产生回边")
                 last_screen_node.update_callmap_item(RuntimeContent.get_instance().get_last_clickable_ele_uid())
                 pass
             else:
-                if last_screen_node.ck_eles_text != "root":
+                # if last_screen_node.ck_eles_text != "root":
                     # call_map会更新
-                    last_screen_node.call_map[
-                        RuntimeContent.get_instance().get_last_clickable_ele_uid()] = cur_screen_node
+                last_screen_node.call_map[
+                    RuntimeContent.get_instance().get_last_clickable_ele_uid()] = cur_screen_node
                 # else:
                 #     first_screen_text = ck_eles_text
 
@@ -423,12 +432,12 @@ class StateHandler(object):
         cls.random_click_ele(content)
 
     @classmethod
-    def handle_exit_app(cls, content):
-        cur_screen_node = cls.add_not_target_pkg_name_screen_call_graph(content)
-        content["cur_screen_node"] = cur_screen_node
+    def handle_inputmethod(cls, content):
         cls.__press_back()
-        RuntimeContent.get_instance().set_last_screen_node(None)
-        RuntimeContent.get_instance().set_last_clickable_ele_uid("")
+        # 输入法不需要处理
+        # RuntimeContent.get_instance().set_last_screen_node(None)
+        # RuntimeContent.get_instance().set_last_clickable_ele_uid("")
+
 
     @classmethod
     def handle_double_press(cls, content):
@@ -436,55 +445,93 @@ class StateHandler(object):
         RuntimeContent.get_instance().set_last_screen_node(None)
         RuntimeContent.get_instance().set_last_clickable_ele_uid("")
 
-    @classmethod
-    def handle_inputmethod(cls, content):
-        cls.__press_back()
-        # 输入法不需要处理
-        # RuntimeContent.get_instance().set_last_screen_node(None)
-        # RuntimeContent.get_instance().set_last_clickable_ele_uid("")
 
     @classmethod
-    def handle_WebView_screen(cls, content):
+    def handle_back(cls, content):
         cur_screen_node = cls.add_not_target_pkg_name_screen_call_graph(content)
-        cur_screen_node.set_isWebView(True)
+        # cur_screen_node.set_isWebView(True)
         content["cur_screen_node"] = cur_screen_node
-        print_screen_info(content, True)
+        # print_screen_info(content, True)
+        pre_ck_eles_text = content["ck_eles_text"]
+        cls.__press_back()
+        LogUtils.log_info("进行回退")
+        RuntimeContent.get_instance().set_last_screen_node(None)
+        RuntimeContent.get_instance().set_last_clickable_ele_uid("")
+
+        after_ck_eles_text = get_screen_content()["ck_eles_text"]
+
+        # 如果不一样说明文本变化了, 说明一次back即可回退
+        sim_flag = is_text_similar(pre_ck_eles_text, after_ck_eles_text)
+        if not sim_flag:
+            return
+
+        # 如果没变化, 尝试double_press_back
+        LogUtils.log_info("一次回退失败, 二次回退")
+
+        cls.__double_press_back()
+        after_ck_eles_text = get_screen_content()["ck_eles_text"]
+        # 如果不一样说明文本变化了, 说明两次back即可回退
+        sim_flag = is_text_similar(pre_ck_eles_text, after_ck_eles_text)
+        if not sim_flag:
+            return
+
+        # 上述方法都失效,重启
+        RuntimeContent.get_instance().append_error_screen_list(pre_ck_eles_text)
+        cur_screen_node = content.get("cur_screen_node", None)
+        if cur_screen_node is not None:
+            last_ck_ele_uid_list = cur_screen_node.get_last_ck_ele_uid_list()
+            RuntimeContent.get_instance().append_more_error_ck_ele_uid_list(last_ck_ele_uid_list)
+
+        LogUtils.log_info("二次回退失败, 重启")
+        raise RestartException("重启机制")
+
+
+
+    @classmethod
+    def handle_exit_app(cls, content):
+        cur_screen_node = cls.add_not_target_pkg_name_screen_call_graph(content)
+        content["cur_screen_node"] = cur_screen_node
         cls.__press_back()
         RuntimeContent.get_instance().set_last_screen_node(None)
         RuntimeContent.get_instance().set_last_clickable_ele_uid("")
 
-    @classmethod
-    def handle_ExceedDepth(cls, content):
-        cur_screen_node = cls.add_not_target_pkg_name_screen_call_graph(content)
-        cur_screen_node.set_isWebView(True)
-        content["cur_screen_node"] = cur_screen_node
-        print_screen_info(content, True)
-        cls.__press_back()
-        RuntimeContent.get_instance().set_last_screen_node(None)
-        RuntimeContent.get_instance().set_last_clickable_ele_uid("")
 
-    @classmethod
-    def handle_UndefineDepth(cls, content):
-        cur_screen_node = cls.add_not_target_pkg_name_screen_call_graph(content)
-        cur_screen_node.set_isWebView(True)
-        content["cur_screen_node"] = cur_screen_node
-        print_screen_info(content, True)
-        cls.__press_back()
-        RuntimeContent.get_instance().set_last_screen_node(None)
-        RuntimeContent.get_instance().set_last_clickable_ele_uid("")
 
     @classmethod
     def handle_finish_screen(cls, content):
         cur_screen_node = cls.add_exist_screen_call_graph(content)
+        pre_ck_eles_text = content["ck_eles_text"]
         cls.__press_back()
+        LogUtils.log_info("进行回退")
         RuntimeContent.get_instance().set_last_screen_node(None)
         RuntimeContent.get_instance().set_last_clickable_ele_uid("")
 
-    @classmethod
-    def handle_error_screen(cls, content):
-        cls.__press_back()
-        RuntimeContent.get_instance().set_last_screen_node(None)
-        RuntimeContent.get_instance().set_last_clickable_ele_uid("")
+        after_ck_eles_text = get_screen_content()["ck_eles_text"]
+        # 如果不一样说明文本变化了, 说明一次back即可回退
+        sim_flag = is_text_similar(pre_ck_eles_text, after_ck_eles_text)
+        if not sim_flag:
+            return
+
+        # 如果没变化, 尝试double_press_back
+        LogUtils.log_info("一次回退失败, 二次回退")
+
+        cls.__double_press_back()
+        after_ck_eles_text = get_screen_content()["ck_eles_text"]
+        # 如果不一样说明文本变化了, 说明两次back即可回退
+        sim_flag = is_text_similar(pre_ck_eles_text, after_ck_eles_text)
+        if not sim_flag:
+            return
+
+        # 上述方法都失效,重启
+        RuntimeContent.get_instance().append_error_screen_list(pre_ck_eles_text)
+        cur_screen_node = content.get("cur_screen_node", None)
+        if cur_screen_node is not None:
+            last_ck_ele_uid_list = cur_screen_node.get_last_ck_ele_uid_list()
+            RuntimeContent.get_instance().append_more_error_ck_ele_uid_list(last_ck_ele_uid_list)
+
+        LogUtils.log_info("二次回退失败, 重启")
+        raise RestartException("重启机制")
+
 
     @classmethod
     def handle_stuck_restart(cls, content):
@@ -516,7 +563,6 @@ class StateHandler(object):
     def __press_back(cls):
         d = Config.get_instance().get_device()
         d.press("back")
-        LogUtils.log_info("进行回退")
         time.sleep(Config.get_instance().get_sleep_time_sec())
         return
 
