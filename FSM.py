@@ -117,16 +117,16 @@ class FSM(threading.Thread):
         content = get_screen_content()
         cur_activity = content["cur_activity"]
         cur_screen_pkg_name = content["cur_screen_pkg_name"]
-        ck_eles_text = content["ck_eles_text"]
+        cur_ck_eles_text = content["ck_eles_text"]
 
         # 截图
-        screenshot_path = ScreenshotUtils.screen_shot(ck_eles_text)
+        screenshot_path = ScreenshotUtils.screen_shot(cur_ck_eles_text)
 
         StatRecorder.get_instance().add_stat_stat_activity_set(cur_activity)
-        StatRecorder.get_instance().add_stat_screen_set(ck_eles_text)
+        StatRecorder.get_instance().add_stat_screen_set(cur_ck_eles_text)
 
-        LogUtils.log_info(f"当前Screen为: {ck_eles_text}")
-        RuntimeContent.get_instance().append_screen_list(ck_eles_text)
+        LogUtils.log_info(f"当前Screen为: {cur_ck_eles_text}")
+        RuntimeContent.get_instance().append_screen_list(cur_ck_eles_text)
 
         # 判断当前界面是否是从上一个"隐私权政策文本"点击过来的
         find_url_set = set()
@@ -135,11 +135,11 @@ class FSM(threading.Thread):
                 url_data = self.data.get(1, 1)
                 for url in url_data:
                     find_url_set.add(url)
-                print()
-                print("*" * 50 + f"Consumer{self.name}" + "*" * 50)
-                print(url_data)
-                print("*" * 50 + f"Consumer{self.name}" + "*" * 50)
-                print()
+                # print()
+                # print("*" * 50 + f"Consumer{self.name}" + "*" * 50)
+                # print(url_data)
+                # print("*" * 50 + f"Consumer{self.name}" + "*" * 50)
+                # print()
             except:
                 break
         last_clickable_ele_uid = RuntimeContent.get_instance().last_clickable_ele_uid
@@ -179,12 +179,14 @@ class FSM(threading.Thread):
         last_screen_node = RuntimeContent.get_instance().last_screen_node
         cur_screen_depth = Config.get_instance().UndefineDepth
         # 从cache中得到当前界面的层数结果
-        res_sim, res_depth = get_max_sim_from_screen_depth_map(ck_eles_text)
+        res_sim, most_similar_screen_node = get_max_similarity_screen_node(cur_ck_eles_text)
+        # res_sim, res_depth = get_max_sim_from_screen_depth_map(ck_eles_text)
         if res_sim >= Config.get_instance().screen_similarity_threshold:
-            cur_screen_depth = res_depth
+            if screen_depth_map.get(most_similar_screen_node.ck_eles_text, False):
+                cur_screen_depth = screen_depth_map.get(most_similar_screen_node.ck_eles_text)
 
         # 直接计算当前界面的层数结果
-        if last_screen_node is not None and last_screen_node.ck_eles_text != ck_eles_text:
+        if last_screen_node is not None and last_screen_node.ck_eles_text != cur_ck_eles_text:
             if last_screen_node.ck_eles_text == "root":
                 cal_depth = 1
             else:
@@ -192,8 +194,13 @@ class FSM(threading.Thread):
                                                           RuntimeContent.get_instance().last_screen_node.ck_eles_text)
             cur_screen_depth = min(cur_screen_depth, cal_depth)
 
-        # 将最新最小的结果写入cache
-        screen_depth_map[ck_eles_text] = cur_screen_depth
+        # 将最新最小的结果写入screen_depth_map
+        if res_sim >= Config.get_instance().screen_similarity_threshold:
+            # 说明当前界面已经存在, 则用之前已经存在的界面的ck_eles_text
+            screen_depth_map[most_similar_screen_node.ck_eles_text] = cur_screen_depth
+        else:
+            # 说明当前界面为全新界面, 由于当前界面还没new出来, 因此用ck_eles_text
+            screen_depth_map[cur_ck_eles_text] = cur_screen_depth
 
         if cur_screen_depth == Config.get_instance().UndefineDepth:
             LogUtils.log_info("Undefine")
@@ -210,17 +217,17 @@ class FSM(threading.Thread):
         # else:
         #     cur_screen_node = None
 
-        sim, most_similar_screen_node = get_max_similarity_screen_node(ck_eles_text)
+        # sim, most_similar_screen_node = get_max_similarity_screen_node(ck_eles_text)
         content["cur_screen_node"] = most_similar_screen_node
         content["most_similar_screen_node"] = most_similar_screen_node
-        content["sim"] = sim
+        content["sim"] = res_sim
 
         # if cur_screen_node is not None:
-        if sim >= Config.get_instance().screen_similarity_threshold:
+        if res_sim >= Config.get_instance().screen_similarity_threshold:
             cur_screen_node = most_similar_screen_node
-            RuntimeContent.get_instance().put_screen_map(ck_eles_text, cur_screen_node)
+            RuntimeContent.get_instance().put_screen_map(cur_ck_eles_text, cur_screen_node)
 
-            if check_is_errorscreen(ck_eles_text):
+            if check_is_errorscreen(cur_ck_eles_text):
                 LogUtils.log_info("ErrorScreen")
                 return self.STATE_Back, content
 
@@ -299,6 +306,7 @@ class FSM(threading.Thread):
             cal_cov_map = StatRecorder.get_instance().get_coverage(cur_depth)
             StatRecorder.get_instance().print_coverage(cal_cov_map)
             dq = RuntimeContent.get_instance().cov_mono_que
+            cov = 0
             if cal_cov_map.get(cur_depth, None) is not None:
                 cov = cal_cov_map[cur_depth][1] / cal_cov_map[cur_depth][2]
                 if state == self.STATE_ExistScreen or state == self.STATE_FinishScreen or state == self.STATE_NewScreen:
@@ -307,10 +315,10 @@ class FSM(threading.Thread):
                     dq.append((cov, state))
             else:
                 if state == self.STATE_ExistScreen or state == self.STATE_FinishScreen or state == self.STATE_NewScreen:
-                    dq.append((-1, state))
+                    dq.append((0, state))
 
 
-            if len(RuntimeContent.get_instance().cov_mono_que) >= 4 and dq[-1][1] == self.STATE_FinishScreen and dq[-2][1] == self.STATE_FinishScreen and dq[-3][1] == self.STATE_FinishScreen and dq[-4][1] == self.STATE_FinishScreen:
+            if cov == 1 or (len(RuntimeContent.get_instance().cov_mono_que) >= 4 and dq[-1][1] == self.STATE_FinishScreen and dq[-2][1] == self.STATE_FinishScreen and dq[-3][1] == self.STATE_FinishScreen and dq[-4][1] == self.STATE_FinishScreen):
             # if check_pattern_state(2, [self.STATE_HomeScreenRestart, self.STATE_FinishScreen]) and check_pattern_screen(
             #         2, 2):
                 RuntimeContent.get_instance().cov_mono_que.clear()
