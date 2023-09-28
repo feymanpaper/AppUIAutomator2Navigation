@@ -81,9 +81,12 @@ class ScreenCompareStrategy(object):
         if text1 == text2:
             return 1
         else:
+            # 查缓存
             query_res = RuntimeContent.get_instance().query_simi_mem((text1, text2))
+            # 缓存找不到
             if query_res is None:
                 similarity = self.screen_compare_strategy.compare_text(text1, text2)
+                # 回写缓存
                 RuntimeContent.get_instance().update_simi_mem((text1, text2), similarity)
                 RuntimeContent.get_instance().update_simi_mem((text2, text1), similarity)
                 return similarity

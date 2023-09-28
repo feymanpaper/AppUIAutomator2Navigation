@@ -53,14 +53,18 @@ class Config(object):
             pkgName, appName, depth, test_time = f.readline().split(";")
         print(pkgName, appName, depth, test_time)
 
-        # 其余可修改的配置，从此处开始===========================
-        self.target_pkg_name = pkgName  # 应用包名
-        self.app_name = appName  # 应用名
-        self.maxDepth = int(depth)  # 配置点击的最大深度
+        # with open('tmp.txt','r',encoding='utf-8') as f:
+        #     pkgName, appName, depth = f.readline().split(";")
+        # print(pkgName,appName,depth)
+        #
+        # # 其余可修改的配置，从此处开始===========================
+        # self.target_pkg_name = pkgName  # 应用包名
+        # self.app_name = appName  # 应用名
+        # self.maxDepth = int(depth)  # 配置点击的最大深度
 
-        # self.target_pkg_name = "com.alibaba.cloudmail"  # 应用包名
-        # self.app_name = "阿里邮箱"  # 应用名
-        # self.maxDepth = 3  # 配置点击的最大深度
+        self.target_pkg_name = "com.taobao.trip"  # 应用包名
+        self.app_name = "飞猪旅行"  # 应用名
+        self.maxDepth = 3  # 配置点击的最大深度
 
         self.curDepth = 1
         self.test_time = int(test_time)  # 配置测试的时间,以秒为单位
@@ -70,6 +74,7 @@ class Config(object):
         # 到此处结束===========================================
         # 下面的配置不要修改
 
+        self.curDepth = 1
         self.CLICK_MAX_CNT = 4
         self.device = None
         self.screen_similarity_threshold = 0.9  # 配置界面与界面之间相似度多少表示同一界面, 默认90%/0.9
