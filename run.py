@@ -28,7 +28,8 @@ def suppress_keyboard_interrupt_message():
             StatRecorder.get_instance().print_coverage(cal_cov_map)
             if cal_cov_map.get(cur_depth, None) is not None:
                 cov = cal_cov_map[cur_depth][1] / cal_cov_map[cur_depth][2]
-            FileUtils.save_coverage(cur_depth, cov)
+                FileUtils.save_coverage(cur_depth, cal_cov_map[cur_depth][1], cal_cov_map[cur_depth][2])
+
 
             # 绘制App界面跳转图
             if Config.get_instance().isDrawAppCallGraph:
@@ -133,7 +134,7 @@ if __name__ == "__main__":
     StatRecorder.get_instance().print_coverage(cal_cov_map)
     if cal_cov_map.get(cur_depth, None) is not None:
         cov = cal_cov_map[cur_depth][1] / cal_cov_map[cur_depth][2]
-    FileUtils.save_coverage(cur_depth, cov)
+        FileUtils.save_coverage(cur_depth, cal_cov_map[cur_depth][1], cal_cov_map[cur_depth][2])
 
 
     # 绘制App界面跳转图
