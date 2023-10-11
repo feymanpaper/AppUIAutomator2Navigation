@@ -476,11 +476,11 @@ class StateHandler(object):
             return
 
         # 上述方法都失效,重启
-        RuntimeContent.get_instance().append_error_screen_list(pre_ck_eles_text)
-        cur_screen_node = content.get("cur_screen_node", None)
-        if cur_screen_node is not None:
-            last_ck_ele_uid_list = cur_screen_node.get_last_ck_ele_uid_list()
-            RuntimeContent.get_instance().append_more_error_ck_ele_uid_list(last_ck_ele_uid_list)
+        # RuntimeContent.get_instance().append_error_screen_list(pre_ck_eles_text)
+        # cur_screen_node = content.get("cur_screen_node", None)
+        # if cur_screen_node is not None:
+        #     last_ck_ele_uid_list = cur_screen_node.get_last_ck_ele_uid_list()
+        #     RuntimeContent.get_instance().append_more_error_ck_ele_uid_list(last_ck_ele_uid_list)
 
         LogUtils.log_info("二次回退失败, 重启")
         raise RestartException("重启机制")
