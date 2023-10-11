@@ -326,8 +326,9 @@ class FSM(threading.Thread):
                 LogUtils.log_info(f"动态增加当前层数{cur_depth}-->层数{cur_depth + 1}")
                 Config.get_instance().curDepth += 1
 
+                if cal_cov_map.get(cur_depth, None) is not None:
                 # 追加保存覆盖率结果
-                FileUtils.save_coverage(cur_depth, cal_cov_map[cur_depth][1], cal_cov_map[cur_depth][2])
+                    FileUtils.save_coverage(cur_depth, cal_cov_map[cur_depth][1], cal_cov_map[cur_depth][2])
 
                 # 重置screenNode的点击下标already_click_cnt
                 screen_depth_map = RuntimeContent.get_instance().screen_depth_map
