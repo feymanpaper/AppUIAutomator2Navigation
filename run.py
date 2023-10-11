@@ -38,12 +38,12 @@ def suppress_keyboard_interrupt_message():
 
 
 if __name__ == "__main__":
-
-    # pkgName = sys.argv[1]
-    # appName = sys.argv[2]
-    # depth = sys.argv[3]
-    # with open('tmp.txt', 'w',encoding='utf-8') as f:
-    #     f.write(pkgName + ";" + appName + ";" + depth)
+    pkgName = sys.argv[1]
+    appName = sys.argv[2]
+    depth = sys.argv[3]
+    test_time = sys.argv[4]
+    with open('tmp.txt', 'w',encoding='utf-8') as f:
+        f.write(pkgName + ";" + appName + ";" + depth + ';' + test_time)
 
     LogUtils.setup()
 
