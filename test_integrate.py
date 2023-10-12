@@ -60,8 +60,10 @@ if __name__ == '__main__':
         try:
             pkgName, appName = pkgName_appName.split(' | ')
             appName = appName.strip('\'')
-            clear_app_cache(pkgName)
-            rerun_uiautomator2()
+            if config_settings['clear_cache'] == 'true':
+                clear_app_cache(pkgName)
+            if config_settings['rerun_uiautomator2'] == 'true':
+                rerun_uiautomator2()
             print('analysis {} : {}now...'.format(pkgName, appName))
             if get_OS_type() in ['linux', 'mac']:
                 execute_cmd_with_timeout(
