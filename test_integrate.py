@@ -2,7 +2,7 @@ import configparser
 import signal
 import subprocess
 import platform
-
+from stop_and_run_uiautomator import rerun_uiautomator2
 
 def get_OS_type():
     sys_platform = platform.platform().lower()
@@ -60,16 +60,19 @@ if __name__ == '__main__':
         try:
             pkgName, appName = pkgName_appName.split(' | ')
             appName = appName.strip('\'')
-            clear_app_cache(pkgName)
+            if config_settings['clear_cache'] == 'true':
+                clear_app_cache(pkgName)
+            if config_settings['rerun_uiautomator2'] == 'true':
+                rerun_uiautomator2()
             print('analysis {} : {}now...'.format(pkgName, appName))
             if get_OS_type() in ['linux', 'mac']:
                 execute_cmd_with_timeout(
                     'python3 run.py {} {} {} {} '.format(pkgName, appName, config_settings['dynamic_ui_depth'],
-                                                         config_settings['dynamic_run_time']))
+                                                         config_settings['dynamic_run_time']),timeout=int(config_settings['dynamic_run_time']))
             elif get_OS_type() == 'win':
                 execute_cmd_with_timeout(
                     'python run.py {} {} {} {} '.format(pkgName, appName, config_settings['dynamic_ui_depth'],
-                                                        config_settings['dynamic_run_time']))
+                                                        config_settings['dynamic_run_time']),timeout=int(config_settings['dynamic_run_time']))
 
         except Exception as e:
             print(e)
