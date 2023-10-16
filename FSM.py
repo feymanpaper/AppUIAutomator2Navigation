@@ -261,23 +261,26 @@ class FSM(threading.Thread):
             if len(pp_text_dict) > 0:
                 for pp_text, pp_text_cnt in pp_text_dict.items():
                     loc_list = cal_privacy_ele_loc(screenshot_path, pp_text, pp_text_cnt)
-                    for loc_tuple in loc_list:
-                        if loc_tuple is not None:
-                            pp_x, pp_y, w, h = loc_tuple[0], loc_tuple[1], loc_tuple[2], loc_tuple[3]
-                            pp_ele_dict = {
-                                'class': '',
-                                'resource-id': '',
-                                'package': cur_screen_pkg_name,
-                                'text': pp_text,
-                                'bounds': "[" + str(pp_x) + "," + str(pp_y) + "][" + str(w) + "," + str(h) + "]"
-                            }
-                            pp_ele_uid = get_unique_id(pp_ele_dict, cur_activity)
-                            RuntimeContent.get_instance().put_ele_uid_map(pp_ele_uid, pp_ele_dict)
-                            clickable_elements = content["cur_ck_eles"]
-                            clickable_elements.insert(0, pp_ele_uid)
-                            LogUtils.log_info(f"OCR到{pp_text}")
-                        else:
-                            LogUtils.log_info(f"没有OCR到{pp_text}")
+                    if loc_list is not None:
+                        for loc_tuple in loc_list:
+                            if loc_tuple is not None:
+                                pp_x, pp_y, w, h = loc_tuple[0], loc_tuple[1], loc_tuple[2], loc_tuple[3]
+                                pp_ele_dict = {
+                                    'class': '',
+                                    'resource-id': '',
+                                    'package': cur_screen_pkg_name,
+                                    'text': pp_text,
+                                    'bounds': "[" + str(pp_x) + "," + str(pp_y) + "][" + str(w) + "," + str(h) + "]"
+                                }
+                                pp_ele_uid = get_unique_id(pp_ele_dict, cur_activity)
+                                RuntimeContent.get_instance().put_ele_uid_map(pp_ele_uid, pp_ele_dict)
+                                clickable_elements = content["cur_ck_eles"]
+                                clickable_elements.insert(0, pp_ele_uid)
+                                LogUtils.log_info(f"OCR到{pp_text}")
+                            else:
+                                LogUtils.log_info(f"没有OCR到{pp_text}")
+                    else:
+                        LogUtils.log_info(f"没有OCR到{pp_text}")
             else:
                 LogUtils.log_info(f"没有找到隐私政策文本")
             return self.STATE_NewScreen, content
