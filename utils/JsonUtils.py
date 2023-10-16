@@ -28,7 +28,7 @@ class JsonUtils:
         fw.close()
 
     @classmethod
-    def __get_res_list_from_screenmap(cls, screen_map:dict[str, ScreenNode]) -> list:
+    def __get_res_list_from_screenmap(cls, screen_map) -> list:
         res_list = []
         for ck_eles_text, screen_node in screen_map.items():
             json_dict = {}
@@ -45,7 +45,7 @@ class JsonUtils:
         return res_list
 
     @staticmethod
-    def __get_callmap_list(screen_node: ScreenNode)-> list[str]:
+    def __get_callmap_list(screen_node: ScreenNode)-> list:
         call_map_list = []
         for clickable_ele_uuid, call_screen_node in screen_node.call_map.items():
             call_map_list.append(call_screen_node.ck_eles_text)
@@ -60,7 +60,7 @@ class JsonUtils:
         return res_call_map
 
     @staticmethod
-    def __get_nextlist(screen_node: ScreenNode) -> list[str]:
+    def __get_nextlist(screen_node: ScreenNode) -> list:
         nextlist = []
         for next in screen_node.children:
             nextlist.append(next.ck_eles_text)
