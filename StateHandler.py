@@ -225,7 +225,7 @@ class StateHandler(object):
         cls.__click(loc_x, loc_y)
 
     @classmethod
-    def get_permission_screen(cls, content):
+    def get_system_permission_screen(cls, content):
         cur_screen_pkg_name, cur_activity, ck_eles_text = get_screen_info_from_context(content)
         screen_text = get_screen_text_from_context(content)
         # 初始化cur_screen_node信息
@@ -260,7 +260,6 @@ class StateHandler(object):
             cur_screen_node.ck_eles_text = ck_eles_text
             # 将cur_screen加入到全局记录的screen_map
             RuntimeContent.get_instance().put_screen_map(ck_eles_text, cur_screen_node)
-        cls.__add_call_graph(cur_screen_node)
 
         return cur_screen_node
 
@@ -388,6 +387,7 @@ class StateHandler(object):
     @classmethod
     def handle_back(cls, content):
         cur_screen_node = cls.get_special_screen(content)
+        cls.__add_call_graph(cur_screen_node)
         # cur_screen_node.set_isWebView(True)
         content["cur_screen_node"] = cur_screen_node
         # print_screen_info(content, True)
@@ -429,6 +429,7 @@ class StateHandler(object):
     @classmethod
     def handle_exit_app(cls, content):
         cur_screen_node = cls.get_special_screen(content)
+        cls.__add_call_graph(cur_screen_node)
         content["cur_screen_node"] = cur_screen_node
         cls.__press_back()
         RuntimeContent.get_instance().set_last_screen_node(None)
@@ -477,6 +478,7 @@ class StateHandler(object):
     @classmethod
     def handle_stuck_restart(cls, content):
         cur_screen_node = cls.get_special_screen(content)
+        cls.__add_call_graph(cur_screen_node)
         content["cur_screen_node"] = cur_screen_node
 
         cur_screen_ck_eles_text = content["ck_eles_text"]
