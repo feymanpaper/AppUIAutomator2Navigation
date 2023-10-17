@@ -332,6 +332,8 @@ class StateHandler(object):
         cur_screen_node = cls.get_exist_screen(content)
         # 将cur_screen加入到last_screen的子节点
         cls.__add_call_graph(cur_screen_node)
+        if content["is_add_privacy_eles"]:
+            cur_screen_node.is_add_privacy_eles = True
         print_screen_info(content, False)
         cls.click_one_ele(content)
 
@@ -341,6 +343,8 @@ class StateHandler(object):
         # 将cur_screen加入到last_screen的子节点
         cls.__add_call_graph(cur_screen_node)
         content["cur_screen_node"] = cur_screen_node
+        if content["is_add_privacy_eles"]:
+            cur_screen_node.is_add_privacy_eles = True
         print_screen_info(content, True)
         cls.click_one_ele(content)
 
@@ -349,14 +353,14 @@ class StateHandler(object):
         LogUtils.log_info("点击系统权限框")
         permission_pattern1 = "com.android.packageinstaller:id/permission_allow_button"
         permission_pattern2 = "com.android.permissioncontroller:id/permission_allow_button"
-        if Config.get_instance().device(resourceId=permission_pattern1).exist:
+        if Config.get_instance().device(resourceId=permission_pattern1).exists:
             Config.get_instance().device(resourceId=permission_pattern1).click()
             time.sleep(Config.get_instance().get_sleep_time_sec())
-        elif Config.get_instance().device(resourceId=permission_pattern2).exist:
+        elif Config.get_instance().device(resourceId=permission_pattern2).exists:
             Config.get_instance().device(resourceId=permission_pattern2).click()
             time.sleep(Config.get_instance().get_sleep_time_sec())
         else:
-            cur_screen_node = cls.get_permission_screen(content)
+            cur_screen_node = cls.get_system_permission_screen(content)
             content["cur_screen_node"] = cur_screen_node
             cls.random_click_ele(content)
 

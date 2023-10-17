@@ -33,6 +33,8 @@ class ScreenNode:
         self.already_clicked_cnt = 0
         # 最近一次到达当前界面所点击的上一个界面的组件uid
         self.last_ck_ele_uid_list = []
+        # 记录当前Screen是否已经添加隐私相关组件
+        self.is_add_privacy_eles = False
 
 
     def update_callmap_item(self, ele_uid:str) -> bool:

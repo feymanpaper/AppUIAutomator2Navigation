@@ -146,7 +146,8 @@ class FSM(threading.Thread):
                 if pp_text in last_clickable_ele_uid:
                     for pri_url in find_url_set:
                         PrivacyUrlUtils.save_privacy(pri_url)
-                        print(f"找到了{pp_text}的url:{pri_url}")
+                        LogUtils.log_info(f"找到了{pp_text}的url:{pri_url}")
+                        RuntimeContent.get_instance().is_found_privacy_url = True
 
 
         if Config.get_instance().curDepth > Config.get_instance().maxDepth:
@@ -232,39 +233,53 @@ class FSM(threading.Thread):
                 return self.STATE_FinishScreen, content
             # 3说明未点完, 触发点一个组件
             else:
+                # 如果满足条件, 添加cliakable=false 的隐私政策权的组件
+                self.add_if_privacy_eles(content, cur_activity, cur_screen_pkg_name, screenshot_path, res_sim)
                 return self.STATE_ExistScreen, content
         else:
             # 放到后面建立完成之后在添加
             # screen_map[ck_eles_text] = cur_screen_node
 
-            # 添加cliakable=false 的隐私政策权的组件
-            pp_text_dict = get_privacy_policy_ele_dict()
-            if len(pp_text_dict) > 0:
-                for pp_text, pp_text_cnt in pp_text_dict.items():
-                    loc_list = cal_privacy_ele_loc(screenshot_path, pp_text, pp_text_cnt)
-                    if loc_list is not None:
-                        for loc_tuple in loc_list:
-                            if loc_tuple is not None:
-                                pp_x, pp_y, w, h = loc_tuple[0], loc_tuple[1], loc_tuple[2], loc_tuple[3]
-                                pp_ele_dict = {
-                                    'class': '',
-                                    'resource-id': '',
-                                    'package': cur_screen_pkg_name,
-                                    'text': pp_text,
-                                    'bounds': "[" + str(pp_x) + "," + str(pp_y) + "][" + str(w) + "," + str(h) + "]"
-                                }
-                                pp_ele_uid = get_unique_id(pp_ele_dict, cur_activity)
-                                RuntimeContent.get_instance().put_ele_uid_map(pp_ele_uid, pp_ele_dict)
-                                clickable_elements = content["cur_ck_eles"]
-                                clickable_elements.insert(0, pp_ele_uid)
-                                LogUtils.log_info(f"OCR到{pp_text}")
-                            else:
-                                LogUtils.log_info(f"没有OCR到{pp_text}")
-                    else:
-                        LogUtils.log_info(f"没有OCR到{pp_text}")
-            else:
-                LogUtils.log_info(f"没有找到隐私政策文本")
+            # 如果满足条件, 添加cliakable=false 的隐私政策权的组件
+            self.add_if_privacy_eles(content, cur_activity, cur_screen_pkg_name, screenshot_path, res_sim)
+
             return self.STATE_NewScreen, content
+
+    def add_if_privacy_eles(self, content, cur_activity, cur_screen_pkg_name, screenshot_path, res_sim):
+        # 如果已经找到了隐私政策url
+        if RuntimeContent.get_instance().is_found_privacy_url:
+            return
+        # 如果当前界面已经添加了隐私组件
+        if res_sim >= Config.get_instance().screen_similarity_threshold and content["cur_screen_node"].is_add_privacy_eles:
+            return
+
+        pp_text_dict = get_privacy_policy_ele_dict()
+        if len(pp_text_dict) > 0:
+            for pp_text, pp_text_cnt in pp_text_dict.items():
+                loc_list = cal_privacy_ele_loc(screenshot_path, pp_text, pp_text_cnt)
+                if loc_list is not None:
+                    for loc_tuple in loc_list:
+                        if loc_tuple is not None:
+                            pp_x, pp_y, w, h = loc_tuple[0], loc_tuple[1], loc_tuple[2], loc_tuple[3]
+                            pp_ele_dict = {
+                                'class': '',
+                                'resource-id': '',
+                                'package': cur_screen_pkg_name,
+                                'text': pp_text,
+                                'bounds': "[" + str(pp_x) + "," + str(pp_y) + "][" + str(w) + "," + str(h) + "]"
+                            }
+                            pp_ele_uid = get_unique_id(pp_ele_dict, cur_activity)
+                            RuntimeContent.get_instance().put_ele_uid_map(pp_ele_uid, pp_ele_dict)
+                            clickable_elements = content["cur_ck_eles"]
+                            clickable_elements.insert(0, pp_ele_uid)
+                            content["is_add_privacy_eles"] = True
+                            LogUtils.log_info(f"OCR到{pp_text}")
+                        else:
+                            LogUtils.log_info(f"没有OCR到{pp_text}")
+                else:
+                    LogUtils.log_info(f"没有OCR到{pp_text}")
+        else:
+            LogUtils.log_info(f"没有找到隐私政策文本")
 
     def print_state(self, state):
         # Logger.get_instance().print(f"状态为{self.reverse_state_map[state]} {self.state_map[state]}")
