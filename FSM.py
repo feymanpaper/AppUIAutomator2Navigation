@@ -43,7 +43,6 @@ class FSM(threading.Thread):
         3: "STATE_ExistScreen",
         4: "STATE_FinishScreen",
         5: "STATE_NewScreen",
-        6: "STATE_SpecialScreen",
         7: "STATE_StuckRestart",
         8: "STATE_DoublePress",
         9: "STATE_PermissonScreen",
@@ -63,7 +62,6 @@ class FSM(threading.Thread):
     STATE_ExistScreen = 3
     STATE_FinishScreen = 4
     STATE_NewScreen = 5
-    STATE_SpecialScreen = 6
     STATE_StuckRestart = 7
     STATE_DoublePress = 8
     STATE_PermissonScreen = 9
@@ -93,8 +91,6 @@ class FSM(threading.Thread):
             StateHandler.handle_finish_screen(content)
         elif state == self.STATE_NewScreen:
             StateHandler.handle_new_screen(content)
-        elif state == self.STATE_SpecialScreen:
-            StateHandler.handle_special_screen(content)
         elif state == self.STATE_StuckRestart:
             # TODO 重启机制
             StateHandler.handle_stuck_restart(content)
@@ -230,21 +226,6 @@ class FSM(threading.Thread):
             if check_is_errorscreen(cur_ck_eles_text):
                 LogUtils.log_info("ErrorScreen")
                 return self.STATE_Back, content
-
-            # # TODO k为6,表示出现了连续6个以上的pattern,且所有组件已经点击完毕,避免一些情况:页面有很多组件点了没反应,这个时候应该继续点而不是随机点
-            # if cur_screen_node.is_screen_clickable_finished() and check_pattern_state2(10, [self.STATE_FinishScreen,
-            #                                                                                 self.STATE_SpecialScreen,
-            #                                                                                 self.STATE_DoublePress]):
-            #     return self.STATE_StuckRestart, content
-            # if cur_screen_node.is_screen_clickable_finished() and check_pattern_state(1, [self.STATE_SpecialScreen,
-            #                                                                                self.STATE_DoublePress]) and check_screen_list_reverse(
-            #     3):
-            #     return self.STATE_SpecialScreen, content
-            # if cur_screen_node.is_screen_clickable_finished() and check_pattern_state(1,
-            #                                                                            [
-            #                                                                               self.STATE_FinishScreen]) and check_screen_list_reverse(
-            #     2):
-            #     return self.STATE_DoublePress, content
 
             # 说明已经点完, press_back
             if cur_screen_node.is_screen_clickable_finished():

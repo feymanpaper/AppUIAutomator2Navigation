@@ -288,7 +288,7 @@ class StateHandler(object):
                 last_screen_node.call_map[RuntimeContent.get_instance().get_last_clickable_ele_uid()] = cur_screen_node
 
     @classmethod
-    def add_new_screen_call_graph(cls, content):
+    def create_new_screen(cls, content):
         cur_screen_pkg_name, cur_activity, ck_eles_text = get_screen_info_from_context(content)
         screen_text = get_screen_text_from_context(content)
         # 初始化cur_screen_node信息
@@ -317,20 +317,12 @@ class StateHandler(object):
 
         # 将cur_screen加入到全局记录的screen_map
         RuntimeContent.get_instance().put_screen_map(ck_eles_text, cur_screen_node)
-        # 将cur_screen加入到last_screen的子节点
-        cls.__add_call_graph(cur_screen_node)
-
         return cur_screen_node
 
     @classmethod
-    def add_exist_screen_call_graph(cls, content):
-        # cur_screen_pkg_name, cur_activity, ck_eles_text, cur_screen_info = get_screen_info(d)
+    def get_exist_screen(cls, content):
         cur_screen_pkg_name, cur_activity, ck_eles_text = get_screen_info_from_context(content)
         cur_screen_node = get_cur_screen_node_from_context(content)
-
-        # 将cur_screen加入到last_screen的子节点
-        cls.__add_call_graph(cur_screen_node)
-
         return cur_screen_node
 
     @classmethod
@@ -345,7 +337,9 @@ class StateHandler(object):
 
     @classmethod
     def handle_exist_screen(cls, content):
-        cur_screen_node = cls.add_exist_screen_call_graph(content)
+        cur_screen_node = cls.get_exist_screen(content)
+        # 将cur_screen加入到last_screen的子节点
+        cls.__add_call_graph(cur_screen_node)
         print_screen_info(content, False)
         cls.click_one_ele(content)
 
@@ -353,7 +347,9 @@ class StateHandler(object):
 
     @classmethod
     def handle_new_screen(cls, content):
-        cur_screen_node = cls.add_new_screen_call_graph(content)
+        cur_screen_node = cls.create_new_screen(content)
+        # 将cur_screen加入到last_screen的子节点
+        cls.__add_call_graph(cur_screen_node)
         content["cur_screen_node"] = cur_screen_node
         print_screen_info(content, True)
         cls.click_one_ele(content)
@@ -364,12 +360,6 @@ class StateHandler(object):
         content["cur_screen_node"] = cur_screen_node
         print_screen_info(content, True)
         cls.random_click_ele(content)
-
-    @classmethod
-    def handle_special_screen(cls, content):
-        cur_screen_node = cls.add_exist_screen_call_graph(content)
-        print_screen_info(content, True)
-        cls.random_click_backpath_ele(content)
 
     @classmethod
     def handle_system_permission_screen(cls, content):
@@ -455,7 +445,7 @@ class StateHandler(object):
 
     @classmethod
     def handle_finish_screen(cls, content):
-        cur_screen_node = cls.add_exist_screen_call_graph(content)
+        cur_screen_node = cls.get_exist_screen(content)
         pre_ck_eles_text = content["ck_eles_text"]
         cls.__press_back()
         LogUtils.log_info("进行回退")
