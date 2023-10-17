@@ -169,23 +169,6 @@ class StateHandler(object):
 
 
     @classmethod
-    def get_permission_screen_node(cls, content):
-        cur_screen_pkg_name, cur_activity, ck_eles_text = get_screen_info_from_context(content)
-        screen_text = get_screen_text(content)
-        cur_screen_node = ScreenNode()
-        # cur_screen_node.info = cur_screen_info
-        cur_screen_node.pkg_name = cur_screen_pkg_name
-        cur_screen_node.activity_name = cur_activity
-        d = Config.get_instance().get_device()
-        cur_ck_eles = content["cur_ck_eles"]
-        merged_diff = content["merged_diff"]
-        cur_screen_node.screen_text = screen_text
-        cur_screen_node.clickable_elements = cur_ck_eles
-        cur_screen_node.ck_eles_text = ck_eles_text
-        cur_screen_node.merged_diff = merged_diff
-        return cur_screen_node
-
-    @classmethod
     def random_click_ele(cls, content):
         LogUtils.log_info("可能产生了权限框")
         cur_screen_node = get_cur_screen_node_from_context(content)
@@ -242,7 +225,24 @@ class StateHandler(object):
         cls.__click(loc_x, loc_y)
 
     @classmethod
-    def add_not_target_pkg_name_screen_call_graph(cls, content):
+    def get_permission_screen(cls, content):
+        cur_screen_pkg_name, cur_activity, ck_eles_text = get_screen_info_from_context(content)
+        screen_text = get_screen_text_from_context(content)
+        # 初始化cur_screen_node信息
+        cur_screen_node = ScreenNode()
+        cur_screen_node.pkg_name = cur_screen_pkg_name
+        cur_screen_node.screen_text = screen_text
+        cur_screen_node.activity_name = cur_activity
+        cur_ck_eles = content["cur_ck_eles"]
+        cur_screen_node.clickable_elements = cur_ck_eles
+        cur_screen_node.ck_eles_text = ck_eles_text
+        # 不需要cur_screen加入到全局记录的screen_map
+        # 不需要将cur_screen加入到last_screen的子节点
+        # ...
+        return cur_screen_node
+
+    @classmethod
+    def get_special_screen(cls, content):
         screen_map = RuntimeContent.get_instance().get_screen_map()
         ck_eles_text = content["ck_eles_text"]
         if screen_map.get(ck_eles_text, False) is not False:
@@ -355,13 +355,6 @@ class StateHandler(object):
         cls.click_one_ele(content)
 
     @classmethod
-    def handle_outsystem_special_screen(cls, content):
-        cur_screen_node = cls.add_not_target_pkg_name_screen_call_graph(content)
-        content["cur_screen_node"] = cur_screen_node
-        print_screen_info(content, True)
-        cls.random_click_ele(content)
-
-    @classmethod
     def handle_system_permission_screen(cls, content):
         LogUtils.log_info("点击系统权限框")
         permission_pattern1 = "com.android.packageinstaller:id/permission_allow_button"
@@ -373,7 +366,7 @@ class StateHandler(object):
             Config.get_instance().device(resourceId=permission_pattern2).click()
             time.sleep(Config.get_instance().get_sleep_time_sec())
         else:
-            cur_screen_node = cls.add_not_target_pkg_name_screen_call_graph(content)
+            cur_screen_node = cls.get_permission_screen(content)
             content["cur_screen_node"] = cur_screen_node
             cls.random_click_ele(content)
 
@@ -394,7 +387,7 @@ class StateHandler(object):
 
     @classmethod
     def handle_back(cls, content):
-        cur_screen_node = cls.add_not_target_pkg_name_screen_call_graph(content)
+        cur_screen_node = cls.get_special_screen(content)
         # cur_screen_node.set_isWebView(True)
         content["cur_screen_node"] = cur_screen_node
         # print_screen_info(content, True)
@@ -435,7 +428,7 @@ class StateHandler(object):
 
     @classmethod
     def handle_exit_app(cls, content):
-        cur_screen_node = cls.add_not_target_pkg_name_screen_call_graph(content)
+        cur_screen_node = cls.get_special_screen(content)
         content["cur_screen_node"] = cur_screen_node
         cls.__press_back()
         RuntimeContent.get_instance().set_last_screen_node(None)
@@ -483,7 +476,7 @@ class StateHandler(object):
 
     @classmethod
     def handle_stuck_restart(cls, content):
-        cur_screen_node = cls.add_not_target_pkg_name_screen_call_graph(content)
+        cur_screen_node = cls.get_special_screen(content)
         content["cur_screen_node"] = cur_screen_node
 
         cur_screen_ck_eles_text = content["ck_eles_text"]
