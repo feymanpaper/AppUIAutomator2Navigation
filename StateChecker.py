@@ -197,11 +197,11 @@ def check_is_in_home_screen(cur_screen_pkg_name):
 
 
 def check_is_permisson_screen(cur_screen_pkg_name):
-    if cur_screen_pkg_name == "com.android.permissioncontroller":
-        return True
-    if cur_screen_pkg_name == "com.miui.securitycenter":
+    if cur_screen_pkg_name == "com.google.android.permissioncontroller":
         return True
     if cur_screen_pkg_name == "com.google.android.packageinstaller":
+        return True
+    if cur_screen_pkg_name == "com.miui.securitycenter":
         return True
     if cur_screen_pkg_name == "com.lbe.security.miui":
         return True
