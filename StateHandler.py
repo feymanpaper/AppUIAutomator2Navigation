@@ -446,6 +446,8 @@ class StateHandler(object):
     @classmethod
     def handle_finish_screen(cls, content):
         cur_screen_node = cls.get_exist_screen(content)
+        # 将cur_screen加入到last_screen的子节点
+        cls.__add_call_graph(cur_screen_node)
         pre_ck_eles_text = content["ck_eles_text"]
         cls.__press_back()
         LogUtils.log_info("进行回退")
