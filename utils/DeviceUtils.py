@@ -4,6 +4,9 @@ from RuntimeContent import *
 from RuntimeContent import RuntimeContent
 from UITreeNode import *
 from Config import *
+from utils.LogUtils import LogUtils
+from utils.OCRUtils import cal_privacy_ele_loc
+from utils.ScreenshotUtils import *
 
 system_view = [
     "com.android.systemui",
@@ -22,11 +25,14 @@ def get_screen_content():
     screen_text = get_screen_text()
     cur_ck_eles = get_clickable_elements()
 
+
     pre_len = len(cur_ck_eles)
     cur_ck_eles = remove_dup(cur_ck_eles)
     cur_ck_eles = merged_clickable_elements(cur_ck_eles)
     after_len = len(cur_ck_eles)
     ck_eles_text = to_string_ck_els(cur_ck_eles)
+    # 截图
+    screenshot_path = ScreenshotUtils.screen_shot(ck_eles_text)
 
     # if RuntimeContent.get_instance().get_first_screen_ck_eles_text() is None:
     #     RuntimeContent.get_instance().set_first_screen_ck_ele_text(ck_eles_text)
@@ -41,6 +47,7 @@ def get_screen_content():
     content["screen_text"] = screen_text
     content["cur_ck_eles"] = cur_ck_eles
     content["merged_diff"] = pre_len - after_len
+    content["screenshot_path"] = screenshot_path
     return content
 
 
@@ -583,3 +590,42 @@ def get_screen_info_from_context(content):
     ck_eles_text = content["ck_eles_text"]
 
     return cur_screen_pkg_name, cur_activity, ck_eles_text
+
+
+def add_if_privacy_eles(content):
+    # 如果已经找到了隐私政策url
+    cur_activity = content["cur_activity"]
+    cur_screen_pkg_name = content["cur_screen_pkg_name"]
+    screenshot_path = content["screenshot_path"]
+
+    if RuntimeContent.get_instance().is_found_privacy_url:
+        return
+    # 如果当前界面存在且当前界面加过
+    #TODO
+    pp_text_dict = get_privacy_policy_ele_dict()
+    if len(pp_text_dict) > 0:
+        for pp_text, pp_text_cnt in pp_text_dict.items():
+            loc_list = cal_privacy_ele_loc(screenshot_path, pp_text, pp_text_cnt)
+            if loc_list is not None:
+                for loc_tuple in loc_list:
+                    if loc_tuple is not None:
+                        pp_x, pp_y, w, h = loc_tuple[0], loc_tuple[1], loc_tuple[2], loc_tuple[3]
+                        pp_ele_dict = {
+                            'class': '',
+                            'resource-id': '',
+                            'package': cur_screen_pkg_name,
+                            'text': pp_text,
+                            'bounds': "[" + str(pp_x) + "," + str(pp_y) + "][" + str(w) + "," + str(h) + "]"
+                        }
+                        pp_ele_uid = get_unique_id(pp_ele_dict, cur_activity)
+                        RuntimeContent.get_instance().put_ele_uid_map(pp_ele_uid, pp_ele_dict)
+                        clickable_elements = content["cur_ck_eles"]
+                        clickable_elements.insert(0, pp_ele_uid)
+                        content["is_add_privacy_eles"] = True
+                        LogUtils.log_info(f"OCR到{pp_text}")
+                    else:
+                        LogUtils.log_info(f"没有OCR到{pp_text}")
+            else:
+                LogUtils.log_info(f"没有OCR到{pp_text}")
+    else:
+        LogUtils.log_info(f"没有找到隐私政策文本")

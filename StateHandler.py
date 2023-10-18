@@ -228,33 +228,7 @@ class StateHandler(object):
 
         cls.__click(loc_x, loc_y)
 
-    @classmethod
-    def get_system_permission_screen(cls, content):
-        cur_screen_pkg_name, cur_activity, ck_eles_text = get_screen_info_from_context(content)
-        screen_text = get_screen_text_from_context(content)
-        # 初始化cur_screen_node信息
-        cur_screen_node = ScreenNode()
-        cur_screen_node.pkg_name = cur_screen_pkg_name
-        cur_screen_node.screen_text = screen_text
-        cur_screen_node.activity_name = cur_activity
-        cur_ck_eles = content["cur_ck_eles"]
-        cur_screen_node.clickable_elements = cur_ck_eles
-        cur_screen_node.ck_eles_text = ck_eles_text
-        # 不需要cur_screen加入到全局记录的screen_map
-        # 不需要将cur_screen加入到last_screen的子节点
-        # ...
-        return cur_screen_node
 
-    @classmethod
-    def get_special_screen(cls, content):
-        screen_map = RuntimeContent.get_instance().get_screen_map()
-        ck_eles_text = content["ck_eles_text"]
-        if screen_map.get(ck_eles_text, False) is not False:
-            cur_screen_node = screen_map.get(ck_eles_text)
-        else:
-            cur_screen_node = cls.create_new_screen(content)
-
-        return cur_screen_node
 
     @classmethod
     def __add_call_graph(cls, cur_screen_node):
@@ -318,6 +292,45 @@ class StateHandler(object):
         return cur_screen_node
 
     @classmethod
+    def get_system_permission_screen(cls, content):
+        cur_screen_pkg_name, cur_activity, ck_eles_text = get_screen_info_from_context(content)
+        screen_text = get_screen_text_from_context(content)
+        # 初始化cur_screen_node信息
+        cur_screen_node = ScreenNode()
+        cur_screen_node.pkg_name = cur_screen_pkg_name
+        cur_screen_node.screen_text = screen_text
+        cur_screen_node.activity_name = cur_activity
+        cur_ck_eles = content["cur_ck_eles"]
+        cur_screen_node.clickable_elements = cur_ck_eles
+        cur_screen_node.ck_eles_text = ck_eles_text
+        # 不需要cur_screen加入到全局记录的screen_map
+        # 不需要将cur_screen加入到last_screen的子节点
+        # ...
+        return cur_screen_node
+
+    @classmethod
+    def get_special_screen(cls, content):
+        screen_map = RuntimeContent.get_instance().get_screen_map()
+        ck_eles_text = content["ck_eles_text"]
+        if screen_map.get(ck_eles_text, False) is not False:
+            cur_screen_node = screen_map.get(ck_eles_text)
+        else:
+            cur_screen_node = cls.create_new_screen(content)
+        return cur_screen_node
+
+    @classmethod
+    def get_exceed_screen(cls, content):
+        screen_map = RuntimeContent.get_instance().get_screen_map()
+        ck_eles_text = content["ck_eles_text"]
+        if screen_map.get(ck_eles_text, False) is not False:
+            cur_screen_node = screen_map.get(ck_eles_text)
+        else:
+            # 如果满足条件, 添加cliakable=false 的隐私政策权的组件
+            add_if_privacy_eles(content)
+            cur_screen_node = cls.create_new_screen(content)
+        return cur_screen_node
+
+    @classmethod
     def handle_kill_other_app(cls, content):
         non_pkg_name = content["cur_screen_pkg_name"]
         d = Config.get_instance().get_device()
@@ -326,6 +339,7 @@ class StateHandler(object):
         start_pkg_name = Config.get_instance().get_target_pkg_name()
         d.app_start(start_pkg_name)
         time.sleep(3)
+
 
     @classmethod
     def handle_exist_screen(cls, content):
@@ -336,7 +350,48 @@ class StateHandler(object):
         cls.click_one_ele(content)
 
     @classmethod
+    def handle_exceed_screen(cls, content):
+        # 获取exceed_screen
+        cur_screen_node = cls.get_exceed_screen(content)
+        cls.__add_call_graph(cur_screen_node)
+        # cur_screen_node.set_isWebView(True)
+        content["cur_screen_node"] = cur_screen_node
+        # print_screen_info(content, True)
+        pre_ck_eles_text = content["ck_eles_text"]
+        cls.__press_back()
+        LogUtils.log_info("进行回退")
+        RuntimeContent.get_instance().set_last_screen_node(None)
+        RuntimeContent.get_instance().set_last_clickable_ele_uid("")
+
+        after_ck_eles_text = get_screen_content()["ck_eles_text"]
+
+        # 如果不一样说明文本变化了, 说明一次back即可回退
+        sim_flag = is_text_similar(pre_ck_eles_text, after_ck_eles_text)
+        if not sim_flag:
+            return
+
+        # 如果没变化, 尝试double_press_back
+        LogUtils.log_info("一次回退失败, 二次回退")
+
+        cls.__double_press_back()
+        after_ck_eles_text = get_screen_content()["ck_eles_text"]
+        # 如果不一样说明文本变化了, 说明两次back即可回退
+        sim_flag = is_text_similar(pre_ck_eles_text, after_ck_eles_text)
+        if not sim_flag:
+            return
+        # 上述方法都失效,重启
+        # RuntimeContent.get_instance().append_error_screen_list(pre_ck_eles_text)
+        # cur_screen_node = content.get("cur_screen_node", None)
+        # if cur_screen_node is not None:
+        #     last_ck_ele_uid_list = cur_screen_node.get_last_ck_ele_uid_list()
+        #     RuntimeContent.get_instance().append_more_error_ck_ele_uid_list(last_ck_ele_uid_list)
+        LogUtils.log_info("二次回退失败, 重启")
+        raise RestartException("重启机制")
+
+    @classmethod
     def handle_new_screen(cls, content):
+        # 如果满足条件, 添加cliakable=false 的隐私政策权的组件
+        add_if_privacy_eles(content)
         cur_screen_node = cls.create_new_screen(content)
         # 将cur_screen加入到last_screen的子节点
         cls.__add_call_graph(cur_screen_node)
