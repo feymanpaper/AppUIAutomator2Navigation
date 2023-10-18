@@ -233,8 +233,6 @@ class FSM(threading.Thread):
                 return self.STATE_FinishScreen, content
             # 3说明未点完, 触发点一个组件
             else:
-                # 如果满足条件, 添加cliakable=false 的隐私政策权的组件
-                self.add_if_privacy_eles(content, cur_activity, cur_screen_pkg_name, screenshot_path, res_sim)
                 return self.STATE_ExistScreen, content
         else:
             # 放到后面建立完成之后在添加
@@ -242,17 +240,12 @@ class FSM(threading.Thread):
 
             # 如果满足条件, 添加cliakable=false 的隐私政策权的组件
             self.add_if_privacy_eles(content, cur_activity, cur_screen_pkg_name, screenshot_path, res_sim)
-
             return self.STATE_NewScreen, content
 
     def add_if_privacy_eles(self, content, cur_activity, cur_screen_pkg_name, screenshot_path, res_sim):
         # 如果已经找到了隐私政策url
         if RuntimeContent.get_instance().is_found_privacy_url:
             return
-        # 如果当前界面已经添加了隐私组件
-        if res_sim >= Config.get_instance().screen_similarity_threshold and content["cur_screen_node"].is_add_privacy_eles:
-            return
-
         pp_text_dict = get_privacy_policy_ele_dict()
         if len(pp_text_dict) > 0:
             for pp_text, pp_text_cnt in pp_text_dict.items():
