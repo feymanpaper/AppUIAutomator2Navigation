@@ -332,7 +332,7 @@ class StateHandler(object):
         cur_screen_node = cls.get_exist_screen(content)
         # 将cur_screen加入到last_screen的子节点
         cls.__add_call_graph(cur_screen_node)
-        if content["is_add_privacy_eles"]:
+        if content.get("is_add_privacy_eles", None) is not None and content.get("is_add_privacy_eles"):
             cur_screen_node.is_add_privacy_eles = True
         print_screen_info(content, False)
         cls.click_one_ele(content)
@@ -343,7 +343,7 @@ class StateHandler(object):
         # 将cur_screen加入到last_screen的子节点
         cls.__add_call_graph(cur_screen_node)
         content["cur_screen_node"] = cur_screen_node
-        if content["is_add_privacy_eles"]:
+        if content.get("is_add_privacy_eles", None) is not None and content.get("is_add_privacy_eles"):
             cur_screen_node.is_add_privacy_eles = True
         print_screen_info(content, True)
         cls.click_one_ele(content)
