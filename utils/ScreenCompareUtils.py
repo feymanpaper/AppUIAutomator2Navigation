@@ -4,7 +4,7 @@ from RuntimeContent import *
 from ScreenNode import *
 
 
-def get_max_similarity_screen_node(ck_eles_text: str) -> tuple[float | ScreenNode]:
+def get_max_similarity_screen_node(ck_eles_text: str):
     screen_map = RuntimeContent.get_instance().get_screen_map()
     if screen_map.get(ck_eles_text, False) is False:
         # 如果没有,则遍历找满足相似度阈值的
@@ -24,7 +24,7 @@ def get_max_similarity_screen_node(ck_eles_text: str) -> tuple[float | ScreenNod
         return 1.0, screen_map.get(ck_eles_text)
 
 
-def get_max_sim_from_screen_depth_map(ck_eles_text: str) -> tuple[float | int]:
+def get_max_sim_from_screen_depth_map(ck_eles_text: str):
     screen_depth_map = RuntimeContent.get_instance().screen_depth_map
     if screen_depth_map.get(ck_eles_text, False) is False:
         max_sim = 0
