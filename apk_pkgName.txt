@@ -1,3 +1,4 @@
+com.taobao.taobao | 淘宝
 com.alibaba.android.rimet | 钉钉
 com.taobao.trip | 飞猪旅行
 com.youku.phone | 优酷视频
