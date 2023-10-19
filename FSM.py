@@ -1,13 +1,11 @@
 from StateHandler import *
-from utils.ScreenCompareUtils import get_max_similarity_screen_node, get_max_sim_from_screen_depth_map
-from utils.ScreenshotUtils import *
+from utils.DeviceUtils import add_if_privacy_eles
 from utils.CalDepthUtils import *
 from utils.PrivacyUrlUtils import *
 import threading
 from constant.DefException import RestartException
 from queue import Queue
 from traceback import format_exc
-from utils.OCRUtils import *
 from utils.FileUtils import *
 
 
@@ -43,7 +41,6 @@ class FSM(threading.Thread):
         3: "STATE_ExistScreen",
         4: "STATE_FinishScreen",
         5: "STATE_NewScreen",
-        6: "STATE_SpecialScreen",
         7: "STATE_StuckRestart",
         8: "STATE_DoublePress",
         9: "STATE_PermissonScreen",
@@ -63,7 +60,6 @@ class FSM(threading.Thread):
     STATE_ExistScreen = 3
     STATE_FinishScreen = 4
     STATE_NewScreen = 5
-    STATE_SpecialScreen = 6
     STATE_StuckRestart = 7
     STATE_DoublePress = 8
     STATE_PermissonScreen = 9
@@ -93,8 +89,6 @@ class FSM(threading.Thread):
             StateHandler.handle_finish_screen(content)
         elif state == self.STATE_NewScreen:
             StateHandler.handle_new_screen(content)
-        elif state == self.STATE_SpecialScreen:
-            StateHandler.handle_special_screen(content)
         elif state == self.STATE_StuckRestart:
             # TODO 重启机制
             StateHandler.handle_stuck_restart(content)
@@ -108,6 +102,8 @@ class FSM(threading.Thread):
             StateHandler.handle_kill_other_app(content)
         elif state == self.STATE_Terminate:
             StateHandler.handle_terminate(content)
+        elif state == self.STATE_ExceedDepth:
+            StateHandler.handle_exceed_screen(content)
         elif state == self.STATE_Back:
             StateHandler.handle_back(content)
         else:
@@ -118,9 +114,6 @@ class FSM(threading.Thread):
         cur_activity = content["cur_activity"]
         cur_screen_pkg_name = content["cur_screen_pkg_name"]
         cur_ck_eles_text = content["ck_eles_text"]
-
-        # 截图
-        screenshot_path = ScreenshotUtils.screen_shot(cur_ck_eles_text)
 
         StatRecorder.get_instance().add_stat_stat_activity_set(cur_activity)
         StatRecorder.get_instance().add_stat_screen_set(cur_ck_eles_text)
@@ -150,7 +143,8 @@ class FSM(threading.Thread):
                 if pp_text in last_clickable_ele_uid:
                     for pri_url in find_url_set:
                         PrivacyUrlUtils.save_privacy(pri_url)
-                        print(f"找到了{pp_text}的url:{pri_url}")
+                        LogUtils.log_info(f"找到了{pp_text}的url:{pri_url}")
+                        RuntimeContent.get_instance().is_found_privacy_url = True
 
 
         if Config.get_instance().curDepth > Config.get_instance().maxDepth:
@@ -209,7 +203,7 @@ class FSM(threading.Thread):
         LogUtils.log_info(f"当前层数为: {cur_screen_depth}")
         if cur_screen_depth > Config.get_instance().curDepth:
             LogUtils.log_info("ExceedDepth")
-            return self.STATE_Back, content
+            return self.STATE_ExceedDepth, content
 
         # temp_screen_node = get_screennode_from_screenmap_by_similarity(screen_map, ck_eles_text, screen_compare_strategy)
         # if temp_screen_node is not None and len(temp_screen_node.clickable_elements) == clickable_cnt:
@@ -231,21 +225,6 @@ class FSM(threading.Thread):
                 LogUtils.log_info("ErrorScreen")
                 return self.STATE_Back, content
 
-            # # TODO k为6,表示出现了连续6个以上的pattern,且所有组件已经点击完毕,避免一些情况:页面有很多组件点了没反应,这个时候应该继续点而不是随机点
-            # if cur_screen_node.is_screen_clickable_finished() and check_pattern_state2(10, [self.STATE_FinishScreen,
-            #                                                                                 self.STATE_SpecialScreen,
-            #                                                                                 self.STATE_DoublePress]):
-            #     return self.STATE_StuckRestart, content
-            # if cur_screen_node.is_screen_clickable_finished() and check_pattern_state(1, [self.STATE_SpecialScreen,
-            #                                                                                self.STATE_DoublePress]) and check_screen_list_reverse(
-            #     3):
-            #     return self.STATE_SpecialScreen, content
-            # if cur_screen_node.is_screen_clickable_finished() and check_pattern_state(1,
-            #                                                                            [
-            #                                                                               self.STATE_FinishScreen]) and check_screen_list_reverse(
-            #     2):
-            #     return self.STATE_DoublePress, content
-
             # 说明已经点完, press_back
             if cur_screen_node.is_screen_clickable_finished():
                 return self.STATE_FinishScreen, content
@@ -255,7 +234,6 @@ class FSM(threading.Thread):
         else:
             # 放到后面建立完成之后在添加
             # screen_map[ck_eles_text] = cur_screen_node
-
             # 添加cliakable=false 的隐私政策权的组件
             pp_text_dict = get_privacy_policy_ele_dict()
             if len(pp_text_dict) > 0:

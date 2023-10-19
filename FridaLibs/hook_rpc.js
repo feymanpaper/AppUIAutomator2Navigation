@@ -1,4 +1,4 @@
-console.log("Script loaded successfully ");
+console.log("Frida Script loaded successfully ");
 Java.perform(function x() {
     // hook Intent之间传递的url
     var act = Java.use("android.content.Intent");
