@@ -114,6 +114,7 @@ class FSM(threading.Thread):
         cur_activity = content["cur_activity"]
         cur_screen_pkg_name = content["cur_screen_pkg_name"]
         cur_ck_eles_text = content["ck_eles_text"]
+        screenshot_path = content["screenshot_path"]
 
         StatRecorder.get_instance().add_stat_stat_activity_set(cur_activity)
         StatRecorder.get_instance().add_stat_screen_set(cur_ck_eles_text)
