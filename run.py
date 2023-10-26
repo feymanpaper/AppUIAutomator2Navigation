@@ -2,7 +2,7 @@ from FSM import *
 from utils.JsonUtils import *
 from utils.SavedInstanceUtils import *
 from queue import Queue
-from FridaLibs.mq_producer import Producer
+from services.privacy_policy_hook.mq_producer import Producer
 from utils.DrawGraphUtils import *
 import sys
 
