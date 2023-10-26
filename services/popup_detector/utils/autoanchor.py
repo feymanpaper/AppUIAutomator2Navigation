@@ -10,8 +10,8 @@ import torch
 import yaml
 from tqdm import tqdm
 
-from utils import TryExcept
-from utils.general import LOGGER, TQDM_BAR_FORMAT, colorstr
+from services.popup_detector.utils import TryExcept
+from services.popup_detector.utils.general import LOGGER, TQDM_BAR_FORMAT, colorstr
 
 PREFIX = colorstr('AutoAnchor: ')
 

@@ -1,11 +1,11 @@
 import threading, time
 from queue import Queue
-from mq_producer import Producer
+from mq_producer import FridaHookService
 from mq_consumer import Consumer
 
 def main():
     queue = Queue()
-    producer = Producer('Pro', queue, False)
+    producer = FridaHookService('Pro', queue, False)
     consumer = Consumer('Con', queue)
     producer.start()
     consumer.start()

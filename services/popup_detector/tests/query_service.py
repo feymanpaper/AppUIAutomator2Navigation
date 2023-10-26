@@ -57,10 +57,6 @@ class QueryService(threading.Thread):
                     data = self.resp_queue.get(block=True, timeout=5)
                     print(f"{self.name} get {data} from resp_queue")
 
-                    # 在原图上绘制结果
-                    redraw = Redraw(image_path, data['xywh'], data['conf'])
-                    redraw.redraw()
-
                     # 休眠1s
                     time.sleep(2)
 

@@ -8,7 +8,7 @@ from urllib.parse import unquote
 
 lock = threading.Lock()
 
-class Producer(threading.Thread):
+class FridaHookService(threading.Thread):
     def __init__(self, t_name: str, queue: Queue, daemon: bool):
         threading.Thread.__init__(self, name=t_name, daemon=daemon)
         self.data = queue
@@ -62,7 +62,7 @@ class Producer(threading.Thread):
         # 加载s1.js脚本
 
         # with open("./hook_rpc.js",encoding="utf-8") as f:
-        with open("./FridaLibs/hook_rpc.js") as f:
+        with open("./services/privacy_policy_hook/hook_rpc.js") as f:
             script = pid.create_script(f.read())
         script.on('message', self.on_message)
         script.load()

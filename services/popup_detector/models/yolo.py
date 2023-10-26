@@ -21,12 +21,12 @@ if str(ROOT) not in sys.path:
 if platform.system() != 'Windows':
     ROOT = Path(os.path.relpath(ROOT, Path.cwd()))  # relative
 
-from models.common import *  # noqa
-from models.experimental import *  # noqa
-from utils.autoanchor import check_anchor_order
-from utils.general import LOGGER, check_version, check_yaml, make_divisible, print_args
-from utils.plots import feature_visualization
-from utils.torch_utils import (fuse_conv_and_bn, initialize_weights, model_info, profile, scale_img, select_device,
+from services.popup_detector.models.common import *  # noqa
+from services.popup_detector.models.experimental import *  # noqa
+from services.popup_detector.utils.autoanchor import check_anchor_order
+from services.popup_detector.utils.general import LOGGER, check_version, check_yaml, make_divisible, print_args
+from services.popup_detector.utils.plots import feature_visualization
+from services.popup_detector.utils.torch_utils import (fuse_conv_and_bn, initialize_weights, model_info, profile, scale_img, select_device,
                                time_sync)
 
 try:

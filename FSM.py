@@ -11,9 +11,11 @@ from utils.FileUtils import *
 
 class FSM(threading.Thread):
 
-    def __init__(self, t_name, queue: Queue):
+    def __init__(self, t_name, data: Queue, req_que:Queue, resp_que:Queue):
         threading.Thread.__init__(self, name=t_name)
-        self.data = queue
+        self.data = data
+        self.req_queue = req_que
+        self.resp_queue = resp_que
 
         self.exit_code = 0
         self.exception = None
@@ -72,6 +74,15 @@ class FSM(threading.Thread):
     STATE_KillOtherApp = 16
     STATE_Back = 17
     STATE_Terminate = 100
+
+    def query_popup_info(self, img_path):
+        # 将图片放到请求队列, 如果队满则阻塞, 阻塞时长timeout则异常
+        self.req_queue.put(img_path, block=True)
+        print(f"put {img_path} into req_queue")
+
+        # 从响应队列获取结果, 如果空则阻塞, 阻塞时长timeout则异常
+        data = self.resp_queue.get(block=True)
+        return data
 
 
     def update_stat(self, cur_activity, ck_eles_text):
@@ -169,6 +180,10 @@ class FSM(threading.Thread):
         # if check_is_in_webview(cur_activity):
         #     StatRecorder.get_instance().add_webview_set(ck_eles_text)
         #     return self.STATE_Back, content
+
+        popup_info = self.query_popup_info(screenshot_path)
+        LogUtils.log_info(popup_info)
+
 
         screen_depth_map = RuntimeContent.get_instance().screen_depth_map
         last_screen_node = RuntimeContent.get_instance().last_screen_node

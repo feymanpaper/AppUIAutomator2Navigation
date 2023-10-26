@@ -6,15 +6,17 @@ import sys
 from pathlib import Path
 import detect_queue
 
-from utils.image_preproccess import Preproccess
-from utils.redraw import Redraw
+from services.popup_detector.utils.image_preproccess import Preproccess
+from services.popup_detector.utils.redraw import Redraw
 
 FILE = Path(__file__).resolve()
 ROOT = FILE.parents[0]  # YOLOv5 root directory
 if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))  # add ROOT to PATH
 ROOT = Path(os.path.relpath(ROOT, Path.cwd()))  # relative
-from utils.general import check_requirements
+
+
+from services.popup_detector.utils.general import check_requirements
 
 lock = threading.Lock()
 
@@ -26,12 +28,12 @@ class YoloService(threading.Thread):
             req_queue: Queue,
             resp_queue: Queue,
             daemon: bool,
-            opt: {
-                'weights': ROOT / 'yolov5s.pt',  # model path or triton URL
-                'source': ROOT / 'data/images',  # file/dir/URL/glob/screen/0(webcam)
+            opt= {
+                'weights': ROOT / 'runs/train/exp15/weights/best.pt',  # model path or triton URL
+                'source': ROOT / 'data_detect/images_origin',  # file/dir/URL/glob/screen/0(webcam)
                 'data': ROOT / 'data/coco128.yaml',  # dataset.yaml path
                 'imgsz': (640, 640),  # inference size (height, width)
-                'conf_thres': 0.25,  # confidence threshold
+                'conf_thres': 0.5,  # confidence threshold
                 'iou_thres': 0.45,  # NMS IOU threshold
                 'max_det': 1000,  # maximum detections per image
                 'device': '',  # cuda device, i.e. 0 or 0,1,2,3 or cpu
@@ -40,7 +42,7 @@ class YoloService(threading.Thread):
                 'save_csv': False,  # save results in CSV format
                 'save_conf': True,  # save confidences in --save-txt labels
                 'save_crop': False,  # save cropped prediction boxes
-                'nosave': False,  # do not save images/videos
+                'nosave': True,  # do not save images/videos
                 'classes': None,  # filter by class: --class 0, or --class 0 2 3
                 'agnostic_nms': False,  # class-agnostic NMS
                 'augment': False,  # augmented inference
@@ -126,7 +128,7 @@ class YoloService(threading.Thread):
         while True:
             try:
                 # 从请求队列得到图片
-                image = self.req_queue.get(block=True, timeout=5)
+                image = self.req_queue.get(block=True)
                 print(f"{self.name} get {image} from req_queue")
 
                 # 处理逻辑
@@ -135,8 +137,12 @@ class YoloService(threading.Thread):
                 result = {'xywh': xywh, 'conf': conf}
 
                 # 将处理后的结果放到响应队列
-                self.resp_queue.put(result, block=True, timeout=5)
+                self.resp_queue.put(result, block=True)
                 print(f"{self.name} put {result} into resp_queue")
+
+                # 在原图上绘制结果
+                redraw = Redraw(image, xywh, conf)
+                redraw.redraw()
 
                 # 休眠1s
                 time.sleep(2)
