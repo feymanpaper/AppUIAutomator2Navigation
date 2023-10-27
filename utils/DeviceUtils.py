@@ -151,6 +151,33 @@ def get_screen_info():
     ck_eles_text = get_screen_all_clickable_text_and_loc(d)
     return pkg_name, act_name, ck_eles_text
 
+def get_device_info():
+    d = Config.get_instance().get_device()
+    return d.info
+
+def get_screen_wh():
+    device_info = get_device_info()
+    screen_w = device_info['displayWidth']
+    screen_h = device_info['displayHeight']
+    return screen_w, screen_h
+
+def yolowxyh_to_uiautoxywh(xywh):
+    screen_w, screen_h = get_screen_wh()
+    ui_x = screen_w * xywh[0]
+    ui_w = screen_w * xywh[2]
+    ui_y = screen_h * xywh[1]
+    ui_h = screen_h * xywh[3]
+    return [ui_x, ui_y, ui_w, ui_h]
+
+def get_4corner_coord(xywh):
+    ui_xywh = yolowxyh_to_uiautoxywh(xywh)
+    coord = {}
+    coord["left_top"] = [ui_xywh[0], ui_xywh[1]]
+    coord["right_top"] = [ui_xywh[0] + ui_xywh[2], ui_xywh[1]]
+    coord["left_bot"] = [ui_xywh[0], ui_xywh[1] + ui_xywh[3]]
+    coord["right_bot"] = [ui_xywh[0] + ui_xywh[2], ui_xywh[1] + ui_xywh[3]]
+    return coord
+
 
 # 获取当前界面所有的可点击组件的文本内容，如果该节点可点但没有文本
 # 那大概率文本存在其子节点上
