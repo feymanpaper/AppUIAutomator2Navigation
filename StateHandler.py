@@ -267,7 +267,7 @@ class StateHandler(object):
         merged_diff = content["merged_diff"]
         sim = content.get("sim", None)
         most_similar_screen_node = content.get("most_similar_screen_node", None)
-        if sim is not None and sim >= 0.70:
+        if sim is not None and sim >= 0.60:
             # TODO
             most_sim_clickable_elements = most_similar_screen_node.get_exactly_clickable_eles()
             diff_list = get_two_clickable_eles_diff(cur_ck_eles, most_sim_clickable_elements)
@@ -407,14 +407,50 @@ class StateHandler(object):
         popup_map = RuntimeContent.get_instance().get_popup_map()
         ck_eles_text = content["ck_eles_text"]
         if popup_map.get(ck_eles_text, False) is not False:
+            LogUtils.log_info("弹框已存在")
             cur_popup_node = popup_map.get(ck_eles_text)
         else:
+            LogUtils.log_info("创建新弹框")
             cur_popup_node = cls.create_popup(content)
             # 删除不在弹框范围内的组件
             cls.__remove_eles_notin_popup(cur_popup_node, coord_dict)
+            cls.insert_privacy_eles(content, cur_popup_node)
         content["cur_screen_node"] = cur_popup_node
         print_screen_info(content, 2)
         cls.click_popup_eles(content)
+
+    @classmethod
+    def insert_privacy_eles(cls, content, screen_node:ScreenNode):
+        screenshot_path = content["screenshot_path"]
+        cur_screen_pkg_name = content["cur_screen_pkg_name"]
+        cur_activity = content["cur_activity"]
+
+        pp_text_dict = get_privacy_policy_ele_dict()
+        if len(pp_text_dict) > 0:
+            for pp_text, pp_text_cnt in pp_text_dict.items():
+                loc_list = cal_privacy_ele_loc(screenshot_path, pp_text, pp_text_cnt)
+                if loc_list is not None:
+                    for loc_tuple in loc_list:
+                        if loc_tuple is not None:
+                            pp_x, pp_y, w, h = loc_tuple[0], loc_tuple[1], loc_tuple[2], loc_tuple[3]
+                            pp_ele_dict = {
+                                'class': '',
+                                'resource-id': '',
+                                'package': cur_screen_pkg_name,
+                                'text': pp_text,
+                                'bounds': "[" + str(pp_x) + "," + str(pp_y) + "][" + str(w) + "," + str(h) + "]"
+                            }
+                            pp_ele_uid = get_unique_id(pp_ele_dict, cur_activity)
+                            RuntimeContent.get_instance().put_ele_uid_map(pp_ele_uid, pp_ele_dict)
+                            clickable_elements = screen_node.get_diff_or_clickable_eles()
+                            clickable_elements.insert(0, pp_ele_uid)
+                            LogUtils.log_info(f"OCR到{pp_text}")
+                        else:
+                            LogUtils.log_info(f"没有OCR到{pp_text}")
+                else:
+                    LogUtils.log_info(f"没有OCR到{pp_text}")
+        else:
+            LogUtils.log_info(f"没有找到隐私政策文本")
 
     @classmethod
     def click_popup_eles(cls, content):
@@ -614,7 +650,7 @@ class StateHandler(object):
         cur_screen_node.ck_eles_text = ck_eles_text
         cur_screen_node.merged_diff = merged_diff
         # 将cur_screen加入到全局记录的screen_map
-        RuntimeContent.get_instance().put_screen_map(ck_eles_text, cur_screen_node)
+        RuntimeContent.get_instance().put_popup_map(ck_eles_text, cur_screen_node)
         return cur_screen_node
 
 

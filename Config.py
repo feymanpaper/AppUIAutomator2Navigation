@@ -73,7 +73,7 @@ class Config(object):
 
         self.CLICK_MAX_CNT = 4
         self.device = None
-        self.screen_similarity_threshold = 0.9  # 配置界面与界面之间相似度多少表示同一界面, 默认90%/0.9
+        self.screen_similarity_threshold = 0.7  # 配置界面与界面之间相似度多少表示同一界面, 默认90%/0.9
         self.UndefineDepth = 100000
         self.root_path = "collectData"
         self.start_time = datetime.now().strftime("%Y%m%d-%H%M%S")
