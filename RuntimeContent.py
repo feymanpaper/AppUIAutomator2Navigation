@@ -23,6 +23,7 @@ class RuntimeContent(object):
         self.first_screen_ck_eles_text = None
         self.last_clickable_ele_uid = None
         self.last_screen_node = None
+
         self.is_found_privacy_url = False
 
         self.already_click_eles = set()

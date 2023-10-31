@@ -516,9 +516,9 @@ class StateHandler(object):
                 # 点击该组件
                 LogUtils.log_info(f"正常点击组件&{clickable_ele_idx}: {cur_clickable_ele_uid}")
                 StatRecorder.get_instance().inc_total_ele_cnt()
-                # 弹框不需要set last
+                # 弹框不需要set last node
                 # RuntimeContent.get_instance().set_last_screen_node(cur_screen_node)
-                # RuntimeContent.get_instance().set_last_clickable_ele_uid(cur_clickable_ele_uid)
+                RuntimeContent.get_instance().set_last_clickable_ele_uid(cur_clickable_ele_uid)
 
                 if cur_screen_node.ele_uid_cnt_map.get(cur_clickable_ele_uid, None) is None:
                     cur_screen_node.ele_uid_cnt_map[cur_clickable_ele_uid] = 1
@@ -600,9 +600,9 @@ class StateHandler(object):
                         loc_x, loc_y = get_location(cur_clickable_ele_dict)
                         LogUtils.log_info(f"clickmap没完成点击组件&{clickable_ele_idx}: {cur_clickable_ele_uid}")
                         StatRecorder.get_instance().inc_total_ele_cnt()
-                        # 弹框不需要set last
+                        # 弹框不需要set last node
                         # RuntimeContent.get_instance().set_last_screen_node(cur_screen_node)
-                        # RuntimeContent.get_instance().set_last_clickable_ele_uid(cur_clickable_ele_uid)
+                        RuntimeContent.get_instance().set_last_clickable_ele_uid(cur_clickable_ele_uid)
 
                         if cur_screen_node.ele_uid_cnt_map.get(cur_clickable_ele_uid, None) is None:
                             cur_screen_node.ele_uid_cnt_map[cur_clickable_ele_uid] = 0
