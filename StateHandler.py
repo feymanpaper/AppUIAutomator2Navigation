@@ -346,7 +346,7 @@ class StateHandler(object):
         cur_screen_node = cls.get_exist_screen(content)
         # 将cur_screen加入到last_screen的子节点
         cls.__add_call_graph(cur_screen_node)
-        print_screen_info(content, False)
+        print_screen_info(content, 0)
         cls.click_one_ele(content)
 
     @classmethod
@@ -396,8 +396,62 @@ class StateHandler(object):
         # 将cur_screen加入到last_screen的子节点
         cls.__add_call_graph(cur_screen_node)
         content["cur_screen_node"] = cur_screen_node
-        print_screen_info(content, True)
+        print_screen_info(content, 1)
         cls.click_one_ele(content)
+
+    @classmethod
+    def handle_popup(cls, content):
+        xywh = content["xywh"]
+        coord_dict = get_4corner_coord(xywh)
+        popup_map = RuntimeContent.get_instance().get_popup_map()
+        ck_eles_text = content["ck_eles_text"]
+        if popup_map.get(ck_eles_text, False) is not False:
+            cur_popup_node = popup_map.get(ck_eles_text)
+        else:
+            cur_popup_node = cls.create_popup(content)
+            # 删除不在弹框范围内的组件
+            cls.__remove_eles_notin_popup(cur_popup_node, coord_dict)
+        content["cur_screen_node"] = cur_popup_node
+        print_screen_info(content, 2)
+        cls.click_one_ele(content)
+
+
+    @classmethod
+    def __remove_eles_notin_popup(cls, cur_node:ScreenNode, coord_dict):
+        cur_ck_eles = cur_node.clickable_elements
+        after_ck_eles = []
+        for ele_uid in cur_ck_eles:
+            cur_clickable_ele_dict = RuntimeContent.get_instance().get_ele_uid_map_by_uid(ele_uid)
+            loc_x, loc_y = get_location(cur_clickable_ele_dict)
+            left_top = coord_dict["left_top"]
+            right_bot = coord_dict["right_bot"]
+            if loc_x > left_top[0] and loc_x < right_bot[0] and loc_y > left_top[1] and loc_y < right_bot[1]:
+                after_ck_eles.append(ele_uid)
+        if len(after_ck_eles) <=0:
+            cur_node.clickable_elements = cur_ck_eles
+            LogUtils.log_info("在弹框范围内的组件为空")
+        else:
+            cur_node.clickable_elements = after_ck_eles
+
+    @classmethod
+    def create_popup(cls, content):
+        cur_screen_pkg_name, cur_activity, ck_eles_text = get_screen_info_from_context(content)
+        screen_text = get_screen_text_from_context(content)
+        # 初始化cur_screen_node信息
+        cur_screen_node = ScreenNode()
+        cur_screen_node.pkg_name = cur_screen_pkg_name
+        cur_screen_node.screen_text = screen_text
+        cur_screen_node.activity_name = cur_activity
+        cur_ck_eles = content["cur_ck_eles"]
+        merged_diff = content["merged_diff"]
+        cur_screen_node.clickable_elements = cur_ck_eles
+        cur_screen_node.ck_eles_text = ck_eles_text
+        cur_screen_node.merged_diff = merged_diff
+        # 将cur_screen加入到全局记录的screen_map
+        RuntimeContent.get_instance().put_screen_map(ck_eles_text, cur_screen_node)
+        return cur_screen_node
+
+
 
     @classmethod
     def handle_system_permission_screen(cls, content):

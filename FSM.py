@@ -54,6 +54,7 @@ class FSM(threading.Thread):
         15: "STATE_UndefineDepth",
         16: "STATE_KillOtherApp",
         17: "STATE_Back",
+        18: "STATE_Popup",
         100: "STATE_Terminate"
     }
 
@@ -73,13 +74,12 @@ class FSM(threading.Thread):
     STATE_UndefineDepth = 15
     STATE_KillOtherApp = 16
     STATE_Back = 17
+    STATE_PopUp = 18
     STATE_Terminate = 100
 
     def query_popup_info(self, img_path):
         # 将图片放到请求队列, 如果队满则阻塞, 阻塞时长timeout则异常
         self.req_queue.put(img_path, block=True)
-        print(f"put {img_path} into req_queue")
-
         # 从响应队列获取结果, 如果空则阻塞, 阻塞时长timeout则异常
         data = self.resp_queue.get(block=True)
         return data
@@ -117,6 +117,8 @@ class FSM(threading.Thread):
             StateHandler.handle_exceed_screen(content)
         elif state == self.STATE_Back:
             StateHandler.handle_back(content)
+        elif state == self.STATE_PopUp:
+            StateHandler.handle_popup(content)
         else:
             raise Exception("意外情况")
 
@@ -181,12 +183,17 @@ class FSM(threading.Thread):
         #     StatRecorder.get_instance().add_webview_set(ck_eles_text)
         #     return self.STATE_Back, content
 
+        # 如果置信度>=75%则认为是弹框, 进行弹框处理
         popup_info = self.query_popup_info(screenshot_path)
         LogUtils.log_info(popup_info)
+        if popup_info["conf"] >= 0.75:
+            content["xywh"] = popup_info["xywh"]
+            return self.STATE_PopUp, content
 
 
         screen_depth_map = RuntimeContent.get_instance().screen_depth_map
         last_screen_node = RuntimeContent.get_instance().last_screen_node
+
         cur_screen_depth = Config.get_instance().UndefineDepth
         # 从cache中得到当前界面的层数结果
         res_sim, most_similar_screen_node = get_max_similarity_screen_node(cur_ck_eles_text)

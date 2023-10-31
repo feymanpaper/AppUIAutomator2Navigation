@@ -12,6 +12,8 @@ class RuntimeContent(object):
         self.error_clickable_ele_uid_list = []
         # 存储着整个app所有screen(ScrennNode) {key:screen_sig, val:screen_node}
         self.screen_map = {}
+        # 存储着整个app所有popup(ScrennNode) {key:screen_sig, val:screen_node}
+        self.popup_map = {}
         # 全局记录每个组件的uid {key:cur_clickable_ele_uid, val:clickable_ele}
         self.ele_uid_map = {}
 
@@ -91,6 +93,12 @@ class RuntimeContent(object):
 
     def get_screen_map(self):
         return self.screen_map
+
+    def get_popup_map(self):
+        return self.popup_map
+
+    def put_popup_map(self, ck_eles_text:str, screen_node:ScreenNode):
+        self.popup_map[ck_eles_text] = screen_node
 
     def put_ele_uid_map(self, ele_uid, ele_dict):
         self.ele_uid_map[ele_uid] = ele_dict

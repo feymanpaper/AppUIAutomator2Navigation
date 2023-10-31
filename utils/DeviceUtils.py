@@ -171,6 +171,7 @@ def yolowxyh_to_uiautoxywh(xywh):
 
 def get_4corner_coord(xywh):
     ui_xywh = yolowxyh_to_uiautoxywh(xywh)
+    LogUtils.log_info(f"xywh转换前{xywh}--->转换后: {ui_xywh}")
     coord = {}
     coord["left_top"] = [ui_xywh[0], ui_xywh[1]]
     coord["right_top"] = [ui_xywh[0] + ui_xywh[2], ui_xywh[1]]
