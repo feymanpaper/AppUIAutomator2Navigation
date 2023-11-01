@@ -417,7 +417,12 @@ class StateHandler(object):
             cls.insert_privacy_eles(content, cur_popup_node)
         content["cur_screen_node"] = cur_popup_node
         print_screen_info(content, 2)
-        cls.click_popup_eles(content)
+
+        if cur_popup_node.is_screen_clickable_finished():
+            LogUtils.log_info("弹框已经点完所有组件")
+            cls.handle_finish_screen(content)
+        else:
+            cls.click_popup_eles(content)
 
     @classmethod
     def insert_privacy_eles(cls, content, screen_node:ScreenNode):
