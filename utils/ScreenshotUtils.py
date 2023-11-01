@@ -35,7 +35,8 @@ class ScreenshotUtils:
         savepath = os.path.join(screenshot_dir, screenshot_dir_picture)
         if not os.path.exists(savepath):
             os.makedirs(savepath)
-        filepath = savepath + '/' + filename + '.png'
+        filepath = os.path.join(savepath, filename+'.png')
+        # filepath = savepath + '/' + filename + '.png'
         screenshot.save(filepath)
         return filepath
 

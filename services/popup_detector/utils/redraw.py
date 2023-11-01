@@ -10,28 +10,26 @@ class Redraw:
         self.pic_name = os.path.basename(input_image)
 
         # 解析输入路径
-        path_parts = self.input_image.split("/")
-        symbol = "/"
-        folder_path = symbol.join(path_parts[:-2])
+        if "ScreenshotPicture" in self.input_image:
+            input_image = input_image.replace("ScreenshotPicture", "ProcessedScreenshotPicture")
+        else:
+            raise Exception("路径不存在ScreenshotPicture")
 
-        # 构建输出路径
-        output_folder = "ProcessedScreenshotPicture"
-        output_dir = folder_path + "/" + output_folder
+        path_parts = os.path.split(input_image)
+        output_dir = path_parts[0]
+
         if not os.path.exists(output_dir):
             os.makedirs(output_dir)
 
         self.output_dir = output_dir
 
-        # 标签路径
-        pic_name_without_extension = os.path.splitext(self.pic_name)[0]
-        self.label_path = folder_path + '/ProcessedScreenshotPicture/labels/' + pic_name_without_extension + '.txt'
+
 
     def redraw(self):
 
         output_folder = self.output_dir
 
         image_path = self.input_image
-        label_path = self.label_path
 
         image = cv2.imread(image_path)
 
