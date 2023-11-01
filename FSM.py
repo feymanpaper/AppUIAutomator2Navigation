@@ -207,8 +207,7 @@ class FSM(threading.Thread):
             if last_screen_node.ck_eles_text == "root":
                 cal_depth = 1
             else:
-                cal_depth = CalDepthUtils.calDepth(RuntimeContent.get_instance().get_screen_map(),
-                                                          RuntimeContent.get_instance().last_screen_node.ck_eles_text)
+                cal_depth = CalDepthUtils.calDepth(RuntimeContent.get_instance().last_screen_node.ck_eles_text)
             cur_screen_depth = min(cur_screen_depth, cal_depth)
 
         # 将最新最小的结果写入screen_depth_map
