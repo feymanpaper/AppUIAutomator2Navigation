@@ -53,19 +53,24 @@ def is_non_necessary_click(cur_clickable_ele_dict):
     return False
 
 
-def print_screen_info(content, is_new):
+def print_screen_info(content, type):
     cur_screen_node = get_cur_screen_node_from_context(content)
     LogUtils.log_info("*" * 100)
-    if is_new:
+    if type == 1:
         LogUtils.log_info(f"该screen为新: {cur_screen_node.ck_eles_text[0:-1]}--总共{len(cur_screen_node.clickable_elements)}, 减少{cur_screen_node.merged_diff}")
         if cur_screen_node.diff_clickable_elements is not None:
             LogUtils.log_info(f"差分后的数量为 {len(cur_screen_node.diff_clickable_elements)}")
 
-    else:
+    elif type == 0:
         LogUtils.log_info(f"该screen已存在: {cur_screen_node.ck_eles_text[0:-1]}--总共{len(cur_screen_node.clickable_elements)}, 减少{cur_screen_node.merged_diff}")
         if cur_screen_node.diff_clickable_elements is not None:
             LogUtils.log_info(f"差分后的数量为 {len(cur_screen_node.diff_clickable_elements)}")
 
+    elif type == 2:
+        LogUtils.log_info(
+            f"该screen是弹框: {cur_screen_node.ck_eles_text[0:-1]}--总共{len(cur_screen_node.clickable_elements)}, 减少{cur_screen_node.merged_diff}")
+        if cur_screen_node.diff_clickable_elements is not None:
+            LogUtils.log_info(f"差分后的数量为 {len(cur_screen_node.diff_clickable_elements)}")
     LogUtils.log_info("*" * 100)
 
 

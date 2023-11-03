@@ -5,9 +5,9 @@ from utils.ScreenCompareUtils import *
 
 class CalDepthUtils:
     @classmethod
-    def calDepth(cls, screen_map, target_uid):
+    def calDepth(cls, target_uid):
         try:
-            depth = cls.bfs(screen_map, "root", target_uid)
+            depth = cls.bfs("root", target_uid)
             if depth is None:
                 depth = Config.get_instance().UndefineDepth
             else:
@@ -20,7 +20,7 @@ class CalDepthUtils:
 
 
     @classmethod
-    def bfs(cls, adj_list, start_uid, target_uid) -> int:
+    def bfs(cls, start_uid, target_uid) -> int:
         """
         使用BFS算法遍历邻接表，并计算每个节点的层数
         """
@@ -48,7 +48,7 @@ class CalDepthUtils:
                 return level
 
             # 遍历这个节点的所有邻居，并将它们加入队列中
-            target_screen = CalDepthUtils.indexScreen(adj_list, uid)
+            target_screen = CalDepthUtils.indexScreen(uid)
             for key, value in target_screen.call_map.items():
                 queue.append((value.ck_eles_text, level + 1))
 
@@ -56,20 +56,9 @@ class CalDepthUtils:
 
 
     @classmethod
-    def indexScreen(cls, adj_list, target_uid):
-        for key, value in adj_list.items():
-            if value.ck_eles_text == target_uid:
-                return value
+    def indexScreen(cls, target_uid):
+        res_node = get_screennode_from_screenmap_by_similarity(target_uid)
+        if res_node is None:
+            raise Exception("indexScreen func: node为空")
+        return res_node
 
-if __name__ == "__main__":
-    print(1)
-    json_name = "/Users/feymanpaper/codeSpace/pyWorkSpace/privacy_policy/dumpjson/app.podcast.cosmos_restart0activity41&screen248&time2844.76s.json"
-
-    with open(json_name, 'r') as f:
-        data = json.load(f)
-        print(data)
-
-    start_screen_test = "root"
-    target_screen_text = "&设置 540 1648&个人主页 540 599&HD445166t还 540 373&创作中心录制、管理你 540 736&我的通知 540 918&收听历史 540 1055&我的收藏 540 1192&付费账户 540 1329&问题反馈 540 1511& 540 2135& 849 2135& 990 2136&发现 180 2240&订阅 540 2240"
-    # 计算'screen1'节点的层数
-    CalDepthUtils.bfs(data, start_screen_test, target_screen_text)

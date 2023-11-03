@@ -1,8 +1,10 @@
 from FSM import *
+from services.popup_detector import detect_queue
+from services.popup_detector.yolo_service import YoloService
 from utils.JsonUtils import *
 from utils.SavedInstanceUtils import *
 from queue import Queue
-from FridaLibs.mq_producer import Producer
+from services.privacy_policy_hook.mq_producer import FridaHookService
 from utils.DrawGraphUtils import *
 import sys
 
@@ -62,11 +64,17 @@ if __name__ == "__main__":
 
     # 计时开始
     StatRecorder.get_instance().set_start_time()
-
     restart_cnt = 0
-
+    # frida-service
     queue = Queue()
-    producer = Producer('Producer', queue, daemon=True)
+    frida_hook_service = FridaHookService('FridaHookService', queue, daemon=True)
+    # yolo-service
+    # opt = vars(detect_queue.parse_opt())  # <class 'argparse.Namespace'>
+
+
+    req_queue = Queue(1)
+    resp_queue = Queue(1)
+    yolo_service = YoloService('YoloDetectPopupService', req_queue, resp_queue, True)
 
     # 启动app
     d = Config.get_instance().get_device()
@@ -75,7 +83,8 @@ if __name__ == "__main__":
 
     # frida开始hook
     # 后台线程
-    producer.start()
+    frida_hook_service.start()
+    yolo_service.start()
 
     RuntimeContent.get_instance().set_last_screen_node(root)
     time.sleep(10)
@@ -85,7 +94,7 @@ if __name__ == "__main__":
     # 控制FSM线程, 重启会继续运行
     while True:
         # FSM开始运行
-        consumer_fsm = FSM('Consumer', queue)
+        consumer_fsm = FSM('FSM', queue, req_queue, resp_queue)
         consumer_fsm.start()
         consumer_fsm.join()
 
