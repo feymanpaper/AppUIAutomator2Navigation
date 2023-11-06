@@ -6,10 +6,10 @@ def rerun_uiautomator2():
     if d.uiautomator.running():
         print('uiautomator is running, stopping...')
         d.uiautomator.stop()
-        time.sleep(10)
+        time.sleep(5)
     print('start uiautomator2...')
     d.uiautomator.start()
-    time.sleep(10)
+    time.sleep(5)
 
 
 if __name__ == '__main__':

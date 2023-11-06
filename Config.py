@@ -59,10 +59,6 @@ class Config(object):
         self.app_name = appName  # 应用名
         self.maxDepth = int(depth)  # 配置点击的最大深度
 
-        # self.target_pkg_name = "com.taobao.trip"  # 应用包名
-        # self.app_name = "飞猪旅行"  # 应用名
-        # self.maxDepth = 3  # 配置点击的最大深度
-
         self.curDepth = 1
         self.test_time = int(test_time)  # 配置测试的时间,以秒为单位
         self.sleep_time_sec = 0.2  # 配置点击之后睡眠的时间
@@ -73,14 +69,14 @@ class Config(object):
 
         self.CLICK_MAX_CNT = 4
         self.device = None
-        self.screen_similarity_threshold = 0.9  # 配置界面与界面之间相似度多少表示同一界面, 默认90%/0.9
+        self.screen_similarity_threshold = 0.7  # 配置界面与界面之间相似度多少表示同一界面, 默认90%/0.9
         self.UndefineDepth = 100000
         self.root_path = "collectData"
         self.start_time = datetime.now().strftime("%Y%m%d-%H%M%S")
 
         self.privacy_policy_text_list = ["隐私权政策", "隐私政策", "隐私保护政策", "隐私保护指引"]
 
-        self.use_pickle_file_name = "./collectData/com.alibaba.android.rimet-20230923-180714/SavedInstance/com.alibaba.android.rimet_restart144activity8&screen19&time1810.84s.pickle"
+        self.use_pickle_file_name = "./collectData/com.alibaba.aliyun-20231103-002136/SavedInstance/com.alibaba.aliyun_restart17activity21&screen148&time2062.93s.pickle"
         self.is_saved_start = False
 
     def __new__(cls, *args, **kwargs):
