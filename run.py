@@ -87,6 +87,7 @@ if __name__ == "__main__":
     yolo_service.start()
 
     RuntimeContent.get_instance().set_last_screen_node(root)
+    RuntimeContent.get_instance().set_last_clickable_ele_uid("dummy_root_element")
     time.sleep(10)
 
 
@@ -112,6 +113,7 @@ if __name__ == "__main__":
             d.app_start(Config.get_instance().get_target_pkg_name(), use_monkey=True)
             time.sleep(5)
             RuntimeContent.get_instance().set_last_screen_node(root)
+            RuntimeContent.get_instance().set_last_clickable_ele_uid("dummy_root_element")
         # fsm线程触发了TerminateException
         elif consumer_fsm.exit_code == 2:
             LogUtils.log_info("程序正常结束")
