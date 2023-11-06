@@ -59,8 +59,6 @@ class CalDepthUtils:
     def indexScreen(cls, target_uid):
         res_node = get_screennode_from_screenmap_by_similarity(target_uid)
         if res_node is None:
-            print(target_uid)
-            print(RuntimeContent.get_instance().get_screen_map())
             raise Exception("indexScreen func: node为空")
         return res_node
 
