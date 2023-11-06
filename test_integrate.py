@@ -52,6 +52,13 @@ if __name__ == '__main__':
     with open('apk_pkgName.txt', 'r', encoding='utf-8') as f:
         content = f.readlines()
     pkgName_appName_list = [item.rstrip('\n') for item in content]
+    os_type = get_OS_type()
+    # 运行之前，kill掉所有的后台程序
+    if os_type == 'win':
+        execute_cmd_with_timeout("powershell.exe .\\kill_all_background_apps.ps1")
+    elif os_type in ['linux','mac']:
+        execute_cmd_with_timeout("sed -i 's/\r$//' kill_all_background_apps.sh")
+        execute_cmd_with_timeout("bash kill_all_background_apps.sh")
     for pkgName_appName in pkgName_appName_list:
         # print(pkgName_appName)
         if pkgName_appName.startswith('#'):
@@ -65,15 +72,20 @@ if __name__ == '__main__':
             if config_settings['rerun_uiautomator2'] == 'true':
                 rerun_uiautomator2()
             print('analysis {} : {}now...'.format(pkgName, appName))
-            if get_OS_type() in ['linux', 'mac']:
+            if os_type in ['linux', 'mac']:
                 execute_cmd_with_timeout(
                     'python3 run.py {} {} {} {} '.format(pkgName, appName, config_settings['dynamic_ui_depth'],
                                                          config_settings['dynamic_run_time']),timeout=int(config_settings['dynamic_run_time']))
-            elif get_OS_type() == 'win':
+                # kill current app
+            elif os_type == 'win':
                 execute_cmd_with_timeout(
                     'python run.py {} {} {} {} '.format(pkgName, appName, config_settings['dynamic_ui_depth'],
                                                         config_settings['dynamic_run_time']),timeout=int(config_settings['dynamic_run_time']))
+            print(f'kill {pkgName} in try...')
+            execute_cmd_with_timeout(f'adb shell am force-stop {pkgName}')
 
         except Exception as e:
             print(e)
             print('error occurred, continue...')
+            print(f'kill {pkgName} in exception...')
+            execute_cmd_with_timeout(f'adb shell am force-stop {pkgName}')

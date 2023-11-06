@@ -83,7 +83,7 @@ class ScreenshotUtils:
     @staticmethod
     def write_mapping_to_json(name, key, value):
         config_path = Config.get_instance().get_collectDataPath()
-        screenshot_dir = "ScreenShot"
+        screenshot_dir = "Screenshot"
         screenshot_json_dir = "ScreenshotJson"
         json_name = f"{name}.json"
         file_path = os.path.join(config_path, screenshot_dir, screenshot_json_dir, json_name)
