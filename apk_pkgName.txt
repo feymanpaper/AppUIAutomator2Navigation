@@ -1,3 +1,4 @@
+com.alibaba.wireless.lstretailer | 阿里零售通
 com.taobao.trip | 飞猪旅行
 com.youku.phone | 优酷视频
 com.tmall.wireless | 手机天猫
@@ -24,3 +25,4 @@ com.cainiao.wireless | 菜鸟
 com.taobao.movie.android | 淘票票
 com.antfortune.wealth | 蚂蚁财富
 com.mybank.android.phone | 网商银行
+
