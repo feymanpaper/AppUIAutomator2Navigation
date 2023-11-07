@@ -420,7 +420,7 @@ class StateHandler(object):
 
         if cur_popup_node.is_screen_clickable_finished():
             LogUtils.log_info("弹框已经点完所有组件")
-            cls.handle_finish_screen(content)
+            cls.handle_popup_finish(content)
         else:
             cls.click_popup_eles(content)
 
