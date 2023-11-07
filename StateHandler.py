@@ -420,7 +420,7 @@ class StateHandler(object):
 
         if cur_popup_node.is_screen_clickable_finished():
             LogUtils.log_info("弹框已经点完所有组件")
-            cls.handle_finish_screen(content)
+            cls.handle_popup_finish(content)
         else:
             cls.click_popup_eles(content)
 
@@ -430,8 +430,10 @@ class StateHandler(object):
         pre_ck_eles_text = content["ck_eles_text"]
         cls.__press_back()
         LogUtils.log_info("进行回退")
-        RuntimeContent.get_instance().set_last_screen_node(None)
-        RuntimeContent.get_instance().set_last_clickable_ele_uid("")
+
+        # 弹框不需要设置last
+        # RuntimeContent.get_instance().set_last_screen_node(None)
+        # RuntimeContent.get_instance().set_last_clickable_ele_uid("")
 
         after_ck_eles_text = get_screen_content()["ck_eles_text"]
         # 如果不一样说明文本变化了, 说明一次back即可回退
