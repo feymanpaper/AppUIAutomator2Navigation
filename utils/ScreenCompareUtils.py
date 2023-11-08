@@ -70,3 +70,8 @@ def is_text_similar(text1: str, text2: str) -> bool:
     if sim >= Config.get_instance().screen_similarity_threshold:
         return True
     return False
+
+def is_exactly_text_similar(text1:str, text2:str) -> bool:
+    if text1==text2:
+        return True
+    return False
