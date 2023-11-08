@@ -53,7 +53,6 @@ class Config(object):
             pkgName, appName, depth, test_time = f.readline().split(";")
         print(pkgName, appName, depth, test_time)
 
-        #
         # # 其余可修改的配置，从此处开始===========================
         self.target_pkg_name = pkgName  # 应用包名
         self.app_name = appName  # 应用名

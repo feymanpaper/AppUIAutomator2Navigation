@@ -11,7 +11,7 @@ device = frida.get_usb_device()
 
 # 启动`demo02`这个app
 print(device)
-pid = device.attach("钉钉")
+pid = device.attach("阿里零售通")
 # 加载s1.js脚本
 with open("hook_rpc.js", encoding="utf-8") as f:
     script = pid.create_script(f.read())
