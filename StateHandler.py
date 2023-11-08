@@ -175,14 +175,10 @@ class StateHandler(object):
 
     @classmethod
     def random_click_ele(cls, content):
-        LogUtils.log_info("可能产生了权限框")
         cur_screen_node = get_cur_screen_node_from_context(content)
-
         cur_screen_node_clickable_eles = cur_screen_node.get_diff_or_clickable_eles()
-
         choose = random.randint(0, len(cur_screen_node_clickable_eles) - 1)
         cur_clickable_ele_uid = cur_screen_node_clickable_eles[choose]
-
         cur_clickable_ele_dict = RuntimeContent.get_instance().get_ele_uid_map_by_uid(cur_clickable_ele_uid)
         loc_x, loc_y = get_location(cur_clickable_ele_dict)
         cur_screen_node.ele_vis_map[cur_clickable_ele_uid] = True
@@ -192,7 +188,6 @@ class StateHandler(object):
         # 弹框不需要设置last
         # RuntimeContent.get_instance().set_last_screen_node(cur_screen_node)
         # RuntimeContent.get_instance().set_last_clickable_ele_uid(cur_clickable_ele_uid)
-
         cls.__click(loc_x, loc_y)
 
     @classmethod
@@ -421,11 +416,24 @@ class StateHandler(object):
         if cur_popup_node.is_screen_clickable_finished():
             LogUtils.log_info("弹框已经点完所有组件")
             cls.handle_popup_finish(content)
+
+            cur_screen_node = get_cur_screen_node_from_context(content)
+            cur_screen_node_clickable_eles = cur_screen_node.get_diff_or_clickable_eles()
+
+            # 如果弹框已经点击完, 但是再出现弹框, 50%机会随机点, 50%机会back
+            # random click是为了应对重复的弹框
+            # random back是为了应对误报
+            probability = random.random()
+            if len(cur_screen_node_clickable_eles) > 0 and probability <= 0.5:
+                cls.random_click_ele(content)
+            else:
+                cls.handle_popup_finish(content)
         else:
             cls.click_popup_eles(content)
 
     @classmethod
     def handle_popup_finish(cls, content):
+
         cur_screen_node = cls.get_exist_screen(content)
         pre_ck_eles_text = content["ck_eles_text"]
         cls.__press_back()
@@ -436,8 +444,8 @@ class StateHandler(object):
         # RuntimeContent.get_instance().set_last_clickable_ele_uid("")
 
         after_ck_eles_text = get_screen_content()["ck_eles_text"]
-        # 如果不一样说明文本变化了, 说明一次back即可回退
-        sim_flag = is_text_similar(pre_ck_eles_text, after_ck_eles_text)
+        # 如果不一样说明文本变化了, 说明一次back即可回退, 弹框需要完全一样
+        sim_flag = is_exactly_text_similar(pre_ck_eles_text, after_ck_eles_text)
         if not sim_flag:
             return
         # 如果没变化, 尝试double_press_back
@@ -445,18 +453,10 @@ class StateHandler(object):
 
         cls.__double_press_back()
         after_ck_eles_text = get_screen_content()["ck_eles_text"]
-        # 如果不一样说明文本变化了, 说明两次back即可回退
-        sim_flag = is_text_similar(pre_ck_eles_text, after_ck_eles_text)
+        # 如果不一样说明文本变化了, 说明两次back即可回退, 弹框需要完全一样
+        sim_flag = is_exactly_text_similar(pre_ck_eles_text, after_ck_eles_text)
         if not sim_flag:
             return
-
-        # 上述方法都失效,重启
-        # RuntimeContent.get_instance().append_error_screen_list(pre_ck_eles_text)
-        # cur_screen_node = content.get("cur_screen_node", None)
-        # if cur_screen_node is not None:
-        #     last_ck_ele_uid_list = cur_screen_node.get_last_ck_ele_uid_list()
-        #     RuntimeContent.get_instance().append_more_error_ck_ele_uid_list(last_ck_ele_uid_list)
-
         LogUtils.log_info("二次回退失败, 重启")
         raise RestartException("重启机制")
 
@@ -711,7 +711,12 @@ class StateHandler(object):
         else:
             cur_screen_node = cls.get_system_permission_screen(content)
             content["cur_screen_node"] = cur_screen_node
-            cls.random_click_ele(content)
+            cur_screen_node = get_cur_screen_node_from_context(content)
+            cur_screen_node_clickable_eles = cur_screen_node.get_diff_or_clickable_eles()
+            if len(cur_screen_node_clickable_eles)>0:
+                cls.random_click_ele(content)
+            else:
+                cls.handle_popup_finish(content)
 
     @classmethod
     def handle_inputmethod(cls, content):
