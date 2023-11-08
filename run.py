@@ -4,7 +4,7 @@ from services.popup_detector.yolo_service import YoloService
 from utils.JsonUtils import *
 from utils.SavedInstanceUtils import *
 from queue import Queue
-from services.privacy_policy_hook.mq_producer import FridaHookService
+from services.privacy_policy_hook.mq_producer import *
 from utils.DrawGraphUtils import *
 import sys
 
@@ -107,10 +107,15 @@ if __name__ == "__main__":
             # logging.exception(consumer_fsm.exc_traceback)
             StatRecorder.get_instance().print_result()
             SavedInstanceUtils.dump_pickle(RuntimeContent.get_instance())
+
             # 重启
             d.app_stop(Config.get_instance().get_target_pkg_name())
             time.sleep(1)
             d.app_start(Config.get_instance().get_target_pkg_name(), use_monkey=True)
+
+            # 重启frida
+            restart_thread(frida_hook_service)
+
             time.sleep(5)
             RuntimeContent.get_instance().set_last_screen_node(root)
             RuntimeContent.get_instance().set_last_clickable_ele_uid("dummy_root_element")

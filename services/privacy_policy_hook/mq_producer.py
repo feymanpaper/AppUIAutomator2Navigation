@@ -1,6 +1,7 @@
+import queue
 import threading, time
 from queue import Queue
-import sys
+from utils.LogUtils import *
 import frida
 import re
 from Config import *
@@ -12,6 +13,7 @@ class FridaHookService(threading.Thread):
     def __init__(self, t_name: str, queue: Queue, daemon: bool):
         threading.Thread.__init__(self, name=t_name, daemon=daemon)
         self.data = queue
+        self._stop_event = threading.Event()
 
     def is_http(self, test_str):
         # 使用re模块进行匹配
@@ -67,3 +69,17 @@ class FridaHookService(threading.Thread):
         script.on('message', self.on_message)
         script.load()
         sys.stdin.read()
+        # while not self._stop_event.is_set():
+        #     pass
+
+
+    def stop(self):
+        self._stop_event.set()
+
+
+
+def restart_thread(thread):
+    queue = Queue()
+    thread.stop()
+    new_thread = FridaHookService('FridaHookService', queue, daemon=True)
+    new_thread.start()
