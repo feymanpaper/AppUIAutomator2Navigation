@@ -16,7 +16,7 @@ class FileUtils:
         ans += f"总共点击的activity个数 {len(sr.stat_activity_set)}\n"
         ans += f"总共点击的Screen个数: {len(sr.stat_screen_set)}\n"
         ans += f"总共点击的组件个数: {sr.total_eles_cnt}\n"
-        # ans += f"总共触发的WebView个数: {len(sr.webview_set)}\n"
+        ans += f"总共触发的WebView个数: {len(sr.webview_set)}\n"
         cls.__write_res(file_name, ans)
 
 
