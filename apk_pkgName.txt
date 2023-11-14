@@ -1,1 +1,1 @@
-com.alibaba.wireless.lstretailer | 阿里零售通
+com.cainiao.wireless | 菜鸟

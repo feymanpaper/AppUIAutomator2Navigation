@@ -1,4 +1,5 @@
 import time
+
 from utils.LogUtils import *
 from RuntimeContent import *
 from constant.DefException import TimeLimitException
@@ -50,6 +51,8 @@ class StatRecorder(object):
         LogUtils.log_info(f"总共触发的WebView个数: {len(self.webview_set)}")
         self.end_time = time.time()
         LogUtils.log_info(f"时间为 {self.end_time - self.start_time}")
+
+
 
     def get_coverage(self, cur_depth:int):
         screen_depth_map = RuntimeContent.get_instance().screen_depth_map
@@ -108,6 +111,5 @@ class StatRecorder(object):
 
     def get_webview_set(self):
         return self.webview_set
-
 
 

@@ -389,6 +389,9 @@ class StateHandler(object):
         # 如果满足条件, 添加cliakable=false 的隐私政策权的组件
         add_if_privacy_eles(content)
         cur_screen_node = cls.create_new_screen(content)
+        # 加入隐私组件
+        if Config.get_instance().isSearchPrivacyPolicy:
+            cls.insert_privacy_eles(content, cur_screen_node)
         # 将cur_screen加入到last_screen的子节点
         cls.__add_call_graph(cur_screen_node)
         content["cur_screen_node"] = cur_screen_node
@@ -409,7 +412,9 @@ class StateHandler(object):
             cur_popup_node = cls.create_popup(content)
             # 删除不在弹框范围内的组件
             cls.__remove_eles_notin_popup(cur_popup_node, coord_dict)
-            cls.insert_privacy_eles(content, cur_popup_node)
+            # 加入隐私组件
+            if Config.get_instance().isSearchPrivacyPolicy:
+                cls.insert_privacy_eles(content, cur_popup_node)
         content["cur_screen_node"] = cur_popup_node
         print_screen_info(content, 2)
 
