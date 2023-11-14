@@ -1,4 +1,5 @@
 from FSM import *
+from services.popup_detector import detect_queue
 from services.popup_detector.yolo_service import YoloService
 from utils.FileUtils import FileUtils
 from utils.JsonUtils import *
@@ -83,7 +84,8 @@ if __name__ == "__main__":
     if Config.get_instance().isSearchPrivacyPolicy:
         frida_hook_service = FridaHookService('FridaHookService', queue, daemon=True)
         frida_hook_service.start()
-        yolo_service.start()
+
+    yolo_service.start()
 
     RuntimeContent.get_instance().set_last_screen_node(root)
     RuntimeContent.get_instance().set_last_clickable_ele_uid("dummy_root_element")
