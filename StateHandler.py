@@ -386,8 +386,6 @@ class StateHandler(object):
 
     @classmethod
     def handle_new_screen(cls, content):
-        # 如果满足条件, 添加cliakable=false 的隐私政策权的组件
-        add_if_privacy_eles(content)
         cur_screen_node = cls.create_new_screen(content)
         # 加入隐私组件
         if Config.get_instance().isSearchPrivacyPolicy:

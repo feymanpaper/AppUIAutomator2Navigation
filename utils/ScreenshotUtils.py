@@ -21,7 +21,7 @@ class ScreenshotUtils:
 
         # 获取屏幕截图
         screenshot = d.screenshot()
-        print(screenshot)
+
 
         config_path = Config.get_instance().get_collectDataPath()
         screenshot_dir = "Screenshot"
