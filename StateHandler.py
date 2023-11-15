@@ -322,8 +322,9 @@ class StateHandler(object):
             cur_screen_node = screen_map.get(ck_eles_text)
         else:
             # 如果满足条件, 添加cliakable=false 的隐私政策权的组件
-            add_if_privacy_eles(content)
             cur_screen_node = cls.create_new_screen(content)
+            if Config.get_instance().isSearchPrivacyPolicy:
+                cls.insert_privacy_eles(content, cur_screen_node)
         return cur_screen_node
 
     @classmethod
