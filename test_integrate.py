@@ -74,13 +74,15 @@ if __name__ == '__main__':
             print('analysis {} : {}now...'.format(pkgName, appName))
             if os_type in ['linux', 'mac']:
                 execute_cmd_with_timeout(
-                    'python3 run.py {} {} {} {} '.format(pkgName, appName, config_settings['dynamic_ui_depth'],
-                                                         config_settings['dynamic_run_time']),timeout=int(config_settings['dynamic_run_time']) + 120)
+                    'python3 run.py {} {} {} {} {} {} {}'.format(pkgName, appName, config_settings['dynamic_ui_depth'],
+                    config_settings['dynamic_run_time'],config_settings['searchprivacypolicy'],config_settings['drawappcallgraph'],
+                    config_settings['screenuidrep']),timeout=int(config_settings['dynamic_run_time']) + 120)
                 # kill current app
             elif os_type == 'win':
-                execute_cmd_with_timeout(
-                    'python run.py {} {} {} {} '.format(pkgName, appName, config_settings['dynamic_ui_depth'],
-                                                        config_settings['dynamic_run_time']),timeout=int(config_settings['dynamic_run_time']) + 120)
+                    execute_cmd_with_timeout(
+                    'python run.py {} {} {} {} {} {} {}'.format(pkgName, appName, config_settings['dynamic_ui_depth'],
+                    config_settings['dynamic_run_time'],config_settings['searchprivacypolicy'],config_settings['drawappcallgraph'],
+                    config_settings['screenuidrep']),timeout=int(config_settings['dynamic_run_time']) + 120)
             print(f'kill {pkgName} in try...')
             execute_cmd_with_timeout(f'adb shell am force-stop {pkgName}')
 

@@ -46,8 +46,12 @@ if __name__ == "__main__":
     appName = sys.argv[2]
     depth = sys.argv[3]
     test_time = sys.argv[4]
+    searchPP = sys.argv[5]
+    drawAppCallGraph = sys.argv[6]
+    ScreenUidRep = sys.argv[7]
+
     with open('tmp.txt', 'w',encoding='utf-8') as f:
-        f.write(pkgName + ";" + appName + ";" + depth + ';' + test_time)
+        f.write(pkgName + ";" + appName + ";" + depth + ';' + test_time + ';' + searchPP + ';' + drawAppCallGraph + ';' + ScreenUidRep )
 
     LogUtils.setup()
 

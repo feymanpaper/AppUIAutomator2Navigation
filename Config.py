@@ -50,8 +50,8 @@ from datetime import datetime
 class Config(object):
     def __init__(self):
         with open('tmp.txt', 'r', encoding='utf-8') as f:
-            pkgName, appName, depth, test_time = f.readline().split(";")
-        print(pkgName, appName, depth, test_time)
+            pkgName, appName, depth, test_time,searchPP,drawAppCallGraph,ScreenUidRep = f.readline().split(";")
+        print(pkgName, appName, depth, test_time,searchPP,drawAppCallGraph,ScreenUidRep)
 
         # # 其余可修改的配置，从此处开始===========================
         self.target_pkg_name = pkgName  # 应用包名
