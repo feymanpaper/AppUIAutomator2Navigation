@@ -127,11 +127,12 @@ class FSM(threading.Thread):
         cur_screen_pkg_name = content["cur_screen_pkg_name"]
         cur_ck_eles_text = content["ck_eles_text"]
         screenshot_path = content["screenshot_path"]
+        screen_text = content["screen_text"]
 
         StatRecorder.get_instance().add_stat_stat_activity_set(cur_activity)
         StatRecorder.get_instance().add_stat_screen_set(cur_ck_eles_text)
 
-        LogUtils.log_info(f"当前Screen为: {cur_ck_eles_text}")
+        LogUtils.log_info(f"当前Screen为: {screen_text}")
         RuntimeContent.get_instance().append_screen_list(cur_ck_eles_text)
 
         # 如果需要搜索隐私政策
