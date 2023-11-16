@@ -54,9 +54,9 @@ def consumer_thread(queue):
                 app_pp[pkgName] = pp_url[:]
         # 将最终输出给隐私政策分析模块的文件修改为 包名:[应用名，[url列表]]的形式
         if type(app_pp[pkgName]) == list:
-            app_pp[pkgName] = [pkgName, app_pp[pkgName][:]]
+            app_pp[pkgName] = [appName, app_pp[pkgName][:]]
         else:
-            app_pp[pkgName] = [pkgName, [app_pp[pkgName][:]]]
+            app_pp[pkgName] = [appName, [app_pp[pkgName][:]]]
 
         with open(os.path.join('..', 'Privacy-compliance-detection-2.1', 'core', 'pkgName_url.json'), 'w',
                   encoding='utf-8') as f:
@@ -72,6 +72,12 @@ def consumer_thread(queue):
             subprocess.run(['python3', 'privacy-policy-main.py'],
                            cwd=os.path.join('..', 'Privacy-compliance-detection-2.1', 'core'),
                            timeout= 600)
+        # TODO 需要加一个检测机制,判断这个应用的隐私政策到底解析成功没有.没有成功的话,还得靠原本的逻辑.
+        #  逻辑可以用最简单的,看PrivacyPolicySaveDir里有没有这个应用的json解析结果.
+        files_in_privacy_policy_save_dir = os.listdir(os.path.join('..','Privacy-compliance-detection-2.1', 'core','PrivacyPolicySaveDir'))
+        if pkgName + '.json' in files_in_privacy_policy_save_dir and pkgName + '_sdk.json' in files_in_privacy_policy_save_dir:
+            with open('successful_analysis_pp.txt','a',encoding='utf-8') as f:
+                f.write(pkgName + '\n')
         print('pp analysis in consumer done.')
 
 def main_thread():
