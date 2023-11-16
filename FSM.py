@@ -6,7 +6,7 @@ import threading
 from constant.DefException import RestartException
 from queue import Queue
 from traceback import format_exc
-from comsumer_thread import producer_thread
+from consumer_thread import producer_thread
 
 
 class FSM(threading.Thread):

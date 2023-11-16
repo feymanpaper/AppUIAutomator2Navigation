@@ -19,6 +19,7 @@ def producer_thread(queue, data):
 def consumer_thread(queue):
     while True:
         # 从队列中获取数据
+        print('consumer thread waiting for data...')
         data = queue.get()
         print("Processing data:", data)
         # 缓冲5s，等待写入
@@ -62,6 +63,7 @@ def consumer_thread(queue):
             json.dump(app_pp, f, indent=4, ensure_ascii=False)
         # 调用隐私政策处理模块
         os_type = get_OS_type()
+        print('call pp analysis module in consumer_thread!')
         if os_type == 'win':
             subprocess.run(['python', 'privacy-policy-main.py'],
                            cwd=os.path.join('..', 'Privacy-compliance-detection-2.1', 'core'),
@@ -70,6 +72,7 @@ def consumer_thread(queue):
             subprocess.run(['python3', 'privacy-policy-main.py'],
                            cwd=os.path.join('..', 'Privacy-compliance-detection-2.1', 'core'),
                            timeout= 600)
+        print('pp analysis in consumer done.')
 
 def main_thread():
     # 创建一个阻塞队列
