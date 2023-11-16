@@ -48,7 +48,7 @@ class StatRecorder(object):
         LogUtils.log_info(f"总共点击的activity个数 {len(self.stat_activity_set)}")
         LogUtils.log_info(f"总共点击的Screen个数: {len(self.stat_screen_set)}")
         LogUtils.log_info(f"总共点击的组件个数: {self.total_eles_cnt}")
-        LogUtils.log_info(f"总共触发的WebView个数: {len(self.webview_set)}")
+        # LogUtils.log_info(f"总共触发的WebView个数: {len(self.webview_set)}")
         self.end_time = time.time()
         LogUtils.log_info(f"时间为 {self.end_time - self.start_time}")
 
