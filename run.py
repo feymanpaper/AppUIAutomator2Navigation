@@ -7,7 +7,7 @@ from utils.SavedInstanceUtils import *
 from services.privacy_policy_hook.mq_producer import *
 from utils.DrawGraphUtils import *
 import sys
-from comsumer_thread import consumer_thread
+from consumer_thread import consumer_thread
 
 def suppress_keyboard_interrupt_message():
     old_excepthook = sys.excepthook

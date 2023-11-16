@@ -3,7 +3,7 @@ from Config import *
 class PrivacyUrlUtils:
     @classmethod
     def save_privacy(cls, data):
-        file_name = cls.__get_policy_file_path()
+        file_name = cls.get_policy_file_path()
         cls.__write_url(file_name, data)
 
     @staticmethod
