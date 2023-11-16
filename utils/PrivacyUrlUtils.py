@@ -7,7 +7,7 @@ class PrivacyUrlUtils:
         cls.__write_url(file_name, data)
 
     @staticmethod
-    def __get_policy_file_path():
+    def get_policy_file_path():
         config_path = Config.get_instance().get_collectDataPath()
         policy_path = "PrivacyPolicy"
         policy_file_name = Config.get_instance().get_target_pkg_name() + "-privacyPolicyUrl.txt"
