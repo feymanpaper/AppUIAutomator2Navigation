@@ -54,11 +54,13 @@ if __name__ == "__main__":
     with open('tmp.txt', 'w',encoding='utf-8') as f:
         f.write(pkgName + ";" + appName + ";" + depth + ';' + test_time + ';' + searchPP + ';' + drawAppCallGraph + ';' + ScreenUidRep )
     # 创建一个阻塞队列
-    pp_queue = Queue()
-    # 创建守护线程
-    pp_comsumer = threading.Thread(target=consumer_thread,args=(pp_queue,))
-    pp_comsumer.daemon = True
-    pp_comsumer.start()
+    pp_queue = None
+    if searchPP == 'true':
+        pp_queue = Queue()
+        # 创建守护线程
+        pp_comsumer = threading.Thread(target=consumer_thread,args=(pp_queue,))
+        pp_comsumer.daemon = True
+        pp_comsumer.start()
 
     LogUtils.setup()
 
@@ -107,7 +109,7 @@ if __name__ == "__main__":
     # 控制FSM线程, 重启会继续运行
     while True:
         # FSM开始运行
-        consumer_fsm = FSM('FSM', queue, req_queue, resp_queue,pp_queue)
+        consumer_fsm = FSM('FSM', queue, req_queue, resp_queue, pp_queue)
         consumer_fsm.start()
         consumer_fsm.join()
 

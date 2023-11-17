@@ -16,6 +16,7 @@ def producer_thread(queue, data):
     # 将数据放入队列中
     queue.put(data)
 
+
 def consumer_thread(queue):
     while True:
         # 从队列中获取数据
@@ -25,8 +26,8 @@ def consumer_thread(queue):
         # 缓冲5s，等待写入
         time.sleep(5)
         # 进行相应的处理操作
-        pp_url_path,pkgName_appName = data.split('||')
-        pkgName,appName = pkgName_appName.split('|')
+        pp_url_path, pkgName_appName = data.split('||')
+        pkgName, appName = pkgName_appName.split('|')
         # 在这里进行其他处理操作
         app_pp = {}
         with open(pp_url_path, 'r', encoding='utf-8') as f:
@@ -71,14 +72,16 @@ def consumer_thread(queue):
         elif os_type in ['linux', 'mac']:
             subprocess.run(['python3', 'privacy-policy-main.py'],
                            cwd=os.path.join('..', 'Privacy-compliance-detection-2.1', 'core'),
-                           timeout= 600)
+                           timeout=600)
         # TODO 需要加一个检测机制,判断这个应用的隐私政策到底解析成功没有.没有成功的话,还得靠原本的逻辑.
         #  逻辑可以用最简单的,看PrivacyPolicySaveDir里有没有这个应用的json解析结果.
-        files_in_privacy_policy_save_dir = os.listdir(os.path.join('..','Privacy-compliance-detection-2.1', 'core','PrivacyPolicySaveDir'))
+        files_in_privacy_policy_save_dir = os.listdir(
+            os.path.join('..', 'Privacy-compliance-detection-2.1', 'core', 'PrivacyPolicySaveDir'))
         if pkgName + '.json' in files_in_privacy_policy_save_dir and pkgName + '_sdk.json' in files_in_privacy_policy_save_dir:
-            with open('successful_analysis_pp.txt','a',encoding='utf-8') as f:
+            with open('successful_analysis_pp.txt', 'a', encoding='utf-8') as f:
                 f.write(pkgName + '\n')
         print('pp analysis in consumer done.')
+
 
 def main_thread():
     # 创建一个阻塞队列
@@ -91,6 +94,7 @@ def main_thread():
 
     # 在主线程中调用生产者方法
     producer_thread(queue, "Hello, world!")
+
 
 if __name__ == '__main__':
     main_thread()
