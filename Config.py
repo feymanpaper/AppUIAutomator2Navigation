@@ -62,6 +62,7 @@ class Config(object):
         self.test_time = int(test_time)  # 配置测试的时间,以秒为单位
         self.sleep_time_sec = 0.2  # 配置点击之后睡眠的时间
 
+        self.isSearchPrivacyPolicy = False # 配置是否寻找隐私政策
         self.isDrawAppCallGraph = False  # 配置是否绘制App界面跳转图
         # 到此处结束===========================================
         # 下面的配置不要修改
@@ -72,6 +73,9 @@ class Config(object):
         self.UndefineDepth = 100000
         self.root_path = "collectData"
         self.start_time = datetime.now().strftime("%Y%m%d-%H%M%S")
+
+        # ScreenUid的表示方式
+        self.ScreenUidRep = "loc" # ex:[loc, textloc]
 
         self.privacy_policy_text_list = ["隐私权政策", "隐私政策", "隐私保护政策", "隐私保护指引"]
 

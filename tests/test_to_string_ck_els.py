@@ -1,7 +1,7 @@
 from uiautomator2 import Device
 from utils.DeviceUtils import get_screen_info
 from utils.DeviceUtils import get_clickable_elements
-from utils.DeviceUtils import to_string_ck_els
+from utils.DeviceUtils import to_textloc_ck_eles
 
 all_text = []
 d = Device()
@@ -28,4 +28,4 @@ for idx, ele_id in enumerate(clickable_eles):
 
 
 print("*"*100)
-print(to_string_ck_els(clickable_eles))
+print(to_textloc_ck_eles(clickable_eles))
