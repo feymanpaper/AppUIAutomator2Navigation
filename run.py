@@ -1,9 +1,9 @@
 from FSM import *
 from services.popup_detector import detect_queue
 from services.popup_detector.yolo_service import YoloService
+from utils.FileUtils import FileUtils
 from utils.JsonUtils import *
 from utils.SavedInstanceUtils import *
-from queue import Queue
 from services.privacy_policy_hook.mq_producer import *
 from utils.DrawGraphUtils import *
 import sys
@@ -31,6 +31,7 @@ def suppress_keyboard_interrupt_message():
             if cal_cov_map.get(cur_depth, None) is not None:
                 cov = cal_cov_map[cur_depth][1] / cal_cov_map[cur_depth][2]
                 FileUtils.save_coverage(cur_depth, cal_cov_map[cur_depth][1], cal_cov_map[cur_depth][2])
+                FileUtils.save_result()
 
 
             # 绘制App界面跳转图
@@ -65,13 +66,11 @@ if __name__ == "__main__":
     # 计时开始
     StatRecorder.get_instance().set_start_time()
     restart_cnt = 0
-    # frida-service
-    queue = Queue()
-    frida_hook_service = FridaHookService('FridaHookService', queue, daemon=True)
+
     # yolo-service
     # opt = vars(detect_queue.parse_opt())  # <class 'argparse.Namespace'>
 
-
+    queue = Queue()
     req_queue = Queue(1)
     resp_queue = Queue(1)
     yolo_service = YoloService('YoloDetectPopupService', req_queue, resp_queue, True)
@@ -81,9 +80,11 @@ if __name__ == "__main__":
 
     d.app_start(Config.get_instance().get_target_pkg_name(), use_monkey=True)
 
-    # frida开始hook
-    # 后台线程
-    frida_hook_service.start()
+    # frida-service
+    if Config.get_instance().isSearchPrivacyPolicy:
+        frida_hook_service = FridaHookService('FridaHookService', queue, daemon=True)
+        frida_hook_service.start()
+
     yolo_service.start()
 
     RuntimeContent.get_instance().set_last_screen_node(root)
@@ -113,8 +114,8 @@ if __name__ == "__main__":
             time.sleep(1)
             d.app_start(Config.get_instance().get_target_pkg_name(), use_monkey=True)
 
-            # 重启frida
-            restart_thread(frida_hook_service)
+            # # 重启frida
+            # restart_thread(frida_hook_service)
 
             time.sleep(5)
             RuntimeContent.get_instance().set_last_screen_node(root)
@@ -151,6 +152,7 @@ if __name__ == "__main__":
     if cal_cov_map.get(cur_depth, None) is not None:
         cov = cal_cov_map[cur_depth][1] / cal_cov_map[cur_depth][2]
         FileUtils.save_coverage(cur_depth, cal_cov_map[cur_depth][1], cal_cov_map[cur_depth][2])
+        FileUtils.save_result()
 
 
     # 绘制App界面跳转图

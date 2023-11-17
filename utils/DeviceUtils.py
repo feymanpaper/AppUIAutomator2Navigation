@@ -30,7 +30,14 @@ def get_screen_content():
     cur_ck_eles = remove_dup(cur_ck_eles)
     cur_ck_eles = merged_clickable_elements(cur_ck_eles)
     after_len = len(cur_ck_eles)
-    ck_eles_text = to_string_ck_els(cur_ck_eles)
+
+    if Config.get_instance().ScreenUidRep == "textloc":
+        ck_eles_text = to_textloc_ck_eles(cur_ck_eles)
+    elif Config.get_instance().ScreenUidRep == "loc":
+        ck_eles_text = to_loc_ck_eles(cur_ck_eles)
+    else:
+        raise Exception("ScreenUid表示方式输入有误")
+
     # 截图
     screenshot_path = ScreenshotUtils.screen_shot(ck_eles_text)
 
@@ -251,7 +258,7 @@ def traverse_tree_text_and_loc(node):
     return text
 
 
-def to_string_ck_els(ck_eles) -> str:
+def to_textloc_ck_eles(ck_eles) -> str:
     text = ""
     for ele_uid in ck_eles:
         ele_dict = RuntimeContent.get_instance().get_ele_uid_map_by_uid(ele_uid)
@@ -262,6 +269,13 @@ def to_string_ck_els(ck_eles) -> str:
         text += "&" + temp_text + " " + str(loc_x) + " " + str(loc_y)
     return text
 
+def to_loc_ck_eles(ck_eles) -> str:
+    text = ""
+    for ele_uid in ck_eles:
+        ele_dict = RuntimeContent.get_instance().get_ele_uid_map_by_uid(ele_uid)
+        loc_x, loc_y = get_location(ele_dict)
+        text += str(loc_x) + " " + str(loc_y) + "-"
+    return text
 
 
 # 获取当前界面所有可点击的组件

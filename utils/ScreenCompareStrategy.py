@@ -50,18 +50,27 @@ class EditDistanceComparator(BaseTextComparator):
 class LCSComparator(BaseTextComparator):
     def __init__(self, threshold = 0.9):
         self.threshold = threshold
-    def get_lcs(self, text1: str, text2: str) -> int:
-        m, n = len(text1), len(text2)
-        dp = [[0] * (n + 1) for _ in range(m + 1)]
-        
-        for i in range(1, m + 1):
-            for j in range(1, n + 1):
-                if text1[i - 1] == text2[j - 1]:
-                    dp[i][j] = dp[i - 1][j - 1] + 1
-                else:
-                    dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
-        
-        return dp[m][n]
+    def get_lcs(self, s: str, t: str) -> int:
+        # m, n = len(text1), len(text2)
+        # dp = [[0] * (n + 1) for _ in range(m + 1)]
+        #
+        # for i in range(1, m + 1):
+        #     for j in range(1, n + 1):
+        #         if text1[i - 1] == text2[j - 1]:
+        #             dp[i][j] = dp[i - 1][j - 1] + 1
+        #         else:
+        #             dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
+        # return dp[m][n]
+
+        f = [0] * (len(t) + 1)
+        for x in s:
+            pre = 0  # f[0]
+            for j, y in enumerate(t):
+                tmp = f[j + 1]
+                f[j + 1] = pre + 1 if x == y else max(f[j + 1], f[j])
+                pre = tmp
+        return f[-1]
+
 
     def compare_text(self, text1: str, text2: str) -> float:
         lcs = self.get_lcs(text1, text2)
