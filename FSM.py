@@ -6,11 +6,12 @@ import threading
 from constant.DefException import RestartException
 from queue import Queue
 from traceback import format_exc
+from consumer_thread import producer_thread
 
 
 class FSM(threading.Thread):
 
-    def __init__(self, t_name, data: Queue, req_que:Queue, resp_que:Queue):
+    def __init__(self, t_name, data: Queue, req_que: Queue, resp_que: Queue, pp_que):
         threading.Thread.__init__(self, name=t_name)
         self.data = data
         self.req_queue = req_que
@@ -19,6 +20,8 @@ class FSM(threading.Thread):
         self.exit_code = 0
         self.exception = None
         self.exc_traceback = ''
+        # 新增一个处理隐私政策的queue
+        self.pp_queue = pp_que
 
     # state_map = {
     #     1: "不是当前要测试的app,即app跳出了测试的app",
@@ -82,7 +85,6 @@ class FSM(threading.Thread):
         # 从响应队列获取结果, 如果空则阻塞, 阻塞时长timeout则异常
         data = self.resp_queue.get(block=True)
         return data
-
 
     def update_stat(self, cur_activity, ck_eles_text):
         StatRecorder.get_instance().add_stat_stat_activity_set(cur_activity)
@@ -161,7 +163,9 @@ class FSM(threading.Thread):
                             PrivacyUrlUtils.save_privacy(pri_url)
                             LogUtils.log_info(f"找到了{pp_text}的url:{pri_url}")
                             RuntimeContent.get_instance().is_found_privacy_url = True
-
+                            # 在这里把URL保存的路径传给消费者进程
+                            # 如果PrivacyUrlUtils.py里的__get_policy_file_path()方法修改了，也要跟着修改data字段的参数
+                producer_thread(self.pp_queue,data=PrivacyUrlUtils.get_policy_file_path() + '||' + Config.get_instance().target_pkg_name + '|' + Config.get_instance().app_name)
 
         if Config.get_instance().curDepth > Config.get_instance().maxDepth:
             return self.STATE_Terminate, content
@@ -191,7 +195,6 @@ class FSM(threading.Thread):
         if popup_info["conf"] >= 0.75:
             content["xywh"] = popup_info["xywh"]
             return self.STATE_PopUp, content
-
 
         screen_depth_map = RuntimeContent.get_instance().screen_depth_map
         last_screen_node = RuntimeContent.get_instance().last_screen_node
@@ -294,8 +297,9 @@ class FSM(threading.Thread):
             #     if state == self.STATE_ExistScreen or state == self.STATE_FinishScreen or state == self.STATE_NewScreen:
             #         dq.append((0, state))
 
-            if state == self.STATE_FinishScreen and content.get("cur_screen_depth", None) is not None and content.get("cur_screen_depth")==1:
-            # if cov == 1 or (len(RuntimeContent.get_instance().cov_mono_que) >= 4 and dq[-1][1] == self.STATE_FinishScreen and dq[-2][1] == self.STATE_FinishScreen and dq[-3][1] == self.STATE_FinishScreen and dq[-4][1] == self.STATE_FinishScreen):
+            if state == self.STATE_FinishScreen and content.get("cur_screen_depth", None) is not None and content.get(
+                    "cur_screen_depth") == 1:
+                # if cov == 1 or (len(RuntimeContent.get_instance().cov_mono_que) >= 4 and dq[-1][1] == self.STATE_FinishScreen and dq[-2][1] == self.STATE_FinishScreen and dq[-3][1] == self.STATE_FinishScreen and dq[-4][1] == self.STATE_FinishScreen):
 
                 RuntimeContent.get_instance().cov_mono_que.clear()
 
@@ -303,7 +307,7 @@ class FSM(threading.Thread):
                 Config.get_instance().curDepth += 1
 
                 if cal_cov_map.get(cur_depth, None) is not None:
-                # 追加保存覆盖率结果
+                    # 追加保存覆盖率结果
                     FileUtils.save_coverage(cur_depth, cal_cov_map[cur_depth][1], cal_cov_map[cur_depth][2])
 
                 # 重置screenNode的点击下标already_click_cnt
