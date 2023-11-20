@@ -11,13 +11,15 @@ from get_urls import get_pp_from_app_store, get_pkg_names_from_input_list
 
 def producer_thread(queue, data):
     # 模拟保存数据到队列
-    time.sleep(2)  # 模拟保存操作耗时
     print("Adding data to queue:", data)
+    time.sleep(2)  # 模拟保存操作耗时
     # 将数据放入队列中
     queue.put(data)
 
 
 def consumer_thread(queue):
+    processed_pp = set()
+
     while True:
         # 从队列中获取数据
         print('consumer thread waiting for data...')
@@ -28,6 +30,10 @@ def consumer_thread(queue):
         # 进行相应的处理操作
         pp_url_path, pkgName_appName = data.split('||')
         pkgName, appName = pkgName_appName.split('|')
+        # 判断之前是否已经处理完成这个app的隐私政策，如果已经处理完成过，就没有必要继续重新处理
+        if pkgName in processed_pp:
+            print(f"{pkgName} has been processed before...")
+            continue
         # 在这里进行其他处理操作
         app_pp = {}
         with open(pp_url_path, 'r', encoding='utf-8') as f:
@@ -80,7 +86,8 @@ def consumer_thread(queue):
         if pkgName + '.json' in files_in_privacy_policy_save_dir and pkgName + '_sdk.json' in files_in_privacy_policy_save_dir:
             with open('successful_analysis_pp.txt', 'a', encoding='utf-8') as f:
                 f.write(pkgName + '\n')
-        print('pp analysis in consumer done.')
+            processed_pp.add(pkgName)
+            print('pp analysis in consumer done.')
 
 
 def main_thread():
