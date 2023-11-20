@@ -19,6 +19,7 @@ def producer_thread(queue, data):
 
 def consumer_thread(queue):
     processed_pp = set()
+
     while True:
         # 从队列中获取数据
         print('consumer thread waiting for data...')
@@ -87,7 +88,6 @@ def consumer_thread(queue):
                 f.write(pkgName + '\n')
             processed_pp.add(pkgName)
             print('pp analysis in consumer done.')
-
 
 
 def main_thread():
