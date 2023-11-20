@@ -7,6 +7,7 @@ from utils.SavedInstanceUtils import *
 from services.privacy_policy_hook.mq_producer import *
 from utils.DrawGraphUtils import *
 import sys
+from consumer_thread import consumer_thread
 
 def suppress_keyboard_interrupt_message():
     old_excepthook = sys.excepthook
@@ -46,8 +47,20 @@ if __name__ == "__main__":
     appName = sys.argv[2]
     depth = sys.argv[3]
     test_time = sys.argv[4]
+    searchPP = sys.argv[5]
+    drawAppCallGraph = sys.argv[6]
+    ScreenUidRep = sys.argv[7]
+
     with open('tmp.txt', 'w',encoding='utf-8') as f:
-        f.write(pkgName + ";" + appName + ";" + depth + ';' + test_time)
+        f.write(pkgName + ";" + appName + ";" + depth + ';' + test_time + ';' + searchPP + ';' + drawAppCallGraph + ';' + ScreenUidRep )
+    # 创建一个阻塞队列
+    pp_queue = None
+    if searchPP == 'true':
+        pp_queue = Queue()
+        # 创建守护线程
+        pp_comsumer = threading.Thread(target=consumer_thread,args=(pp_queue,))
+        pp_comsumer.daemon = True
+        pp_comsumer.start()
 
     LogUtils.setup()
 
@@ -96,7 +109,7 @@ if __name__ == "__main__":
     # 控制FSM线程, 重启会继续运行
     while True:
         # FSM开始运行
-        consumer_fsm = FSM('FSM', queue, req_queue, resp_queue)
+        consumer_fsm = FSM('FSM', queue, req_queue, resp_queue, pp_queue)
         consumer_fsm.start()
         consumer_fsm.join()
 

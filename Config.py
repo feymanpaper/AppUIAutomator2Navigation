@@ -50,8 +50,8 @@ from datetime import datetime
 class Config(object):
     def __init__(self):
         with open('tmp.txt', 'r', encoding='utf-8') as f:
-            pkgName, appName, depth, test_time = f.readline().split(";")
-        print(pkgName, appName, depth, test_time)
+            pkgName, appName, depth, test_time,searchPP,drawAppCallGraph,ScreenUidRep = f.readline().split(";")
+        print(pkgName, appName, depth, test_time,searchPP,drawAppCallGraph,ScreenUidRep)
 
         # # 其余可修改的配置，从此处开始===========================
         self.target_pkg_name = pkgName  # 应用包名
@@ -61,9 +61,17 @@ class Config(object):
         self.curDepth = 1
         self.test_time = int(test_time)  # 配置测试的时间,以秒为单位
         self.sleep_time_sec = 0.2  # 配置点击之后睡眠的时间
+        # self.isSearchPrivacyPolicy = False # 配置是否寻找隐私政策
+        # self.isDrawAppCallGraph = False  # 配置是否绘制App界面跳转图
+        if searchPP == 'true':
+            self.isSearchPrivacyPolicy = True
+        else:
+            self.isSearchPrivacyPolicy = False
 
-        self.isSearchPrivacyPolicy = False # 配置是否寻找隐私政策
-        self.isDrawAppCallGraph = False  # 配置是否绘制App界面跳转图
+        if drawAppCallGraph == 'true':
+            self.isDrawAppCallGraph = True
+        else:
+            self.isDrawAppCallGraph = False
         # 到此处结束===========================================
         # 下面的配置不要修改
 
@@ -75,8 +83,8 @@ class Config(object):
         self.start_time = datetime.now().strftime("%Y%m%d-%H%M%S")
 
         # ScreenUid的表示方式
-        self.ScreenUidRep = "textloc" # ex:[loc, textloc]
-
+        # self.ScreenUidRep = "loc" # ex:[loc, textloc]
+        self.ScreenUidRep = ScreenUidRep[:]
         self.privacy_policy_text_list = ["隐私权政策", "隐私政策", "隐私保护政策", "隐私保护指引"]
 
         self.use_pickle_file_name = "./collectData/com.alibaba.aliyun-20231103-002136/SavedInstance/com.alibaba.aliyun_restart17activity21&screen148&time2062.93s.pickle"

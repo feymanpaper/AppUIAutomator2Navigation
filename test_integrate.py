@@ -53,12 +53,12 @@ if __name__ == '__main__':
         content = f.readlines()
     pkgName_appName_list = [item.rstrip('\n') for item in content]
     os_type = get_OS_type()
-    # 运行之前，kill掉所有的后台程序
-    if os_type == 'win':
-        execute_cmd_with_timeout("powershell.exe .\\kill_all_background_apps.ps1")
-    elif os_type in ['linux','mac']:
-        execute_cmd_with_timeout("sed -i 's/\r$//' kill_all_background_apps.sh")
-        execute_cmd_with_timeout("bash kill_all_background_apps.sh")
+    # 运行之前，kill掉所有的后台程序,先弃用该逻辑
+    # if os_type == 'win':
+    #     execute_cmd_with_timeout("powershell.exe .\\kill_all_background_apps.ps1")
+    # elif os_type in ['linux','mac']:
+    #     execute_cmd_with_timeout("sed -i 's/\r$//' kill_all_background_apps.sh")
+    #     execute_cmd_with_timeout("bash kill_all_background_apps.sh")
     for pkgName_appName in pkgName_appName_list:
         # print(pkgName_appName)
         if pkgName_appName.startswith('#'):
@@ -74,13 +74,15 @@ if __name__ == '__main__':
             print('analysis {} : {}now...'.format(pkgName, appName))
             if os_type in ['linux', 'mac']:
                 execute_cmd_with_timeout(
-                    'python3 run.py {} {} {} {} '.format(pkgName, appName, config_settings['dynamic_ui_depth'],
-                                                         config_settings['dynamic_run_time']),timeout=int(config_settings['dynamic_run_time']) + 120)
+                    'python3 run.py {} {} {} {} {} {} {}'.format(pkgName, appName, config_settings['dynamic_ui_depth'],
+                    config_settings['dynamic_run_time'],config_settings['searchprivacypolicy'],config_settings['drawappcallgraph'],
+                    config_settings['screenuidrep']),timeout=int(config_settings['dynamic_run_time']) + 120)
                 # kill current app
             elif os_type == 'win':
-                execute_cmd_with_timeout(
-                    'python run.py {} {} {} {} '.format(pkgName, appName, config_settings['dynamic_ui_depth'],
-                                                        config_settings['dynamic_run_time']),timeout=int(config_settings['dynamic_run_time']) + 120)
+                    execute_cmd_with_timeout(
+                    'python run.py {} {} {} {} {} {} {}'.format(pkgName, appName, config_settings['dynamic_ui_depth'],
+                    config_settings['dynamic_run_time'],config_settings['searchprivacypolicy'],config_settings['drawappcallgraph'],
+                    config_settings['screenuidrep']),timeout=int(config_settings['dynamic_run_time']) + 120)
             print(f'kill {pkgName} in try...')
             execute_cmd_with_timeout(f'adb shell am force-stop {pkgName}')
 
