@@ -413,6 +413,8 @@ class StateHandler(object):
             cur_popup_node = cls.create_popup(content)
             # 删除不在弹框范围内的组件
             cls.__remove_eles_notin_popup(cur_popup_node, coord_dict)
+            # 移除没必要点击的组件
+            cls.__remove_noneed_eles(cur_popup_node)
             # 加入隐私组件
             if Config.get_instance().isSearchPrivacyPolicy:
                 cls.insert_privacy_eles(content, cur_popup_node)
@@ -421,8 +423,6 @@ class StateHandler(object):
 
         if cur_popup_node.is_screen_clickable_finished():
             LogUtils.log_info("弹框已经点完所有组件")
-            cls.handle_popup_finish(content)
-
             cur_screen_node = get_cur_screen_node_from_context(content)
             cur_screen_node_clickable_eles = cur_screen_node.get_diff_or_clickable_eles()
 
@@ -430,7 +430,7 @@ class StateHandler(object):
             # random click是为了应对重复的弹框
             # random back是为了应对误报
             probability = random.random()
-            if len(cur_screen_node_clickable_eles) > 0 and probability <= 0.5:
+            if len(cur_screen_node_clickable_eles) > 0 and probability <= 0.7:
                 cls.random_click_ele(content)
             else:
                 cls.handle_popup_finish(content)
@@ -682,6 +682,18 @@ class StateHandler(object):
             LogUtils.log_info("在弹框范围内的组件为空")
         else:
             cur_node.clickable_elements = after_ck_eles
+
+    @classmethod
+    def __remove_noneed_eles(cls, cur_node:ScreenNode):
+        # 移除掉没必要点击的组件
+        cur_ck_eles = cur_node.clickable_elements
+        after_ck_eles = []
+        for ele_uid in cur_ck_eles:
+            cur_clickable_ele_dict = RuntimeContent.get_instance().get_ele_uid_map_by_uid(ele_uid)
+            if not is_non_necessary_click(cur_clickable_ele_dict):
+                after_ck_eles.append(ele_uid)
+
+        cur_node.clickable_elements = after_ck_eles
 
     @classmethod
     def create_popup(cls, content):

@@ -1,2 +1,1 @@
-com.cainiao.wireless | 菜鸟
-com.tudou.android | 土豆视频
+com.alibaba.wireless.lstretailer | 阿里零售通
