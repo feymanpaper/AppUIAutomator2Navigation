@@ -314,6 +314,8 @@ class FSM(threading.Thread):
                     if depth > cur_depth:
                         continue
                     screen_node = RuntimeContent.get_instance().get_screen_map().get(screen_uid)
+                    #  在重置already_clicked_cnt前将记录保存在total_clicked_cnt
+                    screen_node.total_clicked_cnt = max(screen_node.total_clicked_cnt, screen_node.already_clicked_cnt)
                     screen_node.already_clicked_cnt = 0
 
             self.do_transition(state, content)
