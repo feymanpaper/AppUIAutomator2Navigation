@@ -1,12 +1,13 @@
 from FSM import *
 from services.popup_detector import detect_queue
 from services.popup_detector.yolo_service import YoloService
+from utils.FileUtils import FileUtils
 from utils.JsonUtils import *
 from utils.SavedInstanceUtils import *
-from queue import Queue
 from services.privacy_policy_hook.mq_producer import *
 from utils.DrawGraphUtils import *
 import sys
+from consumer_thread import consumer_thread
 
 def suppress_keyboard_interrupt_message():
     old_excepthook = sys.excepthook
@@ -31,6 +32,7 @@ def suppress_keyboard_interrupt_message():
             if cal_cov_map.get(cur_depth, None) is not None:
                 cov = cal_cov_map[cur_depth][1] / cal_cov_map[cur_depth][2]
                 FileUtils.save_coverage(cur_depth, cal_cov_map[cur_depth][1], cal_cov_map[cur_depth][2])
+                FileUtils.save_result()
 
 
             # 绘制App界面跳转图
@@ -45,8 +47,20 @@ if __name__ == "__main__":
     appName = sys.argv[2]
     depth = sys.argv[3]
     test_time = sys.argv[4]
+    searchPP = sys.argv[5]
+    drawAppCallGraph = sys.argv[6]
+    ScreenUidRep = sys.argv[7]
+
     with open('tmp.txt', 'w',encoding='utf-8') as f:
-        f.write(pkgName + ";" + appName + ";" + depth + ';' + test_time)
+        f.write(pkgName + ";" + appName + ";" + depth + ';' + test_time + ';' + searchPP + ';' + drawAppCallGraph + ';' + ScreenUidRep )
+    # 创建一个阻塞队列
+    pp_queue = None
+    if searchPP == 'true':
+        pp_queue = Queue()
+        # 创建守护线程
+        pp_comsumer = threading.Thread(target=consumer_thread,args=(pp_queue,))
+        pp_comsumer.daemon = True
+        pp_comsumer.start()
 
     LogUtils.setup()
 
@@ -65,13 +79,11 @@ if __name__ == "__main__":
     # 计时开始
     StatRecorder.get_instance().set_start_time()
     restart_cnt = 0
-    # frida-service
-    queue = Queue()
-    frida_hook_service = FridaHookService('FridaHookService', queue, daemon=True)
+
     # yolo-service
     # opt = vars(detect_queue.parse_opt())  # <class 'argparse.Namespace'>
 
-
+    queue = Queue()
     req_queue = Queue(1)
     resp_queue = Queue(1)
     yolo_service = YoloService('YoloDetectPopupService', req_queue, resp_queue, True)
@@ -81,9 +93,11 @@ if __name__ == "__main__":
 
     d.app_start(Config.get_instance().get_target_pkg_name(), use_monkey=True)
 
-    # frida开始hook
-    # 后台线程
-    frida_hook_service.start()
+    # frida-service
+    if Config.get_instance().isSearchPrivacyPolicy:
+        frida_hook_service = FridaHookService('FridaHookService', queue, daemon=True)
+        frida_hook_service.start()
+
     yolo_service.start()
 
     RuntimeContent.get_instance().set_last_screen_node(root)
@@ -95,7 +109,7 @@ if __name__ == "__main__":
     # 控制FSM线程, 重启会继续运行
     while True:
         # FSM开始运行
-        consumer_fsm = FSM('FSM', queue, req_queue, resp_queue)
+        consumer_fsm = FSM('FSM', queue, req_queue, resp_queue, pp_queue)
         consumer_fsm.start()
         consumer_fsm.join()
 
@@ -113,8 +127,8 @@ if __name__ == "__main__":
             time.sleep(1)
             d.app_start(Config.get_instance().get_target_pkg_name(), use_monkey=True)
 
-            # 重启frida
-            restart_thread(frida_hook_service)
+            # # 重启frida
+            # restart_thread(frida_hook_service)
 
             time.sleep(5)
             RuntimeContent.get_instance().set_last_screen_node(root)
@@ -151,6 +165,7 @@ if __name__ == "__main__":
     if cal_cov_map.get(cur_depth, None) is not None:
         cov = cal_cov_map[cur_depth][1] / cal_cov_map[cur_depth][2]
         FileUtils.save_coverage(cur_depth, cal_cov_map[cur_depth][1], cal_cov_map[cur_depth][2])
+        FileUtils.save_result()
 
 
     # 绘制App界面跳转图
