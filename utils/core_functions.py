@@ -35,10 +35,10 @@ def check_cycle(cur_node: ScreenNode, last_node: ScreenNode):
 
 
 def is_non_necessary_click(cur_clickable_ele_dict):
-    if cur_clickable_ele_dict.get("resource-id") == "com.alibaba.android.rimet:id/toolbar":
-        return True
-    if cur_clickable_ele_dict.get("resource-id") == "com.alibaba.android.rimet:id/back_layout":
-        return True
+    # if cur_clickable_ele_dict.get("resource-id") == "com.alibaba.android.rimet:id/toolbar":
+    #     return True
+    # if cur_clickable_ele_dict.get("resource-id") == "com.alibaba.android.rimet:id/back_layout":
+    #     return True
 
     text = cur_clickable_ele_dict.get("text")
 
