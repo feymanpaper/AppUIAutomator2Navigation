@@ -403,9 +403,11 @@ class StateHandler(object):
         coord_dict = get_4corner_coord(xywh)
         popup_map = RuntimeContent.get_instance().get_popup_map()
         ck_eles_text = content["ck_eles_text"]
-        if popup_map.get(ck_eles_text, False) is not False:
+
+        resnode = get_max_similarity_popup_node(ck_eles_text)
+        if resnode is not None:
             LogUtils.log_info("弹框已存在")
-            cur_popup_node = popup_map.get(ck_eles_text)
+            cur_popup_node = resnode
         else:
             LogUtils.log_info("创建新弹框")
             cur_popup_node = cls.create_popup(content)

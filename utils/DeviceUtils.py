@@ -163,9 +163,9 @@ def get_device_info():
     return d.info
 
 def get_screen_wh():
-    device_info = get_device_info()
-    screen_w = device_info['displayWidth']
-    screen_h = device_info['displayHeight']
+    d = Config.get_instance().get_device()
+    wsize = d.window_size()
+    screen_w, screen_h = wsize[0], wsize[1]
     return screen_w, screen_h
 
 def yolowxyh_to_uiautoxywh(xywh):
@@ -180,10 +180,10 @@ def get_4corner_coord(xywh):
     ui_xywh = yolowxyh_to_uiautoxywh(xywh)
     LogUtils.log_info(f"xywh转换前{xywh}--->转换后: {ui_xywh}")
     coord = {}
-    coord["left_top"] = [ui_xywh[0], ui_xywh[1]]
-    coord["right_top"] = [ui_xywh[0] + ui_xywh[2], ui_xywh[1]]
-    coord["left_bot"] = [ui_xywh[0], ui_xywh[1] + ui_xywh[3]]
-    coord["right_bot"] = [ui_xywh[0] + ui_xywh[2], ui_xywh[1] + ui_xywh[3]]
+    coord["left_top"] = [ui_xywh[0] - ui_xywh[2]/2, ui_xywh[1] - ui_xywh[3]/2]
+    coord["right_top"] = [ui_xywh[0] + ui_xywh[2]/2, ui_xywh[1] - ui_xywh[3]/2]
+    coord["left_bot"] = [ui_xywh[0] - ui_xywh[2]/2, ui_xywh[1] + ui_xywh[3]/2]
+    coord["right_bot"] = [ui_xywh[0] + ui_xywh[2]/2, ui_xywh[1] + ui_xywh[3]/2]
     return coord
 
 
@@ -549,6 +549,7 @@ def print_current_window_detailed_elements(d):
     left, top, right, bottom = map(int, bounds[1:-1].split('][')[0].split(',') + bounds[1:-1].split('][')[1].split(','))
     x = (left + right) // 2
     y = (top + bottom) // 2
+
 
 
 def get_screen_text():
