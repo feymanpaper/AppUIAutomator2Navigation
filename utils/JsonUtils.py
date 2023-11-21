@@ -36,7 +36,7 @@ class JsonUtils:
             json_dict["ck_eles_text"] = ck_eles_text
             json_dict["pkg_name"] = screen_node.pkg_name
             json_dict["activity_name"] = screen_node.activity_name
-            json_dict["len_clicked_cnt"] = screen_node.get_diff_or_clickable_eles()
+            json_dict["len_clicked_cnt"] = len(screen_node.get_diff_or_clickable_eles())
             json_dict["already_clicked_cnt"] = screen_node.already_clicked_cnt
             json_dict["max_clicked_cnt"] = screen_node.total_clicked_cnt
             json_dict["nextlist"] = cls.__get_nextlist(screen_node)
