@@ -1,1 +1,12 @@
-com.alibaba.wireless.lstretailer | 阿里零售通
+me.ele | 饿了么
+com.alibaba.aliyun | 阿里云
+com.autonavi.minimap | 高德地图
+com.taobao.aliAuction | 阿里拍卖
+com.alibaba.android.rimet | 钉钉
+com.eg.android.AlipayGphone | 支付宝
+com.shuqi.controller | 书旗小说
+com.youku.phone | 优酷视频
+com.UCMobile | UC浏览器
+com.taobao.etao | 一淘
+com.taobao.movie.android | 淘票票
+com.antfortune.wealth | 蚂蚁财富
