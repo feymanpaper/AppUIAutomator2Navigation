@@ -294,7 +294,9 @@ class FSM(threading.Thread):
             #     if state == self.STATE_ExistScreen or state == self.STATE_FinishScreen or state == self.STATE_NewScreen:
             #         dq.append((0, state))
 
-            if state == self.STATE_FinishScreen and content.get("cur_screen_depth", None) is not None and content.get("cur_screen_depth")==1:
+            # 如果当前节点为homescreen进来的第一个界面并且该界面所有组件已经点完，则可以动态增加当前层数
+            if state == self.STATE_FinishScreen and RuntimeContent.get_instance().last_screen_node is not None and RuntimeContent.get_instance().last_screen_node.ck_eles_text == "root":
+            # if state == self.STATE_FinishScreen and content.get("cur_screen_depth", None) is not None and content.get("cur_screen_depth")==1:
             # if cov == 1 or (len(RuntimeContent.get_instance().cov_mono_que) >= 4 and dq[-1][1] == self.STATE_FinishScreen and dq[-2][1] == self.STATE_FinishScreen and dq[-3][1] == self.STATE_FinishScreen and dq[-4][1] == self.STATE_FinishScreen):
 
                 RuntimeContent.get_instance().cov_mono_que.clear()
