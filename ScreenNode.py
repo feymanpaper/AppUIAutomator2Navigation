@@ -9,8 +9,8 @@ class ScreenNode:
         # 当前screen的下一个screen
         self.children = []
         # 记录着当前screen的所有可点击组件uid
-        self.clickable_elements = []
-        self.diff_clickable_elements = []
+        self.clickable_elements = None
+        self.diff_clickable_elements = None
         self.merged_diff = -1
         self.pkg_name = ""
         self.activity_name = ""

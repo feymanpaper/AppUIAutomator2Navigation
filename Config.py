@@ -87,6 +87,7 @@ class Config(object):
         # self.ScreenUidRep = "loc" # ex:[loc, textloc]
         self.ScreenUidRep = ScreenUidRep[:]
 
+
         self.privacy_policy_text_list = ["隐私权政策", "隐私政策", "隐私保护政策", "隐私保护指引"]
 
         self.use_pickle_file_name = "./collectData/com.alibaba.aliyun-20231103-002136/SavedInstance/com.alibaba.aliyun_restart17activity21&screen148&time2062.93s.pickle"
