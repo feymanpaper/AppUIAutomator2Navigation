@@ -557,18 +557,19 @@ def get_screen_text():
     Get all text of the current Screen, including the non-clickable and clickable elements
     :return: all text of current Screen
     """
-    root = get_dump_hierarchy()
-    text = ""
-    for element in root.findall('.//node'):
-        if element.get("package") in system_view:
-            continue
-        temp_text = element.get("text")
-        if temp_text:
-            if text == "":
-                text += temp_text
-            else:
-                text += "," + temp_text
-    return text
+    # root = get_dump_hierarchy()
+    # text = ""
+    # for element in root.findall('.//node'):
+    #     if element.get("package") in system_view:
+    #         continue
+    #     temp_text = element.get("text")
+    #     if temp_text:
+    #         if text == "":
+    #             text += temp_text
+    #         else:
+    #             text += "," + temp_text
+    # return text
+    return ""
 
 def get_privacy_policy_ele_dict():
     """

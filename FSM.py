@@ -134,7 +134,7 @@ class FSM(threading.Thread):
         StatRecorder.get_instance().add_stat_stat_activity_set(cur_activity)
         StatRecorder.get_instance().add_stat_screen_set(cur_ck_eles_text)
 
-        LogUtils.log_info(f"当前Screen为: {screen_text}")
+        # LogUtils.log_info(f"当前Screen为: {screen_text}")
         RuntimeContent.get_instance().append_screen_list(cur_ck_eles_text)
 
         # 如果需要搜索隐私政策
@@ -277,8 +277,8 @@ class FSM(threading.Thread):
             StatRecorder.get_instance().count_time()
             state, content = self.get_state()
             RuntimeContent.get_instance().append_state_list(state)
-            LogUtils.log_info("\n")
-            LogUtils.log_info("-" * 50)
+            # LogUtils.log_info("\n")
+            # LogUtils.log_info("-" * 50)
             self.print_state(state)
 
             # BFS动态增加层数的条件是: 当前发现pattern_state和pattern_screen, 表示无法再继续增长
