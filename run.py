@@ -107,7 +107,7 @@ if __name__ == "__main__":
             # logging.exception(consumer_fsm.exception)
             # logging.exception(consumer_fsm.exc_traceback)
             StatRecorder.get_instance().print_result()
-            SavedInstanceUtils.dump_pickle(RuntimeContent.get_instance())
+            # SavedInstanceUtils.dump_pickle(RuntimeContent.get_instance())
 
             # 重启
             d.app_stop(Config.get_instance().get_target_pkg_name())
