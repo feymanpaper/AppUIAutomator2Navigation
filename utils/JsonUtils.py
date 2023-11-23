@@ -36,7 +36,7 @@ class JsonUtils:
             json_dict["ck_eles_text"] = ck_eles_text
             json_dict["pkg_name"] = screen_node.pkg_name
             json_dict["activity_name"] = screen_node.activity_name
-            if screen_node.get_diff_or_clickable_eles is None:
+            if screen_node.get_diff_or_clickable_eles() is None:
                 json_dict["len_clicked_cnt"] = 0
             else:
                 json_dict["len_clicked_cnt"] = len(screen_node.get_diff_or_clickable_eles())
