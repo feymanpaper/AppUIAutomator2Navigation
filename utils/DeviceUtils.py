@@ -23,7 +23,13 @@ def get_screen_content():
     cur_screen_pkg_name = get_screen_package()
     cur_activity = get_screen_activity()
     screen_text = get_screen_text()
-    cur_ck_eles = get_clickable_elements()
+
+    # 防止页面变化过快没有提取到界面元素
+    retry_cnt=3
+    for i in range(0,retry_cnt):
+        cur_ck_eles = get_clickable_elements()
+        if cur_ck_eles is not None and len(cur_ck_eles)>0:
+            break
 
 
     pre_len = len(cur_ck_eles)
