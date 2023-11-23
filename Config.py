@@ -68,6 +68,7 @@ class Config(object):
         else:
             self.isSearchPrivacyPolicy = False
 
+
         if drawAppCallGraph == 'true':
             self.isDrawAppCallGraph = True
         else:
