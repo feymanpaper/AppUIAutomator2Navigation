@@ -69,6 +69,7 @@ class Config(object):
             self.isSearchPrivacyPolicy = False
 
 
+
         if drawAppCallGraph == 'true':
             self.isDrawAppCallGraph = True
         else:
@@ -84,10 +85,14 @@ class Config(object):
         self.start_time = datetime.now().strftime("%Y%m%d-%H%M%S")
 
         # ScreenUid的表示方式
+<<<<<<< HEAD
 
         # self.ScreenUidRep = "loc" # ex:[loc, textloc]
         self.ScreenUidRep = ScreenUidRep[:]
 
+=======
+        self.ScreenUidRep = "textloc" # ex:[loc, textloc]
+>>>>>>> 6c09ffc (fix: fix the bug JsonUtils should use screennode.ck_eles_text instead of)
 
         self.privacy_policy_text_list = ["隐私权政策", "隐私政策", "隐私保护政策", "隐私保护指引"]
 

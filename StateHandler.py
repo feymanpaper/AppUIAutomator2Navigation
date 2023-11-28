@@ -308,8 +308,9 @@ class StateHandler(object):
     def get_special_screen(cls, content):
         screen_map = RuntimeContent.get_instance().get_screen_map()
         ck_eles_text = content["ck_eles_text"]
-        if screen_map.get(ck_eles_text, False) is not False:
-            cur_screen_node = screen_map.get(ck_eles_text)
+        resnode = get_screennode_from_screenmap_by_similarity(ck_eles_text)
+        if resnode is not None:
+            cur_screen_node = resnode
         else:
             cur_screen_node = cls.create_new_screen(content)
         return cur_screen_node
@@ -318,8 +319,9 @@ class StateHandler(object):
     def get_exceed_screen(cls, content):
         screen_map = RuntimeContent.get_instance().get_screen_map()
         ck_eles_text = content["ck_eles_text"]
-        if screen_map.get(ck_eles_text, False) is not False:
-            cur_screen_node = screen_map.get(ck_eles_text)
+        resnode = get_screennode_from_screenmap_by_similarity(ck_eles_text)
+        if resnode is not None:
+            cur_screen_node = resnode
         else:
             # 如果满足条件, 添加cliakable=false 的隐私政策权的组件
             cur_screen_node = cls.create_new_screen(content)
