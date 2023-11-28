@@ -66,7 +66,8 @@ class Config(object):
             self.isSearchPrivacyPolicy = True
         else:
             self.isSearchPrivacyPolicy = False
-        self.sleep_time_sec = 0.5  # 配置点击之后睡眠的时间
+
+        self.sleep_time_sec = 0.3  # 配置点击之后睡眠的时间
 
         if drawAppCallGraph == 'true':
             self.isDrawAppCallGraph = True

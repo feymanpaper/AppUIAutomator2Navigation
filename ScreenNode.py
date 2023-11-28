@@ -1,3 +1,4 @@
+
 class ScreenNode:
     def __init__(self):
         # 包名 + activity + 可点击组件的内部文本
@@ -131,6 +132,12 @@ class ScreenNode:
 
     def get_isWebView(self):
         return self.isWebView
+
+    def __hash__(self):
+        return hash((self.ck_eles_text))
+
+    def __eq__(self, other):
+        return self.ck_eles_text == other.ck_eles_text
 
 
             

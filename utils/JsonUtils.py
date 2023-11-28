@@ -33,7 +33,7 @@ class JsonUtils:
         for ck_eles_text, screen_node in screen_map.items():
             json_dict = {}
             json_dict["screen_text"] = screen_node.screen_text
-            json_dict["ck_eles_text"] = ck_eles_text
+            json_dict["ck_eles_text"] = screen_node.ck_eles_text
             json_dict["pkg_name"] = screen_node.pkg_name
             json_dict["activity_name"] = screen_node.activity_name
             if screen_node.get_diff_or_clickable_eles() is None:
