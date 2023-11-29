@@ -8,6 +8,7 @@ import detect_queue
 
 from services.popup_detector.utils.image_preproccess import Preproccess
 from services.popup_detector.utils.redraw import Redraw
+from services.popup_detector.utils.image_prejudge import Prejude
 
 FILE = Path(__file__).resolve()
 ROOT = FILE.parents[0]  # YOLOv5 root directory
@@ -79,48 +80,62 @@ class YoloService(threading.Thread):
 
         source = image
 
-        save_img, screenshot, save_dir, webcam = detect_queue.input_save(image, self.opt['save_txt'],
-                                                                         self.opt['nosave'], self.opt['project'],
-                                                                         self.opt['name'], self.opt['exist_ok'])
+        prejude_instance = Prejude(image)
+        Prejude_result = prejude_instance.process_images()
+        print("Prejude_result = " + str(Prejude_result))
 
-        # 图片预处理
-        ImagePre = Preproccess(image)
-        get_prepro_pic_path = ImagePre.preproccess()
-        source = get_prepro_pic_path
+        xywh = []
+        conf = 0
 
-        # 图片检测
-        bs, dataset, vid_path, vid_writer = detect_queue.data_loader(False, source, self.imgsz, self.stride, self.pt,
-                                                                     self.opt['vid_stride'], False)
-        self.bs, self.dataset, self.vid_path, self.vid_writer = bs, dataset, vid_path, vid_writer
-        self.save_img, self.screenshot, self.save_dir, self.webcam = save_img, screenshot, save_dir, webcam
+        # 有分层现象
+        if  Prejude_result:
+            save_img, screenshot, save_dir, webcam = detect_queue.input_save(image, self.opt['save_txt'],
+                                                                            self.opt['nosave'], self.opt['project'],
+                                                                            self.opt['name'], self.opt['exist_ok'])
 
-        seen, dt, xywh, conf = detect_queue.run_inference(
-            self.model,
-            self.pt,
-            bs,
-            self.imgsz,
-            dataset,
-            self.opt['augment'],
-            self.opt['conf_thres'],
-            self.opt['iou_thres'],
-            self.opt['classes'],
-            self.opt['agnostic_nms'],
-            self.opt['max_det'],
-            self.save_dir,
-            self.webcam,
-            self.opt['save_crop'],
-            self.opt['line_thickness'],
-            self.names,
-            self.opt['hide_conf'],
-            self.opt['view_img'],
-            self.save_img,
-            vid_path,
-            vid_writer,
-            self.opt['save_txt'],
-            self.opt['save_conf'],
-            self.opt['hide_labels'],
-            self.opt['save_csv'],
-            self.opt['visualize'])
+            # 图片预处理
+            ImagePre = Preproccess(image)
+            get_prepro_pic_path = ImagePre.preproccess()
+            source = get_prepro_pic_path
+
+            # 图片检测
+            bs, dataset, vid_path, vid_writer = detect_queue.data_loader(False, source, self.imgsz, self.stride, self.pt,
+                                                                        self.opt['vid_stride'], False)
+            self.bs, self.dataset, self.vid_path, self.vid_writer = bs, dataset, vid_path, vid_writer
+            self.save_img, self.screenshot, self.save_dir, self.webcam = save_img, screenshot, save_dir, webcam
+
+            seen, dt, xywh, conf = detect_queue.run_inference(
+                self.model,
+                self.pt,
+                bs,
+                self.imgsz,
+                dataset,
+                self.opt['augment'],
+                self.opt['conf_thres'],
+                self.opt['iou_thres'],
+                self.opt['classes'],
+                self.opt['agnostic_nms'],
+                self.opt['max_det'],
+                self.save_dir,
+                self.webcam,
+                self.opt['save_crop'],
+                self.opt['line_thickness'],
+                self.names,
+                self.opt['hide_conf'],
+                self.opt['view_img'],
+                self.save_img,
+                vid_path,
+                vid_writer,
+                self.opt['save_txt'],
+                self.opt['save_conf'],
+                self.opt['hide_labels'],
+                self.opt['save_csv'],
+                self.opt['visualize'])
+
+        # 无分层现象
+        else:
+            xywh = []
+            conf = 0
 
         return xywh, conf
 
@@ -146,8 +161,8 @@ class YoloService(threading.Thread):
 
                 # 休眠1s
                 time.sleep(2)
+
             except Exception as e:
                 print(e)
                 break
         print(f"{self.name} exit....")
-
