@@ -52,6 +52,38 @@ class StatRecorder(object):
         self.end_time = time.time()
         LogUtils.log_info(f"时间为 {self.end_time - self.start_time}")
 
+    def get_total_coverage(self):
+        screen_depth_map = RuntimeContent.get_instance().screen_depth_map
+        # screen_uid_list = [screen_uid for screen_uid, depth in sorted(screen_depth_map.items(), key=lambda x: x[1])]
+        screen_uid_list = screen_depth_map.keys()
+        cal_cov_map = {}
+        snode_set = set()
+        for screen_uid in screen_uid_list:
+            screen_node = RuntimeContent.get_instance().get_screen_map().get(screen_uid)
+            if screen_node is not None:
+                clickable_eles = screen_node.get_diff_or_clickable_eles()
+                if clickable_eles is None or len(clickable_eles) == 0:
+                    # print(f"深度{depth}: {screen_uid} 没有可点击组件")
+                    continue
+                snode_set.add(screen_node)
+
+        for screen_node in snode_set:
+            depth = screen_depth_map.get(screen_node.ck_eles_text)
+            if cal_cov_map.get(depth, None) is None:
+                cal_cov_map[depth] = [0, 0, 0]
+            total_cnt = len(screen_node.get_diff_or_clickable_eles())
+            click_cnt = screen_node.total_clicked_cnt
+
+            candidate_click_cnt = 0
+            for ele in screen_node.get_diff_or_clickable_eles():
+                if ele in RuntimeContent.get_instance().already_click_eles:
+                    candidate_click_cnt +=1
+
+            cal_cov_map[depth][0] += click_cnt
+            cal_cov_map[depth][1] += candidate_click_cnt
+            cal_cov_map[depth][2] += total_cnt
+        return cal_cov_map
+
 
 
     def get_coverage(self, cur_depth:int):
@@ -59,6 +91,7 @@ class StatRecorder(object):
         # screen_uid_list = [screen_uid for screen_uid, depth in sorted(screen_depth_map.items(), key=lambda x: x[1])]
         screen_uid_list = screen_depth_map.keys()
         cal_cov_map = {}
+        snode_set = set()
         for screen_uid in screen_uid_list:
             depth = screen_depth_map.get(screen_uid)
             if depth != cur_depth:
@@ -69,20 +102,23 @@ class StatRecorder(object):
                 if clickable_eles is None or len(clickable_eles) == 0:
                     # print(f"深度{depth}: {screen_uid} 没有可点击组件")
                     continue
-                else:
-                    if cal_cov_map.get(depth, None) is None:
-                        cal_cov_map[depth] = [0, 0, 0]
-                    total_cnt = len(screen_node.get_diff_or_clickable_eles())
-                    click_cnt = screen_node.already_clicked_cnt
+                snode_set.add(screen_node)
 
-                    candidate_click_cnt = 0
-                    for ele in screen_node.get_diff_or_clickable_eles():
-                        if ele in RuntimeContent.get_instance().already_click_eles:
-                            candidate_click_cnt +=1
+        for screen_node in snode_set:
+            depth = screen_depth_map.get(screen_node.ck_eles_text)
+            if cal_cov_map.get(depth, None) is None:
+                cal_cov_map[depth] = [0, 0, 0]
+            total_cnt = len(screen_node.get_diff_or_clickable_eles())
+            click_cnt = screen_node.already_clicked_cnt
 
-                    cal_cov_map[depth][0] += click_cnt
-                    cal_cov_map[depth][1] += candidate_click_cnt
-                    cal_cov_map[depth][2] += total_cnt
+            candidate_click_cnt = 0
+            for ele in screen_node.get_diff_or_clickable_eles():
+                if ele in RuntimeContent.get_instance().already_click_eles:
+                    candidate_click_cnt +=1
+
+            cal_cov_map[depth][0] += click_cnt
+            cal_cov_map[depth][1] += candidate_click_cnt
+            cal_cov_map[depth][2] += total_cnt
         return cal_cov_map
 
     def print_coverage(self, cal_cov_map):

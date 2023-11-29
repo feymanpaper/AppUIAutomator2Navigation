@@ -428,11 +428,11 @@ class StateHandler(object):
             cur_screen_node = get_cur_screen_node_from_context(content)
             cur_screen_node_clickable_eles = cur_screen_node.get_diff_or_clickable_eles()
 
-            # 如果弹框已经点击完, 但是再出现弹框, 50%机会随机点, 50%机会back
+            # 如果弹框已经点击完, 但是再出现弹框, 80%机会随机点, 20%机会back
             # random click是为了应对重复的弹框
             # random back是为了应对误报
             probability = random.random()
-            if len(cur_screen_node_clickable_eles) > 0 and probability <= 0.7:
+            if len(cur_screen_node_clickable_eles) > 0 and probability <= 0.8:
                 cls.random_click_ele(content)
             else:
                 cls.handle_popup_finish(content)

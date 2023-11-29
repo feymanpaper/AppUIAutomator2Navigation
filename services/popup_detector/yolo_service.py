@@ -145,7 +145,7 @@ class YoloService(threading.Thread):
                 redraw.redraw()
 
                 # 休眠1s
-                time.sleep(2)
+                # time.sleep(2)
             except Exception as e:
                 print(e)
                 break
