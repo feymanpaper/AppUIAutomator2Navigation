@@ -152,6 +152,12 @@ if __name__ == "__main__":
     if cal_cov_map.get(cur_depth, None) is not None:
         cov = cal_cov_map[cur_depth][1] / cal_cov_map[cur_depth][2]
         FileUtils.save_coverage(cur_depth, cal_cov_map[cur_depth][1], cal_cov_map[cur_depth][2])
+
+    # 写入总的覆盖率
+    total_cov_map = StatRecorder.get_instance().get_total_coverage()
+    FileUtils.save_total_coverage(Config.get_instance().maxDepth, total_cov_map)
+
+
     FileUtils.save_result()
 
 
