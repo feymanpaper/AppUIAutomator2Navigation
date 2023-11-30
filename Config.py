@@ -70,6 +70,7 @@ class Config(object):
 
 
 
+
         if drawAppCallGraph == 'true':
             self.isDrawAppCallGraph = True
         else:
