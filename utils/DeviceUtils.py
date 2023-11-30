@@ -23,7 +23,13 @@ def get_screen_content():
     cur_screen_pkg_name = get_screen_package()
     cur_activity = get_screen_activity()
     screen_text = get_screen_text()
-    cur_ck_eles = get_clickable_elements()
+
+    # 防止页面变化过快没有提取到界面元素
+    retry_cnt=3
+    for i in range(0,retry_cnt):
+        cur_ck_eles = get_clickable_elements()
+        if cur_ck_eles is not None and len(cur_ck_eles)>0:
+            break
 
 
     pre_len = len(cur_ck_eles)
@@ -163,9 +169,9 @@ def get_device_info():
     return d.info
 
 def get_screen_wh():
-    device_info = get_device_info()
-    screen_w = device_info['displayWidth']
-    screen_h = device_info['displayHeight']
+    d = Config.get_instance().get_device()
+    wsize = d.window_size()
+    screen_w, screen_h = wsize[0], wsize[1]
     return screen_w, screen_h
 
 def yolowxyh_to_uiautoxywh(xywh):
@@ -180,10 +186,10 @@ def get_4corner_coord(xywh):
     ui_xywh = yolowxyh_to_uiautoxywh(xywh)
     LogUtils.log_info(f"xywh转换前{xywh}--->转换后: {ui_xywh}")
     coord = {}
-    coord["left_top"] = [ui_xywh[0], ui_xywh[1]]
-    coord["right_top"] = [ui_xywh[0] + ui_xywh[2], ui_xywh[1]]
-    coord["left_bot"] = [ui_xywh[0], ui_xywh[1] + ui_xywh[3]]
-    coord["right_bot"] = [ui_xywh[0] + ui_xywh[2], ui_xywh[1] + ui_xywh[3]]
+    coord["left_top"] = [ui_xywh[0] - ui_xywh[2]/2, ui_xywh[1] - ui_xywh[3]/2]
+    coord["right_top"] = [ui_xywh[0] + ui_xywh[2]/2, ui_xywh[1] - ui_xywh[3]/2]
+    coord["left_bot"] = [ui_xywh[0] - ui_xywh[2]/2, ui_xywh[1] + ui_xywh[3]/2]
+    coord["right_bot"] = [ui_xywh[0] + ui_xywh[2]/2, ui_xywh[1] + ui_xywh[3]/2]
     return coord
 
 
@@ -551,23 +557,25 @@ def print_current_window_detailed_elements(d):
     y = (top + bottom) // 2
 
 
+
 def get_screen_text():
     """
     Get all text of the current Screen, including the non-clickable and clickable elements
     :return: all text of current Screen
     """
-    root = get_dump_hierarchy()
-    text = ""
-    for element in root.findall('.//node'):
-        if element.get("package") in system_view:
-            continue
-        temp_text = element.get("text")
-        if temp_text:
-            if text == "":
-                text += temp_text
-            else:
-                text += "," + temp_text
-    return text
+    # root = get_dump_hierarchy()
+    # text = ""
+    # for element in root.findall('.//node'):
+    #     if element.get("package") in system_view:
+    #         continue
+    #     temp_text = element.get("text")
+    #     if temp_text:
+    #         if text == "":
+    #             text += temp_text
+    #         else:
+    #             text += "," + temp_text
+    # return text
+    return ""
 
 def get_privacy_policy_ele_dict():
     """

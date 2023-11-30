@@ -1,3 +1,4 @@
+
 import threading, time
 from queue import Queue
 
@@ -144,23 +145,23 @@ class YoloService(threading.Thread):
             try:
                 # 从请求队列得到图片
                 image = self.req_queue.get(block=True)
-                # print(f"{self.name} get {image} from req_queue")
+                print(f"{self.name} get {image} from req_queue")
 
                 # 处理逻辑
-                # print(f"{self.name} process.....")
+                print(f"{self.name} process.....")
                 xywh, conf = self.processImage(image)
                 result = {'xywh': xywh, 'conf': conf}
 
                 # 将处理后的结果放到响应队列
                 self.resp_queue.put(result, block=True)
-                # print(f"{self.name} put {result} into resp_queue")
+                print(f"{self.name} put {result} into resp_queue")
 
                 # 在原图上绘制结果
                 redraw = Redraw(image, xywh, conf)
                 redraw.redraw()
 
-                # 休眠1s
-                time.sleep(2)
+                # # 休眠1s
+                # time.sleep(2)
 
             except Exception as e:
                 print(e)

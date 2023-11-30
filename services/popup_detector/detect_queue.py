@@ -178,7 +178,7 @@ def input_save(source, save_txt, nosave, project, name, exist_ok):
     folder_path = symbol.join(path_parts[:-2])  # 去除最后两级文件夹
 
     # 构建输出路径
-    output_folder = "ProcessedScreenshotPicture"
+    output_folder = "aa"
     save_dir = folder_path + "/" + output_folder
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)

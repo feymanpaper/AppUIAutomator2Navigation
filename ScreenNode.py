@@ -1,3 +1,4 @@
+
 class ScreenNode:
     def __init__(self):
         # 包名 + activity + 可点击组件的内部文本
@@ -29,8 +30,10 @@ class ScreenNode:
         self.ele_uid_cnt_map = {}
         # 记录组件是否有被点击过 {key:cur_clickable_ele_uid, val:true/false}
         self.ele_vis_map = {}
-        # 记录当前screen已经被点击过的组件个数
+        # 记录当前screen已经被点击过的组件个数, 遍历层数增加时会重置
         self.already_clicked_cnt = 0
+        # 记录当前screen已经被点击过的组件个数, 不会重置
+        self.total_clicked_cnt = 0
         # 最近一次到达当前界面所点击的上一个界面的组件uid
         self.last_ck_ele_uid_list = []
 
@@ -129,6 +132,12 @@ class ScreenNode:
 
     def get_isWebView(self):
         return self.isWebView
+
+    def __hash__(self):
+        return hash((self.ck_eles_text))
+
+    def __eq__(self, other):
+        return self.ck_eles_text == other.ck_eles_text
 
 
             

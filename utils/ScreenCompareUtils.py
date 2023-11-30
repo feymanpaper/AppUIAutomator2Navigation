@@ -23,6 +23,26 @@ def get_max_similarity_screen_node(ck_eles_text: str):
     else:
         return 1.0, screen_map.get(ck_eles_text)
 
+def get_max_similarity_popup_node(ck_eles_text: str):
+    popup_map = RuntimeContent.get_instance().get_popup_map()
+    if popup_map.get(ck_eles_text, False) is False:
+        # 如果没有,则遍历找满足相似度阈值的
+        max_similarity = 0
+        res_node = None
+        for candidate_ck_eles_text in popup_map.keys():
+            cur_similarity = get_text_similarity(ck_eles_text, candidate_ck_eles_text)
+            # 相似度大于90%为相似弹框
+            if cur_similarity >= 0.90:
+                if cur_similarity > max_similarity:
+                    max_similarity = cur_similarity
+                    res_node = popup_map.get(candidate_ck_eles_text)
+        # 返回的要么是None, 要么是相似性最大的screen_node
+        return res_node
+
+    # 说明该节点之前存在screen_map
+    else:
+        return popup_map.get(ck_eles_text)
+
 
 def get_max_sim_from_screen_depth_map(ck_eles_text: str):
     screen_depth_map = RuntimeContent.get_instance().screen_depth_map
