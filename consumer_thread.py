@@ -96,6 +96,36 @@ def consumer_thread(queue):
             processed_pp.add(pkgName)
             print('pp analysis in consumer done.')
 
+            # 继续使用大模型分析隐私政策文本
+            # 不启用大模型
+
+            # if f"{pkgName}.txt" in os.listdir(os.path.join('..', 'Privacy-compliance-detection-2.1', 'core', 'Privacypolicy_txt')):
+            #     print('start try query llm...')
+            #     if os_type == 'win':
+            #         subprocess.run(['python', 'compliance_query.py', pkgName,'n'],
+            #                        cwd=os.path.join('..', 'Privacy-compliance-detection-2.1', 'core'),
+            #                        timeout=600)
+            #         subprocess.run(['python', 'permission_query.py', pkgName,'n'],
+            #                        cwd=os.path.join('..', 'Privacy-compliance-detection-2.1', 'core'),
+            #                        timeout=600)
+            #     elif os_type in ['linux', 'mac']:
+            #         subprocess.run(['python3', 'compliance_query.py', pkgName,'n'],
+            #                        cwd=os.path.join('..', 'Privacy-compliance-detection-2.1', 'core'),
+            #                        timeout=600)
+            #         subprocess.run(['python3', 'permission_query.py', pkgName,'n'],
+            #                        cwd=os.path.join('..', 'Privacy-compliance-detection-2.1', 'core'),
+            #                        timeout=600)
+            #     files_in_permission_query_res_save_dir = os.listdir(os.path.join('..', 'Privacy-compliance-detection-2.1', 'core', 'permission_query_res_save_dir'))
+            #     files_in_compliance_query_res_save_dir = os.listdir(os.path.join('..', 'Privacy-compliance-detection-2.1', 'core', 'compliance_query_res_save_dir'))
+            #     if pkgName + '_compliance_query_result.json' in files_in_compliance_query_res_save_dir:
+            #         print(f'{pkgName} compliance query done.')
+            #         with open('successful_query_compliance.txt', 'a', encoding='utf-8') as f:
+            #             f.write(pkgName + '\n')
+            #     if pkgName + '_permission_query_result.json' in files_in_permission_query_res_save_dir:
+            #         print(f'{pkgName} permission query done.')
+            #         with open('successful_query_permission.txt', 'a', encoding='utf-8') as f:
+            #             f.write(pkgName + '\n')
+
 
 def main_thread():
     # 创建一个阻塞队列
