@@ -33,10 +33,15 @@ class JsonUtils:
         for ck_eles_text, screen_node in screen_map.items():
             json_dict = {}
             json_dict["screen_text"] = screen_node.screen_text
-            json_dict["ck_eles_text"] = ck_eles_text
+            json_dict["ck_eles_text"] = screen_node.ck_eles_text
             json_dict["pkg_name"] = screen_node.pkg_name
             json_dict["activity_name"] = screen_node.activity_name
+            if screen_node.get_diff_or_clickable_eles() is None:
+                json_dict["len_clicked_cnt"] = 0
+            else:
+                json_dict["len_clicked_cnt"] = len(screen_node.get_diff_or_clickable_eles())
             json_dict["already_clicked_cnt"] = screen_node.already_clicked_cnt
+            json_dict["max_clicked_cnt"] = screen_node.total_clicked_cnt
             json_dict["nextlist"] = cls.__get_nextlist(screen_node)
             # json_dict["call_map_list"] = cls.__get_callmap_list(screen_node)
             json_dict["call_map"] = cls.__get_callmap(screen_node)
