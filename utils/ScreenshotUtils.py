@@ -23,6 +23,7 @@ class ScreenshotUtils:
         screenshot = d.screenshot()
 
 
+
         config_path = Config.get_instance().get_collectDataPath()
         screenshot_dir = "Screenshot"
         # 创建保存截图和json的目录（如果不存在）
