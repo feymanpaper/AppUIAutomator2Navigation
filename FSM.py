@@ -189,11 +189,19 @@ class FSM(threading.Thread):
         #     StatRecorder.get_instance().add_webview_set(ck_eles_text)
         #     return self.STATE_Back, content
 
+        # 对界面组件判断, 如果未覆盖全部则是弹框
+        screen_ltrb = check_cover_full_screen(Config.get_instance().get_device())
+        if screen_ltrb is not None:
+            content["ltrb"] = screen_ltrb
+            return self.STATE_PopUp, content
+
         # 如果置信度>=75%则认为是弹框, 进行弹框处理
         popup_info = self.query_popup_info(screenshot_path)
         LogUtils.log_info(popup_info)
         if popup_info["conf"] >= 0.75:
-            content["xywh"] = popup_info["xywh"]
+            xywh = popup_info["xywh"]
+            ltrb = get_4corner_coord(xywh)
+            content["ltrb"] = ltrb
             return self.STATE_PopUp, content
 
         screen_depth_map = RuntimeContent.get_instance().screen_depth_map
