@@ -95,6 +95,8 @@ class Config(object):
         self.start_time = datetime.now().strftime("%Y%m%d-%H%M%S")
 
         # ScreenUid的表示方式
+
+
         # self.ScreenUidRep = "loc" # ex:[loc, textloc]
         self.ScreenUidRep = 'loc'
         self.privacy_policy_text_list = ["隐私权政策", "隐私政策", "隐私保护政策", "隐私保护指引"]

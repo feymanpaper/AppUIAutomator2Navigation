@@ -128,6 +128,7 @@ def consumer_thread(queue):
             #             f.write(pkgName + '\n')
 
 
+
 def main_thread():
     # 创建一个阻塞队列
     queue = Queue()
