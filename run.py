@@ -120,7 +120,7 @@ if __name__ == "__main__":
             # logging.exception(consumer_fsm.exception)
             # logging.exception(consumer_fsm.exc_traceback)
             StatRecorder.get_instance().print_result()
-            SavedInstanceUtils.dump_pickle(RuntimeContent.get_instance())
+            # SavedInstanceUtils.dump_pickle(RuntimeContent.get_instance())
 
             # 重启
             d.app_stop(Config.get_instance().get_target_pkg_name())
@@ -165,7 +165,13 @@ if __name__ == "__main__":
     if cal_cov_map.get(cur_depth, None) is not None:
         cov = cal_cov_map[cur_depth][1] / cal_cov_map[cur_depth][2]
         FileUtils.save_coverage(cur_depth, cal_cov_map[cur_depth][1], cal_cov_map[cur_depth][2])
-        FileUtils.save_result()
+
+    # 写入总的覆盖率
+    total_cov_map = StatRecorder.get_instance().get_total_coverage()
+    FileUtils.save_total_coverage(Config.get_instance().maxDepth, total_cov_map)
+
+
+    FileUtils.save_result()
 
 
     # 绘制App界面跳转图

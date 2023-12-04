@@ -7,7 +7,7 @@ import os
 
 if __name__ == '__main__':
     opt = vars(detect_queue.parse_opt())  # <class 'argparse.Namespace'>
-    image_folder = "../data_detect/images_origin"
+    image_folder = "G:\AppUIAutomator2Navigation\collectData\com.alibaba.aliyun-20231129-210548\Screenshot\ScreenshotPicture"
     req_queue = Queue(1)
     resp_queue = Queue(1)
     consumer = YoloService('YoloDetectPopupService', req_queue, resp_queue, True, opt)

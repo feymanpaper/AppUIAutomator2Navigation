@@ -193,6 +193,9 @@ def check_is_in_home_screen(cur_screen_pkg_name):
     # pixel的home screen
     if cur_screen_pkg_name == "com.google.android.apps.nexuslauncher":
         return True
+    # pixel类安卓原生lineage os的home screen
+    if cur_screen_pkg_name == "com.android.launcher3":
+        return True
     return False
 
 
