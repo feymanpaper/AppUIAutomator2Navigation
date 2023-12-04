@@ -5,7 +5,7 @@ import subprocess
 import threading
 import time
 from queue import Queue
-from test_integrate import get_OS_type
+from run_config import get_OS_type
 from get_urls import get_pp_from_app_store, get_pkg_names_from_input_list
 
 
@@ -88,6 +88,7 @@ def consumer_thread(queue):
             subprocess.run(['python3', 'privacy-policy-main.py','y'],
                            cwd=os.path.join('..', 'Privacy-compliance-detection-2.1', 'core'),
                            timeout=600)
+        print('call privacy-policy-main.py done.')
         files_in_privacy_policy_save_dir = os.listdir(
             os.path.join('..', 'Privacy-compliance-detection-2.1', 'core', 'PrivacyPolicySaveDir'))
         if pkgName + '.json' in files_in_privacy_policy_save_dir and pkgName + '_sdk.json' in files_in_privacy_policy_save_dir:
