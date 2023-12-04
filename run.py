@@ -1,3 +1,5 @@
+import configobj
+
 from FSM import *
 from services.popup_detector import detect_queue
 from services.popup_detector.yolo_service import YoloService
@@ -43,19 +45,41 @@ def suppress_keyboard_interrupt_message():
 
 
 if __name__ == "__main__":
-    pkgName = sys.argv[1]
-    appName = sys.argv[2]
-    depth = sys.argv[3]
-    test_time = sys.argv[4]
-    searchPP = sys.argv[5]
-    drawAppCallGraph = sys.argv[6]
-    ScreenUidRep = sys.argv[7]
+    try:
+        pkgName = sys.argv[1]
+        appName = sys.argv[2]
+        depth = sys.argv[3]
+        test_time = sys.argv[4]
+        searchPP = sys.argv[5]
+        drawAppCallGraph = sys.argv[6]
+        ScreenUidRep = sys.argv[7]
 
-    with open('tmp.txt', 'w',encoding='utf-8') as f:
-        f.write(pkgName + ";" + appName + ";" + depth + ';' + test_time + ';' + searchPP + ';' + drawAppCallGraph + ';' + ScreenUidRep )
+        Config.get_instance().target_pkg_name = pkgName
+        Config.get_instance().app_name = appName
+        Config.get_instance().maxDepth = int(depth)
+        Config.get_instance().test_time = int(test_time)
+        if drawAppCallGraph == 'true':
+            DrawAppCallGraph = True
+        else:
+            DrawAppCallGraph = False
+        Config.get_instance().isDrawAppCallGraph = DrawAppCallGraph
+        if searchPP == 'true':
+            searchPP = True
+        else:
+            searchPP = False
+        Config.get_instance().isSearchPrivacyPolicy = searchPP
+        Config.get_instance().ScreenUidRep = ScreenUidRep
+    except IndexError:
+        print('No arg mode.')
+
+
+
+    # with open('tmp.txt', 'w',encoding='utf-8') as f:
+    #     f.write(pkgName + ";" + appName + ";" + depth + ';' + test_time + ';' + searchPP + ';' + drawAppCallGraph + ';' + ScreenUidRep )
+
     # 创建一个阻塞队列
     pp_queue = None
-    if searchPP == 'true':
+    if Config.get_instance().isSearchPrivacyPolicy is True:
         pp_queue = Queue()
         # 创建守护线程
         pp_comsumer = threading.Thread(target=consumer_thread,args=(pp_queue,))
