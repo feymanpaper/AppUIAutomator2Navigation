@@ -33,6 +33,7 @@ def get_screen_content():
             break
 
     pre_len = len(cur_ck_eles)
+    cur_ck_eles = remove_false_loc(cur_ck_eles)
     cur_ck_eles = remove_dup(cur_ck_eles)
     cur_ck_eles = merged_clickable_elements(cur_ck_eles)
     after_len = len(cur_ck_eles)
@@ -227,9 +228,10 @@ def check_cover_full_screen(d):
     first_layer = first_layer_eles.info['visibleBounds']
     # 打印第一层元素的信息
     l, top, r, bottom = first_layer['left'], first_layer['top'], first_layer['right'], first_layer['bottom']
-    if dw == r and dh == bottom:
+    if dw == r and dh == bottom and l==0 and top==0:
         return None
     return l, top, r, bottom
+
 
 
 # 递归遍历节点的所有子节点
@@ -327,6 +329,17 @@ def get_clickable_elements():
                 else:
                     clickable_elements.append(uid)
     return clickable_elements
+
+
+def remove_false_loc(cur_ck_eles):
+    w, h = get_display_screen_wh()
+    ans = []
+    for uid in cur_ck_eles:
+        cur_screen_ele_dict = RuntimeContent.get_instance().get_ele_uid_map_by_uid(uid)
+        loc_x, loc_y = get_location(cur_screen_ele_dict)
+        if loc_x >=0 and loc_x<=w and loc_y>=0 and loc_y<=h:
+            ans.append(uid)
+    return ans
 
 
 def remove_dup(old_list) -> list:

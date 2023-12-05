@@ -1,1 +1,1 @@
-com.alibaba.wireless.lstretailer | 阿里零售通
+com.shuqi.controller | 书旗小说
