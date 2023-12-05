@@ -70,9 +70,8 @@ class FileUtils:
         if not os.path.exists(os.path.dirname(file_path)):
             os.makedirs(os.path.dirname(file_path))
         fw = open(file_path, 'a', encoding='utf-8')
-        cov1 = a/c
         cov2 = b/c
-        fw.write(f"{depth}:{a}/{c}={cov1} {b}/{c}={cov2}" + "\n")
+        fw.write(f"{depth}:{b}/{c}={cov2}" + "\n")
         fw.close()
 
     @staticmethod
