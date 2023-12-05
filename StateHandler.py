@@ -401,8 +401,7 @@ class StateHandler(object):
 
     @classmethod
     def handle_popup(cls, content):
-        xywh = content["xywh"]
-        coord_dict = get_4corner_coord(xywh)
+        ltrb = content["ltrb"]
         popup_map = RuntimeContent.get_instance().get_popup_map()
         ck_eles_text = content["ck_eles_text"]
 
@@ -414,7 +413,7 @@ class StateHandler(object):
             LogUtils.log_info("创建新弹框")
             cur_popup_node = cls.create_popup(content)
             # 删除不在弹框范围内的组件
-            cls.__remove_eles_notin_popup(cur_popup_node, coord_dict)
+            cls.__remove_eles_notin_popup(cur_popup_node, ltrb)
             # 移除没必要点击的组件
             cls.__remove_noneed_eles(cur_popup_node)
             # 加入隐私组件
@@ -669,15 +668,14 @@ class StateHandler(object):
                     clickable_ele_idx += 1
 
     @classmethod
-    def __remove_eles_notin_popup(cls, cur_node:ScreenNode, coord_dict):
+    def __remove_eles_notin_popup(cls, cur_node:ScreenNode, ltrb):
         cur_ck_eles = cur_node.clickable_elements
         after_ck_eles = []
         for ele_uid in cur_ck_eles:
             cur_clickable_ele_dict = RuntimeContent.get_instance().get_ele_uid_map_by_uid(ele_uid)
             loc_x, loc_y = get_location(cur_clickable_ele_dict)
-            left_top = coord_dict["left_top"]
-            right_bot = coord_dict["right_bot"]
-            if loc_x > left_top[0] and loc_x < right_bot[0] and loc_y > left_top[1] and loc_y < right_bot[1]:
+            l,t,r,b=ltrb[0],ltrb[1],ltrb[2],ltrb[3]
+            if loc_x > l and loc_x < r and loc_y > t and loc_y < b:
                 after_ck_eles.append(ele_uid)
         if len(after_ck_eles) <=0:
             cur_node.clickable_elements = cur_ck_eles

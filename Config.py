@@ -49,9 +49,9 @@ from datetime import datetime
 
 class Config(object):
     def __init__(self):
-        # with open('tmp.txt', 'r', encoding='utf-8') as f:
-        #     pkgName, appName, depth, test_time,searchPP,drawAppCallGraph,ScreenUidRep = f.readline().split(";")
-        # print(pkgName, appName, depth, test_time,searchPP,drawAppCallGraph,ScreenUidRep)
+        with open('tmp.txt', 'r', encoding='utf-8') as f:
+            pkgName, appName, depth, test_time,searchPP,drawAppCallGraph,ScreenUidRep = f.readline().split(";")
+        print(pkgName, appName, depth, test_time,searchPP,drawAppCallGraph,ScreenUidRep)
 
         # # 其余可修改的配置，从此处开始===========================
         # self.target_pkg_name = pkgName  # 应用包名
@@ -78,9 +78,16 @@ class Config(object):
         self.maxDepth = 3  # 配置点击的最大深度
 
         self.curDepth = 1
-        self.test_time = 600  # 配置测试的时间,以秒为单位
-        self.isSearchPrivacyPolicy = True # 配置是否寻找隐私政策
-        self.isDrawAppCallGraph = False  # 配置是否绘制App界面跳转图
+
+        self.test_time = int(test_time)  # 配置测试的时间,以秒为单位
+        self.sleep_time_sec = 0.5  # 配置点击之后睡眠的时间
+        # self.isSearchPrivacyPolicy = False # 配置是否寻找隐私政策
+        # self.isDrawAppCallGraph = False  # 配置是否绘制App界面跳转图
+        if searchPP == 'true':
+            self.isSearchPrivacyPolicy = True
+        else:
+            self.isSearchPrivacyPolicy = False
+
 
         self.sleep_time_sec = 0.3  # 配置点击之后睡眠的时间
 

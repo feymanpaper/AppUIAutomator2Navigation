@@ -19,20 +19,21 @@ system_view = [
     "com.android.chrome"
 ]
 
+
 def get_screen_content():
     cur_screen_pkg_name = get_screen_package()
     cur_activity = get_screen_activity()
     screen_text = get_screen_text()
 
     # 防止页面变化过快没有提取到界面元素
-    retry_cnt=3
-    for i in range(0,retry_cnt):
+    retry_cnt = 3
+    for i in range(0, retry_cnt):
         cur_ck_eles = get_clickable_elements()
-        if cur_ck_eles is not None and len(cur_ck_eles)>0:
+        if cur_ck_eles is not None and len(cur_ck_eles) > 0:
             break
 
-
     pre_len = len(cur_ck_eles)
+    cur_ck_eles = remove_false_loc(cur_ck_eles)
     cur_ck_eles = remove_dup(cur_ck_eles)
     cur_ck_eles = merged_clickable_elements(cur_ck_eles)
     after_len = len(cur_ck_eles)
@@ -71,6 +72,7 @@ def get_ck_eles_hierarchy() -> list:
     ui_root = build_hierarchy(text_list)
     res = to_string_hierarchy(ui_root, 1)
     return res
+
 
 def get_dump_hierarchy():
     d = Config.get_instance().get_device()
@@ -130,7 +132,8 @@ def build_hierarchy(text_list) -> UITreeNode:
                 tmp += text[i]
     return root
 
-def to_string_hierarchy(root: UITreeNode, level = 1) -> str:
+
+def to_string_hierarchy(root: UITreeNode, level=1) -> str:
     if root is None:
         return ""
     str = ""
@@ -142,6 +145,7 @@ def to_string_hierarchy(root: UITreeNode, level = 1) -> str:
     for child in root.childs:
         str += to_string_hierarchy(child, level + 1)
     return str
+
 
 def print_ui_root(root: UITreeNode, level=1):
     if root is None:
@@ -164,15 +168,24 @@ def get_screen_info():
     ck_eles_text = get_screen_all_clickable_text_and_loc(d)
     return pkg_name, act_name, ck_eles_text
 
+
 def get_device_info():
     d = Config.get_instance().get_device()
     return d.info
+
 
 def get_screen_wh():
     d = Config.get_instance().get_device()
     wsize = d.window_size()
     screen_w, screen_h = wsize[0], wsize[1]
     return screen_w, screen_h
+
+
+def get_display_screen_wh():
+    d = Config.get_instance().get_device()
+    screen_w, screen_h = d.info['displayWidth'], d.info['displayHeight']
+    return screen_w, screen_h
+
 
 def yolowxyh_to_uiautoxywh(xywh):
     screen_w, screen_h = get_screen_wh()
@@ -182,15 +195,13 @@ def yolowxyh_to_uiautoxywh(xywh):
     ui_h = screen_h * xywh[3]
     return [ui_x, ui_y, ui_w, ui_h]
 
+
 def get_4corner_coord(xywh):
     ui_xywh = yolowxyh_to_uiautoxywh(xywh)
     LogUtils.log_info(f"xywh转换前{xywh}--->转换后: {ui_xywh}")
-    coord = {}
-    coord["left_top"] = [ui_xywh[0] - ui_xywh[2]/2, ui_xywh[1] - ui_xywh[3]/2]
-    coord["right_top"] = [ui_xywh[0] + ui_xywh[2]/2, ui_xywh[1] - ui_xywh[3]/2]
-    coord["left_bot"] = [ui_xywh[0] - ui_xywh[2]/2, ui_xywh[1] + ui_xywh[3]/2]
-    coord["right_bot"] = [ui_xywh[0] + ui_xywh[2]/2, ui_xywh[1] + ui_xywh[3]/2]
-    return coord
+    l, top = ui_xywh[0] - ui_xywh[2] / 2, ui_xywh[1] - ui_xywh[3] / 2
+    r, bottom = ui_xywh[0] + ui_xywh[2] / 2, ui_xywh[1] + ui_xywh[3] / 2
+    return l, top, r, bottom
 
 
 # 获取当前界面所有的可点击组件的文本内容，如果该节点可点但没有文本
@@ -209,6 +220,18 @@ def get_screen_all_clickable_text(d):
                 else:
                     text += traverse_tree(element)
     return text
+
+
+def check_cover_full_screen(d):
+    dw, dh = get_display_screen_wh()
+    first_layer_eles = d(className="android.widget.FrameLayout", instance=0)
+    first_layer = first_layer_eles.info['visibleBounds']
+    # 打印第一层元素的信息
+    l, top, r, bottom = first_layer['left'], first_layer['top'], first_layer['right'], first_layer['bottom']
+    if dw == r and dh == bottom and l==0 and top==0:
+        return None
+    return l, top, r, bottom
+
 
 
 # 递归遍历节点的所有子节点
@@ -275,6 +298,7 @@ def to_textloc_ck_eles(ck_eles) -> str:
         text += "&" + temp_text + " " + str(loc_x) + " " + str(loc_y)
     return text
 
+
 def to_loc_ck_eles(ck_eles) -> str:
     text = ""
     for ele_uid in ck_eles:
@@ -306,8 +330,21 @@ def get_clickable_elements():
                     clickable_elements.append(uid)
     return clickable_elements
 
+
+def remove_false_loc(cur_ck_eles):
+    w, h = get_display_screen_wh()
+    ans = []
+    for uid in cur_ck_eles:
+        cur_screen_ele_dict = RuntimeContent.get_instance().get_ele_uid_map_by_uid(uid)
+        loc_x, loc_y = get_location(cur_screen_ele_dict)
+        if loc_x >=0 and loc_x<=w and loc_y>=0 and loc_y<=h:
+            ans.append(uid)
+    return ans
+
+
 def remove_dup(old_list) -> list:
     return list(dict.fromkeys(old_list))
+
 
 # 只有可点的最细化节点可以当成clickable_ele
 def is_child_clickable(node) -> bool:
@@ -512,7 +549,6 @@ def print_current_window_all_clickable_elements(d):
         print(ele.info.get('text'))
 
 
-
 def get_screen_package():
     d = Config.get_instance().get_device()
     current_app = d.current_app()
@@ -557,7 +593,6 @@ def print_current_window_detailed_elements(d):
     y = (top + bottom) // 2
 
 
-
 def get_screen_text():
     """
     Get all text of the current Screen, including the non-clickable and clickable elements
@@ -576,6 +611,7 @@ def get_screen_text():
     #             text += "," + temp_text
     # return text
     return ""
+
 
 def get_privacy_policy_ele_dict():
     """
@@ -601,6 +637,7 @@ def get_privacy_policy_ele_dict():
                     res_pp_dict[pp_text] += 1
 
     return res_pp_dict
+
 
 # # 对screen_info进行sha256签名,生成消息摘要
 # def get_signature(screen_info):
@@ -651,7 +688,7 @@ def add_if_privacy_eles(content):
     if RuntimeContent.get_instance().is_found_privacy_url:
         return
     # 如果当前界面存在且当前界面加过
-    #TODO
+    # TODO
     pp_text_dict = get_privacy_policy_ele_dict()
     if len(pp_text_dict) > 0:
         for pp_text, pp_text_cnt in pp_text_dict.items():
