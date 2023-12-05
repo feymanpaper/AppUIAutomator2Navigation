@@ -298,6 +298,7 @@ class FSM(threading.Thread):
             #         dq.append((0, state))
 
 
+            
             # 如果当前节点为homescreen进来的第一个界面并且该界面所有组件已经点完，则可以动态增加当前层数
             if state == self.STATE_FinishScreen and RuntimeContent.get_instance().last_screen_node is not None and RuntimeContent.get_instance().last_screen_node.ck_eles_text == "root":
             # if state == self.STATE_FinishScreen and content.get("cur_screen_depth", None) is not None and content.get("cur_screen_depth")==1:
