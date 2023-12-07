@@ -5,11 +5,13 @@
 
 配置tesseract环境,同时需要配置中文语言包:  https://github.com/tesseract-ocr/tesseract
 
+配置yolov5环境。https://github.com/ultralytics/yolov5
+
 将系统编码方式改成utf-8而非gbk
 
 ## 运行
 在apk_pkgName.txt中更改要测试的包名及应用名,格式为包名 | 应用名。支持批量分析。注意|的左右两边都需要有一个空格。
-在test_integrate.py的config_settings字典中可以设置遍历层数，对应的键为'dynamic_ui_depth'。
+在config.ini配置文件中可以设置遍历层数等运行参数
 还有部分高级配置，可在Config.py中修改。如需修改，请确认只修改所标记部分。
 运行`python run_config.py`
 

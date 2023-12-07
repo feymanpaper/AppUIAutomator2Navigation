@@ -1,2 +1,2 @@
-com.shuqi.controller | 书旗小说
-
+com.youku.phone | '优酷视频'
+com.taobao.mobile.dipei | '口碑'
