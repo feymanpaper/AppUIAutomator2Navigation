@@ -51,18 +51,13 @@ if __name__ == "__main__":
         depth = sys.argv[3]
         test_time = sys.argv[4]
         searchPP = sys.argv[5]
-        drawAppCallGraph = sys.argv[6]
-        ScreenUidRep = sys.argv[7]
+        ScreenUidRep = sys.argv[6]
 
         Config.get_instance().target_pkg_name = pkgName
         Config.get_instance().app_name = appName
         Config.get_instance().maxDepth = int(depth)
         Config.get_instance().test_time = int(test_time)
-        if drawAppCallGraph == 'true':
-            DrawAppCallGraph = True
-        else:
-            DrawAppCallGraph = False
-        Config.get_instance().isDrawAppCallGraph = DrawAppCallGraph
+        # Config.get_instance().isDrawAppCallGraph = False
         if searchPP == 'true':
             searchPP = True
         else:
@@ -74,8 +69,6 @@ if __name__ == "__main__":
 
 
 
-    # with open('tmp.txt', 'w',encoding='utf-8') as f:
-    #     f.write(pkgName + ";" + appName + ";" + depth + ';' + test_time + ';' + searchPP + ';' + drawAppCallGraph + ';' + ScreenUidRep )
 
     # 创建一个阻塞队列
     pp_queue = None
