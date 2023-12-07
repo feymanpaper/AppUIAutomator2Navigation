@@ -1,5 +1,3 @@
-import configobj
-
 from FSM import *
 from services.popup_detector import detect_queue
 from services.popup_detector.yolo_service import YoloService
