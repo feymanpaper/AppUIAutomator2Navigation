@@ -6,7 +6,7 @@ def check_is_mislead_text(text: str) -> bool:
     :param text: The input text to be checked
     :return: True if the text is misleading, False otherwise
     """
-    api_url = 'http://localhost:5000/check_misleading'  # Replace with the actual URL where the API is hosted
+    api_url = 'http://172.16.108.178:5192/check_misleading'  # Replace with the actual URL where the API is hosted
     data = {'text': text}
     response = requests.post(api_url, json=data)
 
