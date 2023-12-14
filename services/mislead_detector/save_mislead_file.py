@@ -18,9 +18,9 @@ def save_mislead_file(abs_path: str, from_img: str, to_img: str, click_xy: tuple
     timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
     folder_name = f"{package_name}_{timestamp}"
 
-    # 创建文件夹,在某个路径下，这里写的绝对路径
-    base_directory = "C:/Codelife/ui/collectData/mislead_data"
-    directory = os.path.join(base_directory, folder_name)
+    #获取当前文件所在目录
+    base_directory = os.path.join(os.path.abspath(os.path.join(os.getcwd(), "../../..")), "services\mislead_detector\mislead_res")
+    directory=os.path.join(base_directory,folder_name)
     os.makedirs(directory)
 
     # 保存图片
@@ -28,10 +28,8 @@ def save_mislead_file(abs_path: str, from_img: str, to_img: str, click_xy: tuple
     to_name=get_random_str()
     from_img_path = os.path.join(directory, f"{from_name}.png")
     to_img_path = os.path.join(directory, f"{to_name}.png")
-    # 复制图片到新路径,使用绝对路径
-    abs_path = "collectData\com.alibaba.aliyun-20231202-003938\Screenshot\ScreenshotPicture"
-    abs_path = abs_path.replace("\\", "/")
-    abs_path = "C:/Codelife/ui/" + abs_path
+    # 复制图片到新路径,使用绝对路径,获取上两级的路径
+    abs_path = os.path.join(os.path.abspath(os.path.join(os.getcwd(), "../../..")), abs_path)
     from_img_full_path = os.path.join(abs_path, from_img)
     to_img_full_path = os.path.join(abs_path, to_img)
     shutil.copy(from_img_full_path, from_img_path)
