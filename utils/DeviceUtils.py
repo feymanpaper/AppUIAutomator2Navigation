@@ -7,6 +7,7 @@ from Config import *
 from utils.LogUtils import LogUtils
 from utils.OCRUtils import cal_privacy_ele_loc
 from utils.ScreenshotUtils import *
+from services.mislead_detector.check_is_mislead import check_is_mislead_text
 
 system_view = [
     "com.android.systemui",
@@ -323,11 +324,18 @@ def get_clickable_elements():
                 uid = get_unique_id(clickable_ele_dict, activity_name)
                 RuntimeContent.get_instance().put_ele_uid_map(uid, clickable_ele_dict)
 
-                # 把有隐私的组件增加到前面
-                if is_privacy_information_in_ele_dict(clickable_ele_dict):
+                # 把误导性组件增加到前面
+                if is_mislead_text_in_ele_dict(clickable_ele_dict):
                     clickable_elements.insert(0, uid)
+                    RuntimeContent.get_instance().add_mislead_eles_set(uid)
                 else:
                     clickable_elements.append(uid)
+
+                # # 把有隐私的组件增加到前面
+                # if is_privacy_information_in_ele_dict(clickable_ele_dict):
+                #     clickable_elements.insert(0, uid)
+                # else:
+                #     clickable_elements.append(uid)
     return clickable_elements
 
 
@@ -367,6 +375,12 @@ def merged_clickable_elements(clickable_eles):
     merged_clickable_eles = merge_same_clickable_elements_row(k, merged_clickable_eles)
 
     return merged_clickable_eles
+
+def is_mislead_text_in_ele_dict(clickable_ele_dict):
+    text = clickable_ele_dict["text"]
+    if text == "" or len(text) == 0:
+        return False
+    return check_is_mislead_text(text)
 
 
 def is_privacy_information_in_ele_dict(clickable_ele_dict):

@@ -7,6 +7,7 @@ from constant.DefException import RestartException
 from queue import Queue
 from traceback import format_exc
 from consumer_thread import producer_thread
+from services.mislead_detector.save_mislead_file import save_mislead_file
 
 
 class FSM(threading.Thread):
@@ -137,6 +138,12 @@ class FSM(threading.Thread):
         # LogUtils.log_info(f"当前Screen为: {screen_text}")
         RuntimeContent.get_instance().append_screen_list(cur_ck_eles_text)
 
+        last_clickable_ele_uid = RuntimeContent.get_instance().last_clickable_ele_uid
+        if RuntimeContent.get_instance().is_in_mislead_eles_set(last_clickable_ele_uid):
+            LogUtils.log_info(Config.get_instance().get_collectDataPath())
+            LogUtils.log_info(screenshot_path)
+            save_mislead_file(Config.get_instance().get_collectDataPath(), screenshot_path, screenshot_path, (1,2))
+
         # 如果需要搜索隐私政策
         if Config.get_instance().isSearchPrivacyPolicy:
             # 判断当前界面是否是从上一个"隐私权政策文本"点击过来的
@@ -153,7 +160,10 @@ class FSM(threading.Thread):
                     # print()
                 except:
                     break
+
             last_clickable_ele_uid = RuntimeContent.get_instance().last_clickable_ele_uid
+
+
             # 判断是否点击了隐私政策
             if len(find_url_set) > 0 and last_clickable_ele_uid is not None:
                 pp_text_dict = Config.get_instance().privacy_policy_text_list
@@ -166,6 +176,9 @@ class FSM(threading.Thread):
                             # 在这里把URL保存的路径传给消费者进程
                             # 如果PrivacyUrlUtils.py里的__get_policy_file_path()方法修改了，也要跟着修改data字段的参数
                 producer_thread(self.pp_queue,data=PrivacyUrlUtils.get_policy_file_path() + '||' + Config.get_instance().target_pkg_name + '|' + Config.get_instance().app_name)
+
+
+
 
         if Config.get_instance().curDepth > Config.get_instance().maxDepth:
             return self.STATE_Terminate, content

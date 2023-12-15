@@ -14,3 +14,4 @@ tmp.txt
 profile.stats
 /tests/utilsTest/OCRUtilsTest/collectData/
 *zip
+/services/mislead_detector/mislead_res/

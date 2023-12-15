@@ -30,8 +30,10 @@ def save_mislead_file(abs_path: str, from_img: str, to_img: str, click_xy: tuple
     to_img_path = os.path.join(directory, f"{to_name}.png")
     # 复制图片到新路径,使用绝对路径,获取上两级的路径
     abs_path = os.path.join(os.path.abspath(os.path.join(os.getcwd(), "../../..")), abs_path)
-    from_img_full_path = os.path.join(abs_path, from_img)
-    to_img_full_path = os.path.join(abs_path, to_img)
+    # from_img_full_path = os.path.join(abs_path, from_img)
+    # to_img_full_path = os.path.join(abs_path, to_img)
+    from_img_full_path =  os.path.join(os.path.abspath(os.path.join(os.getcwd(), "../../..")), from_img)
+    to_img_full_path = os.path.join(os.path.abspath(os.path.join(os.getcwd(), "../../..")), to_img)
     shutil.copy(from_img_full_path, from_img_path)
     shutil.copy(to_img_full_path, to_img_path)
 
