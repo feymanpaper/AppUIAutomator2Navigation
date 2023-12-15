@@ -25,6 +25,10 @@ class ScreenshotUtils:
 
 
         config_path = Config.get_instance().get_collectDataPath()
+        print(config_path)
+        # if not os.path.exists(config_path):
+        #     os.makedirs(config_path)
+
         screenshot_dir = "Screenshot"
         # 创建保存截图和json的目录（如果不存在）
         screenshot_dir = os.path.join(config_path, screenshot_dir)

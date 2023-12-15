@@ -1,1 +1,1 @@
-com.eg.android.AlipayGphone | 支付宝
+com.xyn.wskai  | 微分身多开

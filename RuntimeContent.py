@@ -31,6 +31,9 @@ class RuntimeContent(object):
 
         self.similarity_mem = {}
 
+        # mislead_clickable_ele_uid
+        self.mislead_eles_set = set()
+
     def __new__(cls, *args, **kwargs):
         if not hasattr(RuntimeContent, "_instance"):
             RuntimeContent._instance = object.__new__(cls)
@@ -124,4 +127,10 @@ class RuntimeContent(object):
 
     def set_first_screen_ck_ele_text(self, ck_eles_text):
         self.first_screen_ck_eles_text = ck_eles_text
+
+    def add_mislead_eles_set(self, uid):
+        self.mislead_eles_set.add(uid)
+
+    def is_in_mislead_eles_set(self, uid):
+        return uid in self.mislead_eles_set
 
