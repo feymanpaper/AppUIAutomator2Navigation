@@ -1,5 +1,2 @@
-<<<<<<< HEAD
 com.baidu.searchbox.lite | 百度极速版
-=======
-com.xyn.wskai  | 微分身多开
->>>>>>> 5796fba04bbf802b4a1f68c091b648782079d436
+
