@@ -17,6 +17,9 @@ class StateHandler(object):
         cur_screen_pkg_name, cur_activity, ck_eles_text = get_screen_info_from_context(content)
         cur_screen_node_clickable_eles = cur_screen_node.get_diff_or_clickable_eles()
 
+
+        screenshot_path = content["screenshot_path"]
+
         clickable_ele_idx = cur_screen_node.already_clicked_cnt
         while clickable_ele_idx < len(cur_screen_node_clickable_eles):
             cur_clickable_ele_uid = cur_screen_node_clickable_eles[clickable_ele_idx]
@@ -76,6 +79,8 @@ class StateHandler(object):
                 StatRecorder.get_instance().inc_total_ele_cnt()
                 RuntimeContent.get_instance().set_last_screen_node(cur_screen_node)
                 RuntimeContent.get_instance().set_last_clickable_ele_uid(cur_clickable_ele_uid)
+
+                RuntimeContent.get_instance().set_last_screenshot_path(screenshot_path)
 
                 if cur_screen_node.ele_uid_cnt_map.get(cur_clickable_ele_uid, None) is None:
                     cur_screen_node.ele_uid_cnt_map[cur_clickable_ele_uid] = 1
@@ -160,6 +165,8 @@ class StateHandler(object):
                         RuntimeContent.get_instance().set_last_screen_node(cur_screen_node)
                         RuntimeContent.get_instance().set_last_clickable_ele_uid(cur_clickable_ele_uid)
 
+                        RuntimeContent.get_instance().set_last_screenshot_path(screenshot_path)
+
                         if cur_screen_node.ele_uid_cnt_map.get(cur_clickable_ele_uid, None) is None:
                             cur_screen_node.ele_uid_cnt_map[cur_clickable_ele_uid] = 0
                         else:
@@ -200,6 +207,8 @@ class StateHandler(object):
         cur_screen_node_clickable_eles = cur_screen_node.get_diff_or_clickable_eles()
         cur_screen_pkg_name, cur_activity, ck_eles_text = get_screen_info_from_context(content)
 
+        screenshot_path = content["screenshot_path"]
+
         # TODO
         candidate = None
         if cur_screen_node.candidate_random_clickable_eles is None or len(
@@ -222,6 +231,8 @@ class StateHandler(object):
         StatRecorder.get_instance().inc_total_ele_cnt()
         RuntimeContent.get_instance().set_last_screen_node(cur_screen_node)
         RuntimeContent.get_instance().set_last_clickable_ele_uid(cur_clickable_ele_uid)
+
+        RuntimeContent.get_instance().set_last_screenshot_path(screenshot_path)
 
         cls.__click(loc_x, loc_y)
 
@@ -328,6 +339,8 @@ class StateHandler(object):
             cur_screen_node = cls.create_new_screen(content)
             if Config.get_instance().isSearchPrivacyPolicy:
                 cls.insert_privacy_eles(content, cur_screen_node)
+            # 加入误导组件
+            cls.insert_mislead_eles(content, cur_screen_node)
         return cur_screen_node
 
     @classmethod
@@ -363,6 +376,8 @@ class StateHandler(object):
         RuntimeContent.get_instance().set_last_screen_node(None)
         RuntimeContent.get_instance().set_last_clickable_ele_uid("")
 
+        RuntimeContent.get_instance().set_last_screenshot_path("")
+
         after_ck_eles_text = get_screen_content()["ck_eles_text"]
 
         # 如果不一样说明文本变化了, 说明一次back即可回退
@@ -394,6 +409,8 @@ class StateHandler(object):
         # 加入隐私组件
         if Config.get_instance().isSearchPrivacyPolicy:
             cls.insert_privacy_eles(content, cur_screen_node)
+        # 加入误导组件
+        cls.insert_mislead_eles(content, cur_screen_node)
         # 将cur_screen加入到last_screen的子节点
         cls.__add_call_graph(cur_screen_node)
         content["cur_screen_node"] = cur_screen_node
@@ -420,6 +437,8 @@ class StateHandler(object):
             # 加入隐私组件
             if Config.get_instance().isSearchPrivacyPolicy:
                 cls.insert_privacy_eles(content, cur_popup_node)
+            # 加入误导组件
+            cls.insert_mislead_eles(content, cur_popup_node)
         content["cur_screen_node"] = cur_popup_node
         print_screen_info(content, 2)
 
@@ -513,7 +532,7 @@ class StateHandler(object):
         for mislead_ele in mislead_list:
             text = mislead_ele["text"]
             xywh = mislead_ele["xywh"]
-            x,y,w,h = xywh[0],xywh[1],xywh[2],xywh[3]
+            x,y,w,h = int(xywh[0]),int(xywh[1]),int(xywh[2]),int(xywh[3])
             pp_ele_dict = {
                 'class': '',
                 'resource-id': '',
@@ -525,6 +544,7 @@ class StateHandler(object):
             RuntimeContent.get_instance().put_ele_uid_map(mislead_uid, pp_ele_dict)
             clickable_elements = screen_node.get_diff_or_clickable_eles()
             clickable_elements.insert(0, mislead_uid)
+            RuntimeContent.get_instance().add_mislead_eles_set(mislead_uid)
 
 
 
@@ -534,6 +554,8 @@ class StateHandler(object):
         cur_screen_node = get_cur_screen_node_from_context(content)
         cur_screen_pkg_name, cur_activity, ck_eles_text = get_screen_info_from_context(content)
         cur_screen_node_clickable_eles = cur_screen_node.get_diff_or_clickable_eles()
+
+        screenshot_path = content["screenshot_path"]
 
         clickable_ele_idx = cur_screen_node.already_clicked_cnt
         while clickable_ele_idx < len(cur_screen_node_clickable_eles):
@@ -595,6 +617,8 @@ class StateHandler(object):
                 # 弹框不需要set last node
                 # RuntimeContent.get_instance().set_last_screen_node(cur_screen_node)
                 RuntimeContent.get_instance().set_last_clickable_ele_uid(cur_clickable_ele_uid)
+
+                RuntimeContent.get_instance().set_last_screenshot_path(screenshot_path)
 
                 if cur_screen_node.ele_uid_cnt_map.get(cur_clickable_ele_uid, None) is None:
                     cur_screen_node.ele_uid_cnt_map[cur_clickable_ele_uid] = 1
@@ -679,6 +703,8 @@ class StateHandler(object):
                         # 弹框不需要set last node
                         # RuntimeContent.get_instance().set_last_screen_node(cur_screen_node)
                         RuntimeContent.get_instance().set_last_clickable_ele_uid(cur_clickable_ele_uid)
+
+                        RuntimeContent.get_instance().set_last_screenshot_path(screenshot_path)
 
                         if cur_screen_node.ele_uid_cnt_map.get(cur_clickable_ele_uid, None) is None:
                             cur_screen_node.ele_uid_cnt_map[cur_clickable_ele_uid] = 0
@@ -775,6 +801,7 @@ class StateHandler(object):
         cls.__double_press_back()
         RuntimeContent.get_instance().set_last_screen_node(None)
         RuntimeContent.get_instance().set_last_clickable_ele_uid("")
+        RuntimeContent.get_instance().set_last_screenshot_path("")
 
     @classmethod
     def handle_back(cls, content):
@@ -788,6 +815,7 @@ class StateHandler(object):
         LogUtils.log_info("进行回退")
         RuntimeContent.get_instance().set_last_screen_node(None)
         RuntimeContent.get_instance().set_last_clickable_ele_uid("")
+        RuntimeContent.get_instance().set_last_screenshot_path("")
 
         after_ck_eles_text = get_screen_content()["ck_eles_text"]
 
@@ -824,6 +852,7 @@ class StateHandler(object):
         cls.__press_back()
         RuntimeContent.get_instance().set_last_screen_node(None)
         RuntimeContent.get_instance().set_last_clickable_ele_uid("")
+        RuntimeContent.get_instance().set_last_screenshot_path("")
 
     @classmethod
     def handle_finish_screen(cls, content):
@@ -835,6 +864,7 @@ class StateHandler(object):
         LogUtils.log_info("进行回退")
         RuntimeContent.get_instance().set_last_screen_node(None)
         RuntimeContent.get_instance().set_last_clickable_ele_uid("")
+        RuntimeContent.get_instance().set_last_screenshot_path("")
 
         after_ck_eles_text = get_screen_content()["ck_eles_text"]
         # 如果不一样说明文本变化了, 说明一次back即可回退

@@ -26,3 +26,4 @@ com.taobao.movie.android | 淘票票
 com.antfortune.wealth | 蚂蚁财富
 com.mybank.android.phone | 网商银行
 com.tudou.android | 土豆视频
+com.xyn.wskai  | 微分身多开
