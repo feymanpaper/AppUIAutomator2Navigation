@@ -21,6 +21,7 @@ from services.mislead_detector.save_mislead_file import save_mislead_file
 
 ck_eles_text = "fuaaa"
 screenshot_path = ScreenshotUtils.screen_shot(ck_eles_text)
+time.sleep(10)
 save_mislead_file(Config.get_instance().get_collectDataPath(), screenshot_path, screenshot_path, (1, 2))
 
 # assert res is not None

@@ -1,5 +1,9 @@
 import sys
+<<<<<<< HEAD
 sys.path.append('C:\\Codelife\\ui')
+=======
+# sys.path.append('C:\\Codelife\\ui')
+>>>>>>> 5796fba04bbf802b4a1f68c091b648782079d436
 from utils.ScreenshotUtils import *
 from Config import *
 from services.mislead_detector.save_mislead_file import save_mislead_file

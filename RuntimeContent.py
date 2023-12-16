@@ -34,6 +34,10 @@ class RuntimeContent(object):
         # mislead_clickable_ele_uid
         self.mislead_eles_set = set()
 
+        # last screenshot path
+        self.last_screenshot_path = ""
+
+
     def __new__(cls, *args, **kwargs):
         if not hasattr(RuntimeContent, "_instance"):
             RuntimeContent._instance = object.__new__(cls)
@@ -57,6 +61,12 @@ class RuntimeContent(object):
 
     def set_last_clickable_ele_uid(self, ele_uid):
         self.last_clickable_ele_uid = ele_uid
+
+    def set_last_screenshot_path(self, path):
+        self.last_screenshot_path = path
+
+    def get_last_screenshot_path(self):
+        return self.last_screenshot_path
 
     def append_screen_list(self, ck_eles_text):
         self.screen_list.append(ck_eles_text)
