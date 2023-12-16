@@ -2,6 +2,7 @@ from constant.DefException import *
 from utils.core_functions import *
 from StatRecorder import *
 import random
+from services.mislead_detector.get_mislead_eles import get_mislead_eles
 from StateChecker import *
 from utils.DeviceUtils import *
 from utils.LogUtils import *
@@ -500,6 +501,32 @@ class StateHandler(object):
                     LogUtils.log_info(f"没有OCR到{pp_text}")
         else:
             LogUtils.log_info(f"没有找到隐私政策文本")
+
+
+    @classmethod
+    def insert_mislead_eles(cls, content, screen_node:ScreenNode):
+        screenshot_path = content["screenshot_path"]
+        cur_screen_pkg_name = content["cur_screen_pkg_name"]
+        cur_activity = content["cur_activity"]
+
+        mislead_list = get_mislead_eles(screenshot_path)
+        for mislead_ele in mislead_list:
+            text = mislead_ele["text"]
+            xywh = mislead_ele["xywh"]
+            x,y,w,h = xywh[0],xywh[1],xywh[2],xywh[3]
+            pp_ele_dict = {
+                'class': '',
+                'resource-id': '',
+                'package': cur_screen_pkg_name,
+                'text': text,
+                'bounds': "[" + str(x) + "," + str(y) + "][" + str(x+w) + "," + str(y+h) + "]"
+            }
+            mislead_uid = get_unique_id(pp_ele_dict, cur_activity)
+            RuntimeContent.get_instance().put_ele_uid_map(mislead_uid, pp_ele_dict)
+            clickable_elements = screen_node.get_diff_or_clickable_eles()
+            clickable_elements.insert(0, mislead_uid)
+
+
 
     @classmethod
     def click_popup_eles(cls, content):
