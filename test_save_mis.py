@@ -1,11 +1,8 @@
 import sys
-<<<<<<< HEAD
-sys.path.append('C:\\Codelife\\ui')
-=======
 # sys.path.append('C:\\Codelife\\ui')
->>>>>>> 5796fba04bbf802b4a1f68c091b648782079d436
 from utils.ScreenshotUtils import *
 from Config import *
+import time
 from services.mislead_detector.save_mislead_file import save_mislead_file
 
 # abs_path = "collectData\com.alibaba.aliyun-20231202-003938\Screenshot\ScreenshotPicture"
@@ -24,6 +21,7 @@ from services.mislead_detector.save_mislead_file import save_mislead_file
 
 ck_eles_text = "fuaaa"
 screenshot_path = ScreenshotUtils.screen_shot(ck_eles_text)
+time.sleep(10)
 save_mislead_file(Config.get_instance().get_collectDataPath(), screenshot_path, screenshot_path, (1, 2))
 
 # assert res is not None

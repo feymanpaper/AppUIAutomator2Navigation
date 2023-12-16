@@ -14,3 +14,4 @@ def get_mislead_eles(img_path:str):
     #     print(ele["text"], " ", ele["xywh"])
     return res_dict["res"]
 
+

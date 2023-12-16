@@ -532,7 +532,11 @@ class StateHandler(object):
         for mislead_ele in mislead_list:
             text = mislead_ele["text"]
             xywh = mislead_ele["xywh"]
+<<<<<<< HEAD
             x,y,w,h = int(xywh[0]),int(xywh[1]),int(xywh[2]),int(xywh[3])
+=======
+            x,y,w,h = xywh[0],xywh[1],xywh[2],xywh[3]
+>>>>>>> 5796fba04bbf802b4a1f68c091b648782079d436
             pp_ele_dict = {
                 'class': '',
                 'resource-id': '',
@@ -544,7 +548,10 @@ class StateHandler(object):
             RuntimeContent.get_instance().put_ele_uid_map(mislead_uid, pp_ele_dict)
             clickable_elements = screen_node.get_diff_or_clickable_eles()
             clickable_elements.insert(0, mislead_uid)
+<<<<<<< HEAD
             RuntimeContent.get_instance().add_mislead_eles_set(mislead_uid)
+=======
+>>>>>>> 5796fba04bbf802b4a1f68c091b648782079d436
 
 
 
