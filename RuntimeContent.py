@@ -33,11 +33,10 @@ class RuntimeContent(object):
 
         # mislead_clickable_ele_uid
         self.mislead_eles_set = set()
-<<<<<<< HEAD
+
         # last screenshot path
         self.last_screenshot_path = ""
-=======
->>>>>>> 5796fba04bbf802b4a1f68c091b648782079d436
+
 
     def __new__(cls, *args, **kwargs):
         if not hasattr(RuntimeContent, "_instance"):
