@@ -7,7 +7,7 @@ def get_mislead_eles(img_path:str):
     file_resq={
         "file":img1
     }
-    res=requests.post("http://172.16.108.178:5185/ocr",files=file_resq)
+    res=requests.post("http://172.16.108.178:5184/ocr",files=file_resq)
     print(res.text)
     res_dict = json.loads(res.text)
     # for ele in res_dict["res"]:

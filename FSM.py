@@ -143,7 +143,8 @@ class FSM(threading.Thread):
             LogUtils.log_info(f"{last_clickable_ele_uid} 是诱导组件")
             last_screenshot_path = RuntimeContent.get_instance().get_last_screenshot_path()
             click_xy = get_location(RuntimeContent.get_instance().get_ele_uid_map_by_uid(last_clickable_ele_uid))
-            save_mislead_file(Config.get_instance().get_collectDataPath(), last_screenshot_path, screenshot_path, click_xy)
+            mislead_text = RuntimeContent.get_instance().get_ele_uid_map_by_uid(last_clickable_ele_uid)["text"]
+            save_mislead_file(Config.get_instance().get_collectDataPath(), last_screenshot_path, screenshot_path, click_xy, mislead_text)
 
 
         # 如果需要搜索隐私政策
