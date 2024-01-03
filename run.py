@@ -1,5 +1,3 @@
-import configobj
-
 from FSM import *
 from services.popup_detector import detect_queue
 from services.popup_detector.yolo_service import YoloService
@@ -91,6 +89,11 @@ if __name__ == "__main__":
         RuntimeContent.get_instance().set_last_clickable_ele_uid("dummy_root_element")
         RuntimeContent.get_instance().put_screen_map("root", root)
 
+        # 为了收集弹框上下文
+        sc_path = "root"
+        RuntimeContent.get_instance().set_pre_screen_node(root)
+        RuntimeContent.get_instance().set_pre_screen_shot_path(sc_path)
+
     suppress_keyboard_interrupt_message()
 
     # 计时开始
@@ -119,6 +122,12 @@ if __name__ == "__main__":
 
     RuntimeContent.get_instance().set_last_screen_node(root)
     RuntimeContent.get_instance().set_last_clickable_ele_uid("dummy_root_element")
+
+    # 为了收集弹框上下文
+    sc_path = "root"
+    RuntimeContent.get_instance().set_pre_screen_node(root)
+    RuntimeContent.get_instance().set_pre_screen_shot_path(sc_path)
+
     time.sleep(10)
 
 
@@ -150,6 +159,12 @@ if __name__ == "__main__":
             time.sleep(5)
             RuntimeContent.get_instance().set_last_screen_node(root)
             RuntimeContent.get_instance().set_last_clickable_ele_uid("dummy_root_element")
+
+            # 为了收集弹框上下文
+            sc_path = "root"
+            RuntimeContent.get_instance().set_pre_screen_node(root)
+            RuntimeContent.get_instance().set_pre_screen_shot_path(sc_path)
+
         # fsm线程触发了TerminateException
         elif consumer_fsm.exit_code == 2:
             LogUtils.log_info("程序正常结束")

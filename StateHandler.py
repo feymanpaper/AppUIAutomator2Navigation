@@ -76,6 +76,11 @@ class StateHandler(object):
                 RuntimeContent.get_instance().set_last_screen_node(cur_screen_node)
                 RuntimeContent.get_instance().set_last_clickable_ele_uid(cur_clickable_ele_uid)
 
+                # 为了收集弹框上下文
+                sc_path = content["screenshot_path"]
+                RuntimeContent.get_instance().set_pre_screen_node(cur_screen_node)
+                RuntimeContent.get_instance().set_pre_screen_shot_path(sc_path)
+
                 if cur_screen_node.ele_uid_cnt_map.get(cur_clickable_ele_uid, None) is None:
                     cur_screen_node.ele_uid_cnt_map[cur_clickable_ele_uid] = 1
                 else:
@@ -159,6 +164,11 @@ class StateHandler(object):
                         RuntimeContent.get_instance().set_last_screen_node(cur_screen_node)
                         RuntimeContent.get_instance().set_last_clickable_ele_uid(cur_clickable_ele_uid)
 
+                        # 为了收集弹框上下文
+                        sc_path = content["screenshot_path"]
+                        RuntimeContent.get_instance().set_pre_screen_node(cur_screen_node)
+                        RuntimeContent.get_instance().set_pre_screen_shot_path(sc_path)
+
                         if cur_screen_node.ele_uid_cnt_map.get(cur_clickable_ele_uid, None) is None:
                             cur_screen_node.ele_uid_cnt_map[cur_clickable_ele_uid] = 0
                         else:
@@ -221,6 +231,11 @@ class StateHandler(object):
         StatRecorder.get_instance().inc_total_ele_cnt()
         RuntimeContent.get_instance().set_last_screen_node(cur_screen_node)
         RuntimeContent.get_instance().set_last_clickable_ele_uid(cur_clickable_ele_uid)
+
+        # 为了收集弹框上下文
+        sc_path = content["screenshot_path"]
+        RuntimeContent.get_instance().set_pre_screen_node(cur_screen_node)
+        RuntimeContent.get_instance().set_pre_screen_shot_path(sc_path)
 
         cls.__click(loc_x, loc_y)
 
@@ -361,6 +376,11 @@ class StateHandler(object):
         LogUtils.log_info("进行回退")
         RuntimeContent.get_instance().set_last_screen_node(None)
         RuntimeContent.get_instance().set_last_clickable_ele_uid("")
+
+        # 为了收集弹框上下文
+        sc_path = content["screenshot_path"]
+        RuntimeContent.get_instance().set_pre_screen_node(cur_screen_node)
+        RuntimeContent.get_instance().set_pre_screen_shot_path(sc_path)
 
         after_ck_eles_text = get_screen_content()["ck_eles_text"]
 
@@ -569,6 +589,11 @@ class StateHandler(object):
                 # RuntimeContent.get_instance().set_last_screen_node(cur_screen_node)
                 RuntimeContent.get_instance().set_last_clickable_ele_uid(cur_clickable_ele_uid)
 
+                # 为了收集弹框上下文
+                sc_path = content["screenshot_path"]
+                RuntimeContent.get_instance().set_pre_screen_node(cur_screen_node)
+                RuntimeContent.get_instance().set_pre_screen_shot_path(sc_path)
+
                 if cur_screen_node.ele_uid_cnt_map.get(cur_clickable_ele_uid, None) is None:
                     cur_screen_node.ele_uid_cnt_map[cur_clickable_ele_uid] = 1
                 else:
@@ -652,6 +677,11 @@ class StateHandler(object):
                         # 弹框不需要set last node
                         # RuntimeContent.get_instance().set_last_screen_node(cur_screen_node)
                         RuntimeContent.get_instance().set_last_clickable_ele_uid(cur_clickable_ele_uid)
+
+                        # 为了收集弹框上下文
+                        sc_path = content["screenshot_path"]
+                        RuntimeContent.get_instance().set_pre_screen_node(cur_screen_node)
+                        RuntimeContent.get_instance().set_pre_screen_shot_path(sc_path)
 
                         if cur_screen_node.ele_uid_cnt_map.get(cur_clickable_ele_uid, None) is None:
                             cur_screen_node.ele_uid_cnt_map[cur_clickable_ele_uid] = 0
@@ -749,6 +779,12 @@ class StateHandler(object):
         RuntimeContent.get_instance().set_last_screen_node(None)
         RuntimeContent.get_instance().set_last_clickable_ele_uid("")
 
+        # 为了收集弹框上下文
+        cur_screen_node = get_cur_screen_node_from_context(content)
+        sc_path = content["screenshot_path"]
+        RuntimeContent.get_instance().set_pre_screen_node(cur_screen_node)
+        RuntimeContent.get_instance().set_pre_screen_shot_path(sc_path)
+
     @classmethod
     def handle_back(cls, content):
         cur_screen_node = cls.get_special_screen(content)
@@ -761,6 +797,11 @@ class StateHandler(object):
         LogUtils.log_info("进行回退")
         RuntimeContent.get_instance().set_last_screen_node(None)
         RuntimeContent.get_instance().set_last_clickable_ele_uid("")
+
+        # 为了收集弹框上下文
+        sc_path = content["screenshot_path"]
+        RuntimeContent.get_instance().set_pre_screen_node(cur_screen_node)
+        RuntimeContent.get_instance().set_pre_screen_shot_path(sc_path)
 
         after_ck_eles_text = get_screen_content()["ck_eles_text"]
 
@@ -798,6 +839,11 @@ class StateHandler(object):
         RuntimeContent.get_instance().set_last_screen_node(None)
         RuntimeContent.get_instance().set_last_clickable_ele_uid("")
 
+        # 为了收集弹框上下文
+        sc_path = content["screenshot_path"]
+        RuntimeContent.get_instance().set_pre_screen_node(cur_screen_node)
+        RuntimeContent.get_instance().set_pre_screen_shot_path(sc_path)
+
     @classmethod
     def handle_finish_screen(cls, content):
         cur_screen_node = cls.get_exist_screen(content)
@@ -808,6 +854,12 @@ class StateHandler(object):
         LogUtils.log_info("进行回退")
         RuntimeContent.get_instance().set_last_screen_node(None)
         RuntimeContent.get_instance().set_last_clickable_ele_uid("")
+
+        # 为了收集弹框上下文
+        cur_screen_node = get_cur_screen_node_from_context(content)
+        sc_path = content["screenshot_path"]
+        RuntimeContent.get_instance().set_pre_screen_node(cur_screen_node)
+        RuntimeContent.get_instance().set_pre_screen_shot_path(sc_path)
 
         after_ck_eles_text = get_screen_content()["ck_eles_text"]
         # 如果不一样说明文本变化了, 说明一次back即可回退
