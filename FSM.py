@@ -255,12 +255,14 @@ class FSM(threading.Thread):
             last_clickable_ele_uid = RuntimeContent.get_instance().get_last_clickable_ele_uid()
             click_text = "dummy_root_element"
             click_xy = (-1, -1)
+
             if last_clickable_ele_uid != "dummy_root_element" and last_clickable_ele_uid != "":
                 click_xy = get_location(RuntimeContent.get_instance().get_ele_uid_map_by_uid(last_clickable_ele_uid))
                 click_text = RuntimeContent.get_instance().get_ele_uid_map_by_uid(last_clickable_ele_uid)["text"]
 
             save_popup_context(Config.get_instance().get_collectDataPath(), pre_scshot_path, screenshot_path, click_xy,
                                click_text, pre_text, screen_text)
+
 
             return self.STATE_PopUp, content
 
