@@ -175,6 +175,27 @@ class FSM(threading.Thread):
             if check_is_in_home_screen(cur_screen_pkg_name):
                 return self.STATE_HomeScreenRestart, content
             if check_is_permisson_screen(cur_screen_pkg_name):
+
+                # 弹框收集
+                print("收集到弹框")
+                pre_scshot_path = RuntimeContent.get_instance().get_pre_screen_shot_path()
+                pre_screen_node = RuntimeContent.get_instance().get_pre_screen_node()
+                pre_text = ""
+                if pre_screen_node is not None:
+                    pre_text = pre_screen_node.screen_text
+
+                last_clickable_ele_uid = RuntimeContent.get_instance().get_last_clickable_ele_uid()
+                click_text = "dummy_root_element"
+                click_xy = (-1, -1)
+                if last_clickable_ele_uid != "dummy_root_element" and last_clickable_ele_uid != "":
+                    click_xy = get_location(
+                        RuntimeContent.get_instance().get_ele_uid_map_by_uid(last_clickable_ele_uid))
+                    click_text = RuntimeContent.get_instance().get_ele_uid_map_by_uid(last_clickable_ele_uid)["text"]
+
+                save_popup_context(Config.get_instance().get_collectDataPath(), pre_scshot_path, screenshot_path,
+                                   click_xy,
+                                   click_text, pre_text, screen_text)
+
                 return self.STATE_PermissonScreen, content
             else:
                 if check_pattern_state(2, [self.STATE_ExitApp]):
@@ -229,17 +250,17 @@ class FSM(threading.Thread):
             pre_screen_node = RuntimeContent.get_instance().get_pre_screen_node()
             pre_text = ""
             if pre_screen_node is not None:
-                pre_text = pre_screen_node.ck_eles_text
+                pre_text = pre_screen_node.screen_text
 
             last_clickable_ele_uid = RuntimeContent.get_instance().get_last_clickable_ele_uid()
             click_text = "dummy_root_element"
-            click_xy = (-1,-1)
+            click_xy = (-1, -1)
             if last_clickable_ele_uid != "dummy_root_element" and last_clickable_ele_uid != "":
                 click_xy = get_location(RuntimeContent.get_instance().get_ele_uid_map_by_uid(last_clickable_ele_uid))
                 click_text = RuntimeContent.get_instance().get_ele_uid_map_by_uid(last_clickable_ele_uid)["text"]
 
             save_popup_context(Config.get_instance().get_collectDataPath(), pre_scshot_path, screenshot_path, click_xy,
-                               click_text, pre_text, cur_ck_eles_text)
+                               click_text, pre_text, screen_text)
 
             return self.STATE_PopUp, content
 
