@@ -7,6 +7,7 @@ from constant.DefException import RestartException
 from queue import Queue
 from traceback import format_exc
 from consumer_thread import producer_thread
+from utils.save_popup_context import save_popup_context
 
 
 class FSM(threading.Thread):
@@ -193,6 +194,25 @@ class FSM(threading.Thread):
         screen_ltrb = check_cover_full_screen(Config.get_instance().get_device())
         if screen_ltrb is not None:
             content["ltrb"] = screen_ltrb
+
+            # 弹框收集
+            print("收集到弹框")
+            pre_scshot_path = RuntimeContent.get_instance().get_pre_screen_shot_path()
+            pre_screen_node = RuntimeContent.get_instance().get_pre_screen_node()
+            pre_text = ""
+            if pre_screen_node is not None:
+                pre_text = pre_screen_node.screen_text
+
+            last_clickable_ele_uid = RuntimeContent.get_instance().get_last_clickable_ele_uid()
+            click_text = "dummy_root_element"
+            click_xy = (-1, -1)
+            if last_clickable_ele_uid != "dummy_root_element" and last_clickable_ele_uid != "":
+                click_xy = get_location(RuntimeContent.get_instance().get_ele_uid_map_by_uid(last_clickable_ele_uid))
+                click_text = RuntimeContent.get_instance().get_ele_uid_map_by_uid(last_clickable_ele_uid)["text"]
+
+            save_popup_context(Config.get_instance().get_collectDataPath(), pre_scshot_path, screenshot_path, click_xy,
+                               click_text, pre_text, screen_text)
+
             return self.STATE_PopUp, content
 
         # 如果置信度>=75%则认为是弹框, 进行弹框处理
@@ -202,6 +222,25 @@ class FSM(threading.Thread):
             xywh = popup_info["xywh"]
             ltrb = get_4corner_coord(xywh)
             content["ltrb"] = ltrb
+
+            # 弹框收集
+            print("收集到弹框")
+            pre_scshot_path = RuntimeContent.get_instance().get_pre_screen_shot_path()
+            pre_screen_node = RuntimeContent.get_instance().get_pre_screen_node()
+            pre_text = ""
+            if pre_screen_node is not None:
+                pre_text = pre_screen_node.ck_eles_text
+
+            last_clickable_ele_uid = RuntimeContent.get_instance().get_last_clickable_ele_uid()
+            click_text = "dummy_root_element"
+            click_xy = (-1,-1)
+            if last_clickable_ele_uid != "dummy_root_element" and last_clickable_ele_uid != "":
+                click_xy = get_location(RuntimeContent.get_instance().get_ele_uid_map_by_uid(last_clickable_ele_uid))
+                click_text = RuntimeContent.get_instance().get_ele_uid_map_by_uid(last_clickable_ele_uid)["text"]
+
+            save_popup_context(Config.get_instance().get_collectDataPath(), pre_scshot_path, screenshot_path, click_xy,
+                               click_text, pre_text, cur_ck_eles_text)
+
             return self.STATE_PopUp, content
 
         screen_depth_map = RuntimeContent.get_instance().screen_depth_map

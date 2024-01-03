@@ -20,7 +20,13 @@ class RuntimeContent(object):
         self.cov_mono_que = deque()
         self.screen_depth_map = {}
 
+        # pre_screen_node在back或者click都会记录之前的界面
+        self.pre_screen_node = None
+        # pre_screen_shot_path表示back或者click之前的截图地址
+        self.pre_screen_shot_path = None
+
         self.first_screen_ck_eles_text = None
+        # last_screen_node和last_clickable_ele_uid只会记录click之前的, back时会重置
         self.last_clickable_ele_uid = None
         self.last_screen_node = None
 
@@ -54,6 +60,18 @@ class RuntimeContent(object):
 
     def set_last_clickable_ele_uid(self, ele_uid):
         self.last_clickable_ele_uid = ele_uid
+
+    def set_pre_screen_node(self, target):
+        self.pre_screen_node = target
+
+    def get_pre_screen_node(self):
+        return self.pre_screen_node
+
+    def set_pre_screen_shot_path(self, screenshot_path):
+        self.pre_screen_shot_path = screenshot_path
+
+    def get_pre_screen_shot_path(self):
+        return self.pre_screen_shot_path
 
     def append_screen_list(self, ck_eles_text):
         self.screen_list.append(ck_eles_text)
