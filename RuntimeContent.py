@@ -34,6 +34,7 @@ class RuntimeContent(object):
 
         self.already_click_eles = set()
 
+        self.screenshot_uid_pair = set()
 
         self.similarity_mem = {}
 

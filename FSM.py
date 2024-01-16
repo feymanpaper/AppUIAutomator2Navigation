@@ -168,7 +168,7 @@ class FSM(threading.Thread):
                             # 如果PrivacyUrlUtils.py里的__get_policy_file_path()方法修改了，也要跟着修改data字段的参数
                 producer_thread(self.pp_queue,data=PrivacyUrlUtils.get_policy_file_path() + '||' + Config.get_instance().target_pkg_name + '|' + Config.get_instance().app_name)
 
-        if Config.get_instance().curDepth > Config.get_instance().maxDepth:
+        if Config.get_instance().run_type == "bfs" and Config.get_instance().curDepth > Config.get_instance().maxDepth:
             return self.STATE_Terminate, content
 
         if cur_screen_pkg_name != Config.get_instance().get_target_pkg_name():
@@ -192,9 +192,12 @@ class FSM(threading.Thread):
                         RuntimeContent.get_instance().get_ele_uid_map_by_uid(last_clickable_ele_uid))
                     click_text = RuntimeContent.get_instance().get_ele_uid_map_by_uid(last_clickable_ele_uid)["text"]
 
-                save_popup_context(Config.get_instance().get_collectDataPath(), pre_scshot_path, screenshot_path,
-                                   click_xy,
-                                   click_text, pre_text, screen_text)
+                suid_pair = (pre_text, click_text)
+                if suid_pair not in RuntimeContent.get_instance().screenshot_uid_pair:
+                    save_popup_context(Config.get_instance().get_collectDataPath(), pre_scshot_path, screenshot_path,
+                                       click_xy,
+                                       click_text, pre_text, screen_text)
+                    RuntimeContent.get_instance().screenshot_uid_pair.add(suid_pair)
 
                 return self.STATE_PermissonScreen, content
             else:
@@ -210,6 +213,11 @@ class FSM(threading.Thread):
         # if check_is_in_webview(cur_activity):
         #     StatRecorder.get_instance().add_webview_set(ck_eles_text)
         #     return self.STATE_Back, content
+
+        # 如果是横屏, back
+        if check_is_horiz(content["xml"]):
+            RuntimeContent.get_instance().append_error_screen_list(cur_ck_eles_text)
+            return self.STATE_Back, content
 
         # 对界面组件判断, 如果未覆盖全部则是弹框
         screen_ltrb = check_cover_full_screen(Config.get_instance().get_device())
@@ -231,8 +239,12 @@ class FSM(threading.Thread):
                 click_xy = get_location(RuntimeContent.get_instance().get_ele_uid_map_by_uid(last_clickable_ele_uid))
                 click_text = RuntimeContent.get_instance().get_ele_uid_map_by_uid(last_clickable_ele_uid)["text"]
 
-            save_popup_context(Config.get_instance().get_collectDataPath(), pre_scshot_path, screenshot_path, click_xy,
-                               click_text, pre_text, screen_text)
+            suid_pair = (pre_text, click_text)
+            if suid_pair not in RuntimeContent.get_instance().screenshot_uid_pair:
+                save_popup_context(Config.get_instance().get_collectDataPath(), pre_scshot_path, screenshot_path,
+                                   click_xy,
+                                   click_text, pre_text, screen_text)
+                RuntimeContent.get_instance().screenshot_uid_pair.add(suid_pair)
 
             return self.STATE_PopUp, content
 
@@ -260,8 +272,12 @@ class FSM(threading.Thread):
                 click_xy = get_location(RuntimeContent.get_instance().get_ele_uid_map_by_uid(last_clickable_ele_uid))
                 click_text = RuntimeContent.get_instance().get_ele_uid_map_by_uid(last_clickable_ele_uid)["text"]
 
-            save_popup_context(Config.get_instance().get_collectDataPath(), pre_scshot_path, screenshot_path, click_xy,
-                               click_text, pre_text, screen_text)
+            suid_pair = (pre_text, click_text)
+            if suid_pair not in RuntimeContent.get_instance().screenshot_uid_pair:
+                save_popup_context(Config.get_instance().get_collectDataPath(), pre_scshot_path, screenshot_path,
+                                   click_xy,
+                                   click_text, pre_text, screen_text)
+                RuntimeContent.get_instance().screenshot_uid_pair.add(suid_pair)
 
 
             return self.STATE_PopUp, content
@@ -357,43 +373,35 @@ class FSM(threading.Thread):
             StatRecorder.get_instance().print_coverage(cal_cov_map)
             dq = RuntimeContent.get_instance().cov_mono_que
             cov = 0
-            # if cal_cov_map.get(cur_depth, None) is not None:
-            #     cov = cal_cov_map[cur_depth][1] / cal_cov_map[cur_depth][2]
-            #     if state == self.STATE_ExistScreen or state == self.STATE_FinishScreen or state == self.STATE_NewScreen:
-            #         while dq and cov != dq[-1][0]:
-            #             dq.pop()
-            #         dq.append((cov, state))
-            # else:
-            #     if state == self.STATE_ExistScreen or state == self.STATE_FinishScreen or state == self.STATE_NewScreen:
-            #         dq.append((0, state))
 
+            if Config.get_instance().run_type == "dfs":
+                Config.get_instance().curDepth = 4
+            elif Config.get_instance().run_type == "bfs":
+                # 如果当前节点为homescreen进来的第一个界面并且该界面所有组件已经点完，则可以动态增加当前层数
+                if state == self.STATE_FinishScreen and RuntimeContent.get_instance().last_screen_node is not None and RuntimeContent.get_instance().last_screen_node.ck_eles_text == "root":
+                # if state == self.STATE_FinishScreen and content.get("cur_screen_depth", None) is not None and content.get("cur_screen_depth")==1:
+                # if cov == 1 or (len(RuntimeContent.get_instance().cov_mono_que) >= 4 and dq[-1][1] == self.STATE_FinishScreen and dq[-2][1] == self.STATE_FinishScreen and dq[-3][1] == self.STATE_FinishScreen and dq[-4][1] == self.STATE_FinishScreen):
 
-            
-            # 如果当前节点为homescreen进来的第一个界面并且该界面所有组件已经点完，则可以动态增加当前层数
-            if state == self.STATE_FinishScreen and RuntimeContent.get_instance().last_screen_node is not None and RuntimeContent.get_instance().last_screen_node.ck_eles_text == "root":
-            # if state == self.STATE_FinishScreen and content.get("cur_screen_depth", None) is not None and content.get("cur_screen_depth")==1:
-            # if cov == 1 or (len(RuntimeContent.get_instance().cov_mono_que) >= 4 and dq[-1][1] == self.STATE_FinishScreen and dq[-2][1] == self.STATE_FinishScreen and dq[-3][1] == self.STATE_FinishScreen and dq[-4][1] == self.STATE_FinishScreen):
+                    RuntimeContent.get_instance().cov_mono_que.clear()
 
-                RuntimeContent.get_instance().cov_mono_que.clear()
+                    LogUtils.log_info(f"动态增加当前层数{cur_depth}-->层数{cur_depth + 1}")
+                    Config.get_instance().curDepth += 1
 
-                LogUtils.log_info(f"动态增加当前层数{cur_depth}-->层数{cur_depth + 1}")
-                Config.get_instance().curDepth += 1
+                    if cal_cov_map.get(cur_depth, None) is not None:
+                        # 追加保存覆盖率结果
+                        FileUtils.save_coverage(cur_depth, cal_cov_map[cur_depth][1], cal_cov_map[cur_depth][2])
 
-                if cal_cov_map.get(cur_depth, None) is not None:
-                    # 追加保存覆盖率结果
-                    FileUtils.save_coverage(cur_depth, cal_cov_map[cur_depth][1], cal_cov_map[cur_depth][2])
-
-                # 重置screenNode的点击下标already_click_cnt
-                screen_depth_map = RuntimeContent.get_instance().screen_depth_map
-                screen_uid_list = screen_depth_map.keys()
-                for screen_uid in screen_uid_list:
-                    depth = screen_depth_map.get(screen_uid)
-                    if depth > cur_depth:
-                        continue
-                    screen_node = RuntimeContent.get_instance().get_screen_map().get(screen_uid)
-                    #  在重置already_clicked_cnt前将记录保存在total_clicked_cnt
-                    screen_node.total_clicked_cnt = max(screen_node.total_clicked_cnt, screen_node.already_clicked_cnt)
-                    screen_node.already_clicked_cnt = 0
+                    # 重置screenNode的点击下标already_click_cnt
+                    screen_depth_map = RuntimeContent.get_instance().screen_depth_map
+                    screen_uid_list = screen_depth_map.keys()
+                    for screen_uid in screen_uid_list:
+                        depth = screen_depth_map.get(screen_uid)
+                        if depth > cur_depth:
+                            continue
+                        screen_node = RuntimeContent.get_instance().get_screen_map().get(screen_uid)
+                        #  在重置already_clicked_cnt前将记录保存在total_clicked_cnt
+                        screen_node.total_clicked_cnt = max(screen_node.total_clicked_cnt, screen_node.already_clicked_cnt)
+                        screen_node.already_clicked_cnt = 0
 
             self.do_transition(state, content)
 
