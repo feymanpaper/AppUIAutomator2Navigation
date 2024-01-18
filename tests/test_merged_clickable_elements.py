@@ -5,7 +5,7 @@ d = Device()
 ele_uid_map = {}
 
 
-cur_ck_eles = get_clickable_elements()
+cur_ck_eles = get_clickable_elements("")
 print(len(cur_ck_eles))
 for idx, ele_id in enumerate(cur_ck_eles):
     print(f"{idx}--{ele_id}")

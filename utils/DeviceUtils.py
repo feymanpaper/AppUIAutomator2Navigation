@@ -21,14 +21,16 @@ system_view = [
 
 
 def get_screen_content():
+    xml = get_xml()
+    root = ET.fromstring(xml)
     cur_screen_pkg_name = get_screen_package()
     cur_activity = get_screen_activity()
-    screen_text = get_screen_text()
+    screen_text = get_screen_text(root)
 
     # 防止页面变化过快没有提取到界面元素
-    retry_cnt = 3
+    retry_cnt = 1
     for i in range(0, retry_cnt):
-        cur_ck_eles = get_clickable_elements()
+        cur_ck_eles = get_clickable_elements(root)
         if cur_ck_eles is not None and len(cur_ck_eles) > 0:
             break
 
@@ -62,6 +64,7 @@ def get_screen_content():
     content["cur_ck_eles"] = cur_ck_eles
     content["merged_diff"] = pre_len - after_len
     content["screenshot_path"] = screenshot_path
+    content["xml"] = xml
     return content
 
 
@@ -73,6 +76,10 @@ def get_ck_eles_hierarchy() -> list:
     res = to_string_hierarchy(ui_root, 1)
     return res
 
+def get_xml():
+    d = Config.get_instance().get_device()
+    xml = d.dump_hierarchy()
+    return xml
 
 def get_dump_hierarchy():
     d = Config.get_instance().get_device()
@@ -309,9 +316,8 @@ def to_loc_ck_eles(ck_eles) -> str:
 
 
 # 获取当前界面所有可点击的组件
-def get_clickable_elements():
+def get_clickable_elements(root):
     activity_name = get_screen_activity()
-    root = get_dump_hierarchy()
     clickable_elements = []
     # cnt = 0
     for element in root.findall('.//node'):
@@ -324,7 +330,7 @@ def get_clickable_elements():
                 RuntimeContent.get_instance().put_ele_uid_map(uid, clickable_ele_dict)
 
                 # 把有隐私的组件增加到前面
-                if is_privacy_information_in_ele_dict(clickable_ele_dict):
+                if Config.get_instance().isPrivacyFirst and is_privacy_information_in_ele_dict(clickable_ele_dict):
                     clickable_elements.insert(0, uid)
                 else:
                     clickable_elements.append(uid)
@@ -593,12 +599,12 @@ def print_current_window_detailed_elements(d):
     y = (top + bottom) // 2
 
 
-def get_screen_text():
+def get_screen_text(root):
     """
     Get all text of the current Screen, including the non-clickable and clickable elements
+    :param xml:
     :return: all text of current Screen
     """
-    root = get_dump_hierarchy()
     text = ""
     for element in root.findall('.//node'):
         if element.get("package") in system_view:
@@ -715,3 +721,12 @@ def add_if_privacy_eles(content):
                 LogUtils.log_info(f"没有OCR到{pp_text}")
     else:
         LogUtils.log_info(f"没有找到隐私政策文本")
+
+
+# 检查当前界面是否为横屏
+def check_is_horiz(xml):
+    root = xml
+    if 'com.android.systemui' not in root and 'com.miui.home' not in root:
+        return True
+    return False
+
