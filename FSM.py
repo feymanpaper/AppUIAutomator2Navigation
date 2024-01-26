@@ -8,7 +8,7 @@ from queue import Queue
 from traceback import format_exc
 from consumer_thread import producer_thread
 from utils.save_popup_context import save_popup_context
-
+from services.stage2_popup_handler.detect_popup import detect_pic
 
 class FSM(threading.Thread):
 
@@ -58,6 +58,7 @@ class FSM(threading.Thread):
         16: "STATE_KillOtherApp",
         17: "STATE_Back",
         18: "STATE_Popup",
+        19: "STATE_Popup_Widget",
         100: "STATE_Terminate"
     }
 
@@ -78,6 +79,7 @@ class FSM(threading.Thread):
     STATE_KillOtherApp = 16
     STATE_Back = 17
     STATE_PopUp = 18
+    STATE_Popup_Widget = 19
     STATE_Terminate = 100
 
     def query_popup_info(self, img_path):
@@ -121,6 +123,8 @@ class FSM(threading.Thread):
             StateHandler.handle_back(content)
         elif state == self.STATE_PopUp:
             StateHandler.handle_popup(content)
+        elif state == self.STATE_Popup_Widget:
+            StateHandler.handle_popup_widget(content)
         else:
             raise Exception("意外情况")
 
@@ -247,6 +251,44 @@ class FSM(threading.Thread):
                 RuntimeContent.get_instance().screenshot_uid_pair.add(suid_pair)
 
             return self.STATE_PopUp, content
+
+        # 用颜色判定弹框
+        popup_widget_info = detect_pic(screenshot_path)
+        LogUtils.log_info(popup_widget_info)
+        if popup_widget_info is not None and len(popup_widget_info) > 0:
+            popup = popup_widget_info[0]
+            xywh = popup["bounds"]
+            ltrb = get_4corner_coord_withnotpercent(xywh)
+            content["ltrb"] = ltrb
+            content["widget_popup"] = popup_widget_info[1:]
+            # 弹框收集
+            print("收集到弹框")
+            pre_scshot_path = RuntimeContent.get_instance().get_pre_screen_shot_path()
+            pre_screen_node = RuntimeContent.get_instance().get_pre_screen_node()
+            pre_text = ""
+            if pre_screen_node is not None:
+                pre_text = pre_screen_node.screen_text
+
+            last_clickable_ele_uid = RuntimeContent.get_instance().get_last_clickable_ele_uid()
+            click_text = "dummy_root_element"
+            click_xy = (-1, -1)
+
+            if last_clickable_ele_uid != "dummy_root_element" and last_clickable_ele_uid != "":
+                click_xy = get_location(
+                    RuntimeContent.get_instance().get_ele_uid_map_by_uid(last_clickable_ele_uid))
+                click_text = RuntimeContent.get_instance().get_ele_uid_map_by_uid(last_clickable_ele_uid)["text"]
+
+            suid_pair = (pre_text, click_text)
+            if suid_pair not in RuntimeContent.get_instance().screenshot_uid_pair:
+                save_popup_context(Config.get_instance().get_collectDataPath(), pre_scshot_path, screenshot_path,
+                                   click_xy,
+                                   click_text, pre_text, screen_text)
+                RuntimeContent.get_instance().screenshot_uid_pair.add(suid_pair)
+
+            return self.STATE_PopUp_Widget, content
+
+
+
 
         # 如果置信度>=75%则认为是弹框, 进行弹框处理
         popup_info = self.query_popup_info(screenshot_path)

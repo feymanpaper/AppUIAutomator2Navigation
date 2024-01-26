@@ -420,6 +420,47 @@ class StateHandler(object):
         cls.click_one_ele(content)
 
     @classmethod
+    def handle_popup_widget(cls, content):
+        ltrb = content["ltrb"]
+        popup_map = RuntimeContent.get_instance().get_popup_map()
+        ck_eles_text = content["ck_eles_text"]
+
+        resnode = get_max_similarity_popup_node(ck_eles_text)
+        if resnode is not None:
+            LogUtils.log_info("弹框已存在")
+            cur_popup_node = resnode
+        else:
+            LogUtils.log_info("创建新弹框")
+            cur_popup_node = cls.create_popup(content)
+            # 删除不在弹框范围内的组件
+            cls.__remove_eles_notin_popup(cur_popup_node, ltrb)
+            # 移除没必要点击的组件
+            cls.__remove_noneed_eles(cur_popup_node)
+            # 加入隐私组件
+            if Config.get_instance().isSearchPrivacyPolicy:
+                cls.insert_privacy_eles(content, cur_popup_node)
+            # 加入弹框widget
+            cls.insert_popup_widget_eles(content, cur_popup_node, content["widget_popup"])
+
+        content["cur_screen_node"] = cur_popup_node
+        print_screen_info(content, 2)
+        if cur_popup_node.is_screen_clickable_finished():
+            LogUtils.log_info("弹框已经点完所有组件")
+            cur_screen_node = get_cur_screen_node_from_context(content)
+            cur_screen_node_clickable_eles = cur_screen_node.get_diff_or_clickable_eles()
+
+            # 如果弹框已经点击完, 但是再出现弹框, 80%机会随机点, 20%机会back
+            # random click是为了应对重复的弹框
+            # random back是为了应对误报
+            probability = random.random()
+            if len(cur_screen_node_clickable_eles) > 0 and probability <= 0.8:
+                cls.random_click_ele(content)
+            else:
+                cls.handle_popup_finish(content)
+        else:
+            cls.click_popup_eles(content)
+
+    @classmethod
     def handle_popup(cls, content):
         ltrb = content["ltrb"]
         popup_map = RuntimeContent.get_instance().get_popup_map()

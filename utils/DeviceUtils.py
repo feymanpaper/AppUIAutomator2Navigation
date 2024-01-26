@@ -67,6 +67,11 @@ def get_screen_content():
     content["xml"] = xml
     return content
 
+def get_4corner_coord_withnotpercent(ui_xywh):
+    l, top = ui_xywh[0], ui_xywh[1]
+    r, bottom = ui_xywh[2], ui_xywh[3]
+    return l,top,r,bottom
+
 
 def get_ck_eles_hierarchy() -> list:
     xml_root = get_dump_hierarchy()
