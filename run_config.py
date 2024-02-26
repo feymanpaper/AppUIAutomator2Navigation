@@ -77,17 +77,22 @@ if __name__ == '__main__':
             if config_settings['rerun_uiautomator2'] == 'true':
                 rerun_uiautomator2()
             print('analysis {} : {}now...'.format(pkgName, appName))
+            with open('run_config.txt','w',encoding='utf8') as f:
+                f.write(f"{pkgName},{appName},{config_settings['dynamic_ui_depth']},{config_settings['dynamic_run_time']},{config_settings['searchprivacypolicy']},{config_settings['screenuidrep']}")
             if os_type in ['linux', 'mac']:
-                execute_cmd_with_timeout(
-                    'python3 run.py {} {} {} {} {} {}'.format(pkgName, appName, config_settings['dynamic_ui_depth'],
-                    config_settings['dynamic_run_time'],config_settings['searchprivacypolicy'],
-                    config_settings['screenuidrep']),timeout=int(config_settings['dynamic_run_time']) + 120)
+                # execute_cmd_with_timeout(
+                #     'python3 run.py {} {} {} {} {} {}'.format(pkgName, appName, config_settings['dynamic_ui_depth'],
+                #     config_settings['dynamic_run_time'],config_settings['searchprivacypolicy'],
+                #     config_settings['screenuidrep']),timeout=int(config_settings['dynamic_run_time']) + 120)
+                execute_cmd_with_timeout('python3 run.py',timeout=int(config_settings['dynamic_run_time']) + 120)
                 # kill current app
             elif os_type == 'win':
-                    execute_cmd_with_timeout(
-                    'python run.py {} {} {} {} {} {}'.format(pkgName, appName, config_settings['dynamic_ui_depth'],
-                    config_settings['dynamic_run_time'],config_settings['searchprivacypolicy'],
-                    config_settings['screenuidrep']),timeout=int(config_settings['dynamic_run_time']) + 120)
+                    # execute_cmd_with_timeout(
+                    # 'python run.py {} {} {} {} {} {}'.format(pkgName, appName, config_settings['dynamic_ui_depth'],
+                    # config_settings['dynamic_run_time'],config_settings['searchprivacypolicy'],
+                    # config_settings['screenuidrep']),timeout=int(config_settings['dynamic_run_time']) + 120)
+                execute_cmd_with_timeout('python run.py',timeout=int(config_settings['dynamic_run_time']) + 120)
+                
             print(f'kill {pkgName} in try...')
             execute_cmd_with_timeout(f'adb shell am force-stop {pkgName}')
 

@@ -44,12 +44,15 @@ def suppress_keyboard_interrupt_message():
 
 if __name__ == "__main__":
     try:
-        pkgName = sys.argv[1]
-        appName = sys.argv[2]
-        depth = sys.argv[3]
-        test_time = sys.argv[4]
-        searchPP = sys.argv[5]
-        ScreenUidRep = sys.argv[6]
+        with open('run_config.txt','r',encoding='utf8') as f:
+            args = f.readline()
+        pkgName,appName,depth,test_time,searchPP,ScreenUidRep = args.split(',')
+        # pkgName = sys.argv[1]
+        # appName = sys.argv[2]
+        # depth = sys.argv[3]
+        # test_time = sys.argv[4]
+        # searchPP = sys.argv[5]
+        # ScreenUidRep = sys.argv[6]
 
         Config.get_instance().target_pkg_name = pkgName
         Config.get_instance().app_name = appName
